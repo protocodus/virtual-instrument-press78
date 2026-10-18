@@ -57,7 +57,7 @@ def events_file(reference, destination):
     alignment = read(reference / "references/v2/alignment.json")
     timeline = read(reference / "references/v3_program_timeline.json")["intervals"]
     notes = read(reference / "references/v2/eugenia-events.json")["notes"]
-    bank = read(ROOT / "Resources/FactoryBank/press78-factory.json")["voices"]
+    bank = read(ROOT / "Assets/FactoryBank/press78-factory.json")["voices"]
     raw = {v["number"]: bytes(v["raw_data"]).hex() for v in bank}
     rows = []
     for p in timeline:
@@ -306,7 +306,7 @@ def main():
         "dependency_sha256": {"continuous_cache": sha(cache_path), "v4_profile": sha(reference/"circuit/v4_effective_stereo_profile.json"),
             "refined_chorus": sha(reference/"circuit/refined_chorus.py"), "calibrated_chorus": sha(reference/"circuit/calibrated_chorus.py"),
             "alignment": sha(reference/"references/v2/alignment.json"), "timeline": sha(reference/"references/v3_program_timeline.json"),
-            "midi_events": sha(reference/"references/v2/eugenia-events.json"), "factory_bank": sha(ROOT/"Resources/FactoryBank/press78-factory.json")}}
+            "midi_events": sha(reference/"references/v2/eugenia-events.json"), "factory_bank": sha(ROOT/"Assets/FactoryBank/press78-factory.json")}}
     report["audio_sha256"] = {str(p): sha(p) for p in sorted(audio.glob("*.wav"))}
     write_json(out / "report.json", report); write_json(args.report, report)
     print(json.dumps({"aggregate_targets": aggregate["targets"], "effect_targets": effect_summary["targets"], "offline_parity": parity}, indent=2))

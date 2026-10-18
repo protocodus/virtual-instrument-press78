@@ -86,7 +86,7 @@ def main():
         'source_sha256':{'recording':sha(original_path),'native_baseline':sha(native_path),'events':sha(bench/'events.txt'),
             'benchmark_report':sha(bench/'report.json'),'script':sha(Path(__file__))}}
     savejson(out/'protocol.json',protocol)
-    sys.path[:0]=[str(ROOT/'Reference/Python/src'),str(ROOT/'Reference/Python')]
+    sys.path[:0]=[str(ROOT/'Tools/reference/src'),str(ROOT/'Tools/reference')]
     from pss780 import get_patch
     patch=get_patch(93)
     gain=rms(reference)/rms(baseline)
@@ -111,7 +111,7 @@ def main():
     times=START+np.arange(len(reference))/SR;traces={};results=[]
     for n in target_notes:
         frequency=440*2**((n['midi']-69)/12)*2
-        isolated=synth_isolated(n,patch,START,END,ROOT/'Reference/Python');other=baseline-isolated
+        isolated=synth_isolated(n,patch,START,END,ROOT/'Tools/reference');other=baseline-isolated
         waves={'reference':reference,'baseline_RR7':baseline*gain,'carrier_RR6':candidates['carrier_RR6']*gain,'carrier_RR5':candidates['carrier_RR5']*gain,
                'isolated_note_model':isolated*gain,'other_notes_model':other*gain}
         envelopes={key:line_amplitude(y,frequency) for key,y in waves.items()}
@@ -169,7 +169,7 @@ def main():
             'Model-only stem subtraction does not prove corresponding hardware source separation.',
             'The old1.1667s comparison cuts before the93→94 transition; this new audition includes the transitions and later tails.',
             'Factory SysEx does not encode the global reverb state; a missing effect and a wrong raw release law cannot be separated definitively here.'],
-        'source_sha256':{str(p):sha(p) for p in [fixture,*source.glob('*.h'),source/'Press78Engine.cpp',ROOT/'Reference/Python/src/pss780.py',ROOT/'Reference/Python/circuit/model.py',ROOT/'Reference/Python/circuit/calibrated_chorus.py']},
+        'source_sha256':{str(p):sha(p) for p in [fixture,*source.glob('*.h'),source/'Press78Engine.cpp',ROOT/'Tools/reference/src/pss780.py',ROOT/'Tools/reference/circuit/model.py',ROOT/'Tools/reference/circuit/calibrated_chorus.py']},
         'audio_sha256':{str(p):sha(p) for p in (out/'audio').glob('*.wav')}}
     savejson(out/'report.json',report)
     print(json.dumps({'artifact_dir':str(out),'primary_MIDI74':[w for row in results if row['midi']==74 for w in row['windows'] if w['gate_shift_seconds']==0]},indent=2))

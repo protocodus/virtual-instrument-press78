@@ -6,7 +6,7 @@ import json
 import math
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'Reference/Python/circuit/video_chorus_profile.json'
+SOURCE = ROOT / 'Tools/reference/circuit/video_chorus_profile.json'
 TARGET = ROOT / 'Source/DSP/RecordedChorusProfile.h'
 
 

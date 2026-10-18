@@ -10,7 +10,7 @@ import tempfile
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / 'Reference/Python'))
+sys.path.insert(0, str(ROOT / 'Tools/reference'))
 from circuit.calibrated_chorus import process_calibrated_chorus
 
 
@@ -46,8 +46,8 @@ def main():
                          'maximum_midpoint_error':midpoint})
     paths = [ROOT/'Source/DSP/RecordedChorus.h', ROOT/'Source/DSP/RecordedChorusProfile.h',
              ROOT/'Tools/ChorusProbe.cpp', Path(__file__),
-             ROOT/'Reference/Python/circuit/calibrated_chorus.py',
-             ROOT/'Reference/Python/circuit/video_chorus_profile.json']
+             ROOT/'Tools/reference/circuit/calibrated_chorus.py',
+             ROOT/'Tools/reference/circuit/video_chorus_profile.json']
     report = {'passed':True,'scope':'Numerical streaming parity with frozen v3 effective transfer, not physical BBD identification; no normalization.',
               'additional_algorithmic_latency_samples':0,'rows':rows,
               'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}}

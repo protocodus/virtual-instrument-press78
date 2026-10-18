@@ -3,7 +3,7 @@
 #include <cstdint>
 #include "Press78Engine.h"
 namespace press78 {
-// Factory parameter provenance and unresolved distribution rights: Resources/FactoryBank/provenance.json.
+// Factory parameter provenance and unresolved distribution rights: Assets/FactoryBank/provenance.json.
 struct FactoryVoice { int number; const char* name; std::array<std::uint8_t,33> bytes; };
 inline constexpr std::array<FactoryVoice,100> kFactoryVoices{{
   {0, "PSS 00 Piano 1", {{0,3,1,36,11,245,86,191,186,12,12,204,76,6,5,64,56,159,11,46,243,243,0,0,0,0,0,0,0,0,0,0,0}}},
