@@ -23,7 +23,7 @@ def brand_geometry(x,center_y,size):
  logo_y=round(center_y*5-height/2)/5;baseline=round(center_y*5-(top+bottom)/2)/5
  text_x=x+logo_width+10
  return {'logo':{'x':x,'y':logo_y,'width':logo_width,'height':height/5},'wordmark':{'x':text_x,'baseline_y':baseline,'size':size,'ink_bounds':[text_x+left/5,baseline+top/5,text_x+right/5,baseline+bottom/5]}}
-BRANDING={'source_sha256':BRAND_SHA256,'gap':10,'faces':{'full':brand_geometry(28,25,30),'folded':brand_geometry(26,15,23)}}
+BRANDING={'source_sha256':BRAND_SHA256,'gap':10,'faces':{'full':brand_geometry(44,25,30),'folded':brand_geometry(42,15,23)}}
 APPEARANCE={'knob_size':40,'knob_sprite_size':50,'knob_inner_radius':15.5,'knob_pointer_inner':15.5,'knob_pointer_outer':24.1,'knob_pointer_width':13,'knob_pointer_style':'wedge','envelope_pointer_outline':.7,'value_font_size':11,'wave_font_size':13,'wave_active_color':'white','button_active_color':'white','envelope_face':'operator_accent','envelope_pointer':'black'}
 APPEARANCE.update(knob_arc_radius=22.2,knob_arc_width=1.5,knob_track='#5b626b',pointer_fill='ink',pointer_outline='black',pointer_outline_width=.7)
 def section(id,title,panel,x,y,w,h,accent):
@@ -163,7 +163,7 @@ geom['header_groups']={
  'note':{'panels':['front'],'visible_bounds':{'x':696.9,'y':13.5,'width':26.2,'height':23.5},'caption':{'x':710,'baseline_y':37,'font_size':11,'text':'NOTE'}},
  'rear_title':{'panels':['rear'],'visible_bounds':{'x':233,'y':11.6,'width':154,'height':26.4},'lines':[{'x':233,'baseline_y':23,'font_size':16,'text':'CONFIGURATION / CALIBRATION','color':'cyan','display':True},{'x':233,'baseline_y':38,'font_size':9,'text':'DIGITAL SYNTHESIZER','color':'muted','display':False}]}}
 geom['rack_hardware']={'top_screws':[{'x':17,'y':38,'radius':8},{'x':737,'y':38,'radius':8}],'panels':['front','rear'],'host_fold_reserved_bounds':{'x':0,'y':0,'width':27,'height':30},'fold_arrow_position':'host-owned; no SDK5 panel-position API','photo_position_tolerance_px':1,'photo_screw_note':'Generated material centers are approximate; source positions define the procedural rear and original front.'}
-geom['version']='Press78 layout study 09'
+geom['version']='Press78 layout study 10'
 geom['branding']=BRANDING
 geom['material_bounds']={'photo_asset':PHOTO_ASSET,'photo_source_sha256':hashlib.sha256((OUT/PHOTO_ASSET).read_bytes()).hexdigest(),'front_header_seam_y':49,'front_section_inset':20,'photo_pockets':{s['id']:{k:s[k] for k in ('x','y','width','height')} for s in sections['front']}}
 geom['group_markers']=[{'panel':'rear','type':'bar','x':39,'y':134,'width':3,'height':44,'color':'cyan'},{'panel':'rear','type':'bar','x':39,'y':200,'width':3,'height':44,'color':'lavender'},{'panel':'rear','type':'separator','x':52,'y':253,'width':650,'color':'edge'},{'panel':'rear','type':'separator','x':52,'y':385,'width':650,'color':'edge'}]

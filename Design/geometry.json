@@ -1,5 +1,5 @@
 {
-  "version": "Press78 layout study 09",
+  "version": "Press78 layout study 10",
   "logical_size": {
     "width": 754,
     "height": 552,
@@ -3373,38 +3373,38 @@
     "faces": {
       "full": {
         "logo": {
-          "x": 28,
+          "x": 44,
           "y": 14.0,
           "width": 26.2,
           "height": 21.8
         },
         "wordmark": {
-          "x": 64.2,
+          "x": 80.2,
           "baseline_y": 35.6,
           "size": 30,
           "ink_bounds": [
-            64.2,
+            80.2,
             14.0,
-            146.8,
+            162.8,
             35.800000000000004
           ]
         }
       },
       "folded": {
         "logo": {
-          "x": 26,
+          "x": 42,
           "y": 6.6,
           "width": 20.2,
           "height": 16.8
         },
         "wordmark": {
-          "x": 56.2,
+          "x": 72.2,
           "baseline_y": 23.2,
           "size": 23,
           "ink_bounds": [
-            56.2,
+            72.2,
             6.599999999999998,
-            119.80000000000001,
+            135.8,
             23.4
           ]
         }
@@ -3554,7 +3554,7 @@
   },
   "source_sha256": {
     "Source/DSP/Press78Engine.h": "9efb33b6c02160f439e222b8775df4863d90d5be7ef2dd88e23ca37fa0885e3f",
-    "Resources/controls.json": "79dd7ed1b4e35e3e7b93ac9899d5fe2248cbad25a89774929833f1c8b6684108",
+    "Resources/controls.json": "2cb4848c91ca4b5655ebb104dee4f27a4120fbb746fde5e3ad5f9367416ace80",
     "Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
   }
 }

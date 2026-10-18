@@ -2,7 +2,7 @@
 
 Press78 is an editable two-operator FM instrument derived from the PSS-780 research experiment. It has an independent C++17 engine, an eight-unit Reason Rack Extension prototype, and an interactive panel design. It uses original Press78 branding and focuses on synthesis; it does not reproduce the keyboard, rhythms or accompaniment system.
 
-This is an early development version, **0.1.0b9**. It is a behavioral model, not a bit-exact YM3420 emulator. Commercial redistribution of the imported factory bank has not been cleared.
+This is an early development version, **0.1.0b10**. It is a behavioral model, not a bit-exact YM3420 emulator. Commercial redistribution of the imported factory bank has not been cleared.
 
 [Product metadata](SHOP.md) follows the same shop format as the other Protocodus synths. It is generated from the Rack adapter’s authored `SHOP.md`; its front, rear and thumbnail images show the current native panel.
 
