@@ -1,5 +1,5 @@
 {
-  "version": "Press78 layout study 08",
+  "version": "Press78 layout study 09",
   "logical_size": {
     "width": 754,
     "height": 552,
@@ -3239,11 +3239,11 @@
   "device_name_positions": {
     "front": {
       "x": 586,
-      "y": 19
+      "y": 13
     },
     "back": {
       "x": 586,
-      "y": 19
+      "y": 13
     },
     "folded_front": {
       "x": 610,
@@ -3257,7 +3257,112 @@
   "header_alignment": {
     "full_center_y": 25,
     "folded_center_y": 15,
-    "caption_baseline_y": 43
+    "caption_baseline_y": 37,
+    "separator_y": 49,
+    "group_center_tolerance_px": 0.5
+  },
+  "note_positions": {
+    "front": {
+      "x": 705,
+      "y": 11
+    },
+    "folded_front": {
+      "x": 714,
+      "y": 10
+    }
+  },
+  "header_groups": {
+    "device": {
+      "panels": [
+        "front",
+        "rear"
+      ],
+      "visible_bounds": {
+        "x": 586,
+        "y": 13,
+        "width": 80,
+        "height": 24
+      },
+      "caption": {
+        "x": 626,
+        "baseline_y": 37,
+        "font_size": 11,
+        "text": "DEVICE"
+      }
+    },
+    "note": {
+      "panels": [
+        "front"
+      ],
+      "visible_bounds": {
+        "x": 696.9,
+        "y": 13.5,
+        "width": 26.2,
+        "height": 23.5
+      },
+      "caption": {
+        "x": 710,
+        "baseline_y": 37,
+        "font_size": 11,
+        "text": "NOTE"
+      }
+    },
+    "rear_title": {
+      "panels": [
+        "rear"
+      ],
+      "visible_bounds": {
+        "x": 233,
+        "y": 11.6,
+        "width": 154,
+        "height": 26.4
+      },
+      "lines": [
+        {
+          "x": 233,
+          "baseline_y": 23,
+          "font_size": 16,
+          "text": "CONFIGURATION / CALIBRATION",
+          "color": "cyan",
+          "display": true
+        },
+        {
+          "x": 233,
+          "baseline_y": 38,
+          "font_size": 9,
+          "text": "DIGITAL SYNTHESIZER",
+          "color": "muted",
+          "display": false
+        }
+      ]
+    }
+  },
+  "rack_hardware": {
+    "top_screws": [
+      {
+        "x": 17,
+        "y": 38,
+        "radius": 8
+      },
+      {
+        "x": 737,
+        "y": 38,
+        "radius": 8
+      }
+    ],
+    "panels": [
+      "front",
+      "rear"
+    ],
+    "host_fold_reserved_bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 27,
+      "height": 30
+    },
+    "fold_arrow_position": "host-owned; no SDK5 panel-position API",
+    "photo_position_tolerance_px": 1,
+    "photo_screw_note": "Generated material centers are approximate; source positions define the procedural rear and original front."
   },
   "branding": {
     "source_sha256": {
@@ -3307,7 +3412,8 @@
     }
   },
   "material_bounds": {
-    "photo_source_sha256": "a23d3144201bd9b8c0a3ad571b6c50705d20e2887b58401207a3d8dd8b5f891a",
+    "photo_asset": "Assets/press78-photo-background-v3.png",
+    "photo_source_sha256": "edb9489aa0a7775a714960ceec750c45b63d9e9c4f99c5ed6a735300b4faaf91",
     "front_header_seam_y": 49,
     "front_section_inset": 20,
     "photo_pockets": {
@@ -3448,7 +3554,7 @@
   },
   "source_sha256": {
     "Source/DSP/Press78Engine.h": "9efb33b6c02160f439e222b8775df4863d90d5be7ef2dd88e23ca37fa0885e3f",
-    "Resources/controls.json": "d018c0723a02f123804342988d96455d9feb0c1f85100261aabda68d9b79f91a",
+    "Resources/controls.json": "79dd7ed1b4e35e3e7b93ac9899d5fe2248cbad25a89774929833f1c8b6684108",
     "Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
   }
 }

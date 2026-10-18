@@ -3,6 +3,7 @@ from pathlib import Path
 import json, math, html, hashlib, base64, io
 from PIL import Image, ImageFont
 ROOT=Path(__file__).resolve().parents[2]; OUT=ROOT/'Assets/Design'; W,H=754,552
+PHOTO_ASSET='Assets/press78-photo-background-v3.png'
 C={'bg':'#303238','panel':'#25282d','edge':'#4a4e55','ink':'#e9e4d2','muted':'#b9bbb8','cyan':'#67c4d0','lavender':'#b1a1d2','coral':'#ea8197','red':'#ff4777','white':'#ffffff','black':'#14171b','cyanCap':'#3c9fb1','lavenderCap':'#9384b6','coralCap':'#d85d7b','ivory':'#e9e4d2'}
 contract=json.loads((ROOT/'Assets/controls.json').read_text())
 by_id={p['id']:p for p in contract['controls']}
@@ -153,11 +154,18 @@ preview={d['binding']:d['default'] for d in controls};preview.update(presets[0][
 geom={'version':'Press78 layout study 06','logical_size':{'width':W,'height':H,'rack_units':8},'folded_size':{'width':W,'height':30},'status':'Shared geometry for interactive design preview and native prototype widgets','palette':C,'appearance':APPEARANCE,'native_patch_selector':{'x':247,'y':11,'width':315,'height':28,'kind':'host_native_placeholder'},'controls':controls,'sections':sections,'annotations':annotations,'spacing':{'section_gap':16,'section_padding':20,'operator_knob_row_pitch':64,'global_row_pitch':66,'rear_row_pitch':66,'caption_offset':48},'notes':['35 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.','Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.','Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.','Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator.']}
 geom['sockets']=[{'id':key,'property_path':path,'label':label,'panel':'rear','section':'connections','x':x,'y':506,'width':24,'height':24,'widget_bounds':{'x':x-12,'y':494,'width':24,'height':24},'caption':{'x':x+20,'baseline_y':510,'font_size':11,'anchor':'start'}} for key,path,label,x in [('gate_cv','/cv_inputs/gate_cv','GATE CV',68),('note_cv','/cv_inputs/note_cv','NOTE CV',177),('fm_cv','/cv_inputs/fm_cv','FM CV',286),('level_cv','/cv_inputs/level_cv','LEVEL CV',395),('left','/audio_outputs/left','LEFT',550),('right','/audio_outputs/right','RIGHT',659)]]
 geom['routing_icons']=[{'x':525,'y':498,'asset':'Routing_Icon_White_01_1frames'},{'x':634,'y':498,'asset':'Routing_Icon_White_02_1frames'}]
-geom['device_name_positions']={'front':{'x':586,'y':19},'back':{'x':586,'y':19},'folded_front':{'x':610,'y':9},'folded_back':{'x':610,'y':9}}
-geom['header_alignment']={'full_center_y':25,'folded_center_y':15,'caption_baseline_y':43}
-geom['version']='Press78 layout study 08'
+geom['device_name_positions']={'front':{'x':586,'y':13},'back':{'x':586,'y':13},'folded_front':{'x':610,'y':9},'folded_back':{'x':610,'y':9}}
+geom['header_alignment']={'full_center_y':25,'folded_center_y':15,'caption_baseline_y':37,'separator_y':49,'group_center_tolerance_px':.5}
+geom['note_positions']={'front':{'x':705,'y':11},'folded_front':{'x':714,'y':10}}
+# Center the complete visible widget-plus-caption groups, not just their widgets.
+geom['header_groups']={
+ 'device':{'panels':['front','rear'],'visible_bounds':{'x':586,'y':13,'width':80,'height':24},'caption':{'x':626,'baseline_y':37,'font_size':11,'text':'DEVICE'}},
+ 'note':{'panels':['front'],'visible_bounds':{'x':696.9,'y':13.5,'width':26.2,'height':23.5},'caption':{'x':710,'baseline_y':37,'font_size':11,'text':'NOTE'}},
+ 'rear_title':{'panels':['rear'],'visible_bounds':{'x':233,'y':11.6,'width':154,'height':26.4},'lines':[{'x':233,'baseline_y':23,'font_size':16,'text':'CONFIGURATION / CALIBRATION','color':'cyan','display':True},{'x':233,'baseline_y':38,'font_size':9,'text':'DIGITAL SYNTHESIZER','color':'muted','display':False}]}}
+geom['rack_hardware']={'top_screws':[{'x':17,'y':38,'radius':8},{'x':737,'y':38,'radius':8}],'panels':['front','rear'],'host_fold_reserved_bounds':{'x':0,'y':0,'width':27,'height':30},'fold_arrow_position':'host-owned; no SDK5 panel-position API','photo_position_tolerance_px':1,'photo_screw_note':'Generated material centers are approximate; source positions define the procedural rear and original front.'}
+geom['version']='Press78 layout study 09'
 geom['branding']=BRANDING
-geom['material_bounds']={'photo_source_sha256':hashlib.sha256((OUT/'Assets/press78-photo-background-v2.png').read_bytes()).hexdigest(),'front_header_seam_y':49,'front_section_inset':20,'photo_pockets':{s['id']:{k:s[k] for k in ('x','y','width','height')} for s in sections['front']}}
+geom['material_bounds']={'photo_asset':PHOTO_ASSET,'photo_source_sha256':hashlib.sha256((OUT/PHOTO_ASSET).read_bytes()).hexdigest(),'front_header_seam_y':49,'front_section_inset':20,'photo_pockets':{s['id']:{k:s[k] for k in ('x','y','width','height')} for s in sections['front']}}
 geom['group_markers']=[{'panel':'rear','type':'bar','x':39,'y':134,'width':3,'height':44,'color':'cyan'},{'panel':'rear','type':'bar','x':39,'y':200,'width':3,'height':44,'color':'lavender'},{'panel':'rear','type':'separator','x':52,'y':253,'width':650,'color':'edge'},{'panel':'rear','type':'separator','x':52,'y':385,'width':650,'color':'edge'}]
 geom.update(preview_patch=0,preview_state=preview,sdk={'root':'/Users/vojta/Dev/reason-rack-extension/SDK','version':'JukeboxSDK_500_028','target':'5.0'},source_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'Source/DSP/Press78Engine.h',ROOT/'Assets/controls.json',ROOT/'Assets/FactoryBank/press78-factory.json']})
 (OUT/'geometry.json').write_text(json.dumps(geom,indent=2)+'\n')
@@ -230,18 +238,26 @@ def title_rule(x,y,label,color,end,start,width):
  return txt(x,y,label,15,'ink',weight=700,display=True)+f'<path d="M{start} {y-5}H{end}" stroke="{C[color]}" stroke-width="{width}"/>'
 def svg(panel):
  s=f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" overflow="visible" role="img" aria-label="Press78 {panel} design"><style>text{{font-family: DIN Alternate,Arial,sans-serif}}</style>'+defs()+shell(H)+'<g class="material-surface">'
+ for screw in geom['rack_hardware']['top_screws']:
+  x,y,r=screw['x'],screw['y'],screw['radius']
+  s+=f'<g data-top-screw="true"><circle cx="{x}" cy="{y}" r="{r}" fill="#181b20" stroke="#50545a" stroke-width=".8"/><circle cx="{x}" cy="{y}" r="{r-2}" fill="#25282d" stroke="#090b0d" stroke-width="1"/><path d="M{x-3} {y}h6M{x} {y-3}v6" stroke="#85898b" stroke-width="1.4"/></g>'
  for x in (10,744):
-  for y in (20,H-20):s+=f'<circle cx="{x}" cy="{y}" r="3.6" fill="#181b20" stroke="#50545a" stroke-width=".65"/><path d="M{x-1.7} {y}h3.4" stroke="#85898b" stroke-width=".7"/>'
+  y=H-20;s+=f'<circle cx="{x}" cy="{y}" r="3.6" fill="#181b20" stroke="#50545a" stroke-width=".65"/><path d="M{x-1.7} {y}h3.4" stroke="#85898b" stroke-width=".7"/>'
  s+='</g>'
  s+=brand_wordmark()
- seam=49 if panel=='front' else 57.5
+ seam=geom['header_alignment']['separator_y']
  s+=f'<path class="material-surface" d="M22 {seam}H732" stroke="#15181c"/><path class="material-surface" d="M22 {seam+1}H732" stroke="#4a4e55" stroke-width=".5"/>'
  if panel=='front':
   s+='<rect x="205" y="10" width="35" height="30" rx="2" fill="url(#displayGlass)" stroke="#111318"/>'+txt(222.5,32.9,'FM',22,'red','middle',display=True)+rect(247,11,315,28,'black','edge')
   s+='<image href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonPatchBrowse.png').read_bytes()).decode()+'" x="498" y="14" width="58" height="22"><title>Reason standard patch browser — available in the host</title></image>'
-  s+=txt(626,43,'DEVICE',11,'muted','middle')+txt(719,43,'NOTE',11,'muted','middle')+'<circle cx="719" cy="25" r="2.5" fill="#472332" stroke="#14171b"/>'
- else:s+=txt(233,31,'CONFIGURATION / CALIBRATION',16,'cyan',display=True)+txt(233,48,'DIGITAL SYNTHESIZER',9,'muted')
- s+='<image href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonDeviceTape.png').read_bytes()).decode()+'" x="586" y="19" width="80" height="13"/>'+txt(626,29,'Press78',8,'black','middle')
+  pos=geom['note_positions']['front'];s+=f'<circle id="header-note-lamp" cx="{pos["x"]+5}" cy="{pos["y"]+5}" r="2.5" fill="#472332" stroke="#14171b"/>'
+ else:
+  for t in geom['header_groups']['rear_title']['lines']:s+=txt(t['x'],t['baseline_y'],t['text'],t['font_size'],t['color'],display=t['display'])
+ for key,group in geom['header_groups'].items():
+  if panel in group['panels'] and 'caption' in group:
+   t=group['caption'];s+=f'<g id="header-{panel}-{key}-caption">'+txt(t['x'],t['baseline_y'],t['text'],t['font_size'],'muted','middle')+'</g>'
+ pos=geom['device_name_positions']['front' if panel=='front' else 'back']
+ s+=f'<image id="header-{panel}-device-tape" href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonDeviceTape.png').read_bytes()).decode()+f'" x="{pos["x"]}" y="{pos["y"]}" width="80" height="13"/>'+txt(pos['x']+40,pos['y']+10,'Press78',8,'black','middle')
  for sec in geom['sections'][panel]:
   x,y,w,h=sec['x'],sec['y'],sec['width'],sec['height']
   s+=f'<g class="material-surface"><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="2.5" fill="url(#pocket)" stroke="#191c21" stroke-width=".6"/><path d="M{x+2} {y+h+.5}H{x+w-2}" stroke="#555960" stroke-width=".5"/><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="2.5" fill="url(#grain)"/></g>'

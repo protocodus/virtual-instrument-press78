@@ -120,7 +120,7 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 ### Unreleased — 0.1.0 — engine, Rack prototype and plug-in front end
 
 - Two-operator FM engine with the 100 `PSS` factory voices and an Init sine, sibling-circuit output stage, Studio and Recorded chorus, White and Circuit noise, and clock variation.
-- Reason Rack Extension prototype 0.1.0b8, built outside this repository.
+- Reason Rack Extension prototype 0.1.0b9, built outside this repository.
 - First JUCE plug-in: all 65 controls as parameters, Init plus the 100 voices as programs, and a working editor; the Rack panel design is not yet ported to it.
 
 ## Downloads
@@ -162,7 +162,7 @@ The plug-in's parameter IDs are the control ids in `Assets/controls.json`, the s
 
 ### Panel design
 
-Open [the interactive design preview](Assets/Design/index.html). Layout study 08 uses an eight-rack-unit panel with consistent section padding and puts 35 main sound/performance controls on the front, with 30 detailed sound, calibration and configuration controls on the rear. It combines the canonical Protocodus logo, YouKnow's DIN lettering and recessed groups with charcoal ABS, cyan, lavender, coral and ivory inspired by the PSS-780 moodboard. Doubled pointer arrows remain clear of the knob number wells. The preview has editable operator controls and all 100 factory voices. It demonstrates layout and parameter relationships, without audio. [Design notes](Assets/Design/README.md) describe the front, rear and folded panels. Both native GUI asset sets and the native local/universal builds carry this styling. Level increases clockwise while preserving the original raw attenuation values; clearer envelope/unit labels and value arcs improve editing. The current layout follows the photographic recesses, shares vertical centres within each row and aligns the header controls.
+Open [the interactive design preview](Assets/Design/index.html). Layout study 09 uses an eight-rack-unit panel with consistent section padding and puts 35 main sound/performance controls on the front, with 30 detailed sound, calibration and configuration controls on the rear. It combines the canonical Protocodus logo, YouKnow's DIN lettering and recessed groups with charcoal ABS, cyan, lavender, coral and ivory inspired by the PSS-780 moodboard. Doubled pointer arrows remain clear of the knob number wells. The preview has editable operator controls and all 100 factory voices. It demonstrates layout and parameter relationships, without audio. [Design notes](Assets/Design/README.md) describe the front, rear and folded panels. Both native GUI asset sets and the native local/universal builds carry this styling. Level increases clockwise while preserving the original raw attenuation values; clearer envelope/unit labels and value arcs improve editing. The current layout follows the photographic recesses, shares vertical centres within each row and aligns the header controls.
 
 ### Repository layout
 

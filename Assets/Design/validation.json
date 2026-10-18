@@ -25,17 +25,21 @@
     ]
   },
   "svg_rasterizer": "@resvg/resvg-js 2.6.2, DIN Alternate / DIN Condensed system fonts",
-  "browser_visual_review": "Layout study08: deterministic photo composition and four local panels inspected at1x; synthetic DOM interaction separate; no new live-browser interaction claim.",
+  "browser_visual_review": "Layout study09: header group bounds, fold clearance and four deterministic local panels checked; synthetic DOM interaction separate; no new live-browser interaction claim.",
   "native_host_tested": false,
   "scope": "Wireframe geometry, property contract and SVG raster checks; no DSP/audio or native host claims.",
   "source_sha256": {
-    "Design/geometry.json": "8bf32acda6d8798d53d6e76edd0a73c73bb75e33247e063dda1f7f84bea6c8fa",
-    "Design/build_wireframe.py": "c6715a6fd1589c494b061b02f2fa627fd8b0ca6e24ad6416f8d83d9dfd18f41a",
-    "Design/preview_template.html": "89e32824f798c6578d30046c9a2b87d2e005522a1641cd7607ac2305c72780e2",
-    "Design/index.html": "5bda7e3d2ac7ed89b97703aa910bd39feab19f68a14218eb3ca98ca4c147549b",
-    "Design/render_preview.cjs": "706567872e2421d502e854fd99a13034bab3083dafd127e0e18cd946992b55ce",
-    "Resources/controls.json": "d018c0723a02f123804342988d96455d9feb0c1f85100261aabda68d9b79f91a"
+    "Design/geometry.json": "f8f735c46e3f053f04b2396c470fcfdd6b9e6efca2f668bb1cd502dafd213255",
+    "Design/build_wireframe.py": "72681bf1a40352e9da97488caa6417f2ab1369ffb8caa32e12c8e7c2eaa83e1b",
+    "Design/preview_template.html": "72ce23b38b5a8536d155f25b036db25f4c6a4aae40be999e3897ffbf4323c998",
+    "Design/index.html": "d0fa005c512c8ca7a637c97a465280dce884b5515f67cf8b8f47d1342be58285",
+    "Design/render_preview.cjs": "fa345aea4e6fcb20b8cdd7c665b75ac203e901d292ee1e4faf073ceeebbba217",
+    "Resources/controls.json": "79dd7ed1b4e35e3e7b93ac9899d5fe2248cbad25a89774929833f1c8b6684108"
   },
+  "header_group_center_tolerance_px": 0.5,
+  "fold_reserved_nominal_clearance_px": 0,
+  "photo_screw_position_tolerance_px": 1,
+  "top_screw_center_y": 38,
   "sockets": 6,
   "cv_inputs": 4,
   "audio_outputs": 2,
