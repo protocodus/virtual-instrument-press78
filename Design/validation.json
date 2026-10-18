@@ -1,7 +1,7 @@
 {
   "passed": true,
-  "controls": 65,
-  "canonical_properties": 65,
+  "controls": 63,
+  "canonical_properties": 63,
   "unmapped_properties": [],
   "overlapping_widget_bounds": 0,
   "captions_fit_at_11px": true,
@@ -29,12 +29,12 @@
   "native_host_tested": false,
   "scope": "Wireframe geometry, property contract and SVG raster checks; no DSP/audio or native host claims.",
   "source_sha256": {
-    "Design/geometry.json": "a4f63ce723c0eae11e7990861175d6d4e1df0ea08fd8861cd9764dced1af89b0",
-    "Design/build_wireframe.py": "263329d4e1cadcc52d6e024fdb2086694064db446f5a1ab1a1c9b63886f95d6f",
-    "Design/preview_template.html": "72ce23b38b5a8536d155f25b036db25f4c6a4aae40be999e3897ffbf4323c998",
-    "Design/index.html": "47b2f927552077e9f46b5fb339187efc4a3dab0b24fdd1c3c5c5005aa1fd8678",
+    "Design/geometry.json": "c6ab8319f4c49833d5cdec3e972f06ee9223e25d35380926d876422c22ac6d67",
+    "Design/build_wireframe.py": "bb3ee09db284d2f26023cc723d0a4187073b7b0bab6d58227c2d617575038240",
+    "Design/preview_template.html": "d7e34a90d75cb8f98c814830cb3d955d1d1c317005e3a0f1928ada80e5984e68",
+    "Design/index.html": "c9aaed2130bb8c988d780b48363206092489d68255207f32bb58f74f9cba4e76",
     "Design/render_preview.cjs": "fa345aea4e6fcb20b8cdd7c665b75ac203e901d292ee1e4faf073ceeebbba217",
-    "Resources/controls.json": "2cb4848c91ca4b5655ebb104dee4f27a4120fbb746fde5e3ad5f9367416ace80"
+    "Resources/controls.json": "a442097f8cd4c95cb63a75886eb1bb9672d294b335408522dc40f0d2db0c66a5"
   },
   "branding_fold_clearance_min_px": 15,
   "header_group_center_tolerance_px": 0.5,
@@ -44,8 +44,8 @@
   "sockets": 6,
   "cv_inputs": 4,
   "audio_outputs": 2,
-  "front_controls": 35,
-  "rear_controls": 30,
+  "front_controls": 34,
+  "rear_controls": 29,
   "rack_units": 8,
   "section_side_padding_min_px": 14,
   "front_heading_padding_px": 20,

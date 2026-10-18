@@ -79,8 +79,6 @@ int main(int argc, char** argv) {
             else if (arg == "--chorus-rate") controls.chorusRateHz = std::stod(value);
             else if (arg == "--chorus-depth") controls.chorusDepthMs = std::stod(value);
             else if (arg == "--drive") controls.drive = std::stod(value);
-            else if (arg == "--noise") controls.noiseRms = std::stod(value);
-            else if (arg == "--noise-model") controls.noiseModel = std::stoi(value);
             else throw std::runtime_error("Unknown option " + arg);
         }
         if (output.empty() || rate < 8000 || rate > 192000 || !std::isfinite(duration) || duration <= 0 || duration > 120

@@ -4,7 +4,6 @@
 #include <cstddef>
 #include <cstdint>
 #include "AnalogOutput.h"
-#include "CircuitNoise.h"
 
 // Independently written port of the documented PSS-780 behavioral experiment.
 // This is not a bit-exact YM3420/OPU emulator. No Yamaha firmware is included.
@@ -60,10 +59,10 @@ struct Controls {
     double chorusRateHz = 0.65;       // 0.05..8.
     double chorusDepthMs = 2.0;       // 0..8. Studio12ms; recorded measured harmonic law.
     double stereoWidth = 1.0;         // 0..2; dry mono midpoint is preserved.
-    int noiseModel = 0;              // 0 legacy White;1 related-circuit stereo noise.
-    // White: full-band RMS. Circuit: level relative to a FIXED continuous
-    //20-20kHz reference; numerical rate warping is retained, not normalized.
-    double noiseRms = 0.0;            // 0..0.02 pre-master; user level, no unit calibration.
+    // Deprecated compatibility fields for old patches/callers. Sanitization
+    // always sets both to zero; the instrument generates no additive noise.
+    int noiseModel = 0;
+    double noiseRms = 0.0;
     bool dcBlock = true;              // 10Hz output DC removal.
     bool outputLimit = true;          // transparent below .9, smooth bound +/-1.
 };
@@ -140,7 +139,6 @@ private:
     Controls controls_{};
     Controls voiceControls_{};
     AnalogOutput analog_{};
-    CircuitNoise circuitNoise_{};
     double sampleRate_ = 48000.0, position_ = 0.0, hostTime_ = 0.0;
     double globalLfoPhase_ = 0.0, chorusPhase_ = 0.0;
     double gain_ = 0.25, pitchMultiplier_ = 1.0, targetPitch_ = 1.0;
@@ -148,13 +146,11 @@ private:
     double currentToneCoefficient_ = 0.0, drive_ = 0.0, chorusMix_ = 0.0;
     double circuitMix_ = 1.0;
     double recordedChorusMix_ = 0.0;  // Smoothed mode blend; no history reset.
-    double circuitNoiseMix_ = 0.0;
-    double chorusRate_ = 0.65, chorusDepth_ = 2.0, width_ = 1.0, noise_ = 0.0;
+    double chorusRate_ = 0.65, chorusDepth_ = 2.0, width_ = 1.0;
     double dcInputL_ = 0.0, dcInputR_ = 0.0, dcOutputL_ = 0.0, dcOutputR_ = 0.0;
     double dcCoefficient_ = 0.0, gainSmoothing_ = 0.0;
     std::int64_t nextTick_ = 0;
     std::uint64_t serial_ = 0;
-    std::uint32_t random_ = 0x7803420U;
     std::size_t delayWrite_ = 0;
     bool pedal_ = false, hasProcessed_ = false;
     void buildResampler() noexcept;
@@ -162,7 +158,6 @@ private:
     double resampled(double position) const noexcept;
     double historyAt(std::int64_t tick) const noexcept;
     double readDelay(double samples) const noexcept;
-    double randomNoise() noexcept;
     void output(double mono, double& left, double& right) noexcept;
 };
 } // namespace press78

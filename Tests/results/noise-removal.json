@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "scope": "Native engine additive-noise removal; not physical hardware or Reason audio validation.",
+  "baseline_commit": "c0be91c040b77f9c512d0aca6dab4a9b9a6091be",
+  "baseline_noise_amount": 0,
+  "voices": [
+    65,
+    93,
+    97
+  ],
+  "sample_rates": [
+    8000,
+    44100,
+    192000
+  ],
+  "note": 60,
+  "velocity": 100,
+  "block_frames": 64,
+  "blocks_per_render": 192,
+  "note_off_block": 128,
+  "chorus": "Recorded at profile rate/depth, mix1",
+  "output_circuit": true,
+  "clock_drift_ppm": 20,
+  "drive": 0.12,
+  "stereo_render_bytes": 884736,
+  "before_after_sha256": "cc8e1bdb8e948cc74c677d0392f7fb01812878af3ad3bf3a36979e4ec858e33a",
+  "probe_source": "#include \"Press78Engine.h\"\n#include \"FactoryVoices.h\"\n#include \"RecordedChorusProfile.h\"\n#include <array>\n#include <cstdio>\n#include <memory>\nint main(int argc,char**argv){\n if(argc!=2)return 2;auto*f=std::fopen(argv[1],\"wb\");if(!f)return 3;\n for(double sr:{8000.,44100.,192000.})for(int voice:{65,93,97}){\n  auto e=std::make_unique<press78::Press78Engine>();e->prepare(sr);\n  press78::Controls c;c.chorusMode=1;c.chorusMix=1;c.chorusRateHz=press78::RecordedChorusProfile::rateHz;c.chorusDepthMs=press78::RecordedChorusProfile::depthMs;c.clockDriftPpm=20;c.drive=.12;\n  e->setControls(c);e->setPatch(press78::decodeVoice(press78::kFactoryVoices[voice].bytes));e->noteOn(60,100);\n  std::array<float,64>l{},r{};\n  for(int block=0;block<192;++block){if(block==128)e->noteOff(60);e->process(l.data(),r.data(),l.size());std::fwrite(l.data(),sizeof(float),l.size(),f);std::fwrite(r.data(),sizeof(float),r.size(),f);}\n }\n return std::fclose(f);\n}\n",
+  "core_contracts": 40,
+  "core_sanitized_pass": true,
+  "source_sha256": {
+    "Source/DSP/Press78Engine.h": "a11cc9536a4137ea5b380f992fb8d24fe23dda0b5ea58c63bb43b32af5c1d6bb",
+    "Source/DSP/Press78Engine.cpp": "dee61309fc179ac4924612976b94f74ce2554935d10b68429b17b176883009e7",
+    "Tests/test_dsp.cpp": "9b6fde8183bad572fba6cd8e2690cb11b25b96425b323822025158e495a4528f"
+  }
+}

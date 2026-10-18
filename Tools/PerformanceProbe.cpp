@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
     std::cout << std::setprecision(10)
               << "{\"scope\":\"native engine wall time; excludes Reason host and target translation\",\"block_frames\":64,\"rows\":[";
     bool first = true;
-    for (const int sr : {48000, 96000}) for (int mode = realOnly ? 5 : 0; mode < (realOnly ? 8 : 5); ++mode) {
+    for (const int sr : {48000, 96000}) for (int mode = realOnly ? 5 : 0; mode < (realOnly ? 8 : 4); ++mode) {
         auto e = std::make_unique<press78::Press78Engine>();
         e->prepare(sr);
         auto p = press78::initPatch();
@@ -35,14 +35,13 @@ int main(int argc, char** argv) {
             c.chorusMix = 0.8; c.chorusDepthMs = 4; c.drive = 0.2;
         }
         if (mode >= 3) { c.chorusMode=1; c.chorusRateHz=press78::RecordedChorusProfile::rateHz; c.chorusDepthMs=press78::RecordedChorusProfile::depthMs; }
-        if (mode == 4) { c.noiseModel=1; c.noiseRms=.002; }
         if (mode >= 5) {
-            // Rack 0.1.0b3 Real profile; constructor defaults remain historical.
+            // Current Rack Real profile; no additive noise.
             c.clockOffsetPpm=0; c.clockDriftPpm=20; c.clockDriftRateHz=.1;
             c.outputCircuit=true; c.chorusMode=1; c.chorusMix=1;
             c.chorusRateHz=press78::RecordedChorusProfile::rateHz;
             c.chorusDepthMs=press78::RecordedChorusProfile::depthMs;
-            c.noiseModel=1; c.noiseRms=.002; c.drive=0;
+            c.drive=0;
         }
         e->setPatch(p); e->setControls(c);
         for (int v = 0; v < voices; ++v) e->noteOn(48 + v, 100);
@@ -69,7 +68,7 @@ int main(int argc, char** argv) {
         const auto percentile = [&](double q) { return times[static_cast<std::size_t>(q * static_cast<double>(times.size() - 1))]; };
         if (!first) std::cout << ',';
         first = false;
-        std::cout << "{\"workload\":\"" << (mode == 7 ? "real_idle" : mode == 6 ? "real_single" : mode == 5 ? "real_12voice_fm" : mode == 0 ? "default_single" : mode == 1 ? "12voice_fm" : mode==2 ? "12voice_clock_chorus" : mode==3 ? "12voice_clock_recorded" : "12voice_recorded_circuit_noise")
+        std::cout << "{\"workload\":\"" << (mode == 7 ? "real_idle" : mode == 6 ? "real_single" : mode == 5 ? "real_12voice_fm" : mode == 0 ? "default_single" : mode == 1 ? "12voice_fm" : mode==2 ? "12voice_clock_chorus" : "12voice_clock_recorded")
                   << "\",\"sample_rate\":" << sr << ",\"voices\":" << voices << ",\"blocks\":" << blocks
                   << ",\"audio_seconds\":" << blocks * 64.0 / sr << ",\"wall_seconds\":" << seconds
                   << ",\"wall_fraction_of_realtime\":" << seconds / (blocks * 64.0 / sr)

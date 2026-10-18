@@ -1,4 +1,4 @@
-engine_bytes=180344
+engine_bytes=177296
 PASS engine instance fits192KiB Rack budget
 PASS documented33-byte voice fields decode independently
 PASS nominal sine has explicit32-frame latency and correct amplitude
@@ -22,7 +22,6 @@ PASS clock change advances envelope as well as oscillator
 PASS allSoundOff clears synthesis and causal effect history
 PASS chorus changes stereo side while preserving raw midpoint
 PASS zero stereo width collapses creative chorus
-PASS noise is deterministic and absent by default
 PASS filter and drive controls alter sound with bounded output
 PASS drive approaches its exact dry bypass continuously
 PASS circuit runtime is deterministic across reset at all supported rates
@@ -37,8 +36,7 @@ PASS recorded effect is causal preserves mid and deterministically resets
 PASS native recorded chorus matches the standalone effect and keeps midpoint
 PASS recorded chorus mode transitions are smoothed and block invariant
 PASS recorded mode nonfinite controls and inputs are bounded without allocations
-PASS circuit noise uses fixed physical reference without rate normalization
-PASS zero circuit noise level leaves musical output exactly unchanged
-PASS circuit noise is deterministic across block sizes and reset
-PASS circuit noise switching and realtime paths remain finite and allocation free
-42 passed, 0 failed
+PASS legacy noise requests preserve exact silence and both musical channels
+PASS legacy noise automation is inaudible and allocation free
+PASS legacy noise requests preserve split blocks reset and sound-off silence
+40 passed, 0 failed

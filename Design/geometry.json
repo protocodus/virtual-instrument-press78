@@ -1516,11 +1516,11 @@
       }
     },
     {
-      "id": "controls_noiseRms",
-      "label": "Noise",
-      "binding": "controls.noiseRms",
-      "property_id": "noiseRms",
-      "property_path": "/custom_properties/noiseRms",
+      "id": "controls_drive",
+      "label": "Drive",
+      "binding": "controls.drive",
+      "property_id": "drive",
+      "property_path": "/custom_properties/drive",
       "section": "effects",
       "panel": "front",
       "kind": "knob",
@@ -1529,13 +1529,13 @@
       "width": 68,
       "height": 52,
       "min": 0,
-      "max": 0.02,
-      "default": 0.002,
-      "step": 0.0001,
+      "max": 1,
+      "default": 0,
+      "step": 0.01,
       "unit": "",
       "accent": "coral",
       "integer": false,
-      "tooltip": "Added noise amplitude before master volume. The rear Noise model chooses Circuit or White.",
+      "tooltip": "Additional creative saturation. Zero leaves this extra drive stage off.",
       "widget_bounds": {
         "x": 410.0,
         "y": 429,
@@ -1562,52 +1562,6 @@
       }
     },
     {
-      "id": "controls_drive",
-      "label": "Drive",
-      "binding": "controls.drive",
-      "property_id": "drive",
-      "property_path": "/custom_properties/drive",
-      "section": "effects",
-      "panel": "front",
-      "kind": "knob",
-      "x": 477.333,
-      "y": 432,
-      "width": 68,
-      "height": 52,
-      "min": 0,
-      "max": 1,
-      "default": 0,
-      "step": 0.01,
-      "unit": "",
-      "accent": "coral",
-      "integer": false,
-      "tooltip": "Additional creative saturation. Zero leaves this extra drive stage off.",
-      "widget_bounds": {
-        "x": 491.333,
-        "y": 429,
-        "width": 40,
-        "height": 40
-      },
-      "sprite_bounds": {
-        "x": 486.333,
-        "y": 424,
-        "width": 50,
-        "height": 50
-      },
-      "visual_bounds": {
-        "x": 486.88300000000004,
-        "y": 424.55,
-        "width": 48.900000000000006,
-        "height": 44.45
-      },
-      "caption": {
-        "x": 511.333,
-        "baseline_y": 480,
-        "font_size": 11,
-        "anchor": "middle"
-      }
-    },
-    {
       "id": "controls_toneCutoffHz",
       "label": "Cutoff Hz",
       "binding": "controls.toneCutoffHz",
@@ -1616,7 +1570,7 @@
       "section": "effects",
       "panel": "front",
       "kind": "knob",
-      "x": 558.667,
+      "x": 518.0,
       "y": 432,
       "width": 68,
       "height": 52,
@@ -1629,25 +1583,25 @@
       "integer": false,
       "tooltip": "Output low-pass cutoff in hertz. Lower values soften the high end.",
       "widget_bounds": {
-        "x": 572.667,
+        "x": 532.0,
         "y": 429,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 567.667,
+        "x": 527.0,
         "y": 424,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 568.217,
+        "x": 527.55,
         "y": 424.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 592.667,
+        "x": 552.0,
         "baseline_y": 480,
         "font_size": 11,
         "anchor": "middle"
@@ -2510,7 +2464,7 @@
       "section": "advanced",
       "panel": "rear",
       "kind": "knob",
-      "x": 169.5,
+      "x": 196.583,
       "y": 332,
       "width": 90,
       "height": 52,
@@ -2523,25 +2477,25 @@
       "integer": false,
       "tooltip": "Additional pitch modulation depth from the modulation wheel.",
       "widget_bounds": {
-        "x": 194.5,
+        "x": 221.583,
         "y": 329,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 189.5,
+        "x": 216.583,
         "y": 324,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 190.05,
+        "x": 217.13299999999998,
         "y": 324.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 214.5,
+        "x": 241.583,
         "baseline_y": 380,
         "font_size": 11,
         "anchor": "middle"
@@ -2556,7 +2510,7 @@
       "section": "advanced",
       "panel": "rear",
       "kind": "knob",
-      "x": 277.833,
+      "x": 332.0,
       "y": 332,
       "width": 90,
       "height": 52,
@@ -2569,25 +2523,25 @@
       "integer": true,
       "tooltip": "Maximum simultaneous voices.",
       "widget_bounds": {
-        "x": 302.833,
+        "x": 357.0,
         "y": 329,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 297.833,
+        "x": 352.0,
         "y": 324,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 298.38300000000004,
+        "x": 352.55,
         "y": 324.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 322.833,
+        "x": 377.0,
         "baseline_y": 380,
         "font_size": 11,
         "anchor": "middle"
@@ -2602,7 +2556,7 @@
       "section": "advanced",
       "panel": "rear",
       "kind": "toggle",
-      "x": 386.167,
+      "x": 467.417,
       "y": 332,
       "width": 90,
       "height": 52,
@@ -2619,51 +2573,13 @@
       "integer": true,
       "tooltip": "Recorded follows the recording-derived stereo transfer; Studio is a creative chorus.",
       "widget_bounds": {
-        "x": 389.167,
+        "x": 470.417,
         "y": 338,
         "width": 84,
         "height": 23
       },
       "caption": {
-        "x": 431.167,
-        "baseline_y": 380,
-        "font_size": 11,
-        "anchor": "middle"
-      }
-    },
-    {
-      "id": "controls_noiseModel",
-      "label": "Noise model",
-      "binding": "controls.noiseModel",
-      "property_id": "noiseModel",
-      "property_path": "/custom_properties/noiseModel",
-      "section": "advanced",
-      "panel": "rear",
-      "kind": "toggle",
-      "x": 494.5,
-      "y": 332,
-      "width": 90,
-      "height": 52,
-      "min": 0,
-      "max": 1,
-      "default": 1,
-      "step": 1,
-      "unit": "",
-      "accent": "coral",
-      "options": [
-        "White",
-        "Circuit"
-      ],
-      "integer": true,
-      "tooltip": "Circuit follows the sibling-circuit noise spectrum; White uses flat-spectrum noise.",
-      "widget_bounds": {
-        "x": 497.5,
-        "y": 338,
-        "width": 84,
-        "height": 23
-      },
-      "caption": {
-        "x": 539.5,
+        "x": 512.4169999999999,
         "baseline_y": 380,
         "font_size": 11,
         "anchor": "middle"
@@ -3079,7 +2995,7 @@
     "caption_offset": 48
   },
   "notes": [
-    "35 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.",
+    "34 main sound/performance controls on the front; 29 advanced options and calibration controls on the rear.",
     "Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.",
     "Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.",
     "Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator."
@@ -3461,22 +3377,6 @@
       "width": 3,
       "height": 44,
       "color": "lavender"
-    },
-    {
-      "panel": "rear",
-      "type": "separator",
-      "x": 52,
-      "y": 253,
-      "width": 650,
-      "color": "edge"
-    },
-    {
-      "panel": "rear",
-      "type": "separator",
-      "x": 52,
-      "y": 385,
-      "width": 650,
-      "color": "edge"
     }
   ],
   "preview_patch": 0,
@@ -3512,7 +3412,6 @@
     "controls.chorusRateHz": 0.9546467517767424,
     "controls.chorusDepthMs": 0.4968365657517667,
     "controls.stereoWidth": 1,
-    "controls.noiseRms": 0.002,
     "controls.drive": 0,
     "controls.toneCutoffHz": 14000,
     "controls.masterGain": 0.25,
@@ -3538,7 +3437,6 @@
     "rack.modWheelDepth": 1,
     "controls.polyphony": 12,
     "controls.chorusMode": 1,
-    "controls.noiseModel": 1,
     "controls.outputCircuit": 1,
     "controls.clockOffsetPpm": 0,
     "controls.clockDriftPpm": 20,
@@ -3553,8 +3451,8 @@
     "target": "5.0"
   },
   "source_sha256": {
-    "Source/DSP/Press78Engine.h": "9efb33b6c02160f439e222b8775df4863d90d5be7ef2dd88e23ca37fa0885e3f",
-    "Resources/controls.json": "2cb4848c91ca4b5655ebb104dee4f27a4120fbb746fde5e3ad5f9367416ace80",
+    "Source/DSP/Press78Engine.h": "a11cc9536a4137ea5b380f992fb8d24fe23dda0b5ea58c63bb43b32af5c1d6bb",
+    "Resources/controls.json": "a442097f8cd4c95cb63a75886eb1bb9672d294b335408522dc40f0d2db0c66a5",
     "Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
   }
 }

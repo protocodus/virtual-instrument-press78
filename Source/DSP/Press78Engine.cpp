@@ -127,8 +127,10 @@ Controls sanitizeControls(Controls c) noexcept {
     c.chorusRateHz = bounded(c.chorusRateHz, 0.05, 8, 0.65);
     c.chorusDepthMs = bounded(c.chorusDepthMs, 0, 8, 2);
     c.stereoWidth = bounded(c.stereoWidth, 0, 2, 1);
-    c.noiseRms = bounded(c.noiseRms, 0, 0.02, 0);
-    c.noiseModel = std::clamp(c.noiseModel, 0, 1);
+    // Retained only for source/patch compatibility. No artificial-noise path
+    // exists, including when an older caller requests nonzero or invalid values.
+    c.noiseRms = 0.0;
+    c.noiseModel = 0;
     return c;
 }
 
@@ -214,7 +216,6 @@ void Press78Engine::prepare(double sampleRate) noexcept {
     sampleRate_ = bounded(sampleRate, 8000.0, 192000.0, 48000.0);
     buildResampler();
     analog_.prepare(sampleRate_);
-    circuitNoise_.prepare(sampleRate_);
     gainSmoothing_ = 1.0 - std::exp(-1.0 / (sampleRate_ * 0.005));
     dcCoefficient_ = std::exp(-tau * 10.0 / sampleRate_);
     setControls(controls_);
@@ -226,7 +227,6 @@ void Press78Engine::reset() noexcept {
     for (auto& t : tails_) t = Tail{};
     history_.fill(0.0); delay_.fill(0.0);
     analog_.reset();
-    circuitNoise_.reset();
     position_ = 0.0; nextTick_ = 0; hostTime_ = 0.0;
     globalLfoPhase_ = 0.0; chorusPhase_ = 0.0;
     gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_;
@@ -234,13 +234,12 @@ void Press78Engine::reset() noexcept {
     currentToneCoefficient_ = toneCoefficient_;
     circuitMix_ = controls_.outputCircuit ? 1.0 : 0.0;
     recordedChorusMix_ = static_cast<double>(controls_.chorusMode);
-    circuitNoiseMix_ = static_cast<double>(controls_.noiseModel);
     drive_ = controls_.drive; chorusMix_ = controls_.chorusMix;
     chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
-    width_ = controls_.stereoWidth; noise_ = controls_.noiseRms;
+    width_ = controls_.stereoWidth;
     tone1_ = tone2_ = 0.0;
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
-    delayWrite_ = 0; serial_ = 0; random_ = 0x7803420U;
+    delayWrite_ = 0; serial_ = 0;
     pedal_ = false; hasProcessed_ = false;
 }
 
@@ -265,10 +264,9 @@ void Press78Engine::setControls(const Controls& controls) noexcept {
         currentToneCoefficient_ = toneCoefficient_;
         circuitMix_ = controls_.outputCircuit ? 1.0 : 0.0;
         recordedChorusMix_ = static_cast<double>(controls_.chorusMode);
-        circuitNoiseMix_ = static_cast<double>(controls_.noiseModel);
         drive_ = controls_.drive; chorusMix_ = controls_.chorusMix;
         chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
-        width_ = controls_.stereoWidth; noise_ = controls_.noiseRms;
+        width_ = controls_.stereoWidth;
     }
     while (activeVoices() > static_cast<std::size_t>(controls_.polyphony)) {
         Voice* victim = nullptr;
@@ -321,7 +319,6 @@ void Press78Engine::allSoundOff() noexcept {
     for (auto& t : tails_) t.remaining = 0;
     history_.fill(0.0); delay_.fill(0.0);
     analog_.reset();
-    circuitNoise_.reset();
     tone1_ = tone2_ = 0.0;
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
     pedal_ = false;
@@ -412,11 +409,6 @@ double Press78Engine::readDelay(double samples) const noexcept {
     return delay_[a] + fraction * (delay_[b] - delay_[a]);
 }
 
-double Press78Engine::randomNoise() noexcept {
-    random_ ^= random_ << 13; random_ ^= random_ >> 17; random_ ^= random_ << 5;
-    return (static_cast<double>(random_) / 4294967296.0 * 2.0 - 1.0) * std::sqrt(3.0);
-}
-
 void Press78Engine::output(double mono, double& left, double& right) noexcept {
     // Always advance the related-hardware small-signal circuit, including
     // during bypass, so re-enabling it does not expose stale filter memory.
@@ -430,9 +422,6 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     chorusDepth_ += (controls_.chorusDepthMs - chorusDepth_) * gainSmoothing_;
     recordedChorusMix_ += (static_cast<double>(controls_.chorusMode) - recordedChorusMix_) * gainSmoothing_;
     width_ += (controls_.stereoWidth - width_) * gainSmoothing_;
-    noise_ += (controls_.noiseRms - noise_) * gainSmoothing_;
-    circuitNoiseMix_ += (static_cast<double>(controls_.noiseModel) - circuitNoiseMix_) * gainSmoothing_;
-    if (controls_.noiseModel == 0 && circuitNoiseMix_ < 1e-12) circuitNoiseMix_ = 0.0;
     if (controls_.toneCutoffHz != 0.0) {
         tone1_ += currentToneCoefficient_ * (mono - tone1_);
         tone2_ += currentToneCoefficient_ * (tone1_ - tone2_);
@@ -443,12 +432,6 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
         // approach the dry signal continuously instead of a hard tanh switch.
         const double amount = 1.0 + 15.0 * drive_;
         mono += drive_ * (std::tanh(mono * amount) / amount - mono);
-    }
-    if (noise_ > 0.0) {
-        // Keep the legacy White arithmetic and generator sequence unchanged.
-        double white = noise_ * randomNoise();
-        if (circuitNoiseMix_ > 0.0) white *= 1.0 - circuitNoiseMix_;
-        mono += white;
     }
     delay_[delayWrite_] = mono;
     const double depth = chorusDepth_ * 0.001 * sampleRate_;
@@ -466,13 +449,6 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     left = mono + side; right = mono - side;
     delayWrite_ = (delayWrite_ + 1) % kDelaySize;
     chorusPhase_ = std::fmod(chorusPhase_ + tau * chorusRate_ / sampleRate_, tau);
-    if (noise_ > 0.0 && circuitNoiseMix_ > 0.0) {
-        // The MNA sources are already propagated to the stereo output node.
-        // Do not feed them through the chorus or normalize each rate/clip.
-        const auto volts = circuitNoise_.process();
-        const double level = noise_ * circuitNoiseMix_ / CircuitNoise::kReferenceRmsVolts;
-        left += level * volts[0]; right += level * volts[1];
-    }
     if (controls_.dcBlock) {
         const double l = left - dcInputL_ + dcCoefficient_ * dcOutputL_;
         const double r = right - dcInputR_ + dcCoefficient_ * dcOutputR_;

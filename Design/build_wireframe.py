@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]; OUT=ROOT/'Design'; W,H=754,552
 PHOTO_ASSET='Assets/press78-photo-background-v3.png'
 C={'bg':'#303238','panel':'#25282d','edge':'#4a4e55','ink':'#e9e4d2','muted':'#b9bbb8','cyan':'#67c4d0','lavender':'#b1a1d2','coral':'#ea8197','red':'#ff4777','white':'#ffffff','black':'#14171b','cyanCap':'#3c9fb1','lavenderCap':'#9384b6','coralCap':'#d85d7b','ivory':'#e9e4d2'}
 contract=json.loads((ROOT/'Resources/controls.json').read_text())
-by_id={p['id']:p for p in contract['controls']}
+by_id={p['id']:p for p in contract['controls'] if not p.get('hidden',False)}
 controls=[]
 sections={'front':[], 'rear':[]}
 TITLE_FONT=ImageFont.truetype('/System/Library/Fonts/Supplemental/DIN Condensed Bold.ttf',75)
@@ -37,7 +37,7 @@ motion=section('modulation','MODULATION / PERFORMANCE','front',35,314,334,192,'c
 output=section('effects','CHORUS / OUTPUT','front',385,314,334,192,'coral')
 advanced=section('advanced','ADVANCED / CALIBRATION','rear',28,84,698,388,'cyan')
 connections=section('connections',None,'rear',28,480,698,52,'cyan')
-steps={'noiseRms':.0001,'clockDriftRateHz':.001,'masterTuneCents':.1,'lfoRateHz':.1,'chorusDepthMs':.1,'chorusRateHz':.01,'toneCutoffHz':1,'clockOffsetPpm':1,'clockDriftPpm':1}
+steps={'clockDriftRateHz':.001,'masterTuneCents':.1,'lfoRateHz':.1,'chorusDepthMs':.1,'chorusRateHz':.01,'toneCutoffHz':1,'clockOffsetPpm':1,'clockDriftPpm':1}
 units={'modulationAmount':'×','velocitySensitivity':'×','stereoWidth':'×','masterGain':'×','lfoRateHz':'Hz','chorusRateHz':'Hz','chorusDepthMs':'ms','toneCutoffHz':'Hz','clockOffsetPpm':'ppm','clockDriftPpm':'ppm','clockDriftRateHz':'Hz','masterTuneCents':'¢'}
 OP_HELP={
  'mul':'Frequency ratio relative to the played note. Zero selects a half-frequency ratio.',
@@ -69,7 +69,6 @@ HELP={
  'chorusRateHz':'Chorus motion speed in hertz.',
  'chorusDepthMs':'Chorus delay modulation depth in milliseconds.',
  'stereoWidth':'Stereo width multiplier. Zero is mono; one preserves the reference width.',
- 'noiseRms':'Added noise amplitude before master volume. The rear Noise model chooses Circuit or White.',
  'drive':'Additional creative saturation. Zero leaves this extra drive stage off.',
  'toneCutoffHz':'Output low-pass cutoff in hertz. Lower values soften the high end.',
  'masterGain':'Master output gain. One is unity; zero mutes the instrument.',
@@ -83,7 +82,6 @@ HELP={
  'modWheelDepth':'Additional pitch modulation depth from the modulation wheel.',
  'polyphony':'Maximum simultaneous voices.',
  'chorusMode':'Recorded follows the recording-derived stereo transfer; Studio is a creative chorus.',
- 'noiseModel':'Circuit follows the sibling-circuit noise spectrum; White uses flat-spectrum noise.',
  'outputCircuit':'Enable the modeled sibling analog output transfer.',
  'clockOffsetPpm':'Fixed synthesis-clock offset in parts per million. Zero is nominal tuning.',
  'clockDriftPpm':'Peak modeled clock excursion in parts per million.',
@@ -99,6 +97,9 @@ def add(prop,label,sec,y,col=0,cols=4,kind=None,accent=None):
  if prop in ('bendRange','modWheelDepth'):binding='rack.'+prop
  kind=kind or ('wave' if prop.endswith('_wave') else 'toggle' if p['integer'] and p['min']==0 and p['max']==1 else 'knob')
  content=sec['width']-2*sec['padding'];pitch=content/cols;w=min(90 if sec['panel']=='rear' else 68,pitch-8);cx=sec['x']+sec['padding']+(col+.5)*pitch
+ if sec['panel']=='rear' and cols!=6:
+  first=sec['x']+sec['padding']+content/12;last=sec['x']+sec['width']-sec['padding']-content/12
+  pitch=(last-first)/(cols-1);cx=first+col*pitch
  if sec['panel']=='front':
   # Shared outer anchors keep differently sized knob rows aligned; the full-width
   # waveform bank remains an independent selector rather than a knob-column map.
@@ -127,17 +128,17 @@ for row,entries in enumerate([
  for col,(prop,label) in enumerate(entries):add(prop,label,motion,366+row*66,col,len(entries))
 for row,entries in enumerate([
  [('chorusMix','Chorus'),('chorusRateHz','Rate Hz'),('chorusDepthMs','Depth ms'),('stereoWidth','Width')],
- [('noiseRms','Noise'),('drive','Drive'),('toneCutoffHz','Cutoff Hz'),('masterGain','Output')]]):
- for col,(prop,label) in enumerate(entries):add(prop,label,output,366+row*66,col)
+ [('drive','Drive'),('toneCutoffHz','Cutoff Hz'),('masterGain','Output')]]):
+ for col,(prop,label) in enumerate(entries):add(prop,label,output,366+row*66,col,len(entries))
 for row,(prefix,number,accent) in enumerate([('mod','01','cyan'),('car','02','lavender')]):
  for col,(field,label) in enumerate([('lksLo','LKS low'),('lksHi','LKS high'),('rks','RKS'),('srr','Sustain RR'),('amEnable','AM enable'),('dt2','DT2 +600¢')]):add(prefix+'_'+field,number+' '+label,advanced,134+row*66,col,6,accent=accent)
 for row,(entries,accent) in enumerate([
  ([('pms','PM range'),('ams','AM range'),('lfoDelayScale','Delay scale'),('triangleLfo','LFO shape'),('globalLfo','Global LFO'),('velocityToModulation','Vel → FM')],'cyan'),
- ([('bendRange','Bend range'),('modWheelDepth','Wheel → PM'),('polyphony','Polyphony'),('chorusMode','Chorus type'),('noiseModel','Noise model'),('outputCircuit','Circuit')],'coral'),
+ ([('bendRange','Bend range'),('modWheelDepth','Wheel → PM'),('polyphony','Polyphony'),('chorusMode','Chorus type'),('outputCircuit','Circuit')],'coral'),
  ([('clockOffsetPpm','Clock offset'),('clockDriftPpm','Drift peak'),('clockDriftRateHz','Drift rate'),('masterTuneCents','Master tune'),('dcBlock','DC block'),('outputLimit','Limiter')],'coral')]):
- for col,(prop,label) in enumerate(entries):add(prop,label,advanced,266+row*66,col,6,accent=accent)
+ for col,(prop,label) in enumerate(entries):add(prop,label,advanced,266+row*66,col,len(entries),accent=accent)
 assert {c['property_id'] for c in controls}==set(by_id)
-assert len(controls)==len(by_id)==65
+assert len(controls)==len(by_id)==63
 annotations=[]
 bank=json.loads((ROOT/'Resources/FactoryBank/press78-factory.json').read_text())
 def decode(v):
@@ -151,7 +152,7 @@ def decode(v):
  return {'number':v['number'],'name':v['name'],'values':p}
 presets=[decode(v) for v in bank['voices']]
 preview={d['binding']:d['default'] for d in controls};preview.update(presets[0]['values'])
-geom={'version':'Press78 layout study 06','logical_size':{'width':W,'height':H,'rack_units':8},'folded_size':{'width':W,'height':30},'status':'Shared geometry for interactive design preview and native prototype widgets','palette':C,'appearance':APPEARANCE,'native_patch_selector':{'x':247,'y':11,'width':315,'height':28,'kind':'host_native_placeholder'},'controls':controls,'sections':sections,'annotations':annotations,'spacing':{'section_gap':16,'section_padding':20,'operator_knob_row_pitch':64,'global_row_pitch':66,'rear_row_pitch':66,'caption_offset':48},'notes':['35 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.','Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.','Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.','Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator.']}
+geom={'version':'Press78 layout study 06','logical_size':{'width':W,'height':H,'rack_units':8},'folded_size':{'width':W,'height':30},'status':'Shared geometry for interactive design preview and native prototype widgets','palette':C,'appearance':APPEARANCE,'native_patch_selector':{'x':247,'y':11,'width':315,'height':28,'kind':'host_native_placeholder'},'controls':controls,'sections':sections,'annotations':annotations,'spacing':{'section_gap':16,'section_padding':20,'operator_knob_row_pitch':64,'global_row_pitch':66,'rear_row_pitch':66,'caption_offset':48},'notes':['34 main sound/performance controls on the front; 29 advanced options and calibration controls on the rear.','Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.','Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.','Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator.']}
 geom['sockets']=[{'id':key,'property_path':path,'label':label,'panel':'rear','section':'connections','x':x,'y':506,'width':24,'height':24,'widget_bounds':{'x':x-12,'y':494,'width':24,'height':24},'caption':{'x':x+20,'baseline_y':510,'font_size':11,'anchor':'start'}} for key,path,label,x in [('gate_cv','/cv_inputs/gate_cv','GATE CV',68),('note_cv','/cv_inputs/note_cv','NOTE CV',177),('fm_cv','/cv_inputs/fm_cv','FM CV',286),('level_cv','/cv_inputs/level_cv','LEVEL CV',395),('left','/audio_outputs/left','LEFT',550),('right','/audio_outputs/right','RIGHT',659)]]
 geom['routing_icons']=[{'x':525,'y':498,'asset':'Routing_Icon_White_01_1frames'},{'x':634,'y':498,'asset':'Routing_Icon_White_02_1frames'}]
 geom['device_name_positions']={'front':{'x':586,'y':13},'back':{'x':586,'y':13},'folded_front':{'x':610,'y':9},'folded_back':{'x':610,'y':9}}
@@ -166,7 +167,7 @@ geom['rack_hardware']={'top_screws':[{'x':17,'y':38,'radius':8},{'x':737,'y':38,
 geom['version']='Press78 layout study 10'
 geom['branding']=BRANDING
 geom['material_bounds']={'photo_asset':PHOTO_ASSET,'photo_source_sha256':hashlib.sha256((OUT/PHOTO_ASSET).read_bytes()).hexdigest(),'front_header_seam_y':49,'front_section_inset':20,'photo_pockets':{s['id']:{k:s[k] for k in ('x','y','width','height')} for s in sections['front']}}
-geom['group_markers']=[{'panel':'rear','type':'bar','x':39,'y':134,'width':3,'height':44,'color':'cyan'},{'panel':'rear','type':'bar','x':39,'y':200,'width':3,'height':44,'color':'lavender'},{'panel':'rear','type':'separator','x':52,'y':253,'width':650,'color':'edge'},{'panel':'rear','type':'separator','x':52,'y':385,'width':650,'color':'edge'}]
+geom['group_markers']=[{'panel':'rear','type':'bar','x':39,'y':134,'width':3,'height':44,'color':'cyan'},{'panel':'rear','type':'bar','x':39,'y':200,'width':3,'height':44,'color':'lavender'}]
 geom.update(preview_patch=0,preview_state=preview,sdk={'root':'/Users/vojta/Dev/reason-rack-extension/SDK','version':'JukeboxSDK_500_028','target':'5.0'},source_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'Source/DSP/Press78Engine.h',ROOT/'Resources/controls.json',ROOT/'Resources/FactoryBank/press78-factory.json']})
 (OUT/'geometry.json').write_text(json.dumps(geom,indent=2)+'\n')
 
@@ -198,7 +199,6 @@ def fmt(d,v):
  if d['unit']=='ppm':
   n=f'{v/1000:g}k' if abs(v)>=1000 else f'{v:g}'
   return ('+' if 'Offset' in d['binding'] and v>=0 else '')+n
- if d['property_id']=='noiseRms' and 0<v<1:return f'{v:.4f}'.rstrip('0')[1:]
  return (f'{v:.4f}'.rstrip('0').rstrip('.') if d['step']<.001 else f'{v:.2f}'.rstrip('0').rstrip('.'))+('' if d['unit'] in ('Hz','ms') else d['unit'])
 def widget(d):
  x,y,w=d['x'],d['y'],d['width'];cx=x+w/2;v=preview.get(d['binding'],d['default']);cid=d['id'];color=d['accent']

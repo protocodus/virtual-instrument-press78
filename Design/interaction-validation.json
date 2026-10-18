@@ -2,7 +2,7 @@
   "passed": true,
   "kind": "Synthetic DOM interaction checks, not browser/native-host testing",
   "preset_options": 100,
-  "canonical_controls": 65,
+  "canonical_controls": 63,
   "sockets": 6,
   "checks": [
     "100 PSS-prefixed presets; preset99 name, Level values and folded name",
@@ -10,15 +10,15 @@
     "all eight waveform selections: aria, whole white cap and glow",
     "fixed FM badge matches native header",
     "DEVICE/NOTE captions included in centering; both full panels clear fixed host fold area",
-    "all71 browser hit regions match drawn geometry; mixed row and header visual centers",
+    "all69 browser hit regions match drawn geometry; mixed row and header visual centers",
     "rear/folded visibility",
-    "chorus and noise model choices",
+    "chorus model choices; removed noise controls absent",
     "output circuit default and toggle",
     "preset reload restores fields and global defaults",
     "four CV and two audio socket placeholders",
-    "35 front controls and 30 rear advanced/configuration controls",
+    "34 front controls and 29 rear advanced/configuration controls",
     "Level inverse drag, fine adjustment, reset, cancel, keyboard and numeric entry preserve raw patch semantics",
-    "musical help, unit/rate captions and 50 position arcs",
+    "musical help, unit/rate captions and 49 position arcs",
     "10 accessible value cases retain physical units without duplicated multiplier suffixes"
   ],
   "runtime": "Node.js with jsdom 30.1.3"
