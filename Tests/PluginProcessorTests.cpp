@@ -87,10 +87,15 @@ void parameterContract()
         if (ranged == nullptr)
             continue;
         check (ranged->getVersionHint() == 1, id + " keeps version hint 1");
-        check (std::abs (ranged->convertFrom0to1 (ranged->getDefaultValue()) - control.defaultValue) < 1.0e-4,
+        // JUCE stores the default normalised in a float, so a skewed range
+        // (Tone cutoff, 1-20 kHz) returns it within float precision of its
+        // plain value, not within a fixed absolute step.
+        const auto matches = [] (double plain, double expected)
+        { return std::abs (plain - expected) <= 1.0e-5 * std::max (1.0, std::abs (expected)); };
+        check (matches (ranged->convertFrom0to1 (ranged->getDefaultValue()), control.defaultValue),
                id + " default matches Assets/controls.json");
-        check (std::abs (ranged->convertFrom0to1 (0.0f) - control.minimum) < 1.0e-4
-                   && std::abs (ranged->convertFrom0to1 (1.0f) - control.maximum) < 1.0e-4,
+        check (matches (ranged->convertFrom0to1 (0.0f), control.minimum)
+                   && matches (ranged->convertFrom0to1 (1.0f), control.maximum),
                id + " range matches Assets/controls.json");
     }
 }
