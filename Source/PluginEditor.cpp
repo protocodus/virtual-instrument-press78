@@ -44,6 +44,7 @@ Press78AudioProcessorEditor::Press78AudioProcessorEditor (Press78AudioProcessor&
     programs.setSelectedId (audioProcessor.getCurrentProgram() + 1, juce::dontSendNotification);
     programs.onChange = [this] { audioProcessor.setCurrentProgram (programs.getSelectedId() - 1); };
     addAndMakeVisible (programs);
+    startTimerHz (10);
 
     for (const auto& [name, ids] : layout())
     {
@@ -133,4 +134,11 @@ void Press78AudioProcessorEditor::resized()
         }
         y += kSectionTitle + kRow;
     }
+}
+
+void Press78AudioProcessorEditor::timerCallback()
+{
+    const int selected = audioProcessor.getCurrentProgram() + 1;
+    if (programs.getSelectedId() != selected)
+        programs.setSelectedId (selected, juce::dontSendNotification);
 }

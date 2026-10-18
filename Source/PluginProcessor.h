@@ -23,6 +23,7 @@ public:
 
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override {}
+    void reset() override { engine->reset(); }
     bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
     void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
     using AudioProcessor::processBlock;
@@ -34,7 +35,9 @@ public:
     bool acceptsMidi() const override { return true; }
     bool producesMidi() const override { return false; }
     bool isMidiEffect() const override { return false; }
-    double getTailLengthSeconds() const override { return 2.0; }
+    // The longest selectable release: RR or SRR 0 is envelope rate 2, which
+    // covers 96 dB in 48 * 2^(-2/4) = 33.9 s (Envelope::configure()).
+    double getTailLengthSeconds() const override { return 34.0; }
 
     int getNumPrograms() override { return kProgramCount; }
     int getCurrentProgram() override { return currentProgram; }

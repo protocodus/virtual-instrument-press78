@@ -10,7 +10,7 @@
 // One control per parameter, grouped in rows by section. The Rack panel in
 // Assets/Design is the device's designed face; this editor is the plug-in's
 // working one until a matching design is ported.
-class Press78AudioProcessorEditor final : public juce::AudioProcessorEditor
+class Press78AudioProcessorEditor final : public juce::AudioProcessorEditor, private juce::Timer
 {
 public:
     explicit Press78AudioProcessorEditor (Press78AudioProcessor&);
@@ -18,6 +18,8 @@ public:
 
     void paint (juce::Graphics&) override;
     void resized() override;
+    // Follows program changes the host makes while the editor is open.
+    void timerCallback() override;
 
     static juce::String getBuildIdentity() { return PRESS78_BUILD_IDENTITY; }
 
