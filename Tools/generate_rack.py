@@ -6,7 +6,7 @@ import math
 import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0b7'
+VERSION='0.1.0b8'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Noise amplitude and slow clock excursion are conservative scenarios, not

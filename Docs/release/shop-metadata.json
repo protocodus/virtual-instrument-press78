@@ -1,6 +1,6 @@
 {
   "product_id": "cz.protocodus.Press78",
-  "version": "0.1.0b7",
+  "version": "0.1.0b8",
   "schema": [
     "Tagline",
     "Top features",
@@ -24,21 +24,21 @@
   },
   "images": {
     "Press78_Front.png": {
-      "sha256": "36b37625265683b37432910acbfd8c7e1acd99a0a89ed745bbad9211cf0ecbd4",
+      "sha256": "7f9140703a067484de242ae223747d9a7ab24647ea28494f8e4b290e2630d396",
       "dimensions": [
         754,
         552
       ]
     },
     "Press78_Back.png": {
-      "sha256": "f1c385028a55ba3ee5f229fca2dd1c3038a0cd357dee86a5d4ecec798863ac0c",
+      "sha256": "16d5f3e34ae995f417aee4dec87cb180ce6c24296c9a73fec4b7c1bb130450b3",
       "dimensions": [
         754,
         552
       ]
     },
     "Press78_Thumbnail_800.png": {
-      "sha256": "ba3f416c953d064c2c4de7edf1a785d4283f746dbbb3d42716e7bd5752cb1431",
+      "sha256": "6afd458dced67d7e3c33ddd0f6e7a9dc0acc04cdb04bb3cbdd197f83cb8dcdc7",
       "dimensions": [
         800,
         800
