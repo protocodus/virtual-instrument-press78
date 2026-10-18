@@ -10,6 +10,20 @@ assert(d.querySelectorAll('[data-wave-id]').length===8,'two four-way waves');
 assert(d.querySelectorAll('[data-socket-path]').length===6,'four CV and two audio sockets');
 assert(d.querySelectorAll('#front-panel [data-range-id],#front-panel [data-toggle-id]').length+2===35,'35 front main sound and performance controls');
 assert(d.querySelectorAll('#rear-panel [data-range-id],#rear-panel [data-toggle-id]').length===30,'30 rear advanced/calibration controls');
+const geometry=w.eval('geometry');
+const near=(a,b)=>Math.abs(a-b)<1e-6;
+for(const c of geometry.controls){
+ if(c.kind==='wave'){
+  for(const cell of c.wave_cells){const hit=d.querySelector(`[data-wave-id="${c.id}"][data-value="${cell.index}"]`);for(const [css,key] of [['left','x'],['top','y'],['width','width'],['height','height']])assert(near(parseFloat(hit.style[css]),cell[key]),`${c.id} wave hit${cell.index} ${css}`);}
+ }else{
+  const hit=c.kind==='toggle'?d.querySelector(`[data-toggle-id="${c.id}"]`):d.querySelector(`[data-range-id="${c.id}"]`).parentElement;
+  for(const [css,key] of [['left','x'],['top','y'],['width','width'],['height','height']])assert(near(parseFloat(hit.style[css]),c.widget_bounds[key]),`${c.id} hit matches drawn geometry: ${css}`);
+  if(c.kind==='toggle'){const cap=d.getElementById(c.id+'-button');assert(near(+cap.getAttribute('y')+ +cap.getAttribute('height')/2,c.y+17),`${c.id} cap shares knob row center`);}
+ }
+}
+const presetStyle=w.getComputedStyle(d.querySelector('#preset'));
+assert(near(parseFloat(presetStyle.top)+parseFloat(presetStyle.height)/2,25),'preset selector shares full header center');
+assert(Math.abs(geometry.branding.faces.full.logo.y+geometry.branding.faces.full.logo.height/2-25)<=.100001,'logo5x raster rounding preserves header center');
 const select=d.querySelector('#preset');select.value='99';select.dispatchEvent(new w.Event('change'));
 assert(d.querySelector('#preset').selectedOptions[0].textContent.startsWith('PSS 99'),'native-style preset name');
 assert(d.querySelector('#front-panel svg').textContent.includes('FM'),'fixed FM badge matches native header');
@@ -67,5 +81,5 @@ for(const [id,value,expected] of [
  assert(control.getAttribute('aria-valuetext')===expected,`accessible unit/value: ${id}`);
 }
 d.querySelector('#restore').click();
-const report={passed:true,kind:'Synthetic DOM interaction checks, not browser/native-host testing',preset_options:100,canonical_controls:65,sockets:6,checks:['100 PSS-prefixed presets; preset99 name, Level values and folded name','attack edit updates readout','all eight waveform selections: aria, whole white cap and glow','fixed FM badge matches native header','rear/folded visibility','chorus and noise model choices','output circuit default and toggle','preset reload restores fields and global defaults','four CV and two audio socket placeholders','35 front controls and 30 rear advanced/configuration controls','Level inverse drag, fine adjustment, reset, cancel, keyboard and numeric entry preserve raw patch semantics','musical help, unit/rate captions and 50 position arcs','10 accessible value cases retain physical units without duplicated multiplier suffixes'],runtime:'Node.js with jsdom 30.1.3'};
+const report={passed:true,kind:'Synthetic DOM interaction checks, not browser/native-host testing',preset_options:100,canonical_controls:65,sockets:6,checks:['100 PSS-prefixed presets; preset99 name, Level values and folded name','attack edit updates readout','all eight waveform selections: aria, whole white cap and glow','fixed FM badge matches native header','all71 browser hit regions match drawn geometry; mixed row and header visual centers','rear/folded visibility','chorus and noise model choices','output circuit default and toggle','preset reload restores fields and global defaults','four CV and two audio socket placeholders','35 front controls and 30 rear advanced/configuration controls','Level inverse drag, fine adjustment, reset, cancel, keyboard and numeric entry preserve raw patch semantics','musical help, unit/rate captions and 50 position arcs','10 accessible value cases retain physical units without duplicated multiplier suffixes'],runtime:'Node.js with jsdom 30.1.3'};
 fs.writeFileSync(path.join(__dirname,'interaction-validation.json'),JSON.stringify(report,null,2)+'\n');console.log(report);

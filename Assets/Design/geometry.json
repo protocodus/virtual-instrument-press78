@@ -1,5 +1,5 @@
 {
-  "version": "Press78 layout study 07",
+  "version": "Press78 layout study 08",
   "logical_size": {
     "width": 754,
     "height": 552,
@@ -51,9 +51,9 @@
   },
   "native_patch_selector": {
     "x": 247,
-    "y": 14,
+    "y": 11,
     "width": 315,
-    "height": 29,
+    "height": 28,
     "kind": "host_native_placeholder"
   },
   "controls": [
@@ -66,9 +66,9 @@
       "section": "modulator",
       "panel": "front",
       "kind": "wave",
-      "x": 52,
-      "y": 132,
-      "width": 292,
+      "x": 55,
+      "y": 124,
+      "width": 294,
       "height": 28,
       "min": 0,
       "max": 3,
@@ -82,45 +82,45 @@
         {
           "index": 0,
           "label": "SIN",
-          "x": 52.0,
-          "y": 132,
-          "width": 67.0,
+          "x": 55.0,
+          "y": 124,
+          "width": 67.5,
           "height": 28
         },
         {
           "index": 1,
           "label": "SIN\u00b2",
-          "x": 127.0,
-          "y": 132,
-          "width": 67.0,
+          "x": 130.5,
+          "y": 124,
+          "width": 67.5,
           "height": 28
         },
         {
           "index": 2,
           "label": "HALF",
-          "x": 202.0,
-          "y": 132,
-          "width": 67.0,
+          "x": 206.0,
+          "y": 124,
+          "width": 67.5,
           "height": 28
         },
         {
           "index": 3,
           "label": "HALF\u00b2",
-          "x": 277.0,
-          "y": 132,
-          "width": 67.0,
+          "x": 281.5,
+          "y": 124,
+          "width": 67.5,
           "height": 28
         }
       ],
       "widget_bounds": {
-        "x": 52,
-        "y": 132,
-        "width": 292,
+        "x": 55,
+        "y": 124,
+        "width": 294,
         "height": 28
       },
       "caption": {
-        "x": 198.0,
-        "baseline_y": 180,
+        "x": 202.0,
+        "baseline_y": 172,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -134,9 +134,9 @@
       "section": "modulator",
       "panel": "front",
       "kind": "knob",
-      "x": 56.0,
-      "y": 176,
-      "width": 65.0,
+      "x": 46.0,
+      "y": 168,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 15,
@@ -147,26 +147,26 @@
       "integer": true,
       "tooltip": "Frequency ratio relative to the played note. Zero selects a half-frequency ratio.",
       "widget_bounds": {
-        "x": 68.5,
-        "y": 173,
+        "x": 60.0,
+        "y": 165,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 63.5,
-        "y": 168,
+        "x": 55.0,
+        "y": 160,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 64.05,
-        "y": 168.55,
+        "x": 55.55,
+        "y": 160.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 88.5,
-        "baseline_y": 224,
+        "x": 80.0,
+        "baseline_y": 216,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -180,9 +180,9 @@
       "section": "modulator",
       "panel": "front",
       "kind": "knob",
-      "x": 129.0,
-      "y": 176,
-      "width": 65.0,
+      "x": 127.333,
+      "y": 168,
+      "width": 68,
       "height": 52,
       "min": -7,
       "max": 7,
@@ -193,26 +193,26 @@
       "integer": true,
       "tooltip": "Small pitch offset for beating and harmonic color; these are detune codes, not cents.",
       "widget_bounds": {
-        "x": 141.5,
-        "y": 173,
+        "x": 141.333,
+        "y": 165,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 136.5,
-        "y": 168,
+        "x": 136.333,
+        "y": 160,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 137.05,
-        "y": 168.55,
+        "x": 136.88299999999998,
+        "y": 160.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 161.5,
-        "baseline_y": 224,
+        "x": 161.333,
+        "baseline_y": 216,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -226,9 +226,9 @@
       "section": "modulator",
       "panel": "front",
       "kind": "knob",
-      "x": 202.0,
-      "y": 176,
-      "width": 65.0,
+      "x": 208.667,
+      "y": 168,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 127,
@@ -240,26 +240,26 @@
       "tooltip": "Operator level. Turn up for more output. The modulator changes timbre; the carrier changes loudness.",
       "presentation": "operator_level",
       "widget_bounds": {
-        "x": 214.5,
-        "y": 173,
+        "x": 222.667,
+        "y": 165,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 209.5,
-        "y": 168,
+        "x": 217.667,
+        "y": 160,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 210.05,
-        "y": 168.55,
+        "x": 218.21699999999998,
+        "y": 160.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 234.5,
-        "baseline_y": 224,
+        "x": 242.667,
+        "baseline_y": 216,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -273,9 +273,9 @@
       "section": "modulator",
       "panel": "front",
       "kind": "knob",
-      "x": 275.0,
-      "y": 176,
-      "width": 65.0,
+      "x": 290.0,
+      "y": 168,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 7,
@@ -286,26 +286,26 @@
       "integer": true,
       "tooltip": "Feed the modulator back into itself for brighter, rougher harmonics.",
       "widget_bounds": {
-        "x": 287.5,
-        "y": 173,
+        "x": 304.0,
+        "y": 165,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 282.5,
-        "y": 168,
+        "x": 299.0,
+        "y": 160,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 283.05,
-        "y": 168.55,
+        "x": 299.55,
+        "y": 160.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 307.5,
-        "baseline_y": 224,
+        "x": 324.0,
+        "baseline_y": 216,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -319,9 +319,9 @@
       "section": "modulator",
       "panel": "front",
       "kind": "knob",
-      "x": 56.0,
-      "y": 240,
-      "width": 50.4,
+      "x": 53.5,
+      "y": 232,
+      "width": 53.0,
       "height": 52,
       "min": 0,
       "max": 63,
@@ -333,26 +333,26 @@
       "visual_role": "envelope",
       "tooltip": "Attack rate: higher values reach full level faster. Zero prevents the attack from rising.",
       "widget_bounds": {
-        "x": 61.2,
-        "y": 237,
+        "x": 60.0,
+        "y": 229,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 56.2,
-        "y": 232,
+        "x": 55.0,
+        "y": 224,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 56.75,
-        "y": 232.55,
+        "x": 55.55,
+        "y": 224.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 81.2,
-        "baseline_y": 288,
+        "x": 80.0,
+        "baseline_y": 280,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -366,9 +366,9 @@
       "section": "modulator",
       "panel": "front",
       "kind": "knob",
-      "x": 114.4,
-      "y": 240,
-      "width": 50.4,
+      "x": 114.5,
+      "y": 232,
+      "width": 53.0,
       "height": 52,
       "min": 0,
       "max": 63,
@@ -380,26 +380,26 @@
       "visual_role": "envelope",
       "tooltip": "First decay rate: how fast the envelope falls toward the D1 level. Higher is faster; zero holds.",
       "widget_bounds": {
-        "x": 119.6,
-        "y": 237,
+        "x": 121.0,
+        "y": 229,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 114.6,
-        "y": 232,
+        "x": 116.0,
+        "y": 224,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 115.14999999999999,
-        "y": 232.55,
+        "x": 116.55,
+        "y": 224.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 139.6,
-        "baseline_y": 288,
+        "x": 141.0,
+        "baseline_y": 280,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -413,9 +413,9 @@
       "section": "modulator",
       "panel": "front",
       "kind": "knob",
-      "x": 172.8,
-      "y": 240,
-      "width": 50.4,
+      "x": 175.5,
+      "y": 232,
+      "width": 53.0,
       "height": 52,
       "min": 0,
       "max": 15,
@@ -427,26 +427,26 @@
       "visual_role": "envelope",
       "tooltip": "First decay attenuation: higher values set a quieter target for the first decay stage.",
       "widget_bounds": {
-        "x": 178.0,
-        "y": 237,
+        "x": 182.0,
+        "y": 229,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 173.0,
-        "y": 232,
+        "x": 177.0,
+        "y": 224,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 173.55,
-        "y": 232.55,
+        "x": 177.55,
+        "y": 224.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 198.0,
-        "baseline_y": 288,
+        "x": 202.0,
+        "baseline_y": 280,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -460,9 +460,9 @@
       "section": "modulator",
       "panel": "front",
       "kind": "knob",
-      "x": 231.2,
-      "y": 240,
-      "width": 50.4,
+      "x": 236.5,
+      "y": 232,
+      "width": 53.0,
       "height": 52,
       "min": 0,
       "max": 63,
@@ -474,26 +474,26 @@
       "visual_role": "envelope",
       "tooltip": "Second decay rate after the D1 target. Higher fades faster; zero holds the level.",
       "widget_bounds": {
-        "x": 236.39999999999998,
-        "y": 237,
+        "x": 243.0,
+        "y": 229,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 231.39999999999998,
-        "y": 232,
+        "x": 238.0,
+        "y": 224,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 231.95,
-        "y": 232.55,
+        "x": 238.55,
+        "y": 224.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 256.4,
-        "baseline_y": 288,
+        "x": 263.0,
+        "baseline_y": 280,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -507,9 +507,9 @@
       "section": "modulator",
       "panel": "front",
       "kind": "knob",
-      "x": 289.6,
-      "y": 240,
-      "width": 50.4,
+      "x": 297.5,
+      "y": 232,
+      "width": 53.0,
       "height": 52,
       "min": 0,
       "max": 15,
@@ -521,26 +521,26 @@
       "visual_role": "envelope",
       "tooltip": "Release rate after note-off. Higher is faster; the Sustain switch selects the separate rear release rate.",
       "widget_bounds": {
-        "x": 294.8,
-        "y": 237,
+        "x": 304.0,
+        "y": 229,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 289.8,
-        "y": 232,
+        "x": 299.0,
+        "y": 224,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 290.35,
-        "y": 232.55,
+        "x": 299.55,
+        "y": 224.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 314.8,
-        "baseline_y": 288,
+        "x": 324.0,
+        "baseline_y": 280,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -554,9 +554,9 @@
       "section": "carrier",
       "panel": "front",
       "kind": "wave",
-      "x": 410,
-      "y": 132,
-      "width": 292,
+      "x": 405,
+      "y": 124,
+      "width": 294,
       "height": 28,
       "min": 0,
       "max": 3,
@@ -570,45 +570,45 @@
         {
           "index": 0,
           "label": "SIN",
-          "x": 410.0,
-          "y": 132,
-          "width": 67.0,
+          "x": 405.0,
+          "y": 124,
+          "width": 67.5,
           "height": 28
         },
         {
           "index": 1,
           "label": "SIN\u00b2",
-          "x": 485.0,
-          "y": 132,
-          "width": 67.0,
+          "x": 480.5,
+          "y": 124,
+          "width": 67.5,
           "height": 28
         },
         {
           "index": 2,
           "label": "HALF",
-          "x": 560.0,
-          "y": 132,
-          "width": 67.0,
+          "x": 556.0,
+          "y": 124,
+          "width": 67.5,
           "height": 28
         },
         {
           "index": 3,
           "label": "HALF\u00b2",
-          "x": 635.0,
-          "y": 132,
-          "width": 67.0,
+          "x": 631.5,
+          "y": 124,
+          "width": 67.5,
           "height": 28
         }
       ],
       "widget_bounds": {
-        "x": 410,
-        "y": 132,
-        "width": 292,
+        "x": 405,
+        "y": 124,
+        "width": 294,
         "height": 28
       },
       "caption": {
-        "x": 556.0,
-        "baseline_y": 180,
+        "x": 552.0,
+        "baseline_y": 172,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -622,9 +622,9 @@
       "section": "carrier",
       "panel": "front",
       "kind": "knob",
-      "x": 414.0,
-      "y": 176,
-      "width": 65.0,
+      "x": 396.0,
+      "y": 168,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 15,
@@ -635,26 +635,26 @@
       "integer": true,
       "tooltip": "Frequency ratio relative to the played note. Zero selects a half-frequency ratio.",
       "widget_bounds": {
-        "x": 426.5,
-        "y": 173,
+        "x": 410.0,
+        "y": 165,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 421.5,
-        "y": 168,
+        "x": 405.0,
+        "y": 160,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 422.05,
-        "y": 168.55,
+        "x": 405.55,
+        "y": 160.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 446.5,
-        "baseline_y": 224,
+        "x": 430.0,
+        "baseline_y": 216,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -668,9 +668,9 @@
       "section": "carrier",
       "panel": "front",
       "kind": "knob",
-      "x": 487.0,
-      "y": 176,
-      "width": 65.0,
+      "x": 477.333,
+      "y": 168,
+      "width": 68,
       "height": 52,
       "min": -7,
       "max": 7,
@@ -681,26 +681,26 @@
       "integer": true,
       "tooltip": "Small pitch offset for beating and harmonic color; these are detune codes, not cents.",
       "widget_bounds": {
-        "x": 499.5,
-        "y": 173,
+        "x": 491.333,
+        "y": 165,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 494.5,
-        "y": 168,
+        "x": 486.333,
+        "y": 160,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 495.05,
-        "y": 168.55,
+        "x": 486.88300000000004,
+        "y": 160.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 519.5,
-        "baseline_y": 224,
+        "x": 511.333,
+        "baseline_y": 216,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -714,9 +714,9 @@
       "section": "carrier",
       "panel": "front",
       "kind": "knob",
-      "x": 560.0,
-      "y": 176,
-      "width": 65.0,
+      "x": 558.667,
+      "y": 168,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 127,
@@ -728,26 +728,26 @@
       "tooltip": "Operator level. Turn up for more output. The modulator changes timbre; the carrier changes loudness.",
       "presentation": "operator_level",
       "widget_bounds": {
-        "x": 572.5,
-        "y": 173,
+        "x": 572.667,
+        "y": 165,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 567.5,
-        "y": 168,
+        "x": 567.667,
+        "y": 160,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 568.05,
-        "y": 168.55,
+        "x": 568.217,
+        "y": 160.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 592.5,
-        "baseline_y": 224,
+        "x": 592.667,
+        "baseline_y": 216,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -761,9 +761,9 @@
       "section": "carrier",
       "panel": "front",
       "kind": "knob",
-      "x": 633.0,
-      "y": 176,
-      "width": 65.0,
+      "x": 640.0,
+      "y": 168,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 2,
@@ -774,26 +774,26 @@
       "integer": false,
       "tooltip": "Scale how strongly the modulator changes the carrier. More adds harmonic complexity.",
       "widget_bounds": {
-        "x": 645.5,
-        "y": 173,
+        "x": 654.0,
+        "y": 165,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 640.5,
-        "y": 168,
+        "x": 649.0,
+        "y": 160,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 641.05,
-        "y": 168.55,
+        "x": 649.55,
+        "y": 160.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 665.5,
-        "baseline_y": 224,
+        "x": 674.0,
+        "baseline_y": 216,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -807,9 +807,9 @@
       "section": "carrier",
       "panel": "front",
       "kind": "knob",
-      "x": 414.0,
-      "y": 240,
-      "width": 50.4,
+      "x": 403.5,
+      "y": 232,
+      "width": 53.0,
       "height": 52,
       "min": 0,
       "max": 63,
@@ -821,26 +821,26 @@
       "visual_role": "envelope",
       "tooltip": "Attack rate: higher values reach full level faster. Zero prevents the attack from rising.",
       "widget_bounds": {
-        "x": 419.2,
-        "y": 237,
+        "x": 410.0,
+        "y": 229,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 414.2,
-        "y": 232,
+        "x": 405.0,
+        "y": 224,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 414.75,
-        "y": 232.55,
+        "x": 405.55,
+        "y": 224.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 439.2,
-        "baseline_y": 288,
+        "x": 430.0,
+        "baseline_y": 280,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -854,9 +854,9 @@
       "section": "carrier",
       "panel": "front",
       "kind": "knob",
-      "x": 472.4,
-      "y": 240,
-      "width": 50.4,
+      "x": 464.5,
+      "y": 232,
+      "width": 53.0,
       "height": 52,
       "min": 0,
       "max": 63,
@@ -868,26 +868,26 @@
       "visual_role": "envelope",
       "tooltip": "First decay rate: how fast the envelope falls toward the D1 level. Higher is faster; zero holds.",
       "widget_bounds": {
-        "x": 477.59999999999997,
-        "y": 237,
+        "x": 471.0,
+        "y": 229,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 472.59999999999997,
-        "y": 232,
+        "x": 466.0,
+        "y": 224,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 473.15,
-        "y": 232.55,
+        "x": 466.55,
+        "y": 224.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 497.59999999999997,
-        "baseline_y": 288,
+        "x": 491.0,
+        "baseline_y": 280,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -901,9 +901,9 @@
       "section": "carrier",
       "panel": "front",
       "kind": "knob",
-      "x": 530.8,
-      "y": 240,
-      "width": 50.4,
+      "x": 525.5,
+      "y": 232,
+      "width": 53.0,
       "height": 52,
       "min": 0,
       "max": 15,
@@ -915,26 +915,26 @@
       "visual_role": "envelope",
       "tooltip": "First decay attenuation: higher values set a quieter target for the first decay stage.",
       "widget_bounds": {
-        "x": 536.0,
-        "y": 237,
+        "x": 532.0,
+        "y": 229,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 531.0,
-        "y": 232,
+        "x": 527.0,
+        "y": 224,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 531.55,
-        "y": 232.55,
+        "x": 527.55,
+        "y": 224.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 556.0,
-        "baseline_y": 288,
+        "x": 552.0,
+        "baseline_y": 280,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -948,9 +948,9 @@
       "section": "carrier",
       "panel": "front",
       "kind": "knob",
-      "x": 589.2,
-      "y": 240,
-      "width": 50.4,
+      "x": 586.5,
+      "y": 232,
+      "width": 53.0,
       "height": 52,
       "min": 0,
       "max": 63,
@@ -962,26 +962,26 @@
       "visual_role": "envelope",
       "tooltip": "Second decay rate after the D1 target. Higher fades faster; zero holds the level.",
       "widget_bounds": {
-        "x": 594.4000000000001,
-        "y": 237,
+        "x": 593.0,
+        "y": 229,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 589.4000000000001,
-        "y": 232,
+        "x": 588.0,
+        "y": 224,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 589.95,
-        "y": 232.55,
+        "x": 588.55,
+        "y": 224.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 614.4000000000001,
-        "baseline_y": 288,
+        "x": 613.0,
+        "baseline_y": 280,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -995,9 +995,9 @@
       "section": "carrier",
       "panel": "front",
       "kind": "knob",
-      "x": 647.6,
-      "y": 240,
-      "width": 50.4,
+      "x": 647.5,
+      "y": 232,
+      "width": 53.0,
       "height": 52,
       "min": 0,
       "max": 15,
@@ -1009,26 +1009,26 @@
       "visual_role": "envelope",
       "tooltip": "Release rate after note-off. Higher is faster; the Sustain switch selects the separate rear release rate.",
       "widget_bounds": {
-        "x": 652.8000000000001,
-        "y": 237,
+        "x": 654.0,
+        "y": 229,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 647.8000000000001,
-        "y": 232,
+        "x": 649.0,
+        "y": 224,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 648.35,
-        "y": 232.55,
+        "x": 649.55,
+        "y": 224.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 672.8000000000001,
-        "baseline_y": 288,
+        "x": 674.0,
+        "baseline_y": 280,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1042,9 +1042,9 @@
       "section": "modulation",
       "panel": "front",
       "kind": "knob",
-      "x": 56.0,
-      "y": 382,
-      "width": 65.0,
+      "x": 46.0,
+      "y": 366,
+      "width": 68,
       "height": 52,
       "min": 0.05,
       "max": 30,
@@ -1055,26 +1055,26 @@
       "integer": false,
       "tooltip": "Pitch and amplitude modulation speed in hertz.",
       "widget_bounds": {
-        "x": 68.5,
-        "y": 379,
+        "x": 60.0,
+        "y": 363,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 63.5,
-        "y": 374,
+        "x": 55.0,
+        "y": 358,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 64.05,
-        "y": 374.55,
+        "x": 55.55,
+        "y": 358.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 88.5,
-        "baseline_y": 430,
+        "x": 80.0,
+        "baseline_y": 414,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1088,9 +1088,9 @@
       "section": "modulation",
       "panel": "front",
       "kind": "knob",
-      "x": 129.0,
-      "y": 382,
-      "width": 65.0,
+      "x": 127.333,
+      "y": 366,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 127,
@@ -1101,26 +1101,26 @@
       "integer": true,
       "tooltip": "Delay code before vibrato starts. The rear Delay scale multiplies it.",
       "widget_bounds": {
-        "x": 141.5,
-        "y": 379,
+        "x": 141.333,
+        "y": 363,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 136.5,
-        "y": 374,
+        "x": 136.333,
+        "y": 358,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 137.05,
-        "y": 374.55,
+        "x": 136.88299999999998,
+        "y": 358.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 161.5,
-        "baseline_y": 430,
+        "x": 161.333,
+        "baseline_y": 414,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1134,9 +1134,9 @@
       "section": "modulation",
       "panel": "front",
       "kind": "knob",
-      "x": 202.0,
-      "y": 382,
-      "width": 65.0,
+      "x": 208.667,
+      "y": 366,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 4,
@@ -1147,26 +1147,26 @@
       "integer": false,
       "tooltip": "Pitch modulation depth multiplier. Enable Vibrato and choose a nonzero PM range on the rear.",
       "widget_bounds": {
-        "x": 214.5,
-        "y": 379,
+        "x": 222.667,
+        "y": 363,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 209.5,
-        "y": 374,
+        "x": 217.667,
+        "y": 358,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 210.05,
-        "y": 374.55,
+        "x": 218.21699999999998,
+        "y": 358.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 234.5,
-        "baseline_y": 430,
+        "x": 242.667,
+        "baseline_y": 414,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1180,9 +1180,9 @@
       "section": "modulation",
       "panel": "front",
       "kind": "knob",
-      "x": 275.0,
-      "y": 382,
-      "width": 65.0,
+      "x": 290.0,
+      "y": 366,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 4,
@@ -1193,26 +1193,26 @@
       "integer": false,
       "tooltip": "Amplitude modulation depth multiplier. Also requires rear AM range and operator AM enable.",
       "widget_bounds": {
-        "x": 287.5,
-        "y": 379,
+        "x": 304.0,
+        "y": 363,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 282.5,
-        "y": 374,
+        "x": 299.0,
+        "y": 358,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 283.05,
-        "y": 374.55,
+        "x": 299.55,
+        "y": 358.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 307.5,
-        "baseline_y": 430,
+        "x": 324.0,
+        "baseline_y": 414,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1226,8 +1226,8 @@
       "section": "modulation",
       "panel": "front",
       "kind": "knob",
-      "x": 66.667,
-      "y": 448,
+      "x": 46.0,
+      "y": 432,
       "width": 68,
       "height": 52,
       "min": 0,
@@ -1239,26 +1239,26 @@
       "integer": false,
       "tooltip": "How strongly note velocity changes loudness. Zero ignores velocity.",
       "widget_bounds": {
-        "x": 80.667,
-        "y": 445,
+        "x": 60.0,
+        "y": 429,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 75.667,
-        "y": 440,
+        "x": 55.0,
+        "y": 424,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 76.217,
-        "y": 440.55,
+        "x": 55.55,
+        "y": 424.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 100.667,
-        "baseline_y": 496,
+        "x": 80.0,
+        "baseline_y": 480,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1272,8 +1272,8 @@
       "section": "modulation",
       "panel": "front",
       "kind": "toggle",
-      "x": 164.0,
-      "y": 448,
+      "x": 168.0,
+      "y": 432,
       "width": 68,
       "height": 52,
       "min": 0,
@@ -1285,14 +1285,14 @@
       "integer": true,
       "tooltip": "Enable delayed pitch modulation. PM depth and the rear PM range set its strength.",
       "widget_bounds": {
-        "x": 167.0,
-        "y": 453.5,
+        "x": 171.0,
+        "y": 438,
         "width": 62,
         "height": 23
       },
       "caption": {
-        "x": 198.0,
-        "baseline_y": 496,
+        "x": 202.0,
+        "baseline_y": 480,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1306,8 +1306,8 @@
       "section": "modulation",
       "panel": "front",
       "kind": "toggle",
-      "x": 261.333,
-      "y": 448,
+      "x": 290.0,
+      "y": 432,
       "width": 68,
       "height": 52,
       "min": 0,
@@ -1319,14 +1319,14 @@
       "integer": true,
       "tooltip": "Use each operator\u2019s Sustain RR setting from the rear after note-off.",
       "widget_bounds": {
-        "x": 264.333,
-        "y": 453.5,
+        "x": 293.0,
+        "y": 438,
         "width": 62,
         "height": 23
       },
       "caption": {
-        "x": 295.333,
-        "baseline_y": 496,
+        "x": 324.0,
+        "baseline_y": 480,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1340,9 +1340,9 @@
       "section": "effects",
       "panel": "front",
       "kind": "knob",
-      "x": 414.0,
-      "y": 382,
-      "width": 65.0,
+      "x": 396.0,
+      "y": 366,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 1,
@@ -1353,26 +1353,26 @@
       "integer": false,
       "tooltip": "Chorus amount. Recorded mode scales the captured stereo-side character; Studio uses its creative delay blend.",
       "widget_bounds": {
-        "x": 426.5,
-        "y": 379,
+        "x": 410.0,
+        "y": 363,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 421.5,
-        "y": 374,
+        "x": 405.0,
+        "y": 358,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 422.05,
-        "y": 374.55,
+        "x": 405.55,
+        "y": 358.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 446.5,
-        "baseline_y": 430,
+        "x": 430.0,
+        "baseline_y": 414,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1386,9 +1386,9 @@
       "section": "effects",
       "panel": "front",
       "kind": "knob",
-      "x": 487.0,
-      "y": 382,
-      "width": 65.0,
+      "x": 477.333,
+      "y": 366,
+      "width": 68,
       "height": 52,
       "min": 0.05,
       "max": 8,
@@ -1399,26 +1399,26 @@
       "integer": false,
       "tooltip": "Chorus motion speed in hertz.",
       "widget_bounds": {
-        "x": 499.5,
-        "y": 379,
+        "x": 491.333,
+        "y": 363,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 494.5,
-        "y": 374,
+        "x": 486.333,
+        "y": 358,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 495.05,
-        "y": 374.55,
+        "x": 486.88300000000004,
+        "y": 358.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 519.5,
-        "baseline_y": 430,
+        "x": 511.333,
+        "baseline_y": 414,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1432,9 +1432,9 @@
       "section": "effects",
       "panel": "front",
       "kind": "knob",
-      "x": 560.0,
-      "y": 382,
-      "width": 65.0,
+      "x": 558.667,
+      "y": 366,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 8,
@@ -1445,26 +1445,26 @@
       "integer": false,
       "tooltip": "Chorus delay modulation depth in milliseconds.",
       "widget_bounds": {
-        "x": 572.5,
-        "y": 379,
+        "x": 572.667,
+        "y": 363,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 567.5,
-        "y": 374,
+        "x": 567.667,
+        "y": 358,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 568.05,
-        "y": 374.55,
+        "x": 568.217,
+        "y": 358.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 592.5,
-        "baseline_y": 430,
+        "x": 592.667,
+        "baseline_y": 414,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1478,9 +1478,9 @@
       "section": "effects",
       "panel": "front",
       "kind": "knob",
-      "x": 633.0,
-      "y": 382,
-      "width": 65.0,
+      "x": 640.0,
+      "y": 366,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 2,
@@ -1491,26 +1491,26 @@
       "integer": false,
       "tooltip": "Stereo width multiplier. Zero is mono; one preserves the reference width.",
       "widget_bounds": {
-        "x": 645.5,
-        "y": 379,
+        "x": 654.0,
+        "y": 363,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 640.5,
-        "y": 374,
+        "x": 649.0,
+        "y": 358,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 641.05,
-        "y": 374.55,
+        "x": 649.55,
+        "y": 358.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 665.5,
-        "baseline_y": 430,
+        "x": 674.0,
+        "baseline_y": 414,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1524,9 +1524,9 @@
       "section": "effects",
       "panel": "front",
       "kind": "knob",
-      "x": 414.0,
-      "y": 448,
-      "width": 65.0,
+      "x": 396.0,
+      "y": 432,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 0.02,
@@ -1537,26 +1537,26 @@
       "integer": false,
       "tooltip": "Added noise amplitude before master volume. The rear Noise model chooses Circuit or White.",
       "widget_bounds": {
-        "x": 426.5,
-        "y": 445,
+        "x": 410.0,
+        "y": 429,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 421.5,
-        "y": 440,
+        "x": 405.0,
+        "y": 424,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 422.05,
-        "y": 440.55,
+        "x": 405.55,
+        "y": 424.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 446.5,
-        "baseline_y": 496,
+        "x": 430.0,
+        "baseline_y": 480,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1570,9 +1570,9 @@
       "section": "effects",
       "panel": "front",
       "kind": "knob",
-      "x": 487.0,
-      "y": 448,
-      "width": 65.0,
+      "x": 477.333,
+      "y": 432,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 1,
@@ -1583,26 +1583,26 @@
       "integer": false,
       "tooltip": "Additional creative saturation. Zero leaves this extra drive stage off.",
       "widget_bounds": {
-        "x": 499.5,
-        "y": 445,
+        "x": 491.333,
+        "y": 429,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 494.5,
-        "y": 440,
+        "x": 486.333,
+        "y": 424,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 495.05,
-        "y": 440.55,
+        "x": 486.88300000000004,
+        "y": 424.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 519.5,
-        "baseline_y": 496,
+        "x": 511.333,
+        "baseline_y": 480,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1616,9 +1616,9 @@
       "section": "effects",
       "panel": "front",
       "kind": "knob",
-      "x": 560.0,
-      "y": 448,
-      "width": 65.0,
+      "x": 558.667,
+      "y": 432,
+      "width": 68,
       "height": 52,
       "min": 1000,
       "max": 20000,
@@ -1629,26 +1629,26 @@
       "integer": false,
       "tooltip": "Output low-pass cutoff in hertz. Lower values soften the high end.",
       "widget_bounds": {
-        "x": 572.5,
-        "y": 445,
+        "x": 572.667,
+        "y": 429,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 567.5,
-        "y": 440,
+        "x": 567.667,
+        "y": 424,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 568.05,
-        "y": 440.55,
+        "x": 568.217,
+        "y": 424.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 592.5,
-        "baseline_y": 496,
+        "x": 592.667,
+        "baseline_y": 480,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1662,9 +1662,9 @@
       "section": "effects",
       "panel": "front",
       "kind": "knob",
-      "x": 633.0,
-      "y": 448,
-      "width": 65.0,
+      "x": 640.0,
+      "y": 432,
+      "width": 68,
       "height": 52,
       "min": 0,
       "max": 2,
@@ -1675,26 +1675,26 @@
       "integer": false,
       "tooltip": "Master output gain. One is unity; zero mutes the instrument.",
       "widget_bounds": {
-        "x": 645.5,
-        "y": 445,
+        "x": 654.0,
+        "y": 429,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 640.5,
-        "y": 440,
+        "x": 649.0,
+        "y": 424,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 641.05,
-        "y": 440.55,
+        "x": 649.55,
+        "y": 424.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 665.5,
-        "baseline_y": 496,
+        "x": 674.0,
+        "baseline_y": 480,
         "font_size": 11,
         "anchor": "middle"
       }
@@ -1906,7 +1906,7 @@
       "tooltip": "Allow the LFO to change this operator\u2019s level. The rear AM range and front AM depth set the amount.",
       "widget_bounds": {
         "x": 497.5,
-        "y": 139.5,
+        "y": 140,
         "width": 84,
         "height": 23
       },
@@ -1940,7 +1940,7 @@
       "tooltip": "Shift this operator up by 600 cents, independently of fine detune.",
       "widget_bounds": {
         "x": 605.833,
-        "y": 139.5,
+        "y": 140,
         "width": 84,
         "height": 23
       },
@@ -2158,7 +2158,7 @@
       "tooltip": "Allow the LFO to change this operator\u2019s level. The rear AM range and front AM depth set the amount.",
       "widget_bounds": {
         "x": 497.5,
-        "y": 205.5,
+        "y": 206,
         "width": 84,
         "height": 23
       },
@@ -2192,7 +2192,7 @@
       "tooltip": "Shift this operator up by 600 cents, independently of fine detune.",
       "widget_bounds": {
         "x": 605.833,
-        "y": 205.5,
+        "y": 206,
         "width": 84,
         "height": 23
       },
@@ -2364,7 +2364,7 @@
       "tooltip": "Select a sine or triangle modulation shape.",
       "widget_bounds": {
         "x": 389.167,
-        "y": 271.5,
+        "y": 272,
         "width": 84,
         "height": 23
       },
@@ -2398,7 +2398,7 @@
       "tooltip": "Share a running LFO phase across notes instead of starting each note\u2019s phase separately.",
       "widget_bounds": {
         "x": 497.5,
-        "y": 271.5,
+        "y": 272,
         "width": 84,
         "height": 23
       },
@@ -2620,7 +2620,7 @@
       "tooltip": "Recorded follows the recording-derived stereo transfer; Studio is a creative chorus.",
       "widget_bounds": {
         "x": 389.167,
-        "y": 337.5,
+        "y": 338,
         "width": 84,
         "height": 23
       },
@@ -2658,7 +2658,7 @@
       "tooltip": "Circuit follows the sibling-circuit noise spectrum; White uses flat-spectrum noise.",
       "widget_bounds": {
         "x": 497.5,
-        "y": 337.5,
+        "y": 338,
         "width": 84,
         "height": 23
       },
@@ -2692,7 +2692,7 @@
       "tooltip": "Enable the modeled sibling analog output transfer.",
       "widget_bounds": {
         "x": 605.833,
-        "y": 337.5,
+        "y": 338,
         "width": 84,
         "height": 23
       },
@@ -2910,7 +2910,7 @@
       "tooltip": "Remove DC from the output.",
       "widget_bounds": {
         "x": 497.5,
-        "y": 403.5,
+        "y": 404,
         "width": 84,
         "height": 23
       },
@@ -2944,7 +2944,7 @@
       "tooltip": "Enable output-level protection.",
       "widget_bounds": {
         "x": 605.833,
-        "y": 403.5,
+        "y": 404,
         "width": 84,
         "height": 23
       },
@@ -2962,17 +2962,17 @@
         "id": "modulator",
         "title": "01  MODULATOR",
         "panel": "front",
-        "x": 28,
-        "y": 84,
-        "width": 340,
+        "x": 35,
+        "y": 73,
+        "width": 334,
         "height": 224,
         "accent": "cyan",
-        "padding": 24,
+        "padding": 20,
         "heading": {
-          "x": 52,
-          "y": 109,
-          "rule_start": 132.0,
-          "rule_end": 344,
+          "x": 55,
+          "y": 100,
+          "rule_start": 135.0,
+          "rule_end": 349,
           "rule_width": 2,
           "rule_gap": 6
         }
@@ -2981,17 +2981,17 @@
         "id": "carrier",
         "title": "02  CARRIER",
         "panel": "front",
-        "x": 386,
-        "y": 84,
-        "width": 340,
+        "x": 385,
+        "y": 73,
+        "width": 334,
         "height": 224,
         "accent": "lavender",
-        "padding": 24,
+        "padding": 20,
         "heading": {
-          "x": 410,
-          "y": 109,
-          "rule_start": 472.8,
-          "rule_end": 702,
+          "x": 405,
+          "y": 100,
+          "rule_start": 467.8,
+          "rule_end": 699,
           "rule_width": 2,
           "rule_gap": 6
         }
@@ -3000,17 +3000,17 @@
         "id": "modulation",
         "title": "MODULATION / PERFORMANCE",
         "panel": "front",
-        "x": 28,
-        "y": 332,
-        "width": 340,
+        "x": 35,
+        "y": 314,
+        "width": 334,
         "height": 192,
         "accent": "cyan",
-        "padding": 24,
+        "padding": 20,
         "heading": {
-          "x": 52,
-          "y": 357,
-          "rule_start": 196.8,
-          "rule_end": 344,
+          "x": 55,
+          "y": 341,
+          "rule_start": 199.8,
+          "rule_end": 349,
           "rule_width": 2,
           "rule_gap": 6
         }
@@ -3019,17 +3019,17 @@
         "id": "effects",
         "title": "CHORUS / OUTPUT",
         "panel": "front",
-        "x": 386,
-        "y": 332,
-        "width": 340,
+        "x": 385,
+        "y": 314,
+        "width": 334,
         "height": 192,
         "accent": "coral",
-        "padding": 24,
+        "padding": 20,
         "heading": {
-          "x": 410,
-          "y": 357,
-          "rule_start": 498.0,
-          "rule_end": 702,
+          "x": 405,
+          "y": 341,
+          "rule_start": 493.0,
+          "rule_end": 699,
           "rule_width": 2,
           "rule_gap": 6
         }
@@ -3071,8 +3071,8 @@
   },
   "annotations": [],
   "spacing": {
-    "section_gap": 24,
-    "section_padding": 24,
+    "section_gap": 16,
+    "section_padding": 20,
     "operator_knob_row_pitch": 64,
     "global_row_pitch": 66,
     "rear_row_pitch": 66,
@@ -3239,20 +3239,25 @@
   "device_name_positions": {
     "front": {
       "x": 586,
-      "y": 20
+      "y": 19
     },
     "back": {
       "x": 586,
-      "y": 20
+      "y": 19
     },
     "folded_front": {
       "x": 610,
-      "y": 8
+      "y": 9
     },
     "folded_back": {
       "x": 610,
-      "y": 8
+      "y": 9
     }
+  },
+  "header_alignment": {
+    "full_center_y": 25,
+    "folded_center_y": 15,
+    "caption_baseline_y": 43
   },
   "branding": {
     "source_sha256": {
@@ -3264,19 +3269,19 @@
       "full": {
         "logo": {
           "x": 28,
-          "y": 17.6,
+          "y": 14.0,
           "width": 26.2,
           "height": 21.8
         },
         "wordmark": {
           "x": 64.2,
-          "baseline_y": 39.2,
+          "baseline_y": 35.6,
           "size": 30,
           "ink_bounds": [
             64.2,
-            17.6,
+            14.0,
             146.8,
-            39.400000000000006
+            35.800000000000004
           ]
         }
       },
@@ -3298,6 +3303,37 @@
             23.4
           ]
         }
+      }
+    }
+  },
+  "material_bounds": {
+    "photo_source_sha256": "a23d3144201bd9b8c0a3ad571b6c50705d20e2887b58401207a3d8dd8b5f891a",
+    "front_header_seam_y": 49,
+    "front_section_inset": 20,
+    "photo_pockets": {
+      "modulator": {
+        "x": 35,
+        "y": 73,
+        "width": 334,
+        "height": 224
+      },
+      "carrier": {
+        "x": 385,
+        "y": 73,
+        "width": 334,
+        "height": 224
+      },
+      "modulation": {
+        "x": 35,
+        "y": 314,
+        "width": 334,
+        "height": 192
+      },
+      "effects": {
+        "x": 385,
+        "y": 314,
+        "width": 334,
+        "height": 192
       }
     }
   },
@@ -3412,7 +3448,7 @@
   },
   "source_sha256": {
     "Source/DSP/Press78Engine.h": "9efb33b6c02160f439e222b8775df4863d90d5be7ef2dd88e23ca37fa0885e3f",
-    "Resources/controls.json": "dd97ad223cd993faad5c5a3ec8744ba8e6ce1c4c2b4942d2dd6af211a52644d2",
+    "Resources/controls.json": "d018c0723a02f123804342988d96455d9feb0c1f85100261aabda68d9b79f91a",
     "Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
   }
 }

@@ -22,17 +22,18 @@ def brand_geometry(x,center_y,size):
  logo_y=round(center_y*5-height/2)/5;baseline=round(center_y*5-(top+bottom)/2)/5
  text_x=x+logo_width+10
  return {'logo':{'x':x,'y':logo_y,'width':logo_width,'height':height/5},'wordmark':{'x':text_x,'baseline_y':baseline,'size':size,'ink_bounds':[text_x+left/5,baseline+top/5,text_x+right/5,baseline+bottom/5]}}
-BRANDING={'source_sha256':BRAND_SHA256,'gap':10,'faces':{'full':brand_geometry(28,28.5,30),'folded':brand_geometry(26,15,23)}}
+BRANDING={'source_sha256':BRAND_SHA256,'gap':10,'faces':{'full':brand_geometry(28,25,30),'folded':brand_geometry(26,15,23)}}
 APPEARANCE={'knob_size':40,'knob_sprite_size':50,'knob_inner_radius':15.5,'knob_pointer_inner':15.5,'knob_pointer_outer':24.1,'knob_pointer_width':13,'knob_pointer_style':'wedge','envelope_pointer_outline':.7,'value_font_size':11,'wave_font_size':13,'wave_active_color':'white','button_active_color':'white','envelope_face':'operator_accent','envelope_pointer':'black'}
 APPEARANCE.update(knob_arc_radius=22.2,knob_arc_width=1.5,knob_track='#5b626b',pointer_fill='ink',pointer_outline='black',pointer_outline_width=.7)
 def section(id,title,panel,x,y,w,h,accent):
- rule_start=round(x+24+TITLE_FONT.getbbox(title,anchor='ls')[2]/5+6,3) if title else None
- d={'id':id,'title':title,'panel':panel,'x':x,'y':y,'width':w,'height':h,'accent':accent,'padding':24,'heading':{'x':x+24,'y':y+25,'rule_start':rule_start,'rule_end':x+w-24,'rule_width':2,'rule_gap':6} if title else None}
+ padding=20 if panel=='front' else 24;heading_offset=27 if panel=='front' else 25
+ rule_start=round(x+padding+TITLE_FONT.getbbox(title,anchor='ls')[2]/5+6,3) if title else None
+ d={'id':id,'title':title,'panel':panel,'x':x,'y':y,'width':w,'height':h,'accent':accent,'padding':padding,'heading':{'x':x+padding,'y':y+heading_offset,'rule_start':rule_start,'rule_end':x+w-padding,'rule_width':2,'rule_gap':6} if title else None}
  sections[panel].append(d);return d
-mod=section('modulator','01  MODULATOR','front',28,84,340,224,'cyan')
-car=section('carrier','02  CARRIER','front',386,84,340,224,'lavender')
-motion=section('modulation','MODULATION / PERFORMANCE','front',28,332,340,192,'cyan')
-output=section('effects','CHORUS / OUTPUT','front',386,332,340,192,'coral')
+mod=section('modulator','01  MODULATOR','front',35,73,334,224,'cyan')
+car=section('carrier','02  CARRIER','front',385,73,334,224,'lavender')
+motion=section('modulation','MODULATION / PERFORMANCE','front',35,314,334,192,'cyan')
+output=section('effects','CHORUS / OUTPUT','front',385,314,334,192,'coral')
 advanced=section('advanced','ADVANCED / CALIBRATION','rear',28,84,698,388,'cyan')
 connections=section('connections',None,'rear',28,480,698,52,'cyan')
 steps={'noiseRms':.0001,'clockDriftRateHz':.001,'masterTuneCents':.1,'lfoRateHz':.1,'chorusDepthMs':.1,'chorusRateHz':.01,'toneCutoffHz':1,'clockOffsetPpm':1,'clockDriftPpm':1}
@@ -96,7 +97,12 @@ def add(prop,label,sec,y,col=0,cols=4,kind=None,accent=None):
  else:binding=p['target']+'.'+prop
  if prop in ('bendRange','modWheelDepth'):binding='rack.'+prop
  kind=kind or ('wave' if prop.endswith('_wave') else 'toggle' if p['integer'] and p['min']==0 and p['max']==1 else 'knob')
- content=sec['width']-48;pitch=content/cols;w=min(90 if sec['panel']=='rear' else 68,pitch-8);cx=sec['x']+24+(col+.5)*pitch
+ content=sec['width']-2*sec['padding'];pitch=content/cols;w=min(90 if sec['panel']=='rear' else 68,pitch-8);cx=sec['x']+sec['padding']+(col+.5)*pitch
+ if sec['panel']=='front':
+  # Shared outer anchors keep differently sized knob rows aligned; the full-width
+  # waveform bank remains an independent selector rather than a knob-column map.
+  first=sec['x']+sec['padding']+25;last=sec['x']+sec['width']-sec['padding']-25
+  pitch=(last-first)/(cols-1);cx=first+col*pitch;w=min(68,pitch-8)
  d={'id':(binding[6:] if prop.startswith(('mod_','car_')) else binding).replace('.','_'),'label':label,'binding':binding,'property_id':prop,'property_path':'/custom_properties/'+prop,'section':sec['id'],'panel':sec['panel'],'kind':kind,'x':round(cx-w/2,3),'y':y,'width':round(w,3),'height':52,'min':p['min'],'max':p['max'],'default':p['default'],'step':1 if p['integer'] else steps.get(prop,.01),'unit':units.get(prop,''),'accent':sec['accent']}
  if 'options' in p:d['options']=p['options']
  if accent:d['accent']=accent
@@ -105,23 +111,23 @@ def add(prop,label,sec,y,col=0,cols=4,kind=None,accent=None):
  d['tooltip']=OP_HELP[prop[4:]] if prop.startswith(('mod_','car_')) else HELP[prop]
  if prop in ('mod_tl','car_tl'):d['presentation']='operator_level'
  if kind=='wave':
-  d.update(x=sec['x']+24,width=content,height=28)
+  d.update(x=sec['x']+sec['padding'],width=content,height=28)
   gap=8;button=(content-3*gap)/4
   d['wave_cells']=[{'index':i,'label':v,'x':d['x']+i*(button+gap),'y':y,'width':button,'height':28} for i,v in enumerate(['SIN','SIN²','HALF','HALF²'])]
  controls.append(d)
 for prefix,sec,extra in [('mod',mod,('feedback','Feedback')),('car',car,('modulationAmount','FM amount'))]:
- add(prefix+'_wave','Wave',sec,132)
- for col,(field,label) in enumerate([('mul','Ratio'),('dt1','Detune'),('tl','Level')]):add(prefix+'_'+field,label,sec,176,col)
- add(*extra,sec,176,3)
- for col,(field,label) in enumerate([('ar','Atk rate'),('d1r','D1 rate'),('d1l','D1 atten'),('d2r','D2 rate'),('rr','Rel rate')]):add(prefix+'_'+field,label,sec,240,col,5)
+ add(prefix+'_wave','Wave',sec,124)
+ for col,(field,label) in enumerate([('mul','Ratio'),('dt1','Detune'),('tl','Level')]):add(prefix+'_'+field,label,sec,168,col)
+ add(*extra,sec,168,3)
+ for col,(field,label) in enumerate([('ar','Atk rate'),('d1r','D1 rate'),('d1l','D1 atten'),('d2r','D2 rate'),('rr','Rel rate')]):add(prefix+'_'+field,label,sec,232,col,5)
 for row,entries in enumerate([
  [('lfoRateHz','LFO Hz'),('vibratoDelay','Delay'),('vibratoDepth','Pitch mod'),('tremoloDepth','Amp mod')],
  [('velocitySensitivity','Velocity'),('vibrato','Vibrato'),('sustain','Sustain')]]):
- for col,(prop,label) in enumerate(entries):add(prop,label,motion,382+row*66,col,len(entries))
+ for col,(prop,label) in enumerate(entries):add(prop,label,motion,366+row*66,col,len(entries))
 for row,entries in enumerate([
  [('chorusMix','Chorus'),('chorusRateHz','Rate Hz'),('chorusDepthMs','Depth ms'),('stereoWidth','Width')],
  [('noiseRms','Noise'),('drive','Drive'),('toneCutoffHz','Cutoff Hz'),('masterGain','Output')]]):
- for col,(prop,label) in enumerate(entries):add(prop,label,output,382+row*66,col)
+ for col,(prop,label) in enumerate(entries):add(prop,label,output,366+row*66,col)
 for row,(prefix,number,accent) in enumerate([('mod','01','cyan'),('car','02','lavender')]):
  for col,(field,label) in enumerate([('lksLo','LKS low'),('lksHi','LKS high'),('rks','RKS'),('srr','Sustain RR'),('amEnable','AM enable'),('dt2','DT2 +600¢')]):add(prefix+'_'+field,number+' '+label,advanced,134+row*66,col,6,accent=accent)
 for row,(entries,accent) in enumerate([
@@ -144,12 +150,14 @@ def decode(v):
  return {'number':v['number'],'name':v['name'],'values':p}
 presets=[decode(v) for v in bank['voices']]
 preview={d['binding']:d['default'] for d in controls};preview.update(presets[0]['values'])
-geom={'version':'Press78 layout study 06','logical_size':{'width':W,'height':H,'rack_units':8},'folded_size':{'width':W,'height':30},'status':'Shared geometry for interactive design preview and native prototype widgets','palette':C,'appearance':APPEARANCE,'native_patch_selector':{'x':247,'y':14,'width':315,'height':29,'kind':'host_native_placeholder'},'controls':controls,'sections':sections,'annotations':annotations,'spacing':{'section_gap':24,'section_padding':24,'operator_knob_row_pitch':64,'global_row_pitch':66,'rear_row_pitch':66,'caption_offset':48},'notes':['35 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.','Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.','Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.','Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator.']}
+geom={'version':'Press78 layout study 06','logical_size':{'width':W,'height':H,'rack_units':8},'folded_size':{'width':W,'height':30},'status':'Shared geometry for interactive design preview and native prototype widgets','palette':C,'appearance':APPEARANCE,'native_patch_selector':{'x':247,'y':11,'width':315,'height':28,'kind':'host_native_placeholder'},'controls':controls,'sections':sections,'annotations':annotations,'spacing':{'section_gap':16,'section_padding':20,'operator_knob_row_pitch':64,'global_row_pitch':66,'rear_row_pitch':66,'caption_offset':48},'notes':['35 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.','Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.','Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.','Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator.']}
 geom['sockets']=[{'id':key,'property_path':path,'label':label,'panel':'rear','section':'connections','x':x,'y':506,'width':24,'height':24,'widget_bounds':{'x':x-12,'y':494,'width':24,'height':24},'caption':{'x':x+20,'baseline_y':510,'font_size':11,'anchor':'start'}} for key,path,label,x in [('gate_cv','/cv_inputs/gate_cv','GATE CV',68),('note_cv','/cv_inputs/note_cv','NOTE CV',177),('fm_cv','/cv_inputs/fm_cv','FM CV',286),('level_cv','/cv_inputs/level_cv','LEVEL CV',395),('left','/audio_outputs/left','LEFT',550),('right','/audio_outputs/right','RIGHT',659)]]
 geom['routing_icons']=[{'x':525,'y':498,'asset':'Routing_Icon_White_01_1frames'},{'x':634,'y':498,'asset':'Routing_Icon_White_02_1frames'}]
-geom['device_name_positions']={'front':{'x':586,'y':20},'back':{'x':586,'y':20},'folded_front':{'x':610,'y':8},'folded_back':{'x':610,'y':8}}
-geom['version']='Press78 layout study 07'
+geom['device_name_positions']={'front':{'x':586,'y':19},'back':{'x':586,'y':19},'folded_front':{'x':610,'y':9},'folded_back':{'x':610,'y':9}}
+geom['header_alignment']={'full_center_y':25,'folded_center_y':15,'caption_baseline_y':43}
+geom['version']='Press78 layout study 08'
 geom['branding']=BRANDING
+geom['material_bounds']={'photo_source_sha256':hashlib.sha256((OUT/'Assets/press78-photo-background-v2.png').read_bytes()).hexdigest(),'front_header_seam_y':49,'front_section_inset':20,'photo_pockets':{s['id']:{k:s[k] for k in ('x','y','width','height')} for s in sections['front']}}
 geom['group_markers']=[{'panel':'rear','type':'bar','x':39,'y':134,'width':3,'height':44,'color':'cyan'},{'panel':'rear','type':'bar','x':39,'y':200,'width':3,'height':44,'color':'lavender'},{'panel':'rear','type':'separator','x':52,'y':253,'width':650,'color':'edge'},{'panel':'rear','type':'separator','x':52,'y':385,'width':650,'color':'edge'}]
 geom.update(preview_patch=0,preview_state=preview,sdk={'root':'/Users/vojta/Dev/reason-rack-extension/SDK','version':'JukeboxSDK_500_028','target':'5.0'},source_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'Source/DSP/Press78Engine.h',ROOT/'Assets/controls.json',ROOT/'Assets/FactoryBank/press78-factory.json']})
 (OUT/'geometry.json').write_text(json.dumps(geom,indent=2)+'\n')
@@ -196,9 +204,9 @@ def widget(d):
    s+=f'<text id="{cid}-label{i}" x="{bx+bw/2}" y="{y+12.5}" fill="{C["black"]}" font-size="{APPEARANCE["wave_font_size"]}" text-anchor="middle" dominant-baseline="central" font-weight="600">{label}</text>'
    s+=f'<path d="M{bx+3} {y+1.5}h{bw-6}" stroke="#ffffff" opacity=".25"/>'
  elif d['kind']=='toggle':
-  s+=rect(x+3,y+6.5,w-6,23,'black','black')
-  s+=f'<rect id="{cid}-button" x="{x+3}" y="{y+5.5}" width="{w-6}" height="22" rx="2" fill="{C["white"] if v else C["black"]}" stroke="{C["edge"]}"/>'
-  s+=f'<path d="M{x+6} {y+7}h{w-12}" stroke="#ffffff" opacity=".15"/><text id="{cid}-value" x="{cx}" y="{y+21}" fill="{C["black"] if v else C["muted"]}" text-anchor="middle" font-size="11">{fmt(d,v)}</text>'+txt(cx,y+48,d['label'],11,'ink','middle')
+  s+=rect(x+3,y+7.5,w-6,21,'black','black')
+  s+=f'<rect id="{cid}-button" x="{x+3}" y="{y+6}" width="{w-6}" height="22" rx="2" fill="{C["white"] if v else C["black"]}" stroke="{C["edge"]}"/>'
+  s+=f'<path d="M{x+6} {y+7.5}h{w-12}" stroke="#ffffff" opacity=".15"/><text id="{cid}-value" x="{cx}" y="{y+21}" fill="{C["black"] if v else C["muted"]}" text-anchor="middle" font-size="11">{fmt(d,v)}</text>'+txt(cx,y+48,d['label'],11,'ink','middle')
  else:
   envelope=d.get('visual_role')=='envelope';cap='envelopeCap'+color if envelope else 'knobCap';face=C[color] if envelope else '#202329';pointer=C['ink'];ink=C['black'] if envelope else C['ink']
   fraction=position(d,v);angle=math.radians(-130+260*fraction)
@@ -226,13 +234,14 @@ def svg(panel):
   for y in (20,H-20):s+=f'<circle cx="{x}" cy="{y}" r="3.6" fill="#181b20" stroke="#50545a" stroke-width=".65"/><path d="M{x-1.7} {y}h3.4" stroke="#85898b" stroke-width=".7"/>'
  s+='</g>'
  s+=brand_wordmark()
- s+='<path class="material-surface" d="M22 57.5H732" stroke="#15181c"/><path class="material-surface" d="M22 58.5H732" stroke="#4a4e55" stroke-width=".5"/>'
+ seam=49 if panel=='front' else 57.5
+ s+=f'<path class="material-surface" d="M22 {seam}H732" stroke="#15181c"/><path class="material-surface" d="M22 {seam+1}H732" stroke="#4a4e55" stroke-width=".5"/>'
  if panel=='front':
-  s+='<rect x="205" y="13" width="35" height="31" rx="2" fill="url(#displayGlass)" stroke="#111318"/>'+txt(222.5,35,'FM',22,'red','middle',display=True)+rect(247,14,315,29,'black','edge')
-  s+='<image href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonPatchBrowse.png').read_bytes()).decode()+'" x="498" y="17" width="55" height="20"><title>Reason standard patch browser — available in the host</title></image>'
-  s+=txt(626,49,'DEVICE',11,'muted','middle')+txt(719,49,'NOTE',11,'muted','middle')+'<circle cx="719" cy="27" r="2.5" fill="#472332" stroke="#14171b"/>'
+  s+='<rect x="205" y="10" width="35" height="30" rx="2" fill="url(#displayGlass)" stroke="#111318"/>'+txt(222.5,32.9,'FM',22,'red','middle',display=True)+rect(247,11,315,28,'black','edge')
+  s+='<image href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonPatchBrowse.png').read_bytes()).decode()+'" x="498" y="14" width="58" height="22"><title>Reason standard patch browser — available in the host</title></image>'
+  s+=txt(626,43,'DEVICE',11,'muted','middle')+txt(719,43,'NOTE',11,'muted','middle')+'<circle cx="719" cy="25" r="2.5" fill="#472332" stroke="#14171b"/>'
  else:s+=txt(233,31,'CONFIGURATION / CALIBRATION',16,'cyan',display=True)+txt(233,48,'DIGITAL SYNTHESIZER',9,'muted')
- s+='<image href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonDeviceTape.png').read_bytes()).decode()+'" x="586" y="20" width="84" height="12"/>'+txt(626,30,'Press78',8,'black','middle')
+ s+='<image href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonDeviceTape.png').read_bytes()).decode()+'" x="586" y="19" width="80" height="13"/>'+txt(626,29,'Press78',8,'black','middle')
  for sec in geom['sections'][panel]:
   x,y,w,h=sec['x'],sec['y'],sec['width'],sec['height']
   s+=f'<g class="material-surface"><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="2.5" fill="url(#pocket)" stroke="#191c21" stroke-width=".6"/><path d="M{x+2} {y+h+.5}H{x+w-2}" stroke="#555960" stroke-width=".5"/><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="2.5" fill="url(#grain)"/></g>'
@@ -257,8 +266,8 @@ for panel in ('front','rear'):(OUT/(panel+'.svg')).write_text(svg(panel))
 for side in ('front','rear'):
  s=f'<svg xmlns="http://www.w3.org/2000/svg" width="754" height="30" viewBox="0 0 754 30">'+defs()+shell(30)+brand_wordmark(folded=True)
  if side=='front':
-  s+=rect(267,5,295,20,'black')+txt(384,20,'PSS 00 Piano 1',11,'cyan','middle')+'<image href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonPatchBrowse.png').read_bytes()).decode()+'" x="498" y="4" width="55" height="20"/>'+'<circle cx="719" cy="15" r="2.5" fill="#472332"/>'
- s+='<image href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonDeviceTape.png').read_bytes()).decode()+'" x="610" y="8" width="84" height="12"/>'+txt(650,18,'Press78',8,'black','middle')+'</svg>'
+  s+=rect(267,5,295,20,'black')+txt(384,19,'PSS 00 Piano 1',11,'cyan','middle')+'<image href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonPatchBrowse.png').read_bytes()).decode()+'" x="498" y="4" width="58" height="22"/>'+'<circle cx="719" cy="15" r="2.5" fill="#472332"/>'
+ s+='<image href="data:image/png;base64,'+base64.b64encode((OUT/'Assets/ReasonDeviceTape.png').read_bytes()).decode()+'" x="610" y="9" width="80" height="13"/>'+txt(650,19,'Press78',8,'black','middle')+'</svg>'
  (OUT/('folded-'+side+'.svg')).write_text(s)
 print(f'Generated styled {W}x{H} front/rear and folded SVGs; geometry.json')
 for d in controls:
@@ -268,7 +277,7 @@ for d in controls:
   d['sprite_bounds']={"x":cx-25,"y":cy-25,"width":50,"height":50}
   extent=APPEARANCE['knob_pointer_outer']+.35
   d['visual_bounds']={"x":cx-extent,"y":cy-extent,"width":2*extent,"height":extent+20}
- elif d['kind']=='toggle':d['widget_bounds']={"x":d["x"]+3,"y":d["y"]+5.5,"width":d["width"]-6,"height":23}
+ elif d['kind']=='toggle':d['widget_bounds']={"x":d["x"]+3,"y":d["y"]+6,"width":d["width"]-6,"height":23}
  else:d['widget_bounds']={"x":d["x"],"y":d["y"],"width":d["width"],"height":28}
  d['caption']={"x":d["x"]+d["width"]/2,"baseline_y":d["y"]+48,"font_size":11,"anchor":"middle"}
 (OUT/'geometry.json').write_text(json.dumps(geom,indent=2)+'\n')

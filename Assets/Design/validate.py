@@ -26,7 +26,7 @@ assert len(front_ids)==35 and len(rear_ids)==30
 section_map={s['id']:s for panel in g['sections'].values() for s in panel}
 for c in controls:
  sec=section_map[c['section']];b=c.get('visual_bounds',c['widget_bounds']);caption=c['caption']
- assert b['x']-sec['x']>=24 and sec['x']+sec['width']-b['x']-b['width']>=24,c['id']
+ assert b['x']-sec['x']>=min(14,sec['padding']) and sec['x']+sec['width']-b['x']-b['width']>=min(14,sec['padding']),c['id']
  assert b['y']-sec['heading']['y']>=17.5,c['id']
  assert sec['y']+sec['height']-(caption['baseline_y']+2)>=14,c['id']
  if c['kind']=='wave':
@@ -37,6 +37,25 @@ for a,b in combinations(controls,2):
  if a['section']==b['section'] and a['y']==b['y'] and a['kind']!='wave' and b['kind']!='wave':
   ac=a['x']+a['width']/2;bc=b['x']+b['width']/2
   assert abs(ac-bc)>=58.3,(a['id'],b['id'])
+# Physical-pocket evidence is pinned to the unchanged photo, independently of
+# generated section declarations. Logical bounds were measured from its bevels.
+expected_pockets={'modulator':(35,73,334,224),'carrier':(385,73,334,224),'modulation':(35,314,334,192),'effects':(385,314,334,192)}
+assert hashlib.sha256((OUT/'Assets/press78-photo-background-v2.png').read_bytes()).hexdigest()==g['material_bounds']['photo_source_sha256']
+for sec in g['sections']['front']:
+ assert tuple(sec[k] for k in ('x','y','width','height'))==expected_pockets[sec['id']]
+ rows={}
+ for c in controls:
+  if c['section']==sec['id'] and c['kind']!='wave':rows.setdefault(c['y'],[]).append(c)
+ for row in rows.values():
+  centers=sorted(c['x']+c['width']/2 for c in row)
+  assert abs(centers[0]-(sec['x']+45))<=.001 and abs(centers[-1]-(sec['x']+sec['width']-45))<=.001,sec['id']
+  assert len({c['caption']['baseline_y'] for c in row})==1,sec['id']
+  for c in row:
+   b=c['widget_bounds'];center=b['y']+(b['height']-1)/2 if c['kind']=='toggle' else b['y']+b['height']/2
+   assert abs(center-(c['y']+17))<1e-6,c['id']
+assert g['header_alignment']=={'full_center_y':25,'folded_center_y':15,'caption_baseline_y':43}
+for panel,pos in g['device_name_positions'].items():
+ assert abs(pos['y']+6.5-(15 if panel.startswith('folded') else 25))<=.5,panel
 sockets=g['sockets'];socket_paths=[s['property_path'] for s in sockets]
 assert len(socket_paths)==len(set(socket_paths))==6
 assert set(socket_paths)=={'/cv_inputs/'+p+'_cv' for p in ('gate','note','fm','level')}|{'/audio_outputs/left','/audio_outputs/right'}
@@ -66,10 +85,18 @@ for name,expected in [('front',(W,H)),('rear',(W,H)),('folded-front',(754,30)),(
  mark=brand.find('{http://www.w3.org/2000/svg}image');assert mark is not None,name
  with Image.open(io.BytesIO(base64.b64decode(mark.attrib['href'].split(',',1)[1]))) as embedded:
   assert embedded.size==canonical_logo.size and embedded.tobytes()==canonical_logo.tobytes(),name
+ for asset,logical_size in [('ReasonPatchBrowse',(58,22)),('ReasonDeviceTape',(80,13))]:
+  encoded='data:image/png;base64,'+base64.b64encode((OUT/'Assets'/(asset+'.png')).read_bytes()).decode()
+  for image in xml.findall('{http://www.w3.org/2000/svg}image'):
+   if image.attrib.get('href')!=encoded:continue
+   assert tuple(float(image.attrib[k]) for k in ('width','height'))==logical_size,(name,asset)
+   center=float(image.attrib['y'])+logical_size[1]/2
+   assert abs(center-(15 if name.startswith('folded') else 25))<=.5,(name,asset)
  size=Image.open(OUT/(name+'@1x.png')).size;assert size==expected
  images[name]=list(size)
+assert Image.open(OUT/'front-photo@1x.png').size==(W,H)
 source_paths=[OUT/'geometry.json',OUT/'build_wireframe.py',OUT/'preview_template.html',OUT/'index.html',OUT/'render_preview.cjs',ROOT/'Assets/controls.json']
-result={'passed':True,'controls':len(ids),'canonical_properties':len(canonical),'unmapped_properties':[],'overlapping_widget_bounds':0,'captions_fit_at_11px':True,'caption_font':font_path,'raster_dimensions':images,'svg_rasterizer':'@resvg/resvg-js 2.6.2, DIN Alternate / DIN Condensed system fonts','browser_visual_review':'Layout study 07: full browser and four local panels visually inspected at 1x; separate native asset validation in Rack checkout.','native_host_tested':False,'scope':'Wireframe geometry, property contract and SVG raster checks; no DSP/audio or native host claims.','source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in source_paths}}
-result.update(sockets=len(sockets),cv_inputs=4,audio_outputs=2,front_controls=35,rear_controls=30,rack_units=g['logical_size']['rack_units'],section_side_padding_min_px=24,heading_to_visible_control_min_px=17.55,caption_to_section_bottom_min_px=14,wave_button_min_width_px=60,wave_button_gap_px=8,knob_body_px=40,knob_sprite_px=50)
+result={'passed':True,'controls':len(ids),'canonical_properties':len(canonical),'unmapped_properties':[],'overlapping_widget_bounds':0,'captions_fit_at_11px':True,'caption_font':font_path,'raster_dimensions':images,'svg_rasterizer':'@resvg/resvg-js 2.6.2, DIN Alternate / DIN Condensed system fonts','browser_visual_review':'Layout study08: deterministic photo composition and four local panels inspected at1x; synthetic DOM interaction separate; no new live-browser interaction claim.','native_host_tested':False,'scope':'Wireframe geometry, property contract and SVG raster checks; no DSP/audio or native host claims.','source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in source_paths}}
+result.update(sockets=len(sockets),cv_inputs=4,audio_outputs=2,front_controls=35,rear_controls=30,rack_units=g['logical_size']['rack_units'],section_side_padding_min_px=14,front_heading_padding_px=20,rear_heading_padding_px=24,heading_to_visible_control_min_px=17.55,caption_to_section_bottom_min_px=14,wave_button_min_width_px=60,wave_button_gap_px=8,knob_body_px=40,knob_sprite_px=50)
 (OUT/'validation.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps({k:v for k,v in result.items() if k!='source_sha256'},indent=2))
