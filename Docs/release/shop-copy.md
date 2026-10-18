@@ -30,8 +30,8 @@ Initial Rack Extension beta with editable two-operator FM synthesis, 100 PSS fac
 
 # Images
 
-![Front preview](Docs/screenshots/Press78_Front.png)
+![Front preview](../screenshots/Press78_Front.png)
 
-![Back preview](Docs/screenshots/Press78_Back.png)
+![Back preview](../screenshots/Press78_Back.png)
 
-![Shop thumbnail](Docs/screenshots/Press78_Thumbnail_800.png)
+![Shop thumbnail](../screenshots/Press78_Thumbnail_800.png)

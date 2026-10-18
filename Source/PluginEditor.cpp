@@ -142,3 +142,8 @@ void Press78AudioProcessorEditor::timerCallback()
     if (programs.getSelectedId() != selected)
         programs.setSelectedId (selected, juce::dontSendNotification);
 }
+
+juce::String Press78AudioProcessorEditor::getBuildIdentity()
+{
+    return PRESS78_BUILD_IDENTITY;
+}

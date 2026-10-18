@@ -40,7 +40,7 @@ public:
     double getTailLengthSeconds() const override { return 34.0; }
 
     int getNumPrograms() override { return kProgramCount; }
-    int getCurrentProgram() override { return currentProgram; }
+    int getCurrentProgram() override { return currentProgram.load(); }
     void setCurrentProgram (int index) override;
     const juce::String getProgramName (int index) override;
     void changeProgramName (int, const juce::String&) override {}
@@ -65,5 +65,6 @@ private:
     Values applied {};
     bool appliedValid = false;
     double bend = 0.0, wheel = 0.0; // -1..1 and 0..1, from MIDI
-    int currentProgram = 0;
+    // Written on the host thread, polled by the editor timer.
+    std::atomic<int> currentProgram { 0 };
 };

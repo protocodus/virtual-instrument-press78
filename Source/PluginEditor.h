@@ -21,7 +21,8 @@ public:
     // Follows program changes the host makes while the editor is open.
     void timerCallback() override;
 
-    static juce::String getBuildIdentity() { return PRESS78_BUILD_IDENTITY; }
+    // Defined in the .cpp: PRESS78_BUILD_IDENTITY is private to the plug-in target.
+    static juce::String getBuildIdentity();
 
 private:
     struct Control

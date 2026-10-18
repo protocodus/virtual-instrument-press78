@@ -100,6 +100,13 @@ bool Press78AudioProcessor::handleMidi (const juce::MidiMessage& m) noexcept
         engine->allSoundOff();
     else if (m.isAllNotesOff())
         engine->allNotesOff();
+    else if (m.isController() && m.getControllerNumber() == 121) // Reset All Controllers
+    {
+        engine->sustainPedal (false);
+        bend = 0.0;
+        wheel = 0.0;
+        return true;
+    }
     else if (m.isPitchWheel())
     {
         bend = std::clamp ((m.getPitchWheelValue() - 8192) / 8192.0, -1.0, 1.0);
@@ -167,7 +174,7 @@ void Press78AudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     auto state = parameters.copyState();
     state.setProperty ("stateVersion", kStateVersion, nullptr);
-    state.setProperty ("program", currentProgram, nullptr);
+    state.setProperty ("program", currentProgram.load(), nullptr);
     if (auto xml = state.createXml())
         copyXmlToBinary (*xml, destData);
 }
