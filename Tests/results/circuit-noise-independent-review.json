@@ -1,0 +1,43 @@
+{
+  "scope": "Independent compiled CircuitNoise vs direct full-MNA trapezoidal descriptor recurrence; deterministic unit-variance innovations; no hardware equivalence claim",
+  "passed": true,
+  "rows": [
+    {
+      "sample_rate": 8000,
+      "max_absolute_error_v": 3.4787643143734115e-17,
+      "relative_rms_error": 1.467265771310974e-12
+    },
+    {
+      "sample_rate": 44100,
+      "max_absolute_error_v": 5.394244621294286e-17,
+      "relative_rms_error": 1.3695152389905705e-12
+    },
+    {
+      "sample_rate": 44117,
+      "max_absolute_error_v": 6.148294526763746e-17,
+      "relative_rms_error": 1.5187907480881193e-12
+    },
+    {
+      "sample_rate": 48000,
+      "max_absolute_error_v": 5.70629155906277e-17,
+      "relative_rms_error": 1.4184530453379721e-12
+    },
+    {
+      "sample_rate": 96000,
+      "max_absolute_error_v": 7.636679645855321e-17,
+      "relative_rms_error": 1.5785679696653842e-12
+    },
+    {
+      "sample_rate": 192000,
+      "max_absolute_error_v": 7.965159022800539e-17,
+      "relative_rms_error": 1.5185720104080158e-12
+    }
+  ],
+  "one_sided_psd_normalization": "Var1 innovations have one-sidedPSD2/fs; multiplying bysqrt(fs/2) yields unit one-sidedPSD, preserving sourceV\u00b2/Hz coefficients",
+  "tustin_feedthrough": "Full descriptor recurrence includes current+previous white input; confirms reduced-state DD and output-before-update convention",
+  "source_sha256": {
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "Tools/generate_circuit_noise.py": "e1611febfed974738582c3f326f8316873aa9016f7e4de662709fc6d83549660",
+    "build/hardware-benchmarks/noise-review-20261018/probe.cpp": "56b1a9406b11c98d227b08f98a8ba684384e58db3a96a571adeafffa28005333"
+  }
+}

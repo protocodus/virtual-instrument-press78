@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "scope": "Numerical streaming parity with frozen v3 effective transfer, not physical BBD identification; no normalization.",
+  "additional_algorithmic_latency_samples": 0,
+  "rows": [
+    {
+      "sample_rate": 8000,
+      "start_seconds": 0,
+      "frames": 8800,
+      "maximum_absolute_error": 5.978134653972234e-13,
+      "relative_rms_error": 6.705202257760552e-13,
+      "maximum_midpoint_error": 2.7755575615628914e-17
+    },
+    {
+      "sample_rate": 44100,
+      "start_seconds": 17.123,
+      "frames": 48510,
+      "maximum_absolute_error": 2.3516244507248985e-11,
+      "relative_rms_error": 1.6230229762966134e-11,
+      "maximum_midpoint_error": 2.7755575615628914e-17
+    },
+    {
+      "sample_rate": 44117,
+      "start_seconds": -0.25,
+      "frames": 48528,
+      "maximum_absolute_error": 8.492900827050676e-12,
+      "relative_rms_error": 6.101772915862908e-12,
+      "maximum_midpoint_error": 2.7755575615628914e-17
+    },
+    {
+      "sample_rate": 48000,
+      "start_seconds": 0,
+      "frames": 52800,
+      "maximum_absolute_error": 4.374015039054768e-12,
+      "relative_rms_error": 3.8081816599618005e-12,
+      "maximum_midpoint_error": 2.7755575615628914e-17
+    },
+    {
+      "sample_rate": 48000,
+      "start_seconds": 173.1234,
+      "frames": 52800,
+      "maximum_absolute_error": 2.2413277137034449e-10,
+      "relative_rms_error": 1.1592331116786124e-10,
+      "maximum_midpoint_error": 2.7755575615628914e-17
+    },
+    {
+      "sample_rate": 96000,
+      "start_seconds": 3.14159,
+      "frames": 105600,
+      "maximum_absolute_error": 1.7285506359598912e-11,
+      "relative_rms_error": 1.1324760074013322e-11,
+      "maximum_midpoint_error": 2.7755575615628914e-17
+    },
+    {
+      "sample_rate": 192000,
+      "start_seconds": 173.125,
+      "frames": 211200,
+      "maximum_absolute_error": 6.417701370331486e-10,
+      "relative_rms_error": 3.934489268389487e-10,
+      "maximum_midpoint_error": 5.551115123125783e-17
+    }
+  ],
+  "source_sha256": {
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+    "Tools/ChorusProbe.cpp": "1ba796b45c067e026fbf642ef0335c27b3dd6b4ae1bc93e93308b48a35712d5d",
+    "Tools/check_chorus_runtime.py": "a872a94cc0f696fcc0d21500e6cac89eedc6aef0d7b9fd4b4fdefef800c936a9",
+    "Reference/Python/circuit/calibrated_chorus.py": "0a487838e8e5465b95f4be2f90a142b0a97ef715ff898b68d029dc821a80edee",
+    "Reference/Python/circuit/video_chorus_profile.json": "854a2b2fc412e1050ccc1d47564d41a9a27cb0b265d20977be0144478cc85981"
+  }
+}

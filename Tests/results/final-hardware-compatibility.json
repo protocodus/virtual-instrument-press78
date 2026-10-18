@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "scope": "Final native DSP with noise disabled reproduces frozen recorded-chorus benchmark complete performances byte-for-byte; no reranking, refit, or new hardware-accuracy assertion",
+  "created_utc": "2026-10-18T08:41:56.032490+00:00",
+  "modes": [
+    {
+      "mode": "raw",
+      "passed": true,
+      "expected_sha256": "b614c523c2990051a08d968c11dc2c1d4b507de2d3cc374e382363ab5e8515f0",
+      "actual_sha256": "b614c523c2990051a08d968c11dc2c1d4b507de2d3cc374e382363ab5e8515f0",
+      "frames": 8931705,
+      "sample_rate": 48000,
+      "latency_samples": 32,
+      "chorus_epoch_seconds": 0,
+      "render_wall_seconds": 5.9413194169756025
+    },
+    {
+      "mode": "dry",
+      "passed": true,
+      "expected_sha256": "ec863cca36a519d25d2099f6d80c8b27e7feb362ddcef5162df13ce205826656",
+      "actual_sha256": "ec863cca36a519d25d2099f6d80c8b27e7feb362ddcef5162df13ce205826656",
+      "frames": 8931705,
+      "sample_rate": 48000,
+      "latency_samples": 32,
+      "chorus_epoch_seconds": 0,
+      "render_wall_seconds": 5.355887749989051
+    },
+    {
+      "mode": "recorded",
+      "passed": true,
+      "expected_sha256": "cc915cc140fd7fde701e613b36ca721892903f27e7de133570f57c3f8a20eab6",
+      "actual_sha256": "cc915cc140fd7fde701e613b36ca721892903f27e7de133570f57c3f8a20eab6",
+      "frames": 8931705,
+      "sample_rate": 48000,
+      "latency_samples": 32,
+      "chorus_epoch_seconds": -0.000666667,
+      "render_wall_seconds": 6.0325087499804795
+    }
+  ],
+  "source_sha256": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "Source/DSP/Press78Engine.cpp": "d67e6e316e8cc7528b5df71d3f351cfca68a47cef83cab49648c1a5af441765d",
+    "Source/DSP/Press78Engine.h": "9efb33b6c02160f439e222b8775df4863d90d5be7ef2dd88e23ca37fa0885e3f",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+  },
+  "sources_unchanged_during_audit": true,
+  "fixture_sha256": "b8f967e687b65cd87351e615216d8e451b523cac0f8e829e02d4981eea0823c7",
+  "event_schedule_sha256": "d11b10ce696eda8b3ffadbaf6818497688bbcdf3c9ac99235233070cb6a3def2",
+  "frozen_candidate_report_sha256": "4bb2849d2897b16b55ee9a15c7c29d48d4a18fb52981af0a08fb831cec6c3574",
+  "frozen_protocol_sha256": "24a2e574b68b4e1d95d6b4fd589425e246037464d73fdd570a2055c0caf45f53",
+  "executable_sha256": "f7b29d9d3a3d316993218a08a53cca56e3e77739d4140a44670ee7a483dcb8c4",
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+  "compile_command": [
+    "c++",
+    "-std=c++17",
+    "-O2",
+    "-I",
+    "/Users/vojta/Dev/virtual-instrument-press78/Source/DSP",
+    "/Users/vojta/Dev/virtual-instrument-press78/build/hardware-benchmarks/recorded-20261018T084000Z/HardwareSequence.cpp",
+    "/Users/vojta/Dev/virtual-instrument-press78/Source/DSP/Press78Engine.cpp",
+    "-o",
+    "/Users/vojta/Dev/virtual-instrument-press78/build/press78-final-compat-r2ema7pq/hardware_sequence"
+  ],
+  "noise_settings": "Default noiseModel=0 and noiseRms=0; fixture never enables noise",
+  "storage": "One temporary output WAV at a time, removed after hashing; immutable candidate and baseline unchanged"
+}

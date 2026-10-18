@@ -1,0 +1,116 @@
+"""Check generated Rack identity, presets and parameter/localization coverage.
+
+The frozen research decoder is the independent oracle for factory parameters.
+This is a source contract check; SDK build and host creation are separate gates.
+"""
+from pathlib import Path
+import argparse
+import ast
+import hashlib
+import json
+import math
+import re
+import xml.etree.ElementTree as ET
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('device', type=Path)
+    args = parser.parse_args()
+    device = args.device.resolve()
+    schema = json.loads((ROOT/'Resources/controls.json').read_text())
+    rows = {row['id']: row for row in schema['controls']}
+    assert len(rows) == len(schema['controls']) == 65
+    info = (device/'info.lua').read_text()
+    for field, expected in [('product_id', schema['product']), ('version_number', schema['version'])]:
+        assert re.search(rf'{field}\s*=\s*"([^"]+)"', info)[1] == expected
+    assert schema['product'].split('.')[-1] == 'Press78'
+    mother = (device/'motherboard_def.lua').read_text()
+    cpp = (device/'Parameters.h').read_text()
+    apply = (device/'ApplyParameters.inc').read_text()
+    for key in rows:
+        assert re.search(rf'\b{key}\s*=\s*jbox.number', mother), key
+        assert f'k_{key}' in cpp, key
+        assert f'physical(k_{key})' in apply or key in ('bendRange', 'modWheelDepth'), key
+    groups=mother.split('ui_groups = {',1)[1]
+    grouped=re.findall(r'"/custom_properties/([^"]+)"',groups)
+    assert len(grouped) == len(rows) and set(grouped) == set(rows)
+    # All panel parameters need explicit, stable host automation mappings.
+    registry = json.loads((ROOT/'Resources/rack-automation.json').read_text())
+    assert registry['product'] == schema['product']
+    automation = re.findall(r'\[(\d+)\]\s*=\s*"/custom_properties/([^\"]+)"',
+                            mother.split('midi_implementation_chart =',1)[1].split('ui_groups =',1)[0])
+    ids = {name: int(number) for number, name in automation}
+    assert len(automation) == len(ids) == len(rows)
+    assert ids == registry['ids'] and set(ids) == set(rows)
+    assert len(set(ids.values())) == len(ids)
+    assert ids['masterGain'] == 7 and ids['toneCutoffHz'] == 74
+    assert all(number in (7,74) or 256 <= number <= 10039 for number in ids.values())
+    locale = (device/'Resources/English/texts.lua').read_text()
+    keys = set(re.findall(r'\["([^"]+)"\]\s*=', locale))
+    lua_paths = [device/'motherboard_def.lua'] + list((device/'GUI2D').glob('*.lua')) + list((device/'GUI/Output').glob('*.lua'))
+    used = set()
+    for path in lua_paths:
+        used.update(re.findall(r'jbox.ui_text\("([^"]+)"\)', path.read_text()))
+    assert not used-keys, f'Missing localization: {used-keys}'
+
+    # Execute only the unchanged pure decoder function, avoiding the reference
+    # renderer's NumPy/SciPy dependency for this metadata-only check.
+    source = ROOT/'Reference/Python/src/pss780.py'
+    tree = ast.parse(source.read_text())
+    decoder = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == 'read_sysex')
+    namespace = {}
+    exec(compile(ast.Module(body=[decoder], type_ignores=[]), str(source), 'exec'), namespace)
+    bank = json.loads((ROOT/'Resources/FactoryBank/press78-factory.json').read_text())
+    expected = {'Init': {}}
+    aliases = {'lks_hi': 'lksHi', 'lks_lo': 'lksLo', 'am_enable': 'amEnable'}
+    for voice in bank['voices']:
+        patch = namespace['read_sysex'](bytes.fromhex(voice['sysex_hex']))
+        values = {}
+        for op, prefix in [('modulator', 'mod'), ('carrier', 'car')]:
+            values.update({prefix+'_'+aliases.get(key, key): value for key, value in patch[op].items()})
+        for key in ('feedback', 'pms', 'ams', 'vibrato_delay', 'vibrato', 'sustain'):
+            values['vibratoDelay' if key == 'vibrato_delay' else key] = int(patch[key])
+        values.update(chorusMode=1,chorusRateHz=0.9546467517767424,
+                      chorusDepthMs=math.hypot(0.0495126833338911,0.4943632948117077))
+        assert voice['name'].startswith('PSS ')
+        expected[voice['name'].replace('/', '-')] = values
+    paths = sorted((device/'Resources/Public').glob('*.repatch'))
+    assert len(paths) == 101
+    assert {p.stem for p in paths} == set(expected)
+    for path in paths:
+        # Python accepts declarations which the Recon SXML reader rejects.
+        assert path.read_bytes().startswith(b'<?xml version="1.0"?>\n'), (path.name, 'SDK5 patch XML declaration')
+        tree = ET.parse(path)
+        props = tree.find('Properties')
+        assert props.attrib == {'deviceProductID': schema['product'], 'deviceVersion': schema['version']}
+        obj = props.find('Object')
+        assert obj.attrib == {'name': 'custom_properties'}
+        values = {v.attrib['property']: float(v.text) for v in obj}
+        assert len(obj) == len(values) == len(rows) and set(values) == set(rows)
+        for key, value in values.items():
+            row = rows[key]
+            assert math.isfinite(value)
+            if row['integer']:
+                assert value == round(value) and 0 <= value <= row['max']-row['min']
+                physical = value+row['min']
+            else:
+                assert 0 <= value <= 1
+                physical = row['min']+value*(row['max']-row['min'])
+            target = expected[path.stem].get(key, row['default'])
+            assert abs(physical-target) < 1e-9, (path.name, key, physical, target)
+    result = dict(passed=True, controls=len(rows), performance_inputs=3, patches=len(paths),
+                  automation_mappings=len(ids),
+                  localization_references=len(used), scope='Generated source contracts; no host execution',
+                  sha256={str(p.relative_to(device)): hashlib.sha256(p.read_bytes()).hexdigest()
+                          for p in [device/'info.lua', device/'motherboard_def.lua', device/'Parameters.h', device/'ApplyParameters.inc', *paths]})
+    out = device/'Tests/results/rack-contract.json'
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(result, indent=2)+'\n')
+    print(f'PASS: {len(rows)} controls, {len(paths)} patches, {len(used)} localized keys')
+
+
+if __name__ == '__main__':
+    main()

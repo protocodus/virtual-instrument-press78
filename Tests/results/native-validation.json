@@ -1,0 +1,45 @@
+{
+  "scope": "Native behavioral-model correctness and effect parity contracts; not hardware or Reason validation.",
+  "passed": true,
+  "tests_passed": 42,
+  "tests_failed": 0,
+  "address_sanitizer": true,
+  "undefined_behavior_sanitizer": true,
+  "engine_size_bytes": 180344,
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+  "compile_command": [
+    "clang++",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer",
+    "-std=c++17",
+    "-O1",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-pedantic",
+    "-ISource/DSP",
+    "Tests/test_dsp.cpp",
+    "Source/DSP/Press78Engine.cpp",
+    "-o",
+    "/var/folders/jl/cjv384t54g3bpst5xzs9zqnc0000gn/T/press78-native-jjs1tmg2/tests"
+  ],
+  "source_sha256": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "Source/DSP/Press78Engine.h": "9efb33b6c02160f439e222b8775df4863d90d5be7ef2dd88e23ca37fa0885e3f",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+    "Source/DSP/Press78Engine.cpp": "d67e6e316e8cc7528b5df71d3f351cfca68a47cef83cab49648c1a5af441765d",
+    "Tests/test_dsp.cpp": "b6efbc22e1094baeba766e6f3d04210ce36b97d82725123d7598bc16204dbbf7",
+    "Tests/run_native.py": "ce032b49c5bd8d7a80f4029faf8dfe049ccf038a0ca788ec8b63bf3188407c09"
+  },
+  "limitations": [
+    "Fixed48k internalclock is a modeling choice, not measured OPU timing.",
+    "Reported32-tick latency is nominal and changes with clock ratio; positive clockoffset can alias nearNyquist.",
+    "Recorded chorus is a causal effective capturetransfer, not identified physical BBD; Studio remainsdefault.",
+    "Native tests do not establish SDK target or Reason host execution."
+  ]
+}

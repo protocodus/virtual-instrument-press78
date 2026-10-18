@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "study": "Layout study03",
+  "browser": "Chromium via Playwright",
+  "viewport_width": 1200,
+  "rack_width": 754,
+  "rack_height": 828,
+  "rack_units": 12,
+  "front_controls": 59,
+  "rear_controls": 6,
+  "horizontal_page_overflow": false,
+  "preset": "PSS93 Human Voice1",
+  "checks": [
+    "preset and control readouts",
+    "moved Sustain RR editing through inspector",
+    "67px waveform targets and selected indicator",
+    "front chorus type change",
+    "rear DC block configuration",
+    "front/rear/folded navigation",
+    "preset reload",
+    "all65property paths/ranges/defaults/bindings unchanged"
+  ],
+  "reviewed": [
+    "front@1x.png",
+    "rear@1x.png",
+    "folded-front@1x.png",
+    "folded-rear@1x.png",
+    "front-review.png"
+  ],
+  "native_host_tested": false,
+  "scope": "Layout and browser interaction; no audio or installed build changes",
+  "sha256": {
+    "index.html": "ff4c0a10962a4d236670b39f309fcc00cf2b1db715b67201840aa9e84efc446e",
+    "front-review.png": "ed3d29d1c0adbaf8655b5cc8efd43e907aae5d5edac3554b9cd2f7f7e36f8143",
+    "geometry.json": "65bea4cf9b7ad774e84dc01844d6e921ec5a6afb1fea3ca5d79583186ac8f0a6"
+  }
+}

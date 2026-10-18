@@ -1,0 +1,55 @@
+{
+  "scope": "C++ circuit runtime vs frozen PSS480 MNA; not original PSS780 hardware verification",
+  "passed": true,
+  "rows": [
+    {
+      "sample_rate": 8000,
+      "frames": 8000,
+      "max_absolute_error": 2.679789014661555e-12,
+      "relative_rms_error": 1.257810341471041e-10,
+      "passed": true
+    },
+    {
+      "sample_rate": 44100,
+      "frames": 44100,
+      "max_absolute_error": 4.56324648206996e-13,
+      "relative_rms_error": 1.2928751124136656e-11,
+      "passed": true
+    },
+    {
+      "sample_rate": 44117,
+      "frames": 44117,
+      "max_absolute_error": 2.0026081487545255e-14,
+      "relative_rms_error": 5.934267677689622e-13,
+      "passed": true
+    },
+    {
+      "sample_rate": 48000,
+      "frames": 48000,
+      "max_absolute_error": 0.0,
+      "relative_rms_error": 0.0,
+      "passed": true
+    },
+    {
+      "sample_rate": 96000,
+      "frames": 96000,
+      "max_absolute_error": 2.1404059080687432e-13,
+      "relative_rms_error": 9.623492783273946e-12,
+      "passed": true
+    },
+    {
+      "sample_rate": 192000,
+      "frames": 192000,
+      "max_absolute_error": 1.5452785603301163e-13,
+      "relative_rms_error": 3.789131099332215e-11,
+      "passed": true
+    }
+  ],
+  "probe_sha256": "7b18423aa681ef0d054e636914fdb2c3b4ff16cc10697d888dd56833156a33c0",
+  "source_sha256": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Tools/AnalogProbe.cpp": "63e879bac17e682b1677f9c7d891fbedc0b0f545b8ba246482b30ba08fdc7565",
+    "Tools/check_analog_runtime.py": "d509138e0ab204f155df314ff59cfcda232c412aa827a528b9b37ee79165d91d",
+    "Reference/Python/circuit/model.py": "50f19cb6a00fe79bea77c65befb1ef972f1349d7f1ce4d1a392529e924a4fae0"
+  }
+}

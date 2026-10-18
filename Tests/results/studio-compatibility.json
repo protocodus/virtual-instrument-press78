@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "scope": "Byte-identical Studio/default output vs explicit archived native source;300 preset/rate/chord/control cases, not hardware verification.",
+  "cases": 300,
+  "sample_rates": [
+    44100,
+    48000,
+    96000
+  ],
+  "frames_per_case": 2048,
+  "output_sha256": "ea0ade86750d798bbb6e69b50337704f83f3cc2f6c26da4b613af251948ba48c",
+  "source_sha256": {
+    "baseline": {
+      "AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+      "FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+      "Press78Engine.h": "cfc221fedc64633fe292437350c2e8e90614a598b51ec2875b71c29c494344bf",
+      "Press78Engine.cpp": "fa4b306586ef2579158c640502a19058efbd1f82b5982c621cb1212860cf0fe2"
+    },
+    "current": {
+      "AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+      "CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+      "FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+      "Press78Engine.h": "9efb33b6c02160f439e222b8775df4863d90d5be7ef2dd88e23ca37fa0885e3f",
+      "RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+      "RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+      "Press78Engine.cpp": "d67e6e316e8cc7528b5df71d3f351cfca68a47cef83cab49648c1a5af441765d"
+    }
+  },
+  "fixture_sha256": "77f9066c4114b34ee855235a5b76879f6e40cc1f4b2bd0333efcb898eebb0ea6",
+  "baseline_directory": "/Users/vojta/Dev/virtual-instrument-press78/build/hardware-benchmarks/baseline-20261018T081942Z/source"
+}

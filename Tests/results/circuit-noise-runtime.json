@@ -1,0 +1,264 @@
+{
+  "kind": "Native causal PSS480 circuit-noise validation",
+  "passed": true,
+  "source_sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+  "deterministic_parity": {
+    "8000": {
+      "maximum_error_v": 2.5130408753851023e-18,
+      "relative_peak_error": 3.460264454430386e-13,
+      "bytes": 3024,
+      "seconds": 0.00146596,
+      "sample_rate": 8000,
+      "frames": 8192
+    },
+    "44100": {
+      "maximum_error_v": 1.1587410718438829e-18,
+      "relative_peak_error": 8.179032866617817e-14,
+      "bytes": 3024,
+      "seconds": 0.00134471,
+      "sample_rate": 44100,
+      "frames": 8192
+    },
+    "48000": {
+      "maximum_error_v": 1.4450382080158364e-18,
+      "relative_peak_error": 9.961273428128049e-14,
+      "bytes": 3024,
+      "seconds": 0.00147454,
+      "sample_rate": 48000,
+      "frames": 8192
+    },
+    "96000": {
+      "maximum_error_v": 8.199278929421627e-19,
+      "relative_peak_error": 4.910152727919401e-14,
+      "bytes": 3024,
+      "seconds": 0.00137425,
+      "sample_rate": 96000,
+      "frames": 8192
+    },
+    "192000": {
+      "maximum_error_v": 7.979050363135509e-19,
+      "relative_peak_error": 5.0172227886501816e-14,
+      "bytes": 3024,
+      "seconds": 0.00139433,
+      "sample_rate": 192000,
+      "frames": 8192
+    }
+  },
+  "stochastic": {
+    "44100": {
+      "predicted_rms_v": [
+        1.0849195515057024e-05,
+        1.0849195515057024e-05
+      ],
+      "native_rms_v": [
+        1.0862407106379548e-05,
+        1.0850391789921308e-05
+      ],
+      "expected_correlation": 0.05856116340627978,
+      "native_correlation": 0.060948067662262496,
+      "bands": [
+        {
+          "band_hz": [
+            30,
+            100
+          ],
+          "power_error_db": [
+            -0.0022792608725093495,
+            -0.04645248250533256
+          ]
+        },
+        {
+          "band_hz": [
+            100,
+            1000
+          ],
+          "power_error_db": [
+            0.04105026519011929,
+            -0.025365274209211926
+          ]
+        },
+        {
+          "band_hz": [
+            1000,
+            5000
+          ],
+          "power_error_db": [
+            0.020942970639390605,
+            0.006918618740380032
+          ]
+        },
+        {
+          "band_hz": [
+            5000,
+            10000
+          ],
+          "power_error_db": [
+            -0.009668660366862565,
+            -0.0006539133379231988
+          ]
+        },
+        {
+          "band_hz": [
+            10000,
+            20000
+          ],
+          "power_error_db": [
+            0.012814677548218738,
+            0.006725343281815116
+          ]
+        }
+      ],
+      "generation": {
+        "bytes": 3024,
+        "seconds": 0.129644,
+        "sample_rate": 44100,
+        "frames": 926100
+      },
+      "normalization": "none; fixed physical input noise PSD"
+    },
+    "48000": {
+      "predicted_rms_v": [
+        1.1043786694709866e-05,
+        1.1043786694709866e-05
+      ],
+      "native_rms_v": [
+        1.1056758830429723e-05,
+        1.1044514086057977e-05
+      ],
+      "expected_correlation": 0.05779964507130151,
+      "native_correlation": 0.06034472009364099,
+      "bands": [
+        {
+          "band_hz": [
+            30,
+            100
+          ],
+          "power_error_db": [
+            -0.05940024175198549,
+            -0.09197701962935625
+          ]
+        },
+        {
+          "band_hz": [
+            100,
+            1000
+          ],
+          "power_error_db": [
+            0.012903627179053306,
+            -0.011231166396920204
+          ]
+        },
+        {
+          "band_hz": [
+            1000,
+            5000
+          ],
+          "power_error_db": [
+            0.011660393342535488,
+            -0.009157947409109567
+          ]
+        },
+        {
+          "band_hz": [
+            5000,
+            10000
+          ],
+          "power_error_db": [
+            0.009156965662424027,
+            0.00786150693387504
+          ]
+        },
+        {
+          "band_hz": [
+            10000,
+            20000
+          ],
+          "power_error_db": [
+            0.009771824156957756,
+            0.010761815666190057
+          ]
+        }
+      ],
+      "generation": {
+        "bytes": 3024,
+        "seconds": 0.136779,
+        "sample_rate": 48000,
+        "frames": 1008000
+      },
+      "normalization": "none; fixed physical input noise PSD"
+    },
+    "96000": {
+      "predicted_rms_v": [
+        1.1767583398117809e-05,
+        1.1767583398117809e-05
+      ],
+      "native_rms_v": [
+        1.1773531613212126e-05,
+        1.1737186972199667e-05
+      ],
+      "expected_correlation": 0.05625692228483962,
+      "native_correlation": 0.057030896622422875,
+      "bands": [
+        {
+          "band_hz": [
+            30,
+            100
+          ],
+          "power_error_db": [
+            -0.02426641174870788,
+            -0.2097527185206212
+          ]
+        },
+        {
+          "band_hz": [
+            100,
+            1000
+          ],
+          "power_error_db": [
+            0.060405255025439634,
+            -0.007396509053907518
+          ]
+        },
+        {
+          "band_hz": [
+            1000,
+            5000
+          ],
+          "power_error_db": [
+            0.007349072975208749,
+            -0.03695128768567194
+          ]
+        },
+        {
+          "band_hz": [
+            5000,
+            10000
+          ],
+          "power_error_db": [
+            -0.003219700894807956,
+            -0.01587729638639863
+          ]
+        },
+        {
+          "band_hz": [
+            10000,
+            20000
+          ],
+          "power_error_db": [
+            -0.0016686232843531282,
+            -0.014704671876388357
+          ]
+        }
+      ],
+      "generation": {
+        "bytes": 3024,
+        "seconds": 0.268771,
+        "sample_rate": 96000,
+        "frames": 2016000
+      },
+      "normalization": "none; fixed physical input noise PSD"
+    }
+  },
+  "seed_repeat_bit_exact": true,
+  "invalid_rate_sanitization_finite": true
+}

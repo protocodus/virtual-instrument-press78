@@ -1,0 +1,457 @@
+{
+  "passed": true,
+  "scope": "Read-only native/Python release, allocator and candidate-audition audit; not hardware calibration.",
+  "theory": [
+    {
+      "carrier_rr": 7,
+      "effective_rr": 30,
+      "seconds_per_96_db": 0.26516504294495535,
+      "seconds_per_60_db": 0.1657281518405971,
+      "seconds_per_18_db": 0.04971844555217913
+    },
+    {
+      "carrier_rr": 6,
+      "effective_rr": 26,
+      "seconds_per_96_db": 0.5303300858899107,
+      "seconds_per_60_db": 0.3314563036811942,
+      "seconds_per_18_db": 0.09943689110435826
+    },
+    {
+      "carrier_rr": 5,
+      "effective_rr": 22,
+      "seconds_per_96_db": 1.0606601717798214,
+      "seconds_per_60_db": 0.6629126073623884,
+      "seconds_per_18_db": 0.19887378220871652
+    }
+  ],
+  "envelope_cases": 72,
+  "max_active_during_preset93": 10,
+  "preset93_stolen": 0,
+  "actual_note_tails": [
+    {
+      "note": 46,
+      "age": 1613,
+      "noteoff_frame": 7940041,
+      "noteoff_seconds": 165.41752083333333,
+      "finish_frame": 7952768,
+      "finish_seconds": 165.68266666666668,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 58,
+      "age": 1614,
+      "noteoff_frame": 7940041,
+      "noteoff_seconds": 165.41752083333333,
+      "finish_frame": 7952768,
+      "finish_seconds": 165.68266666666668,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 48,
+      "age": 1615,
+      "noteoff_frame": 7950628,
+      "noteoff_seconds": 165.63808333333333,
+      "finish_frame": 7963355,
+      "finish_seconds": 165.90322916666668,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 60,
+      "age": 1616,
+      "noteoff_frame": 7950628,
+      "noteoff_seconds": 165.63808333333333,
+      "finish_frame": 7963355,
+      "finish_seconds": 165.90322916666668,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 46,
+      "age": 1617,
+      "noteoff_frame": 7961214,
+      "noteoff_seconds": 165.858625,
+      "finish_frame": 7973941,
+      "finish_seconds": 166.12377083333334,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 58,
+      "age": 1618,
+      "noteoff_frame": 7961214,
+      "noteoff_seconds": 165.858625,
+      "finish_frame": 7973941,
+      "finish_seconds": 166.12377083333334,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 82,
+      "age": 1612,
+      "noteoff_frame": 7971800,
+      "noteoff_seconds": 166.07916666666668,
+      "finish_frame": 7984527,
+      "finish_seconds": 166.3443125,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 44,
+      "age": 1619,
+      "noteoff_frame": 7971800,
+      "noteoff_seconds": 166.07916666666668,
+      "finish_frame": 7984527,
+      "finish_seconds": 166.3443125,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 56,
+      "age": 1620,
+      "noteoff_frame": 7971800,
+      "noteoff_seconds": 166.07916666666668,
+      "finish_frame": 7984527,
+      "finish_seconds": 166.3443125,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 74,
+      "age": 1621,
+      "noteoff_frame": 7982386,
+      "noteoff_seconds": 166.29970833333334,
+      "finish_frame": 7995113,
+      "finish_seconds": 166.56485416666666,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 46,
+      "age": 1622,
+      "noteoff_frame": 7982386,
+      "noteoff_seconds": 166.29970833333334,
+      "finish_frame": 7995113,
+      "finish_seconds": 166.56485416666666,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 58,
+      "age": 1623,
+      "noteoff_frame": 7982386,
+      "noteoff_seconds": 166.29970833333334,
+      "finish_frame": 7995113,
+      "finish_seconds": 166.56485416666666,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": false
+    },
+    {
+      "note": 77,
+      "age": 1624,
+      "noteoff_frame": 7992972,
+      "noteoff_seconds": 166.52025,
+      "finish_frame": 8005699,
+      "finish_seconds": 166.78539583333333,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": true
+    },
+    {
+      "note": 44,
+      "age": 1625,
+      "noteoff_frame": 7992972,
+      "noteoff_seconds": 166.52025,
+      "finish_frame": 8005699,
+      "finish_seconds": 166.78539583333333,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": true
+    },
+    {
+      "note": 56,
+      "age": 1626,
+      "noteoff_frame": 7992972,
+      "noteoff_seconds": 166.52025,
+      "finish_frame": 8005699,
+      "finish_seconds": 166.78539583333333,
+      "finish_tick_count": 12728,
+      "attenuation_at_off_db": 4.955029645844671e-05,
+      "survives_program94_boundary": true
+    }
+  ],
+  "candidate_allocation": {
+    "6": {
+      "summary": {
+        "kind": "summary",
+        "max_active_164_to_168": 12,
+        "preset93_stolen": 1,
+        "whole_sequence_stolen_through_168": 234
+      },
+      "preset93_steals": [
+        {
+          "kind": "steal93",
+          "frame": 8003559,
+          "note": 74,
+          "age": 1621,
+          "attenuation_db": 79.84843289998636,
+          "held": 0
+        }
+      ],
+      "benchmark_event_equivalence": {
+        "path": "build/release-analysis-20261018T0905/RR6-events.txt",
+        "sha256": "db4999d4a233638841bc9c00ccd3dd7072dd24c14f777424d5a1953cf4fb116e",
+        "prefix_events": 3398,
+        "only_difference": "preset93 carrierRR byte14",
+        "last_event_seconds": 168.50516666666667
+      }
+    },
+    "5": {
+      "summary": {
+        "kind": "summary",
+        "max_active_164_to_168": 12,
+        "preset93_stolen": 17,
+        "whole_sequence_stolen_through_168": 250
+      },
+      "preset93_steals": [
+        {
+          "kind": "steal93",
+          "frame": 7982386,
+          "note": 82,
+          "age": 1612,
+          "attenuation_db": 19.961202578675824,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 7982386,
+          "note": 46,
+          "age": 1613,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 7982386,
+          "note": 58,
+          "age": 1614,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 7992973,
+          "note": 48,
+          "age": 1615,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 7992973,
+          "note": 60,
+          "age": 1616,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 7992973,
+          "note": 46,
+          "age": 1617,
+          "attenuation_db": 59.88539425352384,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8003559,
+          "note": 58,
+          "age": 1618,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8003559,
+          "note": 44,
+          "age": 1619,
+          "attenuation_db": 59.88539425352384,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8003559,
+          "note": 56,
+          "age": 1620,
+          "attenuation_db": 59.88539425352384,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8003559,
+          "note": 74,
+          "age": 1621,
+          "attenuation_db": 39.924241225141415,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8024731,
+          "note": 46,
+          "age": 1622,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8024731,
+          "note": 58,
+          "age": 1623,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8024731,
+          "note": 77,
+          "age": 1624,
+          "attenuation_db": 59.88539425352384,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8035317,
+          "note": 44,
+          "age": 1625,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8035317,
+          "note": 56,
+          "age": 1626,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8045904,
+          "note": 80,
+          "age": 1627,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        },
+        {
+          "kind": "steal93",
+          "frame": 8045904,
+          "note": 41,
+          "age": 1628,
+          "attenuation_db": 79.84654728190627,
+          "held": 0
+        }
+      ],
+      "benchmark_event_equivalence": {
+        "path": "build/release-analysis-20261018T0905/RR5-events.txt",
+        "sha256": "f00a3c6d27aa81db7ec28edad6eaff3319e4fe3f64c7774bf277d5f705647419",
+        "prefix_events": 3398,
+        "only_difference": "preset93 carrierRR byte14",
+        "last_event_seconds": 168.50516666666667
+      }
+    }
+  },
+  "conclusion": "RR import and port are consistent. No preset93 voice stealing or premature tail cut. Missing Reverb-dependent envelope behavior remains plausible but unidentified; no DSP edit justified by this test.",
+  "source_sha256": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "Source/DSP/Press78Engine.h": "9efb33b6c02160f439e222b8775df4863d90d5be7ef2dd88e23ca37fa0885e3f",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+    "Source/DSP/Press78Engine.cpp": "d67e6e316e8cc7528b5df71d3f351cfca68a47cef83cab49648c1a5af441765d",
+    "Reference/Python/src/pss780.py": "a339c0593608aeabc133fc96697ff7fda7650502063fd356994431b0f471fbf7",
+    "Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2",
+    "build/hardware-benchmarks/baseline-20261018T081942Z/events.txt": "d11b10ce696eda8b3ffadbaf6818497688bbcdf3c9ac99235233070cb6a3def2",
+    "build/release-analysis/inspect_release.cpp": "80df018ffdde4f7475ef7db371c48dd57cc5bc6e5f62f0c7bec54b4c8f0c0e03",
+    "build/release-analysis/analyze.py": "63f4321b07bffcc0bf8f46c4e97e0edfe300dc67f25c724b5b67e7bac990ca6d"
+  },
+  "envelope_finish_tick_max_native_python_difference": 0,
+  "isolated74": {
+    "clip_video_start_seconds": 165.9,
+    "clip_video_end_seconds": 168,
+    "on_frame_global": 7971800,
+    "off_frame_global": 7982386,
+    "native_nominal_latency_samples_trimmed": 32,
+    "chorus_initial_epoch_seconds": 165.89933333333335,
+    "master_gain": 1,
+    "normalization": "none; same gain for all candidates",
+    "rr6_rr5_scope": "Carrier RR changed only. No sustain/modulator edit. Explanatory uncalibrated scenarios.",
+    "audio": [
+      {
+        "filename": "isolated74-rr5-raw.wav",
+        "sample_rate": 48000,
+        "frames": 100800,
+        "peak": 0.1030975952744484,
+        "sha256": "e83c0ed4bc66430f20e2ef51080014d181cfa86fec709411303f5013ac94b857",
+        "native_python_relative_rms": 2.410071871448239e-08,
+        "native_python_max_abs": 3.725209848925992e-09
+      },
+      {
+        "filename": "isolated74-rr5-recorded.wav",
+        "sample_rate": 48000,
+        "frames": 100800,
+        "peak": 0.17316612601280212,
+        "sha256": "c54e358dfd363cb6f46189380456877fa102813f78ae4be9fa80bb5c5c5d0fbc"
+      },
+      {
+        "filename": "isolated74-rr6-raw.wav",
+        "sample_rate": 48000,
+        "frames": 100800,
+        "peak": 0.1030975952744484,
+        "sha256": "dc67a835c83fd782143365a9653ec71976415c0033400d1dd450967f22b1bda8",
+        "native_python_relative_rms": 2.3904185913136672e-08,
+        "native_python_max_abs": 3.725209848925992e-09
+      },
+      {
+        "filename": "isolated74-rr6-recorded.wav",
+        "sample_rate": 48000,
+        "frames": 100800,
+        "peak": 0.17316612601280212,
+        "sha256": "8ed5c3c0da74db0ba0523994e578f5bcf219250bd1fa3d226d506fd8c01bfe7f"
+      },
+      {
+        "filename": "isolated74-rr7-raw.wav",
+        "sample_rate": 48000,
+        "frames": 100800,
+        "peak": 0.1030975952744484,
+        "sha256": "decb3ef1ceb98bc5cf6b7015106e28d4faa33d977c93404464c6c9fce0b1c318",
+        "native_python_relative_rms": 2.3809235703455973e-08,
+        "native_python_max_abs": 3.725209848925992e-09
+      },
+      {
+        "filename": "isolated74-rr7-recorded.wav",
+        "sample_rate": 48000,
+        "frames": 100800,
+        "peak": 0.17316612601280212,
+        "sha256": "8d46330ce40719502221c58540f06f83032c95d5c3b0b9987bd89832d02edd18"
+      }
+    ]
+  },
+  "full_report": "build/release-analysis/release-core-report.json",
+  "reproduce": "python3 build/release-analysis/analyze.py",
+  "evidence_note_sha256": "7c47d6131accecc780ee7f587ea1a17ca8493a24190a012bd62fd54bb7d133fd"
+}

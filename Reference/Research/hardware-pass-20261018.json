@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-18",
+  "status": "recommendation and causal related-circuit noise port completed; engine integration owned separately",
+  "new_hardware_measurements": false,
+  "fresh_holdout": false,
+  "recommended_native_modes": {
+    "0": "Studio existing compatibility behavior",
+    "1": "Recorded causal v3 single-video effective transfer"
+  },
+  "physical_mode_recommended_this_pass": false,
+  "recorded_reference": {
+    "lfo_hz": 0.9546467517767424,
+    "delay_ms": {
+      "mean": 1.0125596159214152,
+      "sin_1": 0.0495126833338911,
+      "cos_1": 0.4943632948117077,
+      "sin_2": 0.05909196059342724,
+      "cos_2": -0.026924964944642096
+    },
+    "delay_extrema_ms": [
+      0.4874479940127231,
+      1.511407445732351
+    ],
+    "wet_gain": 0.5323384856515782,
+    "mid_leak_gain": 0.0935776226127722,
+    "identified_band_hz": [
+      100,
+      4000
+    ],
+    "phase_origin": "decoded video audio0, not hardware reset",
+    "required_added_whole_stereo_latency_samples": 0
+  },
+  "v4_causal_equivalent": {
+    "sample_rate_hz": 48000,
+    "minimum_lookahead_samples": 1048,
+    "minimum_lookahead_ms": 21.833333333333332,
+    "offline_crop_context_ms": 32,
+    "deferred": true
+  },
+  "physical_bbd": {
+    "stages": 128,
+    "complete_cp_delay_cycles": 64,
+    "cp_range_hz": [
+      10000,
+      200000
+    ],
+    "documented_thd_condition": {
+      "supply_v": 5,
+      "clock_hz": 40000,
+      "input_rms_v": 0.25,
+      "signal_hz": 1000,
+      "typical_ratio": 0.003,
+      "maximum_ratio": 0.025
+    },
+    "documented_noise_condition": {
+      "supply_v": 5,
+      "clock_hz": 100000,
+      "maximum_aweighted_rms_v": 0.0001
+    },
+    "integration_rates_hz": {
+      "40000": 320000,
+      "100000": 800000
+    },
+    "integration_rate_is_hardware_fact": false,
+    "known_exact_780_clock_trajectory": false
+  },
+  "unsupported_defaults": [
+    "DAC bit depth/companding",
+    "stochastic clock jitter/aging PSD",
+    "random memory bit errors",
+    "capture noise as a hardware voltage calibration",
+    "cubic as a measured BBD transfer law"
+  ],
+  "sources": [
+    {
+      "kind": "exact-model primary parts list",
+      "url": "https://www.manualslib.com/manual/4045165/Yamaha-Portasound-Pss-780.html?page=12#manual"
+    },
+    {
+      "kind": "related PSS480 primary schematic",
+      "url": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017"
+    },
+    {
+      "kind": "related PSS270 primary schematic",
+      "url": "https://github.com/fmillion/yamaha-pss270/blob/8943bf963f196f20b4e2fc714f15400db578891b/PSS270-Schematic.tif"
+    },
+    {
+      "kind": "manufacturer MN3206",
+      "url": "https://github.com/fmillion/yamaha-pss270/blob/8943bf963f196f20b4e2fc714f15400db578891b/datasheets/MN3206.pdf"
+    },
+    {
+      "kind": "manufacturer MN3102",
+      "url": "https://github.com/fmillion/yamaha-pss270/blob/8943bf963f196f20b4e2fc714f15400db578891b/datasheets/MN3102.pdf"
+    },
+    {
+      "kind": "single processed recording",
+      "url": "https://www.youtube.com/watch?v=ONfIvtDOog0"
+    }
+  ],
+  "reference_sha256": {
+    "Reference/Python/circuit/__init__.py": "5ac08b56301635fa62decd3db697f65e18faa6f950e9ffbbcb398fa2c1bb5955",
+    "Reference/Python/circuit/bbd_model.py": "11d9d4bc6a933d1314a96035e7def96872b997911ec9063d63ca94b7661ff0f1",
+    "Reference/Python/circuit/calibrated_chorus.py": "0a487838e8e5465b95f4be2f90a142b0a97ef715ff898b68d029dc821a80edee",
+    "Reference/Python/circuit/model.py": "50f19cb6a00fe79bea77c65befb1ef972f1349d7f1ce4d1a392529e924a4fae0",
+    "Reference/Python/circuit/pss270_chorus.py": "c97ae13944c62c873d51771d7447a8aede916294998ba8d985167319b0524587",
+    "Reference/Python/circuit/refined_chorus.py": "7bd7460ff74a5919103e9ee054e6962b140bcce0923cf447829700bd31404430",
+    "Reference/Python/circuit/sibling_output.py": "4e0ba6e309023aa7ad9dd1c4f4806646f31ffe31041af632dc2fbab40bc62dfa",
+    "Reference/Python/circuit/v4_effective_stereo_profile.json": "757e791fbf75c070dd55066bb0f3cf5775cebf59d96c05edc638a43c638dc70e",
+    "Reference/Python/circuit/video_chorus_profile.json": "854a2b2fc412e1050ccc1d47564d41a9a27cb0b265d20977be0144478cc85981",
+    "Reference/Python/circuit/output_stage.py": "94243d5e2eb1bb410f6b8298c0e6c500214c728c3fc2147403b8109176d0eb87"
+  },
+  "circuit_noise": {
+    "header": "Source/DSP/CircuitNoise.h",
+    "generator": "Tools/generate_circuit_noise.py",
+    "reference": "Reference/Python/circuit/output_stage.py",
+    "runtime_report": "Tests/results/circuit-noise-runtime.json",
+    "frequency_report": "Tests/results/circuit-noise-generated.json",
+    "states": 12,
+    "sources": 14,
+    "instance_bytes": 3024,
+    "normalization_rms_v": 1.1968667679922074e-05,
+    "normalization_scope": "fixed continuous circuit 20\u201320000Hz integral, not per-rate or per-clip",
+    "default_enabled": false,
+    "physical_volts_mapping_identified": false,
+    "native_runtime_validation_passed": true,
+    "bilinear_sample_rate_warping_disclosed": true,
+    "native_parity_max_relative_peak_error": 3.460264454430386e-13,
+    "independent_full_mna_review": {
+      "report": "Tests/results/circuit-noise-independent-review.json",
+      "passed": true,
+      "rates_hz": [
+        8000,
+        44100,
+        44117,
+        48000,
+        96000,
+        192000
+      ],
+      "maximum_absolute_error_v": 7.965159022800539e-17,
+      "maximum_relative_rms_error": 1.5785679696653842e-12,
+      "scope": "Independent compiled CircuitNoise vs direct full-MNA trapezoidal descriptor recurrence; deterministic unit-variance innovations; no hardware equivalence claim"
+    }
+  },
+  "physics_blocker_for_bounded_pass": false
+}

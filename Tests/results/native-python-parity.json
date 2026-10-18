@@ -1,0 +1,1715 @@
+{
+  "scope": "nominal48k raw behavioral-model parity; no hardware equivalence assertion",
+  "latency_removed_internal_samples": 32,
+  "passed": true,
+  "reference_sha256": "a339c0593608aeabc133fc96697ff7fda7650502063fd356994431b0f471fbf7",
+  "bank_sha256": "571d88bac22ac47eb281684d8edcece94b4319ef1b305cc99748fe70151d5168",
+  "renderer_sha256": "c944b69e64533d5129d39b19cdcdfae6ddb44bfe3e681ec6993dac534135d6a2",
+  "parity_script_sha256": "7d0b7f5d007ea441c2669562422eaf4981744ded574c0bb0348c8509d2de80a7",
+  "native_source_sha256": {
+    "Source/DSP/Press78Engine.cpp": "fa4b306586ef2579158c640502a19058efbd1f82b5982c621cb1212860cf0fe2",
+    "Source/DSP/Press78Engine.h": "cfc221fedc64633fe292437350c2e8e90614a598b51ec2875b71c29c494344bf"
+  },
+  "fixtures": [
+    {
+      "preset": 65,
+      "name": "bowed bass",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7251964846163332e-09,
+      "relative_rms_error": 2.056525426528114e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 144032,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.12212,
+        "rms": 0.0610068
+      }
+    },
+    {
+      "preset": 93,
+      "name": "human voice 1",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.725335387394502e-09,
+      "relative_rms_error": 2.1100890724300864e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 144032,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.122119,
+        "rms": 0.060789
+      }
+    },
+    {
+      "preset": 97,
+      "name": "musical saw",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.450184830171125e-09,
+      "relative_rms_error": 2.6772300006608028e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 144032,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.158228,
+        "rms": 0.0704468
+      }
+    },
+    {
+      "preset": 99,
+      "name": "sine wave",
+      "note": 69,
+      "velocity": 127,
+      "max_absolute_error": 7.432460508161043e-09,
+      "relative_rms_error": 2.227975595775376e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 144032,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.236265,
+        "rms": 0.118355
+      }
+    },
+    {
+      "preset": 0,
+      "name": "piano 1",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.4479792611104045e-09,
+      "relative_rms_error": 2.4576943813447102e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.243621,
+        "rms": 0.0856898
+      }
+    },
+    {
+      "preset": 1,
+      "name": "piano 2",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449562522410247e-09,
+      "relative_rms_error": 2.5750660555412693e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.204801,
+        "rms": 0.0716819
+      }
+    },
+    {
+      "preset": 2,
+      "name": "electric piano 1",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4843994422530926e-08,
+      "relative_rms_error": 2.4116994461679108e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.265327,
+        "rms": 0.103875
+      }
+    },
+    {
+      "preset": 3,
+      "name": "electric piano 2",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.450517147677971e-09,
+      "relative_rms_error": 2.3842721527615044e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.243542,
+        "rms": 0.1023
+      }
+    },
+    {
+      "preset": 4,
+      "name": "honky-tonk piano",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449106081969248e-09,
+      "relative_rms_error": 2.557269311402345e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.223034,
+        "rms": 0.0785049
+      }
+    },
+    {
+      "preset": 5,
+      "name": "toy piano",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7202088909449316e-09,
+      "relative_rms_error": 2.477883950332997e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.121269,
+        "rms": 0.0205443
+      }
+    },
+    {
+      "preset": 6,
+      "name": "reed organ",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4887346633241094e-08,
+      "relative_rms_error": 2.627412931193606e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.344179,
+        "rms": 0.102817
+      }
+    },
+    {
+      "preset": 7,
+      "name": "pipe organ 1",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4899312839045109e-08,
+      "relative_rms_error": 2.6289035409104737e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.344179,
+        "rms": 0.113426
+      }
+    },
+    {
+      "preset": 8,
+      "name": "pipe organ 2",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4894384392505344e-08,
+      "relative_rms_error": 2.6296692445599938e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.344179,
+        "rms": 0.122375
+      }
+    },
+    {
+      "preset": 9,
+      "name": "small church organ",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4899569078519193e-08,
+      "relative_rms_error": 2.5528904474228127e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.344179,
+        "rms": 0.123064
+      }
+    },
+    {
+      "preset": 10,
+      "name": "electronic organ",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.4489506507458e-09,
+      "relative_rms_error": 2.114114642504334e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.24366,
+        "rms": 0.12219
+      }
+    },
+    {
+      "preset": 11,
+      "name": "transistor organ",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4898706268695605e-08,
+      "relative_rms_error": 2.6426443894982616e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.344179,
+        "rms": 0.120399
+      }
+    },
+    {
+      "preset": 12,
+      "name": "tremolo organ",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.448216321481738e-09,
+      "relative_rms_error": 2.7421168532641437e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.158228,
+        "rms": 0.0777369
+      }
+    },
+    {
+      "preset": 13,
+      "name": "jazz organ",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.4478318790038855e-09,
+      "relative_rms_error": 2.6742573358867468e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.158228,
+        "rms": 0.0670788
+      }
+    },
+    {
+      "preset": 14,
+      "name": "street organ",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4888751509456455e-08,
+      "relative_rms_error": 2.7671742683344467e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.28957,
+        "rms": 0.0902026
+      }
+    },
+    {
+      "preset": 15,
+      "name": "harpsichord 1",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4894019184641394e-08,
+      "relative_rms_error": 2.520282878088639e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.369719,
+        "rms": 0.0690489
+      }
+    },
+    {
+      "preset": 16,
+      "name": "harpsichord 2",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4395581615644915e-08,
+      "relative_rms_error": 2.5069794874897905e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.313559,
+        "rms": 0.0582926
+      }
+    },
+    {
+      "preset": 17,
+      "name": "funky clavi",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7233953142923326e-09,
+      "relative_rms_error": 2.4794433624176057e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.122008,
+        "rms": 0.0242505
+      }
+    },
+    {
+      "preset": 18,
+      "name": "celesta",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4852419905064806e-08,
+      "relative_rms_error": 2.5328741731031237e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.315148,
+        "rms": 0.125388
+      }
+    },
+    {
+      "preset": 19,
+      "name": "glass celesta",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4208197007814505e-08,
+      "relative_rms_error": 2.4452091474484136e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.264506,
+        "rms": 0.0791922
+      }
+    },
+    {
+      "preset": 20,
+      "name": "accordion",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.45037781468838e-09,
+      "relative_rms_error": 2.1750768906364614e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.223487,
+        "rms": 0.088323
+      }
+    },
+    {
+      "preset": 21,
+      "name": "bandoneon",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449942107662366e-09,
+      "relative_rms_error": 2.1929402889623084e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.243642,
+        "rms": 0.0861142
+      }
+    },
+    {
+      "preset": 22,
+      "name": "trumpet",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.4461839749684344e-09,
+      "relative_rms_error": 2.250387573939741e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.223487,
+        "rms": 0.0367953
+      }
+    },
+    {
+      "preset": 23,
+      "name": "mute trumpet",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7252013834754294e-09,
+      "relative_rms_error": 2.633830563433072e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.0863911,
+        "rms": 0.0375216
+      }
+    },
+    {
+      "preset": 24,
+      "name": "wow trumpet",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.410045799183251e-09,
+      "relative_rms_error": 2.656472433122636e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172467,
+        "rms": 0.0316169
+      }
+    },
+    {
+      "preset": 25,
+      "name": "electric trumpet",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4887740207303324e-08,
+      "relative_rms_error": 2.687154181253736e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.289539,
+        "rms": 0.0457742
+      }
+    },
+    {
+      "preset": 26,
+      "name": "horn",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449545369464516e-09,
+      "relative_rms_error": 2.6608939827221486e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172493,
+        "rms": 0.0843399
+      }
+    },
+    {
+      "preset": 27,
+      "name": "alpenhorn",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449687450256093e-09,
+      "relative_rms_error": 2.628324424080755e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.204945,
+        "rms": 0.0783945
+      }
+    },
+    {
+      "preset": 28,
+      "name": "trombone",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449165312367612e-09,
+      "relative_rms_error": 2.1768719279291877e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.243653,
+        "rms": 0.0590954
+      }
+    },
+    {
+      "preset": 29,
+      "name": "tuba",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.448861610859225e-09,
+      "relative_rms_error": 2.181126188821246e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.243652,
+        "rms": 0.103334
+      }
+    },
+    {
+      "preset": 30,
+      "name": "Brass ensemble",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.446278371681103e-09,
+      "relative_rms_error": 2.731489313221951e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.145113,
+        "rms": 0.0573302
+      }
+    },
+    {
+      "preset": 31,
+      "name": "soprano sax",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7248310685855657e-09,
+      "relative_rms_error": 2.5011733914508158e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.0942505,
+        "rms": 0.047301
+      }
+    },
+    {
+      "preset": 32,
+      "name": "alto sax",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4870965792113111e-08,
+      "relative_rms_error": 2.7972201789092117e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.28959,
+        "rms": 0.0642322
+      }
+    },
+    {
+      "preset": 33,
+      "name": "tenor sax",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449756728172829e-09,
+      "relative_rms_error": 2.598585383068508e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172498,
+        "rms": 0.0535585
+      }
+    },
+    {
+      "preset": 34,
+      "name": "clarinet",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.443591354405754e-09,
+      "relative_rms_error": 2.808622774177946e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.145113,
+        "rms": 0.0599089
+      }
+    },
+    {
+      "preset": 35,
+      "name": "bass clarinet",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4901049782967135e-08,
+      "relative_rms_error": 2.72130157683247e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.265634,
+        "rms": 0.109154
+      }
+    },
+    {
+      "preset": 36,
+      "name": "oboe",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.724706765240171e-09,
+      "relative_rms_error": 2.40064153531991e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.102732,
+        "rms": 0.0515406
+      }
+    },
+    {
+      "preset": 37,
+      "name": "basson",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7252486095873394e-09,
+      "relative_rms_error": 2.14311702128716e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.122093,
+        "rms": 0.0524908
+      }
+    },
+    {
+      "preset": 38,
+      "name": "piccolo",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7251073475852436e-09,
+      "relative_rms_error": 2.4006283949047806e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.102729,
+        "rms": 0.0497344
+      }
+    },
+    {
+      "preset": 39,
+      "name": "flute",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7250597051396994e-09,
+      "relative_rms_error": 2.3827539513466673e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.102743,
+        "rms": 0.0511681
+      }
+    },
+    {
+      "preset": 40,
+      "name": "panflute",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.450549871501622e-09,
+      "relative_rms_error": 2.2515367353584773e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.223503,
+        "rms": 0.0963377
+      }
+    },
+    {
+      "preset": 41,
+      "name": "recorder",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7247927936467917e-09,
+      "relative_rms_error": 2.3732708960301066e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.102729,
+        "rms": 0.0457981
+      }
+    },
+    {
+      "preset": 42,
+      "name": "ocarina",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7252722018266127e-09,
+      "relative_rms_error": 2.3690101398891424e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.102729,
+        "rms": 0.0505732
+      }
+    },
+    {
+      "preset": 43,
+      "name": "woodwind ensemble",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449588085295389e-09,
+      "relative_rms_error": 2.6379535913417923e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172467,
+        "rms": 0.0525232
+      }
+    },
+    {
+      "preset": 44,
+      "name": "bagpipe",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.450238453943214e-09,
+      "relative_rms_error": 2.8455124980688697e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.145139,
+        "rms": 0.0552412
+      }
+    },
+    {
+      "preset": 45,
+      "name": "harmonica",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.446172262115525e-09,
+      "relative_rms_error": 2.7181053660030754e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.158222,
+        "rms": 0.0669514
+      }
+    },
+    {
+      "preset": 46,
+      "name": "jug",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4898896616433177e-08,
+      "relative_rms_error": 2.699742403599372e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.265634,
+        "rms": 0.131905
+      }
+    },
+    {
+      "preset": 47,
+      "name": "kazoo",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449155459138268e-09,
+      "relative_rms_error": 2.6337885225252878e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172498,
+        "rms": 0.0525257
+      }
+    },
+    {
+      "preset": 48,
+      "name": "samba whistle",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.446368438523976e-09,
+      "relative_rms_error": 2.51021083741874e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.144956,
+        "rms": 0.0416032
+      }
+    },
+    {
+      "preset": 49,
+      "name": "acoustic guitar",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4662240421792205e-08,
+      "relative_rms_error": 2.4703905252834766e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.26396,
+        "rms": 0.0797715
+      }
+    },
+    {
+      "preset": 50,
+      "name": "classic guitar",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449150185578901e-09,
+      "relative_rms_error": 2.5259745506696523e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.243058,
+        "rms": 0.0855475
+      }
+    },
+    {
+      "preset": 51,
+      "name": "hawaiian guitar",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4889374455595572e-08,
+      "relative_rms_error": 2.5757987742878087e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.287815,
+        "rms": 0.0878916
+      }
+    },
+    {
+      "preset": 52,
+      "name": "jazz guitar",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.45014447356418e-09,
+      "relative_rms_error": 2.457325605848655e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.24324,
+        "rms": 0.0968029
+      }
+    },
+    {
+      "preset": 53,
+      "name": "rock guitar 1",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.724870328847274e-09,
+      "relative_rms_error": 2.6443985564388356e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.0864463,
+        "rms": 0.0430314
+      }
+    },
+    {
+      "preset": 54,
+      "name": "rock guitar 2",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4895154332172922e-08,
+      "relative_rms_error": 2.657598071898164e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.373309,
+        "rms": 0.0931469
+      }
+    },
+    {
+      "preset": 55,
+      "name": "rock guitar 3",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.446274125078034e-09,
+      "relative_rms_error": 2.5205820082046122e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.223257,
+        "rms": 0.0562453
+      }
+    },
+    {
+      "preset": 56,
+      "name": "pedal steel guitar",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.445840055630981e-09,
+      "relative_rms_error": 2.5637786053030515e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172349,
+        "rms": 0.0674257
+      }
+    },
+    {
+      "preset": 57,
+      "name": "tremolo guitar",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4863372255202734e-08,
+      "relative_rms_error": 2.6385678292631383e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.344503,
+        "rms": 0.0711308
+      }
+    },
+    {
+      "preset": 58,
+      "name": "12string guitar",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4860439156993976e-08,
+      "relative_rms_error": 2.473779055245755e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.265309,
+        "rms": 0.0647549
+      }
+    },
+    {
+      "preset": 59,
+      "name": "electric bass",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.444937361045234e-09,
+      "relative_rms_error": 2.4010210816891116e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.145077,
+        "rms": 0.0696906
+      }
+    },
+    {
+      "preset": 60,
+      "name": "mute bass",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.449060479558511e-09,
+      "relative_rms_error": 2.8212634430017595e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172237,
+        "rms": 0.0896851
+      }
+    },
+    {
+      "preset": 61,
+      "name": "picked bass",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4900876255108386e-08,
+      "relative_rms_error": 2.5842842893840512e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.344099,
+        "rms": 0.0840241
+      }
+    },
+    {
+      "preset": 62,
+      "name": "slap bass",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7252820273003806e-09,
+      "relative_rms_error": 2.536150504359234e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.120958,
+        "rms": 0.032903
+      }
+    },
+    {
+      "preset": 63,
+      "name": "wood bass 1",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.4451980136558404e-09,
+      "relative_rms_error": 2.4826103972456782e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.243535,
+        "rms": 0.0718582
+      }
+    },
+    {
+      "preset": 64,
+      "name": "wood bass 2",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.441046390166406e-09,
+      "relative_rms_error": 2.5615245401640634e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172358,
+        "rms": 0.0577578
+      }
+    },
+    {
+      "preset": 66,
+      "name": "banjo",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.443044652832853e-09,
+      "relative_rms_error": 2.572539772523584e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.157664,
+        "rms": 0.0323479
+      }
+    },
+    {
+      "preset": 67,
+      "name": "ukulele",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4834569184163371e-08,
+      "relative_rms_error": 2.5425604469282986e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.314181,
+        "rms": 0.0702704
+      }
+    },
+    {
+      "preset": 68,
+      "name": "mandolin",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4894540989462968e-08,
+      "relative_rms_error": 2.5988970299916055e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.372494,
+        "rms": 0.0975589
+      }
+    },
+    {
+      "preset": 69,
+      "name": "harp",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.450378730622376e-09,
+      "relative_rms_error": 2.43680981230104e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.22336,
+        "rms": 0.128374
+      }
+    },
+    {
+      "preset": 70,
+      "name": "sitar",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.724915459413225e-09,
+      "relative_rms_error": 2.5821279761633464e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.102501,
+        "rms": 0.0411407
+      }
+    },
+    {
+      "preset": 71,
+      "name": "shamisen",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4687400184953958e-08,
+      "relative_rms_error": 2.5150121061476102e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.287895,
+        "rms": 0.049456
+      }
+    },
+    {
+      "preset": 72,
+      "name": "jamisen",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.436943338934299e-09,
+      "relative_rms_error": 2.5524928068099783e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.157809,
+        "rms": 0.0443309
+      }
+    },
+    {
+      "preset": 73,
+      "name": "koto",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4890996269389944e-08,
+      "relative_rms_error": 2.541592340863258e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.289376,
+        "rms": 0.0617107
+      }
+    },
+    {
+      "preset": 74,
+      "name": "violin 1",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.724918415382028e-09,
+      "relative_rms_error": 2.3115554039443754e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.10275,
+        "rms": 0.0567836
+      }
+    },
+    {
+      "preset": 75,
+      "name": "violin 2",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.4399734428798325e-09,
+      "relative_rms_error": 2.7086594399508373e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.133064,
+        "rms": 0.0420786
+      }
+    },
+    {
+      "preset": 76,
+      "name": "cello",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.450375039130819e-09,
+      "relative_rms_error": 2.7589567722531808e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.158228,
+        "rms": 0.0776996
+      }
+    },
+    {
+      "preset": 77,
+      "name": "strings",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.4500909053032416e-09,
+      "relative_rms_error": 2.6208265832464233e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172498,
+        "rms": 0.073487
+      }
+    },
+    {
+      "preset": 78,
+      "name": "synth brass",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7252858436920278e-09,
+      "relative_rms_error": 2.3464431078624446e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.111997,
+        "rms": 0.0339613
+      }
+    },
+    {
+      "preset": 79,
+      "name": "synth bass",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7251267903659624e-09,
+      "relative_rms_error": 2.4747440682223968e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.102474,
+        "rms": 0.0388916
+      }
+    },
+    {
+      "preset": 80,
+      "name": "synth tom",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.450177003098801e-09,
+      "relative_rms_error": 2.4702330084416016e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.241344,
+        "rms": 0.0636861
+      }
+    },
+    {
+      "preset": 81,
+      "name": "carillon",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.44477057779136e-09,
+      "relative_rms_error": 2.6001316045705157e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172156,
+        "rms": 0.0611196
+      }
+    },
+    {
+      "preset": 82,
+      "name": "chimes",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.450366629191407e-09,
+      "relative_rms_error": 2.595865882924303e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.172295,
+        "rms": 0.0630122
+      }
+    },
+    {
+      "preset": 83,
+      "name": "hand bell",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.722640626313556e-09,
+      "relative_rms_error": 2.4956166557653404e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.111682,
+        "rms": 0.0205876
+      }
+    },
+    {
+      "preset": 84,
+      "name": "tubular bells",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.72522834801714e-09,
+      "relative_rms_error": 2.4585251224764966e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.12195,
+        "rms": 0.0445726
+      }
+    },
+    {
+      "preset": 85,
+      "name": "timpani",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4863398123399207e-08,
+      "relative_rms_error": 2.5046340653401117e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.289243,
+        "rms": 0.095456
+      }
+    },
+    {
+      "preset": 86,
+      "name": "steel drum 1",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.404172164271472e-09,
+      "relative_rms_error": 2.5260786978654924e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.141366,
+        "rms": 0.0245891
+      }
+    },
+    {
+      "preset": 87,
+      "name": "steel drum 2",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.419310193990114e-09,
+      "relative_rms_error": 2.5845443237302878e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.170859,
+        "rms": 0.0270604
+      }
+    },
+    {
+      "preset": 88,
+      "name": "glockenspiel",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.722809727157994e-09,
+      "relative_rms_error": 2.544844578645273e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.102231,
+        "rms": 0.0205297
+      }
+    },
+    {
+      "preset": 89,
+      "name": "marimba 1",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4900793099403842e-08,
+      "relative_rms_error": 2.4822812433560676e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.265132,
+        "rms": 0.103452
+      }
+    },
+    {
+      "preset": 90,
+      "name": "marimba 2",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 1.4880750742740645e-08,
+      "relative_rms_error": 2.5941797511576884e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.31357,
+        "rms": 0.110119
+      }
+    },
+    {
+      "preset": 91,
+      "name": "vibraphone",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.448231809092931e-09,
+      "relative_rms_error": 2.551421827389275e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.185154,
+        "rms": 0.0713714
+      }
+    },
+    {
+      "preset": 92,
+      "name": "human chorus",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.724964919848972e-09,
+      "relative_rms_error": 2.244703297997517e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.112017,
+        "rms": 0.0563226
+      }
+    },
+    {
+      "preset": 94,
+      "name": "human voice 2",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.723136687838746e-09,
+      "relative_rms_error": 2.5179628734023405e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.0942505,
+        "rms": 0.0422683
+      }
+    },
+    {
+      "preset": 95,
+      "name": "whistle",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 7.447011396433112e-09,
+      "relative_rms_error": 2.5229779610567432e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.205012,
+        "rms": 0.0942673
+      }
+    },
+    {
+      "preset": 96,
+      "name": "ice block",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.722730734789792e-09,
+      "relative_rms_error": 2.587170339052595e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.102415,
+        "rms": 0.0188882
+      }
+    },
+    {
+      "preset": 98,
+      "name": "music box",
+      "note": 60,
+      "velocity": 100,
+      "max_absolute_error": 3.7138306457906722e-09,
+      "relative_rms_error": 2.4992303880664288e-08,
+      "stereo_equal": true,
+      "passed": true,
+      "renderer": {
+        "frames": 28832,
+        "rate": 48000,
+        "latency_samples": 32,
+        "peak": 0.072436,
+        "rms": 0.0133359
+      }
+    }
+  ]
+}

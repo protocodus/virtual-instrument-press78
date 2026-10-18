@@ -1,0 +1,51 @@
+{
+  "product_id": "cz.protocodus.Press78",
+  "version": "0.1.0b7",
+  "schema": [
+    "Tagline",
+    "Top features",
+    "Intro",
+    "Product desc",
+    "Images"
+  ],
+  "source": "SHOP.md",
+  "source_sha256": "4683ff289faf19b6beb7d00b67d00bf675cfdadcb63893375231bda67d10c85c",
+  "preview_state": "canonical Init defaults",
+  "tagline_characters": 16,
+  "feature_characters": [
+    38,
+    44,
+    48
+  ],
+  "intro_characters": 207,
+  "image_sources": {
+    "Press78_Front.png": "GUI2D/Preview_front@1x.png",
+    "Press78_Back.png": "GUI2D/Preview_back@1x.png"
+  },
+  "images": {
+    "Press78_Front.png": {
+      "sha256": "36b37625265683b37432910acbfd8c7e1acd99a0a89ed745bbad9211cf0ecbd4",
+      "dimensions": [
+        754,
+        552
+      ]
+    },
+    "Press78_Back.png": {
+      "sha256": "f1c385028a55ba3ee5f229fca2dd1c3038a0cd357dee86a5d4ecec798863ac0c",
+      "dimensions": [
+        754,
+        552
+      ]
+    },
+    "Press78_Thumbnail_800.png": {
+      "sha256": "ba3f416c953d064c2c4de7edf1a785d4283f746dbbb3d42716e7bd5752cb1431",
+      "dimensions": [
+        800,
+        800
+      ]
+    }
+  },
+  "scope": "Prepared product copy and native preview exports; no publication or release acceptance.",
+  "canonical_source": "protocodus/reason-rack-extensions:Examples/Press78/SHOP.md",
+  "generator": "Examples/Press78/Tools/build_shop_metadata.py"
+}

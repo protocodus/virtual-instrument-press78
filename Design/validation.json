@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "controls": 65,
+  "canonical_properties": 65,
+  "unmapped_properties": [],
+  "overlapping_widget_bounds": 0,
+  "captions_fit_at_11px": true,
+  "caption_font": "/System/Library/Fonts/Supplemental/DIN Alternate Bold.ttf",
+  "raster_dimensions": {
+    "front": [
+      754,
+      552
+    ],
+    "rear": [
+      754,
+      552
+    ],
+    "folded-front": [
+      754,
+      30
+    ],
+    "folded-rear": [
+      754,
+      30
+    ]
+  },
+  "svg_rasterizer": "@resvg/resvg-js 2.6.2, DIN Alternate / DIN Condensed system fonts",
+  "browser_visual_review": "Layout study 07: full browser and four local panels visually inspected at 1x; separate native asset validation in Rack checkout.",
+  "native_host_tested": false,
+  "scope": "Wireframe geometry, property contract and SVG raster checks; no DSP/audio or native host claims.",
+  "source_sha256": {
+    "Design/geometry.json": "81b7c95b2c9c4b4c510f78d47a86f546898e2e76dd39e8c4fc9e147333d5ae6f",
+    "Design/build_wireframe.py": "b7592d2aa5bc394375b634715f0a638392cf3c3a658e2c8ab8392b5275b91ef5",
+    "Design/preview_template.html": "b38b6ef18658c088796177cad1490421a1357a0748efa72717987cd7d195abc0",
+    "Design/index.html": "67348bf78d4fe912283a4a6d0d58c9b471460889c21c3ed41490f1ddf23076c4",
+    "Design/render_preview.cjs": "61506aa61ad1176cb764d687ab7fdbfeddb5f0d37ca2199960abec88a3396592",
+    "Resources/controls.json": "dd97ad223cd993faad5c5a3ec8744ba8e6ce1c4c2b4942d2dd6af211a52644d2"
+  },
+  "sockets": 6,
+  "cv_inputs": 4,
+  "audio_outputs": 2,
+  "front_controls": 35,
+  "rear_controls": 30,
+  "rack_units": 8,
+  "section_side_padding_min_px": 24,
+  "heading_to_visible_control_min_px": 17.55,
+  "caption_to_section_bottom_min_px": 14,
+  "wave_button_min_width_px": 60,
+  "wave_button_gap_px": 8,
+  "knob_body_px": 40,
+  "knob_sprite_px": 50
+}

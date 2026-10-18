@@ -1,0 +1,125 @@
+{
+  "kind": "Frozen effective recorded mid-to-side linear transfer, not a recovered physical BBD circuit",
+  "training_patches": [
+    0,
+    2,
+    22,
+    34,
+    59,
+    77
+  ],
+  "nonlinear_terms_adopted": false,
+  "v3_profile": {
+    "kind": "recording-calibrated effective stereo transfer; not recovered PSS-780 schematic",
+    "source": "https://www.youtube.com/watch?v=ONfIvtDOog0",
+    "training_patches": [
+      0,
+      2,
+      22,
+      34,
+      59,
+      77
+    ],
+    "test_patches": [
+      1,
+      3,
+      23,
+      35,
+      60,
+      75,
+      65,
+      93,
+      97
+    ],
+    "method": "Given observed mid, predict side using one globally periodic delay, fixed gain and fixed mid leakage. Equal-RMS weighting per training preset. No per-window phase, gain, or timing fit. Fit on 100\u20134000 Hz bandpassed 48 kHz signals. Delay is an effective transfer delay, not a direct BBD delay measurement.",
+    "time_origin": "Seconds from beginning of decoded reference audio. The phase is a capture coordinate; no claim of hardware reset phase.",
+    "delay_ms": {
+      "mean": 1.0125596159214152,
+      "sin_1": 0.0495126833338911,
+      "cos_1": 0.4943632948117077,
+      "sin_2": 0.05909196059342724,
+      "cos_2": -0.026924964944642096
+    },
+    "lfo_hz": 0.9546467517767424,
+    "wet_gain": 0.5323384856515782,
+    "mid_leak_gain": 0.0935776226127722,
+    "reference_fit_sample_rate": 48000,
+    "initial_local_delay_fit": {
+      "frequency_hz": 0.9547412199300649,
+      "mean_delay_ms": 0.9326601696742347,
+      "sin_ms": 0.07579896598938751,
+      "cos_ms": 0.5016745390072989,
+      "train_delay_rmse_ms": 0.1428555002916805
+    },
+    "optimizer": {
+      "success": true,
+      "message": "`xtol` termination condition is satisfied.",
+      "nfev": 15
+    },
+    "limitations": [
+      "Stereo video is lossy and capture processing is not known.",
+      "Observed mid is not proven to be the raw unfiltered mono chip signal.",
+      "Only 100\u20134000Hz transfer is identified.",
+      "Delay and mid leakage describe an effective transfer, not identified physical parts.",
+      "Measured phase is specific to this capture; synthesizer demos may choose a new phase.",
+      "Baseline comparison below uses old quasi-static delay/gain approximation, not a complete BBD re-render."
+    ],
+    "source_sha256": {
+      "references/v2/user-ONfIvtDOog0.wav": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba",
+      "references/v3_program_timeline.json": "1978645805679691f0b39269c5ac1db762d59a9f6c65cd399cbafffe555650eb",
+      "circuit/fit_chorus_profile.py": "897d1ad2aa19126bdb652e73a13d35bda355485d10960f71a4e3527b32c3d821",
+      "circuit/chorus_calibration.py": "b5e59d077a9ebf7fb2c982f9898cd1a20af231523a265bde6167aaebcdaf1552"
+    }
+  },
+  "tap_seconds": [
+    -0.0005,
+    -0.0003333333333333333,
+    -0.00016666666666666666,
+    0.0,
+    0.00016666666666666666,
+    0.0003333333333333333,
+    0.0005
+  ],
+  "wet_coefficients": [
+    0.021498661717691745,
+    0.033957329880377446,
+    -0.03396460244353785,
+    0.5661303493121482,
+    0.1308756010218867,
+    -0.23991925970617328,
+    -0.007949557285925375
+  ],
+  "mid_coefficients": [
+    0.043807931384900974,
+    0.003907829139290587,
+    0.01646322954431555,
+    0.005129027148661585,
+    0.018038932426600297,
+    0.00415212201289893,
+    0.006441775861265892
+  ],
+  "correction_blend": {
+    "band_hz": [
+      100,
+      4000
+    ],
+    "prototype_half_duration_seconds": 0.010666666666666666,
+    "prototype": "Hann-window bandpass FIR, 1025 taps at 48kHz",
+    "kernel": "Autocorrelation of prototype, normalized maximum response <=1 with 1e-6 margin; 2049 taps at 48kHz",
+    "purpose": "Apply linear correction only near calibrated band; smoothly return toward frozen v3 elsewhere",
+    "frozen_before_production_scores": true
+  },
+  "crop_context_seconds": 0.032,
+  "latency": "Offline two-sided operation with no output delay; real-time implementation requires equal whole-stereo latency for lookahead",
+  "limitations": [
+    "Observed mid is not proven dry; fitted response can include channel imbalance, recorder and codec effects.",
+    "Retaining input mid is by construction, not a hardware routing claim.",
+    "No physical component values, input volts, BBD distortion or DAC precision recovered.",
+    "All evaluation material was previously observed; no fresh independent hardware holdout."
+  ],
+  "source_sha256": {
+    "results/v4-reference/frozen-fit.json": "8a2da6ebf885b2ed62701c38066fc9c4e93cc5b2d333ebc6d5e6595cde255154",
+    "results/v4-reference/protocol.json": "2a692478f65a63cf14215c05841f4adb34ecdd40495f7b86b6e551d17debc7f1",
+    "circuit/video_chorus_profile.json": "854a2b2fc412e1050ccc1d47564d41a9a27cb0b265d20977be0144478cc85981"
+  }
+}

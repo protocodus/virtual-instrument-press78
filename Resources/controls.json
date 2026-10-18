@@ -1,0 +1,617 @@
+{
+  "product": "cz.protocodus.Press78",
+  "version": "0.1.0b7",
+  "startup_profile": {
+    "name": "Real",
+    "values": {
+      "outputCircuit": 1,
+      "noiseModel": 1,
+      "noiseRms": 0.002,
+      "chorusMode": 1,
+      "chorusMix": 1,
+      "chorusRateHz": 0.9546467517767424,
+      "chorusDepthMs": 0.4968365657517667,
+      "clockOffsetPpm": 0,
+      "clockDriftPpm": 20,
+      "clockDriftRateHz": 0.1,
+      "drive": 0,
+      "dcBlock": 1,
+      "outputLimit": 1
+    }
+  },
+  "controls": [
+    {
+      "id": "mod_mul",
+      "label": "Modulator Ratio",
+      "min": 0,
+      "max": 15,
+      "default": 1,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_dt1",
+      "label": "Modulator Fine detune",
+      "min": -7,
+      "max": 7,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_tl",
+      "label": "Modulator Attenuation",
+      "min": 0,
+      "max": 127,
+      "default": 127,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_wave",
+      "label": "Modulator Wave",
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_ar",
+      "label": "Modulator Attack rate",
+      "min": 0,
+      "max": 63,
+      "default": 63,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_d1r",
+      "label": "Modulator Decay 1 rate",
+      "min": 0,
+      "max": 63,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_d1l",
+      "label": "Modulator Decay 1 level",
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_d2r",
+      "label": "Modulator Decay 2 rate",
+      "min": 0,
+      "max": 63,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_rr",
+      "label": "Modulator Release rate",
+      "min": 0,
+      "max": 15,
+      "default": 10,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_srr",
+      "label": "Modulator Sustain release rate",
+      "min": 0,
+      "max": 15,
+      "default": 5,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_lksHi",
+      "label": "Modulator Upper key level",
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_lksLo",
+      "label": "Modulator Lower key level",
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_rks",
+      "label": "Modulator Key rate scaling",
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_amEnable",
+      "label": "Modulator AM enable",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "mod_dt2",
+      "label": "Modulator Coarse detune",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_mul",
+      "label": "Carrier Ratio",
+      "min": 0,
+      "max": 15,
+      "default": 1,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_dt1",
+      "label": "Carrier Fine detune",
+      "min": -7,
+      "max": 7,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_tl",
+      "label": "Carrier Attenuation",
+      "min": 0,
+      "max": 127,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_wave",
+      "label": "Carrier Wave",
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_ar",
+      "label": "Carrier Attack rate",
+      "min": 0,
+      "max": 63,
+      "default": 63,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_d1r",
+      "label": "Carrier Decay 1 rate",
+      "min": 0,
+      "max": 63,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_d1l",
+      "label": "Carrier Decay 1 level",
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_d2r",
+      "label": "Carrier Decay 2 rate",
+      "min": 0,
+      "max": 63,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_rr",
+      "label": "Carrier Release rate",
+      "min": 0,
+      "max": 15,
+      "default": 10,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_srr",
+      "label": "Carrier Sustain release rate",
+      "min": 0,
+      "max": 15,
+      "default": 5,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_lksHi",
+      "label": "Carrier Upper key level",
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_lksLo",
+      "label": "Carrier Lower key level",
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_rks",
+      "label": "Carrier Key rate scaling",
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_amEnable",
+      "label": "Carrier AM enable",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "car_dt2",
+      "label": "Carrier Coarse detune",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "feedback",
+      "label": "Feedback",
+      "min": 0,
+      "max": 7,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "pms",
+      "label": "Pitch modulation",
+      "min": 0,
+      "max": 7,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "ams",
+      "label": "Amplitude modulation",
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "vibratoDelay",
+      "label": "LFO delay",
+      "min": 0,
+      "max": 127,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "vibrato",
+      "label": "Vibrato enable",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "sustain",
+      "label": "Sustain release",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "patch"
+    },
+    {
+      "id": "masterGain",
+      "label": "Volume",
+      "min": 0,
+      "max": 2,
+      "default": 0.25,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "masterTuneCents",
+      "label": "Tune",
+      "min": -100,
+      "max": 100,
+      "default": 0,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "velocitySensitivity",
+      "label": "Velocity to level",
+      "min": 0,
+      "max": 2,
+      "default": 1,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "velocityToModulation",
+      "label": "Velocity to FM",
+      "min": 0,
+      "max": 2,
+      "default": 0,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "modulationAmount",
+      "label": "FM amount",
+      "min": 0,
+      "max": 2,
+      "default": 1,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "polyphony",
+      "label": "Voices",
+      "min": 1,
+      "max": 12,
+      "default": 12,
+      "integer": true,
+      "target": "controls"
+    },
+    {
+      "id": "lfoRateHz",
+      "label": "LFO rate",
+      "min": 0.05,
+      "max": 30,
+      "default": 6.1,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "vibratoDepth",
+      "label": "Pitch depth",
+      "min": 0,
+      "max": 4,
+      "default": 1,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "tremoloDepth",
+      "label": "AM depth",
+      "min": 0,
+      "max": 4,
+      "default": 1,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "lfoDelayScale",
+      "label": "LFO delay scale",
+      "min": 0,
+      "max": 4,
+      "default": 1,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "triangleLfo",
+      "label": "Triangle LFO",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "controls"
+    },
+    {
+      "id": "globalLfo",
+      "label": "Global LFO phase",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "controls"
+    },
+    {
+      "id": "clockOffsetPpm",
+      "label": "Clock offset",
+      "min": -5000,
+      "max": 5000,
+      "default": 0,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "clockDriftPpm",
+      "label": "Clock drift",
+      "min": 0,
+      "max": 2000,
+      "default": 20,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "clockDriftRateHz",
+      "label": "Drift rate",
+      "min": 0.01,
+      "max": 1,
+      "default": 0.1,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "toneCutoffHz",
+      "label": "Tone cutoff",
+      "min": 1000,
+      "max": 20000,
+      "default": 14000,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "drive",
+      "label": "Drive",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "chorusMix",
+      "label": "Chorus mix",
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "chorusMode",
+      "label": "Chorus model",
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "integer": true,
+      "target": "controls",
+      "options": [
+        "Studio",
+        "Recorded"
+      ]
+    },
+    {
+      "id": "chorusRateHz",
+      "label": "Chorus rate",
+      "min": 0.05,
+      "max": 8,
+      "default": 0.9546467517767424,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "chorusDepthMs",
+      "label": "Chorus depth",
+      "min": 0,
+      "max": 8,
+      "default": 0.4968365657517667,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "stereoWidth",
+      "label": "Stereo width",
+      "min": 0,
+      "max": 2,
+      "default": 1,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "noiseRms",
+      "label": "Noise level",
+      "min": 0,
+      "max": 0.02,
+      "default": 0.002,
+      "integer": false,
+      "target": "controls"
+    },
+    {
+      "id": "noiseModel",
+      "label": "Noise model",
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "integer": true,
+      "target": "controls",
+      "options": [
+        "White",
+        "Circuit"
+      ]
+    },
+    {
+      "id": "outputCircuit",
+      "label": "Output circuit",
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "integer": true,
+      "target": "controls"
+    },
+    {
+      "id": "dcBlock",
+      "label": "DC filter",
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "integer": true,
+      "target": "controls"
+    },
+    {
+      "id": "outputLimit",
+      "label": "Output protection",
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "integer": true,
+      "target": "controls"
+    },
+    {
+      "id": "bendRange",
+      "label": "Pitch bend range",
+      "min": 0,
+      "max": 24,
+      "default": 2,
+      "integer": true,
+      "target": "controls"
+    },
+    {
+      "id": "modWheelDepth",
+      "label": "Wheel to vibrato",
+      "min": 0,
+      "max": 4,
+      "default": 1,
+      "integer": false,
+      "target": "controls"
+    }
+  ]
+}

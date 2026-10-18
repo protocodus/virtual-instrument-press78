@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "scope": "Frozen MNA transfer and analytic sample-rate conversion; circuit transfer to PSS780 remains unverified.",
+  "rows": [
+    {
+      "sample_rate": 8000,
+      "max_complex_transfer_error": 6.607023689886185e-12
+    },
+    {
+      "sample_rate": 16000,
+      "max_complex_transfer_error": 9.488378308250311e-12
+    },
+    {
+      "sample_rate": 22050,
+      "max_complex_transfer_error": 1.0192013818484606e-11
+    },
+    {
+      "sample_rate": 24000,
+      "max_complex_transfer_error": 1.1040794068005988e-11
+    },
+    {
+      "sample_rate": 32000,
+      "max_complex_transfer_error": 3.115096016707964e-11
+    },
+    {
+      "sample_rate": 44100,
+      "max_complex_transfer_error": 4.308529912538985e-11
+    },
+    {
+      "sample_rate": 44117,
+      "max_complex_transfer_error": 3.195397217143845e-11
+    },
+    {
+      "sample_rate": 48000,
+      "max_complex_transfer_error": 0.0
+    },
+    {
+      "sample_rate": 88200,
+      "max_complex_transfer_error": 1.4894431915771286e-10
+    },
+    {
+      "sample_rate": 96000,
+      "max_complex_transfer_error": 1.6803549136839353e-10
+    },
+    {
+      "sample_rate": 176400,
+      "max_complex_transfer_error": 7.280928603343257e-10
+    },
+    {
+      "sample_rate": 192000,
+      "max_complex_transfer_error": 6.138751510486556e-10
+    }
+  ],
+  "source_sha256": {
+    "Reference/Python/circuit/model.py": "50f19cb6a00fe79bea77c65befb1ef972f1349d7f1ce4d1a392529e924a4fae0",
+    "Tools/generate_analog.py": "56365f2d9d4d3508e50264daef3da5539a594b6a9319d62a6a1afe51354e23c0",
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+  }
+}

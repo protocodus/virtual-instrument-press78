@@ -1,0 +1,28 @@
+{
+  "version": "0.1.0b2",
+  "cmake_ctest": {
+    "passed": 3,
+    "failed": 0,
+    "includes": [
+      "42 native DSP contracts",
+      "factory-bank regeneration",
+      "recorded chorus profile regeneration"
+    ]
+  },
+  "generator_portability_fix": "Explicit float-addition order preserves the frozen chorus profile across Python3.11 and3.14; DSP constants unchanged.",
+  "rack_contract_controls": 65,
+  "native_wrapper_tests": 15,
+  "gui_source_checks": 1856,
+  "audition_reports": [
+    "build/hardware-benchmarks/recorded-20261018T084000Z/report.html",
+    "build/noise-demos/report.html"
+  ],
+  "browser_review": {
+    "hardware_audio_players": 24,
+    "noise_audio_players": 8,
+    "audio_metadata_loaded": true,
+    "horizontal_overflow_at_1200px": false
+  },
+  "actual_reason_host_tested": false,
+  "scope": "Local model and package pass; no exact-hardware claim, fresh recording, portal delivery or commercial clearance."
+}

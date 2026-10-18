@@ -1,0 +1,44 @@
+engine_bytes=180344
+PASS engine instance fits192KiB Rack budget
+PASS documented33-byte voice fields decode independently
+PASS nominal sine has explicit32-frame latency and correct amplitude
+PASS render block boundaries are bit invariant
+PASS output-rate conversion preserves440Hz and passband level
+PASS zero attack and TL99 suppress allocation
+PASS velocity-zero note-on releases rather than allocates
+PASS MIDI and CV identical pitches release independently
+PASS overlapping same-note releases are FIFO
+PASS pedal postpones release and key pedal-up flushes deferred notes
+PASS patch sustain switches to its separate release rate
+PASS twelve-voice allocation steals oldest with bounded tail
+PASS program changes preserve held voice snapshot
+PASS explicit patch edits affect the held voice without retrigger
+PASS live operator mute preserves the held voice for unmute
+PASS velocity response follows exposed carrier exponent
+PASS ratio0 is half and coarse detune is600cents
+PASS four waveform families remain distinct and half waves unipolar
+PASS common clock offset moves pitch with nominal tune unchanged
+PASS clock change advances envelope as well as oscillator
+PASS allSoundOff clears synthesis and causal effect history
+PASS chorus changes stereo side while preserving raw midpoint
+PASS zero stereo width collapses creative chorus
+PASS noise is deterministic and absent by default
+PASS filter and drive controls alter sound with bounded output
+PASS drive approaches its exact dry bypass continuously
+PASS circuit runtime is deterministic across reset at all supported rates
+PASS circuit bypass continues filter state for smooth re-enable
+PASS all100 imported factory presets render finite audible output
+PASS invalid controls and malformed patch fields clamp safely
+PASS all extreme finite controls remain finite and limited
+PASS null outputs advance state and zero-length output is inert
+PASS render and realtime control/note paths do not allocate
+PASS recorded chorus depth stays causal within history at all control extremes
+PASS recorded effect is causal preserves mid and deterministically resets
+PASS native recorded chorus matches the standalone effect and keeps midpoint
+PASS recorded chorus mode transitions are smoothed and block invariant
+PASS recorded mode nonfinite controls and inputs are bounded without allocations
+PASS circuit noise uses fixed physical reference without rate normalization
+PASS zero circuit noise level leaves musical output exactly unchanged
+PASS circuit noise is deterministic across block sizes and reset
+PASS circuit noise switching and realtime paths remain finite and allocation free
+42 passed, 0 failed

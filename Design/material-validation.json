@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "superseded_by": "modern-browser-validation.json",
+  "layout": "07",
+  "checks": [
+    "photographic v2 material decodes",
+    "original material works",
+    "photo material works",
+    "35 main controls retained",
+    "30 advanced controls retained",
+    "31 front value arcs present",
+    "chorus identified",
+    "no fictitious native preset-number readout",
+    "folded rear excludes patch controls"
+  ],
+  "source_sha256": {
+    "geometry.json": "2fd85bd1187cc2ce37f5315d385791b3f2546d5c2d22d5a1944c4f32b4d0f3ba",
+    "preview_template.html": "b38b6ef18658c088796177cad1490421a1357a0748efa72717987cd7d195abc0",
+    "index.html": "5b2d96a4cdb04e0d41e6bbdf80627fbada3bdf9ac2745906f0a252936bdbcdb7",
+    "Assets/press78-photo-background-v2.png": "a23d3144201bd9b8c0a3ad571b6c50705d20e2887b58401207a3d8dd8b5f891a"
+  },
+  "native_host_tested": false,
+  "prior_browser_source_sha256": {
+    "geometry.json": "2fd85bd1187cc2ce37f5315d385791b3f2546d5c2d22d5a1944c4f32b4d0f3ba",
+    "preview_template.html": "3dcdd9d0316636a39ad912b2af5d545360d38dc36fc5bcf0663cc1695c47fb69",
+    "index.html": "e81f8e419ea002d95fa0bfc783c9b082cab5e909bf73e5bda33ae3e4a2215ec9",
+    "Assets/press78-photo-background-v2.png": "a23d3144201bd9b8c0a3ad571b6c50705d20e2887b58401207a3d8dd8b5f891a"
+  },
+  "scope": "Material checks were recorded before an accessibility-only aria-valuetext change. Geometry, SVG artwork and photo material bytes are unchanged; current synthetic DOM validation passes. No new browser screenshot or material-switch test is claimed.",
+  "accessibility_recheck": "modern-browser-validation.json#accessibility_recheck"
+}

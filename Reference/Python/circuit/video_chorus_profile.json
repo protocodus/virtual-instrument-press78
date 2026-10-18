@@ -1,0 +1,62 @@
+{
+  "kind": "recording-calibrated effective stereo transfer; not recovered PSS-780 schematic",
+  "source": "https://www.youtube.com/watch?v=ONfIvtDOog0",
+  "training_patches": [
+    0,
+    2,
+    22,
+    34,
+    59,
+    77
+  ],
+  "test_patches": [
+    1,
+    3,
+    23,
+    35,
+    60,
+    75,
+    65,
+    93,
+    97
+  ],
+  "method": "Given observed mid, predict side using one globally periodic delay, fixed gain and fixed mid leakage. Equal-RMS weighting per training preset. No per-window phase, gain, or timing fit. Fit on 100\u20134000 Hz bandpassed 48 kHz signals. Delay is an effective transfer delay, not a direct BBD delay measurement.",
+  "time_origin": "Seconds from beginning of decoded reference audio. The phase is a capture coordinate; no claim of hardware reset phase.",
+  "delay_ms": {
+    "mean": 1.0125596159214152,
+    "sin_1": 0.0495126833338911,
+    "cos_1": 0.4943632948117077,
+    "sin_2": 0.05909196059342724,
+    "cos_2": -0.026924964944642096
+  },
+  "lfo_hz": 0.9546467517767424,
+  "wet_gain": 0.5323384856515782,
+  "mid_leak_gain": 0.0935776226127722,
+  "reference_fit_sample_rate": 48000,
+  "initial_local_delay_fit": {
+    "frequency_hz": 0.9547412199300649,
+    "mean_delay_ms": 0.9326601696742347,
+    "sin_ms": 0.07579896598938751,
+    "cos_ms": 0.5016745390072989,
+    "train_delay_rmse_ms": 0.1428555002916805
+  },
+  "optimizer": {
+    "success": true,
+    "message": "`xtol` termination condition is satisfied.",
+    "nfev": 15
+  },
+  "limitations": [
+    "Stereo video is lossy and capture processing is not known.",
+    "Observed mid is not proven to be the raw unfiltered mono chip signal.",
+    "Only 100\u20134000Hz transfer is identified.",
+    "Delay and mid leakage describe an effective transfer, not identified physical parts.",
+    "Measured phase is specific to this capture; synthesizer demos may choose a new phase.",
+    "Baseline comparison below uses old quasi-static delay/gain approximation, not a complete BBD re-render."
+  ],
+  "source_sha256": {
+    "references/v2/user-ONfIvtDOog0.wav": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba",
+    "references/v3_program_timeline.json": "1978645805679691f0b39269c5ac1db762d59a9f6c65cd399cbafffe555650eb",
+    "circuit/fit_chorus_profile.py": "897d1ad2aa19126bdb652e73a13d35bda355485d10960f71a4e3527b32c3d821",
+    "circuit/chorus_calibration.py": "b5e59d077a9ebf7fb2c982f9898cd1a20af231523a265bde6167aaebcdaf1552"
+  }
+}

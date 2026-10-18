@@ -1,0 +1,10 @@
+{
+  "kind": "factory parameter data",
+  "source": "https://github.com/BobanSpasic/PSS-Revive/blob/main/voices/PSS-780%20ROM%20voices.zip",
+  "archive_sha256": "fb190176c25e17bca99ac6e4a3eeefa1131276344740a73a8e34f9660c2abede",
+  "count": 100,
+  "content": "72-byte SysEx parameter messages, not sampled recordings or executable firmware",
+  "product_name_prefix": "PSS",
+  "redistribution_clearance": "unresolved; public availability and editor license do not establish Yamaha authorization",
+  "development_use": "Included locally at user request. Commercial release needs bank-specific rights review."
+}

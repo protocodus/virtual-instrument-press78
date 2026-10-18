@@ -1,0 +1,3418 @@
+{
+  "version": "Press78 layout study 07",
+  "logical_size": {
+    "width": 754,
+    "height": 552,
+    "rack_units": 8
+  },
+  "folded_size": {
+    "width": 754,
+    "height": 30
+  },
+  "status": "Shared geometry for interactive design preview and native prototype widgets",
+  "palette": {
+    "bg": "#303238",
+    "panel": "#25282d",
+    "edge": "#4a4e55",
+    "ink": "#e9e4d2",
+    "muted": "#b9bbb8",
+    "cyan": "#67c4d0",
+    "lavender": "#b1a1d2",
+    "coral": "#ea8197",
+    "red": "#ff4777",
+    "white": "#ffffff",
+    "black": "#14171b",
+    "cyanCap": "#3c9fb1",
+    "lavenderCap": "#9384b6",
+    "coralCap": "#d85d7b",
+    "ivory": "#e9e4d2"
+  },
+  "appearance": {
+    "knob_size": 40,
+    "knob_sprite_size": 50,
+    "knob_inner_radius": 15.5,
+    "knob_pointer_inner": 15.5,
+    "knob_pointer_outer": 24.1,
+    "knob_pointer_width": 13,
+    "knob_pointer_style": "wedge",
+    "envelope_pointer_outline": 0.7,
+    "value_font_size": 11,
+    "wave_font_size": 13,
+    "wave_active_color": "white",
+    "button_active_color": "white",
+    "envelope_face": "operator_accent",
+    "envelope_pointer": "black",
+    "knob_arc_radius": 22.2,
+    "knob_arc_width": 1.5,
+    "knob_track": "#5b626b",
+    "pointer_fill": "ink",
+    "pointer_outline": "black",
+    "pointer_outline_width": 0.7
+  },
+  "native_patch_selector": {
+    "x": 247,
+    "y": 14,
+    "width": 315,
+    "height": 29,
+    "kind": "host_native_placeholder"
+  },
+  "controls": [
+    {
+      "id": "modulator_wave",
+      "label": "Wave",
+      "binding": "patch.modulator.wave",
+      "property_id": "mod_wave",
+      "property_path": "/custom_properties/mod_wave",
+      "section": "modulator",
+      "panel": "front",
+      "kind": "wave",
+      "x": 52,
+      "y": 132,
+      "width": 292,
+      "height": 28,
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Choose a sine, signed squared sine, half sine, or squared half sine waveform.",
+      "wave_cells": [
+        {
+          "index": 0,
+          "label": "SIN",
+          "x": 52.0,
+          "y": 132,
+          "width": 67.0,
+          "height": 28
+        },
+        {
+          "index": 1,
+          "label": "SIN\u00b2",
+          "x": 127.0,
+          "y": 132,
+          "width": 67.0,
+          "height": 28
+        },
+        {
+          "index": 2,
+          "label": "HALF",
+          "x": 202.0,
+          "y": 132,
+          "width": 67.0,
+          "height": 28
+        },
+        {
+          "index": 3,
+          "label": "HALF\u00b2",
+          "x": 277.0,
+          "y": 132,
+          "width": 67.0,
+          "height": 28
+        }
+      ],
+      "widget_bounds": {
+        "x": 52,
+        "y": 132,
+        "width": 292,
+        "height": 28
+      },
+      "caption": {
+        "x": 198.0,
+        "baseline_y": 180,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_mul",
+      "label": "Ratio",
+      "binding": "patch.modulator.mul",
+      "property_id": "mod_mul",
+      "property_path": "/custom_properties/mod_mul",
+      "section": "modulator",
+      "panel": "front",
+      "kind": "knob",
+      "x": 56.0,
+      "y": 176,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 1,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Frequency ratio relative to the played note. Zero selects a half-frequency ratio.",
+      "widget_bounds": {
+        "x": 68.5,
+        "y": 173,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 63.5,
+        "y": 168,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 64.05,
+        "y": 168.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 88.5,
+        "baseline_y": 224,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_dt1",
+      "label": "Detune",
+      "binding": "patch.modulator.dt1",
+      "property_id": "mod_dt1",
+      "property_path": "/custom_properties/mod_dt1",
+      "section": "modulator",
+      "panel": "front",
+      "kind": "knob",
+      "x": 129.0,
+      "y": 176,
+      "width": 65.0,
+      "height": 52,
+      "min": -7,
+      "max": 7,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Small pitch offset for beating and harmonic color; these are detune codes, not cents.",
+      "widget_bounds": {
+        "x": 141.5,
+        "y": 173,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 136.5,
+        "y": 168,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 137.05,
+        "y": 168.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 161.5,
+        "baseline_y": 224,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_tl",
+      "label": "Level",
+      "binding": "patch.modulator.tl",
+      "property_id": "mod_tl",
+      "property_path": "/custom_properties/mod_tl",
+      "section": "modulator",
+      "panel": "front",
+      "kind": "knob",
+      "x": 202.0,
+      "y": 176,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 127,
+      "default": 127,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Operator level. Turn up for more output. The modulator changes timbre; the carrier changes loudness.",
+      "presentation": "operator_level",
+      "widget_bounds": {
+        "x": 214.5,
+        "y": 173,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 209.5,
+        "y": 168,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 210.05,
+        "y": 168.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 234.5,
+        "baseline_y": 224,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "patch_feedback",
+      "label": "Feedback",
+      "binding": "patch.feedback",
+      "property_id": "feedback",
+      "property_path": "/custom_properties/feedback",
+      "section": "modulator",
+      "panel": "front",
+      "kind": "knob",
+      "x": 275.0,
+      "y": 176,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 7,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Feed the modulator back into itself for brighter, rougher harmonics.",
+      "widget_bounds": {
+        "x": 287.5,
+        "y": 173,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 282.5,
+        "y": 168,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 283.05,
+        "y": 168.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 307.5,
+        "baseline_y": 224,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_ar",
+      "label": "Atk rate",
+      "binding": "patch.modulator.ar",
+      "property_id": "mod_ar",
+      "property_path": "/custom_properties/mod_ar",
+      "section": "modulator",
+      "panel": "front",
+      "kind": "knob",
+      "x": 56.0,
+      "y": 240,
+      "width": 50.4,
+      "height": 52,
+      "min": 0,
+      "max": 63,
+      "default": 63,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "visual_role": "envelope",
+      "tooltip": "Attack rate: higher values reach full level faster. Zero prevents the attack from rising.",
+      "widget_bounds": {
+        "x": 61.2,
+        "y": 237,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 56.2,
+        "y": 232,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 56.75,
+        "y": 232.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 81.2,
+        "baseline_y": 288,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_d1r",
+      "label": "D1 rate",
+      "binding": "patch.modulator.d1r",
+      "property_id": "mod_d1r",
+      "property_path": "/custom_properties/mod_d1r",
+      "section": "modulator",
+      "panel": "front",
+      "kind": "knob",
+      "x": 114.4,
+      "y": 240,
+      "width": 50.4,
+      "height": 52,
+      "min": 0,
+      "max": 63,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "visual_role": "envelope",
+      "tooltip": "First decay rate: how fast the envelope falls toward the D1 level. Higher is faster; zero holds.",
+      "widget_bounds": {
+        "x": 119.6,
+        "y": 237,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 114.6,
+        "y": 232,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 115.14999999999999,
+        "y": 232.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 139.6,
+        "baseline_y": 288,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_d1l",
+      "label": "D1 atten",
+      "binding": "patch.modulator.d1l",
+      "property_id": "mod_d1l",
+      "property_path": "/custom_properties/mod_d1l",
+      "section": "modulator",
+      "panel": "front",
+      "kind": "knob",
+      "x": 172.8,
+      "y": 240,
+      "width": 50.4,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "visual_role": "envelope",
+      "tooltip": "First decay attenuation: higher values set a quieter target for the first decay stage.",
+      "widget_bounds": {
+        "x": 178.0,
+        "y": 237,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 173.0,
+        "y": 232,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 173.55,
+        "y": 232.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 198.0,
+        "baseline_y": 288,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_d2r",
+      "label": "D2 rate",
+      "binding": "patch.modulator.d2r",
+      "property_id": "mod_d2r",
+      "property_path": "/custom_properties/mod_d2r",
+      "section": "modulator",
+      "panel": "front",
+      "kind": "knob",
+      "x": 231.2,
+      "y": 240,
+      "width": 50.4,
+      "height": 52,
+      "min": 0,
+      "max": 63,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "visual_role": "envelope",
+      "tooltip": "Second decay rate after the D1 target. Higher fades faster; zero holds the level.",
+      "widget_bounds": {
+        "x": 236.39999999999998,
+        "y": 237,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 231.39999999999998,
+        "y": 232,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 231.95,
+        "y": 232.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 256.4,
+        "baseline_y": 288,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_rr",
+      "label": "Rel rate",
+      "binding": "patch.modulator.rr",
+      "property_id": "mod_rr",
+      "property_path": "/custom_properties/mod_rr",
+      "section": "modulator",
+      "panel": "front",
+      "kind": "knob",
+      "x": 289.6,
+      "y": 240,
+      "width": 50.4,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 10,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "visual_role": "envelope",
+      "tooltip": "Release rate after note-off. Higher is faster; the Sustain switch selects the separate rear release rate.",
+      "widget_bounds": {
+        "x": 294.8,
+        "y": 237,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 289.8,
+        "y": 232,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 290.35,
+        "y": 232.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 314.8,
+        "baseline_y": 288,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_wave",
+      "label": "Wave",
+      "binding": "patch.carrier.wave",
+      "property_id": "car_wave",
+      "property_path": "/custom_properties/car_wave",
+      "section": "carrier",
+      "panel": "front",
+      "kind": "wave",
+      "x": 410,
+      "y": 132,
+      "width": 292,
+      "height": 28,
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "tooltip": "Choose a sine, signed squared sine, half sine, or squared half sine waveform.",
+      "wave_cells": [
+        {
+          "index": 0,
+          "label": "SIN",
+          "x": 410.0,
+          "y": 132,
+          "width": 67.0,
+          "height": 28
+        },
+        {
+          "index": 1,
+          "label": "SIN\u00b2",
+          "x": 485.0,
+          "y": 132,
+          "width": 67.0,
+          "height": 28
+        },
+        {
+          "index": 2,
+          "label": "HALF",
+          "x": 560.0,
+          "y": 132,
+          "width": 67.0,
+          "height": 28
+        },
+        {
+          "index": 3,
+          "label": "HALF\u00b2",
+          "x": 635.0,
+          "y": 132,
+          "width": 67.0,
+          "height": 28
+        }
+      ],
+      "widget_bounds": {
+        "x": 410,
+        "y": 132,
+        "width": 292,
+        "height": 28
+      },
+      "caption": {
+        "x": 556.0,
+        "baseline_y": 180,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_mul",
+      "label": "Ratio",
+      "binding": "patch.carrier.mul",
+      "property_id": "car_mul",
+      "property_path": "/custom_properties/car_mul",
+      "section": "carrier",
+      "panel": "front",
+      "kind": "knob",
+      "x": 414.0,
+      "y": 176,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 1,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "tooltip": "Frequency ratio relative to the played note. Zero selects a half-frequency ratio.",
+      "widget_bounds": {
+        "x": 426.5,
+        "y": 173,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 421.5,
+        "y": 168,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 422.05,
+        "y": 168.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 446.5,
+        "baseline_y": 224,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_dt1",
+      "label": "Detune",
+      "binding": "patch.carrier.dt1",
+      "property_id": "car_dt1",
+      "property_path": "/custom_properties/car_dt1",
+      "section": "carrier",
+      "panel": "front",
+      "kind": "knob",
+      "x": 487.0,
+      "y": 176,
+      "width": 65.0,
+      "height": 52,
+      "min": -7,
+      "max": 7,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "tooltip": "Small pitch offset for beating and harmonic color; these are detune codes, not cents.",
+      "widget_bounds": {
+        "x": 499.5,
+        "y": 173,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 494.5,
+        "y": 168,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 495.05,
+        "y": 168.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 519.5,
+        "baseline_y": 224,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_tl",
+      "label": "Level",
+      "binding": "patch.carrier.tl",
+      "property_id": "car_tl",
+      "property_path": "/custom_properties/car_tl",
+      "section": "carrier",
+      "panel": "front",
+      "kind": "knob",
+      "x": 560.0,
+      "y": 176,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 127,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "tooltip": "Operator level. Turn up for more output. The modulator changes timbre; the carrier changes loudness.",
+      "presentation": "operator_level",
+      "widget_bounds": {
+        "x": 572.5,
+        "y": 173,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 567.5,
+        "y": 168,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 568.05,
+        "y": 168.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 592.5,
+        "baseline_y": 224,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_modulationAmount",
+      "label": "FM amount",
+      "binding": "controls.modulationAmount",
+      "property_id": "modulationAmount",
+      "property_path": "/custom_properties/modulationAmount",
+      "section": "carrier",
+      "panel": "front",
+      "kind": "knob",
+      "x": 633.0,
+      "y": 176,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 2,
+      "default": 1,
+      "step": 0.01,
+      "unit": "\u00d7",
+      "accent": "lavender",
+      "integer": false,
+      "tooltip": "Scale how strongly the modulator changes the carrier. More adds harmonic complexity.",
+      "widget_bounds": {
+        "x": 645.5,
+        "y": 173,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 640.5,
+        "y": 168,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 641.05,
+        "y": 168.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 665.5,
+        "baseline_y": 224,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_ar",
+      "label": "Atk rate",
+      "binding": "patch.carrier.ar",
+      "property_id": "car_ar",
+      "property_path": "/custom_properties/car_ar",
+      "section": "carrier",
+      "panel": "front",
+      "kind": "knob",
+      "x": 414.0,
+      "y": 240,
+      "width": 50.4,
+      "height": 52,
+      "min": 0,
+      "max": 63,
+      "default": 63,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "visual_role": "envelope",
+      "tooltip": "Attack rate: higher values reach full level faster. Zero prevents the attack from rising.",
+      "widget_bounds": {
+        "x": 419.2,
+        "y": 237,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 414.2,
+        "y": 232,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 414.75,
+        "y": 232.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 439.2,
+        "baseline_y": 288,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_d1r",
+      "label": "D1 rate",
+      "binding": "patch.carrier.d1r",
+      "property_id": "car_d1r",
+      "property_path": "/custom_properties/car_d1r",
+      "section": "carrier",
+      "panel": "front",
+      "kind": "knob",
+      "x": 472.4,
+      "y": 240,
+      "width": 50.4,
+      "height": 52,
+      "min": 0,
+      "max": 63,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "visual_role": "envelope",
+      "tooltip": "First decay rate: how fast the envelope falls toward the D1 level. Higher is faster; zero holds.",
+      "widget_bounds": {
+        "x": 477.59999999999997,
+        "y": 237,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 472.59999999999997,
+        "y": 232,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 473.15,
+        "y": 232.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 497.59999999999997,
+        "baseline_y": 288,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_d1l",
+      "label": "D1 atten",
+      "binding": "patch.carrier.d1l",
+      "property_id": "car_d1l",
+      "property_path": "/custom_properties/car_d1l",
+      "section": "carrier",
+      "panel": "front",
+      "kind": "knob",
+      "x": 530.8,
+      "y": 240,
+      "width": 50.4,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "visual_role": "envelope",
+      "tooltip": "First decay attenuation: higher values set a quieter target for the first decay stage.",
+      "widget_bounds": {
+        "x": 536.0,
+        "y": 237,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 531.0,
+        "y": 232,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 531.55,
+        "y": 232.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 556.0,
+        "baseline_y": 288,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_d2r",
+      "label": "D2 rate",
+      "binding": "patch.carrier.d2r",
+      "property_id": "car_d2r",
+      "property_path": "/custom_properties/car_d2r",
+      "section": "carrier",
+      "panel": "front",
+      "kind": "knob",
+      "x": 589.2,
+      "y": 240,
+      "width": 50.4,
+      "height": 52,
+      "min": 0,
+      "max": 63,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "visual_role": "envelope",
+      "tooltip": "Second decay rate after the D1 target. Higher fades faster; zero holds the level.",
+      "widget_bounds": {
+        "x": 594.4000000000001,
+        "y": 237,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 589.4000000000001,
+        "y": 232,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 589.95,
+        "y": 232.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 614.4000000000001,
+        "baseline_y": 288,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_rr",
+      "label": "Rel rate",
+      "binding": "patch.carrier.rr",
+      "property_id": "car_rr",
+      "property_path": "/custom_properties/car_rr",
+      "section": "carrier",
+      "panel": "front",
+      "kind": "knob",
+      "x": 647.6,
+      "y": 240,
+      "width": 50.4,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 10,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "visual_role": "envelope",
+      "tooltip": "Release rate after note-off. Higher is faster; the Sustain switch selects the separate rear release rate.",
+      "widget_bounds": {
+        "x": 652.8000000000001,
+        "y": 237,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 647.8000000000001,
+        "y": 232,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 648.35,
+        "y": 232.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 672.8000000000001,
+        "baseline_y": 288,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_lfoRateHz",
+      "label": "LFO Hz",
+      "binding": "controls.lfoRateHz",
+      "property_id": "lfoRateHz",
+      "property_path": "/custom_properties/lfoRateHz",
+      "section": "modulation",
+      "panel": "front",
+      "kind": "knob",
+      "x": 56.0,
+      "y": 382,
+      "width": 65.0,
+      "height": 52,
+      "min": 0.05,
+      "max": 30,
+      "default": 6.1,
+      "step": 0.1,
+      "unit": "Hz",
+      "accent": "cyan",
+      "integer": false,
+      "tooltip": "Pitch and amplitude modulation speed in hertz.",
+      "widget_bounds": {
+        "x": 68.5,
+        "y": 379,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 63.5,
+        "y": 374,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 64.05,
+        "y": 374.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 88.5,
+        "baseline_y": 430,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "patch_vibratoDelay",
+      "label": "Delay",
+      "binding": "patch.vibratoDelay",
+      "property_id": "vibratoDelay",
+      "property_path": "/custom_properties/vibratoDelay",
+      "section": "modulation",
+      "panel": "front",
+      "kind": "knob",
+      "x": 129.0,
+      "y": 382,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 127,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Delay code before vibrato starts. The rear Delay scale multiplies it.",
+      "widget_bounds": {
+        "x": 141.5,
+        "y": 379,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 136.5,
+        "y": 374,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 137.05,
+        "y": 374.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 161.5,
+        "baseline_y": 430,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_vibratoDepth",
+      "label": "Pitch mod",
+      "binding": "controls.vibratoDepth",
+      "property_id": "vibratoDepth",
+      "property_path": "/custom_properties/vibratoDepth",
+      "section": "modulation",
+      "panel": "front",
+      "kind": "knob",
+      "x": 202.0,
+      "y": 382,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 4,
+      "default": 1,
+      "step": 0.01,
+      "unit": "",
+      "accent": "cyan",
+      "integer": false,
+      "tooltip": "Pitch modulation depth multiplier. Enable Vibrato and choose a nonzero PM range on the rear.",
+      "widget_bounds": {
+        "x": 214.5,
+        "y": 379,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 209.5,
+        "y": 374,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 210.05,
+        "y": 374.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 234.5,
+        "baseline_y": 430,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_tremoloDepth",
+      "label": "Amp mod",
+      "binding": "controls.tremoloDepth",
+      "property_id": "tremoloDepth",
+      "property_path": "/custom_properties/tremoloDepth",
+      "section": "modulation",
+      "panel": "front",
+      "kind": "knob",
+      "x": 275.0,
+      "y": 382,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 4,
+      "default": 1,
+      "step": 0.01,
+      "unit": "",
+      "accent": "cyan",
+      "integer": false,
+      "tooltip": "Amplitude modulation depth multiplier. Also requires rear AM range and operator AM enable.",
+      "widget_bounds": {
+        "x": 287.5,
+        "y": 379,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 282.5,
+        "y": 374,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 283.05,
+        "y": 374.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 307.5,
+        "baseline_y": 430,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_velocitySensitivity",
+      "label": "Velocity",
+      "binding": "controls.velocitySensitivity",
+      "property_id": "velocitySensitivity",
+      "property_path": "/custom_properties/velocitySensitivity",
+      "section": "modulation",
+      "panel": "front",
+      "kind": "knob",
+      "x": 66.667,
+      "y": 448,
+      "width": 68,
+      "height": 52,
+      "min": 0,
+      "max": 2,
+      "default": 1,
+      "step": 0.01,
+      "unit": "\u00d7",
+      "accent": "cyan",
+      "integer": false,
+      "tooltip": "How strongly note velocity changes loudness. Zero ignores velocity.",
+      "widget_bounds": {
+        "x": 80.667,
+        "y": 445,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 75.667,
+        "y": 440,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 76.217,
+        "y": 440.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 100.667,
+        "baseline_y": 496,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "patch_vibrato",
+      "label": "Vibrato",
+      "binding": "patch.vibrato",
+      "property_id": "vibrato",
+      "property_path": "/custom_properties/vibrato",
+      "section": "modulation",
+      "panel": "front",
+      "kind": "toggle",
+      "x": 164.0,
+      "y": 448,
+      "width": 68,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Enable delayed pitch modulation. PM depth and the rear PM range set its strength.",
+      "widget_bounds": {
+        "x": 167.0,
+        "y": 453.5,
+        "width": 62,
+        "height": 23
+      },
+      "caption": {
+        "x": 198.0,
+        "baseline_y": 496,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "patch_sustain",
+      "label": "Sustain",
+      "binding": "patch.sustain",
+      "property_id": "sustain",
+      "property_path": "/custom_properties/sustain",
+      "section": "modulation",
+      "panel": "front",
+      "kind": "toggle",
+      "x": 261.333,
+      "y": 448,
+      "width": 68,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Use each operator\u2019s Sustain RR setting from the rear after note-off.",
+      "widget_bounds": {
+        "x": 264.333,
+        "y": 453.5,
+        "width": 62,
+        "height": 23
+      },
+      "caption": {
+        "x": 295.333,
+        "baseline_y": 496,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_chorusMix",
+      "label": "Chorus",
+      "binding": "controls.chorusMix",
+      "property_id": "chorusMix",
+      "property_path": "/custom_properties/chorusMix",
+      "section": "effects",
+      "panel": "front",
+      "kind": "knob",
+      "x": 414.0,
+      "y": 382,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "step": 0.01,
+      "unit": "",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Chorus amount. Recorded mode scales the captured stereo-side character; Studio uses its creative delay blend.",
+      "widget_bounds": {
+        "x": 426.5,
+        "y": 379,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 421.5,
+        "y": 374,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 422.05,
+        "y": 374.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 446.5,
+        "baseline_y": 430,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_chorusRateHz",
+      "label": "Rate Hz",
+      "binding": "controls.chorusRateHz",
+      "property_id": "chorusRateHz",
+      "property_path": "/custom_properties/chorusRateHz",
+      "section": "effects",
+      "panel": "front",
+      "kind": "knob",
+      "x": 487.0,
+      "y": 382,
+      "width": 65.0,
+      "height": 52,
+      "min": 0.05,
+      "max": 8,
+      "default": 0.9546467517767424,
+      "step": 0.01,
+      "unit": "Hz",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Chorus motion speed in hertz.",
+      "widget_bounds": {
+        "x": 499.5,
+        "y": 379,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 494.5,
+        "y": 374,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 495.05,
+        "y": 374.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 519.5,
+        "baseline_y": 430,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_chorusDepthMs",
+      "label": "Depth ms",
+      "binding": "controls.chorusDepthMs",
+      "property_id": "chorusDepthMs",
+      "property_path": "/custom_properties/chorusDepthMs",
+      "section": "effects",
+      "panel": "front",
+      "kind": "knob",
+      "x": 560.0,
+      "y": 382,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 8,
+      "default": 0.4968365657517667,
+      "step": 0.1,
+      "unit": "ms",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Chorus delay modulation depth in milliseconds.",
+      "widget_bounds": {
+        "x": 572.5,
+        "y": 379,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 567.5,
+        "y": 374,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 568.05,
+        "y": 374.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 592.5,
+        "baseline_y": 430,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_stereoWidth",
+      "label": "Width",
+      "binding": "controls.stereoWidth",
+      "property_id": "stereoWidth",
+      "property_path": "/custom_properties/stereoWidth",
+      "section": "effects",
+      "panel": "front",
+      "kind": "knob",
+      "x": 633.0,
+      "y": 382,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 2,
+      "default": 1,
+      "step": 0.01,
+      "unit": "\u00d7",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Stereo width multiplier. Zero is mono; one preserves the reference width.",
+      "widget_bounds": {
+        "x": 645.5,
+        "y": 379,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 640.5,
+        "y": 374,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 641.05,
+        "y": 374.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 665.5,
+        "baseline_y": 430,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_noiseRms",
+      "label": "Noise",
+      "binding": "controls.noiseRms",
+      "property_id": "noiseRms",
+      "property_path": "/custom_properties/noiseRms",
+      "section": "effects",
+      "panel": "front",
+      "kind": "knob",
+      "x": 414.0,
+      "y": 448,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 0.02,
+      "default": 0.002,
+      "step": 0.0001,
+      "unit": "",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Added noise amplitude before master volume. The rear Noise model chooses Circuit or White.",
+      "widget_bounds": {
+        "x": 426.5,
+        "y": 445,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 421.5,
+        "y": 440,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 422.05,
+        "y": 440.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 446.5,
+        "baseline_y": 496,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_drive",
+      "label": "Drive",
+      "binding": "controls.drive",
+      "property_id": "drive",
+      "property_path": "/custom_properties/drive",
+      "section": "effects",
+      "panel": "front",
+      "kind": "knob",
+      "x": 487.0,
+      "y": 448,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "step": 0.01,
+      "unit": "",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Additional creative saturation. Zero leaves this extra drive stage off.",
+      "widget_bounds": {
+        "x": 499.5,
+        "y": 445,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 494.5,
+        "y": 440,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 495.05,
+        "y": 440.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 519.5,
+        "baseline_y": 496,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_toneCutoffHz",
+      "label": "Cutoff Hz",
+      "binding": "controls.toneCutoffHz",
+      "property_id": "toneCutoffHz",
+      "property_path": "/custom_properties/toneCutoffHz",
+      "section": "effects",
+      "panel": "front",
+      "kind": "knob",
+      "x": 560.0,
+      "y": 448,
+      "width": 65.0,
+      "height": 52,
+      "min": 1000,
+      "max": 20000,
+      "default": 14000,
+      "step": 1,
+      "unit": "Hz",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Output low-pass cutoff in hertz. Lower values soften the high end.",
+      "widget_bounds": {
+        "x": 572.5,
+        "y": 445,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 567.5,
+        "y": 440,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 568.05,
+        "y": 440.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 592.5,
+        "baseline_y": 496,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_masterGain",
+      "label": "Output",
+      "binding": "controls.masterGain",
+      "property_id": "masterGain",
+      "property_path": "/custom_properties/masterGain",
+      "section": "effects",
+      "panel": "front",
+      "kind": "knob",
+      "x": 633.0,
+      "y": 448,
+      "width": 65.0,
+      "height": 52,
+      "min": 0,
+      "max": 2,
+      "default": 0.25,
+      "step": 0.01,
+      "unit": "\u00d7",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Master output gain. One is unity; zero mutes the instrument.",
+      "widget_bounds": {
+        "x": 645.5,
+        "y": 445,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 640.5,
+        "y": 440,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 641.05,
+        "y": 440.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 665.5,
+        "baseline_y": 496,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_lksLo",
+      "label": "01 LKS low",
+      "binding": "patch.modulator.lksLo",
+      "property_id": "mod_lksLo",
+      "property_path": "/custom_properties/mod_lksLo",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 61.167,
+      "y": 134,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Level scaling below the keyboard pivot. Larger codes reduce the lower notes more.",
+      "widget_bounds": {
+        "x": 86.167,
+        "y": 131,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 81.167,
+        "y": 126,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 81.717,
+        "y": 126.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 106.167,
+        "baseline_y": 182,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_lksHi",
+      "label": "01 LKS high",
+      "binding": "patch.modulator.lksHi",
+      "property_id": "mod_lksHi",
+      "property_path": "/custom_properties/mod_lksHi",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 169.5,
+      "y": 134,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Level scaling above the keyboard pivot. Larger codes reduce the upper notes more.",
+      "widget_bounds": {
+        "x": 194.5,
+        "y": 131,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 189.5,
+        "y": 126,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 190.05,
+        "y": 126.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 214.5,
+        "baseline_y": 182,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_rks",
+      "label": "01 RKS",
+      "binding": "patch.modulator.rks",
+      "property_id": "mod_rks",
+      "property_path": "/custom_properties/mod_rks",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 277.833,
+      "y": 134,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Keyboard rate scaling. Larger settings speed up envelopes on higher notes.",
+      "widget_bounds": {
+        "x": 302.833,
+        "y": 131,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 297.833,
+        "y": 126,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 298.38300000000004,
+        "y": 126.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 322.833,
+        "baseline_y": 182,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_srr",
+      "label": "01 Sustain RR",
+      "binding": "patch.modulator.srr",
+      "property_id": "mod_srr",
+      "property_path": "/custom_properties/mod_srr",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 386.167,
+      "y": 134,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 5,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Release rate used when Sustain is enabled. Higher values release faster.",
+      "widget_bounds": {
+        "x": 411.167,
+        "y": 131,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 406.167,
+        "y": 126,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 406.717,
+        "y": 126.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 431.167,
+        "baseline_y": 182,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_amEnable",
+      "label": "01 AM enable",
+      "binding": "patch.modulator.amEnable",
+      "property_id": "mod_amEnable",
+      "property_path": "/custom_properties/mod_amEnable",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 494.5,
+      "y": 134,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Allow the LFO to change this operator\u2019s level. The rear AM range and front AM depth set the amount.",
+      "widget_bounds": {
+        "x": 497.5,
+        "y": 139.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 539.5,
+        "baseline_y": 182,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "modulator_dt2",
+      "label": "01 DT2 +600\u00a2",
+      "binding": "patch.modulator.dt2",
+      "property_id": "mod_dt2",
+      "property_path": "/custom_properties/mod_dt2",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 602.833,
+      "y": 134,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Shift this operator up by 600 cents, independently of fine detune.",
+      "widget_bounds": {
+        "x": 605.833,
+        "y": 139.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 647.833,
+        "baseline_y": 182,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_lksLo",
+      "label": "02 LKS low",
+      "binding": "patch.carrier.lksLo",
+      "property_id": "car_lksLo",
+      "property_path": "/custom_properties/car_lksLo",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 61.167,
+      "y": 200,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "tooltip": "Level scaling below the keyboard pivot. Larger codes reduce the lower notes more.",
+      "widget_bounds": {
+        "x": 86.167,
+        "y": 197,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 81.167,
+        "y": 192,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 81.717,
+        "y": 192.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 106.167,
+        "baseline_y": 248,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_lksHi",
+      "label": "02 LKS high",
+      "binding": "patch.carrier.lksHi",
+      "property_id": "car_lksHi",
+      "property_path": "/custom_properties/car_lksHi",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 169.5,
+      "y": 200,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "tooltip": "Level scaling above the keyboard pivot. Larger codes reduce the upper notes more.",
+      "widget_bounds": {
+        "x": 194.5,
+        "y": 197,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 189.5,
+        "y": 192,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 190.05,
+        "y": 192.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 214.5,
+        "baseline_y": 248,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_rks",
+      "label": "02 RKS",
+      "binding": "patch.carrier.rks",
+      "property_id": "car_rks",
+      "property_path": "/custom_properties/car_rks",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 277.833,
+      "y": 200,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "tooltip": "Keyboard rate scaling. Larger settings speed up envelopes on higher notes.",
+      "widget_bounds": {
+        "x": 302.833,
+        "y": 197,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 297.833,
+        "y": 192,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 298.38300000000004,
+        "y": 192.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 322.833,
+        "baseline_y": 248,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_srr",
+      "label": "02 Sustain RR",
+      "binding": "patch.carrier.srr",
+      "property_id": "car_srr",
+      "property_path": "/custom_properties/car_srr",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 386.167,
+      "y": 200,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 15,
+      "default": 5,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "tooltip": "Release rate used when Sustain is enabled. Higher values release faster.",
+      "widget_bounds": {
+        "x": 411.167,
+        "y": 197,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 406.167,
+        "y": 192,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 406.717,
+        "y": 192.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 431.167,
+        "baseline_y": 248,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_amEnable",
+      "label": "02 AM enable",
+      "binding": "patch.carrier.amEnable",
+      "property_id": "car_amEnable",
+      "property_path": "/custom_properties/car_amEnable",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 494.5,
+      "y": 200,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "tooltip": "Allow the LFO to change this operator\u2019s level. The rear AM range and front AM depth set the amount.",
+      "widget_bounds": {
+        "x": 497.5,
+        "y": 205.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 539.5,
+        "baseline_y": 248,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "carrier_dt2",
+      "label": "02 DT2 +600\u00a2",
+      "binding": "patch.carrier.dt2",
+      "property_id": "car_dt2",
+      "property_path": "/custom_properties/car_dt2",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 602.833,
+      "y": 200,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "lavender",
+      "integer": true,
+      "tooltip": "Shift this operator up by 600 cents, independently of fine detune.",
+      "widget_bounds": {
+        "x": 605.833,
+        "y": 205.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 647.833,
+        "baseline_y": 248,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "patch_pms",
+      "label": "PM range",
+      "binding": "patch.pms",
+      "property_id": "pms",
+      "property_path": "/custom_properties/pms",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 61.167,
+      "y": 266,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 7,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Base pitch modulation range used with front PM depth and the Vibrato switch.",
+      "widget_bounds": {
+        "x": 86.167,
+        "y": 263,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 81.167,
+        "y": 258,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 81.717,
+        "y": 258.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 106.167,
+        "baseline_y": 314,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "patch_ams",
+      "label": "AM range",
+      "binding": "patch.ams",
+      "property_id": "ams",
+      "property_path": "/custom_properties/ams",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 169.5,
+      "y": 266,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 3,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Base amplitude modulation range used with front AM depth and each operator\u2019s AM enable.",
+      "widget_bounds": {
+        "x": 194.5,
+        "y": 263,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 189.5,
+        "y": 258,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 190.05,
+        "y": 258.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 214.5,
+        "baseline_y": 314,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_lfoDelayScale",
+      "label": "Delay scale",
+      "binding": "controls.lfoDelayScale",
+      "property_id": "lfoDelayScale",
+      "property_path": "/custom_properties/lfoDelayScale",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 277.833,
+      "y": 266,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 4,
+      "default": 1,
+      "step": 0.01,
+      "unit": "",
+      "accent": "cyan",
+      "integer": false,
+      "tooltip": "Multiply the front vibrato delay. Zero starts modulation immediately.",
+      "widget_bounds": {
+        "x": 302.833,
+        "y": 263,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 297.833,
+        "y": 258,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 298.38300000000004,
+        "y": 258.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 322.833,
+        "baseline_y": 314,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_triangleLfo",
+      "label": "LFO shape",
+      "binding": "controls.triangleLfo",
+      "property_id": "triangleLfo",
+      "property_path": "/custom_properties/triangleLfo",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 386.167,
+      "y": 266,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Select a sine or triangle modulation shape.",
+      "widget_bounds": {
+        "x": 389.167,
+        "y": 271.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 431.167,
+        "baseline_y": 314,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_globalLfo",
+      "label": "Global LFO",
+      "binding": "controls.globalLfo",
+      "property_id": "globalLfo",
+      "property_path": "/custom_properties/globalLfo",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 494.5,
+      "y": 266,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "step": 1,
+      "unit": "",
+      "accent": "cyan",
+      "integer": true,
+      "tooltip": "Share a running LFO phase across notes instead of starting each note\u2019s phase separately.",
+      "widget_bounds": {
+        "x": 497.5,
+        "y": 271.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 539.5,
+        "baseline_y": 314,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_velocityToModulation",
+      "label": "Vel \u2192 FM",
+      "binding": "controls.velocityToModulation",
+      "property_id": "velocityToModulation",
+      "property_path": "/custom_properties/velocityToModulation",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 602.833,
+      "y": 266,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 2,
+      "default": 0,
+      "step": 0.01,
+      "unit": "",
+      "accent": "cyan",
+      "integer": false,
+      "tooltip": "How strongly note velocity changes FM intensity.",
+      "widget_bounds": {
+        "x": 627.833,
+        "y": 263,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 622.833,
+        "y": 258,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 623.3829999999999,
+        "y": 258.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 647.833,
+        "baseline_y": 314,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "rack_bendRange",
+      "label": "Bend range",
+      "binding": "rack.bendRange",
+      "property_id": "bendRange",
+      "property_path": "/custom_properties/bendRange",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 61.167,
+      "y": 332,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 24,
+      "default": 2,
+      "step": 1,
+      "unit": "",
+      "accent": "coral",
+      "integer": true,
+      "tooltip": "Pitch-wheel range in semitones.",
+      "widget_bounds": {
+        "x": 86.167,
+        "y": 329,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 81.167,
+        "y": 324,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 81.717,
+        "y": 324.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 106.167,
+        "baseline_y": 380,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "rack_modWheelDepth",
+      "label": "Wheel \u2192 PM",
+      "binding": "rack.modWheelDepth",
+      "property_id": "modWheelDepth",
+      "property_path": "/custom_properties/modWheelDepth",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 169.5,
+      "y": 332,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 4,
+      "default": 1,
+      "step": 0.01,
+      "unit": "",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Additional pitch modulation depth from the modulation wheel.",
+      "widget_bounds": {
+        "x": 194.5,
+        "y": 329,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 189.5,
+        "y": 324,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 190.05,
+        "y": 324.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 214.5,
+        "baseline_y": 380,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_polyphony",
+      "label": "Polyphony",
+      "binding": "controls.polyphony",
+      "property_id": "polyphony",
+      "property_path": "/custom_properties/polyphony",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 277.833,
+      "y": 332,
+      "width": 90,
+      "height": 52,
+      "min": 1,
+      "max": 12,
+      "default": 12,
+      "step": 1,
+      "unit": "",
+      "accent": "coral",
+      "integer": true,
+      "tooltip": "Maximum simultaneous voices.",
+      "widget_bounds": {
+        "x": 302.833,
+        "y": 329,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 297.833,
+        "y": 324,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 298.38300000000004,
+        "y": 324.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 322.833,
+        "baseline_y": 380,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_chorusMode",
+      "label": "Chorus type",
+      "binding": "controls.chorusMode",
+      "property_id": "chorusMode",
+      "property_path": "/custom_properties/chorusMode",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 386.167,
+      "y": 332,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "step": 1,
+      "unit": "",
+      "accent": "coral",
+      "options": [
+        "Studio",
+        "Recorded"
+      ],
+      "integer": true,
+      "tooltip": "Recorded follows the recording-derived stereo transfer; Studio is a creative chorus.",
+      "widget_bounds": {
+        "x": 389.167,
+        "y": 337.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 431.167,
+        "baseline_y": 380,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_noiseModel",
+      "label": "Noise model",
+      "binding": "controls.noiseModel",
+      "property_id": "noiseModel",
+      "property_path": "/custom_properties/noiseModel",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 494.5,
+      "y": 332,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "step": 1,
+      "unit": "",
+      "accent": "coral",
+      "options": [
+        "White",
+        "Circuit"
+      ],
+      "integer": true,
+      "tooltip": "Circuit follows the sibling-circuit noise spectrum; White uses flat-spectrum noise.",
+      "widget_bounds": {
+        "x": 497.5,
+        "y": 337.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 539.5,
+        "baseline_y": 380,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_outputCircuit",
+      "label": "Circuit",
+      "binding": "controls.outputCircuit",
+      "property_id": "outputCircuit",
+      "property_path": "/custom_properties/outputCircuit",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 602.833,
+      "y": 332,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "step": 1,
+      "unit": "",
+      "accent": "coral",
+      "integer": true,
+      "tooltip": "Enable the modeled sibling analog output transfer.",
+      "widget_bounds": {
+        "x": 605.833,
+        "y": 337.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 647.833,
+        "baseline_y": 380,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_clockOffsetPpm",
+      "label": "Clock offset",
+      "binding": "controls.clockOffsetPpm",
+      "property_id": "clockOffsetPpm",
+      "property_path": "/custom_properties/clockOffsetPpm",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 61.167,
+      "y": 398,
+      "width": 90,
+      "height": 52,
+      "min": -5000,
+      "max": 5000,
+      "default": 0,
+      "step": 1,
+      "unit": "ppm",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Fixed synthesis-clock offset in parts per million. Zero is nominal tuning.",
+      "widget_bounds": {
+        "x": 86.167,
+        "y": 395,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 81.167,
+        "y": 390,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 81.717,
+        "y": 390.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 106.167,
+        "baseline_y": 446,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_clockDriftPpm",
+      "label": "Drift peak",
+      "binding": "controls.clockDriftPpm",
+      "property_id": "clockDriftPpm",
+      "property_path": "/custom_properties/clockDriftPpm",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 169.5,
+      "y": 398,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 2000,
+      "default": 20,
+      "step": 1,
+      "unit": "ppm",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Peak modeled clock excursion in parts per million.",
+      "widget_bounds": {
+        "x": 194.5,
+        "y": 395,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 189.5,
+        "y": 390,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 190.05,
+        "y": 390.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 214.5,
+        "baseline_y": 446,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_clockDriftRateHz",
+      "label": "Drift rate",
+      "binding": "controls.clockDriftRateHz",
+      "property_id": "clockDriftRateHz",
+      "property_path": "/custom_properties/clockDriftRateHz",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 277.833,
+      "y": 398,
+      "width": 90,
+      "height": 52,
+      "min": 0.01,
+      "max": 1,
+      "default": 0.1,
+      "step": 0.001,
+      "unit": "Hz",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Speed of modeled clock drift in hertz.",
+      "widget_bounds": {
+        "x": 302.833,
+        "y": 395,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 297.833,
+        "y": 390,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 298.38300000000004,
+        "y": 390.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 322.833,
+        "baseline_y": 446,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_masterTuneCents",
+      "label": "Master tune",
+      "binding": "controls.masterTuneCents",
+      "property_id": "masterTuneCents",
+      "property_path": "/custom_properties/masterTuneCents",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "knob",
+      "x": 386.167,
+      "y": 398,
+      "width": 90,
+      "height": 52,
+      "min": -100,
+      "max": 100,
+      "default": 0,
+      "step": 0.1,
+      "unit": "\u00a2",
+      "accent": "coral",
+      "integer": false,
+      "tooltip": "Overall tuning offset in cents.",
+      "widget_bounds": {
+        "x": 411.167,
+        "y": 395,
+        "width": 40,
+        "height": 40
+      },
+      "sprite_bounds": {
+        "x": 406.167,
+        "y": 390,
+        "width": 50,
+        "height": 50
+      },
+      "visual_bounds": {
+        "x": 406.717,
+        "y": 390.55,
+        "width": 48.900000000000006,
+        "height": 44.45
+      },
+      "caption": {
+        "x": 431.167,
+        "baseline_y": 446,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_dcBlock",
+      "label": "DC block",
+      "binding": "controls.dcBlock",
+      "property_id": "dcBlock",
+      "property_path": "/custom_properties/dcBlock",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 494.5,
+      "y": 398,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "step": 1,
+      "unit": "",
+      "accent": "coral",
+      "integer": true,
+      "tooltip": "Remove DC from the output.",
+      "widget_bounds": {
+        "x": 497.5,
+        "y": 403.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 539.5,
+        "baseline_y": 446,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_outputLimit",
+      "label": "Limiter",
+      "binding": "controls.outputLimit",
+      "property_id": "outputLimit",
+      "property_path": "/custom_properties/outputLimit",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 602.833,
+      "y": 398,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "step": 1,
+      "unit": "",
+      "accent": "coral",
+      "integer": true,
+      "tooltip": "Enable output-level protection.",
+      "widget_bounds": {
+        "x": 605.833,
+        "y": 403.5,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 647.833,
+        "baseline_y": 446,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    }
+  ],
+  "sections": {
+    "front": [
+      {
+        "id": "modulator",
+        "title": "01  MODULATOR",
+        "panel": "front",
+        "x": 28,
+        "y": 84,
+        "width": 340,
+        "height": 224,
+        "accent": "cyan",
+        "padding": 24,
+        "heading": {
+          "x": 52,
+          "y": 109,
+          "rule_start": 132.0,
+          "rule_end": 344,
+          "rule_width": 2,
+          "rule_gap": 6
+        }
+      },
+      {
+        "id": "carrier",
+        "title": "02  CARRIER",
+        "panel": "front",
+        "x": 386,
+        "y": 84,
+        "width": 340,
+        "height": 224,
+        "accent": "lavender",
+        "padding": 24,
+        "heading": {
+          "x": 410,
+          "y": 109,
+          "rule_start": 472.8,
+          "rule_end": 702,
+          "rule_width": 2,
+          "rule_gap": 6
+        }
+      },
+      {
+        "id": "modulation",
+        "title": "MODULATION / PERFORMANCE",
+        "panel": "front",
+        "x": 28,
+        "y": 332,
+        "width": 340,
+        "height": 192,
+        "accent": "cyan",
+        "padding": 24,
+        "heading": {
+          "x": 52,
+          "y": 357,
+          "rule_start": 196.8,
+          "rule_end": 344,
+          "rule_width": 2,
+          "rule_gap": 6
+        }
+      },
+      {
+        "id": "effects",
+        "title": "CHORUS / OUTPUT",
+        "panel": "front",
+        "x": 386,
+        "y": 332,
+        "width": 340,
+        "height": 192,
+        "accent": "coral",
+        "padding": 24,
+        "heading": {
+          "x": 410,
+          "y": 357,
+          "rule_start": 498.0,
+          "rule_end": 702,
+          "rule_width": 2,
+          "rule_gap": 6
+        }
+      }
+    ],
+    "rear": [
+      {
+        "id": "advanced",
+        "title": "ADVANCED / CALIBRATION",
+        "panel": "rear",
+        "x": 28,
+        "y": 84,
+        "width": 698,
+        "height": 388,
+        "accent": "cyan",
+        "padding": 24,
+        "heading": {
+          "x": 52,
+          "y": 109,
+          "rule_start": 177.6,
+          "rule_end": 702,
+          "rule_width": 2,
+          "rule_gap": 6
+        }
+      },
+      {
+        "id": "connections",
+        "title": null,
+        "panel": "rear",
+        "x": 28,
+        "y": 480,
+        "width": 698,
+        "height": 52,
+        "accent": "cyan",
+        "padding": 24,
+        "heading": null
+      }
+    ]
+  },
+  "annotations": [],
+  "spacing": {
+    "section_gap": 24,
+    "section_padding": 24,
+    "operator_knob_row_pitch": 64,
+    "global_row_pitch": 66,
+    "rear_row_pitch": 66,
+    "caption_offset": 48
+  },
+  "notes": [
+    "35 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.",
+    "Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.",
+    "Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.",
+    "Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator."
+  ],
+  "sockets": [
+    {
+      "id": "gate_cv",
+      "property_path": "/cv_inputs/gate_cv",
+      "label": "GATE CV",
+      "panel": "rear",
+      "section": "connections",
+      "x": 68,
+      "y": 506,
+      "width": 24,
+      "height": 24,
+      "widget_bounds": {
+        "x": 56,
+        "y": 494,
+        "width": 24,
+        "height": 24
+      },
+      "caption": {
+        "x": 88,
+        "baseline_y": 510,
+        "font_size": 11,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "note_cv",
+      "property_path": "/cv_inputs/note_cv",
+      "label": "NOTE CV",
+      "panel": "rear",
+      "section": "connections",
+      "x": 177,
+      "y": 506,
+      "width": 24,
+      "height": 24,
+      "widget_bounds": {
+        "x": 165,
+        "y": 494,
+        "width": 24,
+        "height": 24
+      },
+      "caption": {
+        "x": 197,
+        "baseline_y": 510,
+        "font_size": 11,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "fm_cv",
+      "property_path": "/cv_inputs/fm_cv",
+      "label": "FM CV",
+      "panel": "rear",
+      "section": "connections",
+      "x": 286,
+      "y": 506,
+      "width": 24,
+      "height": 24,
+      "widget_bounds": {
+        "x": 274,
+        "y": 494,
+        "width": 24,
+        "height": 24
+      },
+      "caption": {
+        "x": 306,
+        "baseline_y": 510,
+        "font_size": 11,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "level_cv",
+      "property_path": "/cv_inputs/level_cv",
+      "label": "LEVEL CV",
+      "panel": "rear",
+      "section": "connections",
+      "x": 395,
+      "y": 506,
+      "width": 24,
+      "height": 24,
+      "widget_bounds": {
+        "x": 383,
+        "y": 494,
+        "width": 24,
+        "height": 24
+      },
+      "caption": {
+        "x": 415,
+        "baseline_y": 510,
+        "font_size": 11,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "left",
+      "property_path": "/audio_outputs/left",
+      "label": "LEFT",
+      "panel": "rear",
+      "section": "connections",
+      "x": 550,
+      "y": 506,
+      "width": 24,
+      "height": 24,
+      "widget_bounds": {
+        "x": 538,
+        "y": 494,
+        "width": 24,
+        "height": 24
+      },
+      "caption": {
+        "x": 570,
+        "baseline_y": 510,
+        "font_size": 11,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "right",
+      "property_path": "/audio_outputs/right",
+      "label": "RIGHT",
+      "panel": "rear",
+      "section": "connections",
+      "x": 659,
+      "y": 506,
+      "width": 24,
+      "height": 24,
+      "widget_bounds": {
+        "x": 647,
+        "y": 494,
+        "width": 24,
+        "height": 24
+      },
+      "caption": {
+        "x": 679,
+        "baseline_y": 510,
+        "font_size": 11,
+        "anchor": "start"
+      }
+    }
+  ],
+  "routing_icons": [
+    {
+      "x": 525,
+      "y": 498,
+      "asset": "Routing_Icon_White_01_1frames"
+    },
+    {
+      "x": 634,
+      "y": 498,
+      "asset": "Routing_Icon_White_02_1frames"
+    }
+  ],
+  "device_name_positions": {
+    "front": {
+      "x": 586,
+      "y": 20
+    },
+    "back": {
+      "x": 586,
+      "y": 20
+    },
+    "folded_front": {
+      "x": 610,
+      "y": 8
+    },
+    "folded_back": {
+      "x": 610,
+      "y": 8
+    }
+  },
+  "branding": {
+    "source_sha256": {
+      "Protocodus-logo.svg": "65bc6ca2d22a6b5ac322f8ad7f7694f11d4a9dbf549778da36b03afb9b1a4841",
+      "Protocodus-logo.png": "d7ebc1f2ee9488dfb345e677d8b56ba8e0f76ae2e6276879d133483a50f56175"
+    },
+    "gap": 10,
+    "faces": {
+      "full": {
+        "logo": {
+          "x": 28,
+          "y": 17.6,
+          "width": 26.2,
+          "height": 21.8
+        },
+        "wordmark": {
+          "x": 64.2,
+          "baseline_y": 39.2,
+          "size": 30,
+          "ink_bounds": [
+            64.2,
+            17.6,
+            146.8,
+            39.400000000000006
+          ]
+        }
+      },
+      "folded": {
+        "logo": {
+          "x": 26,
+          "y": 6.6,
+          "width": 20.2,
+          "height": 16.8
+        },
+        "wordmark": {
+          "x": 56.2,
+          "baseline_y": 23.2,
+          "size": 23,
+          "ink_bounds": [
+            56.2,
+            6.599999999999998,
+            119.80000000000001,
+            23.4
+          ]
+        }
+      }
+    }
+  },
+  "group_markers": [
+    {
+      "panel": "rear",
+      "type": "bar",
+      "x": 39,
+      "y": 134,
+      "width": 3,
+      "height": 44,
+      "color": "cyan"
+    },
+    {
+      "panel": "rear",
+      "type": "bar",
+      "x": 39,
+      "y": 200,
+      "width": 3,
+      "height": 44,
+      "color": "lavender"
+    },
+    {
+      "panel": "rear",
+      "type": "separator",
+      "x": 52,
+      "y": 253,
+      "width": 650,
+      "color": "edge"
+    },
+    {
+      "panel": "rear",
+      "type": "separator",
+      "x": 52,
+      "y": 385,
+      "width": 650,
+      "color": "edge"
+    }
+  ],
+  "preview_patch": 0,
+  "preview_state": {
+    "patch.modulator.wave": 3,
+    "patch.modulator.mul": 3,
+    "patch.modulator.dt1": 0,
+    "patch.modulator.tl": 36,
+    "patch.feedback": 0,
+    "patch.modulator.ar": 63,
+    "patch.modulator.d1r": 12,
+    "patch.modulator.d1l": 0,
+    "patch.modulator.d2r": 12,
+    "patch.modulator.rr": 6,
+    "patch.carrier.wave": 1,
+    "patch.carrier.mul": 1,
+    "patch.carrier.dt1": 0,
+    "patch.carrier.tl": 11,
+    "controls.modulationAmount": 1,
+    "patch.carrier.ar": 58,
+    "patch.carrier.d1r": 12,
+    "patch.carrier.d1l": 0,
+    "patch.carrier.d2r": 12,
+    "patch.carrier.rr": 5,
+    "controls.lfoRateHz": 6.1,
+    "patch.vibratoDelay": 0,
+    "controls.vibratoDepth": 1,
+    "controls.tremoloDepth": 1,
+    "controls.velocitySensitivity": 1,
+    "patch.vibrato": 0,
+    "patch.sustain": 0,
+    "controls.chorusMix": 1,
+    "controls.chorusRateHz": 0.9546467517767424,
+    "controls.chorusDepthMs": 0.4968365657517667,
+    "controls.stereoWidth": 1,
+    "controls.noiseRms": 0.002,
+    "controls.drive": 0,
+    "controls.toneCutoffHz": 14000,
+    "controls.masterGain": 0.25,
+    "patch.modulator.lksLo": 5,
+    "patch.modulator.lksHi": 15,
+    "patch.modulator.rks": 2,
+    "patch.modulator.srr": 3,
+    "patch.modulator.amEnable": 0,
+    "patch.modulator.dt2": 0,
+    "patch.carrier.lksLo": 6,
+    "patch.carrier.lksHi": 5,
+    "patch.carrier.rks": 2,
+    "patch.carrier.srr": 3,
+    "patch.carrier.amEnable": 0,
+    "patch.carrier.dt2": 0,
+    "patch.pms": 3,
+    "patch.ams": 0,
+    "controls.lfoDelayScale": 1,
+    "controls.triangleLfo": 0,
+    "controls.globalLfo": 0,
+    "controls.velocityToModulation": 0,
+    "rack.bendRange": 2,
+    "rack.modWheelDepth": 1,
+    "controls.polyphony": 12,
+    "controls.chorusMode": 1,
+    "controls.noiseModel": 1,
+    "controls.outputCircuit": 1,
+    "controls.clockOffsetPpm": 0,
+    "controls.clockDriftPpm": 20,
+    "controls.clockDriftRateHz": 0.1,
+    "controls.masterTuneCents": 0,
+    "controls.dcBlock": 1,
+    "controls.outputLimit": 1
+  },
+  "sdk": {
+    "root": "/Users/vojta/Dev/reason-rack-extension/SDK",
+    "version": "JukeboxSDK_500_028",
+    "target": "5.0"
+  },
+  "source_sha256": {
+    "Source/DSP/Press78Engine.h": "9efb33b6c02160f439e222b8775df4863d90d5be7ef2dd88e23ca37fa0885e3f",
+    "Resources/controls.json": "dd97ad223cd993faad5c5a3ec8744ba8e6ce1c4c2b4942d2dd6af211a52644d2",
+    "Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
+  }
+}

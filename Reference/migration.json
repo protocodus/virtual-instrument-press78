@@ -1,0 +1,20 @@
+{
+  "source_directory": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017",
+  "date": "2026-10-18",
+  "source_sha256": {
+    "src/pss780.py": "a339c0593608aeabc133fc96697ff7fda7650502063fd356994431b0f471fbf7",
+    "src/clock_variation.py": "330a762d3abe5b43bf61eca10ce92bec8574bf69da98291b180abe46c194927c",
+    "src/factory_voices.json": "571d88bac22ac47eb281684d8edcece94b4319ef1b305cc99748fe70151d5168",
+    "circuit/model.py": "50f19cb6a00fe79bea77c65befb1ef972f1349d7f1ce4d1a392529e924a4fae0",
+    "circuit/bbd_model.py": "11d9d4bc6a933d1314a96035e7def96872b997911ec9063d63ca94b7661ff0f1",
+    "circuit/sibling_output.py": "4e0ba6e309023aa7ad9dd1c4f4806646f31ffe31041af632dc2fbab40bc62dfa",
+    "circuit/pss270_chorus.py": "c97ae13944c62c873d51771d7447a8aede916294998ba8d985167319b0524587",
+    "circuit/refined_chorus.py": "7bd7460ff74a5919103e9ee054e6962b140bcce0923cf447829700bd31404430",
+    "circuit/calibrated_chorus.py": "0a487838e8e5465b95f4be2f90a142b0a97ef715ff898b68d029dc821a80edee",
+    "circuit/v4_effective_stereo_profile.json": "757e791fbf75c070dd55066bb0f3cf5775cebf59d96c05edc638a43c638dc70e",
+    "circuit/video_chorus_profile.json": "854a2b2fc412e1050ccc1d47564d41a9a27cb0b265d20977be0144478cc85981",
+    "circuit/__init__.py": "5ac08b56301635fa62decd3db697f65e18faa6f950e9ffbbcb398fa2c1bb5955",
+    "circuit/output_stage.py": "94243d5e2eb1bb410f6b8298c0e6c500214c728c3fc2147403b8109176d0eb87"
+  },
+  "scope": "Frozen behavioral Python reference retained for C++ port regression. Original experiment remains intact; no research video, manual, firmware or third-party synthesis code copied. The original output-stage noise calculation was added in the hardware pass; it remains a declared PSS-480 surrogate, with no media assets."
+}

@@ -1,0 +1,101 @@
+{
+  "kind": "Exact reduced MNA PSS480 white-noise network; related hardware only",
+  "temperature_kelvin": 300,
+  "opamp_en_v_per_sqrt_hz": 1e-08,
+  "states": 12,
+  "sources": [
+    "P480_R47K_TB",
+    "P480_IC13A",
+    "P480_R2K2_LP",
+    "P480_IC13B",
+    "P480_R47K_FM_l",
+    "P480_R10K_RHYTHM_l",
+    "P480_R47K_FB_l",
+    "P480_IC12_l",
+    "P480_R10K_VOLUME_l",
+    "P480_R47K_FM_r",
+    "P480_R10K_RHYTHM_r",
+    "P480_R47K_FB_r",
+    "P480_IC12_r",
+    "P480_R10K_VOLUME_r"
+  ],
+  "fixed_normalization_rms_v": 1.1968667679922074e-05,
+  "reference_band_hz": [
+    20,
+    20000
+  ],
+  "discretization": "bilinear; unit-variance innovations scaled sqrt(fs/2) for one-sided physical PSD; no per-rate gain correction",
+  "source_sha256": {
+    "Reference/Python/circuit/model.py": "50f19cb6a00fe79bea77c65befb1ef972f1349d7f1ce4d1a392529e924a4fae0",
+    "Reference/Python/circuit/output_stage.py": "94243d5e2eb1bb410f6b8298c0e6c500214c728c3fc2147403b8109176d0eb87",
+    "Tools/generate_circuit_noise.py": "e1611febfed974738582c3f326f8316873aa9016f7e4de662709fc6d83549660",
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+  },
+  "rates": {
+    "8000": {
+      "band_hz": [
+        20,
+        3920.0
+      ],
+      "max_relative_mapped_covariance_error": 6.476454941707093e-12,
+      "predicted_rms_v": [
+        5.982053528021584e-06,
+        5.982053528021669e-06
+      ],
+      "predicted_correlation": 0.08085144205525593,
+      "maximum_pole_radius": 0.9983522713725911
+    },
+    "44100": {
+      "band_hz": [
+        20,
+        20000.0
+      ],
+      "max_relative_mapped_covariance_error": 3.852321717713664e-12,
+      "predicted_rms_v": [
+        1.0849615697710852e-05,
+        1.0849615697710769e-05
+      ],
+      "predicted_correlation": 0.05856503701634476,
+      "maximum_pole_radius": 0.9990355478056239
+    },
+    "48000": {
+      "band_hz": [
+        20,
+        20000.0
+      ],
+      "max_relative_mapped_covariance_error": 7.341759349578529e-12,
+      "predicted_rms_v": [
+        1.1044709971486693e-05,
+        1.1044709971486777e-05
+      ],
+      "predicted_correlation": 0.05780778405713696,
+      "maximum_pole_radius": 0.9991138748272632
+    },
+    "96000": {
+      "band_hz": [
+        20,
+        20000.0
+      ],
+      "max_relative_mapped_covariance_error": 5.388971199743534e-12,
+      "predicted_rms_v": [
+        1.1769446561246503e-05,
+        1.1769446561246503e-05
+      ],
+      "predicted_correlation": 0.05625893360091406,
+      "maximum_pole_radius": 0.9995568392396544
+    },
+    "192000": {
+      "band_hz": [
+        20,
+        20000.0
+      ],
+      "max_relative_mapped_covariance_error": 3.828074415617004e-12,
+      "predicted_rms_v": [
+        1.1920955675773741e-05,
+        1.1920955675773683e-05
+      ],
+      "predicted_correlation": 0.05626004791325921,
+      "maximum_pole_radius": 0.9997783950681747
+    }
+  }
+}
