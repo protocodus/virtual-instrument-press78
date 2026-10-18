@@ -1,0 +1,4272 @@
+{
+  "date": "2026-10-18",
+  "status": "research only; no runtime constants, patches, host state or calibration values changed",
+  "question": "Does controlled PSS480 rate evidence reflect hardware timing or recording gain/effects?",
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=2TfpcAmaPGg",
+      "uploader": "Keen On Keys",
+      "instrument": "PSS-480",
+      "role": "controlled single-carrier settings and repeated notes; reused calibration, not fresh holdout",
+      "recording_processing": "undocumented; description does not promise no compression, gate, AGC, reverb or normalization"
+    },
+    {
+      "url": "https://ctrlr.martintarenskeen.nl/yamaha-pss480-20220225.bpanelz",
+      "role": "primary panel author serialization cross-check, dated 2022-02-25; later than 2021 video; not proof of exact video executable"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ONfIvtDOog0",
+      "uploader": "AndrewsVintageKeyboards",
+      "instrument": "PSS-780",
+      "role": "exact target model, original source reused; independently implemented estimator; not new holdout"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=NXPbPr4yrgA",
+      "uploader": "KeyboardKrazy49",
+      "instrument": "PSS-580",
+      "role": "independent-source negative comparison against a separate uploader and unit; prior audit had already explored this Sine99 tail and portamento, so not a fresh or strictly unseen holdout; raw patch, actual gates and effect states unknown"
+    }
+  ],
+  "provenance_files": [
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/user-ONfIvtDOog0.wav",
+      "bytes": 35710514,
+      "sha256": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba"
+    },
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia-events.json",
+      "bytes": 379472,
+      "sha256": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4"
+    },
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/alignment.json",
+      "bytes": 2355,
+      "sha256": "97f0072ef21b48fe9b80b43fd42a1217160208997103dacda4d2b74b7b2f2947"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/keen-part3-2TfpcAmaPGg-audio.webm",
+      "bytes": 18533479,
+      "sha256": "1aa081e9dc71bc940d1d31be301c9e28fb873634ff16f24470be910118369c19"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/keen-part3-2TfpcAmaPGg-video.mp4",
+      "bytes": 63567216,
+      "sha256": "b6ccdf47b015b0378c36cb62db81cb06284b97208377fb08fe2303197d073bf7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/keen-part3-2TfpcAmaPGg.info.json",
+      "bytes": 9658981,
+      "sha256": "cc0d32cbe0577d1dfaf3158f4103dd5de962dce2f4360991e7d1b49fa3948687"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/keen3-release-d1-corner-485.wav",
+      "bytes": 44160092,
+      "sha256": "f005573cac1c659d382ba7616e49eb1c0730deb8a034da664c6780d0d34c3176"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/yamaha-pss480-20220225.bpanelz",
+      "bytes": 265106,
+      "sha256": "1d41dd0e1611da2bfd01aa343de5c713038c3a95cf252db7cbbe03e50e0450b8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/keyboardkrazy49-NXPbPr4yrgA-full-audio.webm",
+      "bytes": 68586352,
+      "sha256": "4b6b3d4a69f7801ec7f4fee027b1f1cd1d726dca8ca58dbd62259bde20ea6c8d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/kk49-full-lastvoices-3160.wav",
+      "bytes": 126720092,
+      "sha256": "21d68466bcccadf9cc90ca9a59a4cade11c4d167ec0077b58d9a2a10f6cca582"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/envelope-forensics-20261018/additional_forensics.py",
+      "bytes": 4431,
+      "sha256": "b958faccb144f262a84e0d17a724fdbfb9bdeeeec1e226ad16b94dafcfe2d537"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/envelope-forensics-20261018/joint_sine_forensics.py",
+      "bytes": 2997,
+      "sha256": "20abb08216af87c1b1b60331ffc622a5e6a60c62c2d205989378bd26e325f44d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/envelope-forensics-20261018/endpoint_forensics.py",
+      "bytes": 3896,
+      "sha256": "edb01642f4dc5e6eeb8266eaf3d185d70cde4c7aa989957d371c1a630792f79e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/envelope-forensics-20261018/exact780-extended-endpoint.json",
+      "bytes": 41984,
+      "sha256": "c3cba82d56ba8be2d7b33c5981d2dec3b16535f2249ae61cf0d49038cbe0a8c5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/codec-tail-audit-20261018.json",
+      "bytes": 114816,
+      "sha256": "69b10835ef73ddbbf8d36f21562d048e656ac3362d588719dc98e3c5c67e6da1"
+    }
+  ],
+  "keen": {
+    "source_timebase": "Original full-video seconds. Float48k stereo excerpt begins at exact source485s, not a stream-copy keyframe start.",
+    "settings": {
+      "carrier_midi": 60,
+      "carrier_ratio": 1,
+      "carrier_wave": "sine",
+      "carrier_ar": 41,
+      "carrier_d1r": 0,
+      "carrier_d2r": 20,
+      "carrier_rr": 8,
+      "carrier_srr": 3,
+      "carrier_rks": 0,
+      "carrier_level_display": 92,
+      "carrier_tl_raw_crosscheck": 7,
+      "modulator_level_display": 0,
+      "d1l_display_flat": 14,
+      "d1l_raw_flat_crosscheck": 1,
+      "d1l_display_decay": 15,
+      "d1l_raw_decay_crosscheck": 0,
+      "global_effect_state": "not independently established by this editor-only segment"
+    },
+    "serialization_crosscheck": {
+      "rates": "AR/D1R/D2R/RR pass through directly in the later author panel",
+      "d1l": "raw =15-display",
+      "tl": "raw=max(99-display,0)",
+      "limitation": "later panel source, no decoded SysEx bytes captured from the 2021 video"
+    },
+    "direct_peak_diagnostics": {
+      "method": "Direct positive local waveform maxima of arithmetic mid, minimum peak separation round(48000/300)=160 frames; regression of 20log10(positive peak). Source float48k segment has exact source origin485s. Windows descriptive/calibration; no engine constant fitting.",
+      "fits": [
+        {
+          "label": "flat first",
+          "source_seconds": [
+            553.25,
+            554.45
+          ],
+          "slope_db_per_second": -0.013909460692366399,
+          "r_squared": 0.031389965503973695,
+          "n_positive_peaks": 314,
+          "mean_dbfs": -7.137848377227783
+        },
+        {
+          "label": "D2R20 first",
+          "source_seconds": [
+            564.3,
+            565.3
+          ],
+          "slope_db_per_second": -21.240511760053693,
+          "r_squared": 0.9998472329850157,
+          "n_positive_peaks": 261,
+          "mean_dbfs": -20.348947525024414
+        },
+        {
+          "label": "D2R20 alternate",
+          "source_seconds": [
+            564.6,
+            565.8
+          ],
+          "slope_db_per_second": -21.088979802738976,
+          "r_squared": 0.9996874367288187,
+          "n_positive_peaks": 314,
+          "mean_dbfs": -28.794649124145508
+        },
+        {
+          "label": "RR8 first",
+          "source_seconds": [
+            554.55,
+            554.7
+          ],
+          "slope_db_per_second": -233.35260912863447,
+          "r_squared": 0.9995694807493372,
+          "n_positive_peaks": 39,
+          "mean_dbfs": -30.375316619873047
+        },
+        {
+          "label": "flat repeated",
+          "source_seconds": [
+            568.95,
+            569.8
+          ],
+          "slope_db_per_second": 0.04314733170137987,
+          "r_squared": 0.1116217302841158,
+          "n_positive_peaks": 222,
+          "mean_dbfs": -7.135294437408447
+        },
+        {
+          "label": "RR8 repeated",
+          "source_seconds": [
+            569.9,
+            570.03
+          ],
+          "slope_db_per_second": -230.12557286136473,
+          "r_squared": 0.9997023007280721,
+          "n_positive_peaks": 34,
+          "mean_dbfs": -26.8541202545166
+        }
+      ],
+      "onsets": [
+        {
+          "label": "flat first",
+          "reference_first_positive_peak_seconds": 553.151521,
+          "peaks": [
+            {
+              "source_seconds": 553.1515208333333,
+              "relative_ms": -0.00016666672308929265,
+              "dbfs": -20.281509399414062
+            },
+            {
+              "source_seconds": 553.155,
+              "relative_ms": 3.478999999970256,
+              "dbfs": -8.345484733581543
+            },
+            {
+              "source_seconds": 553.1587916666667,
+              "relative_ms": 7.270666666727266,
+              "dbfs": -7.131071090698242
+            },
+            {
+              "source_seconds": 553.1626041666667,
+              "relative_ms": 11.083166666708166,
+              "dbfs": -7.170380592346191
+            },
+            {
+              "source_seconds": 553.1664166666667,
+              "relative_ms": 14.895666666689067,
+              "dbfs": -7.16498327255249
+            },
+            {
+              "source_seconds": 553.17025,
+              "relative_ms": 18.729000000007545,
+              "dbfs": -7.145496368408203
+            },
+            {
+              "source_seconds": 553.1740625,
+              "relative_ms": 22.541499999988446,
+              "dbfs": -7.175605773925781
+            },
+            {
+              "source_seconds": 553.177875,
+              "relative_ms": 26.353999999969346,
+              "dbfs": -7.125395774841309
+            },
+            {
+              "source_seconds": 553.1817083333333,
+              "relative_ms": 30.187333333287825,
+              "dbfs": -7.070159435272217
+            },
+            {
+              "source_seconds": 553.1855208333334,
+              "relative_ms": 33.99983333338241,
+              "dbfs": -7.119813442230225
+            },
+            {
+              "source_seconds": 553.1893541666667,
+              "relative_ms": 37.83316666670089,
+              "dbfs": -7.1489667892456055
+            },
+            {
+              "source_seconds": 553.1931666666667,
+              "relative_ms": 41.64566666668179,
+              "dbfs": -7.192190170288086
+            },
+            {
+              "source_seconds": 553.197,
+              "relative_ms": 45.47900000000027,
+              "dbfs": -7.172553062438965
+            },
+            {
+              "source_seconds": 553.2008125,
+              "relative_ms": 49.29149999998117,
+              "dbfs": -7.16424036026001
+            },
+            {
+              "source_seconds": 553.2046458333333,
+              "relative_ms": 53.12483333329965,
+              "dbfs": -7.14597225189209
+            },
+            {
+              "source_seconds": 553.2084583333333,
+              "relative_ms": 56.93733333328055,
+              "dbfs": -7.158871650695801
+            },
+            {
+              "source_seconds": 553.2122708333334,
+              "relative_ms": 60.749833333375136,
+              "dbfs": -7.1587443351745605
+            },
+            {
+              "source_seconds": 553.2161041666667,
+              "relative_ms": 64.58316666669361,
+              "dbfs": -7.115830898284912
+            },
+            {
+              "source_seconds": 553.2199166666667,
+              "relative_ms": 68.39566666667451,
+              "dbfs": -7.119089126586914
+            },
+            {
+              "source_seconds": 553.22375,
+              "relative_ms": 72.228999999993,
+              "dbfs": -7.09677267074585
+            },
+            {
+              "source_seconds": 553.2275625,
+              "relative_ms": 76.0414999999739,
+              "dbfs": -7.109125137329102
+            },
+            {
+              "source_seconds": 553.2313958333333,
+              "relative_ms": 79.87483333329237,
+              "dbfs": -7.105388641357422
+            }
+          ]
+        },
+        {
+          "label": "D2R20",
+          "reference_first_positive_peak_seconds": 564.177271,
+          "peaks": [
+            {
+              "source_seconds": 564.1772708333333,
+              "relative_ms": -0.00016666672308929265,
+              "dbfs": -20.433979034423828
+            },
+            {
+              "source_seconds": 564.1810208333334,
+              "relative_ms": 3.7498333333587652,
+              "dbfs": -8.347455978393555
+            },
+            {
+              "source_seconds": 564.1848125,
+              "relative_ms": 7.541500000002088,
+              "dbfs": -7.0905327796936035
+            },
+            {
+              "source_seconds": 564.1886666666667,
+              "relative_ms": 11.395666666658144,
+              "dbfs": -7.2786760330200195
+            },
+            {
+              "source_seconds": 564.1924375,
+              "relative_ms": 15.16649999996389,
+              "dbfs": -7.520959377288818
+            },
+            {
+              "source_seconds": 564.1962708333333,
+              "relative_ms": 18.999833333282368,
+              "dbfs": -7.44934606552124
+            },
+            {
+              "source_seconds": 564.200125,
+              "relative_ms": 22.853999999938424,
+              "dbfs": -7.505268096923828
+            },
+            {
+              "source_seconds": 564.2039374999999,
+              "relative_ms": 26.666499999919324,
+              "dbfs": -7.598130702972412
+            },
+            {
+              "source_seconds": 564.2077708333334,
+              "relative_ms": 30.49983333335149,
+              "dbfs": -7.719390392303467
+            },
+            {
+              "source_seconds": 564.2116041666667,
+              "relative_ms": 34.33316666666997,
+              "dbfs": -7.7637410163879395
+            },
+            {
+              "source_seconds": 564.2153958333333,
+              "relative_ms": 38.12483333331329,
+              "dbfs": -7.8954548835754395
+            },
+            {
+              "source_seconds": 564.2191875,
+              "relative_ms": 41.91649999995661,
+              "dbfs": -8.021224975585938
+            },
+            {
+              "source_seconds": 564.2230416666666,
+              "relative_ms": 45.77066666661267,
+              "dbfs": -8.072992324829102
+            },
+            {
+              "source_seconds": 564.2268750000001,
+              "relative_ms": 49.604000000044834,
+              "dbfs": -8.147928237915039
+            },
+            {
+              "source_seconds": 564.2306666666667,
+              "relative_ms": 53.39566666668816,
+              "dbfs": -8.253457069396973
+            },
+            {
+              "source_seconds": 564.2345,
+              "relative_ms": 57.229000000006636,
+              "dbfs": -8.335675239562988
+            },
+            {
+              "source_seconds": 564.2383125,
+              "relative_ms": 61.041499999987536,
+              "dbfs": -8.37997817993164
+            },
+            {
+              "source_seconds": 564.2421666666667,
+              "relative_ms": 64.89566666664359,
+              "dbfs": -8.482244491577148
+            },
+            {
+              "source_seconds": 564.2459583333333,
+              "relative_ms": 68.68733333328692,
+              "dbfs": -8.576532363891602
+            },
+            {
+              "source_seconds": 564.2497708333333,
+              "relative_ms": 72.49983333326782,
+              "dbfs": -8.650544166564941
+            },
+            {
+              "source_seconds": 564.253625,
+              "relative_ms": 76.35400000003756,
+              "dbfs": -8.718935012817383
+            }
+          ]
+        },
+        {
+          "label": "flat repeated",
+          "reference_first_positive_peak_seconds": 568.926,
+          "peaks": [
+            {
+              "source_seconds": 568.926,
+              "relative_ms": 0.0,
+              "dbfs": -19.43701171875
+            },
+            {
+              "source_seconds": 568.9295,
+              "relative_ms": 3.499999999917236,
+              "dbfs": -8.253406524658203
+            },
+            {
+              "source_seconds": 568.9332708333334,
+              "relative_ms": 7.270833333336668,
+              "dbfs": -7.210859775543213
+            },
+            {
+              "source_seconds": 568.9371041666667,
+              "relative_ms": 11.104166666655146,
+              "dbfs": -7.176715850830078
+            },
+            {
+              "source_seconds": 568.9409166666667,
+              "relative_ms": 14.916666666636047,
+              "dbfs": -7.323482036590576
+            },
+            {
+              "source_seconds": 568.9447291666667,
+              "relative_ms": 18.729166666616948,
+              "dbfs": -7.126653671264648
+            },
+            {
+              "source_seconds": 568.9485625,
+              "relative_ms": 22.562499999935426,
+              "dbfs": -7.122842788696289
+            },
+            {
+              "source_seconds": 568.9523958333333,
+              "relative_ms": 26.395833333253904,
+              "dbfs": -7.106990337371826
+            },
+            {
+              "source_seconds": 568.9562083333333,
+              "relative_ms": 30.208333333234805,
+              "dbfs": -7.190415382385254
+            },
+            {
+              "source_seconds": 568.9600208333334,
+              "relative_ms": 34.02083333332939,
+              "dbfs": -7.137153148651123
+            },
+            {
+              "source_seconds": 568.9638541666667,
+              "relative_ms": 37.85416666664787,
+              "dbfs": -7.148952484130859
+            },
+            {
+              "source_seconds": 568.9676666666667,
+              "relative_ms": 41.66666666662877,
+              "dbfs": -7.11030387878418
+            },
+            {
+              "source_seconds": 568.9715,
+              "relative_ms": 45.49999999994725,
+              "dbfs": -7.167117595672607
+            },
+            {
+              "source_seconds": 568.9753125,
+              "relative_ms": 49.31249999992815,
+              "dbfs": -7.144367694854736
+            },
+            {
+              "source_seconds": 568.979125,
+              "relative_ms": 53.12499999990905,
+              "dbfs": -7.114266872406006
+            },
+            {
+              "source_seconds": 568.9829583333333,
+              "relative_ms": 56.95833333322753,
+              "dbfs": -7.116604328155518
+            },
+            {
+              "source_seconds": 568.9867708333334,
+              "relative_ms": 60.770833333322116,
+              "dbfs": -7.125326156616211
+            },
+            {
+              "source_seconds": 568.9906041666667,
+              "relative_ms": 64.6041666666406,
+              "dbfs": -7.119280815124512
+            },
+            {
+              "source_seconds": 568.9944166666667,
+              "relative_ms": 68.4166666666215,
+              "dbfs": -7.101524353027344
+            },
+            {
+              "source_seconds": 568.99825,
+              "relative_ms": 72.24999999993997,
+              "dbfs": -7.080007076263428
+            },
+            {
+              "source_seconds": 569.0020625,
+              "relative_ms": 76.06249999992087,
+              "dbfs": -7.074161052703857
+            },
+            {
+              "source_seconds": 569.0058958333333,
+              "relative_ms": 79.89583333323935,
+              "dbfs": -7.096717357635498
+            }
+          ]
+        }
+      ]
+    },
+    "prior_stft_crosscheck": [
+      {
+        "start": 564.25,
+        "end": 565.25,
+        "slope_db_per_second": -21.255753622989268,
+        "r_squared": 0.9999584276775602,
+        "stderr": 0.009715410164199457,
+        "n": 201
+      },
+      {
+        "start": 564.4,
+        "end": 565.4,
+        "slope_db_per_second": -21.261441180743688,
+        "r_squared": 0.9999379680488619,
+        "stderr": 0.011871001295241764,
+        "n": 201
+      },
+      {
+        "start": 564.6,
+        "end": 565.6,
+        "slope_db_per_second": -21.25711969979063,
+        "r_squared": 0.9999050452644684,
+        "stderr": 0.01468442056399162,
+        "n": 201
+      },
+      {
+        "start": 564.3,
+        "end": 565.7,
+        "slope_db_per_second": -21.220514728701477,
+        "r_squared": 0.9999525012430042,
+        "stderr": 0.008755989844180644,
+        "n": 281
+      }
+    ],
+    "prior_attack_form_fit": [
+      {
+        "rough_reference_time": 553.1515,
+        "fit_start": 553.1395000000001,
+        "fit_end": 553.1915,
+        "amplitude": 0.43530296734771096,
+        "log_attack_factor": 0.34241023056508546,
+        "attack_k_per_second": 635.5429490362134,
+        "frequency_hz": 261.7108450719952,
+        "phase_radians": 0.5678308553103409,
+        "dc": -0.0001256864858058709,
+        "residual_relative_rms": 0.01486773892310772,
+        "current_ar41_prediction_k": 1051.4882209872849
+      },
+      {
+        "rough_reference_time": 568.926,
+        "fit_start": 568.9140000000001,
+        "fit_end": 568.966,
+        "amplitude": 0.43326296882545123,
+        "log_attack_factor": 0.26892337516197456,
+        "attack_k_per_second": 629.9113669175767,
+        "frequency_hz": 261.7185994825237,
+        "phase_radians": 0.5751175075121582,
+        "dc": 1.6916815283069598e-06,
+        "residual_relative_rms": 0.015713831576766424,
+        "current_ar41_prediction_k": 1051.4882209872849
+      },
+      {
+        "rough_reference_time": 573.4223,
+        "fit_start": 573.4103,
+        "fit_end": 573.4622999999999,
+        "amplitude": 0.43765588264686833,
+        "log_attack_factor": 0.3598949344002643,
+        "attack_k_per_second": 626.6445902316498,
+        "frequency_hz": 261.6728960651614,
+        "phase_radians": 0.44380629663716503,
+        "dc": -0.0003739544858980865,
+        "residual_relative_rms": 0.01539556549084408,
+        "current_ar41_prediction_k": 1051.4882209872849
+      }
+    ],
+    "attack_fit_limitations": "About a dozen cycles and one AR setting. Exponential-in-attenuation form is assumed; source may contain analog and dynamic processing. Repeated fits are descriptive, not recovered rate constants.",
+    "onset_finding": "The D2R20 note reaches approximately the same -7.1dBFS peak as neighboring flat notes, then starts its slow decay. No missing initial18dB drop was found in direct positive waveform peaks.",
+    "unavailable_controls": [
+      "No clean static carrier-TL sweep with otherwise identical patch and known gains was established.",
+      "No second nonzero D2R or RR value was recovered in an equally isolated, unchanged pure-carrier setting. The display593s case has D1R63/D2R63 and demonstrates only a very short event. Other RR changes have nonzero modulation/feedback/RKS and are unsuitable numeric controls."
+    ],
+    "cutoff": "Coherent sine becomes abruptly absent near48dB below its -7.1dBFS plateau in the known RR8 examples. Chip endpoint, editor/global effects, upstream gate and codec behavior remain unresolved; no cutoff constant is inferred.",
+    "old_model_comparison": {
+      "d2r20_db_per_second": 64,
+      "rr8_rks0_db_per_second": 724.0773439350247,
+      "classification": "former heuristic formula, not a manufacturer specification; ratio about3 is a discrepancy, not a recovered hardware multiplier"
+    }
+  },
+  "exact780": {
+    "alignment": {
+      "offset_seconds": 0.8906462238832541,
+      "scale": 0.9998070138348876,
+      "local_shift_fitted": false,
+      "meaning": "MIDI events mapped through frozen global affine alignment; not actual hardware arrival times. Onsets/offsets visibly lag by tens of milliseconds."
+    },
+    "visible_effects_at_source182_5": {
+      "preset_display": "99",
+      "reverb": "on",
+      "chorus": "on",
+      "vibrato": "off",
+      "sustain": "off",
+      "portamento": "off",
+      "confidence": "medium-high visual panel-position reading; screenshot in ignored build; does not certify external recording chain"
+    },
+    "raw_carrier": {
+      "ratio": 1,
+      "tl": 13,
+      "rks": 0,
+      "ar": 63,
+      "d1r": 1,
+      "d2r": 0,
+      "d1l": 0,
+      "rr": 8,
+      "level_key_scaling_raw": 185,
+      "level_key_scaling_hex": "0xB9; nonzero and pitch dependent, not decoded to a calibrated attenuation in this pass"
+    },
+    "independent_joint_estimator": {
+      "method": "Separate left/right/arithmetic mid; simultaneous sine/cosine least squares plus DC at fixed equal-tempered MIDI pitches 39,46,58,59,67,75,79,87; Hann taper applied to both basis and signal (squared-Hann objective); 2ms hop; no local frequency, time, or gain fit",
+      "rows": [
+        {
+          "case": "mixed-note control",
+          "channel": "left",
+          "hann_taper_ms": 20,
+          "inferred_off_seconds": 180.414625,
+          "design_matrix_condition": 10.098875344861332,
+          "fits": [
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": 360.36047926860624,
+              "r_squared": 0.3895113107148456,
+              "mean_dbfs": -21.04025369285228,
+              "peak_to_peak_db": 32.50756251615785,
+              "n": 30
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -28.15950519976109,
+              "r_squared": 0.1510535158027329,
+              "mean_dbfs": -16.755239324254443,
+              "peak_to_peak_db": 1.9851235661424589,
+              "n": 15
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 9.050506255600174,
+              "r_squared": 0.13873840657857944,
+              "mean_dbfs": -16.26638234773424,
+              "peak_to_peak_db": 2.293091534372893,
+              "n": 41
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -6.957828080533982,
+              "r_squared": 0.018084145585019373,
+              "mean_dbfs": -16.411750817755955,
+              "peak_to_peak_db": 2.211911739102014,
+              "n": 19
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": 13.327415049048195,
+              "r_squared": 0.16583433234629966,
+              "mean_dbfs": -16.184962536011902,
+              "peak_to_peak_db": 2.293091534372893,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -192.36857563837626,
+              "r_squared": 0.9807857046138104,
+              "mean_dbfs": -26.03419264837455,
+              "peak_to_peak_db": 10.762460564797426,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -212.1015655395616,
+              "r_squared": 0.9428367354642566,
+              "mean_dbfs": -28.934509624238505,
+              "peak_to_peak_db": 5.68273200319528,
+              "n": 15
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -30.265997506021723,
+              "r_squared": 0.2219370256708641,
+              "mean_dbfs": -36.68192456920269,
+              "peak_to_peak_db": 7.1920433799175,
+              "n": 41
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -7.974323671285347,
+              "r_squared": 0.012285427540564307,
+              "mean_dbfs": -36.28126364273814,
+              "peak_to_peak_db": 2.9288355692927013,
+              "n": 19
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -37.80081771504432,
+              "r_squared": 0.18971773725643895,
+              "mean_dbfs": -36.90375868407488,
+              "peak_to_peak_db": 6.341928513153249,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -170.89660876926987,
+              "r_squared": 0.9701346405140523,
+              "mean_dbfs": -34.68418944689187,
+              "peak_to_peak_db": 11.004795359128991,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -148.330283161016,
+              "r_squared": 0.9668420183660587,
+              "mean_dbfs": -37.135769178425015,
+              "peak_to_peak_db": 4.37077353244095,
+              "n": 15
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 18.95596853778891,
+              "r_squared": 0.32113102016823725,
+              "mean_dbfs": -40.43415956087907,
+              "peak_to_peak_db": 2.810125542707091,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": 27.36573843076983,
+              "r_squared": 0.11491246973336033,
+              "mean_dbfs": -40.41527634019767,
+              "peak_to_peak_db": 2.810125542707091,
+              "n": 19
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": 20.67881764061072,
+              "r_squared": 0.20327436149801345,
+              "mean_dbfs": -40.24415934659576,
+              "peak_to_peak_db": 2.810125542707091,
+              "n": 30
+            }
+          ]
+        },
+        {
+          "case": "mixed-note control",
+          "channel": "left",
+          "hann_taper_ms": 40,
+          "inferred_off_seconds": 180.414625,
+          "design_matrix_condition": 4.1696992192831654,
+          "fits": [
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": 285.8717742401978,
+              "r_squared": 0.4730831114829999,
+              "mean_dbfs": -20.24308655957927,
+              "peak_to_peak_db": 29.005092696484972,
+              "n": 30
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -1.6906959780997546,
+              "r_squared": 0.01736738253214043,
+              "mean_dbfs": -16.708150095857757,
+              "peak_to_peak_db": 0.34482606019141926,
+              "n": 15
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 8.149905387724095,
+              "r_squared": 0.3488495181033263,
+              "mean_dbfs": -16.268602500745757,
+              "peak_to_peak_db": 1.0333046297652935,
+              "n": 41
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -7.094701588629213,
+              "r_squared": 0.17725213013251584,
+              "mean_dbfs": -16.37253517687096,
+              "peak_to_peak_db": 0.5574709108646161,
+              "n": 19
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": 10.871227670422531,
+              "r_squared": 0.39184010607633823,
+              "mean_dbfs": -16.184731580353237,
+              "peak_to_peak_db": 0.9031255262864413,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -192.77122613422807,
+              "r_squared": 0.9925454419065033,
+              "mean_dbfs": -26.03962263688868,
+              "peak_to_peak_db": 11.078909630591426,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -224.04465151605015,
+              "r_squared": 0.9961626681609387,
+              "mean_dbfs": -28.925107826204325,
+              "peak_to_peak_db": 6.198579204847938,
+              "n": 15
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -25.907957984692647,
+              "r_squared": 0.48918925778833855,
+              "mean_dbfs": -36.640105422251025,
+              "peak_to_peak_db": 3.827152527152691,
+              "n": 41
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -13.11399201190807,
+              "r_squared": 0.19157852131930517,
+              "mean_dbfs": -36.42750679228036,
+              "peak_to_peak_db": 1.0612032674826537,
+              "n": 19
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -28.77925053045672,
+              "r_squared": 0.41154201082192643,
+              "mean_dbfs": -36.86860520626888,
+              "peak_to_peak_db": 2.6822677673675344,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -172.01913042088714,
+              "r_squared": 0.9795351463166259,
+              "mean_dbfs": -34.652054938496505,
+              "peak_to_peak_db": 10.534570941883,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -143.9383507416747,
+              "r_squared": 0.986599921551363,
+              "mean_dbfs": -37.15258304464682,
+              "peak_to_peak_db": 4.016952035256139,
+              "n": 15
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 18.215988724729577,
+              "r_squared": 0.5621364549946899,
+              "mean_dbfs": -40.422732806398486,
+              "peak_to_peak_db": 1.8295461041146908,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": 22.624499326544,
+              "r_squared": 0.1918663784494657,
+              "mean_dbfs": -40.33727215981198,
+              "peak_to_peak_db": 1.7188328749959112,
+              "n": 19
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": 16.498045088657868,
+              "r_squared": 0.2979779288858827,
+              "mean_dbfs": -40.208777537518095,
+              "peak_to_peak_db": 1.8295461041146908,
+              "n": 30
+            }
+          ]
+        },
+        {
+          "case": "mixed-note control",
+          "channel": "left",
+          "hann_taper_ms": 60,
+          "inferred_off_seconds": 180.414625,
+          "design_matrix_condition": 2.871285778212519,
+          "fits": [
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": 216.796679931136,
+              "r_squared": 0.6838685137400522,
+              "mean_dbfs": -19.751880891319317,
+              "peak_to_peak_db": 17.75441062393258,
+              "n": 30
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": 23.949250444620137,
+              "r_squared": 0.8317395455455378,
+              "mean_dbfs": -16.759847063134135,
+              "peak_to_peak_db": 0.9234405918838995,
+              "n": 15
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 6.24478395500945,
+              "r_squared": 0.5425526293743592,
+              "mean_dbfs": -16.280303798022583,
+              "peak_to_peak_db": 0.6632507003365351,
+              "n": 41
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": 0.3038328859114438,
+              "r_squared": 0.0027018472159429908,
+              "mean_dbfs": -16.354224798083436,
+              "peak_to_peak_db": 0.2122942935099701,
+              "n": 19
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": 8.967041581008555,
+              "r_squared": 0.6732684114254357,
+              "mean_dbfs": -16.222430461719583,
+              "peak_to_peak_db": 0.5712397329118541,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -189.65632650592536,
+              "r_squared": 0.9925603270093241,
+              "mean_dbfs": -26.009709821558204,
+              "peak_to_peak_db": 10.853742364233941,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -222.9760070872727,
+              "r_squared": 0.9998318745767223,
+              "mean_dbfs": -28.850614609006925,
+              "peak_to_peak_db": 6.168589939221164,
+              "n": 15
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -23.294818502530305,
+              "r_squared": 0.7825795479864245,
+              "mean_dbfs": -36.59586322800311,
+              "peak_to_peak_db": 2.627925139654664,
+              "n": 41
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -17.03784911854406,
+              "r_squared": 0.8341625224303023,
+              "mean_dbfs": -36.57000902251551,
+              "peak_to_peak_db": 0.7377845962084564,
+              "n": 19
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -20.740946704492643,
+              "r_squared": 0.653508293903337,
+              "mean_dbfs": -36.85161356713143,
+              "peak_to_peak_db": 1.3551616277276182,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -172.72357585963962,
+              "r_squared": 0.9855455143371318,
+              "mean_dbfs": -34.616021081939806,
+              "peak_to_peak_db": 10.30805492483011,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -141.7555446840575,
+              "r_squared": 0.9968174802005049,
+              "mean_dbfs": -37.16319068354892,
+              "peak_to_peak_db": 3.9869605511611894,
+              "n": 15
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 17.621168273714343,
+              "r_squared": 0.7843225785830938,
+              "mean_dbfs": -40.41132633075678,
+              "peak_to_peak_db": 1.448480796659858,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": 18.858337948245683,
+              "r_squared": 0.40499434662391925,
+              "mean_dbfs": -40.303989158551246,
+              "peak_to_peak_db": 1.0368828992365309,
+              "n": 19
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": 14.209135998315512,
+              "r_squared": 0.5252580688264341,
+              "mean_dbfs": -40.18691528806191,
+              "peak_to_peak_db": 1.3576187960545525,
+              "n": 30
+            }
+          ]
+        },
+        {
+          "case": "mixed-note control",
+          "channel": "right",
+          "hann_taper_ms": 20,
+          "inferred_off_seconds": 180.414625,
+          "design_matrix_condition": 10.098875344861332,
+          "fits": [
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": 221.2246647315126,
+              "r_squared": 0.35151924516897387,
+              "mean_dbfs": -25.946673306170915,
+              "peak_to_peak_db": 22.236823997438933,
+              "n": 30
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -39.53165474730127,
+              "r_squared": 0.18568363387905548,
+              "mean_dbfs": -23.31827745243107,
+              "peak_to_peak_db": 2.9478275841087083,
+              "n": 15
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -17.153757504668018,
+              "r_squared": 0.2818076661217945,
+              "mean_dbfs": -25.14958758253348,
+              "peak_to_peak_db": 4.128688258924523,
+              "n": 41
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -26.48075902206365,
+              "r_squared": 0.11868654123495198,
+              "mean_dbfs": -25.2186361334257,
+              "peak_to_peak_db": 3.0967014077248542,
+              "n": 19
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -14.613561499471599,
+              "r_squared": 0.12620453886817834,
+              "mean_dbfs": -25.34019665486905,
+              "peak_to_peak_db": 3.0967014077248542,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -253.8936498506517,
+              "r_squared": 0.988412091708942,
+              "mean_dbfs": -25.21863645823429,
+              "peak_to_peak_db": 15.442109767388455,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -261.5917055658602,
+              "r_squared": 0.98448723250288,
+              "mean_dbfs": -28.94509719930264,
+              "peak_to_peak_db": 7.737555458448647,
+              "n": 15
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -49.33945660159532,
+              "r_squared": 0.6526778010080589,
+              "mean_dbfs": -39.89987190251585,
+              "peak_to_peak_db": 5.619271770164303,
+              "n": 41
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -3.403955984443818,
+              "r_squared": 0.0038689581149373383,
+              "mean_dbfs": -39.98093537919373,
+              "peak_to_peak_db": 2.218665069163656,
+              "n": 19
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -34.38377829477542,
+              "r_squared": 0.4763067430847874,
+              "mean_dbfs": -40.50546931352001,
+              "peak_to_peak_db": 3.0056288404195044,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -236.26495174670734,
+              "r_squared": 0.9975899642354439,
+              "mean_dbfs": -23.54361756369214,
+              "peak_to_peak_db": 13.463218359628272,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -244.93772311856063,
+              "r_squared": 0.9986441851414845,
+              "mean_dbfs": -27.075729840491416,
+              "peak_to_peak_db": 6.747285360715978,
+              "n": 15
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -35.82616914272366,
+              "r_squared": 0.8542528231876965,
+              "mean_dbfs": -36.672096168328714,
+              "peak_to_peak_db": 3.1169585968040607,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -48.10765748313049,
+              "r_squared": 0.7803379910103232,
+              "mean_dbfs": -36.915134393580416,
+              "peak_to_peak_db": 1.917086507544873,
+              "n": 19
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -28.262252923633365,
+              "r_squared": 0.6412368385773352,
+              "mean_dbfs": -37.1168335309151,
+              "peak_to_peak_db": 1.931402146966164,
+              "n": 30
+            }
+          ]
+        },
+        {
+          "case": "mixed-note control",
+          "channel": "right",
+          "hann_taper_ms": 40,
+          "inferred_off_seconds": 180.414625,
+          "design_matrix_condition": 4.1696992192831654,
+          "fits": [
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": 203.349565987274,
+              "r_squared": 0.465383046657013,
+              "mean_dbfs": -25.96066952068712,
+              "peak_to_peak_db": 20.913007879324397,
+              "n": 30
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -27.53333703487191,
+              "r_squared": 0.8106308854612944,
+              "mean_dbfs": -23.374222770775255,
+              "peak_to_peak_db": 0.919001688079959,
+              "n": 15
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -17.536902195137696,
+              "r_squared": 0.6147392610291048,
+              "mean_dbfs": -25.14011475139358,
+              "peak_to_peak_db": 2.3813932318849,
+              "n": 41
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -20.678812662278748,
+              "r_squared": 0.2847087556746567,
+              "mean_dbfs": -25.153661038126657,
+              "peak_to_peak_db": 1.3637131035944634,
+              "n": 19
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -15.70702282468784,
+              "r_squared": 0.420422024743254,
+              "mean_dbfs": -25.328195879658686,
+              "peak_to_peak_db": 1.3637131035944634,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -254.09640299167557,
+              "r_squared": 0.9974844814997957,
+              "mean_dbfs": -25.17384964716863,
+              "peak_to_peak_db": 15.036343408025846,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -265.6239537757286,
+              "r_squared": 0.9993609752600376,
+              "mean_dbfs": -28.91859774386584,
+              "peak_to_peak_db": 7.468381071603584,
+              "n": 15
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -48.22497044762684,
+              "r_squared": 0.7779339561729051,
+              "mean_dbfs": -39.868345827277096,
+              "peak_to_peak_db": 5.143510929916687,
+              "n": 41
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -7.1485983496474,
+              "r_squared": 0.057434331970066206,
+              "mean_dbfs": -40.014045581099005,
+              "peak_to_peak_db": 1.211609137029086,
+              "n": 19
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -31.250269203688816,
+              "r_squared": 0.6529221448469682,
+              "mean_dbfs": -40.47919986540173,
+              "peak_to_peak_db": 1.8912142605814068,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -233.99961952727674,
+              "r_squared": 0.9988469819557264,
+              "mean_dbfs": -23.483025561797888,
+              "peak_to_peak_db": 13.253315988311343,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -240.90907992404198,
+              "r_squared": 0.9995687189380155,
+              "mean_dbfs": -26.999184247690398,
+              "peak_to_peak_db": 6.688431160207529,
+              "n": 15
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -35.512837678937984,
+              "r_squared": 0.9253667127717636,
+              "mean_dbfs": -36.650748793388686,
+              "peak_to_peak_db": 3.00679970616261,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -42.60818084756929,
+              "r_squared": 0.9337206060361981,
+              "mean_dbfs": -36.86886289186366,
+              "peak_to_peak_db": 1.489946500179876,
+              "n": 19
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -27.160473439349452,
+              "r_squared": 0.8452963058329405,
+              "mean_dbfs": -37.09634003037467,
+              "peak_to_peak_db": 1.7755126468749367,
+              "n": 30
+            }
+          ]
+        },
+        {
+          "case": "mixed-note control",
+          "channel": "right",
+          "hann_taper_ms": 60,
+          "inferred_off_seconds": 180.414625,
+          "design_matrix_condition": 2.871285778212519,
+          "fits": [
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": 166.92666595130035,
+              "r_squared": 0.6813858072170916,
+              "mean_dbfs": -25.879191338683214,
+              "peak_to_peak_db": 13.565937183280084,
+              "n": 30
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -5.926693533526832,
+              "r_squared": 0.2101089688830647,
+              "mean_dbfs": -23.49365450215545,
+              "peak_to_peak_db": 0.39396900070094887,
+              "n": 15
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -18.327090651665767,
+              "r_squared": 0.8689337977146979,
+              "mean_dbfs": -25.169764228532554,
+              "peak_to_peak_db": 1.6787030775347098,
+              "n": 41
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -18.429881049148673,
+              "r_squared": 0.6227264470981508,
+              "mean_dbfs": -25.189920250887074,
+              "peak_to_peak_db": 0.7861492722302295,
+              "n": 19
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -16.272629703629725,
+              "r_squared": 0.7861885317566024,
+              "mean_dbfs": -25.374779382845567,
+              "peak_to_peak_db": 0.80420009965259,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -251.230182258576,
+              "r_squared": 0.9995030832772456,
+              "mean_dbfs": -25.06817672703533,
+              "peak_to_peak_db": 14.524991588596034,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -261.2678805005385,
+              "r_squared": 0.9996698635291271,
+              "mean_dbfs": -28.805183391400153,
+              "peak_to_peak_db": 7.2383252348393015,
+              "n": 15
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -47.84410894853449,
+              "r_squared": 0.8247026632475957,
+              "mean_dbfs": -39.800284883213415,
+              "peak_to_peak_db": 4.83211690584173,
+              "n": 41
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -14.978807781983406,
+              "r_squared": 0.5733112174414366,
+              "mean_dbfs": -40.0436870345048,
+              "peak_to_peak_db": 0.9954487153533407,
+              "n": 19
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -28.500534582567624,
+              "r_squared": 0.8188678549303883,
+              "mean_dbfs": -40.43013222380084,
+              "peak_to_peak_db": 1.6677923818267075,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -229.89873054629228,
+              "r_squared": 0.9981680959638173,
+              "mean_dbfs": -23.40554601544381,
+              "peak_to_peak_db": 12.961610267502845,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -239.32524863422142,
+              "r_squared": 0.9998444533985986,
+              "mean_dbfs": -26.877878658368072,
+              "peak_to_peak_db": 6.707473391832433,
+              "n": 15
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -36.8992867470374,
+              "r_squared": 0.9312280985247384,
+              "mean_dbfs": -36.6176467851278,
+              "peak_to_peak_db": 3.294204639671115,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -39.14554322462001,
+              "r_squared": 0.9629589170343933,
+              "mean_dbfs": -36.82838187373698,
+              "peak_to_peak_db": 1.2966126792949524,
+              "n": 19
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -27.252217869094125,
+              "r_squared": 0.9206359796625601,
+              "mean_dbfs": -37.08278823311517,
+              "peak_to_peak_db": 1.7626783948708749,
+              "n": 30
+            }
+          ]
+        },
+        {
+          "case": "mixed-note control",
+          "channel": "mid",
+          "hann_taper_ms": 20,
+          "inferred_off_seconds": 180.414625,
+          "design_matrix_condition": 10.098875344861332,
+          "fits": [
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": 304.1854439152334,
+              "r_squared": 0.38926268951860815,
+              "mean_dbfs": -23.589173206762993,
+              "peak_to_peak_db": 27.363904321300872,
+              "n": 30
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -19.23121496753576,
+              "r_squared": 0.11088866083486332,
+              "mean_dbfs": -19.99823518536615,
+              "peak_to_peak_db": 1.853713448032579,
+              "n": 15
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 4.63598740198978,
+              "r_squared": 0.04615020304168881,
+              "mean_dbfs": -19.85598204739098,
+              "peak_to_peak_db": 2.1580665717636123,
+              "n": 41
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -6.346714419876115,
+              "r_squared": 0.01789707978708283,
+              "mean_dbfs": -19.989643496098367,
+              "peak_to_peak_db": 1.8618297990340693,
+              "n": 19
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": 9.318781386392784,
+              "r_squared": 0.1064830987431365,
+              "mean_dbfs": -19.824569029040635,
+              "peak_to_peak_db": 1.9685791521156766,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -223.7599577556861,
+              "r_squared": 0.9855788154923338,
+              "mean_dbfs": -26.869712121158138,
+              "peak_to_peak_db": 13.028297042231841,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -231.3767692762193,
+              "r_squared": 0.96898266861394,
+              "mean_dbfs": -30.176892332124968,
+              "peak_to_peak_db": 6.381862046309855,
+              "n": 15
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -36.96756681553589,
+              "r_squared": 0.3352139933395887,
+              "mean_dbfs": -39.224336739546146,
+              "peak_to_peak_db": 7.469986140082376,
+              "n": 41
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": 8.678983913093052,
+              "r_squared": 0.023281119174689432,
+              "mean_dbfs": -39.001491542895515,
+              "peak_to_peak_db": 2.2062263152004533,
+              "n": 19
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -31.444673101133404,
+              "r_squared": 0.1797566335927064,
+              "mean_dbfs": -39.60832811624037,
+              "peak_to_peak_db": 5.050611816648676,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -228.79262967581917,
+              "r_squared": 0.9971733413704319,
+              "mean_dbfs": -27.558637767376094,
+              "peak_to_peak_db": 13.257922260990899,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -237.30672719900565,
+              "r_squared": 0.9971562402224401,
+              "mean_dbfs": -30.962029026061177,
+              "peak_to_peak_db": 6.606038045127345,
+              "n": 15
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -18.45213820780554,
+              "r_squared": 0.5544757920492973,
+              "mean_dbfs": -39.415355019367,
+              "peak_to_peak_db": 2.360878760647573,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -16.591706313868524,
+              "r_squared": 0.1624844520988018,
+              "mean_dbfs": -39.59523171034022,
+              "peak_to_peak_db": 1.5803883374737353,
+              "n": 19
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -9.418338496321878,
+              "r_squared": 0.16762175751338818,
+              "mean_dbfs": -39.666703076483216,
+              "peak_to_peak_db": 1.5803883374737353,
+              "n": 30
+            }
+          ]
+        },
+        {
+          "case": "mixed-note control",
+          "channel": "mid",
+          "hann_taper_ms": 40,
+          "inferred_off_seconds": 180.414625,
+          "design_matrix_condition": 4.1696992192831654,
+          "fits": [
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": 254.76223037929253,
+              "r_squared": 0.4793764339747749,
+              "mean_dbfs": -23.146698354955937,
+              "peak_to_peak_db": 25.79502319364924,
+              "n": 30
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -0.5498068717767284,
+              "r_squared": 0.0019385023043105006,
+              "mean_dbfs": -19.983214713790225,
+              "peak_to_peak_db": 0.3782946969489167,
+              "n": 15
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 4.033576862319854,
+              "r_squared": 0.13372788755550943,
+              "mean_dbfs": -19.859968068016514,
+              "peak_to_peak_db": 0.9078191196488987,
+              "n": 41
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -6.370733905701762,
+              "r_squared": 0.15087130247808062,
+              "mean_dbfs": -19.948464955263564,
+              "peak_to_peak_db": 0.5326271996360106,
+              "n": 19
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": 7.0326900868028055,
+              "r_squared": 0.26991230813997363,
+              "mean_dbfs": -19.822316031976346,
+              "peak_to_peak_db": 0.7525460488916735,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -225.27963426778453,
+              "r_squared": 0.9967812487448844,
+              "mean_dbfs": -26.855985201916216,
+              "peak_to_peak_db": 13.28436987654144,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -242.70645401606546,
+              "r_squared": 0.9974887058622728,
+              "mean_dbfs": -30.18339312591173,
+              "peak_to_peak_db": 6.774752722439494,
+              "n": 15
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -33.71798848504854,
+              "r_squared": 0.5930771117438934,
+              "mean_dbfs": -39.18780930012432,
+              "peak_to_peak_db": 4.623884422913214,
+              "n": 41
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": 0.8124298980218356,
+              "r_squared": 0.0014632871125674263,
+              "mean_dbfs": -39.16143635867186,
+              "peak_to_peak_db": 0.7562799708570935,
+              "n": 19
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -23.95978620108695,
+              "r_squared": 0.3711478871206676,
+              "mean_dbfs": -39.58323408694856,
+              "peak_to_peak_db": 2.2583204885308774,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -226.88665857761046,
+              "r_squared": 0.999059678486023,
+              "mean_dbfs": -27.499840892766944,
+              "peak_to_peak_db": 12.976938075502787,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -232.54941638775387,
+              "r_squared": 0.9986923186158109,
+              "mean_dbfs": -30.89576938303452,
+              "peak_to_peak_db": 6.461450603199765,
+              "n": 15
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -18.79267445353844,
+              "r_squared": 0.7496375514579922,
+              "mean_dbfs": -39.40210022108088,
+              "peak_to_peak_db": 1.9611626470151364,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -14.862106866959207,
+              "r_squared": 0.41844128472668973,
+              "mean_dbfs": -39.560404266984676,
+              "peak_to_peak_db": 0.7559916309617023,
+              "n": 19
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -10.027435154633375,
+              "r_squared": 0.5296651447999563,
+              "mean_dbfs": -39.656177814191395,
+              "peak_to_peak_db": 0.7559916309617023,
+              "n": 30
+            }
+          ]
+        },
+        {
+          "case": "mixed-note control",
+          "channel": "mid",
+          "hann_taper_ms": 60,
+          "inferred_off_seconds": 180.414625,
+          "design_matrix_condition": 2.871285778212519,
+          "fits": [
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": 201.12393327025535,
+              "r_squared": 0.6953503665437458,
+              "mean_dbfs": -22.85095753808262,
+              "peak_to_peak_db": 16.21962482135302,
+              "n": 30
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": 20.69286327290023,
+              "r_squared": 0.8385288371700695,
+              "mean_dbfs": -20.05172592773788,
+              "peak_to_peak_db": 0.7848005105062548,
+              "n": 15
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 2.538649466772289,
+              "r_squared": 0.182947370846749,
+              "mean_dbfs": -19.88211318354899,
+              "peak_to_peak_db": 0.452476130033844,
+              "n": 41
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -0.9454407962709224,
+              "r_squared": 0.025291664361379515,
+              "mean_dbfs": -19.947496797879047,
+              "peak_to_peak_db": 0.20467785174657038,
+              "n": 19
+            },
+            {
+              "midi": 58,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": 5.3735561284212485,
+              "r_squared": 0.5262725242172271,
+              "mean_dbfs": -19.865337571558676,
+              "peak_to_peak_db": 0.403819878110383,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -222.96726274552492,
+              "r_squared": 0.9989115363311074,
+              "mean_dbfs": -26.784167286516574,
+              "peak_to_peak_db": 12.92324669751616,
+              "n": 30
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -240.45440946041478,
+              "r_squared": 0.9997697929621401,
+              "mean_dbfs": -30.099467302791243,
+              "peak_to_peak_db": 6.6505939605599345,
+              "n": 15
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -32.066036376037665,
+              "r_squared": 0.7553505751521753,
+              "mean_dbfs": -39.14040148697125,
+              "peak_to_peak_db": 3.59582762967473,
+              "n": 41
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -7.367848211323672,
+              "r_squared": 0.42202022427105845,
+              "mean_dbfs": -39.279644293473325,
+              "peak_to_peak_db": 0.5576997106606214,
+              "n": 19
+            },
+            {
+              "midi": 67,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -18.598776663288064,
+              "r_squared": 0.6109501314044722,
+              "mean_dbfs": -39.55973914468438,
+              "peak_to_peak_db": 1.2133742233887759,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.04,
+                0.1
+              ],
+              "slope_db_per_second": -223.21502850159123,
+              "r_squared": 0.9988427470634609,
+              "mean_dbfs": -27.42511865967778,
+              "peak_to_peak_db": 12.65716212495899,
+              "n": 30
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.07,
+                0.1
+              ],
+              "slope_db_per_second": -230.01846463539675,
+              "r_squared": 0.999618448944233,
+              "mean_dbfs": -30.78790393587688,
+              "peak_to_peak_db": 6.44115691890822,
+              "n": 15
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -20.272390552735388,
+              "r_squared": 0.7979334599427386,
+              "mean_dbfs": -39.37508177263933,
+              "peak_to_peak_db": 2.07256026900523,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.18
+              ],
+              "slope_db_per_second": -14.588504897602109,
+              "r_squared": 0.8873723706137351,
+              "mean_dbfs": -39.533610343221596,
+              "peak_to_peak_db": 0.5236823961059187,
+              "n": 19
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.14,
+                0.2
+              ],
+              "slope_db_per_second": -10.971713614895883,
+              "r_squared": 0.8847812072352464,
+              "mean_dbfs": -39.647740018878466,
+              "peak_to_peak_db": 0.5553845462734444,
+              "n": 30
+            }
+          ]
+        },
+        {
+          "case": "final chord",
+          "channel": "left",
+          "hann_taper_ms": 20,
+          "inferred_off_seconds": 182.17897916666666,
+          "design_matrix_condition": 10.098875344861332,
+          "fits": [
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -225.49605532287637,
+              "r_squared": 0.9995779997353312,
+              "mean_dbfs": -25.185070272326055,
+              "peak_to_peak_db": 15.29749887275706,
+              "n": 35
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -18.55230859854904,
+              "r_squared": 0.6260993188882752,
+              "mean_dbfs": -35.349373716664644,
+              "peak_to_peak_db": 3.0045660755809536,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -71.59002825301916,
+              "r_squared": 0.9405319210688362,
+              "mean_dbfs": -40.78092588390734,
+              "peak_to_peak_db": 11.371566512389975,
+              "n": 75
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -242.83875760443254,
+              "r_squared": 0.9985154691982657,
+              "mean_dbfs": -26.818723709069992,
+              "peak_to_peak_db": 16.02123928282538,
+              "n": 35
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -4.0122910624660255,
+              "r_squared": 0.03366726845043331,
+              "mean_dbfs": -37.039202341696,
+              "peak_to_peak_db": 2.609848018964449,
+              "n": 41
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -30.75393513162147,
+              "r_squared": 0.8974533880575589,
+              "mean_dbfs": -38.19692827404214,
+              "peak_to_peak_db": 4.6025475554718795,
+              "n": 75
+            }
+          ]
+        },
+        {
+          "case": "final chord",
+          "channel": "left",
+          "hann_taper_ms": 40,
+          "inferred_off_seconds": 182.17897916666666,
+          "design_matrix_condition": 4.1696992192831654,
+          "fits": [
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -224.5870458080683,
+              "r_squared": 0.99978392921896,
+              "mean_dbfs": -25.13474213125188,
+              "peak_to_peak_db": 15.0637263378995,
+              "n": 35
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -21.588526992411907,
+              "r_squared": 0.7422647820163705,
+              "mean_dbfs": -35.32339479793292,
+              "peak_to_peak_db": 3.0097119801203007,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -71.55246449175148,
+              "r_squared": 0.9475022385519138,
+              "mean_dbfs": -40.77019056044134,
+              "peak_to_peak_db": 11.275745788779503,
+              "n": 75
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -242.5324180526077,
+              "r_squared": 0.9993169253263455,
+              "mean_dbfs": -26.74867436333466,
+              "peak_to_peak_db": 16.120820130246738,
+              "n": 35
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -6.188620057035386,
+              "r_squared": 0.07669780284999188,
+              "mean_dbfs": -36.998672872157904,
+              "peak_to_peak_db": 2.494845073217448,
+              "n": 41
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -30.713523728275337,
+              "r_squared": 0.9040845649267453,
+              "mean_dbfs": -38.20321493821741,
+              "peak_to_peak_db": 4.70252444998502,
+              "n": 75
+            }
+          ]
+        },
+        {
+          "case": "final chord",
+          "channel": "left",
+          "hann_taper_ms": 60,
+          "inferred_off_seconds": 182.17897916666666,
+          "design_matrix_condition": 2.871285778212519,
+          "fits": [
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -222.16792299954287,
+              "r_squared": 0.9994716257019944,
+              "mean_dbfs": -25.058321886738142,
+              "peak_to_peak_db": 14.71670240911946,
+              "n": 35
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -25.825223425960896,
+              "r_squared": 0.7929630332894108,
+              "mean_dbfs": -35.27828601159625,
+              "peak_to_peak_db": 3.254267118761909,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -71.5151618077888,
+              "r_squared": 0.9518108754017509,
+              "mean_dbfs": -40.76127067707232,
+              "peak_to_peak_db": 11.12665737640588,
+              "n": 75
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -240.2256362353117,
+              "r_squared": 0.9993343045656009,
+              "mean_dbfs": -26.638961652416157,
+              "peak_to_peak_db": 15.80412401966105,
+              "n": 35
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -9.342245888476736,
+              "r_squared": 0.1447489953425645,
+              "mean_dbfs": -36.94157235271456,
+              "peak_to_peak_db": 2.589233514229221,
+              "n": 41
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -30.712885249826048,
+              "r_squared": 0.9062124342489467,
+              "mean_dbfs": -38.21238225266663,
+              "peak_to_peak_db": 4.762964117740246,
+              "n": 75
+            }
+          ]
+        },
+        {
+          "case": "final chord",
+          "channel": "right",
+          "hann_taper_ms": 20,
+          "inferred_off_seconds": 182.17897916666666,
+          "design_matrix_condition": 10.098875344861332,
+          "fits": [
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -271.51298242445546,
+              "r_squared": 0.9992873368989147,
+              "mean_dbfs": -33.47242583074816,
+              "peak_to_peak_db": 18.506237897259894,
+              "n": 35
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 24.04646648317718,
+              "r_squared": 0.30199625842546335,
+              "mean_dbfs": -45.443873505077704,
+              "peak_to_peak_db": 3.1596501025492927,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": 31.658836342564456,
+              "r_squared": 0.852118189566096,
+              "mean_dbfs": -39.72777521794099,
+              "peak_to_peak_db": 5.74435485719448,
+              "n": 75
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -176.4343625176628,
+              "r_squared": 0.9933923138560549,
+              "mean_dbfs": -32.66199348836505,
+              "peak_to_peak_db": 12.505116717381696,
+              "n": 35
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -46.97598439826002,
+              "r_squared": 0.7960970870134901,
+              "mean_dbfs": -40.960835596139745,
+              "peak_to_peak_db": 4.839745062473831,
+              "n": 41
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": 49.651817061858935,
+              "r_squared": 0.5219607544901275,
+              "mean_dbfs": -46.115695028630824,
+              "peak_to_peak_db": 8.916781192859354,
+              "n": 75
+            }
+          ]
+        },
+        {
+          "case": "final chord",
+          "channel": "right",
+          "hann_taper_ms": 40,
+          "inferred_off_seconds": 182.17897916666666,
+          "design_matrix_condition": 4.1696992192831654,
+          "fits": [
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -271.28986448738465,
+              "r_squared": 0.999682489340473,
+              "mean_dbfs": -33.38685941455828,
+              "peak_to_peak_db": 18.437667810681862,
+              "n": 35
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 20.503796476422025,
+              "r_squared": 0.24087265580531186,
+              "mean_dbfs": -45.37742229832725,
+              "peak_to_peak_db": 2.970933834932069,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": 31.7045205937204,
+              "r_squared": 0.8696314853571621,
+              "mean_dbfs": -39.72649587092921,
+              "peak_to_peak_db": 5.38484765632996,
+              "n": 75
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -176.0453799433157,
+              "r_squared": 0.9966363261716488,
+              "mean_dbfs": -32.6226165794037,
+              "peak_to_peak_db": 12.291322046256354,
+              "n": 35
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -48.76729931479533,
+              "r_squared": 0.8567326569508616,
+              "mean_dbfs": -40.94550935906296,
+              "peak_to_peak_db": 4.9290179902992435,
+              "n": 41
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": 49.463324484591304,
+              "r_squared": 0.5209159687044852,
+              "mean_dbfs": -46.12172542947939,
+              "peak_to_peak_db": 8.665814542005528,
+              "n": 75
+            }
+          ]
+        },
+        {
+          "case": "final chord",
+          "channel": "right",
+          "hann_taper_ms": 60,
+          "inferred_off_seconds": 182.17897916666666,
+          "design_matrix_condition": 2.871285778212519,
+          "fits": [
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -269.2916796812067,
+              "r_squared": 0.9995172521897191,
+              "mean_dbfs": -33.24949802697122,
+              "peak_to_peak_db": 18.135117631104507,
+              "n": 35
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": 15.185001993768822,
+              "r_squared": 0.13553633609798718,
+              "mean_dbfs": -45.27555407754269,
+              "peak_to_peak_db": 3.1348572943304234,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": 31.55281834449246,
+              "r_squared": 0.8810900646868042,
+              "mean_dbfs": -39.730253325739945,
+              "peak_to_peak_db": 5.141059327390984,
+              "n": 75
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -174.36494835763955,
+              "r_squared": 0.9986208676596335,
+              "mean_dbfs": -32.56150319194028,
+              "peak_to_peak_db": 11.831417476763633,
+              "n": 35
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -51.61865421703739,
+              "r_squared": 0.8962010604080929,
+              "mean_dbfs": -40.93360458374319,
+              "peak_to_peak_db": 5.200883740750967,
+              "n": 41
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": 49.00648523801559,
+              "r_squared": 0.514559846881901,
+              "mean_dbfs": -46.12549760720187,
+              "peak_to_peak_db": 8.784493019457457,
+              "n": 75
+            }
+          ]
+        },
+        {
+          "case": "final chord",
+          "channel": "mid",
+          "hann_taper_ms": 20,
+          "inferred_off_seconds": 182.17897916666666,
+          "design_matrix_condition": 10.098875344861332,
+          "fits": [
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -231.52466179002548,
+              "r_squared": 0.9994079361998658,
+              "mean_dbfs": -29.093442954815032,
+              "peak_to_peak_db": 15.765281673055803,
+              "n": 35
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -14.530955715247668,
+              "r_squared": 0.46772839159127,
+              "mean_dbfs": -39.40433068460376,
+              "peak_to_peak_db": 2.733012546272846,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -14.016740215966177,
+              "r_squared": 0.8411816976473869,
+              "mean_dbfs": -41.08423149336775,
+              "peak_to_peak_db": 2.2335013456908612,
+              "n": 75
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -230.479251397936,
+              "r_squared": 0.9990449818611817,
+              "mean_dbfs": -30.43395563532546,
+              "peak_to_peak_db": 15.346917550841724,
+              "n": 35
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -14.10605386804126,
+              "r_squared": 0.49344449644032173,
+              "mean_dbfs": -40.11319667695997,
+              "peak_to_peak_db": 2.284239150512107,
+              "n": 41
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -13.657949661595758,
+              "r_squared": 0.9020633330166309,
+              "mean_dbfs": -41.81168661072728,
+              "peak_to_peak_db": 2.357948066844557,
+              "n": 75
+            }
+          ]
+        },
+        {
+          "case": "final chord",
+          "channel": "mid",
+          "hann_taper_ms": 40,
+          "inferred_off_seconds": 182.17897916666666,
+          "design_matrix_condition": 4.1696992192831654,
+          "fits": [
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -230.75291175661928,
+              "r_squared": 0.9997617769971855,
+              "mean_dbfs": -29.032006203981428,
+              "peak_to_peak_db": 15.587285580129887,
+              "n": 35
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -17.251086075874497,
+              "r_squared": 0.6105804044507442,
+              "mean_dbfs": -39.371030286830006,
+              "peak_to_peak_db": 2.6668824019061006,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -13.874128389404454,
+              "r_squared": 0.8939457593790574,
+              "mean_dbfs": -41.07703789934539,
+              "peak_to_peak_db": 2.081469991130426,
+              "n": 75
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -229.9902343449765,
+              "r_squared": 0.9994811122519249,
+              "mean_dbfs": -30.362258600506838,
+              "peak_to_peak_db": 15.385395869604242,
+              "n": 35
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -15.919637341205286,
+              "r_squared": 0.562750982779988,
+              "mean_dbfs": -40.086343060958036,
+              "peak_to_peak_db": 2.279082908270908,
+              "n": 41
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -13.670152903128724,
+              "r_squared": 0.9469731008908029,
+              "mean_dbfs": -41.81311435682804,
+              "peak_to_peak_db": 2.219500830704064,
+              "n": 75
+            }
+          ]
+        },
+        {
+          "case": "final chord",
+          "channel": "mid",
+          "hann_taper_ms": 60,
+          "inferred_off_seconds": 182.17897916666666,
+          "design_matrix_condition": 2.871285778212519,
+          "fits": [
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -228.48530671339137,
+              "r_squared": 0.9996782235576788,
+              "mean_dbfs": -28.940260428826324,
+              "peak_to_peak_db": 15.243067141173757,
+              "n": 35
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -21.397319790350945,
+              "r_squared": 0.6924484104449996,
+              "mean_dbfs": -39.318175478312746,
+              "peak_to_peak_db": 2.88139706229866,
+              "n": 41
+            },
+            {
+              "midi": 75,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -13.925657233609655,
+              "r_squared": 0.9294994768373663,
+              "mean_dbfs": -41.074093978601475,
+              "peak_to_peak_db": 2.0474070687344224,
+              "n": 75
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.05,
+                0.12
+              ],
+              "slope_db_per_second": -227.69883310926357,
+              "r_squared": 0.9994767136660165,
+              "mean_dbfs": -30.25379293548868,
+              "peak_to_peak_db": 15.039940443415468,
+              "n": 35
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.12,
+                0.2
+              ],
+              "slope_db_per_second": -18.722411185904157,
+              "r_squared": 0.6034850205373528,
+              "mean_dbfs": -40.045064893987885,
+              "peak_to_peak_db": 2.4908542936192504,
+              "n": 41
+            },
+            {
+              "midi": 79,
+              "seconds_after_inferred_source_off": [
+                0.2,
+                0.35
+              ],
+              "slope_db_per_second": -13.744759189954701,
+              "r_squared": 0.9664895085791843,
+              "mean_dbfs": -41.815980894182516,
+              "peak_to_peak_db": 2.2209011238854686,
+              "n": 75
+            }
+          ]
+        }
+      ]
+    },
+    "control_events": {
+      "midi67_75_inferred_off": 180.414625,
+      "midi58_46_inferred_on": 180.414625,
+      "midi58_46_inferred_off": 180.63517,
+      "final_chord_inferred_off_frame": 8744591,
+      "sample_rate": 48000
+    },
+    "gain_only_test": "During70\u2013100ms after inferred off the already-held MIDI58 remains flat while MIDI75 falls about233dB/s. During140\u2013200ms the held partial remains flat while the released75 tail flattens near20dB below its plateau. A large common gain rise alone would also lift the held partial. Conditional on constant held-source amplitude and separable partials, common postmix static compression/AGC cannot by itself explain either feature. This does not exclude internal envelope shaping, external reverberation, per-band/per-voice processing, or arbitrary compensating gain upstream.",
+    "independent_vs_holdout": "Estimator independence only. This is the same recording already used for calibration and root final-chord analysis.",
+    "extended_endpoint": {
+      "method": "Same fixed-pitch simultaneous least-squares estimator as final/held control;2ms hop; final source185.8s, tail is not source end. Fixed late fit+.3..1.25s; descriptive departure and40ms sharpdrop, no engine fitting. A floor can reflect capture, codec or hardware. MIDI87 maycontainMIDI75secondharmonic; MIDI39 lowfrequency estimator has fewcycles in20ms.",
+      "source_url": "https://www.youtube.com/watch?v=ONfIvtDOog0",
+      "inferred_off_frame": 8744591,
+      "sample_rate": 48000,
+      "source_end_seconds": 185.99185416666666,
+      "rows": [
+        {
+          "midi": 39,
+          "channel": "left",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -19.67817384552641,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -12.965675415168468,
+          "late_r_squared": 0.8344393542652487,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.804000000000002,
+          "persistent_departure_source_seconds": 183.98297916666667,
+          "departure_dbfs": -76.69537619068863,
+          "departure_relative_db": -57.017202345162225,
+          "level50ms_before_dbfs": -58.520254853585314,
+          "relative_level50ms_before_db": -38.842081008058905,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7700000000000102,
+            "end_seconds_after_inferred_off": 1.8100000000000023,
+            "drop_db": -38.29608591452299,
+            "before_dbfs": -59.000909325649246,
+            "after_dbfs": -97.29699524017224,
+            "before_relative_db": -39.32273548012284
+          }
+        },
+        {
+          "midi": 75,
+          "channel": "left",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -18.920114630108532,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -5.263558489694798,
+          "late_r_squared": 0.21749947960319627,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.7299999999999898,
+          "persistent_departure_source_seconds": 183.90897916666665,
+          "departure_dbfs": -67.5730085190678,
+          "departure_relative_db": -48.65289388895927,
+          "level50ms_before_dbfs": -61.98984997705335,
+          "relative_level50ms_before_db": -43.069735346944825,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7019999999999982,
+            "end_seconds_after_inferred_off": 1.7419999999999902,
+            "drop_db": -39.58439506842231,
+            "before_dbfs": -62.605369961127835,
+            "after_dbfs": -102.18976502955014,
+            "before_relative_db": -43.685255331019306
+          }
+        },
+        {
+          "midi": 79,
+          "channel": "left",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -16.865099216156143,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -4.795921907507823,
+          "late_r_squared": 0.1337272429675066,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.6740000000000066,
+          "persistent_departure_source_seconds": 183.85297916666667,
+          "departure_dbfs": -66.57813629454579,
+          "departure_relative_db": -49.71303707838965,
+          "level50ms_before_dbfs": -64.06377059844833,
+          "relative_level50ms_before_db": -47.19867138229219,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.670000000000016,
+            "end_seconds_after_inferred_off": 1.710000000000008,
+            "drop_db": -36.35260273340826,
+            "before_dbfs": -64.93908459578442,
+            "after_dbfs": -101.29168732919268,
+            "before_relative_db": -48.07398537962828
+          }
+        },
+        {
+          "midi": 87,
+          "channel": "left",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -28.005275399613407,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -17.07719462858393,
+          "late_r_squared": 0.5861301553350737,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.3079999999999927,
+          "persistent_departure_source_seconds": 183.48697916666666,
+          "departure_dbfs": -73.77195866406979,
+          "departure_relative_db": -45.766683264456375,
+          "level50ms_before_dbfs": -57.86456700684081,
+          "relative_level50ms_before_db": -29.8592916072274,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7520000000000095,
+            "end_seconds_after_inferred_off": 1.7920000000000016,
+            "drop_db": -26.555475494207542,
+            "before_dbfs": -85.8628504477931,
+            "after_dbfs": -112.41832594200064,
+            "before_relative_db": -57.85757504817968
+          }
+        },
+        {
+          "midi": 39,
+          "channel": "left",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -19.74374536376785,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -13.007179563904971,
+          "late_r_squared": 0.9778528630405968,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.8060000000000116,
+          "persistent_departure_source_seconds": 183.98497916666668,
+          "departure_dbfs": -75.1723418304527,
+          "departure_relative_db": -55.428596466684844,
+          "level50ms_before_dbfs": -58.90798703532377,
+          "relative_level50ms_before_db": -39.16424167155592,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 2.2539999999999907,
+            "end_seconds_after_inferred_off": 2.294000000000011,
+            "drop_db": -33.4231385599161,
+            "before_dbfs": -65.23345791706971,
+            "after_dbfs": -98.65659647698581,
+            "before_relative_db": -45.489712553301864
+          }
+        },
+        {
+          "midi": 75,
+          "channel": "left",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -18.852567706621198,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -5.273603182254888,
+          "late_r_squared": 0.2200920190928863,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.7280000000000086,
+          "persistent_departure_source_seconds": 183.90697916666667,
+          "departure_dbfs": -66.47129797588255,
+          "departure_relative_db": -47.61873026926135,
+          "level50ms_before_dbfs": -62.060627767685006,
+          "relative_level50ms_before_db": -43.208060061063804,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 2.1100000000000136,
+            "end_seconds_after_inferred_off": 2.1500000000000057,
+            "drop_db": -33.13914871715774,
+            "before_dbfs": -87.45401388374546,
+            "after_dbfs": -120.5931626009032,
+            "before_relative_db": -68.60144617712426
+          }
+        },
+        {
+          "midi": 79,
+          "channel": "left",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -16.868288059191272,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -4.810235341879863,
+          "late_r_squared": 0.13551892112855932,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.670000000000016,
+          "persistent_departure_source_seconds": 183.84897916666668,
+          "departure_dbfs": -65.92641387306787,
+          "departure_relative_db": -49.0581258138766,
+          "level50ms_before_dbfs": -64.07867980502925,
+          "relative_level50ms_before_db": -47.21039174583798,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.6800000000000068,
+            "end_seconds_after_inferred_off": 1.7199999999999989,
+            "drop_db": -54.546470214817504,
+            "before_dbfs": -74.20729065801171,
+            "after_dbfs": -128.75376087282922,
+            "before_relative_db": -57.33900259882044
+          }
+        },
+        {
+          "midi": 87,
+          "channel": "left",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -27.85058788045079,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -17.081386784149462,
+          "late_r_squared": 0.5892639938493685,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.3100000000000023,
+          "persistent_departure_source_seconds": 183.48897916666667,
+          "departure_dbfs": -75.8779843503725,
+          "departure_relative_db": -48.02739646992171,
+          "level50ms_before_dbfs": -58.253707025818954,
+          "relative_level50ms_before_db": -30.403119145368166,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.3000000000000114,
+            "end_seconds_after_inferred_off": 1.3400000000000034,
+            "drop_db": -30.018060463610823,
+            "before_dbfs": -66.2201189365338,
+            "after_dbfs": -96.23817940014462,
+            "before_relative_db": -38.369531056083005
+          }
+        },
+        {
+          "midi": 39,
+          "channel": "left",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -19.691816331647146,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -13.0306468206597,
+          "late_r_squared": 0.9887754007023706,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.8079999999999927,
+          "persistent_departure_source_seconds": 183.98697916666666,
+          "departure_dbfs": -74.58548007108747,
+          "departure_relative_db": -54.89366373944033,
+          "level50ms_before_dbfs": -59.02189727773578,
+          "relative_level50ms_before_db": -39.330080946088636,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7940000000000111,
+            "end_seconds_after_inferred_off": 1.8340000000000032,
+            "drop_db": -27.45254435458733,
+            "before_dbfs": -62.60141248414945,
+            "after_dbfs": -90.05395683873678,
+            "before_relative_db": -42.9095961525023
+          }
+        },
+        {
+          "midi": 75,
+          "channel": "left",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -18.784071011068207,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -5.284699335585034,
+          "late_r_squared": 0.22287241727068277,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.7280000000000086,
+          "persistent_departure_source_seconds": 183.90697916666667,
+          "departure_dbfs": -67.12374596675814,
+          "departure_relative_db": -48.33967495568993,
+          "level50ms_before_dbfs": -62.03363877380931,
+          "relative_level50ms_before_db": -43.2495677627411,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.710000000000008,
+            "end_seconds_after_inferred_off": 1.75,
+            "drop_db": -37.45807938454279,
+            "before_dbfs": -62.83081899319786,
+            "after_dbfs": -100.28889837774065,
+            "before_relative_db": -44.04674798212965
+          }
+        },
+        {
+          "midi": 79,
+          "channel": "left",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -16.920616479191164,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -4.8211946148077525,
+          "late_r_squared": 0.13711002683005208,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.6680000000000064,
+          "persistent_departure_source_seconds": 183.84697916666667,
+          "departure_dbfs": -66.27387345511244,
+          "departure_relative_db": -49.35325697592127,
+          "level50ms_before_dbfs": -63.910047167773165,
+          "relative_level50ms_before_db": -46.989430688582004,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.6539999999999964,
+            "end_seconds_after_inferred_off": 1.6939999999999884,
+            "drop_db": -47.07837201424164,
+            "before_dbfs": -64.46821175616793,
+            "after_dbfs": -111.54658377040957,
+            "before_relative_db": -47.547595276976764
+          }
+        },
+        {
+          "midi": 87,
+          "channel": "left",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -27.77594869851497,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -17.08966366795254,
+          "late_r_squared": 0.5938072179008753,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.3100000000000023,
+          "persistent_departure_source_seconds": 183.48897916666667,
+          "departure_dbfs": -74.2848607632166,
+          "departure_relative_db": -46.50891206470163,
+          "level50ms_before_dbfs": -58.45810599670463,
+          "relative_level50ms_before_db": -30.68215729818966,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.3000000000000114,
+            "end_seconds_after_inferred_off": 1.3400000000000034,
+            "drop_db": -30.879996626004356,
+            "before_dbfs": -66.92872050984226,
+            "after_dbfs": -97.80871713584662,
+            "before_relative_db": -39.1527718113273
+          }
+        },
+        {
+          "midi": 39,
+          "channel": "right",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -27.957400971873625,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -16.267196142794266,
+          "late_r_squared": 0.8919989425533701,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7779999999999916,
+            "end_seconds_after_inferred_off": 1.818000000000012,
+            "drop_db": -33.93718066509973,
+            "before_dbfs": -64.8404048692849,
+            "after_dbfs": -98.77758553438463,
+            "before_relative_db": -36.88300389741127
+          }
+        },
+        {
+          "midi": 75,
+          "channel": "right",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -19.30561538856355,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -23.38059984654941,
+          "late_r_squared": 0.9018437025368999,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.7379999999999995,
+          "persistent_departure_source_seconds": 183.91697916666666,
+          "departure_dbfs": -85.08420409750974,
+          "departure_relative_db": -65.77858870894619,
+          "level50ms_before_dbfs": -58.956467184163586,
+          "relative_level50ms_before_db": -39.65085179560003,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7040000000000077,
+            "end_seconds_after_inferred_off": 1.7439999999999998,
+            "drop_db": -37.58323657990147,
+            "before_dbfs": -59.12697896020332,
+            "after_dbfs": -96.71021554010478,
+            "before_relative_db": -39.821363571639765
+          }
+        },
+        {
+          "midi": 79,
+          "channel": "right",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -29.317700408719695,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -24.29038152077089,
+          "late_r_squared": 0.8199214783450416,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.73599999999999,
+          "persistent_departure_source_seconds": 183.91497916666665,
+          "departure_dbfs": -87.58607717881728,
+          "departure_relative_db": -58.26837677009758,
+          "level50ms_before_dbfs": -108.19325774088163,
+          "relative_level50ms_before_db": -78.87555733216195,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.646000000000015,
+            "end_seconds_after_inferred_off": 1.686000000000007,
+            "drop_db": -50.04987370875736,
+            "before_dbfs": -58.143384032124274,
+            "after_dbfs": -108.19325774088163,
+            "before_relative_db": -28.82568362340458
+          }
+        },
+        {
+          "midi": 87,
+          "channel": "right",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -17.686003206815265,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -19.142543977595487,
+          "late_r_squared": 0.5693922125157026,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.3160000000000025,
+          "persistent_departure_source_seconds": 183.49497916666667,
+          "departure_dbfs": -80.50745071595884,
+          "departure_relative_db": -62.821447509143574,
+          "level50ms_before_dbfs": -58.86304865884349,
+          "relative_level50ms_before_db": -41.177045452028224,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.3079999999999927,
+            "end_seconds_after_inferred_off": 1.3480000000000132,
+            "drop_db": -39.73535099175374,
+            "before_dbfs": -60.67493877215562,
+            "after_dbfs": -100.41028976390936,
+            "before_relative_db": -42.988935565340356
+          }
+        },
+        {
+          "midi": 39,
+          "channel": "right",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -28.100068533324098,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -16.264638204286477,
+          "late_r_squared": 0.9631876048155414,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.8840000000000146,
+          "persistent_departure_source_seconds": 184.06297916666668,
+          "departure_dbfs": -85.57186615863075,
+          "departure_relative_db": -57.47179762530666,
+          "level50ms_before_dbfs": -88.3112906932932,
+          "relative_level50ms_before_db": -60.211222159969104,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.8000000000000114,
+            "end_seconds_after_inferred_off": 1.8400000000000034,
+            "drop_db": -28.4928252841909,
+            "before_dbfs": -72.04095134289469,
+            "after_dbfs": -100.53377662708559,
+            "before_relative_db": -43.94088280957059
+          }
+        },
+        {
+          "midi": 75,
+          "channel": "right",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -19.263765872716466,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -23.363234659290836,
+          "late_r_squared": 0.903129253380467,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.7419999999999902,
+          "persistent_departure_source_seconds": 183.92097916666665,
+          "departure_dbfs": -84.86122023839557,
+          "departure_relative_db": -65.59745436567911,
+          "level50ms_before_dbfs": -59.06538236018365,
+          "relative_level50ms_before_db": -39.801616487467186,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.725999999999999,
+            "end_seconds_after_inferred_off": 1.7659999999999911,
+            "drop_db": -59.6634227919853,
+            "before_dbfs": -60.567246227132486,
+            "after_dbfs": -120.23066901911778,
+            "before_relative_db": -41.303480354416024
+          }
+        },
+        {
+          "midi": 79,
+          "channel": "right",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -29.249988902918926,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -24.280861052924745,
+          "late_r_squared": 0.8212276835446125,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.7340000000000089,
+          "persistent_departure_source_seconds": 183.91297916666667,
+          "departure_dbfs": -84.8977788942459,
+          "departure_relative_db": -55.647789991326974,
+          "level50ms_before_dbfs": -75.69734843642162,
+          "relative_level50ms_before_db": -46.44735953350269,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.6800000000000068,
+            "end_seconds_after_inferred_off": 1.7199999999999989,
+            "drop_db": -46.74302216222647,
+            "before_dbfs": -67.93757871655168,
+            "after_dbfs": -114.68060087877815,
+            "before_relative_db": -38.687589813632755
+          }
+        },
+        {
+          "midi": 87,
+          "channel": "right",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -17.677438098695557,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -19.12555814654054,
+          "late_r_squared": 0.5731146921036954,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.318000000000012,
+          "persistent_departure_source_seconds": 183.49697916666668,
+          "departure_dbfs": -78.16771503013234,
+          "departure_relative_db": -60.49027693143678,
+          "level50ms_before_dbfs": -58.789514346858255,
+          "relative_level50ms_before_db": -41.112076248162694,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.3000000000000114,
+            "end_seconds_after_inferred_off": 1.3400000000000034,
+            "drop_db": -34.28647635241469,
+            "before_dbfs": -57.92985676197038,
+            "after_dbfs": -92.21633311438507,
+            "before_relative_db": -40.252418663274824
+          }
+        },
+        {
+          "midi": 39,
+          "channel": "right",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -28.051506855562316,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -16.259209191631186,
+          "late_r_squared": 0.9731386429865928,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.8780000000000143,
+          "persistent_departure_source_seconds": 184.05697916666668,
+          "departure_dbfs": -83.93531391904361,
+          "departure_relative_db": -55.88380706348129,
+          "level50ms_before_dbfs": -88.69060168460894,
+          "relative_level50ms_before_db": -60.63909482904662,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.774000000000001,
+            "end_seconds_after_inferred_off": 1.813999999999993,
+            "drop_db": -38.06945052263062,
+            "before_dbfs": -64.96100514604272,
+            "after_dbfs": -103.03045566867334,
+            "before_relative_db": -36.90949829048041
+          }
+        },
+        {
+          "midi": 75,
+          "channel": "right",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -19.248212264609997,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -23.33395137648945,
+          "late_r_squared": 0.9041929481430608,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.7460000000000093,
+          "persistent_departure_source_seconds": 183.92497916666667,
+          "departure_dbfs": -84.18809703774997,
+          "departure_relative_db": -64.93988477313997,
+          "level50ms_before_dbfs": -59.04265899923389,
+          "relative_level50ms_before_db": -39.7944467346239,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.725999999999999,
+            "end_seconds_after_inferred_off": 1.7659999999999911,
+            "drop_db": -42.71072985749492,
+            "before_dbfs": -61.47031164573804,
+            "after_dbfs": -104.18104150323296,
+            "before_relative_db": -42.22209938112805
+          }
+        },
+        {
+          "midi": 79,
+          "channel": "right",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -29.239704044666375,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -24.270317270117157,
+          "late_r_squared": 0.8225987877732798,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.6920000000000073,
+          "persistent_departure_source_seconds": 183.87097916666667,
+          "departure_dbfs": -87.22055794961307,
+          "departure_relative_db": -57.98085390494669,
+          "level50ms_before_dbfs": -58.316813772819174,
+          "relative_level50ms_before_db": -29.0771097281528,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.656000000000006,
+            "end_seconds_after_inferred_off": 1.695999999999998,
+            "drop_db": -47.19746722959618,
+            "before_dbfs": -58.62632452121574,
+            "after_dbfs": -105.82379175081192,
+            "before_relative_db": -29.386620476549368
+          }
+        },
+        {
+          "midi": 87,
+          "channel": "right",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -17.703715274316245,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -19.092698540904568,
+          "late_r_squared": 0.5784227105065225,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.3220000000000027,
+          "persistent_departure_source_seconds": 183.50097916666667,
+          "departure_dbfs": -78.32028560068466,
+          "departure_relative_db": -60.61657032636841,
+          "level50ms_before_dbfs": -58.64356037395585,
+          "relative_level50ms_before_db": -40.939845099639605,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.3780000000000143,
+            "end_seconds_after_inferred_off": 1.4180000000000064,
+            "drop_db": -42.49731919549674,
+            "before_dbfs": -89.77963019799387,
+            "after_dbfs": -132.2769493934906,
+            "before_relative_db": -72.07591492367763
+          }
+        },
+        {
+          "midi": 39,
+          "channel": "mid",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -23.1735370301352,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -13.60330761961791,
+          "late_r_squared": 0.8709939138297945,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.804000000000002,
+          "persistent_departure_source_seconds": 183.98297916666667,
+          "departure_dbfs": -80.37927889793502,
+          "departure_relative_db": -57.20574186779982,
+          "level50ms_before_dbfs": -61.54773521824783,
+          "relative_level50ms_before_db": -38.37419818811263,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7659999999999911,
+            "end_seconds_after_inferred_off": 1.8060000000000116,
+            "drop_db": -36.38547045943042,
+            "before_dbfs": -61.76588108989395,
+            "after_dbfs": -98.15135154932437,
+            "before_relative_db": -38.59234405975875
+          }
+        },
+        {
+          "midi": 75,
+          "channel": "mid",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -20.260550932748885,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -14.28823158365966,
+          "late_r_squared": 0.996156216989663,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.7340000000000089,
+          "persistent_departure_source_seconds": 183.91297916666667,
+          "departure_dbfs": -75.26503631425487,
+          "departure_relative_db": -55.00448538150599,
+          "level50ms_before_dbfs": -61.68405567978147,
+          "relative_level50ms_before_db": -41.42350474703259,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7220000000000084,
+            "end_seconds_after_inferred_off": 1.7620000000000005,
+            "drop_db": -44.29762691549991,
+            "before_dbfs": -61.59170113385975,
+            "after_dbfs": -105.88932804935966,
+            "before_relative_db": -41.331150201110866
+          }
+        },
+        {
+          "midi": 79,
+          "channel": "mid",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -21.131014065918862,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -14.78660935501016,
+          "late_r_squared": 0.9936555972515069,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.6800000000000068,
+          "persistent_departure_source_seconds": 183.85897916666667,
+          "departure_dbfs": -75.05720348539657,
+          "departure_relative_db": -53.92618941947771,
+          "level50ms_before_dbfs": -61.6006041559751,
+          "relative_level50ms_before_db": -40.469590090056236,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.646000000000015,
+            "end_seconds_after_inferred_off": 1.686000000000007,
+            "drop_db": -38.964400687753724,
+            "before_dbfs": -61.326409776135094,
+            "after_dbfs": -100.29081046388882,
+            "before_relative_db": -40.19539571021623
+          }
+        },
+        {
+          "midi": 87,
+          "channel": "mid",
+          "hann_taper_ms": 20,
+          "pre_dbfs": -22.02103547571199,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -17.64890880734891,
+          "late_r_squared": 0.996247190974988,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.3120000000000118,
+          "persistent_departure_source_seconds": 183.49097916666668,
+          "departure_dbfs": -75.15059102463654,
+          "departure_relative_db": -53.12955554892455,
+          "level50ms_before_dbfs": -60.32739737769555,
+          "relative_level50ms_before_db": -38.30636190198356,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.3000000000000114,
+            "end_seconds_after_inferred_off": 1.3400000000000034,
+            "drop_db": -30.78663501675922,
+            "before_dbfs": -61.67120123815525,
+            "after_dbfs": -92.45783625491447,
+            "before_relative_db": -39.65016576244326
+          }
+        },
+        {
+          "midi": 39,
+          "channel": "mid",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -23.141523049349026,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -13.626253814251339,
+          "late_r_squared": 0.9867434160859903,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.804000000000002,
+          "persistent_departure_source_seconds": 183.98297916666667,
+          "departure_dbfs": -76.56294828119361,
+          "departure_relative_db": -53.42142523184459,
+          "level50ms_before_dbfs": -61.84713130623652,
+          "relative_level50ms_before_db": -38.705608256887494,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7700000000000102,
+            "end_seconds_after_inferred_off": 1.8100000000000023,
+            "drop_db": -34.15013412490994,
+            "before_dbfs": -61.96609980572022,
+            "after_dbfs": -96.11623393063016,
+            "before_relative_db": -38.824576756371194
+          }
+        },
+        {
+          "midi": 75,
+          "channel": "mid",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -20.249031253446862,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -14.29451040703115,
+          "late_r_squared": 0.9976338149440037,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.73599999999999,
+          "persistent_departure_source_seconds": 183.91497916666665,
+          "departure_dbfs": -74.88287725717309,
+          "departure_relative_db": -54.633846003726234,
+          "level50ms_before_dbfs": -61.63414677599083,
+          "relative_level50ms_before_db": -41.38511552254397,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7160000000000082,
+            "end_seconds_after_inferred_off": 1.7560000000000002,
+            "drop_db": -40.88688950728928,
+            "before_dbfs": -61.61654793081435,
+            "after_dbfs": -102.50343743810363,
+            "before_relative_db": -41.36751667736749
+          }
+        },
+        {
+          "midi": 79,
+          "channel": "mid",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -21.121109406539006,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -14.79039094552556,
+          "late_r_squared": 0.9958648283940256,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.6820000000000164,
+          "persistent_departure_source_seconds": 183.86097916666668,
+          "departure_dbfs": -74.99105776537066,
+          "departure_relative_db": -53.86994835883165,
+          "level50ms_before_dbfs": -61.53083147244055,
+          "relative_level50ms_before_db": -40.40972206590155,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.6800000000000068,
+            "end_seconds_after_inferred_off": 1.7199999999999989,
+            "drop_db": -47.55202087415678,
+            "before_dbfs": -71.58298793801242,
+            "after_dbfs": -119.1350088121692,
+            "before_relative_db": -50.46187853147342
+          }
+        },
+        {
+          "midi": 87,
+          "channel": "mid",
+          "hann_taper_ms": 40,
+          "pre_dbfs": -22.054432632822348,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -17.648986410458868,
+          "late_r_squared": 0.9971155605886527,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.313999999999993,
+          "persistent_departure_source_seconds": 183.49297916666666,
+          "departure_dbfs": -75.31304439063254,
+          "departure_relative_db": -53.25861175781019,
+          "level50ms_before_dbfs": -60.62459996273538,
+          "relative_level50ms_before_db": -38.57016732991303,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.3000000000000114,
+            "end_seconds_after_inferred_off": 1.3400000000000034,
+            "drop_db": -34.39817196700839,
+            "before_dbfs": -62.476681408131974,
+            "after_dbfs": -96.87485337514036,
+            "before_relative_db": -40.422248775309626
+          }
+        },
+        {
+          "midi": 39,
+          "channel": "mid",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -23.123406756550686,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -13.634415689516995,
+          "late_r_squared": 0.9948234125248064,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.8060000000000116,
+          "persistent_departure_source_seconds": 183.98497916666668,
+          "departure_dbfs": -77.03654455630354,
+          "departure_relative_db": -53.91313779975285,
+          "level50ms_before_dbfs": -61.93554403106101,
+          "relative_level50ms_before_db": -38.81213727451033,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.8739999999999952,
+            "end_seconds_after_inferred_off": 1.9140000000000157,
+            "drop_db": -41.92208287225108,
+            "before_dbfs": -86.75777243597554,
+            "after_dbfs": -128.67985530822662,
+            "before_relative_db": -63.63436567942485
+          }
+        },
+        {
+          "midi": 75,
+          "channel": "mid",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -20.270146503348464,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -14.296008647741132,
+          "late_r_squared": 0.9981633339736773,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.7379999999999995,
+          "persistent_departure_source_seconds": 183.91697916666666,
+          "departure_dbfs": -74.60337952689814,
+          "departure_relative_db": -54.333233023549674,
+          "level50ms_before_dbfs": -61.65662603944867,
+          "relative_level50ms_before_db": -41.386479536100204,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.7139999999999986,
+            "end_seconds_after_inferred_off": 1.7539999999999907,
+            "drop_db": -44.2071789542481,
+            "before_dbfs": -61.84864531914051,
+            "after_dbfs": -106.05582427338861,
+            "before_relative_db": -41.578498815792045
+          }
+        },
+        {
+          "midi": 79,
+          "channel": "mid",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -21.12140533170702,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -14.792701103816873,
+          "late_r_squared": 0.9967966033739037,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.6839999999999975,
+          "persistent_departure_source_seconds": 183.86297916666666,
+          "departure_dbfs": -74.93166922990312,
+          "departure_relative_db": -53.8102638981961,
+          "level50ms_before_dbfs": -61.535348972798474,
+          "relative_level50ms_before_db": -40.41394364109145,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.656000000000006,
+            "end_seconds_after_inferred_off": 1.695999999999998,
+            "drop_db": -43.07153904134102,
+            "before_dbfs": -61.8404526665251,
+            "after_dbfs": -104.91199170786612,
+            "before_relative_db": -40.719047334818086
+          }
+        },
+        {
+          "midi": 87,
+          "channel": "mid",
+          "hann_taper_ms": 60,
+          "pre_dbfs": -22.068598114742386,
+          "late_fit_source_relative_window": [
+            0.3,
+            1.25
+          ],
+          "late_slope_db_per_second": -17.648966028732293,
+          "late_r_squared": 0.9974700190266166,
+          "persistent_departure_definition": "First frame after+1.25s at least12dB below earlier late-branch extrapolation for all following80ms; descriptive, not physical gate time",
+          "persistent_departure_seconds_after_inferred_off": 1.3160000000000025,
+          "persistent_departure_source_seconds": 183.49497916666667,
+          "departure_dbfs": -75.12997732839173,
+          "departure_relative_db": -53.061379213649346,
+          "level50ms_before_dbfs": -60.83456133817567,
+          "relative_level50ms_before_db": -38.76596322343328,
+          "largest_40ms_drop": {
+            "start_seconds_after_inferred_off": 1.3000000000000114,
+            "end_seconds_after_inferred_off": 1.3400000000000034,
+            "drop_db": -35.110522798627,
+            "before_dbfs": -63.3455171113705,
+            "after_dbfs": -98.4560399099975,
+            "before_relative_db": -41.27691899662811
+          }
+        }
+      ],
+      "estimator_limitation": "35 of36 channel/taper/pitch combinations satisfy the persistent-departure detector. Right-channel20ms MIDI39 does not; its short low-frequency window and weak channel prevent this threshold claim. All12 arithmetic-mid combinations satisfy it. Missing departure fields mean not found, not a zero-time event."
+    },
+    "extended_endpoint_conclusion": "Four mid-channel coherent partials disappear at separate times, before source end, after earlier late slopes. The recorded arithmetic-mid amplitude50ms before the descriptive departures clusters near-61dBFS, but this is not a calibrated hardware attenuation: channel phase/chorus and recording gain matter. Individual channel departures differ, especially for weak/cancelling channels. Raw carrier LKS0xB9 is nonzero, so an intrinsic total-attenuation endpoint would not imply equal EG attenuation or equal time. No fixed EG cutoff is recovered.",
+    "codec_crosscheck": {
+      "report": "Reference/Research/codec-tail-audit-20261018.md",
+      "machine_readable_report": "Reference/Research/codec-tail-audit-20261018.json",
+      "classification": "Independent collaborating analysis; distinct YouTube140AAC and251Opus transcodes share the same upload master. No new constants adopted.",
+      "finding": "AAC/Opus mid-channel relative-50dB crossing times agree within0.46ms for fourpartials after a globally chosen627-frame alignment, and floatOpus agrees withPCM16. This excludes Opus-specific or finalPCM16-only extinction; shared upload/master processing and hardware remain unresolved."
+    }
+  },
+  "pss580": {
+    "source_timebase": "Analysis PCM kk49-full-lastvoices-3160.wav was decoded from full source with exact original3160s start. The old stream-copy file called3180 retained keyframe preroll and actually began3170.020s; it was not used for numerical audio windows here.",
+    "program99_confirmed_frame": "source approximately3464s, hardware LED99; video excerpt time293.98s with prior independently established original3170.020s start",
+    "raw_patch_effects_and_gate": "unknown; same voice name/order cannot prove same RR/RKS; initial program99 demonstration has portamento-like pitch sweep, so only late stable chord was inspected",
+    "diagnostic": {
+      "scope": "Negative/limited diagnostic, not adoption score. MIDI labels inferred from spectrum, raw patch and actual gate unknown; fixed equal temperament not fitted. Chorusing/vibrato and portamento uncertain. No production parameters recovered.",
+      "method": "40ms squared-Hann jointsinusoid least squares, pitches46,53,58,65,70,77,82 andDC;2ms hop;arithmeticmid;source audio window exact3160s origin",
+      "rows": [
+        {
+          "midi": 46,
+          "source_seconds": [
+            3464.23,
+            3464.38
+          ],
+          "slope_db_per_second": -199.45324130626102,
+          "r_squared": 0.9988429780866334,
+          "min_dbfs": -44.9970520899614,
+          "max_dbfs": -15.088114316840215
+        },
+        {
+          "midi": 46,
+          "source_seconds": [
+            3464.38,
+            3464.45
+          ],
+          "slope_db_per_second": -637.6939423468792,
+          "r_squared": 0.8179791054765891,
+          "min_dbfs": -87.17913805723931,
+          "max_dbfs": -44.9970520899614
+        },
+        {
+          "midi": 53,
+          "source_seconds": [
+            3464.23,
+            3464.38
+          ],
+          "slope_db_per_second": -200.00729716698666,
+          "r_squared": 0.9995889755714535,
+          "min_dbfs": -44.671757015472735,
+          "max_dbfs": -15.022406550386545
+        },
+        {
+          "midi": 53,
+          "source_seconds": [
+            3464.38,
+            3464.45
+          ],
+          "slope_db_per_second": -715.9741330384983,
+          "r_squared": 0.7876640006795015,
+          "min_dbfs": -98.22998688474028,
+          "max_dbfs": -44.671757015472735
+        },
+        {
+          "midi": 58,
+          "source_seconds": [
+            3464.23,
+            3464.38
+          ],
+          "slope_db_per_second": -199.39772129309353,
+          "r_squared": 0.9990914845345635,
+          "min_dbfs": -46.44643908625166,
+          "max_dbfs": -16.49660470460747
+        },
+        {
+          "midi": 58,
+          "source_seconds": [
+            3464.38,
+            3464.45
+          ],
+          "slope_db_per_second": -784.6608291762069,
+          "r_squared": 0.9071327841010529,
+          "min_dbfs": -96.92527274385571,
+          "max_dbfs": -46.44643908625166
+        },
+        {
+          "midi": 65,
+          "source_seconds": [
+            3464.23,
+            3464.38
+          ],
+          "slope_db_per_second": -230.4170219541146,
+          "r_squared": 0.9997265005539699,
+          "min_dbfs": -45.57097386950336,
+          "max_dbfs": -11.798964448958468
+        },
+        {
+          "midi": 65,
+          "source_seconds": [
+            3464.38,
+            3464.45
+          ],
+          "slope_db_per_second": -1032.8113141656918,
+          "r_squared": 0.8264254753222325,
+          "min_dbfs": -114.76172705059955,
+          "max_dbfs": -45.57097386950336
+        },
+        {
+          "midi": 77,
+          "source_seconds": [
+            3464.23,
+            3464.38
+          ],
+          "slope_db_per_second": -220.45157120252136,
+          "r_squared": 0.9984305241967892,
+          "min_dbfs": -43.42934354006964,
+          "max_dbfs": -12.27349884919273
+        },
+        {
+          "midi": 77,
+          "source_seconds": [
+            3464.38,
+            3464.45
+          ],
+          "slope_db_per_second": -991.3049790371521,
+          "r_squared": 0.7964201582764331,
+          "min_dbfs": -116.05425350835803,
+          "max_dbfs": -43.42934354006964
+        }
+      ]
+    },
+    "finding": "Several stable partials decay about199\u2013230dB/s through source3464.23\u20133464.38, followed by sharp coherent-tone loss near3464.43. No clear18\u201320dB bend to an approximately15dB/s branch is visible before35\u201340dB attenuation. This negative control cannot refute an effect-enabled780 tail because effects/rawpatch are not recovered.",
+    "evidence_status": "Independent-source negative comparison. The earlier recording-holdout audit already inspected Sine99 tails and portamento. This new joint-LS endpoint analysis was not used to tune the frozen candidates."
+  },
+  "conclusions": [
+    {
+      "finding": "The ~230dB/s fast release is repeatable across two independent estimators and two separate known-RR8 recordings (480 and780).",
+      "confidence": "high for recorded waveform; conditional for raw RR identity in video480; not proof of a complete hardware timing law"
+    },
+    {
+      "finding": "A common gain-only capture explanation is inadequate for the exact780 mixed held/released-note case.",
+      "confidence": "moderate-high, conditional on constant held-source amplitude and pitch separation"
+    },
+    {
+      "finding": "The original780 recording has an extra late tail with Reverb visibly on;the PSS580 independent-source comparison has no recovered equivalent effect state.",
+      "confidence": "high for visible recorded behavior; hardware internal location/algorithm not identified"
+    },
+    {
+      "finding": "D2R20 remains one controlled setting; neither a universal3x rate multiplier nor an exact OPU rate table has been recovered.",
+      "confidence": "high"
+    },
+    {
+      "finding": "Use opt-in dry/effect/gain capture kit for the unresolved numeric rate and processing questions.",
+      "confidence": "next evidence step, not a claim of hardware validation"
+    },
+    {
+      "finding": "Four final-chord partials end abruptly at different times; AAC reproduces the same endings. Opus-specific and finalPCM16-only explanations are rejected, but neither silicon nor a fixed envelope attenuation is identified.",
+      "confidence": "high for recorded endpoint behavior; mechanism unresolved"
+    }
+  ],
+  "artifacts": [
+    "build/envelope-forensics-20261018/additional_forensics.py",
+    "build/envelope-forensics-20261018/endpoint_forensics.py",
+    "build/envelope-forensics-20261018/exact780-extended-endpoint-20ms.png",
+    "build/envelope-forensics-20261018/exact780-extended-endpoint-40ms.png",
+    "build/envelope-forensics-20261018/exact780-extended-endpoint-60ms.png",
+    "build/envelope-forensics-20261018/exact780-extended-endpoint.json",
+    "build/envelope-forensics-20261018/exact780-final-chord-20ms.png",
+    "build/envelope-forensics-20261018/exact780-final-chord-40ms.png",
+    "build/envelope-forensics-20261018/exact780-final-chord-60ms.png",
+    "build/envelope-forensics-20261018/exact780-mixed-tail-control-20ms.png",
+    "build/envelope-forensics-20261018/exact780-mixed-tail-control-40ms.png",
+    "build/envelope-forensics-20261018/exact780-mixed-tail-control-60ms.png",
+    "build/envelope-forensics-20261018/exact780-preset99-176.5.png",
+    "build/envelope-forensics-20261018/exact780-preset99-181.7.png",
+    "build/envelope-forensics-20261018/exact780-preset99-182.5.png",
+    "build/envelope-forensics-20261018/exact780-preset99-183.5.png",
+    "build/envelope-forensics-20261018/joint-final-and-held-control.json",
+    "build/envelope-forensics-20261018/joint-sine-control.json",
+    "build/envelope-forensics-20261018/joint_sine_forensics.py",
+    "build/envelope-forensics-20261018/keen-positive-peak-diagnostics.json",
+    "build/envelope-forensics-20261018/pss580-final-chord-diagnostic.json",
+    "build/envelope-forensics-20261018/pss580-sine99-final-chord-tail.png",
+    "build/envelope-forensics-20261018/pss580-sine99-overview.png",
+    "build/envelope-forensics-20261018/pss580-source3464-frame.png",
+    "build/envelope-forensics-20261018/pure-carrier-onset-peak-comparison.png",
+    "build/envelope-forensics-20261018/write_report.py"
+  ],
+  "changes": "Two research documents only; all third-party media, extracted frames, analysis scripts/plots remain ignored build artifacts. No MIDI transmission or playback."
+}

@@ -1,0 +1,2632 @@
+{
+  "protocol": {
+    "scope": "Descriptive reuse/calibration; not a fresh holdout.",
+    "source_url": "https://www.youtube.com/watch?v=ONfIvtDOog0",
+    "sample_rate": 48000,
+    "chord": [
+      {
+        "midi": 75,
+        "velocity": 127,
+        "channel": 0,
+        "on_frame": 8723419,
+        "off_frame": 8744591
+      },
+      {
+        "midi": 79,
+        "velocity": 127,
+        "channel": 0,
+        "on_frame": 8723419,
+        "off_frame": 8744591
+      },
+      {
+        "midi": 87,
+        "velocity": 127,
+        "channel": 0,
+        "on_frame": 8723419,
+        "off_frame": 8744591
+      },
+      {
+        "midi": 39,
+        "velocity": 127,
+        "channel": 1,
+        "on_frame": 8723419,
+        "off_frame": 8744591
+      }
+    ],
+    "source_frames": [
+      8711419,
+      8792591
+    ],
+    "reference_level_seconds_after_inferred_off": [
+      -0.1,
+      -0.03
+    ],
+    "fit_windows_seconds_after_inferred_off": [
+      [
+        0.05,
+        0.12
+      ],
+      [
+        0.12,
+        0.2
+      ],
+      [
+        0.2,
+        0.35
+      ],
+      [
+        0.35,
+        0.5
+      ]
+    ],
+    "hann_widths_seconds": [
+      0.012,
+      0.02,
+      0.03
+    ],
+    "measurement": "Fixed equal-tempered lock-in; RMS of channel magnitudes; one sample per millisecond.",
+    "descriptive_break": "Two continuous lines over [.05,.40]s; bend searched [.09,.18]s in .5ms steps. No engine fit.",
+    "raw_patch": [
+      4,
+      1,
+      1,
+      127,
+      13,
+      0,
+      185,
+      63,
+      63,
+      1,
+      1,
+      0,
+      0,
+      8,
+      8,
+      64,
+      56,
+      159,
+      11,
+      46,
+      85,
+      85,
+      11,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primary_midi": 79,
+    "corroborating_midi": 75,
+    "diagnostic_only": {
+      "87": "Octave of MIDI75; its second harmonic can contaminate.",
+      "39": "Short windows contain few bass cycles and pick up nearby notes."
+    },
+    "source_sha256": {
+      "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/user-ONfIvtDOog0.wav": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba",
+      "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/alignment.json": "97f0072ef21b48fe9b80b43fd42a1217160208997103dacda4d2b74b7b2f2947",
+      "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia-events.json": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4",
+      "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v3_program_timeline.json": "1978645805679691f0b39269c5ac1db762d59a9f6c65cd399cbafffe555650eb",
+      "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2",
+      "/Users/vojta/Dev/virtual-instrument-press78/Tools/analyze_final_sine_release.py": "d27deba0ed2399a2425ce326994ce4aba12da93b41edd5feeaaee461617c01f0"
+    }
+  },
+  "rows": [
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.012,
+      "channel": "pair",
+      "pre_amplitude": 0.10449013805987165,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -228.61376243452509,
+          "r_squared": 0.9980183511395683,
+          "median_relative_db": -9.817476983427127
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -13.281346027903055,
+          "r_squared": 0.5352298551933523,
+          "median_relative_db": -19.084814223926756
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -14.591523715370299,
+          "r_squared": 0.9039911636393664,
+          "median_relative_db": -20.774131009898674
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -14.849239272222698,
+          "r_squared": 0.8327909205494699,
+          "median_relative_db": -22.81074625282244
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12450000000000003,
+        "break_db_relative_pre": -18.385329962669466,
+        "first_slope_db_per_second": -227.7147837918714,
+        "second_slope_db_per_second": -15.432837552420267,
+        "mse_db2": 0.052281743252366876
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.012,
+      "channel": "left",
+      "pre_amplitude": 0.143449737653974,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -242.8308301022239,
+          "r_squared": 0.997778708181934,
+          "median_relative_db": -10.507380799713165
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -1.6398780191210975,
+          "r_squared": 0.006138817847988787,
+          "median_relative_db": -20.11826775380988
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -30.51536728075904,
+          "r_squared": 0.8902690751134903,
+          "median_relative_db": -20.898754841974803
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -71.9189337705911,
+          "r_squared": 0.7575003256484615,
+          "median_relative_db": -33.32737054013219
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.11650000000000002,
+        "break_db_relative_pre": -17.923736015503877,
+        "first_slope_db_per_second": -244.64494537145856,
+        "second_slope_db_per_second": -28.701779215853747,
+        "mse_db2": 1.7527390149879907
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.012,
+      "channel": "right",
+      "pre_amplitude": 0.034075278421599464,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -176.05556875731148,
+          "r_squared": 0.9919267180234881,
+          "median_relative_db": -4.151013778040571
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -46.008352701479375,
+          "r_squared": 0.7637594252628198,
+          "median_relative_db": -11.253654248383265
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": 48.76592158130756,
+          "r_squared": 0.5032962316046644,
+          "median_relative_db": -16.97813032844287
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -0.8104180620979555,
+          "r_squared": 0.0029628581131914506,
+          "median_relative_db": -11.17359461723948
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.18000000000000008,
+        "break_db_relative_pre": -17.2897779081851,
+        "first_slope_db_per_second": -148.0836224839245,
+        "second_slope_db_per_second": 22.30163312747814,
+        "mse_db2": 6.210071770808502
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.012,
+      "channel": "mid",
+      "pre_amplitude": 0.08774542711290774,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -230.15902349174868,
+          "r_squared": 0.99821331857213,
+          "median_relative_db": -9.980862822788733
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -12.129661641720357,
+          "r_squared": 0.43483594964060746,
+          "median_relative_db": -19.116890442015382
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.61376851421797,
+          "r_squared": 0.8725289144507238,
+          "median_relative_db": -20.81829174374488
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -14.867752308655389,
+          "r_squared": 0.8354553169580351,
+          "median_relative_db": -22.655529496730512
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12400000000000003,
+        "break_db_relative_pre": -18.495772269318103,
+        "first_slope_db_per_second": -229.9505650678856,
+        "second_slope_db_per_second": -14.530797670149184,
+        "mse_db2": 0.059985681889212196
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.02,
+      "channel": "pair",
+      "pre_amplitude": 0.10438569311767688,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -228.717774905445,
+          "r_squared": 0.9987397046327985,
+          "median_relative_db": -9.811039470889618
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -14.052524204378205,
+          "r_squared": 0.6077510666162358,
+          "median_relative_db": -19.06539847176595
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -14.574405766070218,
+          "r_squared": 0.9409506556270743,
+          "median_relative_db": -20.724591920492983
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -14.815253775900969,
+          "r_squared": 0.8661723351371299,
+          "median_relative_db": -22.766336483412683
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12450000000000003,
+        "break_db_relative_pre": -18.363219852655593,
+        "first_slope_db_per_second": -227.8517075990348,
+        "second_slope_db_per_second": -15.528356465414276,
+        "mse_db2": 0.03558559599375306
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.02,
+      "channel": "left",
+      "pre_amplitude": 0.1432387330356465,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -242.88538133735236,
+          "r_squared": 0.998749509221973,
+          "median_relative_db": -10.55070751386489
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -2.481571332693412,
+          "r_squared": 0.01533272231490718,
+          "median_relative_db": -20.12149149383606
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -30.449828923119366,
+          "r_squared": 0.8977576679608927,
+          "median_relative_db": -20.860445859078254
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -71.76233693582203,
+          "r_squared": 0.76109973166538,
+          "median_relative_db": -33.358260358315405
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.11650000000000002,
+        "break_db_relative_pre": -17.89251088153773,
+        "first_slope_db_per_second": -244.7606211309759,
+        "second_slope_db_per_second": -28.80714011397376,
+        "mse_db2": 1.721369275910843
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.02,
+      "channel": "right",
+      "pre_amplitude": 0.03444422168044295,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -176.1996026905084,
+          "r_squared": 0.9944210107201734,
+          "median_relative_db": -4.03254540326844
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -46.7821083952434,
+          "r_squared": 0.8098792875970454,
+          "median_relative_db": -11.287114303381953
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": 48.71336982453693,
+          "r_squared": 0.5060707199158024,
+          "median_relative_db": -17.20452242895606
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -0.8395071712484578,
+          "r_squared": 0.0035150235639616043,
+          "median_relative_db": -11.30830047320136
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.18000000000000008,
+        "break_db_relative_pre": -17.38226753753109,
+        "first_slope_db_per_second": -148.2444592337547,
+        "second_slope_db_per_second": 22.267975864675407,
+        "mse_db2": 6.150334703081712
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.02,
+      "channel": "mid",
+      "pre_amplitude": 0.08778926030152426,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -230.0950222386236,
+          "r_squared": 0.9990518041955117,
+          "median_relative_db": -9.910361570233889
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -12.840269839492523,
+          "r_squared": 0.5012741169423552,
+          "median_relative_db": -19.127742056513362
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.602406355885094,
+          "r_squared": 0.9150992676800859,
+          "median_relative_db": -20.79454556642716
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -14.860226901699212,
+          "r_squared": 0.8680476428461198,
+          "median_relative_db": -22.609986361940322
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12450000000000003,
+        "break_db_relative_pre": -18.516141672745366,
+        "first_slope_db_per_second": -228.40069633226187,
+        "second_slope_db_per_second": -14.485318740957524,
+        "mse_db2": 0.04162441124802737
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.03,
+      "channel": "pair",
+      "pre_amplitude": 0.10443341920108351,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -228.52217928681037,
+          "r_squared": 0.9991799789294529,
+          "median_relative_db": -9.670311176056153
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -15.567309215404169,
+          "r_squared": 0.6417254468031577,
+          "median_relative_db": -19.070270573910168
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -14.631085136004732,
+          "r_squared": 0.9652133042144425,
+          "median_relative_db": -20.70960206138315
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -14.768826208473751,
+          "r_squared": 0.8883578037408659,
+          "median_relative_db": -22.728798980831414
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12500000000000003,
+        "break_db_relative_pre": -18.370928504242546,
+        "first_slope_db_per_second": -226.45212648041735,
+        "second_slope_db_per_second": -15.576986538830027,
+        "mse_db2": 0.026109301383152532
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.03,
+      "channel": "left",
+      "pre_amplitude": 0.143285632633884,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -242.68725043235975,
+          "r_squared": 0.9993055442709361,
+          "median_relative_db": -10.401244466364338
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -4.161825298367798,
+          "r_squared": 0.040741200435597924,
+          "median_relative_db": -20.132523850395874
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -30.429226634731965,
+          "r_squared": 0.902447270860487,
+          "median_relative_db": -20.832336116495703
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -71.71587166626675,
+          "r_squared": 0.7656426874115044,
+          "median_relative_db": -33.36181258896649
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.11700000000000002,
+        "break_db_relative_pre": -17.894693611038278,
+        "first_slope_db_per_second": -242.9615141287434,
+        "second_slope_db_per_second": -28.899364256763278,
+        "mse_db2": 1.691648925046623
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.03,
+      "channel": "right",
+      "pre_amplitude": 0.034442765979029025,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -176.0097178794903,
+          "r_squared": 0.9964765829062529,
+          "median_relative_db": -3.9168242515841287
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -48.04737799350946,
+          "r_squared": 0.8469241280905458,
+          "median_relative_db": -11.172732463112942
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": 48.47806756796463,
+          "r_squared": 0.5038094324331145,
+          "median_relative_db": -17.020288656498924
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -0.8541525605940987,
+          "r_squared": 0.0039710257507566335,
+          "median_relative_db": -11.375242240075902
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.18000000000000008,
+        "break_db_relative_pre": -17.382356365330097,
+        "first_slope_db_per_second": -148.61998747875566,
+        "second_slope_db_per_second": 22.234794049184842,
+        "mse_db2": 6.100707122692268
+      }
+    },
+    {
+      "midi": 79,
+      "frequency_hz": 783.9908719634985,
+      "hann_width_seconds": 0.03,
+      "channel": "mid",
+      "pre_amplitude": 0.08785522253012651,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -229.80643991629987,
+          "r_squared": 0.9994156466362014,
+          "median_relative_db": -9.739616777127607
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -14.282447015377464,
+          "r_squared": 0.5508702850899795,
+          "median_relative_db": -19.15798812382799
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.672128547627857,
+          "r_squared": 0.9451977778756893,
+          "median_relative_db": -20.796080365115827
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -14.846606722200764,
+          "r_squared": 0.8967615477655261,
+          "median_relative_db": -22.614022734669724
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12500000000000003,
+        "break_db_relative_pre": -18.525716638955952,
+        "first_slope_db_per_second": -227.06784318786777,
+        "second_slope_db_per_second": -14.51222276735544,
+        "mse_db2": 0.030274121072361184
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.012,
+      "channel": "pair",
+      "pre_amplitude": 0.1133965811722641,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -231.59196050243804,
+          "r_squared": 0.9992457512704878,
+          "median_relative_db": -9.27226490423898
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -11.636409075732644,
+          "r_squared": 0.39484144648867303,
+          "median_relative_db": -19.186366204351877
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.610379630636931,
+          "r_squared": 0.8029693457201821,
+          "median_relative_db": -20.739580821412716
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -18.051424769060507,
+          "r_squared": 0.8432496422447353,
+          "median_relative_db": -22.78366221293878
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12700000000000003,
+        "break_db_relative_pre": -18.67656740216959,
+        "first_slope_db_per_second": -232.25676354732275,
+        "second_slope_db_per_second": -14.121870477601362,
+        "mse_db2": 0.06816789513885466
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.012,
+      "channel": "left",
+      "pre_amplitude": 0.11428625010224297,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -225.73948001898532,
+          "r_squared": 0.9990040582488267,
+          "median_relative_db": -6.985882428138692
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -16.075424647496636,
+          "r_squared": 0.5733140971006805,
+          "median_relative_db": -16.59930870862754
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -71.12196016801076,
+          "r_squared": 0.9376837779246264,
+          "median_relative_db": -21.21272527800964
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": 35.151893932337074,
+          "r_squared": 0.7054212197148241,
+          "median_relative_db": -29.046727581613517
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.11200000000000002,
+        "break_db_relative_pre": -12.692076475285466,
+        "first_slope_db_per_second": -226.17686790722868,
+        "second_slope_db_per_second": -62.53856178862671,
+        "mse_db2": 1.6704750546023284
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.012,
+      "channel": "right",
+      "pre_amplitude": 0.10836504269928038,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -272.13935063981603,
+          "r_squared": 0.9983378924146064,
+          "median_relative_db": -14.400363143375078
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": 28.568720772110588,
+          "r_squared": 0.3919819384838227,
+          "median_relative_db": -26.505053729990763
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": 32.007071639471675,
+          "r_squared": 0.8410016791155143,
+          "median_relative_db": -19.999686941401233
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -27.536985373994703,
+          "r_squared": 0.8671894900269704,
+          "median_relative_db": -19.793540888220843
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12850000000000003,
+        "break_db_relative_pre": -26.540261118174605,
+        "first_slope_db_per_second": -276.73999468817556,
+        "second_slope_db_per_second": 35.31429287668976,
+        "mse_db2": 1.1248216345783983
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.012,
+      "channel": "mid",
+      "pre_amplitude": 0.09706473441412125,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -231.62024670279988,
+          "r_squared": 0.9988405638469249,
+          "median_relative_db": -9.378397798109948
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -11.936983521075115,
+          "r_squared": 0.3902800490395701,
+          "median_relative_db": -19.282899788002787
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -14.052443347694902,
+          "r_squared": 0.810391464561544,
+          "median_relative_db": -20.86995337609853
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -17.448782504162875,
+          "r_squared": 0.8475076635767312,
+          "median_relative_db": -22.76523272370236
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12700000000000003,
+        "break_db_relative_pre": -18.795295796247174,
+        "first_slope_db_per_second": -231.44479822151413,
+        "second_slope_db_per_second": -13.635425959098512,
+        "mse_db2": 0.06945124491470091
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.02,
+      "channel": "pair",
+      "pre_amplitude": 0.11352575989720365,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -231.32101577740775,
+          "r_squared": 0.9997095983969402,
+          "median_relative_db": -9.198815478551854
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -12.810063807248254,
+          "r_squared": 0.5246682844640326,
+          "median_relative_db": -19.157013672991404
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.588524388548624,
+          "r_squared": 0.847426214026536,
+          "median_relative_db": -20.687039154416915
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -17.980504227836335,
+          "r_squared": 0.8866224238352447,
+          "median_relative_db": -22.74524094272516
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12700000000000003,
+        "break_db_relative_pre": -18.671755060170746,
+        "first_slope_db_per_second": -232.36082842289528,
+        "second_slope_db_per_second": -14.211124829757892,
+        "mse_db2": 0.04370363375914089
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.02,
+      "channel": "left",
+      "pre_amplitude": 0.11386632770332439,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -225.3749945426047,
+          "r_squared": 0.9996418885707042,
+          "median_relative_db": -6.844824597151575
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -17.22331528013421,
+          "r_squared": 0.701248284031116,
+          "median_relative_db": -16.511331134388328
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -71.15899248436077,
+          "r_squared": 0.9430423959320859,
+          "median_relative_db": -21.069689258948436
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": 35.17570983830602,
+          "r_squared": 0.723134439125201,
+          "median_relative_db": -29.091935341045044
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.11200000000000002,
+        "break_db_relative_pre": -12.64296593858585,
+        "first_slope_db_per_second": -226.2090407128145,
+        "second_slope_db_per_second": -62.6234689978713,
+        "mse_db2": 1.614015128752319
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.02,
+      "channel": "right",
+      "pre_amplitude": 0.10851257755000965,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -272.52634616185344,
+          "r_squared": 0.9994448973263049,
+          "median_relative_db": -14.49004017726437
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": 26.769967323412555,
+          "r_squared": 0.39322964169679353,
+          "median_relative_db": -26.68707521660206
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": 32.0592409063006,
+          "r_squared": 0.8574447236514109,
+          "median_relative_db": -20.011704989266605
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -27.48268331011535,
+          "r_squared": 0.8897491247645134,
+          "median_relative_db": -19.83252406710964
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12850000000000003,
+        "break_db_relative_pre": -26.527472034893663,
+        "first_slope_db_per_second": -276.8891357483928,
+        "second_slope_db_per_second": 35.177579657514286,
+        "mse_db2": 1.0599952734331266
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.02,
+      "channel": "mid",
+      "pre_amplitude": 0.09717387645069125,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -231.35302321833413,
+          "r_squared": 0.9995164162398034,
+          "median_relative_db": -9.368535037319404
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -12.96098938109349,
+          "r_squared": 0.5235074610385727,
+          "median_relative_db": -19.28059483814853
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.930944730366,
+          "r_squared": 0.8563777282738879,
+          "median_relative_db": -20.8402533887376
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -17.33257609547643,
+          "r_squared": 0.8871879175030977,
+          "median_relative_db": -22.746212485754057
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12700000000000003,
+        "break_db_relative_pre": -18.788302546393815,
+        "first_slope_db_per_second": -231.53727959365875,
+        "second_slope_db_per_second": -13.727087033628578,
+        "mse_db2": 0.042955097108805296
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.03,
+      "channel": "pair",
+      "pre_amplitude": 0.11299301853035729,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -231.1039645213842,
+          "r_squared": 0.9998443988578629,
+          "median_relative_db": -9.04379359916729
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -15.124407495167237,
+          "r_squared": 0.612700364503349,
+          "median_relative_db": -19.045554500410777
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.623073516628992,
+          "r_squared": 0.8840214419569169,
+          "median_relative_db": -20.64544445788905
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -17.924257039282484,
+          "r_squared": 0.9181335556661125,
+          "median_relative_db": -22.703774636276442
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12750000000000003,
+        "break_db_relative_pre": -18.63325017915351,
+        "first_slope_db_per_second": -230.85073586305833,
+        "second_slope_db_per_second": -14.236481920369897,
+        "mse_db2": 0.02769483167802816
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.03,
+      "channel": "left",
+      "pre_amplitude": 0.11388171351716114,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -225.08196652655016,
+          "r_squared": 0.9998222839597685,
+          "median_relative_db": -6.714899717233356
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -19.53691933884152,
+          "r_squared": 0.7683457138606405,
+          "median_relative_db": -16.443388713112277
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -71.18083642887895,
+          "r_squared": 0.9472909120085429,
+          "median_relative_db": -21.04827475701938
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": 35.21610084052458,
+          "r_squared": 0.7348121413589206,
+          "median_relative_db": -29.13033655168684
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.11200000000000002,
+        "break_db_relative_pre": -12.61246410904458,
+        "first_slope_db_per_second": -226.14857671972914,
+        "second_slope_db_per_second": -62.767881246129775,
+        "mse_db2": 1.5563004509294138
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.03,
+      "channel": "right",
+      "pre_amplitude": 0.10882076995479692,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -272.4377467077307,
+          "r_squared": 0.9996738954811458,
+          "median_relative_db": -14.510561469701527
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": 24.11931003569492,
+          "r_squared": 0.3399518742238235,
+          "median_relative_db": -26.623064144523553
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": 32.048299952455025,
+          "r_squared": 0.8688694138856389,
+          "median_relative_db": -20.029508455648894
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -27.46680232072733,
+          "r_squared": 0.9039529744620071,
+          "median_relative_db": -19.939963834449344
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12900000000000003,
+        "break_db_relative_pre": -26.52264633928148,
+        "first_slope_db_per_second": -274.8500259627577,
+        "second_slope_db_per_second": 35.117546371296214,
+        "mse_db2": 1.0206502409782767
+      }
+    },
+    {
+      "midi": 75,
+      "frequency_hz": 622.2539674441618,
+      "hann_width_seconds": 0.03,
+      "channel": "mid",
+      "pre_amplitude": 0.09720015554198763,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -231.1606569787219,
+          "r_squared": 0.9997613668633413,
+          "median_relative_db": -9.260453475655195
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -15.144000572464165,
+          "r_squared": 0.6236326821750009,
+          "median_relative_db": -19.219365332433295
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.869322016209946,
+          "r_squared": 0.891033440559118,
+          "median_relative_db": -20.783685850075216
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -17.213220707244524,
+          "r_squared": 0.9150999737758689,
+          "median_relative_db": -22.723380918107694
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.12700000000000003,
+        "break_db_relative_pre": -18.760499622959358,
+        "first_slope_db_per_second": -231.7276682501997,
+        "second_slope_db_per_second": -13.883405801851012,
+        "mse_db2": 0.027191210779627346
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.012,
+      "channel": "pair",
+      "pre_amplitude": 0.09754117828396766,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -265.65289630231877,
+          "r_squared": 0.9855170123512003,
+          "median_relative_db": -11.972440907781522
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -14.133742367185526,
+          "r_squared": 0.7675208818145172,
+          "median_relative_db": -19.405513275396167
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -20.209425914128037,
+          "r_squared": 0.8418553958335514,
+          "median_relative_db": -21.606317271460227
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -18.37399719138891,
+          "r_squared": 0.9266166349307307,
+          "median_relative_db": -24.413908493995905
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.10700000000000001,
+        "break_db_relative_pre": -18.25555426723363,
+        "first_slope_db_per_second": -290.3135830090745,
+        "second_slope_db_per_second": -19.406370893373207,
+        "mse_db2": 0.07764884489642053
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.012,
+      "channel": "left",
+      "pre_amplitude": 0.039308202488196435,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -248.63895137542568,
+          "r_squared": 0.9840632541750075,
+          "median_relative_db": -2.008693343012763
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -25.112467787099547,
+          "r_squared": 0.9201643342436157,
+          "median_relative_db": -8.706532156462696
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -27.452956872409782,
+          "r_squared": 0.06619415139830237,
+          "median_relative_db": -17.29180776675279
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -44.26709047084931,
+          "r_squared": 0.8352487164889915,
+          "median_relative_db": -14.328080703044849
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.18000000000000008,
+        "break_db_relative_pre": -14.476222019272404,
+        "first_slope_db_per_second": -140.5687389511943,
+        "second_slope_db_per_second": -12.160381769133693,
+        "mse_db2": 16.599975971573986
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.012,
+      "channel": "right",
+      "pre_amplitude": 0.13019796904629258,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -329.7010340904003,
+          "r_squared": 0.9932423615813804,
+          "median_relative_db": -18.57623447559976
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": 62.665610997006894,
+          "r_squared": 0.36674813571310366,
+          "median_relative_db": -29.73213718113899
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -17.907864244649446,
+          "r_squared": 0.26887870130344754,
+          "median_relative_db": -22.173543158836047
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": 51.15709994529218,
+          "r_squared": 0.2801028064384283,
+          "median_relative_db": -30.295655410940125
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.10550000000000001,
+        "break_db_relative_pre": -25.60706876946262,
+        "first_slope_db_per_second": -354.0382496858855,
+        "second_slope_db_per_second": -6.241095059086831,
+        "mse_db2": 20.247442361669
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.012,
+      "channel": "mid",
+      "pre_amplitude": 0.07920413540249596,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -268.037633433922,
+          "r_squared": 0.9811044672433349,
+          "median_relative_db": -12.146196050520341
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -12.980105862811664,
+          "r_squared": 0.6966433414197987,
+          "median_relative_db": -19.47016896211985
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -21.82657448212084,
+          "r_squared": 0.869981713902877,
+          "median_relative_db": -21.60286005449834
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -16.08043900342645,
+          "r_squared": 0.9221628319475627,
+          "median_relative_db": -24.3302606434915
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.10550000000000001,
+        "break_db_relative_pre": -18.259585136801782,
+        "first_slope_db_per_second": -299.07977631489473,
+        "second_slope_db_per_second": -19.655355027103553,
+        "mse_db2": 0.08099987220799702
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.02,
+      "channel": "pair",
+      "pre_amplitude": 0.09744314171035491,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -265.38923118244867,
+          "r_squared": 0.9868041011932621,
+          "median_relative_db": -11.912026715017173
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -14.383503116969033,
+          "r_squared": 0.832464719921632,
+          "median_relative_db": -19.3878954118035
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -20.28941999611015,
+          "r_squared": 0.8691047989645181,
+          "median_relative_db": -21.59303500295886
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -18.421272992138256,
+          "r_squared": 0.9545018226086432,
+          "median_relative_db": -24.45309948194751
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.10750000000000001,
+        "break_db_relative_pre": -18.266602190921944,
+        "first_slope_db_per_second": -287.88326953250396,
+        "second_slope_db_per_second": -19.372768054292123,
+        "mse_db2": 0.06166974942814601
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.02,
+      "channel": "left",
+      "pre_amplitude": 0.039943093377189084,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -248.19157802341806,
+          "r_squared": 0.9857558724793934,
+          "median_relative_db": -2.1068214106209773
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -25.542454296635157,
+          "r_squared": 0.9375937364112077,
+          "median_relative_db": -8.826353563831402
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -27.654734815784934,
+          "r_squared": 0.06706112042077476,
+          "median_relative_db": -17.32684037240039
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -44.278021554662715,
+          "r_squared": 0.8403615924556139,
+          "median_relative_db": -14.479030269578779
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.18000000000000008,
+        "break_db_relative_pre": -14.621144255954757,
+        "first_slope_db_per_second": -140.93163849136363,
+        "second_slope_db_per_second": -12.145928279302808,
+        "mse_db2": 16.57060861482655
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.02,
+      "channel": "right",
+      "pre_amplitude": 0.13064468400290122,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -329.9701700204317,
+          "r_squared": 0.9937828253402528,
+          "median_relative_db": -18.51046996993768
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": 62.46860622522842,
+          "r_squared": 0.3720109356187828,
+          "median_relative_db": -29.825117028549343
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -17.8440171597002,
+          "r_squared": 0.2687652990345773,
+          "median_relative_db": -22.172313744650694
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": 50.96772759841769,
+          "r_squared": 0.2790995196175123,
+          "median_relative_db": -30.390004747982758
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.10550000000000001,
+        "break_db_relative_pre": -25.603832440741567,
+        "first_slope_db_per_second": -354.62233504188487,
+        "second_slope_db_per_second": -6.400464719250181,
+        "mse_db2": 20.113763082526276
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.02,
+      "channel": "mid",
+      "pre_amplitude": 0.0791390029857537,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -267.6636472783644,
+          "r_squared": 0.9826694963667139,
+          "median_relative_db": -12.09784872288633
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -13.172614413952992,
+          "r_squared": 0.7846402902436864,
+          "median_relative_db": -19.484837584736308
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -21.88496575561722,
+          "r_squared": 0.8951525458801312,
+          "median_relative_db": -21.59166473019662
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -16.14644543894637,
+          "r_squared": 0.9519509589536962,
+          "median_relative_db": -24.354333300315382
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.10600000000000001,
+        "break_db_relative_pre": -18.266948182909566,
+        "first_slope_db_per_second": -296.3570200370983,
+        "second_slope_db_per_second": -19.636204809226115,
+        "mse_db2": 0.06359417116566934
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.03,
+      "channel": "pair",
+      "pre_amplitude": 0.09728191938361072,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -264.60294154372,
+          "r_squared": 0.9883603941925273,
+          "median_relative_db": -11.859138781310435
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -14.504395128961136,
+          "r_squared": 0.874827830079922,
+          "median_relative_db": -19.388385849154915
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -20.34908544779614,
+          "r_squared": 0.8938619671034309,
+          "median_relative_db": -21.602461647747077
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -18.425841198132137,
+          "r_squared": 0.9771677808879032,
+          "median_relative_db": -24.473202416668023
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.10800000000000001,
+        "break_db_relative_pre": -18.259827352324777,
+        "first_slope_db_per_second": -285.91379987275667,
+        "second_slope_db_per_second": -19.417056215039622,
+        "mse_db2": 0.04955006054431123
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.03,
+      "channel": "left",
+      "pre_amplitude": 0.0404826517925589,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -247.01752314017432,
+          "r_squared": 0.9877312856921304,
+          "median_relative_db": -2.1910951058586345
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -25.884620666977977,
+          "r_squared": 0.9432105194692394,
+          "median_relative_db": -8.976061059769421
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -27.902908022372927,
+          "r_squared": 0.06812552280822443,
+          "median_relative_db": -17.37887845575318
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -44.23282843005683,
+          "r_squared": 0.8446453743907562,
+          "median_relative_db": -14.600666914833152
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.18000000000000008,
+        "break_db_relative_pre": -14.748385649248283,
+        "first_slope_db_per_second": -141.599735756924,
+        "second_slope_db_per_second": -12.118569264010773,
+        "mse_db2": 16.530684784797547
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.03,
+      "channel": "right",
+      "pre_amplitude": 0.13067748329946438,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -330.1684474847663,
+          "r_squared": 0.9944340844140486,
+          "median_relative_db": -18.44868348287146
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": 62.15823983414171,
+          "r_squared": 0.37989153826172917,
+          "median_relative_db": -29.823691493325605
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -17.68278178439184,
+          "r_squared": 0.2648240589164668,
+          "median_relative_db": -22.004258912280992
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": 50.71023371346431,
+          "r_squared": 0.27815929279455087,
+          "median_relative_db": -30.369658552804054
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.10600000000000001,
+        "break_db_relative_pre": -25.572699047537146,
+        "first_slope_db_per_second": -351.76432189872037,
+        "second_slope_db_per_second": -6.571132248333527,
+        "mse_db2": 19.88444673016703
+      }
+    },
+    {
+      "midi": 87,
+      "frequency_hz": 1244.5079348883237,
+      "hann_width_seconds": 0.03,
+      "channel": "mid",
+      "pre_amplitude": 0.0789524034098154,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -266.85849142345063,
+          "r_squared": 0.984854511265828,
+          "median_relative_db": -12.031211361340198
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -13.301283167368151,
+          "r_squared": 0.8337344094872702,
+          "median_relative_db": -19.512451656679364
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -21.910132351107197,
+          "r_squared": 0.9171516202271658,
+          "median_relative_db": -21.625955939061388
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -16.18951969509168,
+          "r_squared": 0.97641555219101,
+          "median_relative_db": -24.371060255714568
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.10650000000000001,
+        "break_db_relative_pre": -18.247130675494873,
+        "first_slope_db_per_second": -294.16821080254005,
+        "second_slope_db_per_second": -19.692891189560385,
+        "mse_db2": 0.05106868501649849
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.012,
+      "channel": "pair",
+      "pre_amplitude": 0.07698889715558746,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -198.46082530909393,
+          "r_squared": 0.9112840110575524,
+          "median_relative_db": -7.288931395571245
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -41.61263828972186,
+          "r_squared": 0.05273399245913645,
+          "median_relative_db": -16.93911209384328
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.53809112953867,
+          "r_squared": 0.023556921038905655,
+          "median_relative_db": -19.862072197629402
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -20.867729427280548,
+          "r_squared": 0.05041771521020452,
+          "median_relative_db": -21.785940231836605
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13600000000000004,
+        "break_db_relative_pre": -17.61181257491978,
+        "first_slope_db_per_second": -206.5073513552679,
+        "second_slope_db_per_second": -17.383320861865627,
+        "mse_db2": 11.494190526486014
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.012,
+      "channel": "left",
+      "pre_amplitude": 0.10203507170456039,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -199.6763658260401,
+          "r_squared": 0.9051323428078453,
+          "median_relative_db": -7.149439209155743
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -43.83146611070177,
+          "r_squared": 0.05112990928386028,
+          "median_relative_db": -16.705048673719745
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -16.822062888249913,
+          "r_squared": 0.03060322514267692,
+          "median_relative_db": -19.74407309840479
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -22.96097952916269,
+          "r_squared": 0.04881666532446111,
+          "median_relative_db": -22.141027441125964
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13650000000000004,
+        "break_db_relative_pre": -17.64258628014771,
+        "first_slope_db_per_second": -206.50138950581746,
+        "second_slope_db_per_second": -19.290430882143568,
+        "mse_db2": 13.604079146694959
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.012,
+      "channel": "right",
+      "pre_amplitude": 0.039951889939351254,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -192.9427258551504,
+          "r_squared": 0.8812661616833702,
+          "median_relative_db": -7.9239464707655625
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -13.813512469004117,
+          "r_squared": 0.005936612714746927,
+          "median_relative_db": -18.57127068902516
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": 2.9256974430027536,
+          "r_squared": 0.0015417347127041471,
+          "median_relative_db": -20.681775886878867
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -9.610893816834661,
+          "r_squared": 0.019230167479047537,
+          "median_relative_db": -21.106938431469693
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13400000000000004,
+        "break_db_relative_pre": -18.982042085288896,
+        "first_slope_db_per_second": -217.48000580464162,
+        "second_slope_db_per_second": -5.916418574577733,
+        "mse_db2": 9.622080138597168
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.012,
+      "channel": "mid",
+      "pre_amplitude": 0.0687618373396951,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -197.22216828181075,
+          "r_squared": 0.9029905160595848,
+          "median_relative_db": -7.302519520043411
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -35.98014570983394,
+          "r_squared": 0.034070696884994714,
+          "median_relative_db": -16.998920490419426
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -11.850751693408254,
+          "r_squared": 0.016946372320513724,
+          "median_relative_db": -19.891094078213342
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -20.36864901758948,
+          "r_squared": 0.045576151451590816,
+          "median_relative_db": -21.996898530850743
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13600000000000004,
+        "break_db_relative_pre": -18.001207974875765,
+        "first_slope_db_per_second": -209.66630574115624,
+        "second_slope_db_per_second": -15.803538236863176,
+        "mse_db2": 12.668128354783125
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.02,
+      "channel": "pair",
+      "pre_amplitude": 0.07780806012739469,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -197.59984738558381,
+          "r_squared": 0.9462029066083281,
+          "median_relative_db": -7.900665476607275
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -45.57943599937164,
+          "r_squared": 0.10439607218998406,
+          "median_relative_db": -17.1923559874038
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.660486196530801,
+          "r_squared": 0.040077584925218776,
+          "median_relative_db": -19.79882717532176
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -19.585010759004636,
+          "r_squared": 0.07339655407185332,
+          "median_relative_db": -21.673128298205064
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13700000000000004,
+        "break_db_relative_pre": -17.85904153665463,
+        "first_slope_db_per_second": -205.78048443979395,
+        "second_slope_db_per_second": -16.544747419168317,
+        "mse_db2": 6.623836483164954
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.02,
+      "channel": "left",
+      "pre_amplitude": 0.10256386575740412,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -197.92294476603976,
+          "r_squared": 0.9413257858937317,
+          "median_relative_db": -7.74831030055115
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -47.77634699498205,
+          "r_squared": 0.1026777178880266,
+          "median_relative_db": -17.09280969522186
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -16.658557028696322,
+          "r_squared": 0.05006785285781348,
+          "median_relative_db": -19.802594934097726
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -21.81790039361392,
+          "r_squared": 0.07522720382406313,
+          "median_relative_db": -21.96599776523921
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13700000000000004,
+        "break_db_relative_pre": -17.72614113474244,
+        "first_slope_db_per_second": -205.75021126616608,
+        "second_slope_db_per_second": -18.644396889065234,
+        "mse_db2": 7.741365992192657
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.02,
+      "channel": "right",
+      "pre_amplitude": 0.03957937072441245,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -197.08829674740534,
+          "r_squared": 0.9388117371953855,
+          "median_relative_db": -7.704551683741782
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -19.466943046936034,
+          "r_squared": 0.017874478432902293,
+          "median_relative_db": -18.31120982226116
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": 1.1109934849115795,
+          "r_squared": 0.0003942396299940525,
+          "median_relative_db": -19.729855259025527
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -9.14863529503978,
+          "r_squared": 0.029101541951082378,
+          "median_relative_db": -20.361662046046085
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13550000000000004,
+        "break_db_relative_pre": -19.243983602457437,
+        "first_slope_db_per_second": -217.56162297939346,
+        "second_slope_db_per_second": -3.966822777073247,
+        "mse_db2": 5.703123018256239
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.02,
+      "channel": "mid",
+      "pre_amplitude": 0.06926043752662663,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -196.76010472169014,
+          "r_squared": 0.9419761989457661,
+          "median_relative_db": -7.918593960730393
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -40.64917984240888,
+          "r_squared": 0.07327785221517125,
+          "median_relative_db": -17.294424028414284
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -12.470226839351863,
+          "r_squared": 0.03132508223600317,
+          "median_relative_db": -19.77289817954101
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -19.108674148148687,
+          "r_squared": 0.06646736155543624,
+          "median_relative_db": -21.887919692755208
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13600000000000004,
+        "break_db_relative_pre": -18.058015952300693,
+        "first_slope_db_per_second": -209.81229741742237,
+        "second_slope_db_per_second": -15.521223049992358,
+        "mse_db2": 7.290624898629797
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.03,
+      "channel": "pair",
+      "pre_amplitude": 0.07807538042993487,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -196.79770964666122,
+          "r_squared": 0.9794045830108987,
+          "median_relative_db": -7.641793590941743
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -50.203109682299825,
+          "r_squared": 0.285401451645039,
+          "median_relative_db": -17.942545388217667
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -14.058194463414075,
+          "r_squared": 0.11824331785896261,
+          "median_relative_db": -19.969091227115833
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -17.80021678608531,
+          "r_squared": 0.16599598373895583,
+          "median_relative_db": -21.91921883023761
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13900000000000004,
+        "break_db_relative_pre": -18.11597277233429,
+        "first_slope_db_per_second": -203.15148634972917,
+        "second_slope_db_per_second": -15.321135364735682,
+        "mse_db2": 2.1921442317130997
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.03,
+      "channel": "left",
+      "pre_amplitude": 0.10298210855538191,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -196.35829759813925,
+          "r_squared": 0.9773183119360642,
+          "median_relative_db": -7.613278817683295
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -52.56554280522858,
+          "r_squared": 0.28988718052708945,
+          "median_relative_db": -17.790459778786158
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -16.474101145989035,
+          "r_squared": 0.13738071593902182,
+          "median_relative_db": -20.00147438833548
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -19.87428099924022,
+          "r_squared": 0.17355395256680475,
+          "median_relative_db": -22.223286190442693
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13900000000000004,
+        "break_db_relative_pre": -17.926413013118534,
+        "first_slope_db_per_second": -202.2080896592702,
+        "second_slope_db_per_second": -17.444892459816913,
+        "mse_db2": 2.5116409453731077
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.03,
+      "channel": "right",
+      "pre_amplitude": 0.03953212401602743,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -201.3098768955518,
+          "r_squared": 0.9782061613557492,
+          "median_relative_db": -7.772980710677011
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -27.8218019535446,
+          "r_squared": 0.08779752664689834,
+          "median_relative_db": -18.717893194361807
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -0.5425923248370056,
+          "r_squared": 0.00027820305496337677,
+          "median_relative_db": -19.582452610883756
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -8.575606687930406,
+          "r_squared": 0.07107470888321102,
+          "median_relative_db": -20.198445621805078
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.14050000000000004,
+        "break_db_relative_pre": -19.663823716487475,
+        "first_slope_db_per_second": -207.15617914773213,
+        "second_slope_db_per_second": -1.4702757369202573,
+        "mse_db2": 1.9817758673341652
+      }
+    },
+    {
+      "midi": 39,
+      "frequency_hz": 77.78174593052023,
+      "hann_width_seconds": 0.03,
+      "channel": "mid",
+      "pre_amplitude": 0.06947788324781079,
+      "fits": [
+        {
+          "seconds": [
+            0.05,
+            0.12
+          ],
+          "slope_db_per_second": -196.64408134143122,
+          "r_squared": 0.9779431510646726,
+          "median_relative_db": -7.67676985500645
+        },
+        {
+          "seconds": [
+            0.12,
+            0.2
+          ],
+          "slope_db_per_second": -46.215509757588784,
+          "r_squared": 0.23166440722118128,
+          "median_relative_db": -17.89288498738909
+        },
+        {
+          "seconds": [
+            0.2,
+            0.35
+          ],
+          "slope_db_per_second": -13.312672108971881,
+          "r_squared": 0.10124583668151443,
+          "median_relative_db": -19.894520448447512
+        },
+        {
+          "seconds": [
+            0.35,
+            0.5
+          ],
+          "slope_db_per_second": -17.339913905822012,
+          "r_squared": 0.152781656554202,
+          "median_relative_db": -21.92297994437538
+        }
+      ],
+      "descriptive_break": {
+        "break_seconds_after_inferred_off": 0.13850000000000004,
+        "break_db_relative_pre": -18.244586769324933,
+        "first_slope_db_per_second": -204.21344631083485,
+        "second_slope_db_per_second": -14.497640354620216,
+        "mse_db2": 2.3718651142245935
+      }
+    }
+  ],
+  "candidate_predictions": {
+    "existing_rr8_db_per_second": 724.0773439350246,
+    "threefold_rr8_db_per_second": 241.3591146450082,
+    "threefold_rr4_db_per_second": 15.084944665313012,
+    "status": "Hypotheses compared after observing this recording; not recovered OPU constants."
+  },
+  "limitations": [
+    "MIDI timing is global affine alignment, not measured key-off; local error can be about50ms.",
+    "Reverb and Chorus are visibly on in the existing video audit; dry state is unavailable.",
+    "Capture compression, AGC, gating and external processing remain undocumented.",
+    "A slow tail/bend does not alone identify an internal threshold, rate cap, or trigger operator.",
+    "Other chord notes/previous releasing notes and analog nonlinearity can contaminate partials.",
+    "Regression R\u00b2 describes the recorded curve, not confidence in a hardware mechanism.",
+    "Hann smoothing has half-width support; channel, window-width and octave checks are reported."
+  ]
+}

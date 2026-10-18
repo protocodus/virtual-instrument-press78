@@ -1,0 +1,175 @@
+{
+  "date": "2026-10-18",
+  "scope": "Primary OPU envelope timing, quantization, RR/SRR, Reverb and sibling divider evidence; no runtime or host changes.",
+  "conclusion": "No newly recovered numerical OPU envelope law or chip-identified Reverb algorithm. The ~3x timing candidate remains a hypothesis that linear-dB decay alone cannot distinguish from constant-ratio compression.",
+  "production_change": false,
+  "artificial_noise_added": false,
+  "current_model_identifiability": {
+    "rate20_db_per_second": 64.0,
+    "rr8_effective_rate": 34,
+    "rr8_db_per_second": 724.0773439350247,
+    "threefold_slowdown_equivalent_code_offset": -6.339850002884624,
+    "rate20_threefold_db_per_second": 21.333333333333332,
+    "rr8_threefold_db_per_second": 241.35911464500825,
+    "static_compression_attack_k_unchanged": true,
+    "limitations": "Algebraic properties of assumed equations, not measured OPU laws. Memoryless constant ratio excludes knees, dynamic detector behavior, gating, overlap and time-varying gain.",
+    "numerical_attack_identity_max_error_db": 3.552713678800501e-15
+  },
+  "sources": [
+    {
+      "url": "https://github.com/BobanSpasic/PSS-Revive",
+      "revision": "bc0406b10e01be7fde72b8681d963a17c06a5006",
+      "inspected": "src/untMain.pas:444-505, README.md",
+      "finding": "Envelope graph is schematic64-minus-rate/128-minus-SRR horizontal units, not a timing table.",
+      "supports_production_rate_change": false
+    },
+    {
+      "url": "https://github.com/BobanSpasic/PSS-Revive/wiki/PSS-x80-hardware-and-software",
+      "revision": "ba77c3a8d42604fd7c0771dce6d8a7efb6028c9e",
+      "finding": "Related OPU keyboards and patch interface; no numeric timing or Reverb law.",
+      "supports_production_rate_change": false
+    },
+    {
+      "url": "https://patents.google.com/patent/US4928569A/en",
+      "pdf_url": "https://patentimages.storage.googleapis.com/64/84/38/d0f0cad1b655bb/US4928569.pdf",
+      "pages": 21,
+      "visually_inspected_pdf_pages": [
+        3,
+        7,
+        9,
+        17
+      ],
+      "finding": "Low-level release acceleration/muting mechanism, example-60dB, no product or chip identification.",
+      "evidence_class": "Original Yamaha patent; unlinked architecture analogy",
+      "chip_identified": false,
+      "supports_production_rate_change": false
+    },
+    {
+      "url": "https://www.freepatentsonline.com/4586417.html",
+      "alternate_url": "https://patents.google.com/patent/US4586417A/en",
+      "finding": "Tone-dependent digital delay/filter reverberation; not an identified OPU envelope algorithm.",
+      "evidence_class": "Original Nippon Gakki patent; excluded implementation lead",
+      "chip_identified": false,
+      "supports_production_rate_change": false
+    },
+    {
+      "url": "https://github.com/mamedev/mame/blob/master/src/mame/yamaha/ympsr16.cpp",
+      "finding": "PSS models no sound; guessed CPU divider; internal YM3420BF firmware declaration NO_DUMP.",
+      "supports_production_rate_change": false
+    },
+    {
+      "url": "https://www.dtech.lv/techarticles_yamaha_chips.html",
+      "finding": "OPU integration/pinout, no numerical envelope table.",
+      "supports_production_rate_change": false
+    },
+    {
+      "url": "https://www.dtech.lv/techarticles_yamaha_opk.html",
+      "finding": "OPK software updates contribute envelope/LFO behavior; does not identify OPU law.",
+      "supports_production_rate_change": false
+    }
+  ],
+  "local_artifacts": [
+    {
+      "path": "build/opu-envelope-research-20261018/us4928569.html",
+      "bytes": 429323,
+      "sha256": "acb8485517a5986f9960dbf2a71557663cbd98b742c6f8bf18233908ec297c32"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/us4928569.pdf",
+      "bytes": 2313586,
+      "sha256": "f5d89c0b0ca4805322ba8a0064d4af6c386738c5365eaf5ed298233ab1f15e38"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/us4928569.txt",
+      "bytes": 100190,
+      "sha256": "fc6942368d67d30c206cfed5b04c0ba82581d3c42ab066847815341f47852973"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/us4928569-p3.png",
+      "bytes": 78313,
+      "sha256": "448b5177cdfc6f0110fad30fa3e9193c154b313fd6a31e3e472f982c7ee5c5c7"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/us4928569-p7.png",
+      "bytes": 91033,
+      "sha256": "1d347ad9d6dd64621dc0ada19b6a25132c31c77d038371fe57b10bdf8ca566e2"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/us4928569-p17.png",
+      "bytes": 269483,
+      "sha256": "529d3f5f463ad63d1b0fc8c980be4f1161ea6ad8ba47bf87db4bdcc8fae1c591"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/us4586417.html",
+      "bytes": 674197,
+      "sha256": "7411ca5d3277d1215f298b3c4e995b45f4ded485c4c429d58511dc10c8246205"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/mame-ympsr16.cpp",
+      "bytes": 6623,
+      "sha256": "62f85855a15dab3706f028dd6500103ed23742e0d73f755904b4d38e09c2205b"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/PSS-Revive/src/untMain.pas",
+      "bytes": 52893,
+      "sha256": "80b9bb2955e71a0e664fef5dd766bc99d4a325844742388e8629d1cc84abd9e3"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/PSS-Revive/units/untPSSx80Voice.pas",
+      "bytes": 16067,
+      "sha256": "0d4d5cdd25d49c620feb7214508415ca00df91e95061455b56be1e74019ff3c4"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/PSS-Revive.wiki/PSS-x80-hardware-and-software.md",
+      "bytes": 1740,
+      "sha256": "c46ddbc5c831a9b3e584b9248e52625cb9fb5e9f5ee9ceec5986368f3eb77f76"
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/bounded-search-log.json",
+      "bytes": 1106,
+      "sha256": "987c63e74c0b7cfd298b031124b9b172a71aabd8bfddef0913ec08dec56e87c6"
+    }
+  ],
+  "bounded_search": {
+    "date": "2026-10-18",
+    "queries": [
+      "\"YM3420\" \"envelope\"",
+      "\"YM3420\" registers",
+      "\"OPU\" \"Yamaha\" envelope generator",
+      "\"PSS-680\" \"reverb\" envelope",
+      "\"YM3420\" reverse engineering",
+      "\"YM3420\" github",
+      "\"PSS-480\" ROM disassembly envelope",
+      "\"PSS-680\" Reverb reverse engineering",
+      "Yamaha patent envelope reverberation \"release\" \"1987\"",
+      "Yamaha patent \"pseudo reverberation\" envelope",
+      "\"YM3420\" datasheet pdf",
+      "\"YM3420\" decap OR die OR emulator",
+      "\"YM3420\" \u30a8\u30f3\u30d9\u30ed\u30fc\u30d7",
+      "\"PSS-480\" \u30ea\u30d0\u30fc\u30d6 \u30a8\u30f3\u30d9\u30ed\u30fc\u30d7",
+      "\"PSS-780\" \u30ea\u30ea\u30fc\u30b9 \u30ec\u30fc\u30c8",
+      "\"YM3420\" clock frequency",
+      "\"YM3420\" \"envelope generator\"",
+      "\"PSS-480\" \"D1R\" \"time\"",
+      "\"PSS-680\" \"AR\" \"milliseconds\""
+    ],
+    "result": "No primary OPU numerical envelope timing table, identified EG divider, chip-level Reverb implementation or decap/register investigation recovered in this bounded pass. This is not evidence of absence."
+  },
+  "limitations": [
+    "No controlled new raw-patch hardware capture executed.",
+    "No 3x production correction adopted.",
+    "No OPL, OPK or OPZ divider/rate law treated as OPU specification.",
+    "Patent architecture linkage to OPU absent.",
+    "Capture compression, Reverb and gating unresolved."
+  ],
+  "next_separating_evidence": [
+    "Known pure-carrier static TL steps at identical pitch, velocity and settled capture gain.",
+    "Several known D2/RR and slow AR values with disabled documented effects.",
+    "Matched physical Reverb off/on and Sustain off/on at identical gates.",
+    "Native EG counter/register trace or chip-identified numerical documentation."
+  ],
+  "current_model_source": {
+    "path": "Source/DSP/Press78Engine.cpp",
+    "sha256": "76c9f2bff45743c1c26ba7cf30efd208814290a6ad8292b203e17bd442cd23e4"
+  }
+}
