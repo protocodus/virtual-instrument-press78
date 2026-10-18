@@ -24,6 +24,16 @@ for(const c of geometry.controls){
 const presetStyle=w.getComputedStyle(d.querySelector('#preset'));
 assert(near(parseFloat(presetStyle.top)+parseFloat(presetStyle.height)/2,25),'preset selector shares full header center');
 assert(Math.abs(geometry.branding.faces.full.logo.y+geometry.branding.faces.full.logo.height/2-25)<=.100001,'logo5x raster rounding preserves header center');
+for(const panel of ['front','rear']){
+ const scope=d.querySelector(`#${panel}-panel`),tape=scope.querySelector(`#header-${panel}-device-tape`),caption=scope.querySelector(`#header-${panel}-device-caption text`);
+ assert(+tape.getAttribute('y')===13&&+caption.getAttribute('y')===37,`${panel} complete DEVICE group centered`);
+ assert(near((+tape.getAttribute('y')+ +caption.getAttribute('y'))/2,25),`${panel} DEVICE ink bounds share header center`);
+ const screws=scope.querySelectorAll('[data-top-screw] > circle:first-child');
+ assert(screws.length===2&&Array.from(screws).every(s=>+s.getAttribute('cy')===38&&+s.getAttribute('r')===8),`${panel} screws clear fixed fold area`);
+}
+const note=d.querySelector('#header-note-lamp'),noteCaption=d.querySelector('#header-front-note-caption text');
+assert(+note.getAttribute('cx')===710&&+note.getAttribute('cy')===16&&+noteCaption.getAttribute('y')===37,'NOTE visible group raised and cleared from right screw');
+assert(Math.abs((+note.getAttribute('cy')-2.5+ +noteCaption.getAttribute('y'))/2-25)<=.5,'NOTE ink bounds share header center');
 const select=d.querySelector('#preset');select.value='99';select.dispatchEvent(new w.Event('change'));
 assert(d.querySelector('#preset').selectedOptions[0].textContent.startsWith('PSS 99'),'native-style preset name');
 assert(d.querySelector('#front-panel svg').textContent.includes('FM'),'fixed FM badge matches native header');
@@ -81,5 +91,5 @@ for(const [id,value,expected] of [
  assert(control.getAttribute('aria-valuetext')===expected,`accessible unit/value: ${id}`);
 }
 d.querySelector('#restore').click();
-const report={passed:true,kind:'Synthetic DOM interaction checks, not browser/native-host testing',preset_options:100,canonical_controls:65,sockets:6,checks:['100 PSS-prefixed presets; preset99 name, Level values and folded name','attack edit updates readout','all eight waveform selections: aria, whole white cap and glow','fixed FM badge matches native header','all71 browser hit regions match drawn geometry; mixed row and header visual centers','rear/folded visibility','chorus and noise model choices','output circuit default and toggle','preset reload restores fields and global defaults','four CV and two audio socket placeholders','35 front controls and 30 rear advanced/configuration controls','Level inverse drag, fine adjustment, reset, cancel, keyboard and numeric entry preserve raw patch semantics','musical help, unit/rate captions and 50 position arcs','10 accessible value cases retain physical units without duplicated multiplier suffixes'],runtime:'Node.js with jsdom 30.1.3'};
+const report={passed:true,kind:'Synthetic DOM interaction checks, not browser/native-host testing',preset_options:100,canonical_controls:65,sockets:6,checks:['100 PSS-prefixed presets; preset99 name, Level values and folded name','attack edit updates readout','all eight waveform selections: aria, whole white cap and glow','fixed FM badge matches native header','DEVICE/NOTE captions included in centering; both full panels clear fixed host fold area','all71 browser hit regions match drawn geometry; mixed row and header visual centers','rear/folded visibility','chorus and noise model choices','output circuit default and toggle','preset reload restores fields and global defaults','four CV and two audio socket placeholders','35 front controls and 30 rear advanced/configuration controls','Level inverse drag, fine adjustment, reset, cancel, keyboard and numeric entry preserve raw patch semantics','musical help, unit/rate captions and 50 position arcs','10 accessible value cases retain physical units without duplicated multiplier suffixes'],runtime:'Node.js with jsdom 30.1.3'};
 fs.writeFileSync(path.join(__dirname,'interaction-validation.json'),JSON.stringify(report,null,2)+'\n');console.log(report);
