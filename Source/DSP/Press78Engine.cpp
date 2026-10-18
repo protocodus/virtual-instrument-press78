@@ -9,7 +9,9 @@ namespace press78 {
 namespace {
 constexpr double pi = 3.14159265358979323846264338327950288;
 constexpr double tau = 2.0 * pi;
-constexpr double pmDepth[8] = {0.0, 3.4, 6.7, 10.0, 14.0, 20.0, 40.0, 80.0};
+// Recording-calibrated OPU hypothesis: PMS3 is about12.5 cents, with
+// doubling depth per sensitivity step. Unobserved levels remain hypotheses.
+constexpr double pmDepth[8] = {0.0, 3.125, 6.25, 12.5, 25.0, 50.0, 100.0, 200.0};
 constexpr double amDepth[4] = {0.0, 1.4, 5.9, 11.8};
 constexpr double rateScaling[4] = {0.0, 0.0625, 0.125, 0.25};
 
@@ -112,7 +114,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.velocityToModulation = bounded(c.velocityToModulation, 0, 2, 0);
     c.modulationAmount = bounded(c.modulationAmount, 0, 2, 1);
     c.polyphony = std::clamp(c.polyphony, 1, 12);
-    c.lfoRateHz = bounded(c.lfoRateHz, 0, 30, 6.1);
+    c.lfoRateHz = bounded(c.lfoRateHz, 0, 30, 5.24);
     c.vibratoDepth = bounded(c.vibratoDepth, 0, 4, 1);
     c.tremoloDepth = bounded(c.tremoloDepth, 0, 4, 1);
     c.lfoDelayScale = bounded(c.lfoDelayScale, 0, 4, 1);
@@ -153,12 +155,17 @@ double Press78Engine::Envelope::next(bool released) noexcept {
     if (stage == 0) {
         attenuation = instantAttack ? 0.0 : attenuation * attackMul;
         if (attenuation <= 0.096) { attenuation = 0.0; stage = 1; }
-    } else if (stage == 1) {
-        // Preserve the frozen model's one D1 step even when target is zero.
-        attenuation += decay1;
-        if (attenuation >= target) stage = 2;
-    } else if (stage == 2) attenuation += decay2;
-    else attenuation += release;
+    } else {
+        // An already reached D1L has no D1 interval. Test it before stepping,
+        // so a zero-height D1 neither adds attenuation nor delays D2. This is
+        // a behavioral endpoint correction, not a recovered OPU tick law.
+        if (stage == 1 && attenuation >= target) stage = 2;
+        if (stage == 1) {
+            attenuation += decay1;
+            if (attenuation >= target) stage = 2;
+        } else if (stage == 2) attenuation += decay2;
+        else attenuation += release;
+    }
     if (attenuation >= 96.0) {
         if (stage != 0) finished = true;
         return 0.0;

@@ -40,12 +40,12 @@ struct Controls {
     double velocityToModulation = 0.0;// modulator velocity exponent, 0..2.
     double modulationAmount = 1.0;    // 0..2 times the baseline FM index (8*pi).
     int polyphony = 12;               // 1..12. Reductions fade the oldest voices.
-    double lfoRateHz = 6.1;            // 0..30, shared by AM and PM.
+    double lfoRateHz = 5.24;            // 0..30, shared by AM and PM.
     double vibratoDepth = 1.0;         // 0..4 multiplier of the patch PMS law.
     double tremoloDepth = 1.0;         // 0..4 multiplier of the patch AMS law.
     double lfoDelayScale = 1.0;        // 0..4 times the patch delay.
-    bool triangleLfo = false;
-    bool globalLfo = false;            // false preserves per-note Python phase.
+    bool triangleLfo = true;
+    bool globalLfo = true;            // false preserves per-note Python phase.
     double clockOffsetPpm = 0.0;       // -20000..20000, explicitly hypothetical.
     // Clock modulation retains the nominal reconstruction cutoff. Upward
     // shifts can alias near-Nyquist energy; this is not an alias-free warper.

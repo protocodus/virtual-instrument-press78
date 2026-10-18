@@ -6,7 +6,7 @@ import math
 import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0b10'
+VERSION='0.1.0b11'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -16,6 +16,7 @@ REAL_DEFAULTS={'outputCircuit':1,'noiseModel':0,'noiseRms':0,
                'chorusMode':1,'chorusMix':1,'chorusRateHz':0.9546467517767424,
                'chorusDepthMs':math.hypot(0.0495126833338911,0.4943632948117077),
                'clockOffsetPpm':0,'clockDriftPpm':20,'clockDriftRateHz':.1,
+               'lfoRateHz':5.24,'triangleLfo':1,'globalLfo':1,
                'drive':0,'dcBlock':1,'outputLimit':1}
 FACTORY_CHARACTER=REAL_DEFAULTS
 

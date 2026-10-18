@@ -1,0 +1,32 @@
+{
+  "status": "candidate frozen before independent PSS580 recording analysis",
+  "model": {
+    "rate_hz": 5.24,
+    "shape": "triangle",
+    "phase_law": "continuous global, note-delay gating remains existing hypothesis",
+    "pms_peak_cents": [
+      0,
+      3.125,
+      6.25,
+      12.5,
+      25,
+      50,
+      100,
+      200
+    ],
+    "vibrato_delay_seconds_per_code": 0.01
+  },
+  "selection_evidence": "Old reused ONfIvtDOog0 Voice93 training supports roughly5.23\u20135.25Hz and12.5c atPMS3. Prior held evaluations already observed rate sensitivity; original video is descriptive reused evidence, not fresh holdout. Round5.24 is a bounded recording calibration, not recovered OPU divider.",
+  "independent_evaluation": {
+    "source": "NXPbPr4yrgA PSS580 long preset demonstration, newly acquired; synth settings/effects/capture chain may be uncertain",
+    "allow": "One phase and constant tuning/center alignment per independent recording if needed; no depth/rate tuning for frozen candidate scores. Free rate/depth estimates may be reported separately.",
+    "report": [
+      "shape error",
+      "rate estimate with uncertainty",
+      "frozen-candidate pitch residual",
+      "depth error",
+      "patch/state/capture confounds"
+    ],
+    "no_noise": true
+  }
+}

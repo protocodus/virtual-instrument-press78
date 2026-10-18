@@ -138,6 +138,64 @@ int main() {
         p.carrier.ar = 63; p.carrier.tl = 99; e->setPatch(p); e->noteOn(60, 100);
         CHECK(e->activeVoices() == 0);
     });
+    test("zero-height D1 plateau is independent of its unused rate", [] {
+        auto e = engine();
+        for (const int attack : {32, 63}) for (int wave = 0; wave < 4; ++wave) {
+            auto p = press78::initPatch();
+            p.carrier.ar = attack; p.carrier.wave = wave;
+            p.carrier.d1l = 0; p.carrier.d1r = 0; p.carrier.d2r = 0;
+            e->reset(); e->setPatch(p); e->noteOn(69, 127);
+            const auto reference = render(*e, 2048);
+            for (int rate = 1; rate <= 63; ++rate) {
+                p.carrier.d1r = rate;
+                e->reset(); e->setPatch(p); e->noteOn(69, 127);
+                CHECK(render(*e, reference.size()) == reference);
+            }
+        }
+    });
+    test("zero-height D1 enters D2 immediately even with zero D1 rate", [] {
+        auto e = engine();
+        for (const int rate : {0, 1, 24, 63}) {
+            auto p = press78::initPatch();
+            p.carrier.d1l = 0; p.carrier.d1r = rate; p.carrier.d2r = 48;
+            e->reset(); e->setPatch(p); e->noteOn(69, 127);
+            const auto audio = render(*e, 256);
+            // AR63 peaks on tick0; D2 starts on tick1. Derive the intended
+            // postattack line from the model's unchanged D2 rate, not D1.
+            const double dbPerTick = 96.0 / (48000.0 * 48.0 * std::pow(2.0, -48.0 / 4.0));
+            for (std::size_t frame = 32; frame < audio.size(); ++frame) {
+                const double tick = static_cast<double>(frame - 32);
+                const double expected = 0.8 * std::sin(2*pi*440*(tick+1)/48000)
+                    * std::pow(10.0, -tick*dbPerTick/20.0);
+                CHECK(std::abs(audio[frame] - expected) < 3.1e-8);
+            }
+        }
+    });
+    test("positive D1 target with zero D1 rate holds before D2", [] {
+        auto e = engine();
+        e->noteOn(69, 127); const auto reference = render(*e, 4096);
+        for (int target = 1; target <= 15; ++target) {
+            auto p = press78::initPatch();
+            p.carrier.d1l = target; p.carrier.d1r = 0; p.carrier.d2r = 63;
+            e->reset(); e->setPatch(p); e->noteOn(69, 127);
+            CHECK(render(*e, reference.size()) == reference);
+        }
+    });
+    test("release interrupts attack D1 and D2 after endpoint correction", [] {
+        for (int stage = 0; stage < 3; ++stage) {
+            auto e = engine(); auto p = press78::initPatch();
+            p.carrier.ar = stage == 0 ? 24 : 63;
+            p.carrier.d1l = stage == 1 ? 15 : 0;
+            p.carrier.d1r = stage == 1 ? 24 : 63;
+            p.carrier.d2r = 0; p.carrier.rr = 15;
+            e->setPatch(p); e->noteOn(69, 127);
+            const auto held = render(*e, 256);
+            CHECK(rms(held, 32) > 1e-5); CHECK(e->activeVoices() == 1);
+            e->noteOff(69); finiteBounded(render(*e, 512));
+            CHECK(e->activeVoices() == 0);
+            CHECK(rms(render(*e, 128)) == 0.0);
+        }
+    });
     test("velocity-zero note-on releases rather than allocates", [] {
         auto e = engine(); auto p = press78::initPatch(); p.carrier.rr = 15;
         e->setPatch(p); e->noteOn(60, 100); render(*e, 512); e->noteOn(60, 0); render(*e, 512);
@@ -305,7 +363,7 @@ int main() {
         e->setPatch(p); CHECK(e->patch().carrier.ar == 0 && e->patch().modulator.wave == 3 && e->patch().feedback == 7);
         auto c = transparent(); c.masterGain = std::numeric_limits<double>::infinity();
         c.lfoRateHz = std::numeric_limits<double>::quiet_NaN(); c.clockOffsetPpm = -1e30; c.polyphony = -7;
-        e->setControls(c); CHECK(e->controls().masterGain == .25 && e->controls().lfoRateHz == 6.1);
+        e->setControls(c); CHECK(e->controls().masterGain == .25 && e->controls().lfoRateHz == 5.24);
         CHECK(e->controls().clockOffsetPpm == -20000 && e->controls().polyphony == 1);
         finiteBounded(render(*e, 1000));
     });

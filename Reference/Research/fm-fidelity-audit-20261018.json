@@ -1,0 +1,4728 @@
+{
+  "date": "2026-10-18",
+  "scope": "FM/operator/envelope fidelity audit; primary documentation review, baseline native probes, and implemented bounded D1 endpoint correction. No new hardware-accuracy score claimed.",
+  "revision": "82eed55541e6bf3064c43051b267e430381521fa",
+  "constraints": [
+    "No additive/artificial noise",
+    "No OPL2/OPZ laws promoted to OPU facts",
+    "No hardware exactness or market superiority claim without comparative evidence"
+  ],
+  "source_sha256": {
+    "Source/DSP/Press78Engine.cpp": "dee61309fc179ac4924612976b94f74ce2554935d10b68429b17b176883009e7",
+    "Source/DSP/Press78Engine.h": "a11cc9536a4137ea5b380f992fb8d24fe23dda0b5ea58c63bb43b32af5c1d6bb",
+    "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "Reference/Python/src/pss780.py": "a339c0593608aeabc133fc96697ff7fda7650502063fd356994431b0f471fbf7"
+  },
+  "sources": [
+    {
+      "id": "yamaha_pss780_owner",
+      "url": "https://usa.yamaha.com/files/download/other_assets/1/317511/PSS780E.PDF",
+      "authority": "Yamaha, exact model",
+      "acquisition": "certificate-verified curl; web fetch returned403",
+      "sha256": "e1382c76aa9f6351fb3de191228b3209def0cf4ceba54ca6a20406c1e2db0adb",
+      "bytes": 3911928,
+      "pages": 51,
+      "relevant_printed_pdf_pages": {
+        "9": 12,
+        "28": 31,
+        "29": 32,
+        "41": 44,
+        "42": 45
+      },
+      "visually_checked_pdf_pages": [
+        31,
+        44
+      ],
+      "supports": [
+        "documented interface ranges and field meanings",
+        "four named sine forms",
+        "distinct RR/SRR and Reverb/Sustain states"
+      ],
+      "does_not_establish": [
+        "numerical envelope law",
+        "native FM clock divider",
+        "1.5cents/DT1",
+        "ROM widths",
+        "OPU pipeline"
+      ]
+    },
+    {
+      "id": "yamaha_pss780_service",
+      "url": "https://www.manualslib.com/manual/4045165/Yamaha-Portasound-Pss-780.html",
+      "authority": "Yamaha service supplement hosted by scan archive",
+      "pages": [
+        "cover",
+        "electrical parts page12"
+      ],
+      "supports": [
+        "PSS680 as base service manual",
+        "OPU identity; separate BBD and clock domains"
+      ],
+      "does_not_establish": [
+        "identical firmware",
+        "complete exact-model signal path"
+      ]
+    },
+    {
+      "id": "kevin_pss680_waveform_test",
+      "url": "https://diyelectromusic.com/2023/08/02/arduino-pss-680-synth-editor-part-1/",
+      "authority": "Original hardware experiment author",
+      "video_url": "https://www.youtube.com/watch?v=KAHq65dWzG4",
+      "date": "2023-08-02",
+      "supports": [
+        "authored procedure starts SINE WAVE and changes carrier SIN TBL0..3 only",
+        "new isolated sibling-waveform recording acquisition lead"
+      ],
+      "does_not_establish": [
+        "exact electrical capture response",
+        "hardware digital precision",
+        "any numerical metric before recording analysis"
+      ],
+      "status": "Passed lead to root and recording audit; no video-derived score in this artifact"
+    },
+    {
+      "id": "kevin_pss680_control_test",
+      "url": "https://diyelectromusic.com/2023/08/05/arduino-pss-680-synth-editor-part-2/",
+      "authority": "Original hardware experiment author",
+      "video_url": "https://www.youtube.com/watch?v=aRfAQvwq8lc",
+      "supports": [
+        "source code documents controlled fields",
+        "author says fine-detune experiment inconclusive"
+      ],
+      "does_not_establish": [
+        "numeric DT1 law",
+        "isolated envelope sweep"
+      ]
+    },
+    {
+      "id": "stereoninja_pss580",
+      "url": "https://stereoninjamusic.weebly.com/yamaha-pss-580-specifications.html",
+      "authority": "Original sibling owner investigation",
+      "section": "Sound Generation",
+      "supports": [
+        "triangle-LFO report",
+        "waveform images"
+      ],
+      "does_not_establish": [
+        "exact PSS780 values",
+        "bit depth; explicitly guessed",
+        "measured phase-reset law"
+      ]
+    },
+    {
+      "id": "mame_ympsr16",
+      "url": "https://github.com/mamedev/mame/blob/master/src/mame/yamaha/ympsr16.cpp",
+      "authority": "Original emulator driver source",
+      "supports": [
+        "driver lacks sound and is not working",
+        "CPU divider explicitly guessed",
+        "ROM/board identification lead"
+      ],
+      "does_not_establish": [
+        "FM native sample rate",
+        "audible emulation",
+        "complete OPU register law"
+      ]
+    },
+    {
+      "id": "dtech_opk",
+      "url": "https://www.dtech.lv/techarticles_yamaha_opk.html",
+      "authority": "Original OPK hardware reverse-engineering investigator",
+      "supports": [
+        "OPK may use firmware-updated LFO/envelopes",
+        "OPK only8FM channels plus drums"
+      ],
+      "does_not_establish": [
+        "OPU12channel clock divider",
+        "OPU envelope table",
+        "OPU DAC resolution"
+      ]
+    }
+  ],
+  "probe": {
+    "path": "build/fm-fidelity-audit-20261018/envelope_probe.cpp",
+    "source_sha256": "9324dbfad0b07b559511e4595adfc3175b290b6d2a056fd8b6099278c85ff88c",
+    "output_sha256": "27f89d16d85ffc3b19004232170054e5e353fca7055773cc86ddab9508ea453c",
+    "compile": "c++ -std=c++17 -O2 -I Source/DSP build/fm-fidelity-audit-20261018/envelope_probe.cpp Source/DSP/Press78Engine.cpp -o build/fm-fidelity-audit-20261018/envelope_probe",
+    "method": "Expose existing private Envelope for read-only observation; compiled unchanged82eed55 native core before production edit.",
+    "hardware_measurement": false,
+    "results": {
+      "zero_d1_tests": [
+        {
+          "d1r": 0,
+          "first": 1,
+          "second": 1,
+          "third": 1,
+          "attenuation_db": 0
+        },
+        {
+          "d1r": 1,
+          "first": 1,
+          "second": 0.9999942953275728,
+          "third": 0.9999942953275728,
+          "attenuation_db": 4.955029645844671e-05
+        },
+        {
+          "d1r": 24,
+          "first": 1,
+          "second": 0.9996930357774281,
+          "third": 0.9996930357774281,
+          "attenuation_db": 0.0026666666666666666
+        },
+        {
+          "d1r": 35,
+          "first": 1,
+          "second": 0.9979368133809825,
+          "third": 0.9979368133809825,
+          "attenuation_db": 0.017939123525412576
+        },
+        {
+          "d1r": 63,
+          "first": 1,
+          "second": 0.7676965862897601,
+          "third": 0.7676965862897601,
+          "attenuation_db": 2.2962078112528097
+        }
+      ],
+      "raw63_rks3": [
+        {
+          "note": 24,
+          "attack_ticks": 34,
+          "instant_attack": false
+        },
+        {
+          "note": 36,
+          "attack_ticks": 20,
+          "instant_attack": false
+        },
+        {
+          "note": 48,
+          "attack_ticks": 12,
+          "instant_attack": false
+        },
+        {
+          "note": 60,
+          "attack_ticks": 1,
+          "instant_attack": true
+        },
+        {
+          "note": 84,
+          "attack_ticks": 1,
+          "instant_attack": true
+        },
+        {
+          "note": 108,
+          "attack_ticks": 1,
+          "instant_attack": true
+        }
+      ],
+      "factory_zero_d1": [
+        {
+          "program": 0,
+          "operator": "modulator",
+          "d1r": 12,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.0003333333333333333
+        },
+        {
+          "program": 0,
+          "operator": "carrier",
+          "d1r": 12,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.0003333333333333333
+        },
+        {
+          "program": 1,
+          "operator": "modulator",
+          "d1r": 13,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.0003964023716675737
+        },
+        {
+          "program": 1,
+          "operator": "carrier",
+          "d1r": 10,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.00023570226039551582
+        },
+        {
+          "program": 2,
+          "operator": "carrier",
+          "d1r": 16,
+          "d2r": 12,
+          "rks": 1,
+          "one_step_db_c3": 0.0006666666666666666
+        },
+        {
+          "program": 3,
+          "operator": "modulator",
+          "d1r": 13,
+          "d2r": 13,
+          "rks": 2,
+          "one_step_db_c3": 0.0003964023716675737
+        },
+        {
+          "program": 3,
+          "operator": "carrier",
+          "d1r": 7,
+          "d2r": 9,
+          "rks": 2,
+          "one_step_db_c3": 0.00014014940254228575
+        },
+        {
+          "program": 4,
+          "operator": "carrier",
+          "d1r": 12,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.0003333333333333333
+        },
+        {
+          "program": 5,
+          "operator": "modulator",
+          "d1r": 18,
+          "d2r": 18,
+          "rks": 1,
+          "one_step_db_c3": 0.0009428090415820633
+        },
+        {
+          "program": 5,
+          "operator": "carrier",
+          "d1r": 24,
+          "d2r": 24,
+          "rks": 0,
+          "one_step_db_c3": 0.0026666666666666666
+        },
+        {
+          "program": 6,
+          "operator": "modulator",
+          "d1r": 21,
+          "d2r": 0,
+          "rks": 1,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 6,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 7,
+          "operator": "modulator",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 7,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 1,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 8,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 9,
+          "operator": "modulator",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 9,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 1,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 10,
+          "operator": "modulator",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 10,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 11,
+          "operator": "modulator",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 11,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 12,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 13,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 14,
+          "operator": "modulator",
+          "d1r": 18,
+          "d2r": 0,
+          "rks": 1,
+          "one_step_db_c3": 0.0009428090415820633
+        },
+        {
+          "program": 14,
+          "operator": "carrier",
+          "d1r": 16,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0006666666666666666
+        },
+        {
+          "program": 17,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 21,
+          "rks": 1,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 18,
+          "operator": "carrier",
+          "d1r": 16,
+          "d2r": 12,
+          "rks": 1,
+          "one_step_db_c3": 0.0006666666666666666
+        },
+        {
+          "program": 19,
+          "operator": "modulator",
+          "d1r": 25,
+          "d2r": 23,
+          "rks": 1,
+          "one_step_db_c3": 0.0031712189733405895
+        },
+        {
+          "program": 19,
+          "operator": "carrier",
+          "d1r": 17,
+          "d2r": 17,
+          "rks": 1,
+          "one_step_db_c3": 0.0007928047433351474
+        },
+        {
+          "program": 20,
+          "operator": "modulator",
+          "d1r": 18,
+          "d2r": 0,
+          "rks": 1,
+          "one_step_db_c3": 0.0009428090415820633
+        },
+        {
+          "program": 20,
+          "operator": "carrier",
+          "d1r": 16,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0006666666666666666
+        },
+        {
+          "program": 21,
+          "operator": "modulator",
+          "d1r": 18,
+          "d2r": 0,
+          "rks": 1,
+          "one_step_db_c3": 0.0009428090415820633
+        },
+        {
+          "program": 21,
+          "operator": "carrier",
+          "d1r": 16,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0006666666666666666
+        },
+        {
+          "program": 22,
+          "operator": "carrier",
+          "d1r": 16,
+          "d2r": 0,
+          "rks": 1,
+          "one_step_db_c3": 0.0006666666666666666
+        },
+        {
+          "program": 23,
+          "operator": "carrier",
+          "d1r": 29,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.006342437946681179
+        },
+        {
+          "program": 24,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 25,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 26,
+          "operator": "carrier",
+          "d1r": 11,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0002802988050845715
+        },
+        {
+          "program": 27,
+          "operator": "carrier",
+          "d1r": 19,
+          "d2r": 11,
+          "rks": 0,
+          "one_step_db_c3": 0.001121195220338286
+        },
+        {
+          "program": 28,
+          "operator": "carrier",
+          "d1r": 11,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0002802988050845715
+        },
+        {
+          "program": 29,
+          "operator": "carrier",
+          "d1r": 12,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0003333333333333333
+        },
+        {
+          "program": 30,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 31,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 32,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 33,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 34,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 35,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 36,
+          "operator": "modulator",
+          "d1r": 19,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.001121195220338286
+        },
+        {
+          "program": 36,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 37,
+          "operator": "modulator",
+          "d1r": 28,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.005333333333333333
+        },
+        {
+          "program": 37,
+          "operator": "carrier",
+          "d1r": 22,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0018856180831641266
+        },
+        {
+          "program": 38,
+          "operator": "carrier",
+          "d1r": 22,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0018856180831641266
+        },
+        {
+          "program": 39,
+          "operator": "carrier",
+          "d1r": 16,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0006666666666666666
+        },
+        {
+          "program": 40,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 41,
+          "operator": "modulator",
+          "d1r": 24,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0026666666666666666
+        },
+        {
+          "program": 41,
+          "operator": "carrier",
+          "d1r": 22,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0018856180831641266
+        },
+        {
+          "program": 42,
+          "operator": "modulator",
+          "d1r": 24,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0026666666666666666
+        },
+        {
+          "program": 42,
+          "operator": "carrier",
+          "d1r": 22,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0018856180831641266
+        },
+        {
+          "program": 43,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 44,
+          "operator": "modulator",
+          "d1r": 24,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0026666666666666666
+        },
+        {
+          "program": 44,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 45,
+          "operator": "carrier",
+          "d1r": 13,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0003964023716675737
+        },
+        {
+          "program": 46,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 47,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 48,
+          "operator": "carrier",
+          "d1r": 18,
+          "d2r": 18,
+          "rks": 0,
+          "one_step_db_c3": 0.0009428090415820633
+        },
+        {
+          "program": 49,
+          "operator": "carrier",
+          "d1r": 15,
+          "d2r": 15,
+          "rks": 2,
+          "one_step_db_c3": 0.000560597610169143
+        },
+        {
+          "program": 50,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 51,
+          "operator": "carrier",
+          "d1r": 8,
+          "d2r": 13,
+          "rks": 0,
+          "one_step_db_c3": 0.00016666666666666666
+        },
+        {
+          "program": 52,
+          "operator": "carrier",
+          "d1r": 11,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.0002802988050845715
+        },
+        {
+          "program": 53,
+          "operator": "carrier",
+          "d1r": 17,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0007928047433351474
+        },
+        {
+          "program": 54,
+          "operator": "carrier",
+          "d1r": 24,
+          "d2r": 10,
+          "rks": 2,
+          "one_step_db_c3": 0.0026666666666666666
+        },
+        {
+          "program": 55,
+          "operator": "modulator",
+          "d1r": 23,
+          "d2r": 13,
+          "rks": 1,
+          "one_step_db_c3": 0.002242390440676572
+        },
+        {
+          "program": 55,
+          "operator": "carrier",
+          "d1r": 18,
+          "d2r": 10,
+          "rks": 2,
+          "one_step_db_c3": 0.0009428090415820633
+        },
+        {
+          "program": 56,
+          "operator": "modulator",
+          "d1r": 9,
+          "d2r": 5,
+          "rks": 0,
+          "one_step_db_c3": 0.00019820118583378684
+        },
+        {
+          "program": 56,
+          "operator": "carrier",
+          "d1r": 8,
+          "d2r": 12,
+          "rks": 0,
+          "one_step_db_c3": 0.00016666666666666666
+        },
+        {
+          "program": 57,
+          "operator": "modulator",
+          "d1r": 21,
+          "d2r": 21,
+          "rks": 1,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 57,
+          "operator": "carrier",
+          "d1r": 15,
+          "d2r": 15,
+          "rks": 1,
+          "one_step_db_c3": 0.000560597610169143
+        },
+        {
+          "program": 58,
+          "operator": "carrier",
+          "d1r": 12,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.0003333333333333333
+        },
+        {
+          "program": 59,
+          "operator": "modulator",
+          "d1r": 12,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.0003333333333333333
+        },
+        {
+          "program": 59,
+          "operator": "carrier",
+          "d1r": 10,
+          "d2r": 8,
+          "rks": 2,
+          "one_step_db_c3": 0.00023570226039551582
+        },
+        {
+          "program": 60,
+          "operator": "carrier",
+          "d1r": 23,
+          "d2r": 8,
+          "rks": 2,
+          "one_step_db_c3": 0.002242390440676572
+        },
+        {
+          "program": 61,
+          "operator": "carrier",
+          "d1r": 12,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.0003333333333333333
+        },
+        {
+          "program": 63,
+          "operator": "carrier",
+          "d1r": 8,
+          "d2r": 15,
+          "rks": 2,
+          "one_step_db_c3": 0.00016666666666666666
+        },
+        {
+          "program": 64,
+          "operator": "carrier",
+          "d1r": 19,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.001121195220338286
+        },
+        {
+          "program": 66,
+          "operator": "carrier",
+          "d1r": 22,
+          "d2r": 21,
+          "rks": 2,
+          "one_step_db_c3": 0.0018856180831641266
+        },
+        {
+          "program": 67,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 19,
+          "rks": 2,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 68,
+          "operator": "carrier",
+          "d1r": 16,
+          "d2r": 16,
+          "rks": 2,
+          "one_step_db_c3": 0.0006666666666666666
+        },
+        {
+          "program": 69,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 11,
+          "rks": 2,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 70,
+          "operator": "modulator",
+          "d1r": 13,
+          "d2r": 16,
+          "rks": 0,
+          "one_step_db_c3": 0.0003964023716675737
+        },
+        {
+          "program": 70,
+          "operator": "carrier",
+          "d1r": 11,
+          "d2r": 11,
+          "rks": 2,
+          "one_step_db_c3": 0.0002802988050845715
+        },
+        {
+          "program": 71,
+          "operator": "modulator",
+          "d1r": 16,
+          "d2r": 12,
+          "rks": 2,
+          "one_step_db_c3": 0.0006666666666666666
+        },
+        {
+          "program": 71,
+          "operator": "carrier",
+          "d1r": 17,
+          "d2r": 18,
+          "rks": 2,
+          "one_step_db_c3": 0.0007928047433351474
+        },
+        {
+          "program": 72,
+          "operator": "modulator",
+          "d1r": 2,
+          "d2r": 5,
+          "rks": 2,
+          "one_step_db_c3": 5.8925565098878955e-05
+        },
+        {
+          "program": 72,
+          "operator": "carrier",
+          "d1r": 17,
+          "d2r": 18,
+          "rks": 2,
+          "one_step_db_c3": 0.0007928047433351474
+        },
+        {
+          "program": 73,
+          "operator": "modulator",
+          "d1r": 24,
+          "d2r": 23,
+          "rks": 2,
+          "one_step_db_c3": 0.0026666666666666666
+        },
+        {
+          "program": 73,
+          "operator": "carrier",
+          "d1r": 17,
+          "d2r": 15,
+          "rks": 2,
+          "one_step_db_c3": 0.0007928047433351474
+        },
+        {
+          "program": 74,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 75,
+          "operator": "carrier",
+          "d1r": 27,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.004484780881353144
+        },
+        {
+          "program": 76,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 77,
+          "operator": "modulator",
+          "d1r": 21,
+          "d2r": 0,
+          "rks": 1,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 77,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 78,
+          "operator": "carrier",
+          "d1r": 21,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0015856094866702948
+        },
+        {
+          "program": 79,
+          "operator": "carrier",
+          "d1r": 35,
+          "d2r": 6,
+          "rks": 2,
+          "one_step_db_c3": 0.017939123525412576
+        },
+        {
+          "program": 80,
+          "operator": "carrier",
+          "d1r": 18,
+          "d2r": 19,
+          "rks": 2,
+          "one_step_db_c3": 0.0009428090415820633
+        },
+        {
+          "program": 81,
+          "operator": "modulator",
+          "d1r": 4,
+          "d2r": 12,
+          "rks": 0,
+          "one_step_db_c3": 8.333333333333333e-05
+        },
+        {
+          "program": 81,
+          "operator": "carrier",
+          "d1r": 15,
+          "d2r": 15,
+          "rks": 1,
+          "one_step_db_c3": 0.000560597610169143
+        },
+        {
+          "program": 82,
+          "operator": "modulator",
+          "d1r": 19,
+          "d2r": 18,
+          "rks": 0,
+          "one_step_db_c3": 0.001121195220338286
+        },
+        {
+          "program": 82,
+          "operator": "carrier",
+          "d1r": 15,
+          "d2r": 15,
+          "rks": 1,
+          "one_step_db_c3": 0.000560597610169143
+        },
+        {
+          "program": 83,
+          "operator": "modulator",
+          "d1r": 28,
+          "d2r": 15,
+          "rks": 0,
+          "one_step_db_c3": 0.005333333333333333
+        },
+        {
+          "program": 83,
+          "operator": "carrier",
+          "d1r": 23,
+          "d2r": 23,
+          "rks": 0,
+          "one_step_db_c3": 0.002242390440676572
+        },
+        {
+          "program": 84,
+          "operator": "modulator",
+          "d1r": 4,
+          "d2r": 5,
+          "rks": 0,
+          "one_step_db_c3": 8.333333333333333e-05
+        },
+        {
+          "program": 84,
+          "operator": "carrier",
+          "d1r": 15,
+          "d2r": 15,
+          "rks": 1,
+          "one_step_db_c3": 0.000560597610169143
+        },
+        {
+          "program": 85,
+          "operator": "carrier",
+          "d1r": 15,
+          "d2r": 14,
+          "rks": 2,
+          "one_step_db_c3": 0.000560597610169143
+        },
+        {
+          "program": 86,
+          "operator": "carrier",
+          "d1r": 20,
+          "d2r": 20,
+          "rks": 1,
+          "one_step_db_c3": 0.0013333333333333333
+        },
+        {
+          "program": 87,
+          "operator": "modulator",
+          "d1r": 16,
+          "d2r": 16,
+          "rks": 1,
+          "one_step_db_c3": 0.0006666666666666666
+        },
+        {
+          "program": 87,
+          "operator": "carrier",
+          "d1r": 25,
+          "d2r": 25,
+          "rks": 0,
+          "one_step_db_c3": 0.0031712189733405895
+        },
+        {
+          "program": 88,
+          "operator": "carrier",
+          "d1r": 22,
+          "d2r": 22,
+          "rks": 0,
+          "one_step_db_c3": 0.0018856180831641266
+        },
+        {
+          "program": 89,
+          "operator": "carrier",
+          "d1r": 14,
+          "d2r": 14,
+          "rks": 2,
+          "one_step_db_c3": 0.00047140452079103164
+        },
+        {
+          "program": 90,
+          "operator": "modulator",
+          "d1r": 29,
+          "d2r": 24,
+          "rks": 2,
+          "one_step_db_c3": 0.006342437946681179
+        },
+        {
+          "program": 90,
+          "operator": "carrier",
+          "d1r": 15,
+          "d2r": 15,
+          "rks": 2,
+          "one_step_db_c3": 0.000560597610169143
+        },
+        {
+          "program": 91,
+          "operator": "carrier",
+          "d1r": 11,
+          "d2r": 11,
+          "rks": 2,
+          "one_step_db_c3": 0.0002802988050845715
+        },
+        {
+          "program": 92,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 93,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 94,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 95,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 96,
+          "operator": "modulator",
+          "d1r": 11,
+          "d2r": 11,
+          "rks": 0,
+          "one_step_db_c3": 0.0002802988050845715
+        },
+        {
+          "program": 96,
+          "operator": "carrier",
+          "d1r": 23,
+          "d2r": 23,
+          "rks": 0,
+          "one_step_db_c3": 0.002242390440676572
+        },
+        {
+          "program": 97,
+          "operator": "modulator",
+          "d1r": 24,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 0.0026666666666666666
+        },
+        {
+          "program": 97,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 98,
+          "operator": "carrier",
+          "d1r": 23,
+          "d2r": 23,
+          "rks": 1,
+          "one_step_db_c3": 0.002242390440676572
+        },
+        {
+          "program": 99,
+          "operator": "modulator",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        },
+        {
+          "program": 99,
+          "operator": "carrier",
+          "d1r": 1,
+          "d2r": 0,
+          "rks": 0,
+          "one_step_db_c3": 4.955029645844671e-05
+        }
+      ]
+    }
+  },
+  "next_change": {
+    "id": "zero_height_d1",
+    "classification": "behavioral-model endpoint correction; OPU tick-order not measured",
+    "action": "Check current attenuation against D1L before applying D1 increment; advance D2 when D1 already at endpoint",
+    "impact": "Custom D1R63/D1L0/D2R0 loses2.2962078112528097dB in current model; factory target impact too small to explain audible mismatch",
+    "acceptance": [
+      "D1L0/D2R0 invariant plateau over D1R0..63",
+      "D1L0 nonzeroD2 begins immediately after attack with explicit sample ordering",
+      "nonzeroD1L and release regressions",
+      "100factory fixed-gate/fixed-gain comparison",
+      "no additive noise"
+    ],
+    "status": "Implemented in native C++ only; frozen Python retained."
+  },
+  "higher_impact_identification_tasks": [
+    {
+      "id": "carrier_waveforms",
+      "new_source": "kevin_pss680_waveform_test",
+      "candidate_laws": [
+        "signed squared sine",
+        "literal sine square with period ambiguity",
+        "half-sine polarity and table period"
+      ],
+      "validation": "complex harmonic ratios on stable same-pitch notes, fixed capture response; do not infer bit depth from lossy residual"
+    },
+    {
+      "id": "lfo_law",
+      "source": "stereoninja_pss580",
+      "candidate_laws": [
+        "sine/triangle",
+        "note-local/global phase"
+      ],
+      "validation": "frozen-candidate pitch-contour error on target plus neighboring presets; reused benchmark status explicit"
+    },
+    {
+      "id": "reverb_release",
+      "source": "yamaha_pss780_owner",
+      "validation": "Reverb and Sustain independent captures/gates; do not replace factory RR or copy TX81Z threshold"
+    }
+  ],
+  "source_sha256_scope": "Audit baseline82eed55, before the explicitly recorded implementation below.",
+  "implementation": {
+    "claim_scope": "Behavioral endpoint consistency correction; exact OPU tick ordering remains unmeasured. No numerical rate, detune, waveform or clock law changed.",
+    "algorithm": "Before a D1 increment, if attenuation is already at or beyond D1L, transition to D2 and apply that tick of D2. Preserve existing nonzero-D1 ordering and release entry.",
+    "source_sha256": {
+      "Source/DSP/Press78Engine.cpp": "1d44d28a0794003e908dfee9f265f8b182fa90436b49bbcd94abc665a847bcfd",
+      "Tests/test_dsp.cpp": "dca93b7f7eec9ced8dd85df7c9bd16890cb8fe673c5bd1fd89cd58ed7b8d5752"
+    },
+    "test_source_scope": "Four new public-audio/voice-lifecycle contracts; no private test hooks in production.",
+    "tests": {
+      "native_ctest": {
+        "passed": 3,
+        "failed": 0,
+        "build": "build/fm-fidelity-audit-20261018/native"
+      },
+      "sanitized_ctest": {
+        "passed": 3,
+        "failed": 0,
+        "address_sanitizer": true,
+        "undefined_behavior_sanitizer": true,
+        "build": "build/fm-fidelity-audit-20261018/sanitized"
+      },
+      "dsp_contracts": {
+        "passed": 44,
+        "failed": 0,
+        "same_in_sanitized": true
+      },
+      "baseline_witness": {
+        "exit": 1,
+        "passed": 42,
+        "failed": 2,
+        "failing_contracts": [
+          "zero-height D1 plateau is independent of its unused rate",
+          "zero-height D1 enters D2 immediately even with zero D1 rate"
+        ],
+        "log_sha256": "c3de941ae481489c9a4fc8a76986e6b2f4e3b9424e9bc1d9cfb965b0e188345c"
+      }
+    },
+    "factory_delta": {
+      "scope": "Current native D1 endpoint correction compared with unchanged zero-noise engine82eed55; software regression, not hardware accuracy",
+      "baseline_revision": "82eed55541e6bf3064c43051b267e430381521fa",
+      "sample_rate": 48000,
+      "midi_notes": [
+        36,
+        60,
+        84
+      ],
+      "velocity": 100,
+      "duration_s": 2,
+      "gate_s": 1,
+      "gain": 1,
+      "chorus": 0,
+      "output_circuit": false,
+      "tone_filter": false,
+      "dc_block": false,
+      "limiter": false,
+      "clock_offset_ppm": 0,
+      "clock_drift_ppm": 0,
+      "factory_values_unchanged": true,
+      "rows": [
+        {
+          "program": 0,
+          "midi": 36,
+          "before_rms": 0.09624214572850126,
+          "after_rms": 0.09624214572850126,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 0,
+          "midi": 60,
+          "before_rms": 0.054477598859886345,
+          "after_rms": 0.054477598859886345,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 0,
+          "midi": 84,
+          "before_rms": 0.02999952933927484,
+          "after_rms": 0.02999952933927484,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 1,
+          "midi": 36,
+          "before_rms": 0.06085353221808259,
+          "after_rms": 0.06085318391042139,
+          "rms_delta_db": -4.9715611455021985e-05,
+          "relative_rms_error": 7.38870262458431e-06,
+          "max_absolute_error": 2.2724270820617676e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -5.9482971927823546e-05
+        },
+        {
+          "program": 1,
+          "midi": 60,
+          "before_rms": 0.04627114064951198,
+          "after_rms": 0.046270639284229295,
+          "rms_delta_db": -9.411540424044737e-05,
+          "relative_rms_error": 1.3173950061663542e-05,
+          "max_absolute_error": 3.4421682357788086e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.00010417574796884948
+        },
+        {
+          "program": 1,
+          "midi": 84,
+          "before_rms": 0.02378326361613247,
+          "after_rms": 0.023782798256176296,
+          "rms_delta_db": -0.00016995584928985037,
+          "relative_rms_error": 1.9701327743801333e-05,
+          "max_absolute_error": 2.51084566116333e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.00016453488128325496
+        },
+        {
+          "program": 2,
+          "midi": 36,
+          "before_rms": 0.10814125192811166,
+          "after_rms": 0.1081444519379088,
+          "rms_delta_db": 0.00025702051909817585,
+          "relative_rms_error": 2.9592073613423134e-05,
+          "max_absolute_error": 1.1056661605834961e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00025703929751998063
+        },
+        {
+          "program": 2,
+          "midi": 60,
+          "before_rms": 0.06837386331706793,
+          "after_rms": 0.0683764869889337,
+          "rms_delta_db": 0.00033329237145409167,
+          "relative_rms_error": 3.837455679001615e-05,
+          "max_absolute_error": 1.0192394256591797e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00033332858115302786
+        },
+        {
+          "program": 2,
+          "midi": 84,
+          "before_rms": 0.03605894777849039,
+          "after_rms": 0.03606074079168619,
+          "rms_delta_db": 0.00043189079293872346,
+          "relative_rms_error": 4.9747106425355335e-05,
+          "max_absolute_error": 7.88271427154541e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00043228066047727915
+        },
+        {
+          "program": 3,
+          "midi": 36,
+          "before_rms": 0.06283279086667073,
+          "after_rms": 0.06283254115757658,
+          "rms_delta_db": -3.451939526204355e-05,
+          "relative_rms_error": 3.974422414671359e-06,
+          "max_absolute_error": 6.854534149169922e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": -3.452100034423862e-05
+        },
+        {
+          "program": 3,
+          "midi": 60,
+          "before_rms": 0.075566664727727,
+          "after_rms": 0.07556615977561282,
+          "rms_delta_db": -5.8041108550602936e-05,
+          "relative_rms_error": 6.682888970038789e-06,
+          "max_absolute_error": 1.6242265701293945e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -5.8049372801571886e-05
+        },
+        {
+          "program": 3,
+          "midi": 84,
+          "before_rms": 0.044257276995301735,
+          "after_rms": 0.04425677985760722,
+          "rms_delta_db": -9.756830277796502e-05,
+          "relative_rms_error": 1.1236335718264756e-05,
+          "max_absolute_error": 1.9371509552001953e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -9.762692771054008e-05
+        },
+        {
+          "program": 4,
+          "midi": 36,
+          "before_rms": 0.06234517451995379,
+          "after_rms": 0.06234517451995379,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 4,
+          "midi": 60,
+          "before_rms": 0.049925527160317465,
+          "after_rms": 0.049925527160317465,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 4,
+          "midi": 84,
+          "before_rms": 0.032703861018819225,
+          "after_rms": 0.032703861018819225,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 5,
+          "midi": 36,
+          "before_rms": 0.01126837297730217,
+          "after_rms": 0.01126837297730217,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 5,
+          "midi": 60,
+          "before_rms": 0.01125908749866089,
+          "after_rms": 0.01125908749866089,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 5,
+          "midi": 84,
+          "before_rms": 0.007371468663936684,
+          "after_rms": 0.007371468663936684,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 6,
+          "midi": 36,
+          "before_rms": 0.1030722275715591,
+          "after_rms": 0.1030722324682187,
+          "rms_delta_db": 4.1264116351530616e-07,
+          "relative_rms_error": 2.240481014126296e-05,
+          "max_absolute_error": 7.987022399902344e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 6.199395581884249e-07
+        },
+        {
+          "program": 6,
+          "midi": 60,
+          "before_rms": 0.10314209494352919,
+          "after_rms": 0.10314192168592402,
+          "rms_delta_db": -1.4590528748194237e-05,
+          "relative_rms_error": 2.903486661263625e-05,
+          "max_absolute_error": 1.0833144187927246e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": -1.434421348464634e-05
+        },
+        {
+          "program": 6,
+          "midi": 84,
+          "before_rms": 0.054681791907119255,
+          "after_rms": 0.05468157748318347,
+          "rms_delta_db": -3.4060081586962e-05,
+          "relative_rms_error": 3.744584344269507e-05,
+          "max_absolute_error": 7.644295692443848e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -3.396055260937501e-05
+        },
+        {
+          "program": 7,
+          "midi": 36,
+          "before_rms": 0.11225381864033142,
+          "after_rms": 0.11225427194412751,
+          "rms_delta_db": 3.5075321652924977e-05,
+          "relative_rms_error": 4.364257515637592e-06,
+          "max_absolute_error": 1.9669532775878906e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 3.5068203486900375e-05
+        },
+        {
+          "program": 7,
+          "midi": 60,
+          "before_rms": 0.11232312920705258,
+          "after_rms": 0.11232365867697906,
+          "rms_delta_db": 4.0943539780582215e-05,
+          "relative_rms_error": 4.999937396846836e-06,
+          "max_absolute_error": 2.175569534301758e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.1104197169624484e-05
+        },
+        {
+          "program": 7,
+          "midi": 84,
+          "before_rms": 0.07667229843307262,
+          "after_rms": 0.07667282723978665,
+          "rms_delta_db": 5.990613314547101e-05,
+          "relative_rms_error": 6.982335432202306e-06,
+          "max_absolute_error": 1.7434358596801758e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 6.008731991779786e-05
+        },
+        {
+          "program": 8,
+          "midi": 36,
+          "before_rms": 0.08622699496911448,
+          "after_rms": 0.08622748648228389,
+          "rms_delta_db": 4.951137377329298e-05,
+          "relative_rms_error": 5.7026060301527805e-06,
+          "max_absolute_error": 1.4007091522216797e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.95492904212547e-05
+        },
+        {
+          "program": 8,
+          "midi": 60,
+          "before_rms": 0.12191128696560652,
+          "after_rms": 0.12191197804577994,
+          "rms_delta_db": 4.923768137716675e-05,
+          "relative_rms_error": 5.686578468852554e-06,
+          "max_absolute_error": 1.9669532775878906e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.954571952930117e-05
+        },
+        {
+          "program": 8,
+          "midi": 84,
+          "before_rms": 0.06463681213653054,
+          "after_rms": 0.064637178016059,
+          "rms_delta_db": 4.9166722575674624e-05,
+          "relative_rms_error": 5.682426851724017e-06,
+          "max_absolute_error": 1.043081283569336e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955116504965491e-05
+        },
+        {
+          "program": 9,
+          "midi": 36,
+          "before_rms": 0.10272921063168575,
+          "after_rms": 0.1027297241136295,
+          "rms_delta_db": 4.3415464021232195e-05,
+          "relative_rms_error": 5.018039024546795e-06,
+          "max_absolute_error": 1.4603137969970703e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.3515331144713544e-05
+        },
+        {
+          "program": 9,
+          "midi": 60,
+          "before_rms": 0.12211926651064513,
+          "after_rms": 0.12211995927019828,
+          "rms_delta_db": 4.927327299777475e-05,
+          "relative_rms_error": 5.700874882184155e-06,
+          "max_absolute_error": 1.9669532775878906e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9552393703842655e-05
+        },
+        {
+          "program": 9,
+          "midi": 84,
+          "before_rms": 0.07992960079124256,
+          "after_rms": 0.07993019001590687,
+          "rms_delta_db": 6.403036536519343e-05,
+          "relative_rms_error": 7.391680177710354e-06,
+          "max_absolute_error": 1.6689300537109375e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 6.425897033424373e-05
+        },
+        {
+          "program": 10,
+          "midi": 36,
+          "before_rms": 0.08636825233406645,
+          "after_rms": 0.08636874471953121,
+          "rms_delta_db": 4.951812152948437e-05,
+          "relative_rms_error": 5.727479493795845e-06,
+          "max_absolute_error": 9.98377799987793e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.957406929707468e-05
+        },
+        {
+          "program": 10,
+          "midi": 60,
+          "before_rms": 0.12196053611927522,
+          "after_rms": 0.12196123112446619,
+          "rms_delta_db": 4.949733231965367e-05,
+          "relative_rms_error": 5.714506467057102e-06,
+          "max_absolute_error": 1.4007091522216797e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955491234309459e-05
+        },
+        {
+          "program": 10,
+          "midi": 84,
+          "before_rms": 0.07989231542715014,
+          "after_rms": 0.07989277084770913,
+          "rms_delta_db": 4.9513165547157754e-05,
+          "relative_rms_error": 5.707280919522667e-06,
+          "max_absolute_error": 9.238719940185547e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.954886307040382e-05
+        },
+        {
+          "program": 11,
+          "midi": 36,
+          "before_rms": 0.08372158728885169,
+          "after_rms": 0.0837220334106401,
+          "rms_delta_db": 4.6283813060857015e-05,
+          "relative_rms_error": 5.393986877504158e-06,
+          "max_absolute_error": 1.4454126358032227e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.6306874059772057e-05
+        },
+        {
+          "program": 11,
+          "midi": 60,
+          "before_rms": 0.11990380559060783,
+          "after_rms": 0.11990446666436605,
+          "rms_delta_db": 4.788837059323143e-05,
+          "relative_rms_error": 5.542077709084716e-06,
+          "max_absolute_error": 2.0265579223632812e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.789988630268641e-05
+        },
+        {
+          "program": 11,
+          "midi": 84,
+          "before_rms": 0.07935336657716775,
+          "after_rms": 0.07935381368386948,
+          "rms_delta_db": 4.893942997763743e-05,
+          "relative_rms_error": 5.645024536573282e-06,
+          "max_absolute_error": 1.3113021850585938e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.895746800504988e-05
+        },
+        {
+          "program": 12,
+          "midi": 36,
+          "before_rms": 0.056612736041219705,
+          "after_rms": 0.0566130590129425,
+          "rms_delta_db": 4.955225510377525e-05,
+          "relative_rms_error": 5.705027807688582e-06,
+          "max_absolute_error": 6.407499313354492e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9549673403651935e-05
+        },
+        {
+          "program": 12,
+          "midi": 60,
+          "before_rms": 0.07998476842915492,
+          "after_rms": 0.0799852246684345,
+          "rms_delta_db": 4.954484218339063e-05,
+          "relative_rms_error": 5.704462324403083e-06,
+          "max_absolute_error": 9.08970832824707e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9547923249930735e-05
+        },
+        {
+          "program": 12,
+          "midi": 84,
+          "before_rms": 0.05599360647342959,
+          "after_rms": 0.05599392586468262,
+          "rms_delta_db": 4.95447505130159e-05,
+          "relative_rms_error": 5.7044921018729575e-06,
+          "max_absolute_error": 6.407499313354492e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.954862283851577e-05
+        },
+        {
+          "program": 13,
+          "midi": 36,
+          "before_rms": 0.056420366642566874,
+          "after_rms": 0.056420688489875324,
+          "rms_delta_db": 4.954810460224824e-05,
+          "relative_rms_error": 5.704601614961252e-06,
+          "max_absolute_error": 9.08970832824707e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.954699862138579e-05
+        },
+        {
+          "program": 13,
+          "midi": 60,
+          "before_rms": 0.0777291762986945,
+          "after_rms": 0.07772961969915863,
+          "rms_delta_db": 4.954788787860103e-05,
+          "relative_rms_error": 5.7047770264228154e-06,
+          "max_absolute_error": 9.08970832824707e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955000280446346e-05
+        },
+        {
+          "program": 13,
+          "midi": 84,
+          "before_rms": 0.05617982391578802,
+          "after_rms": 0.056180144380247904,
+          "rms_delta_db": 4.954645277465163e-05,
+          "relative_rms_error": 5.704644380118418e-06,
+          "max_absolute_error": 6.407499313354492e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.95496320072386e-05
+        },
+        {
+          "program": 14,
+          "midi": 36,
+          "before_rms": 0.09023828834838907,
+          "after_rms": 0.09024346212065908,
+          "rms_delta_db": 0.0004979873571183675,
+          "relative_rms_error": 7.191572800479628e-05,
+          "max_absolute_error": 2.4974346160888672e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0004991868204522182
+        },
+        {
+          "program": 14,
+          "midi": 60,
+          "before_rms": 0.0903432056847884,
+          "after_rms": 0.09034782311001578,
+          "rms_delta_db": 0.00044392293533574345,
+          "relative_rms_error": 7.616400821912385e-05,
+          "max_absolute_error": 2.6285648345947266e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0004485228742871838
+        },
+        {
+          "program": 14,
+          "midi": 84,
+          "before_rms": 0.05336695292982937,
+          "after_rms": 0.053370777435107264,
+          "rms_delta_db": 0.0006224458898385411,
+          "relative_rms_error": 7.440777675377258e-05,
+          "max_absolute_error": 1.2695789337158203e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0006264053374074012
+        },
+        {
+          "program": 15,
+          "midi": 36,
+          "before_rms": 0.0468494529944003,
+          "after_rms": 0.0468494529944003,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 15,
+          "midi": 60,
+          "before_rms": 0.040708621483138314,
+          "after_rms": 0.040708621483138314,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 15,
+          "midi": 84,
+          "before_rms": 0.023363760715013303,
+          "after_rms": 0.023363760715013303,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 16,
+          "midi": 36,
+          "before_rms": 0.046433094362736724,
+          "after_rms": 0.046433094362736724,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 16,
+          "midi": 60,
+          "before_rms": 0.036891508463818216,
+          "after_rms": 0.036891508463818216,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 16,
+          "midi": 84,
+          "before_rms": 0.024150369608240376,
+          "after_rms": 0.024150369608240376,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 17,
+          "midi": 36,
+          "before_rms": 0.01520061417637142,
+          "after_rms": 0.01520061417637142,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 17,
+          "midi": 60,
+          "before_rms": 0.013321472445342406,
+          "after_rms": 0.013321472445342406,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 17,
+          "midi": 84,
+          "before_rms": 0.009405839317749699,
+          "after_rms": 0.009405839317749699,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 18,
+          "midi": 36,
+          "before_rms": 0.09115264382032426,
+          "after_rms": 0.09115534125259063,
+          "rms_delta_db": 0.000257033162470827,
+          "relative_rms_error": 2.9592589091899627e-05,
+          "max_absolute_error": 9.298324584960938e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00025703458395159477
+        },
+        {
+          "program": 18,
+          "midi": 60,
+          "before_rms": 0.08129390082387185,
+          "after_rms": 0.08129702063573532,
+          "rms_delta_db": 0.0003333315451774729,
+          "relative_rms_error": 3.8376973541234194e-05,
+          "max_absolute_error": 1.2099742889404297e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00033333215789534555
+        },
+        {
+          "program": 18,
+          "midi": 84,
+          "before_rms": 0.04712608129942131,
+          "after_rms": 0.047128426710441554,
+          "rms_delta_db": 0.00043227600911901717,
+          "relative_rms_error": 4.9769044260572926e-05,
+          "max_absolute_error": 1.0251998901367188e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0004322857052307072
+        },
+        {
+          "program": 19,
+          "midi": 36,
+          "before_rms": 0.05110467774867292,
+          "after_rms": 0.05110467783224072,
+          "rms_delta_db": 1.4203409521616347e-08,
+          "relative_rms_error": 7.296272162388034e-06,
+          "max_absolute_error": 5.036592483520508e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -2.197771728130582e-09
+        },
+        {
+          "program": 19,
+          "midi": 60,
+          "before_rms": 0.044869650029072713,
+          "after_rms": 0.044869650050646935,
+          "rms_delta_db": 4.176347964243602e-09,
+          "relative_rms_error": 3.981210505754861e-06,
+          "max_absolute_error": 3.1404197216033936e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 3.324403221582852e-10
+        },
+        {
+          "program": 19,
+          "midi": 84,
+          "before_rms": 0.023472025799298652,
+          "after_rms": 0.023472025779439416,
+          "rms_delta_db": -7.348966046767532e-09,
+          "relative_rms_error": 3.6539526531840753e-06,
+          "max_absolute_error": 1.7974525690078735e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.822003777069878e-10
+        },
+        {
+          "program": 20,
+          "midi": 36,
+          "before_rms": 0.05940709842964464,
+          "after_rms": 0.05941245888292166,
+          "rms_delta_db": 0.0007837145106236653,
+          "relative_rms_error": 0.00014220967657753317,
+          "max_absolute_error": 4.295259714126587e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0007833128909824216
+        },
+        {
+          "program": 20,
+          "midi": 60,
+          "before_rms": 0.08846692381060989,
+          "after_rms": 0.08847258899232832,
+          "rms_delta_db": 0.0005562029918942384,
+          "relative_rms_error": 7.200662339810983e-05,
+          "max_absolute_error": 2.370774745941162e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0005608105844989189
+        },
+        {
+          "program": 20,
+          "midi": 84,
+          "before_rms": 0.05867196264939635,
+          "after_rms": 0.05867614824066811,
+          "rms_delta_db": 0.0006196194143419217,
+          "relative_rms_error": 7.721151941247384e-05,
+          "max_absolute_error": 1.679360866546631e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0006235811901664902
+        },
+        {
+          "program": 21,
+          "midi": 36,
+          "before_rms": 0.08605168578989873,
+          "after_rms": 0.08605827798236103,
+          "rms_delta_db": 0.0006653775873670363,
+          "relative_rms_error": 9.389389327417366e-05,
+          "max_absolute_error": 5.520111881196499e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0006666715602215886
+        },
+        {
+          "program": 21,
+          "midi": 60,
+          "before_rms": 0.08614480223330305,
+          "after_rms": 0.08615138438671918,
+          "rms_delta_db": 0.0006636462396845842,
+          "relative_rms_error": 8.560037785700355e-05,
+          "max_absolute_error": 3.0055642127990723e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.000666661904739048
+        },
+        {
+          "program": 21,
+          "midi": 84,
+          "before_rms": 0.056432541663411814,
+          "after_rms": 0.05643684995388655,
+          "rms_delta_db": 0.0006630909420933038,
+          "relative_rms_error": 7.957602439199942e-05,
+          "max_absolute_error": 1.496821641921997e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0006665784918893785
+        },
+        {
+          "program": 22,
+          "midi": 36,
+          "before_rms": 0.03393041743696479,
+          "after_rms": 0.03393235850532578,
+          "rms_delta_db": 0.0004968822844030264,
+          "relative_rms_error": 5.818783940941475e-05,
+          "max_absolute_error": 1.3232231140136719e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0005140680960852729
+        },
+        {
+          "program": 22,
+          "midi": 60,
+          "before_rms": 0.039970976793745304,
+          "after_rms": 0.03997404165523728,
+          "rms_delta_db": 0.0006659839275748351,
+          "relative_rms_error": 7.671631986911159e-05,
+          "max_absolute_error": 1.71661376953125e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0006666610379176191
+        },
+        {
+          "program": 22,
+          "midi": 84,
+          "before_rms": 0.04631071907222955,
+          "after_rms": 0.0463153196070128,
+          "rms_delta_db": 0.0008628186632186804,
+          "relative_rms_error": 9.944066510875617e-05,
+          "max_absolute_error": 1.8730759620666504e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0008645570070764624
+        },
+        {
+          "program": 23,
+          "midi": 36,
+          "before_rms": 0.037364100647571015,
+          "after_rms": 0.03739132788756797,
+          "rms_delta_db": 0.00632710739150584,
+          "relative_rms_error": 0.0007295828471536674,
+          "max_absolute_error": 6.310641765594482e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0063424368015931225
+        },
+        {
+          "program": 23,
+          "midi": 60,
+          "before_rms": 0.03743401913360229,
+          "after_rms": 0.037461306585417097,
+          "rms_delta_db": 0.006329254948277016,
+          "relative_rms_error": 0.0007297067010568495,
+          "max_absolute_error": 6.310641765594482e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.006342431090487226
+        },
+        {
+          "program": 23,
+          "midi": 84,
+          "before_rms": 0.03746391810705942,
+          "after_rms": 0.037491224983863744,
+          "rms_delta_db": 0.006328705916498043,
+          "relative_rms_error": 0.0007296749214341775,
+          "max_absolute_error": 6.310641765594482e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.006342435101140569
+        },
+        {
+          "program": 24,
+          "midi": 36,
+          "before_rms": 0.029055888155668723,
+          "after_rms": 0.02906111701261746,
+          "rms_delta_db": 0.0015629599075528053,
+          "relative_rms_error": 0.00018125832452753031,
+          "max_absolute_error": 3.14861536026001e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856221200693668
+        },
+        {
+          "program": 24,
+          "midi": 60,
+          "before_rms": 0.034933069792362936,
+          "after_rms": 0.03493944233929919,
+          "rms_delta_db": 0.0015843494921391444,
+          "relative_rms_error": 0.0001824942851120045,
+          "max_absolute_error": 3.14861536026001e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.001585612597378882
+        },
+        {
+          "program": 24,
+          "midi": 84,
+          "before_rms": 0.03891378728117427,
+          "after_rms": 0.03892087468762438,
+          "rms_delta_db": 0.0015818255995159129,
+          "relative_rms_error": 0.00018234852228563836,
+          "max_absolute_error": 2.6494264602661133e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856065037180688
+        },
+        {
+          "program": 25,
+          "midi": 36,
+          "before_rms": 0.06259266250788031,
+          "after_rms": 0.06260403247756685,
+          "rms_delta_db": 0.0015776503072770184,
+          "relative_rms_error": 0.00018210827495610492,
+          "max_absolute_error": 5.2869319915771484e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856155523237257
+        },
+        {
+          "program": 25,
+          "midi": 60,
+          "before_rms": 0.054622717836073045,
+          "after_rms": 0.0546326722891873,
+          "rms_delta_db": 0.0015827737432049219,
+          "relative_rms_error": 0.00018240348600371477,
+          "max_absolute_error": 5.2869319915771484e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856132521167728
+        },
+        {
+          "program": 25,
+          "midi": 84,
+          "before_rms": 0.06309370343835001,
+          "after_rms": 0.06310520370500829,
+          "rms_delta_db": 0.0015830572473200797,
+          "relative_rms_error": 0.0001824196282532643,
+          "max_absolute_error": 4.4479966163635254e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856115669863767
+        },
+        {
+          "program": 26,
+          "midi": 36,
+          "before_rms": 0.07013114543913536,
+          "after_rms": 0.0701334063775766,
+          "rms_delta_db": 0.0002800174602413008,
+          "relative_rms_error": 3.225510174170672e-05,
+          "max_absolute_error": 4.693865776062012e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0002802982108305672
+        },
+        {
+          "program": 26,
+          "midi": 60,
+          "before_rms": 0.08518560791162517,
+          "after_rms": 0.08518835487370228,
+          "rms_delta_db": 0.00028008750930850806,
+          "relative_rms_error": 3.225907906799885e-05,
+          "max_absolute_error": 5.5730342864990234e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0002803017363578001
+        },
+        {
+          "program": 26,
+          "midi": 84,
+          "before_rms": 0.07213027920469683,
+          "after_rms": 0.07213260418086356,
+          "rms_delta_db": 0.0002799678742467656,
+          "relative_rms_error": 3.225192635026817e-05,
+          "max_absolute_error": 4.693865776062012e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0002802988157413805
+        },
+        {
+          "program": 27,
+          "midi": 36,
+          "before_rms": 0.039177608921333526,
+          "after_rms": 0.03918133088135029,
+          "rms_delta_db": 0.0008251396470809976,
+          "relative_rms_error": 9.590503576384497e-05,
+          "max_absolute_error": 1.652538776397705e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00084089671027927
+        },
+        {
+          "program": 27,
+          "midi": 60,
+          "before_rms": 0.055034134574338915,
+          "after_rms": 0.055039423997803344,
+          "rms_delta_db": 0.0008347753827959163,
+          "relative_rms_error": 9.646332245771294e-05,
+          "max_absolute_error": 1.9848346710205078e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0008408980108073859
+        },
+        {
+          "program": 27,
+          "midi": 84,
+          "before_rms": 0.04809788899123166,
+          "after_rms": 0.048102511598251727,
+          "rms_delta_db": 0.0008347460967173439,
+          "relative_rms_error": 9.64618953096077e-05,
+          "max_absolute_error": 1.6689300537109375e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0008408963197143142
+        },
+        {
+          "program": 28,
+          "midi": 36,
+          "before_rms": 0.04003941420778815,
+          "after_rms": 0.04004070457470274,
+          "rms_delta_db": 0.000279919280443503,
+          "relative_rms_error": 3.224918275490964e-05,
+          "max_absolute_error": 6.616115570068359e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00028029289877270315
+        },
+        {
+          "program": 28,
+          "midi": 60,
+          "before_rms": 0.05969344646544911,
+          "after_rms": 0.05969535908995243,
+          "rms_delta_db": 0.0002782982085974635,
+          "relative_rms_error": 3.215567798920308e-05,
+          "max_absolute_error": 7.867813110351562e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00028029446795479324
+        },
+        {
+          "program": 28,
+          "midi": 84,
+          "before_rms": 0.05295104659256866,
+          "after_rms": 0.05295275148628402,
+          "rms_delta_db": 0.0002796598219543704,
+          "relative_rms_error": 3.2234546024130414e-05,
+          "max_absolute_error": 6.616115570068359e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0002803022096460189
+        },
+        {
+          "program": 29,
+          "midi": 36,
+          "before_rms": 0.08012101538241057,
+          "after_rms": 0.08012408644716057,
+          "rms_delta_db": 0.00033292661290266557,
+          "relative_rms_error": 3.835387862057087e-05,
+          "max_absolute_error": 7.867813110351562e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0003333382980514902
+        },
+        {
+          "program": 29,
+          "midi": 60,
+          "before_rms": 0.10317478303242762,
+          "after_rms": 0.10317873080517077,
+          "rms_delta_db": 0.00033234150201335135,
+          "relative_rms_error": 3.83201658078106e-05,
+          "max_absolute_error": 9.357929229736328e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00033333491379312235
+        },
+        {
+          "program": 29,
+          "midi": 84,
+          "before_rms": 0.09127608894138743,
+          "after_rms": 0.09127958533637273,
+          "rms_delta_db": 0.0003327127584205099,
+          "relative_rms_error": 3.8341378271807904e-05,
+          "max_absolute_error": 7.867813110351562e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0003333346153201535
+        },
+        {
+          "program": 30,
+          "midi": 36,
+          "before_rms": 0.05274414599194306,
+          "after_rms": 0.052753747000627904,
+          "rms_delta_db": 0.0015809472533587815,
+          "relative_rms_error": 0.00018229788802286492,
+          "max_absolute_error": 2.2292137145996094e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856052007965872
+        },
+        {
+          "program": 30,
+          "midi": 60,
+          "before_rms": 0.05866038896046764,
+          "after_rms": 0.058671069028928324,
+          "rms_delta_db": 0.0015812621409873697,
+          "relative_rms_error": 0.00018231610607173944,
+          "max_absolute_error": 2.6494264602661133e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.001585614257196446
+        },
+        {
+          "program": 30,
+          "midi": 84,
+          "before_rms": 0.05509333782019815,
+          "after_rms": 0.055103376449972874,
+          "rms_delta_db": 0.0015825232387239178,
+          "relative_rms_error": 0.00018238876445115655,
+          "max_absolute_error": 2.2292137145996094e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856039033457006
+        },
+        {
+          "program": 31,
+          "midi": 36,
+          "before_rms": 0.04718622322655138,
+          "after_rms": 0.047186490805187706,
+          "rms_delta_db": 4.9254883224926084e-05,
+          "relative_rms_error": 5.68780315111792e-06,
+          "max_absolute_error": 5.438923835754395e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9549650317784076e-05
+        },
+        {
+          "program": 31,
+          "midi": 60,
+          "before_rms": 0.04721105266970258,
+          "after_rms": 0.047211320036631595,
+          "rms_delta_db": 4.919002926268202e-05,
+          "relative_rms_error": 5.683983881661087e-06,
+          "max_absolute_error": 5.438923835754395e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9549916574793314e-05
+        },
+        {
+          "program": 31,
+          "midi": 84,
+          "before_rms": 0.01884304039100482,
+          "after_rms": 0.018843147140143308,
+          "rms_delta_db": 4.92069533491545e-05,
+          "relative_rms_error": 5.685203294797073e-06,
+          "max_absolute_error": 2.1606683731079102e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955081239325491e-05
+        },
+        {
+          "program": 32,
+          "midi": 36,
+          "before_rms": 0.05431034103903169,
+          "after_rms": 0.05431064857113273,
+          "rms_delta_db": 4.91836780238728e-05,
+          "relative_rms_error": 5.683458878746784e-06,
+          "max_absolute_error": 1.1771917343139648e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9542824227815225e-05
+        },
+        {
+          "program": 32,
+          "midi": 60,
+          "before_rms": 0.06466312076095233,
+          "after_rms": 0.06466348687753973,
+          "rms_delta_db": 4.9178561641818694e-05,
+          "relative_rms_error": 5.683611202199969e-06,
+          "max_absolute_error": 1.6689300537109375e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.95581399325677e-05
+        },
+        {
+          "program": 32,
+          "midi": 84,
+          "before_rms": 0.06477526497385681,
+          "after_rms": 0.06477563176609565,
+          "rms_delta_db": 4.918401935914735e-05,
+          "relative_rms_error": 5.6833644673685276e-06,
+          "max_absolute_error": 1.6689300537109375e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9556920682448565e-05
+        },
+        {
+          "program": 33,
+          "midi": 36,
+          "before_rms": 0.05340843092765478,
+          "after_rms": 0.05340873527309035,
+          "rms_delta_db": 4.9495993185018514e-05,
+          "relative_rms_error": 5.701661196922929e-06,
+          "max_absolute_error": 9.98377799987793e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.954819011060557e-05
+        },
+        {
+          "program": 33,
+          "midi": 60,
+          "before_rms": 0.05367945762709643,
+          "after_rms": 0.05367976111448045,
+          "rms_delta_db": 4.9107248638581725e-05,
+          "relative_rms_error": 5.679330598062535e-06,
+          "max_absolute_error": 9.98377799987793e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.95456413517194e-05
+        },
+        {
+          "program": 33,
+          "midi": 84,
+          "before_rms": 0.055961936619767914,
+          "after_rms": 0.055962253042938594,
+          "rms_delta_db": 4.9112113257415063e-05,
+          "relative_rms_error": 5.679566776642985e-06,
+          "max_absolute_error": 9.98377799987793e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955435307299919e-05
+        },
+        {
+          "program": 34,
+          "midi": 36,
+          "before_rms": 0.1004896539765202,
+          "after_rms": 0.1005078553985119,
+          "rms_delta_db": 0.0015731094738391464,
+          "relative_rms_error": 0.0001818455832211083,
+          "max_absolute_error": 4.4479966163635254e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856096876006756
+        },
+        {
+          "program": 34,
+          "midi": 60,
+          "before_rms": 0.060233709549142735,
+          "after_rms": 0.060244631897889235,
+          "rms_delta_db": 0.0015748941248867683,
+          "relative_rms_error": 0.00018194855371100188,
+          "max_absolute_error": 2.6494264602661133e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856050758483449
+        },
+        {
+          "program": 34,
+          "midi": 84,
+          "before_rms": 0.0617858796073485,
+          "after_rms": 0.061797088084110004,
+          "rms_delta_db": 0.0015755503245607743,
+          "relative_rms_error": 0.00018198645523101472,
+          "max_absolute_error": 2.6494264602661133e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856075415731068
+        },
+        {
+          "program": 35,
+          "midi": 36,
+          "before_rms": 0.07781784104818726,
+          "after_rms": 0.0778182822270965,
+          "rms_delta_db": 4.924346913366257e-05,
+          "relative_rms_error": 5.687201058268167e-06,
+          "max_absolute_error": 1.0728836059570312e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955208010441095e-05
+        },
+        {
+          "program": 35,
+          "midi": 60,
+          "before_rms": 0.1093006658108426,
+          "after_rms": 0.10930128536561275,
+          "rms_delta_db": 4.9234550096341386e-05,
+          "relative_rms_error": 5.6865463272205e-06,
+          "max_absolute_error": 1.519918441772461e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.954504247306297e-05
+        },
+        {
+          "program": 35,
+          "midi": 84,
+          "before_rms": 0.11291912888639265,
+          "after_rms": 0.11291976902879666,
+          "rms_delta_db": 4.9240465883942565e-05,
+          "relative_rms_error": 5.687295281059423e-06,
+          "max_absolute_error": 1.519918441772461e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955492165265884e-05
+        },
+        {
+          "program": 36,
+          "midi": 36,
+          "before_rms": 0.05211559974350559,
+          "after_rms": 0.05212560603229603,
+          "rms_delta_db": 0.001667546336221013,
+          "relative_rms_error": 0.0002642832536345714,
+          "max_absolute_error": 4.560500383377075e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0016783447911315856
+        },
+        {
+          "program": 36,
+          "midi": 60,
+          "before_rms": 0.05156102700615306,
+          "after_rms": 0.051570619461166006,
+          "rms_delta_db": 0.00161577961168842,
+          "relative_rms_error": 0.00024068737574973987,
+          "max_absolute_error": 3.983825445175171e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0016243074622168238
+        },
+        {
+          "program": 36,
+          "midi": 84,
+          "before_rms": 0.03639423233252755,
+          "after_rms": 0.03640096494508578,
+          "rms_delta_db": 0.0016066645056369755,
+          "relative_rms_error": 0.00023698837776224335,
+          "max_absolute_error": 2.761930227279663e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0016150726301549872
+        },
+        {
+          "program": 37,
+          "midi": 36,
+          "before_rms": 0.05276252005661995,
+          "after_rms": 0.05277390806985917,
+          "rms_delta_db": 0.001874519127329641,
+          "relative_rms_error": 0.0004243278983572473,
+          "max_absolute_error": 6.915628910064697e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.001887131417793011
+        },
+        {
+          "program": 37,
+          "midi": 60,
+          "before_rms": 0.05276356479586336,
+          "after_rms": 0.05277494915203191,
+          "rms_delta_db": 0.0018738801213902903,
+          "relative_rms_error": 0.0008937112018245718,
+          "max_absolute_error": 0.00014397501945495605,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0018888141845284842
+        },
+        {
+          "program": 37,
+          "midi": 84,
+          "before_rms": 0.03735381542458915,
+          "after_rms": 0.03736187485123395,
+          "rms_delta_db": 0.0018738578308233227,
+          "relative_rms_error": 0.0006503924625890967,
+          "max_absolute_error": 7.492303848266602e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.001885330809107221
+        },
+        {
+          "program": 38,
+          "midi": 36,
+          "before_rms": 0.048554608282372444,
+          "after_rms": 0.048565096445581796,
+          "rms_delta_db": 0.0018760153514005375,
+          "relative_rms_error": 0.0002165597699529443,
+          "max_absolute_error": 2.230703830718994e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0018856208894831297
+        },
+        {
+          "program": 38,
+          "midi": 60,
+          "before_rms": 0.04990621909860417,
+          "after_rms": 0.04991699614454508,
+          "rms_delta_db": 0.0018754802037351127,
+          "relative_rms_error": 0.00021652873859856508,
+          "max_absolute_error": 2.230703830718994e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0018856160188026176
+        },
+        {
+          "program": 38,
+          "midi": 84,
+          "before_rms": 0.03628020908671169,
+          "after_rms": 0.036288037554197204,
+          "rms_delta_db": 0.0018740208844962665,
+          "relative_rms_error": 0.00021644463868237155,
+          "max_absolute_error": 1.5795230865478516e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0018856176757861935
+        },
+        {
+          "program": 39,
+          "midi": 36,
+          "before_rms": 0.05175724836302471,
+          "after_rms": 0.05176119270515353,
+          "rms_delta_db": 0.000661913376761949,
+          "relative_rms_error": 7.648157458134488e-05,
+          "max_absolute_error": 7.890164852142334e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0006666665075161316
+        },
+        {
+          "program": 39,
+          "midi": 60,
+          "before_rms": 0.05137972479627315,
+          "after_rms": 0.051383651401395475,
+          "rms_delta_db": 0.0006637784787404154,
+          "relative_rms_error": 7.658946858732456e-05,
+          "max_absolute_error": 7.890164852142334e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0006666720183750462
+        },
+        {
+          "program": 39,
+          "midi": 84,
+          "before_rms": 0.043210298002802044,
+          "after_rms": 0.043213594496341004,
+          "rms_delta_db": 0.0006626172059123091,
+          "relative_rms_error": 7.652217374120107e-05,
+          "max_absolute_error": 6.638467311859131e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.000666663020808424
+        },
+        {
+          "program": 40,
+          "midi": 36,
+          "before_rms": 0.09660689430915734,
+          "after_rms": 0.09660744163353986,
+          "rms_delta_db": 4.9209590578897915e-05,
+          "relative_rms_error": 5.685187842310577e-06,
+          "max_absolute_error": 1.2814998626708984e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.95500530167082e-05
+        },
+        {
+          "program": 40,
+          "midi": 60,
+          "before_rms": 0.09666936591954903,
+          "after_rms": 0.09666991346968405,
+          "rms_delta_db": 4.919807355391547e-05,
+          "relative_rms_error": 5.684406324726679e-06,
+          "max_absolute_error": 1.2814998626708984e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.954766213082887e-05
+        },
+        {
+          "program": 40,
+          "midi": 84,
+          "before_rms": 0.08133742627866032,
+          "after_rms": 0.08133788678908918,
+          "rms_delta_db": 4.9177010165357136e-05,
+          "relative_rms_error": 5.683394351872278e-06,
+          "max_absolute_error": 1.0728836059570312e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955493467871995e-05
+        },
+        {
+          "program": 41,
+          "midi": 36,
+          "before_rms": 0.0441827242734345,
+          "after_rms": 0.04419191314054985,
+          "rms_delta_db": 0.0018062532030881304,
+          "relative_rms_error": 0.0004047517772678046,
+          "max_absolute_error": 4.980480298399925e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.001819164362658605
+        },
+        {
+          "program": 41,
+          "midi": 60,
+          "before_rms": 0.04588252670874214,
+          "after_rms": 0.045890350319696495,
+          "rms_delta_db": 0.001480939111546142,
+          "relative_rms_error": 0.0002695254941386721,
+          "max_absolute_error": 2.8654932975769043e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.001487208471676188
+        },
+        {
+          "program": 41,
+          "midi": 84,
+          "before_rms": 0.050845520254954354,
+          "after_rms": 0.05085622901361752,
+          "rms_delta_db": 0.0018291739703923805,
+          "relative_rms_error": 0.0002134755670064778,
+          "max_absolute_error": 2.358853816986084e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0018370384655667124
+        },
+        {
+          "program": 42,
+          "midi": 36,
+          "before_rms": 0.050423864001014035,
+          "after_rms": 0.05043423802678894,
+          "rms_delta_db": 0.0017868201262830103,
+          "relative_rms_error": 0.00021060461606479768,
+          "max_absolute_error": 2.3409724235534668e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0017962951288431435
+        },
+        {
+          "program": 42,
+          "midi": 60,
+          "before_rms": 0.050836812167755874,
+          "after_rms": 0.05084751924741371,
+          "rms_delta_db": 0.0018292004540587754,
+          "relative_rms_error": 0.0002132813878476663,
+          "max_absolute_error": 2.2932887077331543e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0018412027248812047
+        },
+        {
+          "program": 42,
+          "midi": 84,
+          "before_rms": 0.051235923017587705,
+          "after_rms": 0.051246961206839595,
+          "rms_delta_db": 0.0018710732966251524,
+          "relative_rms_error": 0.00021622922532492795,
+          "max_absolute_error": 2.2351741790771484e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0018827979032458248
+        },
+        {
+          "program": 43,
+          "midi": 36,
+          "before_rms": 0.05070523505592099,
+          "after_rms": 0.05071448227573271,
+          "rms_delta_db": 0.0015839194405056788,
+          "relative_rms_error": 0.00018246919380915112,
+          "max_absolute_error": 3.1501054763793945e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856071007032888
+        },
+        {
+          "program": 43,
+          "midi": 60,
+          "before_rms": 0.05237056021690647,
+          "after_rms": 0.052380098722689936,
+          "rms_delta_db": 0.001581859429142333,
+          "relative_rms_error": 0.00018235036457035723,
+          "max_absolute_error": 3.1501054763793945e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856104283543736
+        },
+        {
+          "program": 43,
+          "midi": 84,
+          "before_rms": 0.034408313189847904,
+          "after_rms": 0.034414578001359095,
+          "rms_delta_db": 0.0015813186745850018,
+          "relative_rms_error": 0.00018231923464513488,
+          "max_absolute_error": 2.063065767288208e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.001585604574487665
+        },
+        {
+          "program": 44,
+          "midi": 36,
+          "before_rms": 0.025982131747634658,
+          "after_rms": 0.025976341595325927,
+          "rms_delta_db": -0.0019358776697471674,
+          "relative_rms_error": 0.0016444198062323513,
+          "max_absolute_error": 0.00017571114040038083,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0019245785054216656
+        },
+        {
+          "program": 44,
+          "midi": 60,
+          "before_rms": 0.05538764686362252,
+          "after_rms": 0.05538924174305351,
+          "rms_delta_db": 0.00025010535859622496,
+          "relative_rms_error": 0.0004327876664701993,
+          "max_absolute_error": 0.0001219547884829808,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00025139772327366984
+        },
+        {
+          "program": 44,
+          "midi": 84,
+          "before_rms": 0.04348357045514464,
+          "after_rms": 0.04348419567347479,
+          "rms_delta_db": 0.00012488713134128465,
+          "relative_rms_error": 0.00021661600952267737,
+          "max_absolute_error": 3.9478763937950134e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00012481708838013502
+        },
+        {
+          "program": 45,
+          "midi": 36,
+          "before_rms": 0.05303619190966214,
+          "after_rms": 0.05303858054000103,
+          "rms_delta_db": 0.00039118404940431466,
+          "relative_rms_error": 4.5337047866985816e-05,
+          "max_absolute_error": 7.227063179016113e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00039639774415741163
+        },
+        {
+          "program": 45,
+          "midi": 60,
+          "before_rms": 0.06729151689847807,
+          "after_rms": 0.06729456133785906,
+          "rms_delta_db": 0.0003929628506035887,
+          "relative_rms_error": 4.5440139850259674e-05,
+          "max_absolute_error": 7.227063179016113e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00039640070466769994
+        },
+        {
+          "program": 45,
+          "midi": 84,
+          "before_rms": 0.0476413396755258,
+          "after_rms": 0.047643494733270855,
+          "rms_delta_db": 0.00039289764959108244,
+          "relative_rms_error": 4.543640033510626e-05,
+          "max_absolute_error": 5.11854887008667e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00039640184401874856
+        },
+        {
+          "program": 46,
+          "midi": 36,
+          "before_rms": 0.13256102016013255,
+          "after_rms": 0.13256177196466568,
+          "rms_delta_db": 4.926088135789743e-05,
+          "relative_rms_error": 5.68812664413543e-06,
+          "max_absolute_error": 1.519918441772461e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955000486618383e-05
+        },
+        {
+          "program": 46,
+          "midi": 60,
+          "before_rms": 0.13256502178416885,
+          "after_rms": 0.13256577103382952,
+          "rms_delta_db": 4.909199565060949e-05,
+          "relative_rms_error": 5.6783900086046865e-06,
+          "max_absolute_error": 1.519918441772461e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955211281999793e-05
+        },
+        {
+          "program": 46,
+          "midi": 84,
+          "before_rms": 0.11153809745059326,
+          "after_rms": 0.11153872814688294,
+          "rms_delta_db": 4.9114544754871574e-05,
+          "relative_rms_error": 5.679604866660013e-06,
+          "max_absolute_error": 1.2814998626708984e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955043579466914e-05
+        },
+        {
+          "program": 47,
+          "midi": 36,
+          "before_rms": 0.052748408817830265,
+          "after_rms": 0.05274870789973463,
+          "rms_delta_db": 4.924859550412569e-05,
+          "relative_rms_error": 5.687544694368595e-06,
+          "max_absolute_error": 9.98377799987793e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9552574377277405e-05
+        },
+        {
+          "program": 47,
+          "midi": 60,
+          "before_rms": 0.05268947014527272,
+          "after_rms": 0.05268976840662284,
+          "rms_delta_db": 4.9168416968516864e-05,
+          "relative_rms_error": 5.682713456458219e-06,
+          "max_absolute_error": 9.98377799987793e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.95494474533722e-05
+        },
+        {
+          "program": 47,
+          "midi": 84,
+          "before_rms": 0.03453140070118665,
+          "after_rms": 0.03453159621243894,
+          "rms_delta_db": 4.917797478630373e-05,
+          "relative_rms_error": 5.6830655524294426e-06,
+          "max_absolute_error": 6.48200511932373e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955000263088551e-05
+        },
+        {
+          "program": 48,
+          "midi": 36,
+          "before_rms": 0.023330298857985456,
+          "after_rms": 0.02333029885216608,
+          "rms_delta_db": -2.166558376685343e-09,
+          "relative_rms_error": 6.776065220555456e-06,
+          "max_absolute_error": 1.369975507259369e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 3.343876844069452e-08
+        },
+        {
+          "program": 48,
+          "midi": 60,
+          "before_rms": 0.02332992569049946,
+          "after_rms": 0.023329925676494542,
+          "rms_delta_db": -5.2141263278383716e-09,
+          "relative_rms_error": 6.781769429949805e-06,
+          "max_absolute_error": 1.4118850231170654e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -2.0873521852649356e-08
+        },
+        {
+          "program": 48,
+          "midi": 84,
+          "before_rms": 0.02332988767239097,
+          "after_rms": 0.02332988767227561,
+          "rms_delta_db": -4.2949216705456485e-11,
+          "relative_rms_error": 6.781870015988825e-06,
+          "max_absolute_error": 1.4173565432429314e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.4401108137858066e-10
+        },
+        {
+          "program": 49,
+          "midi": 36,
+          "before_rms": 0.05966123736787236,
+          "after_rms": 0.05966123736787236,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 49,
+          "midi": 60,
+          "before_rms": 0.046326807920692964,
+          "after_rms": 0.046326807920692964,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 49,
+          "midi": 84,
+          "before_rms": 0.03010358530905047,
+          "after_rms": 0.03010358530905047,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 50,
+          "midi": 36,
+          "before_rms": 0.06806499397174497,
+          "after_rms": 0.06807075761051486,
+          "rms_delta_db": 0.0007354766065053814,
+          "relative_rms_error": 8.520266415895043e-05,
+          "max_absolute_error": 2.0742416381835938e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0007446100599117894
+        },
+        {
+          "program": 50,
+          "midi": 60,
+          "before_rms": 0.05447096564041867,
+          "after_rms": 0.05447879685038785,
+          "rms_delta_db": 0.001248667717797019,
+          "relative_rms_error": 0.00014397630967778098,
+          "max_absolute_error": 3.504753112792969e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0012522723089515935
+        },
+        {
+          "program": 50,
+          "midi": 84,
+          "before_rms": 0.03571337985861087,
+          "after_rms": 0.03572199750283505,
+          "rms_delta_db": 0.0020956537166650765,
+          "relative_rms_error": 0.00024189924920567095,
+          "max_absolute_error": 4.9591064453125e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.002106072626618464
+        },
+        {
+          "program": 51,
+          "midi": 36,
+          "before_rms": 0.039352939053886024,
+          "after_rms": 0.039351903914141624,
+          "rms_delta_db": -0.00022847665381911975,
+          "relative_rms_error": 2.6376358337265483e-05,
+          "max_absolute_error": 5.424022674560547e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0002297310230957964
+        },
+        {
+          "program": 51,
+          "midi": 60,
+          "before_rms": 0.0550271419113278,
+          "after_rms": 0.05502570095830836,
+          "rms_delta_db": -0.0002274536227302003,
+          "relative_rms_error": 2.631747571852363e-05,
+          "max_absolute_error": 7.62939453125e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0002297406947036245
+        },
+        {
+          "program": 51,
+          "midi": 84,
+          "before_rms": 0.030947276047638944,
+          "after_rms": 0.0309464606209655,
+          "rms_delta_db": -0.00022886665032991805,
+          "relative_rms_error": 2.6399153034372442e-05,
+          "max_absolute_error": 5.0067901611328125e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0002297421992909909
+        },
+        {
+          "program": 52,
+          "midi": 36,
+          "before_rms": 0.05532357485851215,
+          "after_rms": 0.05532337401031922,
+          "rms_delta_db": -3.1533544406889006e-05,
+          "relative_rms_error": 3.6306377719767716e-06,
+          "max_absolute_error": 6.258487701416016e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": -3.1535398266635364e-05
+        },
+        {
+          "program": 52,
+          "midi": 60,
+          "before_rms": 0.06275649695879383,
+          "after_rms": 0.06275611378956099,
+          "rms_delta_db": -5.303316773289438e-05,
+          "relative_rms_error": 6.1057526019593965e-06,
+          "max_absolute_error": 1.4901161193847656e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -5.303577282448478e-05
+        },
+        {
+          "program": 52,
+          "midi": 84,
+          "before_rms": 0.032035302054959844,
+          "after_rms": 0.03203497308990592,
+          "rms_delta_db": -8.91943774789321e-05,
+          "relative_rms_error": 1.0268927485196572e-05,
+          "max_absolute_error": 1.6391277313232422e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -8.918776780742224e-05
+        },
+        {
+          "program": 53,
+          "midi": 36,
+          "before_rms": 0.04386894537107331,
+          "after_rms": 0.04387294966952372,
+          "rms_delta_db": 0.0007928001652163781,
+          "relative_rms_error": 9.127903698696646e-05,
+          "max_absolute_error": 7.897615432739258e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.000792806377438969
+        },
+        {
+          "program": 53,
+          "midi": 60,
+          "before_rms": 0.042053860113147976,
+          "after_rms": 0.04205769830062331,
+          "rms_delta_db": 0.0007927108585978801,
+          "relative_rms_error": 9.127377964805322e-05,
+          "max_absolute_error": 7.897615432739258e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0007928087767154975
+        },
+        {
+          "program": 53,
+          "midi": 84,
+          "before_rms": 0.04286243916562233,
+          "after_rms": 0.04286635056519929,
+          "rms_delta_db": 0.0007925922011980719,
+          "relative_rms_error": 9.126682857309114e-05,
+          "max_absolute_error": 7.897615432739258e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0007928016292597076
+        },
+        {
+          "program": 54,
+          "midi": 36,
+          "before_rms": 0.0796381848107904,
+          "after_rms": 0.07965136354825773,
+          "rms_delta_db": 0.0014372450754083256,
+          "relative_rms_error": 0.00016595498568163275,
+          "max_absolute_error": 6.23464584350586e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00144546090100473
+        },
+        {
+          "program": 54,
+          "midi": 60,
+          "before_rms": 0.06617865274750696,
+          "after_rms": 0.06619707688850242,
+          "rms_delta_db": 0.0024178156650933886,
+          "relative_rms_error": 0.0002791560784468583,
+          "max_absolute_error": 0.00010451674461364746,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.002430971788769764
+        },
+        {
+          "program": 54,
+          "midi": 84,
+          "before_rms": 0.053105016305850336,
+          "after_rms": 0.053130007763482534,
+          "rms_delta_db": 0.0040866568966992515,
+          "relative_rms_error": 0.0004707034668340535,
+          "max_absolute_error": 0.00017601251602172852,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.004088380221779705
+        },
+        {
+          "program": 55,
+          "midi": 36,
+          "before_rms": 0.0476241127818966,
+          "after_rms": 0.047626433946041845,
+          "rms_delta_db": 0.00042333354073006285,
+          "relative_rms_error": 7.053695949314622e-05,
+          "max_absolute_error": 3.0368566513061523e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0003874781625600661
+        },
+        {
+          "program": 55,
+          "midi": 60,
+          "before_rms": 0.03949915563785276,
+          "after_rms": 0.03950239515239141,
+          "rms_delta_db": 0.0007123421122233132,
+          "relative_rms_error": 0.00010559203103849315,
+          "max_absolute_error": 4.251301288604736e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0006701455735274484
+        },
+        {
+          "program": 55,
+          "midi": 84,
+          "before_rms": 0.031326322445733,
+          "after_rms": 0.031330667803970466,
+          "rms_delta_db": 0.0012047595008497936,
+          "relative_rms_error": 0.00016554884718225865,
+          "max_absolute_error": 5.967915058135986e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0011519010466352509
+        },
+        {
+          "program": 56,
+          "midi": 36,
+          "before_rms": 0.031457047749973134,
+          "after_rms": 0.03145644786399834,
+          "rms_delta_db": -0.00016564151528411552,
+          "relative_rms_error": 2.036281079692115e-05,
+          "max_absolute_error": 2.7641654014587402e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0001666111059248131
+        },
+        {
+          "program": 56,
+          "midi": 60,
+          "before_rms": 0.044440727963581984,
+          "after_rms": 0.0444398765354166,
+          "rms_delta_db": -0.00016641225880856855,
+          "relative_rms_error": 2.0355550307383424e-05,
+          "max_absolute_error": 3.889203071594238e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0001665731296346226
+        },
+        {
+          "program": 56,
+          "midi": 84,
+          "before_rms": 0.03148117601461874,
+          "after_rms": 0.031480574592464665,
+          "rms_delta_db": -0.0001659384120045782,
+          "relative_rms_error": 1.9293496904106623e-05,
+          "max_absolute_error": 2.384185791015625e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.00016667124628873086
+        },
+        {
+          "program": 57,
+          "midi": 36,
+          "before_rms": 0.04843722049847598,
+          "after_rms": 0.04843722049847598,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 57,
+          "midi": 60,
+          "before_rms": 0.04226281050518563,
+          "after_rms": 0.04226281050518563,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 57,
+          "midi": 84,
+          "before_rms": 0.026148389760274646,
+          "after_rms": 0.026148389760274646,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 58,
+          "midi": 36,
+          "before_rms": 0.07391196377031893,
+          "after_rms": 0.07391196377031893,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 58,
+          "midi": 60,
+          "before_rms": 0.04195571841415422,
+          "after_rms": 0.04195571841415422,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 58,
+          "midi": 84,
+          "before_rms": 0.027486369061018447,
+          "after_rms": 0.027486369061018447,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 59,
+          "midi": 36,
+          "before_rms": 0.11329441027492643,
+          "after_rms": 0.11329494568551514,
+          "rms_delta_db": 4.104797654631269e-05,
+          "relative_rms_error": 4.7261663701224915e-06,
+          "max_absolute_error": 1.3709068298339844e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.104736419547931e-05
+        },
+        {
+          "program": 59,
+          "midi": 60,
+          "before_rms": 0.047075439545112494,
+          "after_rms": 0.047075813548445214,
+          "rms_delta_db": 6.90070830822044e-05,
+          "relative_rms_error": 7.94644011309444e-06,
+          "max_absolute_error": 1.1622905731201172e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 6.904130293088912e-05
+        },
+        {
+          "program": 59,
+          "midi": 84,
+          "before_rms": 0.03854628532010668,
+          "after_rms": 0.038546800081817635,
+          "rms_delta_db": 0.0001159938894144694,
+          "relative_rms_error": 1.3360612339921454e-05,
+          "max_absolute_error": 1.952052116394043e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00011610022199973219
+        },
+        {
+          "program": 60,
+          "midi": 36,
+          "before_rms": 0.13204150689541982,
+          "after_rms": 0.13206027051302863,
+          "rms_delta_db": 0.001234211398608067,
+          "relative_rms_error": 0.0001421051144622515,
+          "max_absolute_error": 4.106760025024414e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.001234234647393818
+        },
+        {
+          "program": 60,
+          "midi": 60,
+          "before_rms": 0.06392739603121743,
+          "after_rms": 0.06394267366633687,
+          "rms_delta_db": 0.0020755420486326024,
+          "relative_rms_error": 0.00023899454040261466,
+          "max_absolute_error": 4.1171908378601074e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0020757213667316017
+        },
+        {
+          "program": 60,
+          "midi": 84,
+          "before_rms": 0.0477147675172951,
+          "after_rms": 0.047733940146171695,
+          "rms_delta_db": 0.0034894414981621246,
+          "relative_rms_error": 0.0004019036970990058,
+          "max_absolute_error": 6.92903995513916e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.003490937684835089
+        },
+        {
+          "program": 61,
+          "midi": 36,
+          "before_rms": 0.0678834943635863,
+          "after_rms": 0.0678834943635863,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 61,
+          "midi": 60,
+          "before_rms": 0.05444152667770228,
+          "after_rms": 0.05444152667770228,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 61,
+          "midi": 84,
+          "before_rms": 0.04232520939433994,
+          "after_rms": 0.04232520939433994,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 62,
+          "midi": 36,
+          "before_rms": 0.03084204372903916,
+          "after_rms": 0.03084204372903916,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 62,
+          "midi": 60,
+          "before_rms": 0.020604087856429365,
+          "after_rms": 0.020604087856429365,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 62,
+          "midi": 84,
+          "before_rms": 0.01661346829315245,
+          "after_rms": 0.01661346829315245,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 63,
+          "midi": 36,
+          "before_rms": 0.06439474699980377,
+          "after_rms": 0.0643930113557188,
+          "rms_delta_db": -0.0002341156204039102,
+          "relative_rms_error": 2.6959882775980476e-05,
+          "max_absolute_error": 9.268522262573242e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0002342336157382065
+        },
+        {
+          "program": 63,
+          "midi": 60,
+          "before_rms": 0.04232816584107564,
+          "after_rms": 0.04232624764049392,
+          "rms_delta_db": -0.00039363047652553513,
+          "relative_rms_error": 4.533479708957694e-05,
+          "max_absolute_error": 1.1041760444641113e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.00039392870578811023
+        },
+        {
+          "program": 63,
+          "midi": 84,
+          "before_rms": 0.02475625082050166,
+          "after_rms": 0.024754362656550833,
+          "rms_delta_db": -0.0006624997167932306,
+          "relative_rms_error": 7.627055988413862e-05,
+          "max_absolute_error": 1.3113021850585938e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.000662514892769739
+        },
+        {
+          "program": 64,
+          "midi": 36,
+          "before_rms": 0.09238409953717927,
+          "after_rms": 0.09238907903835532,
+          "rms_delta_db": 0.00046815666658696624,
+          "relative_rms_error": 5.391766276061432e-05,
+          "max_absolute_error": 1.856684684753418e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.000468467544354184
+        },
+        {
+          "program": 64,
+          "midi": 60,
+          "before_rms": 0.03748089049383589,
+          "after_rms": 0.03748428446686504,
+          "rms_delta_db": 0.0007864898654959003,
+          "relative_rms_error": 9.063097262221514e-05,
+          "max_absolute_error": 1.563131809234619e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0007878599899611792
+        },
+        {
+          "program": 64,
+          "midi": 84,
+          "before_rms": 0.0292815435321743,
+          "after_rms": 0.029286004860849073,
+          "rms_delta_db": 0.0013232791758035981,
+          "relative_rms_error": 0.00015246011089889663,
+          "max_absolute_error": 2.6226043701171875e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0013250250593909417
+        },
+        {
+          "program": 65,
+          "midi": 36,
+          "before_rms": 0.10002929210005866,
+          "after_rms": 0.10002929210005866,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 65,
+          "midi": 60,
+          "before_rms": 0.060847208981174,
+          "after_rms": 0.060847208981174,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 65,
+          "midi": 84,
+          "before_rms": 0.039232132763491655,
+          "after_rms": 0.039232132763491655,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 66,
+          "midi": 36,
+          "before_rms": 0.024469500808623312,
+          "after_rms": 0.0244700023956965,
+          "rms_delta_db": 0.00017804553280963977,
+          "relative_rms_error": 2.051787707058053e-05,
+          "max_absolute_error": 3.248453140258789e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00017837839753209728
+        },
+        {
+          "program": 66,
+          "midi": 60,
+          "before_rms": 0.01773595054476064,
+          "after_rms": 0.017736563051571116,
+          "rms_delta_db": 0.00029995994191127205,
+          "relative_rms_error": 3.453704241744159e-05,
+          "max_absolute_error": 5.4389238357543945e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.000300005016430166
+        },
+        {
+          "program": 66,
+          "midi": 84,
+          "before_rms": 0.01442367445486906,
+          "after_rms": 0.01442451130802061,
+          "rms_delta_db": 0.0005039356151822918,
+          "relative_rms_error": 5.8055185458595644e-05,
+          "max_absolute_error": 9.119510650634766e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0005045570262388829
+        },
+        {
+          "program": 67,
+          "midi": 36,
+          "before_rms": 0.042614160237603116,
+          "after_rms": 0.042615515038193094,
+          "rms_delta_db": 0.0002761396982691599,
+          "relative_rms_error": 3.179231798061176e-05,
+          "max_absolute_error": 8.344650268554688e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0002761434193246874
+        },
+        {
+          "program": 67,
+          "midi": 60,
+          "before_rms": 0.038913772296768644,
+          "after_rms": 0.038915852694431576,
+          "rms_delta_db": 0.0004643502910318395,
+          "relative_rms_error": 5.346605266740621e-05,
+          "max_absolute_error": 1.6808509826660156e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00046441603824278225
+        },
+        {
+          "program": 67,
+          "midi": 84,
+          "before_rms": 0.029954560229606988,
+          "after_rms": 0.029957253913090703,
+          "rms_delta_db": 0.0007810492074060633,
+          "relative_rms_error": 8.992571492337063e-05,
+          "max_absolute_error": 2.822279930114746e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0007810514960179993
+        },
+        {
+          "program": 68,
+          "midi": 36,
+          "before_rms": 0.058878331854243834,
+          "after_rms": 0.058878331854243834,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 68,
+          "midi": 60,
+          "before_rms": 0.055087333712324764,
+          "after_rms": 0.055087333712324764,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 68,
+          "midi": 84,
+          "before_rms": 0.04160506835598823,
+          "after_rms": 0.04160506835598823,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 69,
+          "midi": 36,
+          "before_rms": 0.0726850888919349,
+          "after_rms": 0.07269158359517768,
+          "rms_delta_db": 0.0007760842874054189,
+          "relative_rms_error": 8.935717413523326e-05,
+          "max_absolute_error": 1.4141201972961426e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0007761431455836742
+        },
+        {
+          "program": 69,
+          "midi": 60,
+          "before_rms": 0.0784031413445233,
+          "after_rms": 0.0784149246228797,
+          "rms_delta_db": 0.001305312049852869,
+          "relative_rms_error": 0.0001502909694632051,
+          "max_absolute_error": 3.357231616973877e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0013053129787559878
+        },
+        {
+          "program": 69,
+          "midi": 84,
+          "before_rms": 0.04341975618013173,
+          "after_rms": 0.04343073133714572,
+          "rms_delta_db": 0.0021952439374029217,
+          "relative_rms_error": 0.0002527695906832911,
+          "max_absolute_error": 4.744529724121094e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0021952635821176686
+        },
+        {
+          "program": 70,
+          "midi": 36,
+          "before_rms": 0.03173964978590653,
+          "after_rms": 0.03173964254501933,
+          "rms_delta_db": -1.9815453142869445e-06,
+          "relative_rms_error": 4.3425562007817344e-05,
+          "max_absolute_error": 1.7158687114715576e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": -1.1136821066951949e-07
+        },
+        {
+          "program": 70,
+          "midi": 60,
+          "before_rms": 0.02512916366255246,
+          "after_rms": 0.025129150852314066,
+          "rms_delta_db": -4.427857081981996e-06,
+          "relative_rms_error": 5.038187341684668e-05,
+          "max_absolute_error": 1.640990376472473e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 6.737576232036627e-08
+        },
+        {
+          "program": 70,
+          "midi": 84,
+          "before_rms": 0.019507979466678448,
+          "after_rms": 0.019507980079832843,
+          "rms_delta_db": 2.7300578812230695e-07,
+          "relative_rms_error": 3.4031665900486946e-05,
+          "max_absolute_error": 8.132308721542358e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 5.192077941526273e-09
+        },
+        {
+          "program": 71,
+          "midi": 36,
+          "before_rms": 0.035809567489028554,
+          "after_rms": 0.03580920858571488,
+          "rms_delta_db": -8.705523171929275e-05,
+          "relative_rms_error": 2.0582995744748016e-05,
+          "max_absolute_error": 8.866190910339355e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -8.905853468758944e-05
+        },
+        {
+          "program": 71,
+          "midi": 60,
+          "before_rms": 0.027410287357190557,
+          "after_rms": 0.02740978652688059,
+          "rms_delta_db": -0.00015870671057852416,
+          "relative_rms_error": 4.6439053092542556e-05,
+          "max_absolute_error": 2.7164816856384277e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.00015003031027096503
+        },
+        {
+          "program": 71,
+          "midi": 84,
+          "before_rms": 0.02112849934827972,
+          "after_rms": 0.02112787286936581,
+          "rms_delta_db": -0.00025754821919689487,
+          "relative_rms_error": 6.387826118488558e-05,
+          "max_absolute_error": 2.7671456336975098e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.00025240683449637114
+        },
+        {
+          "program": 72,
+          "midi": 36,
+          "before_rms": 0.03187550210808174,
+          "after_rms": 0.03187517753919885,
+          "rms_delta_db": -8.844359032181004e-05,
+          "relative_rms_error": 1.0416923716854954e-05,
+          "max_absolute_error": 1.6391277313232422e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -8.917598734738128e-05
+        },
+        {
+          "program": 72,
+          "midi": 60,
+          "before_rms": 0.02456745794943942,
+          "after_rms": 0.024567035775113613,
+          "rms_delta_db": -0.00014926213029254926,
+          "relative_rms_error": 1.836430644735507e-05,
+          "max_absolute_error": 3.3229589462280273e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.00015002598179501
+        },
+        {
+          "program": 72,
+          "midi": 84,
+          "before_rms": 0.018941502320199085,
+          "after_rms": 0.018940955278220397,
+          "rms_delta_db": -0.00025085733903420246,
+          "relative_rms_error": 3.0246954359020743e-05,
+          "max_absolute_error": 5.27501106262207e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0002522804538452955
+        },
+        {
+          "program": 73,
+          "midi": 36,
+          "before_rms": 0.0649166816706944,
+          "after_rms": 0.06491771371142117,
+          "rms_delta_db": 0.0001380865498462349,
+          "relative_rms_error": 2.0764842914227447e-05,
+          "max_absolute_error": 2.065300941467285e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00013807221886027503
+        },
+        {
+          "program": 73,
+          "midi": 60,
+          "before_rms": 0.035802737351756354,
+          "after_rms": 0.03580368342935746,
+          "rms_delta_db": 0.0002295192398428579,
+          "relative_rms_error": 2.946403488405747e-05,
+          "max_absolute_error": 1.4796853065490723e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.00023220727226082425
+        },
+        {
+          "program": 73,
+          "midi": 84,
+          "before_rms": 0.02748788701074617,
+          "after_rms": 0.027489119289446313,
+          "rms_delta_db": 0.00038937866991656353,
+          "relative_rms_error": 4.750649437383945e-05,
+          "max_absolute_error": 1.7717480659484863e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0003905239329503286
+        },
+        {
+          "program": 74,
+          "midi": 36,
+          "before_rms": 0.04713582414593461,
+          "after_rms": 0.047136083855037,
+          "rms_delta_db": 4.78574084095264e-05,
+          "relative_rms_error": 5.606555267426465e-06,
+          "max_absolute_error": 5.885958671569824e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9548421933606097e-05
+        },
+        {
+          "program": 74,
+          "midi": 60,
+          "before_rms": 0.05846070340432939,
+          "after_rms": 0.05846102995755162,
+          "rms_delta_db": 4.851801573069851e-05,
+          "relative_rms_error": 5.644883634293793e-06,
+          "max_absolute_error": 5.885958671569824e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9543402356191736e-05
+        },
+        {
+          "program": 74,
+          "midi": 84,
+          "before_rms": 0.03245087644453817,
+          "after_rms": 0.03245105498832536,
+          "rms_delta_db": 4.77893830551289e-05,
+          "relative_rms_error": 5.60253378960194e-06,
+          "max_absolute_error": 4.172325134277344e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.954947026922991e-05
+        },
+        {
+          "program": 75,
+          "midi": 36,
+          "before_rms": 0.042892892465573006,
+          "after_rms": 0.0429143298969416,
+          "rms_delta_db": 0.0043400348301341285,
+          "relative_rms_error": 0.0005080558604665988,
+          "max_absolute_error": 6.872415542602539e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.004484781572778923
+        },
+        {
+          "program": 75,
+          "midi": 60,
+          "before_rms": 0.04282307104825977,
+          "after_rms": 0.04284457630886082,
+          "rms_delta_db": 0.004360860369225865,
+          "relative_rms_error": 0.0005092737541967685,
+          "max_absolute_error": 6.872415542602539e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.004484779933776907
+        },
+        {
+          "program": 75,
+          "midi": 84,
+          "before_rms": 0.03113261885011213,
+          "after_rms": 0.031148276347257687,
+          "rms_delta_db": 0.0043672877420532314,
+          "relative_rms_error": 0.0005096492692084831,
+          "max_absolute_error": 4.86522912979126e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.004484778947869739
+        },
+        {
+          "program": 76,
+          "midi": 36,
+          "before_rms": 0.05561866423509136,
+          "after_rms": 0.05561897657444397,
+          "rms_delta_db": 4.877746645322478e-05,
+          "relative_rms_error": 5.660341233341089e-06,
+          "max_absolute_error": 6.407499313354492e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955514981702166e-05
+        },
+        {
+          "program": 76,
+          "midi": 60,
+          "before_rms": 0.07816675641361023,
+          "after_rms": 0.0781671935197744,
+          "rms_delta_db": 4.85710992868786e-05,
+          "relative_rms_error": 5.648302498748251e-06,
+          "max_absolute_error": 9.08970832824707e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955189564890544e-05
+        },
+        {
+          "program": 76,
+          "midi": 84,
+          "before_rms": 0.04677012046247117,
+          "after_rms": 0.04677038020398542,
+          "rms_delta_db": 4.823763206500953e-05,
+          "relative_rms_error": 5.628700733357334e-06,
+          "max_absolute_error": 5.438923835754395e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9550572832535e-05
+        },
+        {
+          "program": 77,
+          "midi": 36,
+          "before_rms": 0.061578272226768524,
+          "after_rms": 0.06157555996525209,
+          "rms_delta_db": -0.0003825849961117409,
+          "relative_rms_error": 0.00011034879901229953,
+          "max_absolute_error": 1.679360866546631e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0003811458994846029
+        },
+        {
+          "program": 77,
+          "midi": 60,
+          "before_rms": 0.07307636455998176,
+          "after_rms": 0.07307194353761846,
+          "rms_delta_db": -0.0005255006075212147,
+          "relative_rms_error": 0.00014400283574348766,
+          "max_absolute_error": 2.781301736831665e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0005256702260947745
+        },
+        {
+          "program": 77,
+          "midi": 84,
+          "before_rms": 0.03175423559153465,
+          "after_rms": 0.03175307021872578,
+          "rms_delta_db": -0.0003187759101748313,
+          "relative_rms_error": 0.0001125165058810553,
+          "max_absolute_error": 9.041279554367065e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0003193950631119656
+        },
+        {
+          "program": 78,
+          "midi": 36,
+          "before_rms": 0.030769205318999383,
+          "after_rms": 0.030774800641661236,
+          "rms_delta_db": 0.0015793692498722533,
+          "relative_rms_error": 0.00018220718376727235,
+          "max_absolute_error": 2.0451843738555908e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856105312216195
+        },
+        {
+          "program": 78,
+          "midi": 60,
+          "before_rms": 0.03736135142908693,
+          "after_rms": 0.03736816217112237,
+          "rms_delta_db": 0.0015832393651975863,
+          "relative_rms_error": 0.0001824304201975335,
+          "max_absolute_error": 2.0451843738555908e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.001585611657803658
+        },
+        {
+          "program": 78,
+          "midi": 84,
+          "before_rms": 0.04219221485338132,
+          "after_rms": 0.04219990221229748,
+          "rms_delta_db": 0.001582412046533827,
+          "relative_rms_error": 0.0001823825205856235,
+          "max_absolute_error": 2.0451843738555908e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0015856071470693317
+        },
+        {
+          "program": 79,
+          "midi": 36,
+          "before_rms": 0.032015273687653056,
+          "after_rms": 0.03205435499962504,
+          "rms_delta_db": 0.010596471737262907,
+          "relative_rms_error": 0.0012207154383888212,
+          "max_absolute_error": 0.00012520700693130493,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.010596586108308477
+        },
+        {
+          "program": 79,
+          "midi": 60,
+          "before_rms": 0.027331031987567,
+          "after_rms": 0.02738716295099154,
+          "rms_delta_db": 0.017820307309021954,
+          "relative_rms_error": 0.0020538004951298613,
+          "max_absolute_error": 0.00021047145128250122,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.017821273888379712
+        },
+        {
+          "program": 79,
+          "midi": 84,
+          "before_rms": 0.024735455734464715,
+          "after_rms": 0.024820955489499204,
+          "rms_delta_db": 0.02997158812898278,
+          "relative_rms_error": 0.003456572581377919,
+          "max_absolute_error": 0.0003537014126777649,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.029971684675511315
+        },
+        {
+          "program": 80,
+          "midi": 36,
+          "before_rms": 0.0461607254824597,
+          "after_rms": 0.04616019319139345,
+          "rms_delta_db": -0.00010015978010597835,
+          "relative_rms_error": 1.1866518160086777e-05,
+          "max_absolute_error": 2.9206275939941406e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.00010606821569209543
+        },
+        {
+          "program": 80,
+          "midi": 60,
+          "before_rms": 0.0350850318183552,
+          "after_rms": 0.035084337640877816,
+          "rms_delta_db": -0.0001718570083907862,
+          "relative_rms_error": 2.0158005435890666e-05,
+          "max_absolute_error": 4.9620866775512695e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0001783880510912845
+        },
+        {
+          "program": 80,
+          "midi": 84,
+          "before_rms": 0.011476015444322576,
+          "after_rms": 0.011475634735025032,
+          "rms_delta_db": -0.0002881534806533851,
+          "relative_rms_error": 3.384990658073164e-05,
+          "max_absolute_error": 3.516674041748047e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -0.0003000069433099836
+        },
+        {
+          "program": 81,
+          "midi": 36,
+          "before_rms": 0.03942068501630758,
+          "after_rms": 0.039420686529793275,
+          "rms_delta_db": 3.334789716620073e-07,
+          "relative_rms_error": 4.290943905396575e-06,
+          "max_absolute_error": 1.2628734111785889e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -1.7424557408872025e-08
+        },
+        {
+          "program": 81,
+          "midi": 60,
+          "before_rms": 0.034667739554881984,
+          "after_rms": 0.034667739472898015,
+          "rms_delta_db": -2.0540817303965707e-08,
+          "relative_rms_error": 4.526792760755819e-06,
+          "max_absolute_error": 1.3548415154218674e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -6.596717333364621e-09
+        },
+        {
+          "program": 81,
+          "midi": 84,
+          "before_rms": 0.030448399574821008,
+          "after_rms": 0.030448399571276527,
+          "rms_delta_db": -1.0111195282717042e-09,
+          "relative_rms_error": 1.6755710607054081e-06,
+          "max_absolute_error": 4.824250936508179e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": -2.6643741092100515e-09
+        },
+        {
+          "program": 82,
+          "midi": 36,
+          "before_rms": 0.039598993663396524,
+          "after_rms": 0.03959899021570485,
+          "rms_delta_db": -7.562381742351071e-07,
+          "relative_rms_error": 1.0291847230502907e-05,
+          "max_absolute_error": 6.858259439468384e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -6.55848688250704e-08
+        },
+        {
+          "program": 82,
+          "midi": 60,
+          "before_rms": 0.03470102058418786,
+          "after_rms": 0.034701019577514806,
+          "rms_delta_db": -2.5197677161444596e-07,
+          "relative_rms_error": 1.1171515533479013e-05,
+          "max_absolute_error": 7.040798664093018e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 3.1347020668280556e-08
+        },
+        {
+          "program": 82,
+          "midi": 84,
+          "before_rms": 0.03043793755401161,
+          "after_rms": 0.030437937681362985,
+          "rms_delta_db": 3.63414905361067e-08,
+          "relative_rms_error": 4.275584867830771e-06,
+          "max_absolute_error": 2.5061890482902527e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 1.5999388434704017e-09
+        },
+        {
+          "program": 83,
+          "midi": 36,
+          "before_rms": 0.011319027059903161,
+          "after_rms": 0.011319013595867454,
+          "rms_delta_db": -1.0331912554852852e-05,
+          "relative_rms_error": 0.00011941607730087197,
+          "max_absolute_error": 2.2514723241329193e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 9.746478448516101e-06
+        },
+        {
+          "program": 83,
+          "midi": 60,
+          "before_rms": 0.01128191904493287,
+          "after_rms": 0.011281914679692506,
+          "rms_delta_db": -3.360776055054981e-06,
+          "relative_rms_error": 3.568947169580431e-05,
+          "max_absolute_error": 7.233582437038422e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 7.543420922523287e-07
+        },
+        {
+          "program": 83,
+          "midi": 84,
+          "before_rms": 0.006723684073339974,
+          "after_rms": 0.00672368480469256,
+          "rms_delta_db": 9.447867327641978e-07,
+          "relative_rms_error": 3.557648483462503e-05,
+          "max_absolute_error": 4.151137545704842e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": -1.8956615792145284e-07
+        },
+        {
+          "program": 84,
+          "midi": 36,
+          "before_rms": 0.019801086161821996,
+          "after_rms": 0.0198010861637009,
+          "rms_delta_db": 8.241952563845261e-10,
+          "relative_rms_error": 1.8351541649963737e-06,
+          "max_absolute_error": 2.4493783712387085e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 1.1662135797417725e-07
+        },
+        {
+          "program": 84,
+          "midi": 60,
+          "before_rms": 0.02454593108638083,
+          "after_rms": 0.024545931098099716,
+          "rms_delta_db": 4.146876188224921e-09,
+          "relative_rms_error": 1.8764783233339849e-06,
+          "max_absolute_error": 3.4831464290618896e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 2.763480935081876e-09
+        },
+        {
+          "program": 84,
+          "midi": 84,
+          "before_rms": 0.021543129803432856,
+          "after_rms": 0.021543129799916065,
+          "rms_delta_db": -1.4179210700940902e-09,
+          "relative_rms_error": 6.782688117227137e-07,
+          "max_absolute_error": 1.2153759598731995e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.985750436903416e-09
+        },
+        {
+          "program": 85,
+          "midi": 36,
+          "before_rms": 0.07146325825389042,
+          "after_rms": 0.07146368890863378,
+          "rms_delta_db": 5.234309760503422e-05,
+          "relative_rms_error": 6.0658449556868515e-06,
+          "max_absolute_error": 1.7881393432617188e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 5.303651464513177e-05
+        },
+        {
+          "program": 85,
+          "midi": 60,
+          "before_rms": 0.05540377376376929,
+          "after_rms": 0.05540433277653262,
+          "rms_delta_db": 8.763841058593637e-05,
+          "relative_rms_error": 1.0178726535859657e-05,
+          "max_absolute_error": 2.9802322387695312e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 8.9191812801505e-05
+        },
+        {
+          "program": 85,
+          "midi": 84,
+          "before_rms": 0.017984837097587324,
+          "after_rms": 0.017985141785981255,
+          "rms_delta_db": 0.0001471499203453588,
+          "relative_rms_error": 1.7105058407298048e-05,
+          "max_absolute_error": 2.1010637283325195e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0001500004719644092
+        },
+        {
+          "program": 86,
+          "midi": 36,
+          "before_rms": 0.01567414301553454,
+          "after_rms": 0.01567414301553454,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 86,
+          "midi": 60,
+          "before_rms": 0.013499323426337804,
+          "after_rms": 0.013499323426337804,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 86,
+          "midi": 84,
+          "before_rms": 0.00833012438566666,
+          "after_rms": 0.00833012438566666,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 87,
+          "midi": 36,
+          "before_rms": 0.015093020105150947,
+          "after_rms": 0.015093020105150947,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 87,
+          "midi": 60,
+          "before_rms": 0.014829834791422768,
+          "after_rms": 0.014829834791422768,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 87,
+          "midi": 84,
+          "before_rms": 0.014847595953717027,
+          "after_rms": 0.014847595953717027,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 88,
+          "midi": 36,
+          "before_rms": 0.011256050563516754,
+          "after_rms": 0.011256050563516754,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 88,
+          "midi": 60,
+          "before_rms": 0.011256244438294817,
+          "after_rms": 0.011256244438294817,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 88,
+          "midi": 84,
+          "before_rms": 0.011256285916733286,
+          "after_rms": 0.011256285916733286,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 89,
+          "midi": 36,
+          "before_rms": 0.07890566911186798,
+          "after_rms": 0.07890566911186798,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 89,
+          "midi": 60,
+          "before_rms": 0.06112310618134604,
+          "after_rms": 0.06112310618134604,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 89,
+          "midi": 84,
+          "before_rms": 0.04651155303288124,
+          "after_rms": 0.04651155303288124,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 90,
+          "midi": 36,
+          "before_rms": 0.04894385974644573,
+          "after_rms": 0.048943887669067175,
+          "rms_delta_db": 4.955325148993331e-06,
+          "relative_rms_error": 9.089527100968692e-05,
+          "max_absolute_error": 4.869699478149414e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 1.712471251884624e-07
+        },
+        {
+          "program": 90,
+          "midi": 60,
+          "before_rms": 0.06399270600112239,
+          "after_rms": 0.06399271059924345,
+          "rms_delta_db": 6.241144207903976e-07,
+          "relative_rms_error": 5.3049005202020584e-05,
+          "max_absolute_error": 5.342811346054077e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 1.5115215867329003e-09
+        },
+        {
+          "program": 90,
+          "midi": 84,
+          "before_rms": 0.026175625475253764,
+          "after_rms": 0.026175625771382376,
+          "rms_delta_db": 9.826471756079721e-08,
+          "relative_rms_error": 6.329686980716158e-05,
+          "max_absolute_error": 3.284960985183716e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 91,
+          "midi": 36,
+          "before_rms": 0.06826581196316696,
+          "after_rms": 0.06826581196316696,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 91,
+          "midi": 60,
+          "before_rms": 0.04578227356833591,
+          "after_rms": 0.04578227356833591,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 91,
+          "midi": 84,
+          "before_rms": 0.03518269526931952,
+          "after_rms": 0.03518269526931952,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 92,
+          "midi": 36,
+          "before_rms": 0.056050157638715924,
+          "after_rms": 0.05605047518168333,
+          "rms_delta_db": 4.9208342555289914e-05,
+          "relative_rms_error": 5.684995725671044e-06,
+          "max_absolute_error": 6.407499313354492e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.95460173369966e-05
+        },
+        {
+          "program": 92,
+          "midi": 60,
+          "before_rms": 0.056112664275173606,
+          "after_rms": 0.05611298203002542,
+          "rms_delta_db": 4.918632533078824e-05,
+          "relative_rms_error": 5.683888742793905e-06,
+          "max_absolute_error": 6.407499313354492e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955374054918755e-05
+        },
+        {
+          "program": 92,
+          "midi": 84,
+          "before_rms": 0.022439875325284287,
+          "after_rms": 0.02244000240101376,
+          "rms_delta_db": 4.918755655398141e-05,
+          "relative_rms_error": 5.684054598620255e-06,
+          "max_absolute_error": 2.5704503059387207e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9551626063056845e-05
+        },
+        {
+          "program": 93,
+          "midi": 36,
+          "before_rms": 0.059288752134048384,
+          "after_rms": 0.05928908525962929,
+          "rms_delta_db": 4.8803251853956446e-05,
+          "relative_rms_error": 5.661635502413205e-06,
+          "max_absolute_error": 7.003545761108398e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955134066425665e-05
+        },
+        {
+          "program": 93,
+          "midi": 60,
+          "before_rms": 0.0611195305559915,
+          "after_rms": 0.06111987403435434,
+          "rms_delta_db": 4.881265845101897e-05,
+          "relative_rms_error": 5.6621505062319545e-06,
+          "max_absolute_error": 7.003545761108398e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9551052287630226e-05
+        },
+        {
+          "program": 93,
+          "midi": 84,
+          "before_rms": 0.024370381130810113,
+          "after_rms": 0.024370518097791775,
+          "rms_delta_db": 4.8816501361165496e-05,
+          "relative_rms_error": 5.662497919394829e-06,
+          "max_absolute_error": 2.7939677238464355e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955393639912135e-05
+        },
+        {
+          "program": 94,
+          "midi": 36,
+          "before_rms": 0.04508908461752704,
+          "after_rms": 0.045089331990750596,
+          "rms_delta_db": 4.765345412126868e-05,
+          "relative_rms_error": 5.5946367529426216e-06,
+          "max_absolute_error": 5.438923835754395e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9551087577956863e-05
+        },
+        {
+          "program": 94,
+          "midi": 60,
+          "before_rms": 0.045740846024348074,
+          "after_rms": 0.04574109716983132,
+          "rms_delta_db": 4.769076550895782e-05,
+          "relative_rms_error": 5.596668087764837e-06,
+          "max_absolute_error": 5.438923835754395e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.954854101579698e-05
+        },
+        {
+          "program": 94,
+          "midi": 84,
+          "before_rms": 0.02463666545622367,
+          "after_rms": 0.024636800935041427,
+          "rms_delta_db": 4.7764208427973515e-05,
+          "relative_rms_error": 5.601052293767478e-06,
+          "max_absolute_error": 2.868473529815674e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.95501919002863e-05
+        },
+        {
+          "program": 95,
+          "midi": 36,
+          "before_rms": 0.06707078063815314,
+          "after_rms": 0.06707116177443516,
+          "rms_delta_db": 4.935827859848431e-05,
+          "relative_rms_error": 5.693717692696553e-06,
+          "max_absolute_error": 8.344650268554688e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955295884280167e-05
+        },
+        {
+          "program": 95,
+          "midi": 60,
+          "before_rms": 0.09473491393049861,
+          "after_rms": 0.09473545202516216,
+          "rms_delta_db": 4.933574534252255e-05,
+          "relative_rms_error": 5.692487170250884e-06,
+          "max_absolute_error": 1.1771917343139648e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955232497083027e-05
+        },
+        {
+          "program": 95,
+          "midi": 84,
+          "before_rms": 0.07970928051660894,
+          "after_rms": 0.0797097333353477,
+          "rms_delta_db": 4.934334363084417e-05,
+          "relative_rms_error": 5.693023719717048e-06,
+          "max_absolute_error": 9.834766387939453e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9552536668431275e-05
+        },
+        {
+          "program": 96,
+          "midi": 36,
+          "before_rms": 0.010434104229264721,
+          "after_rms": 0.010434104229264721,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 96,
+          "midi": 60,
+          "before_rms": 0.010352464799349374,
+          "after_rms": 0.010352464799349374,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 96,
+          "midi": 84,
+          "before_rms": 0.010355119685657709,
+          "after_rms": 0.010355119685657709,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 97,
+          "midi": 36,
+          "before_rms": 0.07140712372263694,
+          "after_rms": 0.07140752617382705,
+          "rms_delta_db": 4.895361399561915e-05,
+          "relative_rms_error": 3.948188320062438e-05,
+          "max_absolute_error": 1.4156103134155273e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 5.022841971268412e-05
+        },
+        {
+          "program": 97,
+          "midi": 60,
+          "before_rms": 0.07140472288569853,
+          "after_rms": 0.07140512622963212,
+          "rms_delta_db": 4.906385539950771e-05,
+          "relative_rms_error": 3.948711811488269e-05,
+          "max_absolute_error": 1.4156103134155273e-05,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.972739630071885e-05
+        },
+        {
+          "program": 97,
+          "midi": 84,
+          "before_rms": 0.046775272788036,
+          "after_rms": 0.046775537506476506,
+          "rms_delta_db": 4.915649906517744e-05,
+          "relative_rms_error": 1.1345775644985097e-05,
+          "max_absolute_error": 2.3655593395233154e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9580761222833055e-05
+        },
+        {
+          "program": 98,
+          "midi": 36,
+          "before_rms": 0.008338809061534384,
+          "after_rms": 0.008338809061534384,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 98,
+          "midi": 60,
+          "before_rms": 0.007308046379080166,
+          "after_rms": 0.007308046379080166,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 98,
+          "midi": 84,
+          "before_rms": 0.006417650076807649,
+          "after_rms": 0.006417650076807649,
+          "rms_delta_db": 0.0,
+          "relative_rms_error": 0.0,
+          "max_absolute_error": 0.0,
+          "bit_identical": true,
+          "held_rms_delta_db": 0.0
+        },
+        {
+          "program": 99,
+          "midi": 36,
+          "before_rms": 0.07278506065054548,
+          "after_rms": 0.07278547588742026,
+          "rms_delta_db": 4.9552632749614595e-05,
+          "relative_rms_error": 5.705116884333011e-06,
+          "max_absolute_error": 8.344650268554688e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955192624877004e-05
+        },
+        {
+          "program": 99,
+          "midi": 60,
+          "before_rms": 0.10281398364445392,
+          "after_rms": 0.10281457019618523,
+          "rms_delta_db": 4.9552686240553995e-05,
+          "relative_rms_error": 5.705081639647165e-06,
+          "max_absolute_error": 1.1771917343139648e-06,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.9556064754129994e-05
+        },
+        {
+          "program": 99,
+          "midi": 84,
+          "before_rms": 0.0673504329014962,
+          "after_rms": 0.06735081713935531,
+          "rms_delta_db": 4.9553328392193766e-05,
+          "relative_rms_error": 5.705187426829737e-06,
+          "max_absolute_error": 7.748603820800781e-07,
+          "bit_identical": false,
+          "held_rms_delta_db": 4.955323304003786e-05
+        }
+      ],
+      "summary": {
+        "cases": 300,
+        "bit_identical_cases": 60,
+        "max_relative_rms_error_case": {
+          "program": 79,
+          "midi": 84,
+          "before_rms": 0.024735455734464715,
+          "after_rms": 0.024820955489499204,
+          "rms_delta_db": 0.02997158812898278,
+          "relative_rms_error": 0.003456572581377919,
+          "max_absolute_error": 0.0003537014126777649,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.029971684675511315
+        },
+        "max_absolute_error_case": {
+          "program": 79,
+          "midi": 84,
+          "before_rms": 0.024735455734464715,
+          "after_rms": 0.024820955489499204,
+          "rms_delta_db": 0.02997158812898278,
+          "relative_rms_error": 0.003456572581377919,
+          "max_absolute_error": 0.0003537014126777649,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.029971684675511315
+        },
+        "max_absolute_rms_delta_db_case": {
+          "program": 79,
+          "midi": 84,
+          "before_rms": 0.024735455734464715,
+          "after_rms": 0.024820955489499204,
+          "rms_delta_db": 0.02997158812898278,
+          "relative_rms_error": 0.003456572581377919,
+          "max_absolute_error": 0.0003537014126777649,
+          "bit_identical": false,
+          "held_rms_delta_db": 0.029971684675511315
+        }
+      },
+      "source_sha256": {
+        "Source/DSP/Press78Engine.cpp": "1d44d28a0794003e908dfee9f265f8b182fa90436b49bbcd94abc665a847bcfd",
+        "Source/DSP/Press78Engine.h": "a11cc9536a4137ea5b380f992fb8d24fe23dda0b5ea58c63bb43b32af5c1d6bb",
+        "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+        "Tests/test_dsp.cpp": "dca93b7f7eec9ced8dd85df7c9bd16890cb8fe673c5bd1fd89cd58ed7b8d5752",
+        "build/fm-fidelity-audit-20261018/factory_delta_render.cpp": "693a2544b46b6897384b3e74be680ce5a63d800d25701a0f4def30a585a3a1bc",
+        "build/fm-fidelity-audit-20261018/before/Press78Engine.cpp": "dee61309fc179ac4924612976b94f74ce2554935d10b68429b17b176883009e7"
+      }
+    },
+    "parity_limit": "Previous frozen-Python bit-parity evidence describes baseline82eed55; corrected native intentionally diverges for the D1 endpoint. Do not relabel old receipts as current parity."
+  }
+}

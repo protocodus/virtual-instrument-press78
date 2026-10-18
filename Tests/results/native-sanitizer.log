@@ -5,6 +5,10 @@ PASS nominal sine has explicit32-frame latency and correct amplitude
 PASS render block boundaries are bit invariant
 PASS output-rate conversion preserves440Hz and passband level
 PASS zero attack and TL99 suppress allocation
+PASS zero-height D1 plateau is independent of its unused rate
+PASS zero-height D1 enters D2 immediately even with zero D1 rate
+PASS positive D1 target with zero D1 rate holds before D2
+PASS release interrupts attack D1 and D2 after endpoint correction
 PASS velocity-zero note-on releases rather than allocates
 PASS MIDI and CV identical pitches release independently
 PASS overlapping same-note releases are FIFO
@@ -39,4 +43,4 @@ PASS recorded mode nonfinite controls and inputs are bounded without allocations
 PASS legacy noise requests preserve exact silence and both musical channels
 PASS legacy noise automation is inaudible and allocation free
 PASS legacy noise requests preserve split blocks reset and sound-off silence
-40 passed, 0 failed
+44 passed, 0 failed

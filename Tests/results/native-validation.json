@@ -1,7 +1,7 @@
 {
   "scope": "Native behavioral-model correctness and effect parity contracts; not hardware or Reason validation.",
   "passed": true,
-  "tests_passed": 40,
+  "tests_passed": 44,
   "tests_failed": 0,
   "address_sanitizer": true,
   "undefined_behavior_sanitizer": true,
@@ -23,23 +23,25 @@
     "Tests/test_dsp.cpp",
     "Source/DSP/Press78Engine.cpp",
     "-o",
-    "/var/folders/jl/cjv384t54g3bpst5xzs9zqnc0000gn/T/press78-native-7o1c2a7l/tests"
+    "/var/folders/jl/cjv384t54g3bpst5xzs9zqnc0000gn/T/press78-native-ksjt5__f/tests"
   ],
   "source_sha256": {
     "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
     "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
     "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
-    "Source/DSP/Press78Engine.h": "a11cc9536a4137ea5b380f992fb8d24fe23dda0b5ea58c63bb43b32af5c1d6bb",
+    "Source/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+    "Source/DSP/Press78Engine.h": "ddab76c7e5f548c15bee1cfa115f903fdcd49e71611a302e29bad52dc4d1b6c7",
     "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
     "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
-    "Source/DSP/Press78Engine.cpp": "dee61309fc179ac4924612976b94f74ce2554935d10b68429b17b176883009e7",
-    "Tests/test_dsp.cpp": "9b6fde8183bad572fba6cd8e2690cb11b25b96425b323822025158e495a4528f",
-    "Tests/run_native.py": "ce032b49c5bd8d7a80f4029faf8dfe049ccf038a0ca788ec8b63bf3188407c09"
+    "Source/DSP/Press78Engine.cpp": "76c9f2bff45743c1c26ba7cf30efd208814290a6ad8292b203e17bd442cd23e4",
+    "Tests/test_dsp.cpp": "91359774c91d0e2cca4c79fd50155e5bffef26d1e47ba376b3ab90a77314aaba",
+    "Tests/run_native.py": "38159264398e99a056824282aafc7858ef4b4f61fdca24c9a2224caf02175ec3"
   },
   "limitations": [
     "Fixed48k internalclock is a modeling choice, not measured OPU timing.",
     "Reported32-tick latency is nominal and changes with clock ratio; positive clockoffset can alias nearNyquist.",
-    "Recorded chorus is a causal effective capturetransfer, not identified physical BBD; Studio remainsdefault.",
+    "Recorded chorus is a causal effective capture transfer, not an identified physical BBD.",
+    "LFO5.24Hz/triangle/binary PMS is a recording calibration; missing hardware timing/phase tables remain explicit.",
     "Native tests do not establish SDK target or Reason host execution."
   ]
 }

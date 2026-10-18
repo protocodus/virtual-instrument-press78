@@ -1,0 +1,123 @@
+{
+  "protocol_id": "press78-hardware-capture-20261018-v1",
+  "optional": true,
+  "filesystem_only": true,
+  "generated_files_transmit_if_deliberately_played": true,
+  "bank_write": {
+    "user_bank": 5,
+    "raw_bank": 4,
+    "program_change_byte": 104,
+    "midi_channel": 1,
+    "behavior": "Repeatedly replaces user bank5 with temporary independent test voices.",
+    "prerequisite": "Back up all user voice banks and record setup before deliberate playback."
+  },
+  "manufacturer_sources": [
+    {
+      "url": "https://www.nurykabe.com/dump/docs/PSS/manuals/PSS-780_00.pdf",
+      "local_reviewed_sha256": "e1382c76aa9f6351fb3de191228b3209def0cf4ceba54ca6a20406c1e2db0adb",
+      "printed_pages": [
+        35,
+        41,
+        46
+      ],
+      "facts": [
+        "Raw0..4 selects banks1..5; two nibbles per byte, most significant first.",
+        "PC100..104 selects user banks1..5 on channels1..15.",
+        "Mode99 recognizes CC1 and CC64; physical Reverb/Chorus remain operable.",
+        "No documented Reverb CC is used; CC123 is not recognized and is not emitted."
+      ]
+    }
+  ],
+  "recording": {
+    "connection": "AUX L/R into two line inputs; record both independently.",
+    "format": "48kHz,24-bit PCM WAV; constant gain and instrument master volume.",
+    "processing": "No AGC, normalization, compressor, limiter, gate, denoise, EQ or external effects.",
+    "gain": "Use gain-check file deliberately; choose input/master gain with highest-level C4 safely below clipping, then leave fixed.",
+    "clocks": "No resampling, time stretching or pitch correction.",
+    "evidence": "Record instrument serial/modifications, supply, tuning, routing, physical LEDs and actual capture software settings."
+  },
+  "musical": {
+    "midi_note": 60,
+    "scientific_name": "C4",
+    "velocity": 127,
+    "rks": 0,
+    "patch_source": "Independent33-byte pure-carrier construction, no factory-bank copy.",
+    "event_units": "SMF0,1000PPQ,1000000us/quarter;1tick=1ms.",
+    "schedule_limit": "Intended SMF gates, not measured hardware-arrival times; capture MIDI loopback if available."
+  },
+  "effect_conditions": {
+    "reverb": "Set physical Reverb LED to each filename condition; no Reverb controller fabricated.",
+    "sustain": "Mode99 panel Sustain is not relied on. The same patch defaultsS0; CC64=0/127 follows every PC104.",
+    "other": "Chorus off, Vibrato off, no rhythms/accompaniment; record actual states."
+  },
+  "interpretation_limits": [
+    "TL step response tests capture transfer; an assumed0.75dB/code is not asserted as an OPU specification.",
+    "No anticipated time constant or96/48dB cutoff is encoded as measured hardware truth.",
+    "This kit is not sent, played or auto-routed by its generator."
+  ],
+  "tail_scale": 1.0,
+  "tail_window_limit": "Finite observation window; a subsequent patch write censors any remaining tail. Never infer completion merely from the scheduled silence.",
+  "generator_sha256": "c472070b2f8c87bf2710dcf9849947e806e7233d858190f3d1edbbab54a1ef0d",
+  "files": [
+    {
+      "name": "00_gain_check.mid",
+      "role": "Gain check at highest test level",
+      "reverb_required": "OFF",
+      "sustain_cc64": 0,
+      "cases": 1,
+      "seconds": 14.0,
+      "bytes": 255,
+      "sha256": "f17becb7c97e6cb4c5432272215c472cfed3f94d1271dde68faa1d307ef1344e"
+    },
+    {
+      "name": "01_calibration_dry.mid",
+      "role": "Main pure-carrier calibration",
+      "reverb_required": "OFF",
+      "sustain_cc64": 0,
+      "cases": 35,
+      "seconds": 255.0,
+      "bytes": 4020,
+      "sha256": "08feac49aea577d82df1b740228f0a017c16d1109ba8606b799b302f27208ae6"
+    },
+    {
+      "name": "10_release_reverb_off_sustain_off.mid",
+      "role": "Matched release interaction",
+      "reverb_required": "OFF",
+      "sustain_cc64": 0,
+      "cases": 6,
+      "seconds": 54.5,
+      "bytes": 874,
+      "sha256": "c3bc29a4c0d5a6df33da77a3c60f4679ce68e25e0e33213a94051db4bae3d652"
+    },
+    {
+      "name": "11_release_reverb_on_sustain_off.mid",
+      "role": "Matched release interaction",
+      "reverb_required": "ON",
+      "sustain_cc64": 0,
+      "cases": 6,
+      "seconds": 54.5,
+      "bytes": 873,
+      "sha256": "40ee7d624d1714dee29dfbda0cb6a0a4cc02827240555ba683eb359e5254ec21"
+    },
+    {
+      "name": "12_release_reverb_off_sustain_on.mid",
+      "role": "Matched release interaction",
+      "reverb_required": "OFF",
+      "sustain_cc64": 127,
+      "cases": 6,
+      "seconds": 54.5,
+      "bytes": 873,
+      "sha256": "dbdce9c23314b10d46e93c830a59235a17c1ec22d31c52b0c05b096fe264120f"
+    },
+    {
+      "name": "13_release_reverb_on_sustain_on.mid",
+      "role": "Matched release interaction",
+      "reverb_required": "ON",
+      "sustain_cc64": 127,
+      "cases": 6,
+      "seconds": 54.5,
+      "bytes": 872,
+      "sha256": "46441b3dcb43f0c0071241be3573a880f53e2409387fc28b3c4bf47c3edadebd"
+    }
+  ]
+}

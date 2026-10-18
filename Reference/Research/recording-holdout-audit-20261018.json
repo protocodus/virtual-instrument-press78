@@ -1,0 +1,925 @@
+{
+  "date": "2026-10-18",
+  "status": "independent waveform topology evidence obtained; conditional envelope rate mismatches found; controlled exact-PSS780 target gate recording still absent",
+  "artifact_root": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018",
+  "existing_pss780_tour": {
+    "url": "https://www.youtube.com/watch?v=ONfIvtDOog0",
+    "classification": "training/regression only, all100 voices already inspected; polyphonic Joplin arrangement with Vibrato/Reverb/Chorus enabled, target97 Sustain enabled; not isolated or dry; global affine time mapping and inferred program policy",
+    "raw_audio_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/user-ONfIvtDOog0.wav",
+    "independent_holdout": false
+  },
+  "sources": [
+    {
+      "id": "kevin-680",
+      "url": "https://www.youtube.com/watch?v=KAHq65dWzG4",
+      "primary_procedure_url": "https://diyelectromusic.com/2023/08/02/arduino-pss-680-synth-editor-part-1/",
+      "title": "Arduino PSS-680 Voice Editor - Part 1",
+      "uploader": "Simple DIY Electro Music Projects / Kevin",
+      "date": "2023-08-02",
+      "device": "Yamaha PSS-680",
+      "independent_of_original_pss780_tour": true,
+      "assets": [
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/kevin-KAHq65dWzG4.mkv",
+          "bytes": 11023367,
+          "sha256": "e7a9da3c2f6ce6a04f4d84240584032dcea16ba7199c912a6e85a36eae4c956f"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/kevin-KAHq65dWzG4.wav",
+          "bytes": 23365684,
+          "sha256": "66a0317fe6bd010909560e1e51e40e39025297ed743c1453ce48a503cd87a951"
+        }
+      ],
+      "conditions": {
+        "voice": "factory SINE WAVE copied to bank1",
+        "changed_parameter": "carrier SIN TBL 0/1/2/3 by SysEx; all other bytes retained",
+        "no_modulation_feedback_multiply": "uploader procedure states these are absent",
+        "effects": "not independently captured as MIDI; panel observed, absolute capture routing undocumented",
+        "gates": "manual; not a known-gate envelope fixture"
+      },
+      "use": "independent waveform topology validation; not DAC/filter calibration"
+    },
+    {
+      "id": "keen-480-part3",
+      "url": "https://www.youtube.com/watch?v=2TfpcAmaPGg",
+      "title": "Yamaha PSS-480 - Part 3: The Synth Editor",
+      "uploader": "Keen On Keys",
+      "date": "2021-05-20",
+      "device": "Yamaha PSS-480",
+      "independent_of_original_pss780_tour": true,
+      "assets": [
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/keen-part3-2TfpcAmaPGg-audio.webm",
+          "bytes": 18533479,
+          "sha256": "1aa081e9dc71bc940d1d31be301c9e28fb873634ff16f24470be910118369c19"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/keen-part3-2TfpcAmaPGg-video.mp4",
+          "bytes": 63567216,
+          "sha256": "b6ccdf47b015b0378c36cb62db81cb06284b97208377fb08fe2303197d073bf7"
+        }
+      ],
+      "conditions": {
+        "known_gui_fields": {
+          "modulation_level": 0,
+          "carrier_ratio": 1,
+          "carrier_wave": "sine",
+          "carrier_ar": 41,
+          "carrier_d1r": 0,
+          "carrier_d2r": 20,
+          "carrier_rr": 8,
+          "carrier_srr": 3,
+          "carrier_rks": 0,
+          "carrier_tl_display": 92,
+          "carrier_dt1": 0,
+          "carrier_dt2": 0,
+          "d1l_ui_test": [
+            14,
+            15,
+            14,
+            1
+          ]
+        },
+        "raw_d1l_mapping": "15 - Ctrlr displayed D1L",
+        "tl_mapping": "max(99 - Ctrlr displayed Total Level,0)",
+        "gate": "no captured MIDI or physical key frame in editor-only shots",
+        "capture_processing": "uploader provides no unprocessed/direct/ungated guarantee; compressor, gate, and global Reverb not established",
+        "flags": "visible Vib/Sus LEDs dark during pure carrier excerpt; global hardware Reverb not represented by this editor"
+      },
+      "use": "D1R=0 endpoint discrimination and conditional envelope timing evidence; not a recovered global EG law"
+    },
+    {
+      "id": "keyboardkrazy49-580",
+      "url": "https://www.youtube.com/watch?v=NXPbPr4yrgA",
+      "title": "Yamaha PSS-580 Portasound Keyboard - 100 Voices + Demonstration Song",
+      "uploader": "KeyboardKrazy49",
+      "device": "Yamaha PSS-580",
+      "independent_of_original_pss780_tour": true,
+      "assets": [
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/keyboardkrazy49-NXPbPr4yrgA-full-audio.webm",
+          "bytes": 68586352,
+          "sha256": "4b6b3d4a69f7801ec7f4fee027b1f1cd1d726dca8ca58dbd62259bde20ea6c8d"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/keyboardkrazy49-NXPbPr4yrgA-lastvoices.mkv",
+          "bytes": 12344459,
+          "sha256": "89274615bd8279829ad45936e362cb60590ff7c96c245dc60eb44bfd4d9a218d"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/keyboardkrazy49-NXPbPr4yrgA-bowedbass.mkv",
+          "bytes": 2199579,
+          "sha256": "f0ea3b8a5a55ac2494a76d25d8cac8b8b6a32c99a7269a0260b73c34fde5deea"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/kk49-full-bowedbass-1150.wav",
+          "bytes": 34560092,
+          "sha256": "08e28a880f94e75d5738c32f1fa690aa885f59d7daa47e502f15418463f50a9a"
+        }
+      ],
+      "conditions": {
+        "voice_id": "physical program LED and uploader ordered voice list; list is 1-based and LED is 0-based",
+        "human_voice1_program": 94,
+        "musical_saw_program": 98,
+        "sine_program": 99,
+        "velocity": "not independently documented",
+        "gates": "hands visible; no MIDI stream; polyphonic phrases and portamento in Sine demonstration",
+        "effects": "not yet transcribed; cannot classify dry",
+        "capture_processing": "not documented; room/capture and possible normalization remain unknown",
+        "bowed_bass_program": 35
+      },
+      "use": "New independent longer HumanVoice1/BowedBass/MusicalSaw material; conditionalfrozenLFOcandidatevalidationperformed; notcontrolleddrygatedtargetbenchmark.",
+      "section_timing_warning": {
+        "section_audio_origin_seconds": 3170.02,
+        "section_nominal_requested_start": 3180,
+        "crosscorrelation_sample_hop": 4,
+        "source": "fullbestaudiodecode matching sectionaudio first30s; AVkeyframepreroll preserved; originaltimestampsmustusefullbestaudio"
+      },
+      "program_windows": [
+        {
+          "program": 92,
+          "local_video_start": 0.0,
+          "local_video_end": 41.75,
+          "start_original_audio_estimate": 3170.02,
+          "end_original_audio_estimate": 3211.77,
+          "uncertainty_seconds": 0.5,
+          "method": "4fps normalizedred LEDcrop templatecosines; templatelabels visuallyread; longestcontiguousrun; audiosectionorigin3170.02 crosscorrelatedagainstfullsourceaudio; videooffsettentative\u00b10.5s"
+        },
+        {
+          "program": 93,
+          "local_video_start": 42.75,
+          "local_video_end": 85.0,
+          "start_original_audio_estimate": 3212.77,
+          "end_original_audio_estimate": 3255.02,
+          "uncertainty_seconds": 0.5,
+          "method": "4fps normalizedred LEDcrop templatecosines; templatelabels visuallyread; longestcontiguousrun; audiosectionorigin3170.02 crosscorrelatedagainstfullsourceaudio; videooffsettentative\u00b10.5s"
+        },
+        {
+          "program": 94,
+          "local_video_start": 86.25,
+          "local_video_end": 117.5,
+          "start_original_audio_estimate": 3256.27,
+          "end_original_audio_estimate": 3287.52,
+          "uncertainty_seconds": 0.5,
+          "method": "4fps normalizedred LEDcrop templatecosines; templatelabels visuallyread; longestcontiguousrun; audiosectionorigin3170.02 crosscorrelatedagainstfullsourceaudio; videooffsettentative\u00b10.5s"
+        },
+        {
+          "program": 95,
+          "local_video_start": 118.0,
+          "local_video_end": 153.25,
+          "start_original_audio_estimate": 3288.02,
+          "end_original_audio_estimate": 3323.27,
+          "uncertainty_seconds": 0.5,
+          "method": "4fps normalizedred LEDcrop templatecosines; templatelabels visuallyread; longestcontiguousrun; audiosectionorigin3170.02 crosscorrelatedagainstfullsourceaudio; videooffsettentative\u00b10.5s"
+        },
+        {
+          "program": 96,
+          "local_video_start": 153.75,
+          "local_video_end": 185.75,
+          "start_original_audio_estimate": 3323.77,
+          "end_original_audio_estimate": 3355.77,
+          "uncertainty_seconds": 0.5,
+          "method": "4fps normalizedred LEDcrop templatecosines; templatelabels visuallyread; longestcontiguousrun; audiosectionorigin3170.02 crosscorrelatedagainstfullsourceaudio; videooffsettentative\u00b10.5s"
+        },
+        {
+          "program": 97,
+          "local_video_start": 186.75,
+          "local_video_end": 213.0,
+          "start_original_audio_estimate": 3356.77,
+          "end_original_audio_estimate": 3383.02,
+          "uncertainty_seconds": 0.5,
+          "method": "4fps normalizedred LEDcrop templatecosines; templatelabels visuallyread; longestcontiguousrun; audiosectionorigin3170.02 crosscorrelatedagainstfullsourceaudio; videooffsettentative\u00b10.5s"
+        },
+        {
+          "program": 98,
+          "local_video_start": 213.25,
+          "local_video_end": 262.25,
+          "start_original_audio_estimate": 3383.27,
+          "end_original_audio_estimate": 3432.27,
+          "uncertainty_seconds": 0.5,
+          "method": "4fps normalizedred LEDcrop templatecosines; templatelabels visuallyread; longestcontiguousrun; audiosectionorigin3170.02 crosscorrelatedagainstfullsourceaudio; videooffsettentative\u00b10.5s"
+        },
+        {
+          "program": 99,
+          "local_video_start": 262.25,
+          "local_video_end": 298.0,
+          "start_original_audio_estimate": 3432.27,
+          "end_original_audio_estimate": 3468.02,
+          "uncertainty_seconds": 0.5,
+          "method": "4fps normalizedred LEDcrop templatecosines; templatelabels visuallyread; longestcontiguousrun; audiosectionorigin3170.02 crosscorrelatedagainstfullsourceaudio; videooffsettentative\u00b10.5s"
+        }
+      ],
+      "bowed_bass_window": {
+        "program": 35,
+        "name": "Bowed Bass",
+        "pss780_program": 65,
+        "local_video_start": 13.0,
+        "local_video_end": 38.75,
+        "section_audio_origin_seconds": 1160.02,
+        "start_original_audio_estimate": 1173.02,
+        "end_original_audio_estimate": 1198.77,
+        "uncertainty_seconds": 0.5
+      }
+    }
+  ],
+  "waveform_analysis": {
+    "sample_rate": 48000,
+    "method": "Hann-weighted least squares 12 harmonics + DC; optimize f0 bounded521\u2013525Hz; window choices from stableC5 spectral/visual passage interiors before model matching",
+    "windows": [
+      {
+        "table": 0,
+        "start": 10.5,
+        "end": 10.85,
+        "f0_hz": 523.0663737370845,
+        "midi_hypothesis": 72,
+        "cents_relative_c5": -0.6113963991788051,
+        "harmonic_db_relative_fundamental": [
+          0.0,
+          -35.41802314173899,
+          -46.84854136475544,
+          -58.30804920906624,
+          -65.1504522330418,
+          -65.06462877022271,
+          -62.49477464351186,
+          -81.77593674117364,
+          -63.497610515996286,
+          -81.8390441007327,
+          -84.85863983528205,
+          -84.92331669171634
+        ],
+        "harmonic_phases_rad": [
+          2.5173578920729787,
+          -1.8438788793053962,
+          0.6677389591192846,
+          -1.6779186269486845,
+          0.48787213885617303,
+          -0.7896413230008712,
+          -1.3035245433674885,
+          2.0291286643765205,
+          0.07007411034080689,
+          -2.3646664293815878,
+          -2.6967714109978003,
+          0.8934104858524309
+        ],
+        "harmonic_amplitudes": [
+          0.18519409956926167,
+          0.0031385278627147437,
+          0.0008417828576103193,
+          0.00022502184702767868,
+          0.00010235393268199144,
+          0.00010337028343614959,
+          0.0001389595546016743,
+          1.5094902372771467e-05,
+          0.00012380740468894037,
+          1.4985627758465795e-05,
+          1.0585104596184669e-05,
+          1.050657853175778e-05
+        ],
+        "residual_relative_rms": 0.03949633454709332,
+        "source": "kevin-680",
+        "pitch_confidence": "C5/MIDI72 hypothesis from observed frequency and repeated same starting key; MIDI not captured"
+      },
+      {
+        "table": 1,
+        "start": 29.85,
+        "end": 30.2,
+        "f0_hz": 523.0676963516906,
+        "midi_hypothesis": 72,
+        "cents_relative_c5": -0.6070188427922848,
+        "harmonic_db_relative_fundamental": [
+          0.0,
+          -37.71387529210643,
+          -13.946543705436591,
+          -51.299958394267975,
+          -54.480387494131755,
+          -63.62908493602647,
+          -56.455307710110105,
+          -69.58117882775814,
+          -58.98923523293104,
+          -94.32305639334545,
+          -67.47519211233286,
+          -82.59223921589887
+        ],
+        "harmonic_phases_rad": [
+          2.5450555401712234,
+          -1.7393107688856757,
+          0.4680833489956335,
+          0.36421013840288874,
+          0.9640424627804582,
+          0.9178255939592045,
+          -1.4187825376777363,
+          0.38316521939003745,
+          -0.2756340675948543,
+          -2.15870516654992,
+          2.9653247947744195,
+          -0.558283102171695
+        ],
+        "harmonic_amplitudes": [
+          0.19836709535315117,
+          0.002580927882687751,
+          0.03982377713317283,
+          0.0005400969370757117,
+          0.00037449865249904163,
+          0.00013062171672929192,
+          0.00029833502869262797,
+          6.582800488596335e-05,
+          0.00022284755444144672,
+          3.8134390934529395e-06,
+          8.388996794959629e-05,
+          1.4718300761914767e-05
+        ],
+        "residual_relative_rms": 0.04592171734452739,
+        "source": "kevin-680",
+        "pitch_confidence": "C5/MIDI72 hypothesis from observed frequency and repeated same starting key; MIDI not captured"
+      },
+      {
+        "table": 2,
+        "start": 39.12,
+        "end": 39.32,
+        "f0_hz": 523.1208910330005,
+        "midi_hypothesis": 72,
+        "cents_relative_c5": -0.43096560592326083,
+        "harmonic_db_relative_fundamental": [
+          0.0,
+          -2.724972989158819,
+          -43.72434565240952,
+          -25.048349313397487,
+          -64.47265415102173,
+          -42.68765735607375,
+          -71.70528851894255,
+          -41.06715808122147,
+          -71.60862448886894,
+          -60.826900127316705,
+          -75.5145867485274,
+          -55.94821269792152
+        ],
+        "harmonic_phases_rad": [
+          -0.37501321175324576,
+          -1.64913003166451,
+          -2.2493703899789805,
+          -1.5947829016283985,
+          -2.630584459029117,
+          2.168641510214693,
+          0.6265612542477521,
+          -1.9523876115102123,
+          1.2043477174622341,
+          -0.06080846117939595,
+          2.661927848925367,
+          -0.6770048753195209
+        ],
+        "harmonic_amplitudes": [
+          0.1165103255275307,
+          0.08513649491228084,
+          0.0007588346143083693,
+          0.0065154880112056,
+          6.961962956128715e-05,
+          0.0008550303839178218,
+          3.02761040928017e-05,
+          0.001030401569687179,
+          3.061492439249857e-05,
+          0.00010593010659526545,
+          1.952697985598417e-05,
+          0.00018576067511876876
+        ],
+        "residual_relative_rms": 0.06592838070169718,
+        "source": "kevin-680",
+        "pitch_confidence": "C5/MIDI72 hypothesis from observed frequency and repeated same starting key; MIDI not captured"
+      },
+      {
+        "table": 3,
+        "start": 47.38,
+        "end": 47.68,
+        "f0_hz": 523.0806687438304,
+        "midi_hypothesis": 72,
+        "cents_relative_c5": -0.5640837339287613,
+        "harmonic_db_relative_fundamental": [
+          0.0,
+          1.0468109730215358,
+          -12.73458455667176,
+          -46.40898406122565,
+          -56.76955519269625,
+          -79.24514344992822,
+          -55.70769170724663,
+          -77.49051126066283,
+          -56.077027696634076,
+          -70.43673378106986,
+          -63.53218489002138,
+          -78.02818746319994
+        ],
+        "harmonic_phases_rad": [
+          0.5511670586884517,
+          0.34911476556076065,
+          0.7888285117060925,
+          -0.8564549534520594,
+          -2.14482890157119,
+          -1.438471298017135,
+          -2.780190720842135,
+          0.16378711338145927,
+          0.6021293355576112,
+          2.82077589786971,
+          -0.1571558875494666,
+          2.9587629496949766
+        ],
+        "harmonic_amplitudes": [
+          0.09116413486079951,
+          0.10284059095264818,
+          0.021042376507021038,
+          0.0004358878984278655,
+          0.00013223494997882117,
+          9.94413112646118e-06,
+          0.00014943056190969367,
+          1.217022064102103e-05,
+          0.0001432097643389882,
+          2.741494164945015e-05,
+          6.070364513778006e-05,
+          1.1439700165576786e-05
+        ],
+        "residual_relative_rms": 0.040984328994961815,
+        "source": "kevin-680",
+        "pitch_confidence": "C5/MIDI72 hypothesis from observed frequency and repeated same starting key; MIDI not captured"
+      }
+    ]
+  },
+  "envelope_capture_slopes": [
+    {
+      "kind": "hold",
+      "source": "keen-480-part3",
+      "start": 553.25,
+      "end": 554.45,
+      "measured_slope_db_per_second": -0.013909476064525686,
+      "r_squared": 0.03139002282475907,
+      "slope_standard_error": 0.004374335889014946,
+      "positive_cycles": 314,
+      "baseline_model_predicted_absolute_slope_db_per_second": 0,
+      "conditionality": "descriptive capture slope; unknown compressor/gate/Reverb prevent a unique instrument EG rate identification"
+    },
+    {
+      "kind": "d2r20",
+      "source": "keen-480-part3",
+      "start": 564.3,
+      "end": 565.3,
+      "measured_slope_db_per_second": -21.240511966230038,
+      "r_squared": 0.9998472333074002,
+      "slope_standard_error": 0.016314080912901933,
+      "positive_cycles": 261,
+      "baseline_model_predicted_absolute_slope_db_per_second": 64,
+      "conditionality": "descriptive capture slope; unknown compressor/gate/Reverb prevent a unique instrument EG rate identification"
+    },
+    {
+      "kind": "d2r20_repeat_window",
+      "source": "keen-480-part3",
+      "start": 564.6,
+      "end": 565.8,
+      "measured_slope_db_per_second": -21.08897978407816,
+      "r_squared": 0.9996874372259215,
+      "slope_standard_error": 0.02111129053611894,
+      "positive_cycles": 314,
+      "baseline_model_predicted_absolute_slope_db_per_second": 64,
+      "conditionality": "descriptive capture slope; unknown compressor/gate/Reverb prevent a unique instrument EG rate identification"
+    },
+    {
+      "kind": "rr8",
+      "source": "keen-480-part3",
+      "start": 554.55,
+      "end": 554.7,
+      "measured_slope_db_per_second": -233.352610024413,
+      "r_squared": 0.9995694806776397,
+      "slope_standard_error": 0.796162340369595,
+      "positive_cycles": 39,
+      "baseline_model_predicted_absolute_slope_db_per_second": 724.0773439350246,
+      "conditionality": "descriptive capture slope; unknown compressor/gate/Reverb prevent a unique instrument EG rate identification"
+    },
+    {
+      "kind": "rr8_repeat",
+      "source": "keen-480-part3",
+      "start": 569.9,
+      "end": 570.03,
+      "measured_slope_db_per_second": -230.90427492866567,
+      "r_squared": 0.9996032482528637,
+      "slope_standard_error": 0.8007936083600206,
+      "positive_cycles": 35,
+      "baseline_model_predicted_absolute_slope_db_per_second": 724.0773439350246,
+      "conditionality": "descriptive capture slope; unknown compressor/gate/Reverb prevent a unique instrument EG rate identification"
+    },
+    {
+      "kind": "hold_repeat",
+      "source": "keen-480-part3",
+      "start": 568.95,
+      "end": 569.8,
+      "measured_slope_db_per_second": 0.04314734084712152,
+      "r_squared": 0.1116219026929274,
+      "slope_standard_error": 0.008206668781514754,
+      "positive_cycles": 222,
+      "baseline_model_predicted_absolute_slope_db_per_second": 0,
+      "conditionality": "descriptive capture slope; unknown compressor/gate/Reverb prevent a unique instrument EG rate identification"
+    }
+  ],
+  "attack_model_form_fits": [
+    {
+      "rough_reference_time": 553.1515,
+      "fit_start": 553.1395000000001,
+      "fit_end": 553.1915,
+      "amplitude": 0.43530296734771096,
+      "log_attack_factor": 0.34241023056508546,
+      "attack_k_per_second": 635.5429490362134,
+      "frequency_hz": 261.7108450719952,
+      "phase_radians": 0.5678308553103409,
+      "dc": -0.0001256864858058709,
+      "residual_relative_rms": 0.01486773892310772,
+      "current_ar41_prediction_k": 1051.4882209872849
+    },
+    {
+      "rough_reference_time": 568.926,
+      "fit_start": 568.9140000000001,
+      "fit_end": 568.966,
+      "amplitude": 0.43326296882545123,
+      "log_attack_factor": 0.26892337516197456,
+      "attack_k_per_second": 629.9113669175767,
+      "frequency_hz": 261.7185994825237,
+      "phase_radians": 0.5751175075121582,
+      "dc": 1.6916815283069598e-06,
+      "residual_relative_rms": 0.015713831576766424,
+      "current_ar41_prediction_k": 1051.4882209872849
+    },
+    {
+      "rough_reference_time": 573.4223,
+      "fit_start": 573.4103,
+      "fit_end": 573.4622999999999,
+      "amplitude": 0.43765588264686833,
+      "log_attack_factor": 0.3598949344002643,
+      "attack_k_per_second": 626.6445902316498,
+      "frequency_hz": 261.6728960651614,
+      "phase_radians": 0.44380629663716503,
+      "dc": -0.0003739544858980865,
+      "residual_relative_rms": 0.01539556549084408,
+      "current_ar41_prediction_k": 1051.4882209872849
+    }
+  ],
+  "ctrlr_mapping_crosscheck": {
+    "url": "https://ctrlr.martintarenskeen.nl/yamaha-pss480-20220225.bpanelz",
+    "asset": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/yamaha-pss480-20220225.bpanelz",
+      "bytes": 265106,
+      "sha256": "1d41dd0e1611da2bfd01aa343de5c713038c3a95cf252db7cbbe03e50e0450b8"
+    },
+    "version_difference": "2022 panel is later than 2021 video, so a crosscheck rather than exact captured executable proof",
+    "direct_rate_fields": [
+      "AR",
+      "D1R",
+      "D2R",
+      "RR",
+      "SRR"
+    ],
+    "inverse_fields": {
+      "D1L": "15 - displayed value",
+      "TL": "max(99 - displayed value,0)"
+    }
+  },
+  "findings": {
+    "supported": [
+      "Current signed sine-squared, half sine and half sine-squared identities are consistent with independently observed sibling waveform topology; OPL2 table identity substitution is contradicted by even/odd harmonic behavior.",
+      "At D1R0, displayed D1L15 (raw0) reaches D2, whereas displayed14 (raw1) holds at peak; this is an endpoint distinction, not a reversed raw D1L scale.",
+      "The current analytic envelope rate formula runs approximately3x faster than one conditional recorded D2R20/RR8 example."
+    ],
+    "not_proven": [
+      "A universal 3x EG timing change: a 3:1 compressor can also divide dB slopes and no unprocessed guarantee was found.",
+      "A96dB hardware cutoff: recorded tails truncate around48dB relative attenuation but this could be capture gating.",
+      "The PSS780 Reverb law or exact Human Voice1 release time: existing target video has Reverb enabled, and new sibling capture effects/gates remain undocumented.",
+      "Bit-exact clock, DAC or waveform ROM reconstruction from lossy acoustic/capture material."
+    ]
+  },
+  "next_acquisition_requirements": [
+    "ExactPSS780 or documented sameOPU dry direct stereo capture; Reverb/Sustain/Chorus/Vibrato off; raw33byte patch and known MIDI notes/gates/velocity.",
+    "At least3 D2 rates and3 RR values with pure sine, RKS0, repeated fixed pitch, plus static TL step sequence to distinguish compressor gain law from EG rate.",
+    "Independently toggle Reverb and Sustain at fixed note/gate to resolve target93 tail without changing its factoryRR."
+  ],
+  "media_policy": "Public streams acquired without accounts/cookies; local research assets and derived audio stay in ignored build; no redistribution license was found; only measurements/provenance tracked.",
+  "independent_lfo_validation": {
+    "protocol": {
+      "frozen_utc": "2026-10-18T18:50:27.265120+00:00",
+      "source_audio_sha256": "4b6b3d4a69f7801ec7f4fee027b1f1cd1d726dca8ca58dbd62259bde20ea6c8d",
+      "candidate": {
+        "lfo_rate_hz": 5.24,
+        "shape": "triangle",
+        "PMS3_peak_cents": 12.5,
+        "PMS6_peak_cents": 100.0,
+        "PMS_table_peak_cents": [
+          0,
+          3.125,
+          6.25,
+          12.5,
+          25,
+          50,
+          100,
+          200
+        ],
+        "phase": "continuous global within recording; at most one unknownphase per newcapture",
+        "frozen_by": "root from originalPSS780recording; no newcandidate rate/depth optimization allowed for adoption score"
+      },
+      "protocol": "Extract source-only visible target-program interiors from newPSS580 capture. Identify steady/predominantly single-note windows by pitch coherence and duration before candidate fitting. Candidate frequency/depth fixed; estimatecenter and one phase per capture. Report free observedpitchmodulationfrequency/depth separately fromcandidate score. Cannotproveexactpatchparameters fromvoiceLED alone; bankidentityconditional."
+    },
+    "method": "Fullsourceaudio to8kHz; zero-phase5thorderButterworth bandpass; Hilbert phase gradient, SavGol41/3 at8kHz, sample400Hz; selected musical-only passage interiors from source spectrogram beforecandidatefit; fixedcomparison preservescandidate rate anddepth; freefits descriptive only",
+    "tracks": [
+      {
+        "name": "saw-first",
+        "start": 3385.65,
+        "end": 3386.65,
+        "bandpass_hz": [
+          340,
+          450
+        ],
+        "points": 389,
+        "median_measured_frequency": 382.105374504082,
+        "amplitude_max_min_db": 18.00638818813087,
+        "candidate_fixed_new": {
+          "rate": 5.24,
+          "depth": 100,
+          "shape": "triangle",
+          "phase_local": 3.1144173309847245,
+          "center_cents_absolute_log2_hz": 10305.019161651508,
+          "rmse_cents": 107.05494114768616
+        },
+        "old_fixed": {
+          "rate": 6.1,
+          "depth": 40,
+          "shape": "sine",
+          "phase_local": 3.870048268545972,
+          "center_cents_absolute_log2_hz": 10302.785277348332,
+          "rmse_cents": 102.23915991847205
+        },
+        "free_triangle_diagnostic": {
+          "rate": 6.51162790686814,
+          "depth": 52.14666510879253,
+          "shape": "triangle",
+          "phase_local": 8.628420764018404,
+          "center_cents_absolute_log2_hz": 10303.908681879855,
+          "rmse_cents": 99.29735108232899
+        },
+        "free_sine_diagnostic": {
+          "rate": 6.52214571141169,
+          "depth": 41.880644957533754,
+          "shape": "sine",
+          "phase_local": 2.3568651214867056,
+          "center_cents_absolute_log2_hz": 10303.88323003638,
+          "rmse_cents": 99.45102640571368
+        },
+        "conditionality": "PSS580 raw voice dump absent; PMS identity not independently verified; separate local phase per displayed passage diagnostic only; no cross-program globalphase adoption test",
+        "quality": "Rejected pitchtrack: competing partials/phase slips and18dB amplitude variation; unusableforLFOinference. Retainedtocounterselectiveevidence."
+      },
+      {
+        "name": "saw-last-high",
+        "start": 3428.3,
+        "end": 3429.6,
+        "bandpass_hz": [
+          2180,
+          2540
+        ],
+        "points": 519,
+        "median_measured_frequency": 2351.101899922214,
+        "amplitude_max_min_db": 22.090780487011976,
+        "candidate_fixed_new": {
+          "rate": 5.24,
+          "depth": 100,
+          "shape": "triangle",
+          "phase_local": 2.2331318528310584,
+          "center_cents_absolute_log2_hz": 13439.668009851379,
+          "rmse_cents": 9.551663090716097
+        },
+        "old_fixed": {
+          "rate": 6.1,
+          "depth": 40,
+          "shape": "sine",
+          "phase_local": 1.8689759081916326,
+          "center_cents_absolute_log2_hz": 13437.888969607953,
+          "rmse_cents": 64.12812384613314
+        },
+        "free_triangle_diagnostic": {
+          "rate": 5.2499768979448005,
+          "depth": 103.75315632619375,
+          "shape": "triangle",
+          "phase_local": 2.191642949600885,
+          "center_cents_absolute_log2_hz": 13439.61633034251,
+          "rmse_cents": 9.183561556344175
+        },
+        "free_sine_diagnostic": {
+          "rate": 5.249166209079609,
+          "depth": 83.69298269378037,
+          "shape": "sine",
+          "phase_local": 2.1905139038495207,
+          "center_cents_absolute_log2_hz": 13439.508751066069,
+          "rmse_cents": 11.72394401037733
+        },
+        "conditionality": "PSS580 raw voice dump absent; PMS identity not independently verified; separate local phase per displayed passage diagnostic only; no cross-program globalphase adoption test",
+        "quality": "Usableconditionalcapturepitchdiagnostic; noverifiedrawPMSandnoacross-programphaseclaim."
+      },
+      {
+        "name": "saw-third-first",
+        "start": 3385.5,
+        "end": 3385.95,
+        "bandpass_hz": [
+          1070,
+          1300
+        ],
+        "points": 180,
+        "median_measured_frequency": 1177.0767900827746,
+        "amplitude_max_min_db": 6.419267795539724,
+        "candidate_fixed_new": {
+          "rate": 5.24,
+          "depth": 100,
+          "shape": "triangle",
+          "phase_local": 4.103928058924855,
+          "center_cents_absolute_log2_hz": 12242.612170796463,
+          "rmse_cents": 35.06287740315118
+        },
+        "old_fixed": {
+          "rate": 6.1,
+          "depth": 40,
+          "shape": "sine",
+          "phase_local": 2.588243343880237,
+          "center_cents_absolute_log2_hz": 12237.117254136387,
+          "rmse_cents": 37.50479728737543
+        },
+        "free_triangle_diagnostic": {
+          "rate": 5.4394845426606855,
+          "depth": 74.14652953653352,
+          "shape": "triangle",
+          "phase_local": 3.732900309719062,
+          "center_cents_absolute_log2_hz": 12240.871115213467,
+          "rmse_cents": 30.76293524063869
+        },
+        "free_sine_diagnostic": {
+          "rate": 5.340931866723322,
+          "depth": 59.758899750831524,
+          "shape": "sine",
+          "phase_local": 3.9549746083365704,
+          "center_cents_absolute_log2_hz": 12240.57491414444,
+          "rmse_cents": 31.31871144985423
+        },
+        "conditionality": "PSS580 raw voice dump absent; PMS identity not independently verified; separate local phase per displayed passage diagnostic only; no cross-program globalphase adoption test",
+        "quality": "Short/contaminated diagnostic; notacceptedforquantitativeLFOdecision."
+      },
+      {
+        "name": "human-held",
+        "start": 3271.35,
+        "end": 3273.55,
+        "bandpass_hz": [
+          1480,
+          1650
+        ],
+        "points": 859,
+        "median_measured_frequency": 1567.7736977244513,
+        "amplitude_max_min_db": 16.781743991605648,
+        "candidate_fixed_new": {
+          "rate": 5.24,
+          "depth": 12.5,
+          "shape": "triangle",
+          "phase_local": 2.68740002032417,
+          "center_cents_absolute_log2_hz": 12738.143777927555,
+          "rmse_cents": 4.963186008820829
+        },
+        "old_fixed": {
+          "rate": 6.1,
+          "depth": 10,
+          "shape": "sine",
+          "phase_local": 2.2817835504122947,
+          "center_cents_absolute_log2_hz": 12737.881383344478,
+          "rmse_cents": 10.753015349627875
+        },
+        "free_triangle_diagnostic": {
+          "rate": 5.241744063889795,
+          "depth": 11.974298332972573,
+          "shape": "triangle",
+          "phase_local": 2.6753709191725177,
+          "center_cents_absolute_log2_hz": 12738.130946460447,
+          "rmse_cents": 4.953519874230092
+        },
+        "free_sine_diagnostic": {
+          "rate": 5.238452717430881,
+          "depth": 9.714932915916005,
+          "shape": "sine",
+          "phase_local": 9.011081618422091,
+          "center_cents_absolute_log2_hz": 12738.141737403359,
+          "rmse_cents": 4.990255405015159
+        },
+        "conditionality": "PSS580 raw voice dump absent; PMS identity not independently verified; separate local phase per displayed passage diagnostic only; no cross-program globalphase adoption test",
+        "quality": "Usableconditionalcapturepitchdiagnostic; noverifiedrawPMSandnoacross-programphaseclaim."
+      },
+      {
+        "name": "human-final",
+        "start": 3285.0,
+        "end": 3285.6,
+        "bandpass_hz": [
+          2010,
+          2170
+        ],
+        "points": 240,
+        "median_measured_frequency": 2094.163901433335,
+        "amplitude_max_min_db": 0.5586553172651927,
+        "candidate_fixed_new": {
+          "rate": 5.24,
+          "depth": 12.5,
+          "shape": "triangle",
+          "phase_local": 0.4887544618498572,
+          "center_cents_absolute_log2_hz": 13237.619058847096,
+          "rmse_cents": 2.689187633674834
+        },
+        "old_fixed": {
+          "rate": 6.1,
+          "depth": 10,
+          "shape": "sine",
+          "phase_local": 5.034440715763924,
+          "center_cents_absolute_log2_hz": 13237.412451094007,
+          "rmse_cents": 5.854483301203309
+        },
+        "free_triangle_diagnostic": {
+          "rate": 5.291045705601602,
+          "depth": 11.859318457812105,
+          "shape": "triangle",
+          "phase_local": 6.667515582676723,
+          "center_cents_absolute_log2_hz": 13237.576897570054,
+          "rmse_cents": 2.646310754610903
+        },
+        "free_sine_diagnostic": {
+          "rate": 5.287042874361848,
+          "depth": 9.601335828676008,
+          "shape": "sine",
+          "phase_local": 6.669544751846487,
+          "center_cents_absolute_log2_hz": 13237.562486615225,
+          "rmse_cents": 2.7597840289940607
+        },
+        "conditionality": "PSS580 raw voice dump absent; PMS identity not independently verified; separate local phase per displayed passage diagnostic only; no cross-program globalphase adoption test",
+        "quality": "Usableconditionalcapturepitchdiagnostic; noverifiedrawPMSandnoacross-programphaseclaim."
+      },
+      {
+        "name": "human-final-startup-guard-posthoc",
+        "start": 3285.1,
+        "end": 3285.6,
+        "bandpass_hz": [
+          2010,
+          2170
+        ],
+        "points": 200,
+        "median_measured_frequency": 2093.1142545912435,
+        "amplitude_max_min_db": 0.522863001987759,
+        "candidate_fixed_new": {
+          "rate": 5.24,
+          "depth": 12.5,
+          "shape": "triangle",
+          "phase_local": 3.779441027414162,
+          "center_cents_absolute_log2_hz": 13238.501283957092,
+          "rmse_cents": 0.8621356424184197
+        },
+        "old_fixed": {
+          "rate": 6.1,
+          "depth": 10,
+          "shape": "sine",
+          "phase_local": 2.5054140577216693,
+          "center_cents_absolute_log2_hz": 13237.752782369185,
+          "rmse_cents": 5.497075000149958
+        },
+        "free_triangle_diagnostic": {
+          "rate": 5.248518693837614,
+          "depth": 13.876508032006294,
+          "shape": "triangle",
+          "phase_local": 3.760248344255919,
+          "center_cents_absolute_log2_hz": 13238.573896331985,
+          "rmse_cents": 0.32361646855089543
+        },
+        "free_sine_diagnostic": {
+          "rate": 5.246567850261291,
+          "depth": 11.209811443762762,
+          "shape": "sine",
+          "phase_local": 3.7566382635960522,
+          "center_cents_absolute_log2_hz": 13238.55626587828,
+          "rmse_cents": 1.0616262701640713
+        },
+        "conditionality": "PSS580 raw voice dump absent; PMS identity not independently verified; separate local phase per displayed passage diagnostic only; no cross-program globalphase adoption test",
+        "quality": "Posthoc0.1sstartupguard afterfirstfinal-noteanalysis revealedinitialunmodulatedphase; exploratoryshapeevidenceonly."
+      }
+    ],
+    "global_phase_limitation": "Each namedpassage hasonephase+centerfit. ThisisNOTthepreregisteredstrictsinglephaseforallpassagesinonecapture. Cameraedits,noteonsets,and150sprogramgapwereundocumented; resultsvalidatefrequency/shapeconditionally,notcontinuous-globalLFOfirmwarebehavior.",
+    "no_retuning": "Rootcandidate5.24Hztriangle,binaryPMSdepthswerefrozenbeforetargetpitchanalysis;nonechangedfromnewrecording. Exploratoryfreerates/depthsarereportedseparately."
+  },
+  "analysis_environment": {
+    "numpy": "1.26.4",
+    "scipy": "1.14.1",
+    "python": "3.11.0",
+    "scripts": [
+      {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/analyze_kevin.py",
+        "bytes": 2049,
+        "sha256": "1d9194a2f1a70d85d03dae4f05bc1c44ba26683e3c0756d04d62756a67d5feb4"
+      },
+      {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/lfo_holdout.py",
+        "bytes": 3912,
+        "sha256": "7f13c2760db41191f4a1edfd337f548e6997d2be8d6f14a3d38b3c51c9e7047f"
+      },
+      {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/build_audit.py",
+        "bytes": 8836,
+        "sha256": "5d1010223d163879ffe1e9b40390c0f116a8231325e349c07cd74a601b4d7e5e"
+      }
+    ]
+  }
+}

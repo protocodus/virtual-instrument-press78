@@ -4,7 +4,9 @@
 The externally supplied research directory is not bundled or licensed by this
 test. It provides the original experiment and the separately sourced bank.
 Nominal48k raw FM only: host resampler delay is removed, output effects bypassed.
-This is implementation parity, not validation against a Yamaha instrument.
+This is historical implementation parity, not validation against a Yamaha instrument.
+Current b11 deliberately differs at the corrected D1 endpoint and modulation;
+this strict legacy diagnostic records those differences and is not its hardware gate.
 """
 import argparse
 import hashlib

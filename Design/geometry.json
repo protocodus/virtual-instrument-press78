@@ -1048,7 +1048,7 @@
       "height": 52,
       "min": 0.05,
       "max": 30,
-      "default": 6.1,
+      "default": 5.24,
       "step": 0.1,
       "unit": "Hz",
       "accent": "cyan",
@@ -2310,7 +2310,7 @@
       "height": 52,
       "min": 0,
       "max": 1,
-      "default": 0,
+      "default": 1,
       "step": 1,
       "unit": "",
       "accent": "cyan",
@@ -2344,7 +2344,7 @@
       "height": 52,
       "min": 0,
       "max": 1,
-      "default": 0,
+      "default": 1,
       "step": 1,
       "unit": "",
       "accent": "cyan",
@@ -3401,7 +3401,7 @@
     "patch.carrier.d1l": 0,
     "patch.carrier.d2r": 12,
     "patch.carrier.rr": 5,
-    "controls.lfoRateHz": 6.1,
+    "controls.lfoRateHz": 5.24,
     "patch.vibratoDelay": 0,
     "controls.vibratoDepth": 1,
     "controls.tremoloDepth": 1,
@@ -3430,8 +3430,8 @@
     "patch.pms": 3,
     "patch.ams": 0,
     "controls.lfoDelayScale": 1,
-    "controls.triangleLfo": 0,
-    "controls.globalLfo": 0,
+    "controls.triangleLfo": 1,
+    "controls.globalLfo": 1,
     "controls.velocityToModulation": 0,
     "rack.bendRange": 2,
     "rack.modWheelDepth": 1,
@@ -3451,8 +3451,8 @@
     "target": "5.0"
   },
   "source_sha256": {
-    "Source/DSP/Press78Engine.h": "a11cc9536a4137ea5b380f992fb8d24fe23dda0b5ea58c63bb43b32af5c1d6bb",
-    "Resources/controls.json": "a442097f8cd4c95cb63a75886eb1bb9672d294b335408522dc40f0d2db0c66a5",
+    "Source/DSP/Press78Engine.h": "ddab76c7e5f548c15bee1cfa115f903fdcd49e71611a302e29bad52dc4d1b6c7",
+    "Resources/controls.json": "0b627e60f366fd47a8bf1cb836c5d7d59fa238175d67a659c64e5b5866135753",
     "Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
   }
 }

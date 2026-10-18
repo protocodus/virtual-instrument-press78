@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "contracts": 5,
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "source_sha256": {
+    "Tests/test_modulation.cpp": "86ac57b62b7ccad719f796780ef6cd4795606882ac6728957d7a70c9bfeaab80",
+    "Source/DSP/Press78Engine.cpp": "76c9f2bff45743c1c26ba7cf30efd208814290a6ad8292b203e17bd442cd23e4",
+    "Source/DSP/Press78Engine.h": "ddab76c7e5f548c15bee1cfa115f903fdcd49e71611a302e29bad52dc4d1b6c7"
+  },
+  "log": "/Users/vojta/Dev/virtual-instrument-press78/build/lfo-audit-20261018/modulation-b11-final.log",
+  "log_sha256": "2c908bd562737d04a88f5a05932a651ec0043a5932c8738734ac93efb791d51f",
+  "scope": "Native rendered pitch, period, global continuity, delay, block and allocation contracts; no hardware or Reason host assertion."
+}

@@ -29,12 +29,12 @@
   "native_host_tested": false,
   "scope": "Wireframe geometry, property contract and SVG raster checks; no DSP/audio or native host claims.",
   "source_sha256": {
-    "Design/geometry.json": "c6ab8319f4c49833d5cdec3e972f06ee9223e25d35380926d876422c22ac6d67",
+    "Design/geometry.json": "4e5bb338f52a92a9a9876b862bc38aa4edb5e5107c78e6ec314529a8fa0965c8",
     "Design/build_wireframe.py": "bb3ee09db284d2f26023cc723d0a4187073b7b0bab6d58227c2d617575038240",
     "Design/preview_template.html": "d7e34a90d75cb8f98c814830cb3d955d1d1c317005e3a0f1928ada80e5984e68",
-    "Design/index.html": "c9aaed2130bb8c988d780b48363206092489d68255207f32bb58f74f9cba4e76",
+    "Design/index.html": "f85697f15a4731170a5b7674c78f40b565a6e991a3007692859f905c5d4adfcf",
     "Design/render_preview.cjs": "fa345aea4e6fcb20b8cdd7c665b75ac203e901d292ee1e4faf073ceeebbba217",
-    "Resources/controls.json": "a442097f8cd4c95cb63a75886eb1bb9672d294b335408522dc40f0d2db0c66a5"
+    "Resources/controls.json": "0b627e60f366fd47a8bf1cb836c5d7d59fa238175d67a659c64e5b5866135753"
   },
   "branding_fold_clearance_min_px": 15,
   "header_group_center_tolerance_px": 0.5,
