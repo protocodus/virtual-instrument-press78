@@ -125,7 +125,8 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 - b13: the Original release-pedal policy (the pedal selects the release rate; key-up releases at once), a hidden setting that new patches turn on.
 - b14: a fixed output bus and final converter keep the 48 kHz output character at every host rate; other rates change audio and latency.
 - b15: 50 modern Rack presets (basses, donks, plucks, leads, pads and FX) beside the 100 `PSS` voices; the plug-in does not include them yet.
-- Reason Rack Extension prototype 0.1.0b15, built outside this repository.
+- b16: new Reason devices open **BASS - Vowel Engine**, a velocity-responsive low-register growl. Init remains available in the patch browser; saved sounds and the JUCE plug-in's startup are unchanged.
+- Reason Rack Extension prototype 0.1.0b16, built outside this repository.
 - First JUCE plug-in: every control as a parameter, Init plus the 100 voices as programs, and a working editor; the Rack panel design is not yet ported to it.
 
 ## Downloads
@@ -171,7 +172,9 @@ The standalone PSS-480 resistor/opamp noise model and earlier noise research rem
 
 The Rack Init and all 100 factory patches use the **Real** startup profile: related-hardware output circuit on, Recorded chorus at its captured rate/depth and full reference side level, and a slow ±20 ppm clock excursion at 0.1 Hz (about ±0.035 cents). Clock offset and creative Drive stay zero. Clock excursion is an explicit modeling choice, not recovered PSS-780 calibration. Additive noise has been removed from the runtime, including both White and Circuit paths. Old patches and automation may still contain the former noise properties; their values are ignored and cannot restore hiss. Other values remain editable and persist with patches. The portable constructor also uses the new 5.24 Hz shared triangle LFO; its effect defaults remain independent of the Rack Real profile. Model selectors and fine calibration are on the rear.
 
-Init is an independently defined sine patch. The public development bank contains the 100 original parameter presets as `PSS 00 …` through `PSS 99 …`. The Rack bank also carries 50 modern presets (12 basses, 8 donks, 12 plucks, 8 leads, 6 pads and 4 FX) under `Modern`, defined in `Assets/FactoryBank/modern-*.json`; the [factory presets guide](Docs/guide/factory-presets.md) lists them, and [the modern audition page](Docs/guide/modern-presets.html) plays each one. Loading/editing a Rack patch retimbres held voices while preserving their oscillator/envelope state. The standalone engine also offers future-voices-only program snapshots.
+New Reason devices open **BASS - Vowel Engine**, the existing modern preset selected by `Assets/FactoryBank/rack-startup.json`. Play MIDI notes 30–54 for its throaty, rhythmic growl; velocity adds bite and the wheel adds slow pitch wobble. Its sound parameters are unchanged. Init remains an independently defined sine patch in the standard patch browser. This Rack startup selection does not change saved patches, compatibility defaults or the JUCE plug-in's Init startup.
+
+The public development bank contains the 100 original parameter presets as `PSS 00 …` through `PSS 99 …`. The Rack bank also carries 50 modern presets (12 basses, 8 donks, 12 plucks, 8 leads, 6 pads and 4 FX) under `Modern`, defined in `Assets/FactoryBank/modern-*.json`; the [factory presets guide](Docs/guide/factory-presets.md) lists them, and [the modern audition page](Docs/guide/modern-presets.html) plays each one. Loading/editing a Rack patch retimbres held voices while preserving their oscillator/envelope state. The standalone engine also offers future-voices-only program snapshots.
 
 ### Plug-in front end
 
@@ -254,4 +257,13 @@ python3 Tools/check_rack_contract.py /path/to/SDK-worktree/Examples/Press78
 
 ## Licensing
 
-Press78's source code is MIT-licensed; see [LICENSE](LICENSE). The plug-in builds with JUCE (AGPLv3 or a commercial JUCE licence) and clap-juce-extensions; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The factory voice parameters are not covered by the MIT licence and their redistribution rights are unresolved; the notices file explains why.
+Press78's source is available under the [PolyForm Noncommercial License
+1.0.0](LICENSE): you may read, study, change and share it for any non-commercial
+purpose, but not sell it or use it commercially. Official Protocodus builds
+carry an additional permission in the same file to use them for any purpose,
+including making music commercially. Commits made before this licence change
+were published under MIT and remain so. The plug-in builds with JUCE (official
+builds use a commercial JUCE 8 Starter licence) and clap-juce-extensions; see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The factory voice parameters
+are not covered by that licence and their redistribution rights are unresolved;
+the notices file explains why.
