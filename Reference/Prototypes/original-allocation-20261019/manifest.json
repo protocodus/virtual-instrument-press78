@@ -1,0 +1,49 @@
+{
+  "schema": "press78.original-allocation-research-patch.v1",
+  "baseline_commit": "1e7978225ff43b9e423d0fcc0acf8ad79f1ebd34",
+  "scope": "Isolated Mode00 native research model, not shipped/default-adopted. No executable firmware or recording is included. Existing synthesis/analog laws unchanged; resampler history storage128 instead of256 is byte-qualified in Legacy.",
+  "files": [
+    {
+      "path": "Source/DSP/FirmwareAllocation.h",
+      "bytes": 4043,
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a"
+    },
+    {
+      "path": "Source/DSP/Press78Engine.h",
+      "bytes": 11072,
+      "sha256": "79c7eeba12560349b391cc3e13fa128673d4ad71733c98d00881a8c2be51fe9a"
+    },
+    {
+      "path": "Source/DSP/Press78Engine.cpp",
+      "bytes": 32311,
+      "sha256": "4d7936aa579205c3c85487c8afedaf5d937dbce725dd89752068bbfbb5d8d5d8"
+    },
+    {
+      "path": "Source/DSP/Press78OutputBus.h",
+      "bytes": 10367,
+      "sha256": "30edd9d7832a6dc26a1a1c1caa2efefad7bf7eef0e0da6ed8f38f07632568b34"
+    },
+    {
+      "path": "Tools/NativeRender.cpp",
+      "bytes": 8788,
+      "sha256": "d43e90b58a67ff05ac8bf4a8060ffc4d6d42a15240fa1d8db2477260b625e7b0"
+    },
+    {
+      "path": "Tools/LegacyByteProbe.cpp",
+      "bytes": 3650,
+      "sha256": "f78f68b33b3e04f4655ee1ff56bb2d52996c33b2a1f78c52169e93abe0d5d3e8"
+    },
+    {
+      "path": "Tests/test_allocation.cpp",
+      "bytes": 14935,
+      "sha256": "6a3da8fef8cfe3c7ca8269a075f5af22e0a59bbf563199dcddbe45f2ba66ec6f"
+    },
+    {
+      "path": "Tests/mode00_command_fixture.h",
+      "bytes": 39149,
+      "sha256": "38d822e3029f862c1f1f59558262be67a24b1199b7dfd74de608ad7f7c4be0a4"
+    }
+  ],
+  "patch_sha256": "7f4a1eb859ecb806f4920fe34c6b58c1c72353ce235a3a8ee9fd5a0ad7f67185",
+  "retained_initial_export_failure_sha256": "2084dfa8865c8f1266e172cb932809f82859f0b724d9eeadde489225753552a9"
+}

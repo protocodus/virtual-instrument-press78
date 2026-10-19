@@ -1,0 +1,150 @@
+{
+  "schema": "press78.original-allocation-public-component-validation.v1",
+  "status": "COMPONENT_GATES_PASSED_RECORDING_PROMOTION_GATES_FAILED",
+  "adopted": false,
+  "production_changed": false,
+  "baseline_commit": "1e7978225ff43b9e423d0fcc0acf8ad79f1ebd34",
+  "manifest_sha256": "9869d4e4a80dd8022d35e8831e2d8e569dfb7d9d120bd6aeef38b0501aac92ee",
+  "readme_sha256": "4bafd68a4e7bb22ecc2ed359dc0fe17ffb64109e8df5fd820188a611761fe9b8",
+  "owner_core_gates": {
+    "old_five_targets_baseline_Release_and_sanitized": true,
+    "old_five_plus_25group_allocation_candidate_Release_and_sanitized": true,
+    "original_mode00_fixture_cases": 7,
+    "original_mode00_fixture_events": 251,
+    "original_mode00_fixture_field_checks": 1506,
+    "legacy_whole_byte_identity": true,
+    "legacy_cases": 330,
+    "legacy_frames": 1172760,
+    "legacy_bytes_per_stream": 9392040,
+    "whole_wrapper_budget": true,
+    "whole_wrapper_bytes": 196080,
+    "project_budget_bytes": 196608,
+    "remaining_bytes": 528,
+    "CLI_selector_and_invalid_values": true,
+    "no_real_time_allocations": true,
+    "noise_inert": true,
+    "all": true
+  },
+  "independent_control_tests": {
+    "release_groups": 11,
+    "sanitized_groups": 11,
+    "assertions_per_run": 2890,
+    "sanitizers": [
+      "AddressSanitizer",
+      "UndefinedBehaviorSanitizer"
+    ],
+    "failures": 0,
+    "dynamic_event_render_allocations": 0,
+    "scope": "Synthetic declared API events and read-only/private friend state observations; no original hardwareaudio or timingclaim."
+  },
+  "independent_legacy_ring_compatibility": {
+    "cases": 108,
+    "rates_hz": [
+      8000,
+      8000.5,
+      11025,
+      44100,
+      44117,
+      48000,
+      48000.25,
+      96000,
+      192000
+    ],
+    "frames": 667656,
+    "compared_bytes": 4808592,
+    "whole_binary_identical": true,
+    "sha256": "86663e4f36236b63195ea6872693154b12217f58b9374dac77d7cf10aa76f60a",
+    "contents": "Rendered float output plusactivevoicecount; mixed null/alias/split paths, patches65/93/97, pitch/sustainlaws, \u00b120000ppmoffset+10000ppmdrift, voicepressure/control/panic/resetevents. Engine direct preparation atall9rates, no perpatch fitting.",
+    "maximum_observed_float_peak": 0.2570874094963074
+  },
+  "independent_history_proof": {
+    "initial_capacity": 256,
+    "amended_capacity": 128,
+    "output_fill_invariant": "nextTick=floor(position)+1 after filling; monotonically increasing digitaltime for supportedcontrols.",
+    "read_interval": "base=floor(position\u221232);64taps readbase\u221231..base+32. Maximumrequiredlookback64ticks atoutput. Negativeearlyindicesreturnzero.",
+    "clock_factor_bounds": [
+      0.97,
+      1.03
+    ],
+    "long_position_witness_max": 1099511627777.0,
+    "static_assert_in_candidate": true,
+    "runtime_ring_oracle_cases": 480,
+    "semantics": "Storagecapacityonly; equations/timing/controls unchanged. Existing extreme long-session numeric limits ofthebaseengine are not expanded."
+  },
+  "independent_memory": {
+    "baseline_engine": 177352,
+    "amended_engine": 178584,
+    "baseline_bus": 193816,
+    "amended_bus": 195048,
+    "baseline_native_wrapper": 194848,
+    "amended_native_wrapper": 196080,
+    "parameter_count": 70,
+    "budget": 196608,
+    "remaining_bytes": 528,
+    "qualification": "CompiledunchangedcurrentCPress78layoutwithcandidateDSPinclude; futureallocationproperty/wrappingfields requirefreshfullwrappersizecheck."
+  },
+  "retained_failures": {
+    "initial_wrapper_excess_bytes": 496,
+    "missing_test_dependency_builds": 4,
+    "initial_patch_metadata_failure": true,
+    "all_preserved": true
+  },
+  "evidence": [
+    {
+      "path": "build/allocator-native-candidate-20261019/candidate-validation.json",
+      "sha256": "1eb807dcfe2d34330d37710271b81cd962ae243c627a7710287cce55fe5583e6"
+    },
+    {
+      "path": "build/allocator-native-candidate-20261019/amended-source-test-binding.json",
+      "sha256": "534c79743923c3be581339acc1e449178446e3874d5cd006eb820bd7fa5db932"
+    },
+    {
+      "path": "build/allocator-native-candidate-20261019/history-amendment-frozen.json",
+      "sha256": "2b8afdaf8e73088b044b73f19a64bdf1225ea9f8fcb4bd50141690e9edbabbae"
+    },
+    {
+      "path": "build/allocator-native-candidate-20261019/memory-first-result.json",
+      "sha256": "4f4688c15bbdeae7162f0d0e11af24564a8cd9e30502d18455f519bafd8a6ecd"
+    },
+    {
+      "path": "build/allocator-native-candidate-20261019/memory-amended-result.json",
+      "sha256": "b7f96cd0571860f6dc4c46c702e6cf29f7eb950fd5662330738b5b65ed5ea8e0"
+    },
+    {
+      "path": "build/allocator-native-candidate-20261019/test-dependency-amendment.json",
+      "sha256": "abe0844e5b4b989857f3bd4abd74fcec9fa3a623861ba1a4b26c41c34954941f"
+    },
+    {
+      "path": "build/allocator-native-candidate-20261019/legacy-byte-proof.json",
+      "sha256": "2a9f6fa178f8db50a9170c11650b5023a4aa0bd03f4a97849410a56b7ba9e388"
+    },
+    {
+      "path": "build/allocator-native-review-20261019/amended-review-result.json",
+      "sha256": "3335a23c4d10e4de693514fd0dbf4fa094307773864beb04fae9b9c28f70d67d"
+    },
+    {
+      "path": "build/allocator-export-check-20261019/initial-failure.json",
+      "sha256": "2084dfa8865c8f1266e172cb932809f82859f0b724d9eeadde489225753552a9"
+    },
+    {
+      "path": "build/allocator-export-check-20261019/result.json",
+      "sha256": "7670167f2e8c29b5292125906db283871b396b543cfe5a6953cb9f28850be0be"
+    },
+    {
+      "path": "build/allocator-recording-comparison-v3-20261019/root-source-review.json",
+      "sha256": "ecb5b3367438a6218e5977dfb55e295c396059bd53b6ff8b12a0b71114798376"
+    }
+  ],
+  "scope": "Software/component equivalence and bounded memory/Legacy compatibility. No target chip, physical timing, audio fidelity, host performance, market ranking or production adoption is established.",
+  "recording_report_sha256": "d9d7d90e98521062268a498fc1ad3cb7260449410213e57f274fc3eb6b3319c4",
+  "recording_audio_gates": {
+    "historical_legacy_all4_retained_WAVs_identical": true,
+    "merged_legacy_all4_independent_baselines_identical": true,
+    "unchanged_map_band_improvement": false,
+    "other_maps_band_bounds": true,
+    "each_focus_each_map_band_bounds": true,
+    "all_maps_STFT_log_bounds": true,
+    "all_sine_diagnostics_each_map_band_bounds": false
+  },
+  "recording_audio_gates_passed": false
+}
