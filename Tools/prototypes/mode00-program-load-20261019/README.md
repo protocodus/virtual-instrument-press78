@@ -31,8 +31,8 @@ claiming complete firmware or chip timing.
 Run with Python 3 and its standard library from the repository root:
 
 ```sh
-python3 Reference/Prototypes/mode00-program-load-20261019/check.py
-python3 Reference/Prototypes/mode00-program-load-20261019/check_retained_state.py
+python3 Tools/prototypes/mode00-program-load-20261019/check.py
+python3 Tools/prototypes/mode00-program-load-20261019/check_retained_state.py
 ```
 
 The first script checks 12,332 arithmetic/state assertions with newly authored

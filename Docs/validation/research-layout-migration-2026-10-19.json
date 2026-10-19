@@ -1,0 +1,232 @@
+{
+  "schema": "press78.research-layout-migration.v1",
+  "date": "2026-10-19",
+  "original_tested_publication_commit": "a015e1915ac05e9044e529f1d298c6ce06e8fab5",
+  "original_source_branch": "research/pss780-20261019-frozen",
+  "portfolio_base": "75e62ba8f799a074cda48f85c344e750a470f504",
+  "scope": "Integrate completed research after concurrent portfolio layout merge. Original live workspace and ongoing PM process are not moved. JSON receipts retain paths/hashes as written; original tested commit supplies those exact bytes. No audio/DSP algorithm rerun or parameter changes.",
+  "files": [
+    {
+      "original_path": "Reference/Prototypes/mode00-program-load-20261019/README.md",
+      "original_sha256": "7034345a3ee4a50a6d889091433bf06834fdaee985a81afb68c3fdf57aa00a58",
+      "portfolio_path": "Tools/prototypes/mode00-program-load-20261019/README.md",
+      "portfolio_sha256": "a0c248eabaa28d12e0d999cb54ac43cc1259c6100e0e4929df9cb80dc914f96d",
+      "byte_identical": false,
+      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-program-load-20261019/check.py",
+      "original_sha256": "355947b9d6ec0185a091ebc1574960dc4809f9e406a05a15d457819f38dd899e",
+      "portfolio_path": "Tools/prototypes/mode00-program-load-20261019/check.py",
+      "portfolio_sha256": "355947b9d6ec0185a091ebc1574960dc4809f9e406a05a15d457819f38dd899e",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-program-load-20261019/check_retained_state.py",
+      "original_sha256": "906f5e7f375dd4e3ec01ff728d25d00e584a8c7d3e6e07015c3fcb327b5e8ff8",
+      "portfolio_path": "Tools/prototypes/mode00-program-load-20261019/check_retained_state.py",
+      "portfolio_sha256": "906f5e7f375dd4e3ec01ff728d25d00e584a8c7d3e6e07015c3fcb327b5e8ff8",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-program-load-20261019/export-validation.json",
+      "original_sha256": "965107091f531480817c9610208aaf8db07d205c134a131557873cba515f8d0a",
+      "portfolio_path": "Tools/prototypes/mode00-program-load-20261019/export-validation.json",
+      "portfolio_sha256": "965107091f531480817c9610208aaf8db07d205c134a131557873cba515f8d0a",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-program-load-20261019/firmware_allocator.py",
+      "original_sha256": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439",
+      "portfolio_path": "Tools/prototypes/mode00-program-load-20261019/firmware_allocator.py",
+      "portfolio_sha256": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-program-load-20261019/manifest.json",
+      "original_sha256": "86ed16bd80d6299e8388cd64548922a71277328dd7efcd9098546fd6e961b772",
+      "portfolio_path": "Tools/prototypes/mode00-program-load-20261019/manifest.json",
+      "portfolio_sha256": "86ed16bd80d6299e8388cd64548922a71277328dd7efcd9098546fd6e961b772",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-program-load-20261019/program_loader.py",
+      "original_sha256": "a5e5d3eb033da8996a719daa2c4a5078ff77770d1207ce00f5b6fc606bd35d16",
+      "portfolio_path": "Tools/prototypes/mode00-program-load-20261019/program_loader.py",
+      "portfolio_sha256": "a5e5d3eb033da8996a719daa2c4a5078ff77770d1207ce00f5b6fc606bd35d16",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-program-load-20261019/state_fixture.json",
+      "original_sha256": "fe847803c819980f9415d8df2b39c8383f8d73888f6076fcc806731f8a4a8794",
+      "portfolio_path": "Tools/prototypes/mode00-program-load-20261019/state_fixture.json",
+      "portfolio_sha256": "fe847803c819980f9415d8df2b39c8383f8d73888f6076fcc806731f8a4a8794",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-program-load-20261019/validation.json",
+      "original_sha256": "c7f6fb195420a356b66e3ee77b183612382c7e99dc111db4921176d6371cf1ce",
+      "portfolio_path": "Tools/prototypes/mode00-program-load-20261019/validation.json",
+      "portfolio_sha256": "c7f6fb195420a356b66e3ee77b183612382c7e99dc111db4921176d6371cf1ce",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Prototypes/original-allocation-20261019/README.md",
+      "original_sha256": "523f8b2e5067b5d55782d760c7de30cc71da1b8fb3b60b2ca40f37216659f66f",
+      "portfolio_path": "Tools/prototypes/original-allocation-20261019/README.md",
+      "portfolio_sha256": "4a610f297083f5617c00f602c808068fb2e29e9def89e7539801c08d4a5ed9c5",
+      "byte_identical": false,
+      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+    },
+    {
+      "original_path": "Reference/Prototypes/original-allocation-20261019/validation.json",
+      "original_sha256": "41712e78f162006908403c676ab59a9b1e269a6dffc1bdf3a56513a5956a5ed5",
+      "portfolio_path": "Tools/prototypes/original-allocation-20261019/validation.json",
+      "portfolio_sha256": "41712e78f162006908403c676ab59a9b1e269a6dffc1bdf3a56513a5956a5ed5",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Research/assets/midi-fixture-comparison-20261019.png",
+      "original_sha256": "2729bd0babedbdbfd5ecf69006d41f51d0422490b5ee4365bcf3cbeae5b93861",
+      "portfolio_path": "Docs/research/assets/midi-fixture-comparison-2026-10-19.png",
+      "portfolio_sha256": "2729bd0babedbdbfd5ecf69006d41f51d0422490b5ee4365bcf3cbeae5b93861",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Research/fidelity-roadmap-20261018.md",
+      "original_sha256": "0e8e0195ae4328a6e980aad7488af70843c932d4719b1cf995e3272ae55c70fb",
+      "portfolio_path": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "portfolio_sha256": "74c20120af43c58cf212cc9acc2c1534164cd4b5a753d7a1a56db7af4d763865",
+      "byte_identical": false,
+      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+    },
+    {
+      "original_path": "Reference/Research/hardware-allocation-20261019.json",
+      "original_sha256": "aed38863c7e8a2b990b822e3c9135cef2d7fe5edfbf2cf880a75b165746eaac0",
+      "portfolio_path": "Docs/research/hardware-allocation-2026-10-19.json",
+      "portfolio_sha256": "aed38863c7e8a2b990b822e3c9135cef2d7fe5edfbf2cf880a75b165746eaac0",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Research/hardware-allocation-20261019.md",
+      "original_sha256": "270fcf44a7fa473b8945f4c630fce66b7eb29f86260e4c65cee8a18aa670a354",
+      "portfolio_path": "Docs/research/hardware-allocation-2026-10-19.md",
+      "portfolio_sha256": "ec8d88e00b08d91d4ea21cc647d9596902bfdeb01e9aa731281fc60c02881238",
+      "byte_identical": false,
+      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+    },
+    {
+      "original_path": "Reference/Research/midi-fixture-comparison-20261019.json",
+      "original_sha256": "605ca6f6cc38e68211046bb1b018f08fe644b9ef9d8ce5fad5d9e0651d4f79ce",
+      "portfolio_path": "Docs/research/midi-fixture-comparison-2026-10-19.json",
+      "portfolio_sha256": "605ca6f6cc38e68211046bb1b018f08fe644b9ef9d8ce5fad5d9e0651d4f79ce",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Research/midi-fixture-comparison-20261019.md",
+      "original_sha256": "139ec061054561a2d81490541d4cbb6092d33fd00d1a3ab3a04574d3f6d39b4e",
+      "portfolio_path": "Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "portfolio_sha256": "3823377424f7f1642b68d16c5373555113621beb9c2ae45d16e5655a87252921",
+      "byte_identical": false,
+      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+    },
+    {
+      "original_path": "Reference/Research/midi-fixture-comparison-protocol-20261019.json",
+      "original_sha256": "34c7d67681cf067aa5cf1d67834e5e489126bd7130fd3715f07004ab55db06d4",
+      "portfolio_path": "Docs/research/midi-fixture-comparison-protocol-2026-10-19.json",
+      "portfolio_sha256": "34c7d67681cf067aa5cf1d67834e5e489126bd7130fd3715f07004ab55db06d4",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Research/mode00-program-command-adapter-20261019.json",
+      "original_sha256": "3b90af9a1300d12fbebcf8689539ff94648a49f314e8a52f976ab9304f06cf7f",
+      "portfolio_path": "Docs/research/mode00-program-command-adapter-2026-10-19.json",
+      "portfolio_sha256": "3b90af9a1300d12fbebcf8689539ff94648a49f314e8a52f976ab9304f06cf7f",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Research/mode00-program-command-adapter-20261019.md",
+      "original_sha256": "93a7e6179171761e7c2fbe01744440476a5b1d0e01d536909c67a7a9fb18ad07",
+      "portfolio_path": "Docs/research/mode00-program-command-adapter-2026-10-19.md",
+      "portfolio_sha256": "ae17bf1e7c24f9bed55b972a51630c6a99cdfaf41614a970ed62e2b7724cabd5",
+      "byte_identical": false,
+      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+    },
+    {
+      "original_path": "Reference/Research/mode00-program-command-validation-20261019.json",
+      "original_sha256": "a81fbce01204e146d596bfd2e716e3978810073f18bb0301c8ea42451d1d34c2",
+      "portfolio_path": "Docs/research/mode00-program-command-validation-2026-10-19.json",
+      "portfolio_sha256": "a81fbce01204e146d596bfd2e716e3978810073f18bb0301c8ea42451d1d34c2",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Research/program-selection-association-20261019.json",
+      "original_sha256": "ac1e439536f0d78d5ef437dca1f20d56e17507c8311f07597e1c0c6a27d78704",
+      "portfolio_path": "Docs/research/program-selection-association-2026-10-19.json",
+      "portfolio_sha256": "ac1e439536f0d78d5ef437dca1f20d56e17507c8311f07597e1c0c6a27d78704",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Reference/Research/program-selection-association-20261019.md",
+      "original_sha256": "345adb95ec9873b31d83e244c19463744ad229b6d17e22def1491206ad3ec2e6",
+      "portfolio_path": "Docs/research/program-selection-association-2026-10-19.md",
+      "portfolio_sha256": "82ebe5f49dc4a7c3004c5f3649481ca12f9e7ebad44e154e4de9be0f1c897b4f",
+      "byte_identical": false,
+      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+    },
+    {
+      "original_path": "Reference/Research/program-selection-association-validation-20261019.json",
+      "original_sha256": "b6bd930680e4ab72c53acb64d92042b08435ac4b1cb1e976c1441260a5893ad4",
+      "portfolio_path": "Docs/research/program-selection-association-validation-2026-10-19.json",
+      "portfolio_sha256": "b6bd930680e4ab72c53acb64d92042b08435ac4b1cb1e976c1441260a5893ad4",
+      "byte_identical": true,
+      "change_scope": "none"
+    },
+    {
+      "original_path": "Tools/benchmark_midi_fixture.py",
+      "original_sha256": "004fb6723df0e616b014e42e17fde25428bbd3b271e13a3120859b15226db2aa",
+      "portfolio_path": "Tools/benchmark_midi_fixture.py",
+      "portfolio_sha256": "3184e8e2544f65a0cd9f3e63366d48d3ea63d976722869f414d6b11bef26210c",
+      "byte_identical": false,
+      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+    }
+  ],
+  "frozen_executed_sources": {
+    "runner": {
+      "path": "Tools/prototypes/midi-fixture-comparison-20261019/runner-frozen.py",
+      "sha256": "004fb6723df0e616b014e42e17fde25428bbd3b271e13a3120859b15226db2aa"
+    },
+    "common": {
+      "path": "Tools/prototypes/midi-fixture-comparison-20261019/common-frozen.py",
+      "sha256": "918d97ea32710798e5f7c87fc165b2cb618cccd03b5201ff0f0aa0d4f662a98d"
+    }
+  },
+  "verification": {
+    "all_new_JSON_and_plot_bytes_preserved": true,
+    "current_runner_AST_equal_after_reversing_lookup_paths_only": true,
+    "six_imported_common_function_ASTs_identical": true,
+    "all5_public_python_implementation_test_fixture_files_byte_identical": true,
+    "shipping_DSP_unchanged_vs_portfolio_base": true
+  },
+  "limits": [
+    "This migration is not another recording experiment or proof of current host playback.",
+    "Historical local media and expanded original traces remain in the recorded original workspace, not redistributed.",
+    "Documentation and README hashes in frozen receipts describe the original publication; this mapping records their new link/path spelling."
+  ]
+}
