@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-19",
+  "classification": "Separate posthoc follow-up proposed after the original local-slope result and an independent review of its arbitrary-curvature limitation; frozen before traversal duration extraction. Never replaces original design/result.",
+  "scope": "All10 unordered pairs of the same five output levels and all64 low/high note pairs. Original16 saved H1 curves only, no audio, PM, resampling, envelope fit, new window or level selection.",
+  "source_json": "Docs/research/opu-envelope-independent-2026-10-19.json",
+  "expected_source_sha256": "cfe77490c69bb317d5a4b0c9054d0d7ff4c505508bac3824e2ee730a58b36412",
+  "levels_dbfs": [-26, -25, -24, -23, -22],
+  "expected_notes": [36, 39, 43, 46, 48, 51, 55, 58, 60, 63, 67, 70, 72, 75, 79, 82],
+  "grouping": "Unchanged low36..58 and high60..82, eight rows each.",
+  "curve_qualification": "Require all81 time/level values finite, times strictly increasing with5ms steps to1e-10 tolerance, and all80 level differences strictly negative. Retain nonmonotone/plateau/malformed failure; no repair, smoothing, monotonic regression or subrange replacement. This is an explicit continuous-monotonic scalar-H1 hypothesis, not an empirical guarantee about between-sample physics.",
+  "crossing_brackets": "At each fixed level use the sole strict downward straddling sample pair [t_j,t_(j+1)]. Exact equality at one guarded interior sample gives [t_j,t_j]. Adjacent equal-level samples, multiple events, missing levels or upward events fail. Do not use linearly interpolated crossing times or local slopes.",
+  "duration_enclosure": "For every pair, let Lhi>Llo. With crossings [h_lo,h_hi] and [l_lo,l_hi], use duration interval [max(0,l_lo-h_hi),l_hi-h_lo]. Report both original brackets, sample indices and same-sample-interval flags. Empty/inverted or nonpositive-upper enclosures fail. The lower0 clamp uses known temporal ordering for strict monotone descent; same-bracket crossings remain conservatively enclosed, with no inferred sub-grid order time.",
+  "comparisons": "For each of10level pairs retain all16 duration intervals. Compare all64 high-minus-low differences using [highLower-lowUpper, highUpper-lowLower]. An interval wholly negative/positive has the corresponding nominal separation; intervals containing0 overlap. No significance threshold or statistical-independence claim. Also report intersection of all16 intervals and both within-group intersections, without selecting a smaller subgroup. Preserve every failure and missing pair, no substitutions.",
+  "null_derivation": "For intrinsic x_i(t)=a_i-r*t with commonconstant r>0 and observed y_i=G(x_i) with one continuous strictly increasing G, crossing time is (a_i-inverseG(L))/r. Thus traversal t_i(Llo)-t_i(Lhi)=[inverseG(Lhi)-inverseG(Llo)]/r is identical across notes, irrespective of G curvature and a_i. A common duration must lie in every valid sampled crossing enclosure. This argument was independently reviewed before execution; no inference of G or r follows from a rejection.",
+  "continuous_assumptions": "The enclosure conditions on monotonic continuous H1 curves between the saved samples and on the saved H1 level values being exact for this restricted curve-null. Actual fitted H1 magnitude errors, extraction smoothing, FM/timbre changes, per-note normalization, downstream frequency-dependent gain, dynamics and patch/effect history are not bounded by the5ms sampling brackets. These prevent a general physical envelope or capture-circuit claim.",
+  "synthetic_control": {
+    "times": "81 samples0..0.4seconds,5ms",
+    "intrinsic_rate_db_per_second": 32.0,
+    "maps": ["G(x)=x", "G(x)=0.5*(x+24)-24", "G(x)=x+0.75*tanh((x+24)/3)", "G(x)=x+5*tanh((x+24)/0.005)"],
+    "starts": "a_i=inverseG(-20.5)+0.02*i, i=0..15; inverseG uses80 bisections in fixed[-100,100]. These are arbitrary scalar test fixtures only.",
+    "qualification": "For each4maps,16starts and10levelpairs require valid enclosures containing the known analytic common duration. Compare all64 group pairs at every map/levelpair: all difference intervals must include0. No test using an arbitrary-G slope interpolation error bound. Retain any failed control, never tune protocol.",
+    "crossing_edge_controls": "Direct curve fixtures: an exact singleton target, absent target, unique upward crossing, multiple crossings, and plateau. Exact guarded singleton and ordinary monotonic downward crossing qualify; absent/upward/multiple/plateau cases must fail with their reason. No hardware meaning.",
+    "no_fitted_constant": true
+  },
+  "no_adoption": "This is a sampled-H1 conditional time-translation diagnostic. No RKS/release-rate law, chip rate, compression factor, DAC/supply law, program behavior or production constant will be adopted. Original local-slope result remains intact with its general-curvature limitation."
+}

@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-19",
+  "passed": true,
+  "scope": "Final independent report/export/binding and scientific claim review; no production/public edits, source decoding, rendering or prior PM execution. Original PCM file header/hash were inspected separately without decoding samples.",
+  "checks": {
+    "final_public_json_sha256": 1,
+    "final_public_markdown_sha256": 1,
+    "public_nested_binding_sha256": 19,
+    "public_nested_binding_size": 19,
+    "exact_non_synthetic_result_export": 3,
+    "synthetic_export_field_coverage": 3,
+    "synthetic_count_export": 8,
+    "synthetic_other_field_export": 7,
+    "full_receipt_binding_export": 3,
+    "main_margin_and_intersection_distinct": 1,
+    "main_span_public_export": 1,
+    "analysis_and_reviewer_scope": 1,
+    "publication_local_links": 6,
+    "production_dsp_unchanged": 1
+  },
+  "total_publication_checks": 74,
+  "prior_review_receipts": {
+    "derivative-review.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-independent-review-20261019/derivative-review.json",
+      "bytes": 4381,
+      "sha256": "7a9233dcc658a7a0e5432964cf3bbf766ce1f1830715bb75a1dad13b0b5710ea"
+    },
+    "extraction-center-review.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-independent-review-20261019/extraction-center-review.json",
+      "bytes": 27248,
+      "sha256": "e54445909be33a4f9b8337b3b6d284893f4033a79cb0635fae98984183b9efe3"
+    },
+    "traversal-review.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-independent-review-20261019/traversal-review.json",
+      "bytes": 8402,
+      "sha256": "aad7bb15973041301d8be24a3915b353b179ca13e2afaa5c0863ab72798839e6"
+    },
+    "first-grid-review-failure.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-independent-review-20261019/first-grid-review-failure.json",
+      "bytes": 604,
+      "sha256": "8ca9d35caa300132109613673889f3c189a1380226787c4edf4e7581a39ee4cf"
+    }
+  },
+  "verified_publication_artifacts": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/bass-matched-level-decay-2026-10-19.json",
+      "bytes": 1169640,
+      "sha256": "684330ebfb2c4f8d337c11856971625634cbe96bf4bb880066c53e70aaac8eda"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/bass-matched-level-decay-2026-10-19.md",
+      "bytes": 7997,
+      "sha256": "96b8382ff203470a2a66b71ab56ad5cc1cfd7701f87fc2722f890b89c248bdfc"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/bass-matched-level-decay-20261019/design-frozen.json",
+      "bytes": 5465,
+      "sha256": "85a16b13ffc361d4c9df9b7c33c01dadf87bcbcdbf809d2ec23525b5de8f141b"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/bass-matched-level-decay-20261019/analyze.py",
+      "bytes": 9855,
+      "sha256": "258e1f418425da867d41131b5cbe3111fcdeec2f7a21287290d15a21c8185ba9"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/opu-envelope-independent-2026-10-19.json",
+      "bytes": 771818,
+      "sha256": "cfe77490c69bb317d5a4b0c9054d0d7ff4c505508bac3824e2ee730a58b36412"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/bass-matched-level-decay-20261019/traversal-design-frozen.json",
+      "bytes": 4859,
+      "sha256": "4180256e1c575c814eec9a48b2674a25a22d9e3b4de686f690bbda72626a11a6"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/bass-matched-level-decay-20261019/traversal.py",
+      "bytes": 11072,
+      "sha256": "028a12f6877b0c9ce2cc0e3c62c2d5abd6f8541c6bea3a03768c47763dcaf05e"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-decay-20261019/result.json",
+      "bytes": 516744,
+      "sha256": "18d22fff21109bd2ad2e70c4a58b8216eb662b40a07ab5d5be02de541de25d6a"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/bass-matched-level-decay-20261019/traversal-sample-centers-design-frozen.json",
+      "bytes": 5218,
+      "sha256": "3404e049bf6f3bf5ddca96664af524a788a1513b5aaa861cc6c7dac53801ed3e"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/bass-matched-level-decay-20261019/traversal_sample_centers.py",
+      "bytes": 12114,
+      "sha256": "6f86b3fc3552009128a7a1e8951c648604f1025e01d86cd7ec010e4c785d933d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-decay-20261019/traversal-result.json",
+      "bytes": 1889423,
+      "sha256": "6d1ee0e084a72351cbc753dc157bd1bb5d28f4c123e636cd3bc22516a7d521c3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-envelope-independent-20261019/harmonic_diagnostic.py",
+      "bytes": 3398,
+      "sha256": "26e64b63c85b0c266598ac1d260728db517d4efd9dbe2e5952f3de0e34227db5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-envelope-independent-20261019/harmonic-diagnostic-frozen.json",
+      "bytes": 29118,
+      "sha256": "9a1662c57f99a19ec0b22d21dc5bb377060e918bd928bc48f210864e9f62c6ca"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/isolated-source-search-2026-10-19.json",
+      "bytes": 332309,
+      "sha256": "34d8625bbe54c47198b045ba49ef7dfa2c11df2411aa92108aedefa93dc51aed"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-decay-20261019/traversal-sample-centers-result.json",
+      "bytes": 2655261,
+      "sha256": "8d6ccd6aae28c06d35d554b92eef863bba87d838774c97cc01446f048442f813"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/bass-matched-level-decay-20261019/README.md",
+      "bytes": 3029,
+      "sha256": "79fe508097e36d8c675adc8ce056c2365877b317333810428d3b23bf2a253e76"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-independent-review-20261019/derivative-review.json",
+      "bytes": 4381,
+      "sha256": "7a9233dcc658a7a0e5432964cf3bbf766ce1f1830715bb75a1dad13b0b5710ea"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-independent-review-20261019/extraction-center-review.json",
+      "bytes": 27248,
+      "sha256": "e54445909be33a4f9b8337b3b6d284893f4033a79cb0635fae98984183b9efe3"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-independent-review-20261019/traversal-review.json",
+      "bytes": 8402,
+      "sha256": "aad7bb15973041301d8be24a3915b353b179ca13e2afaa5c0863ab72798839e6"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-independent-review-20261019/first-grid-review-failure.json",
+      "bytes": 604,
+      "sha256": "8ca9d35caa300132109613673889f3c189a1380226787c4edf4e7581a39ee4cf"
+    }
+  ],
+  "reviewer_publication_tool": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/bass-matched-level-independent-review-20261019/review_publication.py",
+    "bytes": 6364,
+    "sha256": "45d37ef59e52dbfce56ae06a90bda7c1240673d89c5046cd9132badee0ce5576"
+  },
+  "findings": {
+    "blocking": [],
+    "resolved": [
+      "Original finite-grid slope differences cannot universally reject arbitrary differentiable monotonic G without an interpolation error bound. Final report explicitly states this and retains the original result.",
+      "Traversal v1 used absolute floating timestamps and exposed epsilon-level separations. Final export preserves v1 and all74 changed classifications; v2 binds original44.1kHz extraction centers and uses exact integer arithmetic.",
+      "No-PCM-opened wording now scoped to analysis runners; independent review header/hash inspection is explicit.",
+      "Derivative claim now explicitly conditional on differentiability; traversal null needs only continuity and strict monotonicity."
+    ],
+    "remaining_limits": [
+      "The conditional duration result treats saved H1 values as exact and continuous monotonically decreasing between centers; no H1 fit/filter/capture uncertainty bound is established.",
+      "Generic samplewise nonlinear audio processing with changing FM timbre is outside this scalar H1 null.",
+      "No hardware envelope/RKS/drive/DAC law, physical constant, accuracy rank or production DSP correction is inferred."
+    ]
+  },
+  "verified_main_span": {
+    "crossgroup_pairs": 64,
+    "minimum_pair_separation_samples": 220,
+    "all16_intersection_gap_samples": 662,
+    "denominator": 44100,
+    "values_are_distinct_quantities": true
+  },
+  "review_stage_counts": {
+    "slope_arithmetic": 1564,
+    "traversal_arithmetic": 6890,
+    "all_original_center_values": 1296
+  },
+  "no_public_edits_by_reviewer": true
+}
