@@ -1,0 +1,420 @@
+{
+  "date": "2026-10-19",
+  "passed": true,
+  "scope": "Independent final source/state/capacity/original-trace conformance and publication binding review; no CPU/native/audio/PCM rerun, host/UI/production mutation or firmware trace redistribution.",
+  "publication_checks": {
+    "publication_artifact_sha256": 83,
+    "publication_artifact_size": 83,
+    "historical_source_exact_archive_exists": 1,
+    "final_public_json_sha256": 1,
+    "final_public_md_sha256": 1,
+    "exact_final_v4_receipt_export": 1,
+    "all25_prototype_export_bindings": 25,
+    "prototype_export_count": 1,
+    "unchanged_failure_outcome_export": 2,
+    "v3_to_v4_comment_only_change": 1,
+    "original_header_law_preserved": 1,
+    "local_public_document_links": 14,
+    "prospective_history_counts": 1,
+    "resource_claim_scope": 1,
+    "production_dsp_unchanged": 1
+  },
+  "total_publication_checks": 217,
+  "publication_artifact_bindings": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/collector-source-bound.json",
+      "bytes": 1535,
+      "sha256": "aefe9a21930910c78f8c507b65fa86cab234091ad8a263024e68e2cf508a7ecc"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/Mode00CompleteCommands.h",
+      "bytes": 9817,
+      "sha256": "47ef1babcf44c77df8a1e818474d683a364b72e04eff29e31ba9f424572dd6bf"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/run.py",
+      "bytes": 13084,
+      "sha256": "3c3b1cceb122cf2d2486c0882d34f99958c3db2a4e4c8b358a36137ff853ca04"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/design-frozen.json",
+      "bytes": 10198,
+      "sha256": "3f3b5ed1e4dd54a460c0ea1c9d2a076cda27d4dc66f9cab98b3b0c5683bf253f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/corrected-delay-collection-receipt.json",
+      "bytes": 1030,
+      "sha256": "1f570ea34a33e6a227b65d1a8795fccd57dfe0ed4856974f765686ec0faa9bc0"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/binding-chronology-correction.json",
+      "bytes": 705,
+      "sha256": "8f17153e30020c20460a91edce3c66cd7d917b51af73a3b344428010e157ba16"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/FirmwareLevel.h",
+      "bytes": 3679,
+      "sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/SyntheticTests.cpp",
+      "bytes": 10495,
+      "sha256": "a06586f1b314946ad13d4c6459cf07641d27db29ed644aa91c8ebe829c1b9326"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/corrected-collector-bound.json",
+      "bytes": 650,
+      "sha256": "735bc2fe29b650d6c57097051cc9f1cc924fe78666cbded95a8d6dbe469782d7"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/original-collection-receipt.json",
+      "bytes": 1019,
+      "sha256": "106e0829f894b57f2441706c5a27d43ee15636c39df9e2a80ff0b947ae4e443d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/source-test-bound.json",
+      "bytes": 2213,
+      "sha256": "ee3d7b78656fd66f4e638f7b64b263aa4f5c959194d47e426e711aad40fce648"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/README.md",
+      "bytes": 6697,
+      "sha256": "1942c3fd8cecd477dc34a7df758ba5a04ef769864c3e6edeac2fdec141c314b6"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/fixture-amendment.json",
+      "bytes": 2159,
+      "sha256": "56f818bcab7b3ff29ef6cb156daa784c9dfcaecf8540dbaf0537de16dc9a2084"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/source-test-bound-v4.json",
+      "bytes": 2456,
+      "sha256": "868da07391ed05004ee8298d5fb79460219b44e1a81d5dc447c1e856872d0a24"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/validation.json",
+      "bytes": 11220,
+      "sha256": "08679febb0485de1748dd6a0472f4b09dbc68b8da775c54c3469182ad8153371"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/manifest.json",
+      "bytes": 5451,
+      "sha256": "64010794ac4ff9daaaf47f13606bc5db657e86685fdfe5091f97a37a777bb095"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/source-test-bound-v2.json",
+      "bytes": 2318,
+      "sha256": "058b2533782c7a2ca320714d91a1d4aeab652a17cb8113b17ba6e51af2efdbc3"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/collect_controls.py",
+      "bytes": 6169,
+      "sha256": "4510edf6835cddaefd157346419beb2837a41101989fa91e77ffb41038312917"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/CommandProbe.cpp",
+      "bytes": 6374,
+      "sha256": "ca6e4e851d78945266228177fd82aa4eac801874186e7de419b092c6c57aea8d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/design-before-bounded-matrix.json",
+      "bytes": 9560,
+      "sha256": "94286b9121c978a251b799bc855bfd2a111bc23af633c19007a7e5aae72430e6"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/source-test-bound-v3.json",
+      "bytes": 2585,
+      "sha256": "a114a432ebd20261ba83c1de7d7f9852b85d508b71e0a108f3e9a0f600808e6e"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/retained-executions/Mode00CompleteCommands-v3.h",
+      "bytes": 9816,
+      "sha256": "1404780807fe3410c9fd7952902f36d905e87d01fa316280ade90625332b30c5"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/retained-failures/SyntheticTests-v1.cpp",
+      "bytes": 10494,
+      "sha256": "31167463699b50995ad461c8e4d795b964384d80302030c2fb3c6a8002e3a39b"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/retained-failures/CommandProbe-v2.cpp",
+      "bytes": 6282,
+      "sha256": "e4bdad6e7a58a55e75cf3e79cdbd4592e189141b4940bcaa0f91d9b260778986"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/retained-failures/run-v2.py",
+      "bytes": 11407,
+      "sha256": "84e5636730f68d5b69eb940278042b6bb82df3107b4e096af059c8eb8057463d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/retained-failures/collect_controls-v2.py",
+      "bytes": 5862,
+      "sha256": "7023c427e62e6c0369ae0dfa50625d910281a4c8869702bcabb3d8b01b34d326"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "bytes": 7339,
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/key-level-20261019/manifest.json",
+      "bytes": 1707,
+      "sha256": "f46f1b95221a20ccc0d596cde1181755adaa33fe83cdd32cccaa5bf201b23fed"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/FirmwarePitch.h",
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/fixture.txt",
+      "bytes": 351556,
+      "sha256": "cff9ed7120c09a31bb3518314d174cae77595f7fe644129b08cec669a6e1f597"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/expected.jsonl",
+      "bytes": 10202114,
+      "sha256": "515f5b895f8ffa7b3b23972f950e1a3d6b510a59ccbc261005a0a017ea0c952f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/prospective/prospective-observations.jsonl.gz",
+      "bytes": 117544,
+      "sha256": "8259d6bdba5946ecf36ef0bd371d4753521f7f54f525f7711370881ed054417e"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/prospective-delay-corrected/prospective-observations.jsonl.gz",
+      "bytes": 3698,
+      "sha256": "9d974f047d6b9ebe696e205ad94dce84a07e1cf8761dc87f209eca75212b0645"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/probe.stdout.jsonl",
+      "bytes": 8669510,
+      "sha256": "447b1a1f450055fd6d20c6da89c5a7c7fedeb9d327e10643cfc114327674c5a0"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/probe.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/errors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/synthetic.stdout",
+      "bytes": 115,
+      "sha256": "e02bd60f7d56330e5f9af91732b088c69fc1ce29bd95eea06c6b945eac673f0c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/synthetic.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/CommandProbe",
+      "bytes": 57488,
+      "sha256": "19ca08fdb6bb5d35997a4c36a21a8dd796bce2a2a70781b449ff9137d94c69fb"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/SyntheticTests",
+      "bytes": 56784,
+      "sha256": "f7ffbaaddaf818e62e4f88bb83475a5d233e0ebc2f8d89670372a4653f42e67f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/probe.stdout.jsonl",
+      "bytes": 8669510,
+      "sha256": "447b1a1f450055fd6d20c6da89c5a7c7fedeb9d327e10643cfc114327674c5a0"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/probe.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/errors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/synthetic.stdout",
+      "bytes": 115,
+      "sha256": "e02bd60f7d56330e5f9af91732b088c69fc1ce29bd95eea06c6b945eac673f0c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/synthetic.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/CommandProbe",
+      "bytes": 200384,
+      "sha256": "98234f8bab85771d31b70f15252b8e9a2fea6b65f95e41aa5724ccb7eced552f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/SyntheticTests",
+      "bytes": 161264,
+      "sha256": "8f97a312a0cbc42026c4c8b2af57f937713714692f556776a299bb8ef4b75dcc"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/validation.json",
+      "bytes": 11220,
+      "sha256": "08679febb0485de1748dd6a0472f4b09dbc68b8da775c54c3469182ad8153371"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v1/validation.json",
+      "bytes": 4739,
+      "sha256": "f140e04603325d995f65f6d9dbd8125e54d63707a96f3f3534c838f61ba9ccd2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/validation.json",
+      "bytes": 10691,
+      "sha256": "cce54150602d00dcf5d2d2d53784481ae2b7e67c29df6a09c8858db1274313b7"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/optimized/probe.stdout.jsonl",
+      "bytes": 8646680,
+      "sha256": "4fb57c25b280e97501330a0241af5cbfc0daeabd4aba1252d8d96c5a08de79f0"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/optimized/probe.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/optimized/errors.json",
+      "bytes": 190203,
+      "sha256": "ce33af0594cbfe318996bad55c0eb20fd2e33e4bf1c248c029979c653da6ab33"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/optimized/synthetic.stdout",
+      "bytes": 115,
+      "sha256": "e02bd60f7d56330e5f9af91732b088c69fc1ce29bd95eea06c6b945eac673f0c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/optimized/synthetic.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/optimized/CommandProbe",
+      "bytes": 57488,
+      "sha256": "c59fa52031c16ce5217c1e5cb97145e335faff06c0ebfa8a3b16b25864ced0f6"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/optimized/SyntheticTests",
+      "bytes": 56784,
+      "sha256": "f7ffbaaddaf818e62e4f88bb83475a5d233e0ebc2f8d89670372a4653f42e67f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/sanitized/probe.stdout.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/sanitized/probe.stderr",
+      "bytes": 75,
+      "sha256": "f0f3b88336ef8ae1461a5ec081c8ff595341b4ae7da4d2371e2763909b31ed39"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/sanitized/errors.json",
+      "bytes": 77,
+      "sha256": "7a2ea68896071af5df3ccbc51eb8220cf7e529de3f80ca9b069ccad39ff7e404"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/sanitized/synthetic.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/sanitized/synthetic.stderr",
+      "bytes": 75,
+      "sha256": "8d5b364c659e3360df83c78d102a810e62e38cadb6ff03a0037411406d087730"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/sanitized/CommandProbe",
+      "bytes": 200384,
+      "sha256": "8a0fe8263bce09fa294fd9506cd3773136bdb0452b9570b6f96620a0f1cc2d7c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v2/sanitized/SyntheticTests",
+      "bytes": 161264,
+      "sha256": "5619d67b9e9054bb66f70fc772007f2c7a583521f7c8310dda55f7a3c1555413"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/mode00-complete-command-2026-10-19.json",
+      "bytes": 37556,
+      "sha256": "c8f0145d749928cceda928091e124cc27c5192fedc9466360cea8afbaa0fd414"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/mode00-complete-command-2026-10-19.md",
+      "bytes": 11064,
+      "sha256": "37e3ca019501f0b8d426714de2abb546f8d9c344b4d5188f24fe0eebfbb34583"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-independent-review-20261019/pre-execution-review.json",
+      "bytes": 4363,
+      "sha256": "87d036e09b16bd1d909de85bcde32a0c2ae921a073f82f71c7c893e787cc2b7c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-independent-review-20261019/retained-corpus-review.json",
+      "bytes": 1064,
+      "sha256": "441fc9f1501fc7f92ed98d08def6f9d01e2a4b7c24bb764ded269b5b0ad72a09"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-independent-review-20261019/conformance-review.json",
+      "bytes": 11849,
+      "sha256": "b3eb51b0820aac7a968cbc01724b7d28d937d2aa9fdde9fa2cf19e17ef98b3cf"
+    }
+  ],
+  "historical_execution_paths_resolved_to_exact_retained_source": [
+    {
+      "execution_time_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/collect_controls.py",
+      "resolved_exact_archive": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/retained-failures/collect_controls-v2.py",
+        "bytes": 5862,
+        "sha256": "7023c427e62e6c0369ae0dfa50625d910281a4c8869702bcabb3d8b01b34d326"
+      }
+    }
+  ],
+  "prior_independent_reviews": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-independent-review-20261019/pre-execution-review.json",
+      "bytes": 4363,
+      "sha256": "87d036e09b16bd1d909de85bcde32a0c2ae921a073f82f71c7c893e787cc2b7c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-independent-review-20261019/retained-corpus-review.json",
+      "bytes": 1064,
+      "sha256": "441fc9f1501fc7f92ed98d08def6f9d01e2a4b7c24bb764ded269b5b0ad72a09"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-independent-review-20261019/conformance-review.json",
+      "bytes": 11849,
+      "sha256": "b3eb51b0820aac7a968cbc01724b7d28d937d2aa9fdde9fa2cf19e17ef98b3cf"
+    }
+  ],
+  "conformance_checks": 213410,
+  "complete_rows": 16288,
+  "full_opu_words_per_identical_native_build": 87048,
+  "raw_previous_ram_bytes_verified": 127041,
+  "additional_release_initial_raw_state_checks": 256,
+  "findings": {
+    "blocking": [],
+    "scope_preserved": [
+      "One authoritative allocator/effect/program/cache owner; no duplicate advancing allocator or stale effects copy.",
+      "All accepted operations have structural capacity bounds\u2264204 and unsupported state/event rejects before mutation.",
+      "Single explicit service invocation per API; fixture batching repeats calls externally, without claiming timebase.",
+      "0200..02FF complete ordered IO;24024 peripheral0327 writes explicitly outside claim.",
+      "Controller state snapshots and selected prospective composition are distinguished from live controller/physical button parsing.",
+      "Retained release events are word-conformant; no full post-event raw RAM exists for that family.",
+      "Failed compile,336 mismatch fields, invalid24 original setups, LSan launch rejection, fixture corrections and comment-only final edit remain preserved.",
+      "No physical phase/envelope/DAC/Drive/Reverb law, audio adoption gate or production integration is established."
+    ]
+  },
+  "reviewer_publication_tool": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-independent-review-20261019/review_publication.py",
+    "bytes": 5397,
+    "sha256": "6a49dc6e9d6ee1c8a398ce2082e335bcd6b2db974ce2ae11a3ae28f344e55cef"
+  }
+}

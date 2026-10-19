@@ -1,0 +1,106 @@
+{
+  "schema": "press78.mn3206-dc-design.v1",
+  "date": "2026-10-19",
+  "frozen_before_curve_coordinate_extraction": true,
+  "prior_inspection_disclosure": "This retained graph was already viewed qualitatively. Axis calibration and visible trace extent were inspected before freezing. No numerical centerline ordinates have yet been extracted for this model.",
+  "sources": {
+    "page_raster": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v4-MN3206-curves-p77.png",
+      "bytes": 120114,
+      "sha256": "34916e399deedf1f7247c5c1e481197854786d1604bb6e292a26b66d1c1dd90f"
+    },
+    "manufacturer_pdf": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206.pdf",
+      "bytes": 188245,
+      "sha256": "045fb6a1c7f5bc1e5cb0cf51497bf64b4bf29bfe7be1b193a16a62e93c795fe2"
+    },
+    "url": "https://github.com/fmillion/yamaha-pss270/blob/8943bf963f196f20b4e2fc714f15400db578891b/datasheets/MN3206.pdf",
+    "author": "Panasonic",
+    "printed_page": 77,
+    "graph": "Upper-left DC output voltage VO versus DC input voltage VI",
+    "dimensions": [
+      1377,
+      1800
+    ]
+  },
+  "inspection_crop": [
+    100,
+    125,
+    500,
+    650
+  ],
+  "axes": {
+    "x_zero_px": 171,
+    "x_six_volts_px": 440,
+    "y_zero_px": 553,
+    "y_six_volts_px": 195,
+    "axis_reading_radius_px": 1
+  },
+  "extraction": {
+    "method": "Manual visual centerline ordinates at all frozen abscissae; no curve fit, audio fit, knee fitting, smoothing, polynomial or assumed saturation continuation. Uniform nominal quarter-volt samples are rounded to original raster columns. Preserve raw pixel ordinates and calculate actual nominal voltages from those pixels.",
+    "pixel_x_knots": [
+      171,
+      182,
+      193,
+      205,
+      216,
+      227,
+      238,
+      249,
+      261,
+      272,
+      283,
+      294,
+      306,
+      317,
+      328,
+      339,
+      350,
+      362,
+      373
+    ],
+    "centerline_reading_radius_px": 3,
+    "output_ordinates_px": null,
+    "trace_extent_note": "Trace visibly ends near VI=4.5 V; do not extend plateau to axis endpoint6 V."
+  },
+  "ports": {
+    "reference": "All input/output/supply voltages are absolute volts relative to common VSS=0 V; output is the datasheet graph VO, not a recovered AUX/load-specific pin voltage. No selected pin, tied-output load, current port, target circuit or physical rail assignment is inferred.",
+    "mode": "settled_dc_only",
+    "conditions": {
+      "vdd_v": 5.0,
+      "vgg_v": 4.666666666666667,
+      "cp_hz": 10000.0,
+      "temperature_c": 25.0,
+      "vss_v": 0.0
+    },
+    "condition_policy": "Require all explicit finite numeric arguments and exact listed conditions; reject all other conditions. No supply/frequency/temperature scaling or default physical operating levels."
+  },
+  "model": {
+    "nominal": "Piecewise-linear interpolation of digitized DC curve, explicit interpolation assumption, no time/clock/sample processor.",
+    "uncertainty": "Graph-reading scenario only, not device spread or confidence interval. Enumerate +/-1 pixel endpoints for each linear axis, map requested VI to each pixel calibration, permit +/-3 pixels horizontal trace reading, and evaluate the nominal piecewise-linear pixel centerline plus/minus3 vertical pixels. All corner evaluations must remain inside measured pixel knot support. Return min/max VO across scenarios.",
+    "query_domain": "Intersection of measured input supports across all horizontal axis/trace reading scenarios. Reject outside it instead of extrapolating. Report separate nominal digitized support and conservative common scenario support.",
+    "claims_excluded": [
+      "Instantaneous waveform nonlinearity",
+      "AC THD/harmonic prediction",
+      "Dynamic settling time",
+      "Physical PSS780 target bias, voltages or transfer",
+      "Power/supply transient coupling",
+      "Drive or clipping calibration",
+      "Noise or excitation",
+      "Device-to-device tolerances"
+    ]
+  },
+  "validation": {
+    "requirements": [
+      "Reproduce every stored pixel-to-volt knot with an independent conversion",
+      "Nominal exact reproduction of measured knots within the common query domain",
+      "Nominal piecewise-linear interpolation checked against independently weighted endpoint interpolation",
+      "Scenario bounds contain nominal value and all enumerated scenario corners",
+      "Derive common input support from all horizontal scenarios and reject extrapolation",
+      "Reject unsupported mode/conditions, missing values, nonnumeric/bool/nonfinite voltage/conditions",
+      "Deterministic lookup independent of query order; no mutable signal history",
+      "No audio or production imports/dependencies",
+      "No unsupported AC or physical target claims in public receipt"
+    ]
+  }
+}

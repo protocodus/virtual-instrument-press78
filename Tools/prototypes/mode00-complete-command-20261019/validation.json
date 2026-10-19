@@ -1,0 +1,279 @@
+{
+  "passed": true,
+  "design": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/design-frozen.json",
+    "bytes": 10198,
+    "sha256": "3f3b5ed1e4dd54a460c0ea1c9d2a076cda27d4dc66f9cab98b3b0c5683bf253f"
+  },
+  "stats": {
+    "posthoc_allocation_cases": 216,
+    "previous_ram_checks": 127041,
+    "posthoc_allocation_events": 10872,
+    "posthoc_allocation_words": 37944,
+    "retained_release_events": 1280,
+    "retained_release_words": 4224,
+    "retained_release_cases": 256,
+    "prospective-composition_events": 3200,
+    "prospective-composition_words": 44400,
+    "prospective-composition_cases": 320,
+    "prospective-delay_events": 96,
+    "prospective-delay_words": 480,
+    "prospective-delay_cases": 24,
+    "rejected_original_delay_cases": 24
+  },
+  "excluded_peripheral_io": [
+    {
+      "family": "posthoc-allocation",
+      "address": "0x327",
+      "writes": 15624
+    },
+    {
+      "family": "prospective-composition",
+      "address": "0x327",
+      "writes": 6720
+    },
+    {
+      "family": "prospective-delay",
+      "address": "0x327",
+      "writes": 144
+    },
+    {
+      "family": "retained-release",
+      "address": "0x327",
+      "writes": 1536
+    }
+  ],
+  "fixture": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/fixture.txt",
+    "bytes": 351556,
+    "sha256": "cff9ed7120c09a31bb3518314d174cae77595f7fe644129b08cec669a6e1f597"
+  },
+  "expected": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/expected.jsonl",
+    "bytes": 10202114,
+    "sha256": "515f5b895f8ffa7b3b23972f950e1a3d6b510a59ccbc261005a0a017ea0c952f"
+  },
+  "prospective_observations": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/prospective/prospective-observations.jsonl.gz",
+    "bytes": 117544,
+    "sha256": "8259d6bdba5946ecf36ef0bd371d4753521f7f54f525f7711370881ed054417e"
+  },
+  "corrected_delay_observations": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/prospective-delay-corrected/prospective-observations.jsonl.gz",
+    "bytes": 3698,
+    "sha256": "9d974f047d6b9ebe696e205ad94dce84a07e1cf8761dc87f209eca75212b0645"
+  },
+  "source_files": {
+    "Mode00CompleteCommands.h": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/Mode00CompleteCommands.h",
+      "bytes": 9817,
+      "sha256": "47ef1babcf44c77df8a1e818474d683a364b72e04eff29e31ba9f424572dd6bf"
+    },
+    "run.py": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/run.py",
+      "bytes": 13084,
+      "sha256": "3c3b1cceb122cf2d2486c0882d34f99958c3db2a4e4c8b358a36137ff853ca04"
+    },
+    "FirmwareLevel.h": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/FirmwareLevel.h",
+      "bytes": 3679,
+      "sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+    },
+    "SyntheticTests.cpp": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/SyntheticTests.cpp",
+      "bytes": 10495,
+      "sha256": "a06586f1b314946ad13d4c6459cf07641d27db29ed644aa91c8ebe829c1b9326"
+    },
+    "collect_controls.py": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/collect_controls.py",
+      "bytes": 6169,
+      "sha256": "4510edf6835cddaefd157346419beb2837a41101989fa91e77ffb41038312917"
+    },
+    "CommandProbe.cpp": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/CommandProbe.cpp",
+      "bytes": 6374,
+      "sha256": "ca6e4e851d78945266228177fd82aa4eac801874186e7de419b092c6c57aea8d"
+    }
+  },
+  "builds": [
+    {
+      "label": "optimized",
+      "commands": [
+        {
+          "command": [
+            "clang++",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Werror",
+            "-O2",
+            "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/CommandProbe.cpp",
+            "-o",
+            "build/mode00-complete-command-20261019/validation-v4/optimized/CommandProbe"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "clang++",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Werror",
+            "-O2",
+            "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/SyntheticTests.cpp",
+            "-o",
+            "build/mode00-complete-command-20261019/validation-v4/optimized/SyntheticTests"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "passed": true,
+      "rows": 16288,
+      "expected_rows": 16288,
+      "exact_fields": 241336,
+      "complete_opu_words": 87048,
+      "probe_exit_code": 0,
+      "synthetic_exit_code": 0,
+      "errors": 0,
+      "synthetic": {
+        "passed": true,
+        "assertions": 322802,
+        "frontend_bytes": 312,
+        "snapshot_bytes": 264,
+        "plan_bytes": 840,
+        "plan_capacity": 204
+      },
+      "probe_stdout": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/probe.stdout.jsonl",
+        "bytes": 8669510,
+        "sha256": "447b1a1f450055fd6d20c6da89c5a7c7fedeb9d327e10643cfc114327674c5a0"
+      },
+      "probe_stderr": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/probe.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "errors_file": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/errors.json",
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "synthetic_stdout": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/synthetic.stdout",
+        "bytes": 115,
+        "sha256": "e02bd60f7d56330e5f9af91732b088c69fc1ce29bd95eea06c6b945eac673f0c"
+      },
+      "synthetic_stderr": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/synthetic.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "probe_binary": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/CommandProbe",
+        "bytes": 57488,
+        "sha256": "19ca08fdb6bb5d35997a4c36a21a8dd796bce2a2a70781b449ff9137d94c69fb"
+      },
+      "synthetic_binary": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/optimized/SyntheticTests",
+        "bytes": 56784,
+        "sha256": "f7ffbaaddaf818e62e4f88bb83475a5d233e0ebc2f8d89670372a4653f42e67f"
+      }
+    },
+    {
+      "label": "sanitized",
+      "commands": [
+        {
+          "command": [
+            "clang++",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Werror",
+            "-O1",
+            "-g",
+            "-fsanitize=address,undefined",
+            "-fno-omit-frame-pointer",
+            "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/CommandProbe.cpp",
+            "-o",
+            "build/mode00-complete-command-20261019/validation-v4/sanitized/CommandProbe"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "clang++",
+            "-std=c++17",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Werror",
+            "-O1",
+            "-g",
+            "-fsanitize=address,undefined",
+            "-fno-omit-frame-pointer",
+            "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/SyntheticTests.cpp",
+            "-o",
+            "build/mode00-complete-command-20261019/validation-v4/sanitized/SyntheticTests"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "passed": true,
+      "rows": 16288,
+      "expected_rows": 16288,
+      "exact_fields": 241336,
+      "complete_opu_words": 87048,
+      "probe_exit_code": 0,
+      "synthetic_exit_code": 0,
+      "errors": 0,
+      "synthetic": {
+        "passed": true,
+        "assertions": 322802,
+        "frontend_bytes": 312,
+        "snapshot_bytes": 264,
+        "plan_bytes": 840,
+        "plan_capacity": 204
+      },
+      "probe_stdout": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/probe.stdout.jsonl",
+        "bytes": 8669510,
+        "sha256": "447b1a1f450055fd6d20c6da89c5a7c7fedeb9d327e10643cfc114327674c5a0"
+      },
+      "probe_stderr": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/probe.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "errors_file": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/errors.json",
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "synthetic_stdout": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/synthetic.stdout",
+        "bytes": 115,
+        "sha256": "e02bd60f7d56330e5f9af91732b088c69fc1ce29bd95eea06c6b945eac673f0c"
+      },
+      "synthetic_stderr": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/synthetic.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "probe_binary": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/CommandProbe",
+        "bytes": 200384,
+        "sha256": "98234f8bab85771d31b70f15252b8e9a2fea6b65f95e41aa5724ccb7eced552f"
+      },
+      "synthetic_binary": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/validation-v4/sanitized/SyntheticTests",
+        "bytes": 161264,
+        "sha256": "8f97a312a0cbc42026c4c8b2af57f937713714692f556776a299bb8ef4b75dcc"
+      }
+    }
+  ],
+  "optimized_sanitized_stdout_identical": true
+}

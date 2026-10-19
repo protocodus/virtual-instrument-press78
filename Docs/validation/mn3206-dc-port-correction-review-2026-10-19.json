@@ -1,0 +1,198 @@
+{
+  "date": "2026-10-19",
+  "passed": true,
+  "scope": "Focused independent correction review after root-found exact-VGG port defect; no broad graph/audio/firmware rerun, source decoding or public/production mutation.",
+  "checks": {
+    "unchanged_graph_source_and_design": 5,
+    "old_model_preserved": 1,
+    "corrected_model_binding": 1,
+    "corrected_checker_binding": 1,
+    "unchanged_graph_results_and_examples": 9,
+    "preserved_first_and_corrected_run": 1,
+    "exact_corrected_result_export": 1,
+    "exact_historical_result_subfields": 1,
+    "explicit_historical_provenance_augmentation": 1,
+    "historical_public_receipt_binding": 1,
+    "historical_public_report_binding": 1,
+    "final_corrected_md_sha256": 1,
+    "final_corrected_json_sha256": 1,
+    "exact_vgg_and_single_alias_acceptance": 12,
+    "nearby_vgg_rejected_without_coercion": 9,
+    "rejected_rationals_would_alias_if_float_coerced": 4,
+    "local_public_links": 4
+  },
+  "total_scoped_checks": 54,
+  "bindings": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/validation.json",
+      "bytes": 3955,
+      "sha256": "78a29db78544ffb84a76c9597104f8c2b456d72ea118e6945a7d7696ae3f522f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/validation-port-correction-v2.json",
+      "bytes": 5227,
+      "sha256": "f05b93c9404ed37606cf718c89cb5bcfcb8458bdd004d6d8cbc1c56f7c3515cd"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/mn3206-dc-operating-point-2026-10-19.json",
+      "bytes": 8736,
+      "sha256": "d7338218f96f83c011e2ccd9d6093e77cd5d50e8017934380424df000f8ce967"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/port-semantics-correction-frozen.json",
+      "bytes": 2009,
+      "sha256": "ce561d54e83b4d66d1f6fa576dcaed885a795688d3862f7bf16b061fdc49f3f2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/manifest.json",
+      "bytes": 1451,
+      "sha256": "f01ae27709e20a5ef7f1679127d0e875dd551a4205928a43ae647c526d3dafd4"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/mn3206_dc.py",
+      "bytes": 6272,
+      "sha256": "83c6894e632c98c230ccd8815116d32801aa81e7828668391a624fa8cb0d51fd"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/mn3206_dc.py",
+      "bytes": 6803,
+      "sha256": "bff78218660e561c000c5390d9aaee3f23b095568bc1056c0490413852ebad9d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/check.py",
+      "bytes": 10096,
+      "sha256": "7324756ca16585a62baf5ab13874732811d54388c1481c23da12b3ad6c329ee5"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/public-receipt.json",
+      "bytes": 5983,
+      "sha256": "2cd1c83c61f13275b0268fe4c04a94015e2757c4f8afb96eee6a0ca18590a287"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/report.md",
+      "bytes": 5325,
+      "sha256": "31fa0d71bc31ff7b226511b38284207227cc4a0d06f19cfd7679eb4c9494342f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/mn3206-dc-operating-point-2026-10-19.md",
+      "bytes": 6640,
+      "sha256": "389f9640c0078674a5bba140541f7fd1b5f2cac9a863d072d7e42aac65323c28"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/README.md",
+      "bytes": 2872,
+      "sha256": "e64b9e586a855852efdd95859564d087671ab3e5a56d2a69f28d21f71ba88fc1"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/implementation-bound-v2.json",
+      "bytes": 1283,
+      "sha256": "a77194061a5d7b4d6df92c56e02312ef6aebb051b7c458dc2d3fe8281f83a00c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/design-frozen.json",
+      "bytes": 4851,
+      "sha256": "26f8161c1687244375feb98b09545616757285ba476d05a7eef38f0b43d49b0d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/implementation-bound.json",
+      "bytes": 791,
+      "sha256": "06831765294d57820ca3af74df20fdb5a6f480022ba3adf9d0cc49128ca97ded"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/digitized-pixels.json",
+      "bytes": 1078,
+      "sha256": "3e8ea1a5b606ef6feecbd2413cd3733fcfbbafe912db47b4efec04eced0f717c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/design-frozen-v3.json",
+      "bytes": 5621,
+      "sha256": "fa0fda39dd32443e5f6aafc6258caab3b1d97e8a7449d22a94e7f192d16c88af"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/design-frozen-v2.json",
+      "bytes": 5413,
+      "sha256": "8152ce8771518a57190a18016fa8ded04f3e4e50e5621e166ef824db7059ef68"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/extraction-failed-support-v1.json",
+      "bytes": 1080,
+      "sha256": "702b31891cc14acde2bf127d306b63ad70026d4232a3c14e7adc57c35f087712"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/root-port-semantics-v1.json",
+      "bytes": 688,
+      "sha256": "dc4e12e202d5915a23c607c50c45ef512ff46d808494191dc69730f7d8647c81"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/design-frozen.json",
+      "bytes": 4851,
+      "sha256": "26f8161c1687244375feb98b09545616757285ba476d05a7eef38f0b43d49b0d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/check.py",
+      "bytes": 7906,
+      "sha256": "dde1c223c044081b0ee47f03b36d304211b3d78d9fab62ba37a0ae689a6d8cf6"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/implementation-bound.json",
+      "bytes": 791,
+      "sha256": "06831765294d57820ca3af74df20fdb5a6f480022ba3adf9d0cc49128ca97ded"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/digitized-pixels.json",
+      "bytes": 1078,
+      "sha256": "3e8ea1a5b606ef6feecbd2413cd3733fcfbbafe912db47b4efec04eced0f717c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/design-frozen-v3.json",
+      "bytes": 5621,
+      "sha256": "fa0fda39dd32443e5f6aafc6258caab3b1d97e8a7449d22a94e7f192d16c88af"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/design-frozen-v2.json",
+      "bytes": 5413,
+      "sha256": "8152ce8771518a57190a18016fa8ded04f3e4e50e5621e166ef824db7059ef68"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/extraction-failed-support-v1.json",
+      "bytes": 1080,
+      "sha256": "702b31891cc14acde2bf127d306b63ad70026d4232a3c14e7adc57c35f087712"
+    }
+  ],
+  "prior_receipt_frozen": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-independent-review-20261019/receipt.json",
+    "bytes": 7371,
+    "sha256": "e953fd8f6da7916c61780f19446d65b704c5999d1903e2ab03190bc89ab4e110"
+  },
+  "reviewer_tool": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-independent-review-20261019/review_port_correction.py",
+    "bytes": 5716,
+    "sha256": "60d0ad3b7ae172ffc50ff45b897cce8c247aaa03020631b12fce3807f8a04696"
+  },
+  "root_finding": "Original model rejected exact14/3 despite graph14/15*5 condition and Real/rational ports. My initial review accepted binary64-only equality too narrowly and missed this valid exact-rational input. Prior receipt is superseded only for port semantics, not erased.",
+  "resolution": "Canonical accepted exact values are14/3 and its one correctly rounded binary64 rational alias. All adjacent floats and nearby rational values, including values that float-coerce to alias, reject. No voltage tolerance added.",
+  "unchanged_graph_scope": "Coordinates/designs, graph scenario computation, supports and all8 frozen operating-point examples unchanged. Fixed settled-DC scope remains; no audio-rate, Drive, target circuit or physical variability claim.",
+  "blocking_findings": [],
+  "review_attempts_retained": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-independent-review-20261019/review_port_correction-first-failed.py",
+      "bytes": 5118,
+      "sha256": "01c687e184b3b7e569ac51cff71aa08ebe366baa298b942329938b8193b4b756"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-independent-review-20261019/port-review-first-failure.json",
+      "bytes": 596,
+      "sha256": "3943170605d772eaa5a336c67b4526ab623db24fa826137cdbfa48b6170301a3"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-independent-review-20261019/review_port_correction-second-failed.py",
+      "bytes": 5716,
+      "sha256": "99dcb675f30c9bbfc01c2c8679571cddaeab4722dfdec5e606a3dca29153f7c4"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-independent-review-20261019/port-review-second-failure.json",
+      "bytes": 445,
+      "sha256": "cb26b462bb18b750282af628ca1e95545d55a03ac49334c9a55a702ea4f68c53"
+    }
+  ]
+}

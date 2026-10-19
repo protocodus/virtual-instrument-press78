@@ -1,0 +1,72 @@
+{
+  "schema": "press78.mn3206-dc-extraction.v1",
+  "status": "FAILED_LAST_FROZEN_COLUMN_HAS_NO_CURVE_INK",
+  "source_sha256": "34916e399deedf1f7247c5c1e481197854786d1604bb6e292a26b66d1c1dd90f",
+  "design_sha256": "26f8161c1687244375feb98b09545616757285ba476d05a7eef38f0b43d49b0d",
+  "pixel_x": [
+    171,
+    182,
+    193,
+    205,
+    216,
+    227,
+    238,
+    249,
+    261,
+    272,
+    283,
+    294,
+    306,
+    317,
+    328,
+    339,
+    350,
+    362,
+    373
+  ],
+  "pixel_y": [
+    434.5,
+    435,
+    434.5,
+    434.5,
+    434,
+    423.5,
+    412,
+    401,
+    388.5,
+    377,
+    366,
+    355,
+    343,
+    331.5,
+    320,
+    309,
+    301.5,
+    301.5,
+    null
+  ],
+  "last_point_observation": {
+    "pixel_x": 373,
+    "rows": [
+      299,
+      300,
+      301,
+      302,
+      303,
+      304,
+      305
+    ],
+    "grayscale": [
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255
+    ],
+    "curve_readable": false
+  },
+  "model_executed": false,
+  "scope": "Preserved incomplete extraction; null is not filled by extending the plateau."
+}

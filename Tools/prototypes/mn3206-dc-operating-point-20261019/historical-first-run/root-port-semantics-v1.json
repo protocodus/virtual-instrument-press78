@@ -1,0 +1,18 @@
+{
+  "status": "root review found condition representation discrepancy",
+  "source_sha256": "83c6894e632c98c230ccd8815116d32801aa81e7828668391a624fa8cb0d51fd",
+  "physical_condition": "VGG=14/15 of VDD5V, exactly14/3V",
+  "results": [
+    {
+      "input_representation": "nearest_binary64",
+      "status": "accepted",
+      "nominal_output_v": 3.1354748603351954
+    },
+    {
+      "input_representation": "exact_rational",
+      "status": "rejected",
+      "error": "Unsupported graph condition: vgg_v"
+    }
+  ],
+  "scope": "No PCM/audio or production change; exact-rational port alias must match declared graph condition. No physical tolerance or unsupported corner is being added."
+}

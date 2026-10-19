@@ -1,0 +1,18 @@
+{
+  "schema": "press78.mn3206-dc-implementation-binding.v2",
+  "bound_before_first_corrected_model_execution": true,
+  "first_binding_preserved": "implementation-bound.json",
+  "correction_protocol_sha256": "ce561d54e83b4d66d1f6fa576dcaed885a795688d3862f7bf16b061fdc49f3f2",
+  "files": {
+    "design-frozen.json": "26f8161c1687244375feb98b09545616757285ba476d05a7eef38f0b43d49b0d",
+    "extraction-failed-support-v1.json": "702b31891cc14acde2bf127d306b63ad70026d4232a3c14e7adc57c35f087712",
+    "design-frozen-v2.json": "8152ce8771518a57190a18016fa8ded04f3e4e50e5621e166ef824db7059ef68",
+    "design-frozen-v3.json": "fa0fda39dd32443e5f6aafc6258caab3b1d97e8a7449d22a94e7f192d16c88af",
+    "digitized-pixels.json": "3e8ea1a5b606ef6feecbd2413cd3733fcfbbafe912db47b4efec04eced0f717c",
+    "mn3206_dc.py": "bff78218660e561c000c5390d9aaee3f23b095568bc1056c0490413852ebad9d",
+    "check.py": "7324756ca16585a62baf5ab13874732811d54388c1481c23da12b3ad6c329ee5",
+    "implementation-bound.json": "06831765294d57820ca3af74df20fdb5a6f480022ba3adf9d0cc49128ca97ded",
+    "port-semantics-correction-frozen.json": "ce561d54e83b4d66d1f6fa576dcaed885a795688d3862f7bf16b061fdc49f3f2",
+    "historical-first-run/manifest.json": "f01ae27709e20a5ef7f1679127d0e875dd551a4205928a43ae647c526d3dafd4"
+  }
+}

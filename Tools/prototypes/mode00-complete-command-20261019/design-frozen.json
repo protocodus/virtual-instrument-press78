@@ -1,0 +1,204 @@
+{
+  "date": "2026-10-19",
+  "scope": "Research-only complete normal12-slot Mode00 OPU0200..02ff plans. One existing native frontend owns allocator/effects/program/cache state; exact pitch and command-level lookup only. No production, audio, waveform, amplitude, circuit, host, preset, PM or media change.",
+  "inputs": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "bytes": 7339,
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+      "bytes": 4043,
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/FirmwarePitch.h",
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/key-level-20261019/candidate.patch",
+      "bytes": 32964,
+      "sha256": "288010b31b5d9ca4b210fd8a69678e509de27c768f6179b98b358542e7f5f13f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-allocation-command-path-20261019/observation.jsonl.gz",
+      "bytes": 1438449,
+      "sha256": "aceae92cdb85a274b02fbe1f8a0ee0be7d6fd7dc5fac06b206aaf9129f5b2869"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-release-command-path-20261019/release-validation.json",
+      "bytes": 2528341,
+      "sha256": "8d18a8ae1e737759402f0e926331118d5bba23a8d004d7e82802175cc7f771d5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-release-command-path-20261019/transition-validation.json",
+      "bytes": 2495046,
+      "sha256": "31e0a929e28da280d06fbde8fe2e57fae376a714c3e14701c8d6830f446fb83b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-release-command-path-20261019/probe_release.py",
+      "bytes": 2164,
+      "sha256": "0f7300dad9e37356f9db56a2f14ffaa1afeedd414c6bd4ae2525b06785e8dfc2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-release-command-path-20261019/verify_release.py",
+      "bytes": 5692,
+      "sha256": "f252a598ebdcd99e716210cf4185732817e02fb384621d28507d060a85b7e981"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-pitch-command-path-20261019/probe_midi.py",
+      "bytes": 1373,
+      "sha256": "41ae883eabd3e212cdb3755185c46c549252b37c96dd4147330058a6521368ca"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-pitch-command-path-20261019/verify_pitch_path.py",
+      "bytes": 4244,
+      "sha256": "414c8646b61365b95afdff1fbe5805f4970e8dd9b25d165d010873c205550a0e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-pitch-command-path-20261019/xg503b0-132.ic4",
+      "bytes": 262144,
+      "sha256": "ce0a69d143deacdb52eb28a1f5de80584ce7576ba94488fa4b035dfc6f0a76a7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-pitch-command-path-20261019/xe416d0-093.ic4",
+      "bytes": 262144,
+      "sha256": "52f19aa8eae1730a8f00b43672b911cf5cfa7e5a2af324b9dd377249e2a995f1"
+    }
+  ],
+  "api": {
+    "snapshot": "Existing Mode00ProgramCommands snapshot plus stable pitch/volume controller values and12vibrato-delay counters. All normal slots kind0/source0/fullpool12/sharedFFcache only; reject pending>1, source1, unsupportedtarget/range/pool/cache, effectsoutside0..7 and documentedTLbit7 before mutation. No boot implied.",
+    "controllers": "Explicit stable raw bend MSB0..127, signed nonzero span\u221212..\u22121 or1..12, fine steps\u221216..16 in1/32semitone units, volume table index0..9. Index0 is constructed-fixture arithmetic, not normal physical panel range1..9. Negative spans are documented by Yamaha MelodyMemoryPBR on printedp42 and independently executed original pitch-state test. Fine range is bounded; prospective CPU matrix checks composition at selected endpoints. No live pitch/volume/physicalbutton parser or cadence claim.",
+    "on": "Accept notes36..96 and nonzero rawvelocity1..127; Mode00 ignores nonzero velocity. Duplicate input edges coalesce. Selected oldRR/SRR mod/car, pairedkeyoff, both calculatedTL+Reverb, three exactpitchwords, carrierD1L|15. Preserve command ordering, no DSPtranslation.",
+    "off": "Selected RR/SRR mod/car then pairedkeyoff, matching original edge/state behavior. Velocity0 on dispatchesoff.",
+    "keyservice": "One explicit invocation only. Each pending1 slot0..11 emitsPMS/AMS control with delayinitialization, rawcarrierD1L/RRrestore, pairedkeyon. Setsdelaycounter=2*(cachedVDT&127). Ifdelaynonzero orVibdisabled suppressPMS(highnibble) only. No elapsedperiod.",
+    "vibratoservice": "One explicit independent43B7 invocation only. Decrement nonzero12counters in slot order; reachingzero emitscachedPMS/AMS onlyifglobalVibcurrentlyenabled. Still progressesafterkeyoff andacrossprogramreload. No clockperiod.",
+    "CC64": "Raw0..127; everyreceivedvalue replacesglobalSustain(0off,nonzeroon) and refreshesRR/SRRforall12normalcaches in slotorder, includingreleased/idle; no keychange. Rejectoutside0..127atomically.",
+    "program": "Delegate completeexistingtarget-specific programplan; preserve12actualvibratodelay counters while replacingcached patch controls. Authoritative effects liveonlyin frontendstate; retainReverb and replacefactoryVib/Sustainbits. RejectundocumentedTLinputbeforemutation.",
+    "excluded": "No Mode99/CV/accompaniment/rhythm/physicalkeypolling/portamento, livebendqueue/mainlooptiming, hardwarephase/envelope/TLresponse. Original0327/peripheral/MIDIoutIOoutside0200..02ff explicitly counted/excluded."
+  },
+  "capacity_proof": {
+    "ordinary_event": 9,
+    "key_service": 36,
+    "vibrato_service": 12,
+    "CC64": 24,
+    "program_load": 204,
+    "rule": "Use fixedcapacity204allplans. At most12pending0/1 cankeyonceperexplicitservicecall; eachdelaycountercanexpireatmostonceperexplicitvibratoservice. Unsupportedstatesrejectedbeforemutation. No truncatedvalidprefix."
+  },
+  "validation": {
+    "posthoc_development": "All10872normalMode00eventrows and37944OPUwords from alreadyobserved twoROM allocationcorpus, with previousRAMbyteschecked. Captureallnewstatefieldsexactly; existingcountsnotuntouchedholdout.",
+    "retained_release": "All256Mode00cases from existing2ROMx4programx4notex8effectreleasefixtures, completeon/keyservice/hold/off/postoffsequences; retainallIOincludingexcludedperipheralcounts.",
+    "prospective_cpu_matrix": {
+      "models": [
+        "PSS780",
+        "PSS680"
+      ],
+      "panel_programs": [
+        65,
+        93,
+        97,
+        99
+      ],
+      "notes": [
+        36,
+        68,
+        96
+      ],
+      "effect_masks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "controllers": [
+        {
+          "volume": 0,
+          "bend_high": 64,
+          "span": 2,
+          "fine": 0
+        },
+        {
+          "volume": 1,
+          "bend_high": 0,
+          "span": 12,
+          "fine": -16
+        },
+        {
+          "volume": 9,
+          "bend_high": 127,
+          "span": 12,
+          "fine": 16
+        },
+        {
+          "volume": 8,
+          "bend_high": 62,
+          "span": -12,
+          "fine": 1
+        },
+        {
+          "volume": 9,
+          "bend_high": 64,
+          "span": -2,
+          "fine": 1
+        }
+      ],
+      "cases": 320,
+      "sequence": [
+        "on",
+        "keyservice1",
+        "vibratoservice32",
+        "off",
+        "vibratoservice32",
+        "CC64=0",
+        "CC64=1",
+        "CC64=63",
+        "CC64=64",
+        "CC64=127"
+      ],
+      "preconditions": "Originalfactoryload, neutralcontrollerstate asretainedsetup thenexplicitvol/fine/bendrange/highandoriginaleffectpaths. Normalkind0/cacheFF; no physicalboot.",
+      "combination_rule": "For each model and each panel program, case index i=0..39 chooses effects=i%8, controllers=i%5, note=notes[i%3]. Covers everyeffect/controllerpair once with interleaved boundary/center notes; do notexpand full3-noteCartesian."
+    },
+    "prospective_delay_controls": {
+      "models": [
+        "PSS780",
+        "PSS680"
+      ],
+      "base_panel": 99,
+      "note": 60,
+      "VDT": [
+        0,
+        1,
+        2,
+        11,
+        63,
+        127
+      ],
+      "vibrato": [
+        false,
+        true
+      ],
+      "cases": 24,
+      "sequence": [
+        "workingpatchVDTlegaleditandreloadcaches",
+        "on",
+        "keyservice1",
+        "off",
+        "vibratoservice255"
+      ],
+      "purpose": "Checkmaximumcounterrange, zeroVDTandpostoffexpiry. Originalprogramruns unchanged withconstructedlegalpatch; noaudio."
+    },
+    "native": "OptimizedC++17Werror and ASan/UBSan; alloriginalcompletewordlistsandmetadata compareexactly, noexpectedmismatch accepted. Syntheticout-of-range/domain rejection must be atomic; worst-casefixedcapacity checks; singletonstateowner; no new/new[] around operations ifinstrumented. Compileprobesonly, notfullplugin.",
+    "failures": "Refuseoverwritingobservation/resultfiles, preserve every compile/assertion/conformance failure; corrections require explicitsource/test/protocol disclosure. No audiofailedgatechanged or bypassed."
+  },
+  "chronology": "Design frozen before new collector/compiler/probe implementation, original-CPU collection, C++ compile or validation. Existing neutral corpus and public analytical ledgers were already inspected; classify them posthoc development, notnewholdout.",
+  "chronology_amendment": {
+    "previous_design_sha256": "94286b9121c978a251b799bc855bfd2a111bc23af633c19007a7e5aae72430e6",
+    "reason": "Before any implementation/execution, reduce original-CPU composition to the declared orthogonal320cases instead of Cartesian960; primitive tables were already exhaustive. Retain full previousdesign; noaudio/source observations changed."
+  }
+}

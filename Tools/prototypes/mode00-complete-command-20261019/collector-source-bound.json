@@ -1,0 +1,30 @@
+{
+  "chronology": "Bound before first original-program collection or native compilation; fullnative-testbinding follows before compilation.",
+  "files": {
+    "design-frozen.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/design-frozen.json",
+      "bytes": 10198,
+      "sha256": "3f3b5ed1e4dd54a460c0ea1c9d2a076cda27d4dc66f9cab98b3b0c5683bf253f"
+    },
+    "collect_controls.py": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/collect_controls.py",
+      "bytes": 5862,
+      "sha256": "7023c427e62e6c0369ae0dfa50625d910281a4c8869702bcabb3d8b01b34d326"
+    },
+    "Mode00CompleteCommands.h": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/Mode00CompleteCommands.h",
+      "bytes": 9816,
+      "sha256": "1404780807fe3410c9fd7952902f36d905e87d01fa316280ade90625332b30c5"
+    },
+    "FirmwareLevel.h": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/FirmwareLevel.h",
+      "bytes": 3679,
+      "sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+    },
+    "CommandProbe.cpp": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/CommandProbe.cpp",
+      "bytes": 6282,
+      "sha256": "e4bdad6e7a58a55e75cf3e79cdbd4592e189141b4940bcaa0f91d9b260778986"
+    }
+  }
+}

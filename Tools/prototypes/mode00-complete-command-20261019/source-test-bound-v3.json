@@ -1,0 +1,45 @@
+{
+  "chronology": "Bound before correctednativeconformance. Commandimplementationheaderunchanged sincefirstbinding. Correctedonlyfaithfulfixturecachetagserialization,actualpost-controlinitialsnapshots,andunsupportedLSanlaunchoption. Original24badVDTcasesnowatomicrejectioninputs; separatelycollectedcorrected24remainoriginalCPUtruth. Firstcompileandall336initialmismatchesretained.",
+  "files": {
+    "CommandProbe.cpp": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/CommandProbe.cpp",
+      "bytes": 6374,
+      "sha256": "ca6e4e851d78945266228177fd82aa4eac801874186e7de419b092c6c57aea8d"
+    },
+    "FirmwareLevel.h": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/FirmwareLevel.h",
+      "bytes": 3679,
+      "sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+    },
+    "Mode00CompleteCommands.h": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/Mode00CompleteCommands.h",
+      "bytes": 9816,
+      "sha256": "1404780807fe3410c9fd7952902f36d905e87d01fa316280ade90625332b30c5"
+    },
+    "SyntheticTests.cpp": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/SyntheticTests.cpp",
+      "bytes": 10495,
+      "sha256": "a06586f1b314946ad13d4c6459cf07641d27db29ed644aa91c8ebe829c1b9326"
+    },
+    "collect_controls.py": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/collect_controls.py",
+      "bytes": 6169,
+      "sha256": "4510edf6835cddaefd157346419beb2837a41101989fa91e77ffb41038312917"
+    },
+    "design-frozen.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/design-frozen.json",
+      "bytes": 10198,
+      "sha256": "3f3b5ed1e4dd54a460c0ea1c9d2a076cda27d4dc66f9cab98b3b0c5683bf253f"
+    },
+    "fixture-amendment.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/fixture-amendment.json",
+      "bytes": 2159,
+      "sha256": "56f818bcab7b3ff29ef6cb156daa784c9dfcaecf8540dbaf0537de16dc9a2084"
+    },
+    "run.py": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/run.py",
+      "bytes": 13084,
+      "sha256": "3c3b1cceb122cf2d2486c0882d34f99958c3db2a4e4c8b358a36137ff853ca04"
+    }
+  }
+}

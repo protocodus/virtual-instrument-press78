@@ -1,0 +1,150 @@
+{
+  "date": "2026-10-19",
+  "passed": true,
+  "scope": "Independent settled-DC graph component review, exact scalar arithmetic and final publication validation. No audio, PCM source, firmware, host, UI or production mutation. Primary raster and inspection overlays visually inspected.",
+  "publication_checks": {
+    "exact_first_receipt_embedding": 1,
+    "artifact_sha256": 7,
+    "artifact_size": 7,
+    "final_public_json_sha256": 1,
+    "final_public_markdown_sha256": 1,
+    "public_frozen_file_binding": 7,
+    "local_document_link": 4,
+    "production_dsp_unchanged": 1
+  },
+  "total_publication_checks": 29,
+  "publication_bindings": [
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v4-MN3206-curves-p77.png",
+      "bytes": 120114,
+      "sha256": "34916e399deedf1f7247c5c1e481197854786d1604bb6e292a26b66d1c1dd90f"
+    },
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206.pdf",
+      "bytes": 188245,
+      "sha256": "045fb6a1c7f5bc1e5cb0cf51497bf64b4bf29bfe7be1b193a16a62e93c795fe2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/graph-calibration-inspection.png",
+      "bytes": 183954,
+      "sha256": "4ca7f757c42a6c897de39d595963fdd552651dec1cf04fae670316e15f5831a2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/axis-grid.png",
+      "bytes": 172794,
+      "sha256": "2e28f2e0f80b4b4f215483ec7e9f391c477188669883bdedb37fb7acd7089be2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/curve-coordinate-grid.png",
+      "bytes": 171746,
+      "sha256": "eaf143d74e5c17399fa9037a5f0edd34b2f38999a286e6d4e5bdcad50f03e452"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/digitized-graph-overlay.png",
+      "bytes": 186794,
+      "sha256": "74d581b3587c174236daf66efd261ea8ae5581a54fca757d248a7f83c6205d3a"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/validation-first-run.json",
+      "bytes": 3955,
+      "sha256": "78a29db78544ffb84a76c9597104f8c2b456d72ea118e6945a7d7696ae3f522f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/mn3206-dc-operating-point-2026-10-19.json",
+      "bytes": 5983,
+      "sha256": "2cd1c83c61f13275b0268fe4c04a94015e2757c4f8afb96eee6a0ca18590a287"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/mn3206-dc-operating-point-2026-10-19.md",
+      "bytes": 5325,
+      "sha256": "31fa0d71bc31ff7b226511b38284207227cc4a0d06f19cfd7679eb4c9494342f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/design-frozen.json",
+      "bytes": 4851,
+      "sha256": "26f8161c1687244375feb98b09545616757285ba476d05a7eef38f0b43d49b0d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/check.py",
+      "bytes": 7906,
+      "sha256": "dde1c223c044081b0ee47f03b36d304211b3d78d9fab62ba37a0ae689a6d8cf6"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/implementation-bound.json",
+      "bytes": 791,
+      "sha256": "06831765294d57820ca3af74df20fdb5a6f480022ba3adf9d0cc49128ca97ded"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/digitized-pixels.json",
+      "bytes": 1078,
+      "sha256": "3e8ea1a5b606ef6feecbd2413cd3733fcfbbafe912db47b4efec04eced0f717c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/design-frozen-v3.json",
+      "bytes": 5621,
+      "sha256": "fa0fda39dd32443e5f6aafc6258caab3b1d97e8a7449d22a94e7f192d16c88af"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/README.md",
+      "bytes": 2108,
+      "sha256": "814f1770a405d7099b8e7ab013835b6b80dd215374ac5754aa0860fea0715274"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/mn3206_dc.py",
+      "bytes": 6272,
+      "sha256": "83c6894e632c98c230ccd8815116d32801aa81e7828668391a624fa8cb0d51fd"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/design-frozen-v2.json",
+      "bytes": 5413,
+      "sha256": "8152ce8771518a57190a18016fa8ded04f3e4e50e5621e166ef824db7059ef68"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-dc-operating-point-20261019/extraction-failed-support-v1.json",
+      "bytes": 1080,
+      "sha256": "702b31891cc14acde2bf127d306b63ad70026d4232a3c14e7adc57c35f087712"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-independent-review-20261019/pre-execution-review.json",
+      "bytes": 2644,
+      "sha256": "3eff1570e2c5c07f802ee9e2e31a0c0b9bf8f5a3acdf6d9640720f8e6acd012d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-independent-review-20261019/model-review.json",
+      "bytes": 5370,
+      "sha256": "be28b93444f18ae20946bf0a6edd441a9c773c14944cd8a0fe4320b9859b5da4"
+    }
+  ],
+  "prior_independent_reviews": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-independent-review-20261019/pre-execution-review.json",
+      "bytes": 2644,
+      "sha256": "3eff1570e2c5c07f802ee9e2e31a0c0b9bf8f5a3acdf6d9640720f8e6acd012d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-independent-review-20261019/model-review.json",
+      "bytes": 5370,
+      "sha256": "be28b93444f18ae20946bf0a6edd441a9c773c14944cd8a0fe4320b9859b5da4"
+    }
+  ],
+  "independent_model_checks": 305,
+  "new_scalar_queries": 54,
+  "independently_evaluated_coordinate_corners": 3456,
+  "graph_visual_review": "Full source raster, enlarged trace-end crop and final source-coordinate18-point overlay inspected; no unsupported373 or grid-confounded371 extrapolation.",
+  "findings": {
+    "blocking": [],
+    "required_scope_preserved": [
+      "Fixed5V,VGG14/15VDD,10kHz,25C settled-DC graph VO relativeVSS=0 only.",
+      "PWL interpolation is an explicit raster-reading approximation.",
+      "Returned64-corner scenario min/max is not a confidence interval/device spread/bound on every within-box trace.",
+      "Unsupported conditions and input extrapolation rejected; no implicit physical signal level or output load/pin identified.",
+      "No samplewise audio nonlinearity, AC THD/Drive calibration, dynamic settling/supply law or target PSS780 circuit recovery claimed."
+    ],
+    "support_outcomes_preserved": [
+      "Original19-column failed-support extraction with nullx373",
+      "Unexecuted grid-overlapx371 proposal",
+      "Final18 unchanged ordinates endingx362, frozen before model construction/execution"
+    ]
+  },
+  "no_production_dsp_edits": true
+}
