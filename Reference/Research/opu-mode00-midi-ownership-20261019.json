@@ -1,0 +1,583 @@
+{
+  "schema": "press78.mode00-midi-ownership-evidence.v1",
+  "date": "2026-10-19",
+  "status": "SHARED_MIDI_OWNER_CONFIRMED_IN_CONSTRUCTED_CPU_PATH",
+  "production_changed": false,
+  "source_cases": 8,
+  "source_serial_messages": 36,
+  "raw_recomputation_checks": 32,
+  "firmware_execution_repeated_for_review": false,
+  "mode00_receive_mask_ram": [
+    "3E0A",
+    "3E0B"
+  ],
+  "tested_receive_masks": [
+    1,
+    3
+  ],
+  "observations": [
+    {
+      "model": "PSS780",
+      "scenario": "shared-same-pitch",
+      "mask": 1,
+      "observed": {
+        "pitch_slots": [
+          [
+            0
+          ],
+          [],
+          [],
+          []
+        ],
+        "raw_wire_scan_0208": [
+          [
+            0
+          ],
+          [],
+          [
+            0
+          ],
+          []
+        ],
+        "raw_service_0208": [
+          [
+            24
+          ],
+          [],
+          [],
+          []
+        ],
+        "shared_byte_24c5_after_wire": [
+          1,
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "model": "PSS780",
+      "scenario": "shared-same-pitch",
+      "mask": 3,
+      "observed": {
+        "pitch_slots": [
+          [
+            0
+          ],
+          [],
+          [],
+          []
+        ],
+        "raw_wire_scan_0208": [
+          [
+            0
+          ],
+          [],
+          [
+            0
+          ],
+          []
+        ],
+        "raw_service_0208": [
+          [
+            24
+          ],
+          [],
+          [],
+          []
+        ],
+        "shared_byte_24c5_after_wire": [
+          1,
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "model": "PSS780",
+      "scenario": "cross-channel-cache",
+      "mask": 1,
+      "observed": {
+        "pitch_slots": [
+          [
+            0
+          ],
+          [],
+          [],
+          [],
+          [
+            0
+          ]
+        ],
+        "raw_wire_scan_0208": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [],
+          [],
+          [
+            0
+          ]
+        ],
+        "raw_service_0208": [
+          [
+            24
+          ],
+          [],
+          [],
+          [],
+          [
+            24
+          ]
+        ],
+        "shared_byte_24c5_after_wire": [
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "model": "PSS780",
+      "scenario": "cross-channel-cache",
+      "mask": 3,
+      "observed": {
+        "pitch_slots": [
+          [
+            0
+          ],
+          [],
+          [
+            1
+          ],
+          [],
+          [
+            0
+          ]
+        ],
+        "raw_wire_scan_0208": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "raw_service_0208": [
+          [
+            24
+          ],
+          [],
+          [
+            96
+          ],
+          [],
+          [
+            24
+          ]
+        ],
+        "shared_byte_24c5_after_wire": [
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "model": "PSS680",
+      "scenario": "shared-same-pitch",
+      "mask": 1,
+      "observed": {
+        "pitch_slots": [
+          [
+            0
+          ],
+          [],
+          [],
+          []
+        ],
+        "raw_wire_scan_0208": [
+          [
+            0
+          ],
+          [],
+          [
+            0
+          ],
+          []
+        ],
+        "raw_service_0208": [
+          [
+            24
+          ],
+          [],
+          [],
+          []
+        ],
+        "shared_byte_24c5_after_wire": [
+          1,
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "model": "PSS680",
+      "scenario": "shared-same-pitch",
+      "mask": 3,
+      "observed": {
+        "pitch_slots": [
+          [
+            0
+          ],
+          [],
+          [],
+          []
+        ],
+        "raw_wire_scan_0208": [
+          [
+            0
+          ],
+          [],
+          [
+            0
+          ],
+          []
+        ],
+        "raw_service_0208": [
+          [
+            24
+          ],
+          [],
+          [],
+          []
+        ],
+        "shared_byte_24c5_after_wire": [
+          1,
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "model": "PSS680",
+      "scenario": "cross-channel-cache",
+      "mask": 1,
+      "observed": {
+        "pitch_slots": [
+          [
+            0
+          ],
+          [],
+          [],
+          [],
+          [
+            0
+          ]
+        ],
+        "raw_wire_scan_0208": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [],
+          [],
+          [
+            0
+          ]
+        ],
+        "raw_service_0208": [
+          [
+            24
+          ],
+          [],
+          [],
+          [],
+          [
+            24
+          ]
+        ],
+        "shared_byte_24c5_after_wire": [
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "model": "PSS680",
+      "scenario": "cross-channel-cache",
+      "mask": 3,
+      "observed": {
+        "pitch_slots": [
+          [
+            0
+          ],
+          [],
+          [
+            1
+          ],
+          [],
+          [
+            0
+          ]
+        ],
+        "raw_wire_scan_0208": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "raw_service_0208": [
+          [
+            24
+          ],
+          [],
+          [
+            96
+          ],
+          [],
+          [
+            24
+          ]
+        ],
+        "shared_byte_24c5_after_wire": [
+          1,
+          0,
+          0,
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "retained_failures": {
+    "original_result_passed": false,
+    "count": 2,
+    "errors": [
+      {
+        "model": "PSS780",
+        "scenario": "cross-channel-cache",
+        "mask": 3,
+        "field": "keyoff_slots",
+        "expected": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "actual": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ]
+      },
+      {
+        "model": "PSS680",
+        "scenario": "cross-channel-cache",
+        "mask": 3,
+        "field": "keyoff_slots",
+        "expected": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            0
+          ]
+        ],
+        "actual": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ]
+      }
+    ],
+    "explanation": "The prospective auxiliary expected_keyoff_slots assertion compared a slot index with the raw packed key register byte. At port0208 pair0, active slot0 uses24 and active slot1 uses96; off with neither active is0 for either slot, so expecting byte1 for slot1 was incorrect. Original raw traces and the two assertion failures remain unchanged. All8 prospective pitch-slot arrays were correct. This separate posthoc review compares literal raw register bytes and shared received-key byte24C5.",
+    "protocol_or_result_rewritten": false
+  },
+  "inference": "Two enabled MIDI channels share the tested Mode00 received-key bit/cache. They are not independent per-channel note owners. Duplicate same-pitch on is coalesced and the first accepted off clears that shared MIDI key.",
+  "limits": [
+    "Constructed Sine99 CPU paths on two hash-identified programs, not full boot or chip measurements.",
+    "The recording event files contain raw MIDI channel labels, not physical CV ownership. Actual wire reception/filter configuration remains unknown.",
+    "Source0 MIDI and source1 CV remain separate plugin namespaces; these CPU witnesses do not justify merging them.",
+    "No key-service cadence, oscillator phase, physical envelope endpoint, DAC transfer or audio fidelity is established."
+  ],
+  "benchmark_correction": {
+    "historical_event_sources": {
+      "unchanged": {
+        "on": {
+          "0": 842,
+          "1": 919
+        },
+        "off": {
+          "0": 842,
+          "1": 919
+        },
+        "patch": 100
+      },
+      "old_scale_median_offset": {
+        "on": {
+          "0": 842,
+          "1": 919
+        },
+        "off": {
+          "0": 842,
+          "1": 919
+        },
+        "patch": 100
+      },
+      "nominal_scale_median_intercept": {
+        "on": {
+          "0": 842,
+          "1": 919
+        },
+        "off": {
+          "0": 842,
+          "1": 919
+        },
+        "patch": 100
+      },
+      "equal_patch_robust_affine": {
+        "on": {
+          "0": 842,
+          "1": 919
+        },
+        "off": {
+          "0": 842,
+          "1": 919
+        },
+        "patch": 100
+      }
+    },
+    "lanes": {
+      "HistoricalLegacy": "Original file MIDI-channel IDs0/1 remain engine source IDs0/1; historical reproduction only, not a CV capture.",
+      "Legacy": "All accepted raw MIDI channels enter one engine source0 domain; allocationModel0. Independently compiled unchanged b15 source must reproduce each complete merged Legacy WAV.",
+      "Original": "Exactly the same global MIDI domain/source0, allocationModel1. Original-minus-Legacy isolates allocation from source mapping."
+    },
+    "event_files_modified": false,
+    "candidate_recording_audio_started": false,
+    "frozen_recording_protocol_sha256": "e332f2229bd41a897fb64af801f47b162e68840bc37b42a63401c642948c8ef1",
+    "scope": "Prospective correction separates MIDI ownership from allocation; no new scores at report creation."
+  },
+  "evidence": [
+    {
+      "path": "build/opu-allocation-mode00-channels-20261019/protocol-frozen.json",
+      "sha256": "b31292680caa5ab0578732d4e4a17f5d66d0999894902c314c7ffd057b1e4089",
+      "bytes": 2871
+    },
+    {
+      "path": "build/opu-allocation-mode00-channels-20261019/verify.py",
+      "sha256": "ee72a9231d397b510658c9affd302c37df7e6f1f6b3975da47d03ee9fefdbf68",
+      "bytes": 3591
+    },
+    {
+      "path": "build/opu-allocation-mode00-channels-20261019/result.json",
+      "sha256": "23e5a40ae4da7ea737c74398d31d271cbd5c89750738a97caaf36edaf84849c6",
+      "bytes": 5211802
+    },
+    {
+      "path": "build/opu-allocation-mode00-channels-20261019/summary.json",
+      "sha256": "3ff512b51251027e6857c54fece3a326aade275d2ff921a7d97e8451702ad245",
+      "bytes": 21103
+    },
+    {
+      "path": "build/opu-allocation-mode00-channels-20261019/review.json",
+      "sha256": "00804e8875bb1086f89a4aaae7f8e1bf670de20ee99e0803684290028ef83076",
+      "bytes": 9133
+    },
+    {
+      "path": "build/opu-allocation-mode00-channels-20261019/recompute_ownership_review.py",
+      "sha256": "0bc59a243c328ef5ee7ccd2decff86fd64a8fc116ddf7d8182b7b0a9ceaa217a",
+      "bytes": 4033
+    },
+    {
+      "path": "build/opu-allocation-mode00-channels-20261019/root-raw-recomputation.json",
+      "sha256": "c32834a7b9243a2c5a77f6927371ff2f659417a41f9fb3071c513593a3e75ee8",
+      "bytes": 7565
+    },
+    {
+      "path": "build/allocator-recording-comparison-v3-20261019/design-frozen.json",
+      "sha256": "e332f2229bd41a897fb64af801f47b162e68840bc37b42a63401c642948c8ef1",
+      "bytes": 26153
+    }
+  ],
+  "related_reference": "Reference/Research/opu-allocation-command-path-20261019.md"
+}
