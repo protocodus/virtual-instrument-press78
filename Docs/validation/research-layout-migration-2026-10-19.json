@@ -106,9 +106,9 @@
       "original_path": "Reference/Research/fidelity-roadmap-20261018.md",
       "original_sha256": "0e8e0195ae4328a6e980aad7488af70843c932d4719b1cf995e3272ae55c70fb",
       "portfolio_path": "Docs/research/fidelity-roadmap-2026-10-18.md",
-      "portfolio_sha256": "74c20120af43c58cf212cc9acc2c1534164cd4b5a753d7a1a56db7af4d763865",
+      "portfolio_sha256": "c2180b9af16bb2309421948250ac20f5c71c45b5c13c0f015e23cd1d61a42b09",
       "byte_identical": false,
-      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+      "change_scope": "Preserve incoming roadmap, migrate links, append reviewed research/native component outcomes and provenance notes. No experiment data or conclusions changed."
     },
     {
       "original_path": "Reference/Research/hardware-allocation-20261019.json",
@@ -122,9 +122,9 @@
       "original_path": "Reference/Research/hardware-allocation-20261019.md",
       "original_sha256": "270fcf44a7fa473b8945f4c630fce66b7eb29f86260e4c65cee8a18aa670a354",
       "portfolio_path": "Docs/research/hardware-allocation-2026-10-19.md",
-      "portfolio_sha256": "ec8d88e00b08d91d4ea21cc647d9596902bfdeb01e9aa731281fc60c02881238",
+      "portfolio_sha256": "20379d91031ef2bf892f396e791bf2e47efdaca6f5956c6325e0915b205f913b",
       "byte_identical": false,
-      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+      "change_scope": "Migrate document links and point local-media links explicitly at the retained original workspace; experiment outcomes unchanged."
     },
     {
       "original_path": "Reference/Research/midi-fixture-comparison-20261019.json",
@@ -138,9 +138,9 @@
       "original_path": "Reference/Research/midi-fixture-comparison-20261019.md",
       "original_sha256": "139ec061054561a2d81490541d4cbb6092d33fd00d1a3ab3a04574d3f6d39b4e",
       "portfolio_path": "Docs/research/midi-fixture-comparison-2026-10-19.md",
-      "portfolio_sha256": "3823377424f7f1642b68d16c5373555113621beb9c2ae45d16e5655a87252921",
+      "portfolio_sha256": "4a0f2adc4a138136b0d3b944132f172cf9552b953e42d937c1281a66de195e8f",
       "byte_identical": false,
-      "change_scope": "Path/link migration and incoming roadmap preservation; original frozen bytes remain at original commit."
+      "change_scope": "Migrate document links and point local-media links explicitly at the retained original workspace; experiment outcomes unchanged."
     },
     {
       "original_path": "Reference/Research/midi-fixture-comparison-protocol-20261019.json",
@@ -222,7 +222,8 @@
     "current_runner_AST_equal_after_reversing_lookup_paths_only": true,
     "six_imported_common_function_ASTs_identical": true,
     "all5_public_python_implementation_test_fixture_files_byte_identical": true,
-    "shipping_DSP_unchanged_vs_portfolio_base": true
+    "shipping_DSP_unchanged_vs_portfolio_base": true,
+    "local_audition_links_point_to_retained_original_workspace": true
   },
   "limits": [
     "This migration is not another recording experiment or proof of current host playback.",

@@ -1,0 +1,112 @@
+{
+  "schema": "press78.native-command-layout-migration.v1",
+  "date": "2026-10-19",
+  "original_frozen_commit": "dde361ac6ddd199e094c94324aee3cf55635cf14",
+  "original_source_branch": "research/pss780-20261019-frozen",
+  "files": [
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+      "original_sha256": "6d02210b10f2993cd59c2e5010f7ff25ba8cbeacf3b7c2a19069a6d1eec27b5c",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+      "portfolio_sha256": "6d02210b10f2993cd59c2e5010f7ff25ba8cbeacf3b7c2a19069a6d1eec27b5c",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+      "original_sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+      "portfolio_sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "original_sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "portfolio_sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/README.md",
+      "original_sha256": "95460760453e753d7fb0ca23ee98d5ae2de16ff3c8ed29806386ea29f4ad52da",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/README.md",
+      "portfolio_sha256": "35f55dad9eed7cc4a9df0b94f745f0b00726215a3ecb345722d65de447ccde9d",
+      "byte_identical": false
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+      "original_sha256": "526d723a14bb609367d504b176e0d2f335b0fb09a3d01f01bce26f3f624b8948",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+      "portfolio_sha256": "526d723a14bb609367d504b176e0d2f335b0fb09a3d01f01bce26f3f624b8948",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/design-frozen.json",
+      "original_sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/design-frozen.json",
+      "portfolio_sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/independent-review.json",
+      "original_sha256": "0d51000f407a51dc0e51b4ccb954411f726f0f4849429943314c221a639b476a",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/independent-review.json",
+      "portfolio_sha256": "0d51000f407a51dc0e51b4ccb954411f726f0f4849429943314c221a639b476a",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/manifest.json",
+      "original_sha256": "e8221648ca2782b320188e7dbd018c7f54f927616a942043f663bd9ef6e415e1",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/manifest.json",
+      "portfolio_sha256": "e8221648ca2782b320188e7dbd018c7f54f927616a942043f663bd9ef6e415e1",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/source-test-bound.json",
+      "original_sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/source-test-bound.json",
+      "portfolio_sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+      "original_sha256": "a758a0e7ffa75ae082b30afe26738228842ba6d6b4409483bc118c3fb4d59769",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+      "portfolio_sha256": "a758a0e7ffa75ae082b30afe26738228842ba6d6b4409483bc118c3fb4d59769",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Prototypes/mode00-native-command-20261019/validation-scoped.json",
+      "original_sha256": "8dd83571563098c0d5212743508825f7db1a32ba8b7526e281b384bfa496c969",
+      "portfolio_path": "Tools/prototypes/mode00-native-command-20261019/validation-scoped.json",
+      "portfolio_sha256": "8dd83571563098c0d5212743508825f7db1a32ba8b7526e281b384bfa496c969",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Research/mode00-native-command-bridge-20261019.json",
+      "original_sha256": "96a29bde470de1aa187538bd1c3a113bd9cb494bfef5a96e7934aa66c41ad872",
+      "portfolio_path": "Docs/research/mode00-native-command-bridge-2026-10-19.json",
+      "portfolio_sha256": "96a29bde470de1aa187538bd1c3a113bd9cb494bfef5a96e7934aa66c41ad872",
+      "byte_identical": true
+    },
+    {
+      "original_path": "Reference/Research/mode00-native-command-bridge-20261019.md",
+      "original_sha256": "16c0b284c34a100dc99414c059e9f4fe298727e313d4d7c39fb05ebbf243694f",
+      "portfolio_path": "Docs/research/mode00-native-command-bridge-2026-10-19.md",
+      "portfolio_sha256": "089a9f7e30fe1c70e02a8fdc38f512e250e36bcdc868b8c3e956121dfecd3cdc",
+      "byte_identical": false
+    }
+  ],
+  "verification": {
+    "all4_implementation_and_probe_files_byte_identical": true,
+    "all7_JSON_files_byte_identical": true,
+    "README_and_report_changes": "Links and repository-root reproduction paths only; frozen JSON receipts retain original paths/hashes.",
+    "optimized_synthetic_check_in_portfolio_checkout": {
+      "assertions": 81361,
+      "log_path": "build/native-command-check/synthetic.log",
+      "log_sha256": "e3e26d19573907e80b375ee1b9c10faea32a45691972fcf8293f808bc1976461",
+      "executable_sha256": "29471b6633a491246cdf173ec82120f7afa9fb2f3402fe61efbdee0847e252eb"
+    },
+    "shipping_DSP_unchanged_vs_portfolio_base": true
+  },
+  "scope": "Path-only integration of separately reviewed command frontend. No audio, firmware execution, production code, native wrapper, UI, default or preset changes. Original optimized/sanitized raw-command evidence remains frozen."
+}

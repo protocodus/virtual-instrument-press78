@@ -56,7 +56,7 @@ The figure is a descriptive view of already frozen reported values, with its sou
 
 ## Auditions and independent verification
 
-Twenty local five-part [auditions](../../build/midi-fixture-comparison-v2-20261019/audition.html) present Hardware → Old Legacy → Old Original → Corrected Legacy → Corrected Original. They cover the three focus voices and both Sine supports under every map, with fixed250ms gaps, one RMS gain per stereo model pair, and one common listening safety scalar per support across every map/cell. There is no independent peak normalization or channel gain.
+Twenty local five-part [auditions](/Users/vojta/Dev/virtual-instrument-press78/build/midi-fixture-comparison-v2-20261019/audition.html) present Hardware → Old Legacy → Old Original → Corrected Legacy → Corrected Original. They cover the three focus voices and both Sine supports under every map, with fixed250ms gaps, one RMS gain per stereo model pair, and one common listening safety scalar per support across every map/cell. There is no independent peak normalization or channel gain.
 
 The independent completed-run review passes **34,437 checks**: all 1,632 scores, 816 exact old score copies, 8,160 contrasts, 192 aggregates, gates, regression lists, input/source/WAV identities and all twelve new pressure CSVs. Forty raw metric recalculations have zero difference. All twenty five-part audition WAVs reconstruct byte-exactly. The 28 retained new WAVs total673,134,632bytes, within the prospective800MB ceiling. No synth audio is rerendered by that review.
 
@@ -67,3 +67,5 @@ An initial protocol inherited old timing text without scoping it to Old cells. R
 All four cells deliberately retain `setPatch(..., false)` future-only voice snapshots to isolate the MIDI fixture. This is not the verified original loader. The [program-load study](opu-mode00-program-load-2026-10-19.md) establishes PSS-780 serial-key clearing/pending cancellation and both models’ all-slot parameter rewrite, while PSS-680 preserves those input states. The [panel caller proof](program-selection-association-2026-10-19.md) extends the path association beyond MIDI C0, without establishing actual video transport or event order.
 
 Reverb and Chorus are visibly on in sampled reference frames. Recorded chorus stays fixed, but the chip-Reverb envelope law is still missing. Original key-service cadence, phase reset, live TL response and measured retrigger envelopes remain unresolved. Actual MIDI delivery, receive masks and program-first/intertrack serialization are conditional. These reused-recording scores therefore neither overturn the earlier failed experiment nor establish hardware truth, Reason performance, complete circuit simulation or market-leading accuracy.
+
+Local media remains in the original research workspace; the audition link above points there explicitly. These third-party recording excerpts and expanded research renders are not redistributed in this repository.

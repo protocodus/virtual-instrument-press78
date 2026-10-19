@@ -1,0 +1,1807 @@
+{
+  "schema": "press78.research-layout-independent-review.v1",
+  "created_utc": "2026-10-19T15:27:24.094816+00:00",
+  "passed": true,
+  "checks": 358,
+  "scope": "Read-only migration identity, exact path-only runner comparison, helper ASTs, source boundaries and Markdown links. No compilation, source execution, firmware execution, audio rendering or metric recomputation.",
+  "original_workspace": "/Users/vojta/Dev/virtual-instrument-press78",
+  "migrated_workspace": "/Users/vojta/Dev/press78-research-sync-20261019",
+  "original_head": "dde361ac6ddd199e094c94324aee3cf55635cf14",
+  "migrated_head": "85d5c6f36b99a4170da927fa77ab9a22a6fc9992",
+  "portfolio_base": "75e62ba8f799a074cda48f85c344e750a470f504",
+  "original_tested_publication_commit": "a015e1915ac05e9044e529f1d298c6ce06e8fab5",
+  "changed_paths": [
+    "Docs/research/assets/midi-fixture-comparison-2026-10-19.png",
+    "Docs/research/fidelity-roadmap-2026-10-18.md",
+    "Docs/research/hardware-allocation-2026-10-19.json",
+    "Docs/research/hardware-allocation-2026-10-19.md",
+    "Docs/research/midi-fixture-comparison-2026-10-19.json",
+    "Docs/research/midi-fixture-comparison-2026-10-19.md",
+    "Docs/research/midi-fixture-comparison-protocol-2026-10-19.json",
+    "Docs/research/mode00-native-command-bridge-2026-10-19.json",
+    "Docs/research/mode00-native-command-bridge-2026-10-19.md",
+    "Docs/research/mode00-program-command-adapter-2026-10-19.json",
+    "Docs/research/mode00-program-command-adapter-2026-10-19.md",
+    "Docs/research/mode00-program-command-validation-2026-10-19.json",
+    "Docs/research/program-selection-association-2026-10-19.json",
+    "Docs/research/program-selection-association-2026-10-19.md",
+    "Docs/research/program-selection-association-validation-2026-10-19.json",
+    "Docs/validation/native-command-layout-migration-2026-10-19.json",
+    "Docs/validation/research-layout-migration-2026-10-19.json",
+    "Tools/benchmark_midi_fixture.py",
+    "Tools/prototypes/midi-fixture-comparison-20261019/README.md",
+    "Tools/prototypes/midi-fixture-comparison-20261019/common-frozen.py",
+    "Tools/prototypes/midi-fixture-comparison-20261019/runner-frozen.py",
+    "Tools/prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+    "Tools/prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+    "Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+    "Tools/prototypes/mode00-native-command-20261019/README.md",
+    "Tools/prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+    "Tools/prototypes/mode00-native-command-20261019/design-frozen.json",
+    "Tools/prototypes/mode00-native-command-20261019/independent-review.json",
+    "Tools/prototypes/mode00-native-command-20261019/manifest.json",
+    "Tools/prototypes/mode00-native-command-20261019/source-test-bound.json",
+    "Tools/prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+    "Tools/prototypes/mode00-native-command-20261019/validation-scoped.json",
+    "Tools/prototypes/mode00-program-load-20261019/README.md",
+    "Tools/prototypes/mode00-program-load-20261019/check.py",
+    "Tools/prototypes/mode00-program-load-20261019/check_retained_state.py",
+    "Tools/prototypes/mode00-program-load-20261019/export-validation.json",
+    "Tools/prototypes/mode00-program-load-20261019/firmware_allocator.py",
+    "Tools/prototypes/mode00-program-load-20261019/manifest.json",
+    "Tools/prototypes/mode00-program-load-20261019/program_loader.py",
+    "Tools/prototypes/mode00-program-load-20261019/state_fixture.json",
+    "Tools/prototypes/mode00-program-load-20261019/validation.json",
+    "Tools/prototypes/original-allocation-20261019/README.md",
+    "Tools/prototypes/original-allocation-20261019/validation.json"
+  ],
+  "byte_identical_pairs": [
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+      "sha256": "6d02210b10f2993cd59c2e5010f7ff25ba8cbeacf3b7c2a19069a6d1eec27b5c",
+      "bytes": 5250
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a",
+      "bytes": 4043
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f",
+      "bytes": 7339
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+      "sha256": "526d723a14bb609367d504b176e0d2f335b0fb09a3d01f01bce26f3f624b8948",
+      "bytes": 7650
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/design-frozen.json",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/design-frozen.json",
+      "sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+      "bytes": 6669
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/independent-review.json",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/independent-review.json",
+      "sha256": "0d51000f407a51dc0e51b4ccb954411f726f0f4849429943314c221a639b476a",
+      "bytes": 30536
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/manifest.json",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/manifest.json",
+      "sha256": "e8221648ca2782b320188e7dbd018c7f54f927616a942043f663bd9ef6e415e1",
+      "bytes": 3192
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/source-test-bound.json",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/source-test-bound.json",
+      "sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+      "bytes": 1702
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+      "sha256": "a758a0e7ffa75ae082b30afe26738228842ba6d6b4409483bc118c3fb4d59769",
+      "bytes": 2511
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/validation-scoped.json",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/validation-scoped.json",
+      "sha256": "8dd83571563098c0d5212743508825f7db1a32ba8b7526e281b384bfa496c969",
+      "bytes": 3364
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/mode00-native-command-bridge-20261019.json",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-native-command-bridge-2026-10-19.json",
+      "sha256": "96a29bde470de1aa187538bd1c3a113bd9cb494bfef5a96e7934aa66c41ad872",
+      "bytes": 13239
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/program_loader.py",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/program_loader.py",
+      "sha256": "a5e5d3eb033da8996a719daa2c4a5078ff77770d1207ce00f5b6fc606bd35d16",
+      "bytes": 7342
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/firmware_allocator.py",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/firmware_allocator.py",
+      "sha256": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439",
+      "bytes": 4837
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/check.py",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/check.py",
+      "sha256": "355947b9d6ec0185a091ebc1574960dc4809f9e406a05a15d457819f38dd899e",
+      "bytes": 4795
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/check_retained_state.py",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/check_retained_state.py",
+      "sha256": "906f5e7f375dd4e3ec01ff728d25d00e584a8c7d3e6e07015c3fcb327b5e8ff8",
+      "bytes": 1769
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/state_fixture.json",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/state_fixture.json",
+      "sha256": "fe847803c819980f9415d8df2b39c8383f8d73888f6076fcc806731f8a4a8794",
+      "bytes": 41741
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Tools/benchmark_midi_fixture.py",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/midi-fixture-comparison-20261019/runner-frozen.py",
+      "sha256": "004fb6723df0e616b014e42e17fde25428bbd3b271e13a3120859b15226db2aa",
+      "bytes": 22989
+    },
+    {
+      "original": "/Users/vojta/Dev/virtual-instrument-press78/Tools/benchmark_pitch_model.py",
+      "migrated": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/midi-fixture-comparison-20261019/common-frozen.py",
+      "sha256": "918d97ea32710798e5f7c87fc165b2cb618cccd03b5201ff0f0aa0d4f662a98d",
+      "bytes": 18397
+    }
+  ],
+  "runner_lookup_changes": {
+    "Docs/research/midi-reference-export-2026-10-19.json": "Reference/Research/midi-reference-export-20261019.json",
+    "Docs/research/opu-mode00-program-load-validation-2026-10-19.json": "Reference/Research/opu-mode00-program-load-validation-20261019.json",
+    "Docs/research/recording-mode-effects-audit-2026-10-19.json": "Reference/Research/recording-mode-effects-audit-20261019.json"
+  },
+  "unchanged_common_helpers": [
+    "sha",
+    "read",
+    "write",
+    "record",
+    "verify",
+    "now"
+  ],
+  "local_links": [
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 7,
+      "target": "recording-holdout-audit-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/recording-holdout-audit-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 8,
+      "target": "fm-fidelity-audit-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/fm-fidelity-audit-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 9,
+      "target": "lfo-pitch-audit-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/lfo-pitch-audit-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 9,
+      "target": "lfo-candidate-protocol-2026-10-18.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/lfo-candidate-protocol-2026-10-18.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 9,
+      "target": "recording-holdout-audit-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/recording-holdout-audit-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 10,
+      "target": "output-schematic-audit-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/output-schematic-audit-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 12,
+      "target": "exact-sine-release-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/exact-sine-release-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 12,
+      "target": "envelope-law-benchmark-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/envelope-law-benchmark-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 12,
+      "target": "reverb-envelope-benchmark-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/reverb-envelope-benchmark-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 13,
+      "target": "envelope-capture-forensics-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/envelope-capture-forensics-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 13,
+      "target": "codec-tail-audit-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/codec-tail-audit-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 14,
+      "target": "global-event-mapping-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/global-event-mapping-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 14,
+      "target": "midi-alignment-audit-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-alignment-audit-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 15,
+      "target": "timing-sensitivity-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/timing-sensitivity-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 16,
+      "target": "rks0-release-slopes-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/rks0-release-slopes-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 16,
+      "target": "opu-rks-evidence-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-rks-evidence-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 16,
+      "target": "retrigger-allocation-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/retrigger-allocation-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 17,
+      "target": "dac-endpoint-evidence-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/dac-endpoint-evidence-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 18,
+      "target": "pitch-grid-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/pitch-grid-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 18,
+      "target": "pitch-pattern-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/pitch-pattern-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 19,
+      "target": "opu-digital-primary-leads-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-digital-primary-leads-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 20,
+      "target": "early-noteoff-leads-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/early-noteoff-leads-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 20,
+      "target": "soden-pss680-source-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/soden-pss680-source-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 22,
+      "target": "recording-mode-effects-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/recording-mode-effects-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 22,
+      "target": "mode00-benchmark-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-benchmark-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 24,
+      "target": "isolated-source-search-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/isolated-source-search-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 24,
+      "target": "cross-source-pitch-prediction-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/cross-source-pitch-prediction-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 26,
+      "target": "opu-frequency-hypothesis-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-frequency-hypothesis-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 28,
+      "target": "f77-frequency-prediction-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/f77-frequency-prediction-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 30,
+      "target": "opu-sibling-clock-circuit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-sibling-clock-circuit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 52,
+      "target": "comparison-landscape-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/comparison-landscape-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 56,
+      "target": "hardware-capture-protocol-2026-10-18.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/hardware-capture-protocol-2026-10-18.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 60,
+      "target": "opu-pitch-command-path-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-pitch-command-path-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 60,
+      "target": "front-panel-envelope-map-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/front-panel-envelope-map-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 62,
+      "target": "hardware-pitch-b12-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/hardware-pitch-b12-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 64,
+      "target": "opu-envelope-independent-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-envelope-independent-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 64,
+      "target": "exact-circuit-source-search-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/exact-circuit-source-search-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 68,
+      "target": "lofi-signal-path-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/lofi-signal-path-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 70,
+      "target": "local-supply-model-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/local-supply-model-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 72,
+      "target": "opu-release-command-path-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-release-command-path-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 74,
+      "target": "opu-level-command-path-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-level-command-path-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 74,
+      "target": "hardware-key-level-b13-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/hardware-key-level-b13-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 76,
+      "target": "key-level-decomposition-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/key-level-decomposition-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 76,
+      "target": "front-panel-level-map-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/front-panel-level-map-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 80,
+      "target": "sustain-policy-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/sustain-policy-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 84,
+      "target": "fm-level-conditional-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/fm-level-conditional-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 86,
+      "target": "opu-envelope-command-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-envelope-command-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 88,
+      "target": "pm-envelope-separation-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/pm-envelope-separation-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 88,
+      "target": "editingfun-tonal-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/editingfun-tonal-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 92,
+      "target": "../guide/factory-presets.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/guide/factory-presets.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 92,
+      "target": "../guide/modern-presets.html",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/guide/modern-presets.html",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 96,
+      "target": "target-am-board-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/target-am-board-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 100,
+      "target": "opu-allocation-command-path-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-allocation-command-path-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 102,
+      "target": "../../Tools/prototypes/voice-allocation-20261019/README.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/voice-allocation-20261019/README.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 104,
+      "target": "opu-mode00-midi-ownership-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-mode00-midi-ownership-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 106,
+      "target": "target-am-registration-v2-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/target-am-registration-v2-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 106,
+      "target": "target-am-clock-trace-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/target-am-clock-trace-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 108,
+      "target": "../../Tools/prototypes/original-allocation-20261019/README.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/original-allocation-20261019/README.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 108,
+      "target": "hardware-allocation-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/hardware-allocation-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 110,
+      "target": "allocator-native-performance-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/allocator-native-performance-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 112,
+      "target": "midi-event-order-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-event-order-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 114,
+      "target": "midi-reference-export-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-reference-export-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 116,
+      "target": "opu-mode00-program-load-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-mode00-program-load-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 116,
+      "target": "opu-mode00-program-load-validation-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-mode00-program-load-validation-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 118,
+      "target": "midi-fixture-comparison-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 120,
+      "target": "mode00-program-command-adapter-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-program-command-adapter-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 120,
+      "target": "mode00-program-command-validation-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-program-command-validation-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 120,
+      "target": "program-selection-association-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/program-selection-association-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 122,
+      "target": "program-selection-association-validation-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/program-selection-association-validation-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 124,
+      "target": "mode00-native-command-bridge-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-native-command-bridge-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 126,
+      "target": "../validation/research-layout-migration-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/validation/research-layout-migration-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "line": 126,
+      "target": "../validation/native-command-layout-migration-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/validation/native-command-layout-migration-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 3,
+      "target": "../../Tools/prototypes/original-allocation-20261019/README.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/original-allocation-20261019/README.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 7,
+      "target": "allocator-recording-protocol-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/allocator-recording-protocol-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 7,
+      "target": "opu-mode00-midi-ownership-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-mode00-midi-ownership-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 9,
+      "target": "recording-mode-effects-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/recording-mode-effects-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 26,
+      "target": "hardware-allocation-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/hardware-allocation-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 48,
+      "target": "midi-event-order-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-event-order-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 48,
+      "target": "midi-event-order-validation-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-event-order-validation-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 50,
+      "target": "midi-reference-export-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-reference-export-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 52,
+      "target": "opu-mode00-program-load-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-mode00-program-load-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 54,
+      "target": "midi-fixture-comparison-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 60,
+      "target": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-v3-20261019/audition.html",
+      "resolved": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-v3-20261019/audition.html",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 64,
+      "target": "allocator-native-performance-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/allocator-native-performance-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "line": 5,
+      "target": "midi-fixture-comparison-protocol-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-fixture-comparison-protocol-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "line": 5,
+      "target": "midi-fixture-comparison-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-fixture-comparison-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "line": 5,
+      "target": "hardware-allocation-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/hardware-allocation-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "line": 9,
+      "target": "midi-reference-export-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-reference-export-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "line": 53,
+      "target": "assets/midi-fixture-comparison-2026-10-19.png",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/assets/midi-fixture-comparison-2026-10-19.png",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "line": 59,
+      "target": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-fixture-comparison-v2-20261019/audition.html",
+      "resolved": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-fixture-comparison-v2-20261019/audition.html",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "line": 67,
+      "target": "opu-mode00-program-load-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-mode00-program-load-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "line": 67,
+      "target": "program-selection-association-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/program-selection-association-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/mode00-native-command-bridge-2026-10-19.md",
+      "line": 90,
+      "target": "../../Tools/prototypes/mode00-native-command-20261019/README.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/README.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/mode00-native-command-bridge-2026-10-19.md",
+      "line": 91,
+      "target": "mode00-native-command-bridge-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-native-command-bridge-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/mode00-native-command-bridge-2026-10-19.md",
+      "line": 93,
+      "target": "mode00-program-command-adapter-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-program-command-adapter-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/mode00-program-command-adapter-2026-10-19.md",
+      "line": 3,
+      "target": "../../Tools/prototypes/mode00-program-load-20261019/README.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/README.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/mode00-program-command-adapter-2026-10-19.md",
+      "line": 8,
+      "target": "mode00-program-command-adapter-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-program-command-adapter-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/mode00-program-command-adapter-2026-10-19.md",
+      "line": 13,
+      "target": "opu-mode00-program-load-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-mode00-program-load-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/program-selection-association-2026-10-19.md",
+      "line": 5,
+      "target": "program-selection-association-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/program-selection-association-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/program-selection-association-2026-10-19.md",
+      "line": 31,
+      "target": "recording-mode-effects-audit-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/recording-mode-effects-audit-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/program-selection-association-2026-10-19.md",
+      "line": 37,
+      "target": "midi-reference-export-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-reference-export-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Docs/research/program-selection-association-2026-10-19.md",
+      "line": 60,
+      "target": "opu-mode00-program-load-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-mode00-program-load-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/midi-fixture-comparison-20261019/README.md",
+      "line": 7,
+      "target": "../../../Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/midi-fixture-comparison-20261019/README.md",
+      "line": 7,
+      "target": "../../../Docs/validation/research-layout-migration-2026-10-19.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/validation/research-layout-migration-2026-10-19.json",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/mode00-native-command-20261019/README.md",
+      "line": 79,
+      "target": "../../../Docs/research/mode00-native-command-bridge-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-native-command-bridge-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/mode00-native-command-20261019/README.md",
+      "line": 80,
+      "target": "manifest.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/manifest.json",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/mode00-program-load-20261019/README.md",
+      "line": 5,
+      "target": "../../../Docs/research/mode00-program-command-adapter-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-program-command-adapter-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/mode00-program-load-20261019/README.md",
+      "line": 9,
+      "target": "../voice-allocation-20261019/README.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/voice-allocation-20261019/README.md",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/mode00-program-load-20261019/README.md",
+      "line": 41,
+      "target": "validation.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/validation.json",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/mode00-program-load-20261019/README.md",
+      "line": 45,
+      "target": "manifest.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/manifest.json",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/original-allocation-20261019/README.md",
+      "line": 3,
+      "target": "../../../Docs/research/opu-allocation-command-path-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-allocation-command-path-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/original-allocation-20261019/README.md",
+      "line": 3,
+      "target": "../../../Docs/research/hardware-allocation-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/hardware-allocation-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/original-allocation-20261019/README.md",
+      "line": 11,
+      "target": "../../../Docs/research/opu-mode00-midi-ownership-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/opu-mode00-midi-ownership-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/original-allocation-20261019/README.md",
+      "line": 32,
+      "target": "validation.json",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/original-allocation-20261019/validation.json",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/original-allocation-20261019/README.md",
+      "line": 34,
+      "target": "../../../Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "exists": true
+    },
+    {
+      "file": "Tools/prototypes/original-allocation-20261019/README.md",
+      "line": 34,
+      "target": "../mode00-program-load-20261019/README.md",
+      "resolved": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/README.md",
+      "exists": true
+    }
+  ],
+  "warnings": [
+    {
+      "kind": "retained_local_media",
+      "file": "Docs/research/hardware-allocation-2026-10-19.md",
+      "line": 60,
+      "target": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-v3-20261019/audition.html",
+      "scope": "Existing local media stays in original workspace; not redistributed or rerendered."
+    },
+    {
+      "kind": "retained_local_media",
+      "file": "Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "line": 59,
+      "target": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-fixture-comparison-v2-20261019/audition.html",
+      "scope": "Existing local media stays in original workspace; not redistributed or rerendered."
+    }
+  ],
+  "limits": [
+    "Original JSON receipts/manifests intentionally preserve their execution paths and original README hashes; migrated README bytes are bound separately here and in the migration record.",
+    "Retained media and expanded corpus remain outside this isolated worktree; existing absolute audition links are local-only.",
+    "This migration carries original command/scientific validation by byte identity; it is not another native, firmware, hardware, audio or host validation."
+  ],
+  "artifacts": [
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/validation/research-layout-migration-2026-10-19.json",
+      "sha256": "d186b901262195d2eb03d45489dcb646ea993df1f194a07c7597a81763091f04",
+      "bytes": 13517
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/README.md",
+      "sha256": "7034345a3ee4a50a6d889091433bf06834fdaee985a81afb68c3fdf57aa00a58",
+      "bytes": 3291
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/README.md",
+      "sha256": "a0c248eabaa28d12e0d999cb54ac43cc1259c6100e0e4929df9cb80dc914f96d",
+      "bytes": 3293
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/check.py",
+      "sha256": "355947b9d6ec0185a091ebc1574960dc4809f9e406a05a15d457819f38dd899e",
+      "bytes": 4795
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/check.py",
+      "sha256": "355947b9d6ec0185a091ebc1574960dc4809f9e406a05a15d457819f38dd899e",
+      "bytes": 4795
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/check_retained_state.py",
+      "sha256": "906f5e7f375dd4e3ec01ff728d25d00e584a8c7d3e6e07015c3fcb327b5e8ff8",
+      "bytes": 1769
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/check_retained_state.py",
+      "sha256": "906f5e7f375dd4e3ec01ff728d25d00e584a8c7d3e6e07015c3fcb327b5e8ff8",
+      "bytes": 1769
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/export-validation.json",
+      "sha256": "965107091f531480817c9610208aaf8db07d205c134a131557873cba515f8d0a",
+      "bytes": 699
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/export-validation.json",
+      "sha256": "965107091f531480817c9610208aaf8db07d205c134a131557873cba515f8d0a",
+      "bytes": 699
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/firmware_allocator.py",
+      "sha256": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439",
+      "bytes": 4837
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/firmware_allocator.py",
+      "sha256": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439",
+      "bytes": 4837
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/manifest.json",
+      "sha256": "86ed16bd80d6299e8388cd64548922a71277328dd7efcd9098546fd6e961b772",
+      "bytes": 2615
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/manifest.json",
+      "sha256": "86ed16bd80d6299e8388cd64548922a71277328dd7efcd9098546fd6e961b772",
+      "bytes": 2615
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/program_loader.py",
+      "sha256": "a5e5d3eb033da8996a719daa2c4a5078ff77770d1207ce00f5b6fc606bd35d16",
+      "bytes": 7342
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/program_loader.py",
+      "sha256": "a5e5d3eb033da8996a719daa2c4a5078ff77770d1207ce00f5b6fc606bd35d16",
+      "bytes": 7342
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/state_fixture.json",
+      "sha256": "fe847803c819980f9415d8df2b39c8383f8d73888f6076fcc806731f8a4a8794",
+      "bytes": 41741
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/state_fixture.json",
+      "sha256": "fe847803c819980f9415d8df2b39c8383f8d73888f6076fcc806731f8a4a8794",
+      "bytes": 41741
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/validation.json",
+      "sha256": "c7f6fb195420a356b66e3ee77b183612382c7e99dc111db4921176d6371cf1ce",
+      "bytes": 62123
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-program-load-20261019/validation.json",
+      "sha256": "c7f6fb195420a356b66e3ee77b183612382c7e99dc111db4921176d6371cf1ce",
+      "bytes": 62123
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/original-allocation-20261019/README.md",
+      "sha256": "523f8b2e5067b5d55782d760c7de30cc71da1b8fb3b60b2ca40f37216659f66f",
+      "bytes": 5187
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/original-allocation-20261019/README.md",
+      "sha256": "4a610f297083f5617c00f602c808068fb2e29e9def89e7539801c08d4a5ed9c5",
+      "bytes": 5223
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/original-allocation-20261019/validation.json",
+      "sha256": "41712e78f162006908403c676ab59a9b1e269a6dffc1bdf3a56513a5956a5ed5",
+      "bytes": 7103
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/original-allocation-20261019/validation.json",
+      "sha256": "41712e78f162006908403c676ab59a9b1e269a6dffc1bdf3a56513a5956a5ed5",
+      "bytes": 7103
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/assets/midi-fixture-comparison-20261019.png",
+      "sha256": "2729bd0babedbdbfd5ecf69006d41f51d0422490b5ee4365bcf3cbeae5b93861",
+      "bytes": 187239
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/assets/midi-fixture-comparison-2026-10-19.png",
+      "sha256": "2729bd0babedbdbfd5ecf69006d41f51d0422490b5ee4365bcf3cbeae5b93861",
+      "bytes": 187239
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/fidelity-roadmap-20261018.md",
+      "sha256": "0e8e0195ae4328a6e980aad7488af70843c932d4719b1cf995e3272ae55c70fb",
+      "bytes": 35506
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/fidelity-roadmap-2026-10-18.md",
+      "sha256": "c2180b9af16bb2309421948250ac20f5c71c45b5c13c0f015e23cd1d61a42b09",
+      "bytes": 36700
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/hardware-allocation-20261019.json",
+      "sha256": "aed38863c7e8a2b990b822e3c9135cef2d7fe5edfbf2cf880a75b165746eaac0",
+      "bytes": 1194025
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/hardware-allocation-2026-10-19.json",
+      "sha256": "aed38863c7e8a2b990b822e3c9135cef2d7fe5edfbf2cf880a75b165746eaac0",
+      "bytes": 1194025
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/hardware-allocation-20261019.md",
+      "sha256": "270fcf44a7fa473b8945f4c630fce66b7eb29f86260e4c65cee8a18aa670a354",
+      "bytes": 10149
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/hardware-allocation-2026-10-19.md",
+      "sha256": "20379d91031ef2bf892f396e791bf2e47efdaca6f5956c6325e0915b205f913b",
+      "bytes": 10431
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/midi-fixture-comparison-20261019.json",
+      "sha256": "605ca6f6cc38e68211046bb1b018f08fe644b9ef9d8ce5fad5d9e0651d4f79ce",
+      "bytes": 1857405
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-fixture-comparison-2026-10-19.json",
+      "sha256": "605ca6f6cc38e68211046bb1b018f08fe644b9ef9d8ce5fad5d9e0651d4f79ce",
+      "bytes": 1857405
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/midi-fixture-comparison-20261019.md",
+      "sha256": "139ec061054561a2d81490541d4cbb6092d33fd00d1a3ab3a04574d3f6d39b4e",
+      "bytes": 7663
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-fixture-comparison-2026-10-19.md",
+      "sha256": "4a0f2adc4a138136b0d3b944132f172cf9552b953e42d937c1281a66de195e8f",
+      "bytes": 7930
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/midi-fixture-comparison-protocol-20261019.json",
+      "sha256": "34c7d67681cf067aa5cf1d67834e5e489126bd7130fd3715f07004ab55db06d4",
+      "bytes": 32803
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/midi-fixture-comparison-protocol-2026-10-19.json",
+      "sha256": "34c7d67681cf067aa5cf1d67834e5e489126bd7130fd3715f07004ab55db06d4",
+      "bytes": 32803
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/mode00-program-command-adapter-20261019.json",
+      "sha256": "3b90af9a1300d12fbebcf8689539ff94648a49f314e8a52f976ab9304f06cf7f",
+      "bytes": 93976
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-program-command-adapter-2026-10-19.json",
+      "sha256": "3b90af9a1300d12fbebcf8689539ff94648a49f314e8a52f976ab9304f06cf7f",
+      "bytes": 93976
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/mode00-program-command-adapter-20261019.md",
+      "sha256": "93a7e6179171761e7c2fbe01744440476a5b1d0e01d536909c67a7a9fb18ad07",
+      "bytes": 6512
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-program-command-adapter-2026-10-19.md",
+      "sha256": "ae17bf1e7c24f9bed55b972a51630c6a99cdfaf41614a970ed62e2b7724cabd5",
+      "bytes": 6525
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/mode00-program-command-validation-20261019.json",
+      "sha256": "a81fbce01204e146d596bfd2e716e3978810073f18bb0301c8ea42451d1d34c2",
+      "bytes": 2942
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-program-command-validation-2026-10-19.json",
+      "sha256": "a81fbce01204e146d596bfd2e716e3978810073f18bb0301c8ea42451d1d34c2",
+      "bytes": 2942
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/program-selection-association-20261019.json",
+      "sha256": "ac1e439536f0d78d5ef437dca1f20d56e17507c8311f07597e1c0c6a27d78704",
+      "bytes": 757257
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/program-selection-association-2026-10-19.json",
+      "sha256": "ac1e439536f0d78d5ef437dca1f20d56e17507c8311f07597e1c0c6a27d78704",
+      "bytes": 757257
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/program-selection-association-20261019.md",
+      "sha256": "345adb95ec9873b31d83e244c19463744ad229b6d17e22def1491206ad3ec2e6",
+      "bytes": 7930
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/program-selection-association-2026-10-19.md",
+      "sha256": "82ebe5f49dc4a7c3004c5f3649481ca12f9e7ebad44e154e4de9be0f1c897b4f",
+      "bytes": 7938
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/program-selection-association-validation-20261019.json",
+      "sha256": "b6bd930680e4ab72c53acb64d92042b08435ac4b1cb1e976c1441260a5893ad4",
+      "bytes": 2348
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/program-selection-association-validation-2026-10-19.json",
+      "sha256": "b6bd930680e4ab72c53acb64d92042b08435ac4b1cb1e976c1441260a5893ad4",
+      "bytes": 2348
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/benchmark_midi_fixture.py",
+      "sha256": "004fb6723df0e616b014e42e17fde25428bbd3b271e13a3120859b15226db2aa",
+      "bytes": 22989
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/benchmark_midi_fixture.py",
+      "sha256": "3184e8e2544f65a0cd9f3e63366d48d3ea63d976722869f414d6b11bef26210c",
+      "bytes": 22980
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+      "sha256": "6d02210b10f2993cd59c2e5010f7ff25ba8cbeacf3b7c2a19069a6d1eec27b5c",
+      "bytes": 5250
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+      "sha256": "6d02210b10f2993cd59c2e5010f7ff25ba8cbeacf3b7c2a19069a6d1eec27b5c",
+      "bytes": 5250
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a",
+      "bytes": 4043
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a",
+      "bytes": 4043
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f",
+      "bytes": 7339
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f",
+      "bytes": 7339
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+      "sha256": "526d723a14bb609367d504b176e0d2f335b0fb09a3d01f01bce26f3f624b8948",
+      "bytes": 7650
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+      "sha256": "526d723a14bb609367d504b176e0d2f335b0fb09a3d01f01bce26f3f624b8948",
+      "bytes": 7650
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/design-frozen.json",
+      "sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+      "bytes": 6669
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/design-frozen.json",
+      "sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+      "bytes": 6669
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/independent-review.json",
+      "sha256": "0d51000f407a51dc0e51b4ccb954411f726f0f4849429943314c221a639b476a",
+      "bytes": 30536
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/independent-review.json",
+      "sha256": "0d51000f407a51dc0e51b4ccb954411f726f0f4849429943314c221a639b476a",
+      "bytes": 30536
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/manifest.json",
+      "sha256": "e8221648ca2782b320188e7dbd018c7f54f927616a942043f663bd9ef6e415e1",
+      "bytes": 3192
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/manifest.json",
+      "sha256": "e8221648ca2782b320188e7dbd018c7f54f927616a942043f663bd9ef6e415e1",
+      "bytes": 3192
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/source-test-bound.json",
+      "sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+      "bytes": 1702
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/source-test-bound.json",
+      "sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+      "bytes": 1702
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+      "sha256": "a758a0e7ffa75ae082b30afe26738228842ba6d6b4409483bc118c3fb4d59769",
+      "bytes": 2511
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+      "sha256": "a758a0e7ffa75ae082b30afe26738228842ba6d6b4409483bc118c3fb4d59769",
+      "bytes": 2511
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/validation-scoped.json",
+      "sha256": "8dd83571563098c0d5212743508825f7db1a32ba8b7526e281b384bfa496c969",
+      "bytes": 3364
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/validation-scoped.json",
+      "sha256": "8dd83571563098c0d5212743508825f7db1a32ba8b7526e281b384bfa496c969",
+      "bytes": 3364
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/mode00-native-command-bridge-20261019.json",
+      "sha256": "96a29bde470de1aa187538bd1c3a113bd9cb494bfef5a96e7934aa66c41ad872",
+      "bytes": 13239
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-native-command-bridge-2026-10-19.json",
+      "sha256": "96a29bde470de1aa187538bd1c3a113bd9cb494bfef5a96e7934aa66c41ad872",
+      "bytes": 13239
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/validation/native-command-layout-migration-2026-10-19.json",
+      "sha256": "b537106e08ddb4aad44d1fe5775d0841d040d4b4f5ba5eddeab18b3064cefedf",
+      "bytes": 6607
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-native-command-20261019/README.md",
+      "sha256": "95460760453e753d7fb0ca23ee98d5ae2de16ff3c8ed29806386ea29f4ad52da",
+      "bytes": 4645
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/mode00-native-command-20261019/README.md",
+      "sha256": "35f55dad9eed7cc4a9df0b94f745f0b00726215a3ecb345722d65de447ccde9d",
+      "bytes": 4797
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/mode00-native-command-bridge-20261019.md",
+      "sha256": "16c0b284c34a100dc99414c059e9f4fe298727e313d4d7c39fb05ebbf243694f",
+      "bytes": 6159
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Docs/research/mode00-native-command-bridge-2026-10-19.md",
+      "sha256": "089a9f7e30fe1c70e02a8fdc38f512e250e36bcdc868b8c3e956121dfecd3cdc",
+      "bytes": 6172
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/build/native-command-check/synthetic.log",
+      "sha256": "e3e26d19573907e80b375ee1b9c10faea32a45691972fcf8293f808bc1976461",
+      "bytes": 116
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/build/native-command-check/synthetic",
+      "sha256": "29471b6633a491246cdf173ec82120f7afa9fb2f3402fe61efbdee0847e252eb",
+      "bytes": 55768
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/midi-fixture-comparison-20261019/runner-frozen.py",
+      "sha256": "004fb6723df0e616b014e42e17fde25428bbd3b271e13a3120859b15226db2aa",
+      "bytes": 22989
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/benchmark_pitch_model.py",
+      "sha256": "918d97ea32710798e5f7c87fc165b2cb618cccd03b5201ff0f0aa0d4f662a98d",
+      "bytes": 18397
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/midi-fixture-comparison-20261019/common-frozen.py",
+      "sha256": "918d97ea32710798e5f7c87fc165b2cb618cccd03b5201ff0f0aa0d4f662a98d",
+      "bytes": 18397
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/benchmark_pitch_model.py",
+      "sha256": "d9f7c1738101156308ceafb16571e8285a0ca1a861008a6b5e91cfcac05fbd54",
+      "bytes": 18391
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-research-sync-20261019/Tools/prototypes/midi-fixture-comparison-20261019/README.md",
+      "sha256": "172db0518198c77c7fdae5120f7b7ddec3713a19e711d61a3d2769687cd74508",
+      "bytes": 912
+    }
+  ],
+  "check_names": [
+    "original live workspace HEAD preserved",
+    "mapping original publication commit",
+    "mapping portfolio base",
+    "all 25 initial migration entries retained",
+    "original mapped hash: Reference/Prototypes/mode00-program-load-20261019/README.md",
+    "original mapped publication bytes: Reference/Prototypes/mode00-program-load-20261019/README.md",
+    "migrated mapped hash: Tools/prototypes/mode00-program-load-20261019/README.md",
+    "mapped identity flag: Tools/prototypes/mode00-program-load-20261019/README.md",
+    "original mapped hash: Reference/Prototypes/mode00-program-load-20261019/check.py",
+    "original mapped publication bytes: Reference/Prototypes/mode00-program-load-20261019/check.py",
+    "migrated mapped hash: Tools/prototypes/mode00-program-load-20261019/check.py",
+    "mapped identity flag: Tools/prototypes/mode00-program-load-20261019/check.py",
+    "data/code payload unchanged: Tools/prototypes/mode00-program-load-20261019/check.py",
+    "original mapped hash: Reference/Prototypes/mode00-program-load-20261019/check_retained_state.py",
+    "original mapped publication bytes: Reference/Prototypes/mode00-program-load-20261019/check_retained_state.py",
+    "migrated mapped hash: Tools/prototypes/mode00-program-load-20261019/check_retained_state.py",
+    "mapped identity flag: Tools/prototypes/mode00-program-load-20261019/check_retained_state.py",
+    "data/code payload unchanged: Tools/prototypes/mode00-program-load-20261019/check_retained_state.py",
+    "original mapped hash: Reference/Prototypes/mode00-program-load-20261019/export-validation.json",
+    "original mapped publication bytes: Reference/Prototypes/mode00-program-load-20261019/export-validation.json",
+    "migrated mapped hash: Tools/prototypes/mode00-program-load-20261019/export-validation.json",
+    "mapped identity flag: Tools/prototypes/mode00-program-load-20261019/export-validation.json",
+    "data/code payload unchanged: Tools/prototypes/mode00-program-load-20261019/export-validation.json",
+    "original mapped hash: Reference/Prototypes/mode00-program-load-20261019/firmware_allocator.py",
+    "original mapped publication bytes: Reference/Prototypes/mode00-program-load-20261019/firmware_allocator.py",
+    "migrated mapped hash: Tools/prototypes/mode00-program-load-20261019/firmware_allocator.py",
+    "mapped identity flag: Tools/prototypes/mode00-program-load-20261019/firmware_allocator.py",
+    "data/code payload unchanged: Tools/prototypes/mode00-program-load-20261019/firmware_allocator.py",
+    "original mapped hash: Reference/Prototypes/mode00-program-load-20261019/manifest.json",
+    "original mapped publication bytes: Reference/Prototypes/mode00-program-load-20261019/manifest.json",
+    "migrated mapped hash: Tools/prototypes/mode00-program-load-20261019/manifest.json",
+    "mapped identity flag: Tools/prototypes/mode00-program-load-20261019/manifest.json",
+    "data/code payload unchanged: Tools/prototypes/mode00-program-load-20261019/manifest.json",
+    "original mapped hash: Reference/Prototypes/mode00-program-load-20261019/program_loader.py",
+    "original mapped publication bytes: Reference/Prototypes/mode00-program-load-20261019/program_loader.py",
+    "migrated mapped hash: Tools/prototypes/mode00-program-load-20261019/program_loader.py",
+    "mapped identity flag: Tools/prototypes/mode00-program-load-20261019/program_loader.py",
+    "data/code payload unchanged: Tools/prototypes/mode00-program-load-20261019/program_loader.py",
+    "original mapped hash: Reference/Prototypes/mode00-program-load-20261019/state_fixture.json",
+    "original mapped publication bytes: Reference/Prototypes/mode00-program-load-20261019/state_fixture.json",
+    "migrated mapped hash: Tools/prototypes/mode00-program-load-20261019/state_fixture.json",
+    "mapped identity flag: Tools/prototypes/mode00-program-load-20261019/state_fixture.json",
+    "data/code payload unchanged: Tools/prototypes/mode00-program-load-20261019/state_fixture.json",
+    "original mapped hash: Reference/Prototypes/mode00-program-load-20261019/validation.json",
+    "original mapped publication bytes: Reference/Prototypes/mode00-program-load-20261019/validation.json",
+    "migrated mapped hash: Tools/prototypes/mode00-program-load-20261019/validation.json",
+    "mapped identity flag: Tools/prototypes/mode00-program-load-20261019/validation.json",
+    "data/code payload unchanged: Tools/prototypes/mode00-program-load-20261019/validation.json",
+    "original mapped hash: Reference/Prototypes/original-allocation-20261019/README.md",
+    "original mapped publication bytes: Reference/Prototypes/original-allocation-20261019/README.md",
+    "migrated mapped hash: Tools/prototypes/original-allocation-20261019/README.md",
+    "mapped identity flag: Tools/prototypes/original-allocation-20261019/README.md",
+    "original mapped hash: Reference/Prototypes/original-allocation-20261019/validation.json",
+    "original mapped publication bytes: Reference/Prototypes/original-allocation-20261019/validation.json",
+    "migrated mapped hash: Tools/prototypes/original-allocation-20261019/validation.json",
+    "mapped identity flag: Tools/prototypes/original-allocation-20261019/validation.json",
+    "data/code payload unchanged: Tools/prototypes/original-allocation-20261019/validation.json",
+    "original mapped hash: Reference/Research/assets/midi-fixture-comparison-20261019.png",
+    "original mapped publication bytes: Reference/Research/assets/midi-fixture-comparison-20261019.png",
+    "migrated mapped hash: Docs/research/assets/midi-fixture-comparison-2026-10-19.png",
+    "mapped identity flag: Docs/research/assets/midi-fixture-comparison-2026-10-19.png",
+    "data/code payload unchanged: Docs/research/assets/midi-fixture-comparison-2026-10-19.png",
+    "original mapped hash: Reference/Research/fidelity-roadmap-20261018.md",
+    "original mapped publication bytes: Reference/Research/fidelity-roadmap-20261018.md",
+    "migrated mapped hash: Docs/research/fidelity-roadmap-2026-10-18.md",
+    "mapped identity flag: Docs/research/fidelity-roadmap-2026-10-18.md",
+    "original mapped hash: Reference/Research/hardware-allocation-20261019.json",
+    "original mapped publication bytes: Reference/Research/hardware-allocation-20261019.json",
+    "migrated mapped hash: Docs/research/hardware-allocation-2026-10-19.json",
+    "mapped identity flag: Docs/research/hardware-allocation-2026-10-19.json",
+    "data/code payload unchanged: Docs/research/hardware-allocation-2026-10-19.json",
+    "original mapped hash: Reference/Research/hardware-allocation-20261019.md",
+    "original mapped publication bytes: Reference/Research/hardware-allocation-20261019.md",
+    "migrated mapped hash: Docs/research/hardware-allocation-2026-10-19.md",
+    "mapped identity flag: Docs/research/hardware-allocation-2026-10-19.md",
+    "original mapped hash: Reference/Research/midi-fixture-comparison-20261019.json",
+    "original mapped publication bytes: Reference/Research/midi-fixture-comparison-20261019.json",
+    "migrated mapped hash: Docs/research/midi-fixture-comparison-2026-10-19.json",
+    "mapped identity flag: Docs/research/midi-fixture-comparison-2026-10-19.json",
+    "data/code payload unchanged: Docs/research/midi-fixture-comparison-2026-10-19.json",
+    "original mapped hash: Reference/Research/midi-fixture-comparison-20261019.md",
+    "original mapped publication bytes: Reference/Research/midi-fixture-comparison-20261019.md",
+    "migrated mapped hash: Docs/research/midi-fixture-comparison-2026-10-19.md",
+    "mapped identity flag: Docs/research/midi-fixture-comparison-2026-10-19.md",
+    "original mapped hash: Reference/Research/midi-fixture-comparison-protocol-20261019.json",
+    "original mapped publication bytes: Reference/Research/midi-fixture-comparison-protocol-20261019.json",
+    "migrated mapped hash: Docs/research/midi-fixture-comparison-protocol-2026-10-19.json",
+    "mapped identity flag: Docs/research/midi-fixture-comparison-protocol-2026-10-19.json",
+    "data/code payload unchanged: Docs/research/midi-fixture-comparison-protocol-2026-10-19.json",
+    "original mapped hash: Reference/Research/mode00-program-command-adapter-20261019.json",
+    "original mapped publication bytes: Reference/Research/mode00-program-command-adapter-20261019.json",
+    "migrated mapped hash: Docs/research/mode00-program-command-adapter-2026-10-19.json",
+    "mapped identity flag: Docs/research/mode00-program-command-adapter-2026-10-19.json",
+    "data/code payload unchanged: Docs/research/mode00-program-command-adapter-2026-10-19.json",
+    "original mapped hash: Reference/Research/mode00-program-command-adapter-20261019.md",
+    "original mapped publication bytes: Reference/Research/mode00-program-command-adapter-20261019.md",
+    "migrated mapped hash: Docs/research/mode00-program-command-adapter-2026-10-19.md",
+    "mapped identity flag: Docs/research/mode00-program-command-adapter-2026-10-19.md",
+    "original mapped hash: Reference/Research/mode00-program-command-validation-20261019.json",
+    "original mapped publication bytes: Reference/Research/mode00-program-command-validation-20261019.json",
+    "migrated mapped hash: Docs/research/mode00-program-command-validation-2026-10-19.json",
+    "mapped identity flag: Docs/research/mode00-program-command-validation-2026-10-19.json",
+    "data/code payload unchanged: Docs/research/mode00-program-command-validation-2026-10-19.json",
+    "original mapped hash: Reference/Research/program-selection-association-20261019.json",
+    "original mapped publication bytes: Reference/Research/program-selection-association-20261019.json",
+    "migrated mapped hash: Docs/research/program-selection-association-2026-10-19.json",
+    "mapped identity flag: Docs/research/program-selection-association-2026-10-19.json",
+    "data/code payload unchanged: Docs/research/program-selection-association-2026-10-19.json",
+    "original mapped hash: Reference/Research/program-selection-association-20261019.md",
+    "original mapped publication bytes: Reference/Research/program-selection-association-20261019.md",
+    "migrated mapped hash: Docs/research/program-selection-association-2026-10-19.md",
+    "mapped identity flag: Docs/research/program-selection-association-2026-10-19.md",
+    "original mapped hash: Reference/Research/program-selection-association-validation-20261019.json",
+    "original mapped publication bytes: Reference/Research/program-selection-association-validation-20261019.json",
+    "migrated mapped hash: Docs/research/program-selection-association-validation-2026-10-19.json",
+    "mapped identity flag: Docs/research/program-selection-association-validation-2026-10-19.json",
+    "data/code payload unchanged: Docs/research/program-selection-association-validation-2026-10-19.json",
+    "original mapped hash: Tools/benchmark_midi_fixture.py",
+    "original mapped publication bytes: Tools/benchmark_midi_fixture.py",
+    "migrated mapped hash: Tools/benchmark_midi_fixture.py",
+    "mapped identity flag: Tools/benchmark_midi_fixture.py",
+    "native exported file inventory identical",
+    "native payload identical: CommandProbe.cpp",
+    "native payload identical: CommandProbe.cpp original commit",
+    "native payload identical: FirmwareAllocation.h",
+    "native payload identical: FirmwareAllocation.h original commit",
+    "native payload identical: Mode00ProgramCommands.h",
+    "native payload identical: Mode00ProgramCommands.h original commit",
+    "native payload identical: SyntheticTests.cpp",
+    "native payload identical: SyntheticTests.cpp original commit",
+    "native payload identical: design-frozen.json",
+    "native payload identical: design-frozen.json original commit",
+    "native payload identical: independent-review.json",
+    "native payload identical: independent-review.json original commit",
+    "native payload identical: manifest.json",
+    "native payload identical: manifest.json original commit",
+    "native payload identical: source-test-bound.json",
+    "native payload identical: source-test-bound.json original commit",
+    "native payload identical: validation-before-scope-correction.json",
+    "native payload identical: validation-before-scope-correction.json original commit",
+    "native payload identical: validation-scoped.json",
+    "native payload identical: validation-scoped.json original commit",
+    "native research JSON identical",
+    "native research JSON identical original commit",
+    "native mapping original commit",
+    "all 13 native migration entries retained",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/CommandProbe.cpp",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/README.md",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/README.md",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/README.md",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/README.md",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/SyntheticTests.cpp",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/design-frozen.json",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/design-frozen.json",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/design-frozen.json",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/design-frozen.json",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/independent-review.json",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/independent-review.json",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/independent-review.json",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/independent-review.json",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/manifest.json",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/manifest.json",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/manifest.json",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/manifest.json",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/source-test-bound.json",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/source-test-bound.json",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/source-test-bound.json",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/source-test-bound.json",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/validation-before-scope-correction.json",
+    "native mapping original hash: Reference/Prototypes/mode00-native-command-20261019/validation-scoped.json",
+    "native mapping original commit bytes: Reference/Prototypes/mode00-native-command-20261019/validation-scoped.json",
+    "native mapping migrated hash: Tools/prototypes/mode00-native-command-20261019/validation-scoped.json",
+    "native mapping identity flag: Tools/prototypes/mode00-native-command-20261019/validation-scoped.json",
+    "native mapping original hash: Reference/Research/mode00-native-command-bridge-20261019.json",
+    "native mapping original commit bytes: Reference/Research/mode00-native-command-bridge-20261019.json",
+    "native mapping migrated hash: Docs/research/mode00-native-command-bridge-2026-10-19.json",
+    "native mapping identity flag: Docs/research/mode00-native-command-bridge-2026-10-19.json",
+    "native mapping original hash: Reference/Research/mode00-native-command-bridge-20261019.md",
+    "native mapping original commit bytes: Reference/Research/mode00-native-command-bridge-20261019.md",
+    "native mapping migrated hash: Docs/research/mode00-native-command-bridge-2026-10-19.md",
+    "native mapping identity flag: Docs/research/mode00-native-command-bridge-2026-10-19.md",
+    "migrated synthetic log hash",
+    "migrated synthetic executable hash (not executed by reviewer)",
+    "migrated synthetic assertion count",
+    "Python implementation/test/fixture: program_loader.py",
+    "Python implementation/test/fixture: program_loader.py original commit",
+    "Python implementation/test/fixture: firmware_allocator.py",
+    "Python implementation/test/fixture: firmware_allocator.py original commit",
+    "Python implementation/test/fixture: check.py",
+    "Python implementation/test/fixture: check.py original commit",
+    "Python implementation/test/fixture: check_retained_state.py",
+    "Python implementation/test/fixture: check_retained_state.py original commit",
+    "Python implementation/test/fixture: state_fixture.json",
+    "Python implementation/test/fixture: state_fixture.json original commit",
+    "executed runner archived exactly",
+    "executed runner archived exactly original commit",
+    "executed common archived exactly",
+    "executed common archived exactly original commit",
+    "frozen runner stated hash",
+    "frozen common stated hash",
+    "one lookup replacement: Docs/research/midi-reference-export-2026-10-19.json",
+    "migrated runner lookup exists: Docs/research/midi-reference-export-2026-10-19.json",
+    "one lookup replacement: Docs/research/opu-mode00-program-load-validation-2026-10-19.json",
+    "migrated runner lookup exists: Docs/research/opu-mode00-program-load-validation-2026-10-19.json",
+    "one lookup replacement: Docs/research/recording-mode-effects-audit-2026-10-19.json",
+    "migrated runner lookup exists: Docs/research/recording-mode-effects-audit-2026-10-19.json",
+    "runner exact text equality after reversing three paths",
+    "runner complete AST equality",
+    "common helper AST unchanged: sha",
+    "common helper AST unchanged: read",
+    "common helper AST unchanged: write",
+    "common helper AST unchanged: record",
+    "common helper AST unchanged: verify",
+    "common helper AST unchanged: now",
+    "common constant unchanged: SR",
+    "common constant unchanged: MAPS",
+    "common constant unchanged: METRICS",
+    "common constant unchanged: FOCUS",
+    "no production source/assets/tests changed vs portfolio base",
+    "all shipping DSP identical vs portfolio base",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:7: recording-holdout-audit-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:8: fm-fidelity-audit-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:9: lfo-pitch-audit-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:9: lfo-candidate-protocol-2026-10-18.json",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:9: recording-holdout-audit-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:10: output-schematic-audit-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:12: exact-sine-release-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:12: envelope-law-benchmark-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:12: reverb-envelope-benchmark-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:13: envelope-capture-forensics-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:13: codec-tail-audit-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:14: global-event-mapping-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:14: midi-alignment-audit-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:15: timing-sensitivity-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:16: rks0-release-slopes-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:16: opu-rks-evidence-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:16: retrigger-allocation-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:17: dac-endpoint-evidence-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:18: pitch-grid-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:18: pitch-pattern-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:19: opu-digital-primary-leads-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:20: early-noteoff-leads-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:20: soden-pss680-source-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:22: recording-mode-effects-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:22: mode00-benchmark-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:24: isolated-source-search-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:24: cross-source-pitch-prediction-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:26: opu-frequency-hypothesis-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:28: f77-frequency-prediction-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:30: opu-sibling-clock-circuit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:52: comparison-landscape-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:56: hardware-capture-protocol-2026-10-18.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:60: opu-pitch-command-path-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:60: front-panel-envelope-map-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:62: hardware-pitch-b12-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:64: opu-envelope-independent-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:64: exact-circuit-source-search-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:68: lofi-signal-path-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:70: local-supply-model-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:72: opu-release-command-path-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:74: opu-level-command-path-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:74: hardware-key-level-b13-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:76: key-level-decomposition-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:76: front-panel-level-map-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:80: sustain-policy-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:84: fm-level-conditional-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:86: opu-envelope-command-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:88: pm-envelope-separation-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:88: editingfun-tonal-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:92: ../guide/factory-presets.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:92: ../guide/modern-presets.html",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:96: target-am-board-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:100: opu-allocation-command-path-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:102: ../../Tools/prototypes/voice-allocation-20261019/README.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:104: opu-mode00-midi-ownership-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:106: target-am-registration-v2-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:106: target-am-clock-trace-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:108: ../../Tools/prototypes/original-allocation-20261019/README.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:108: hardware-allocation-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:110: allocator-native-performance-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:112: midi-event-order-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:114: midi-reference-export-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:116: opu-mode00-program-load-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:116: opu-mode00-program-load-validation-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:118: midi-fixture-comparison-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:120: mode00-program-command-adapter-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:120: mode00-program-command-validation-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:120: program-selection-association-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:122: program-selection-association-validation-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:124: mode00-native-command-bridge-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:126: ../validation/research-layout-migration-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/fidelity-roadmap-2026-10-18.md:126: ../validation/native-command-layout-migration-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:3: ../../Tools/prototypes/original-allocation-20261019/README.md",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:7: allocator-recording-protocol-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:7: opu-mode00-midi-ownership-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:9: recording-mode-effects-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:26: hardware-allocation-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:48: midi-event-order-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:48: midi-event-order-validation-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:50: midi-reference-export-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:52: opu-mode00-program-load-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:54: midi-fixture-comparison-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:60: /Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-v3-20261019/audition.html",
+    "local Markdown link resolves: Docs/research/hardware-allocation-2026-10-19.md:64: allocator-native-performance-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/midi-fixture-comparison-2026-10-19.md:5: midi-fixture-comparison-protocol-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/midi-fixture-comparison-2026-10-19.md:5: midi-fixture-comparison-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/midi-fixture-comparison-2026-10-19.md:5: hardware-allocation-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/midi-fixture-comparison-2026-10-19.md:9: midi-reference-export-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/midi-fixture-comparison-2026-10-19.md:53: assets/midi-fixture-comparison-2026-10-19.png",
+    "local Markdown link resolves: Docs/research/midi-fixture-comparison-2026-10-19.md:59: /Users/vojta/Dev/virtual-instrument-press78/build/midi-fixture-comparison-v2-20261019/audition.html",
+    "local Markdown link resolves: Docs/research/midi-fixture-comparison-2026-10-19.md:67: opu-mode00-program-load-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/midi-fixture-comparison-2026-10-19.md:67: program-selection-association-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/mode00-native-command-bridge-2026-10-19.md:90: ../../Tools/prototypes/mode00-native-command-20261019/README.md",
+    "local Markdown link resolves: Docs/research/mode00-native-command-bridge-2026-10-19.md:91: mode00-native-command-bridge-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/mode00-native-command-bridge-2026-10-19.md:93: mode00-program-command-adapter-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/mode00-program-command-adapter-2026-10-19.md:3: ../../Tools/prototypes/mode00-program-load-20261019/README.md",
+    "local Markdown link resolves: Docs/research/mode00-program-command-adapter-2026-10-19.md:8: mode00-program-command-adapter-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/mode00-program-command-adapter-2026-10-19.md:13: opu-mode00-program-load-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/program-selection-association-2026-10-19.md:5: program-selection-association-2026-10-19.json",
+    "local Markdown link resolves: Docs/research/program-selection-association-2026-10-19.md:31: recording-mode-effects-audit-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/program-selection-association-2026-10-19.md:37: midi-reference-export-2026-10-19.md",
+    "local Markdown link resolves: Docs/research/program-selection-association-2026-10-19.md:60: opu-mode00-program-load-2026-10-19.md",
+    "local Markdown link resolves: Tools/prototypes/midi-fixture-comparison-20261019/README.md:7: ../../../Docs/research/midi-fixture-comparison-2026-10-19.md",
+    "local Markdown link resolves: Tools/prototypes/midi-fixture-comparison-20261019/README.md:7: ../../../Docs/validation/research-layout-migration-2026-10-19.json",
+    "local Markdown link resolves: Tools/prototypes/mode00-native-command-20261019/README.md:79: ../../../Docs/research/mode00-native-command-bridge-2026-10-19.md",
+    "local Markdown link resolves: Tools/prototypes/mode00-native-command-20261019/README.md:80: manifest.json",
+    "local Markdown link resolves: Tools/prototypes/mode00-program-load-20261019/README.md:5: ../../../Docs/research/mode00-program-command-adapter-2026-10-19.md",
+    "local Markdown link resolves: Tools/prototypes/mode00-program-load-20261019/README.md:9: ../voice-allocation-20261019/README.md",
+    "local Markdown link resolves: Tools/prototypes/mode00-program-load-20261019/README.md:41: validation.json",
+    "local Markdown link resolves: Tools/prototypes/mode00-program-load-20261019/README.md:45: manifest.json",
+    "local Markdown link resolves: Tools/prototypes/original-allocation-20261019/README.md:3: ../../../Docs/research/opu-allocation-command-path-2026-10-19.md",
+    "local Markdown link resolves: Tools/prototypes/original-allocation-20261019/README.md:3: ../../../Docs/research/hardware-allocation-2026-10-19.md",
+    "local Markdown link resolves: Tools/prototypes/original-allocation-20261019/README.md:11: ../../../Docs/research/opu-mode00-midi-ownership-2026-10-19.md",
+    "local Markdown link resolves: Tools/prototypes/original-allocation-20261019/README.md:32: validation.json",
+    "local Markdown link resolves: Tools/prototypes/original-allocation-20261019/README.md:34: ../../../Docs/research/midi-fixture-comparison-2026-10-19.md",
+    "local Markdown link resolves: Tools/prototypes/original-allocation-20261019/README.md:34: ../mode00-program-load-20261019/README.md",
+    "research prose identical except links: mode00-program-command-adapter",
+    "research prose identical except links: program-selection-association",
+    "research prose identical except links: mode00-native-command-bridge",
+    "native README only links and reproduction command change",
+    "native documented include/source paths exist at repo root"
+  ],
+  "audit_script": {
+    "path": "/Users/vojta/Dev/press78-research-sync-20261019/build/migration-independent/audit.py",
+    "sha256": "6df5873f9a4748a861621819616d85599e7734ac82b3263a007407471aea35c1"
+  }
+}
