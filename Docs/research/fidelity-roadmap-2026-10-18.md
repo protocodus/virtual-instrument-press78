@@ -124,3 +124,13 @@ The [independent panel/source-association review](program-selection-association-
 The [native C++ program-command frontend](mode00-native-command-bridge-2026-10-19.md) now reproduces 120 complete plans and 20,844 program-load writes in each optimized/sanitized replay. Independent reconstruction passes 126,751 checks. The component has fixed 204-write plan capacity and private, validated normal-slot state; it generates no audio and is not connected to the shipping engine. Its migrated public synthetic test also passes 81,361 assertions. Ordinary note/service results remain an allocation-only subset, so this is not yet a complete register-driven voice backend.
 
 The portfolio [research migration](../validation/research-layout-migration-2026-10-19.json) and [native component migration](../validation/native-command-layout-migration-2026-10-19.json) preserve the original tested sources and JSON receipt bytes while moving public documents and prototypes into their canonical folders. The ongoing envelope process and local media remain in the original workspace. Path migration supplies no new audio or hardware evidence.
+
+
+## Envelope method state audit
+
+The original PM-envelope v2 process is no longer present and its tool handle is missing. It left 73/93 completed coarse results, no completed nested grids and no final result. The eight completed informative cases all fail the necessary joint late carrier/beta precision gate; no source PCM was requested or decoded for new inference. The [current status and retained audit](pm-envelope-v2-status-2026-10-19.md) supersede the earlier running-status statement without changing the frozen experiment. The termination cause remains unknown and no restart is performed. This is a method limitation, not a recovered hardware rate law.
+
+
+## Four-waveform and nonlinear-output audit
+
+Four separate agents now audit SIN, signed SIN², HALF and HALF² against the actual native helpers and retained primary-source captures. The [combined audit](oscillator-fidelity-audit-2026-10-19.md) records the persistent SIN asymmetry, the squared-wave fifth-partial deficit, the internal-modulator/output-DC distinction and cross-table harmonic constraints. These refine the earlier topology claim without identifying ROM contents or a replacement wave law. A 72-case native Drive/output study separates independent FM feedback, shared saturation and protective limiting. The target AM-board reassessment recovers no uniquely validated new named net. Research probes are implemented; production synthesis and the no-added-noise requirement remain unchanged, and the full fidelity objective remains open.

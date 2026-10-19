@@ -1,0 +1,317 @@
+{
+  "status": "passed scoped integration checks",
+  "observed_at_utc": "2026-10-19T16:46:03.850530+00:00",
+  "base_commit": "399cbfce19558c4fe53b77f4babed4cbdde7e0a6",
+  "scope": "Research documentation/probes only; no production DSP, assets, defaults, audio rerender, PM restart or host actions. Existing missing HEAD Markdown targets are reported separately and not fixed or counted as added-link passes.",
+  "changed_and_untracked_files": 55,
+  "json_documents_parsed": 24,
+  "python_sources_parsed": 11,
+  "existing_local_links_checked": 248,
+  "new_missing_local_links": [],
+  "pre_existing_missing_local_links": [
+    {
+      "document": "README.md",
+      "target": "Docs/screenshots/press78.png",
+      "exists": false,
+      "added_by_branch": false
+    },
+    {
+      "document": "README.md",
+      "target": "build/release-analysis-20261018T0905/report.html",
+      "exists": false,
+      "added_by_branch": false
+    }
+  ],
+  "diff_check": true,
+  "production_dsp_diff_empty": true,
+  "independent_review_copies": [
+    {
+      "path": "Docs/validation/waveform-independent-review-2026-10-19.json",
+      "bytes": 21252,
+      "sha256": "6b7ae4bf55963e112e14bcd33d0bae4492ba7281458d9a3b138790730fdcdb3e"
+    },
+    {
+      "path": "Docs/validation/drive-pm-independent-review-2026-10-19.json",
+      "bytes": 128676,
+      "sha256": "4a22931e4d30a07cf47a06925237664b318ec3ffc0690098b28fff2466a443a2"
+    }
+  ],
+  "first_link_check_failure": "build/waveform-integration-20261019/first-link-check-failure.json",
+  "bindings": [
+    {
+      "path": "Docs/research/drive-output-separation-2026-10-19.json",
+      "bytes": 123461,
+      "sha256": "e87f53107a2b3790c9adeb5fe8af3d5b33688f900d02fceb95e5c62cf4f5845a"
+    },
+    {
+      "path": "Docs/research/drive-output-separation-2026-10-19.md",
+      "bytes": 7969,
+      "sha256": "3deef4405e383a0162b20b79f7d8714981adce644256901ceb7eb150411ffa6e"
+    },
+    {
+      "path": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "bytes": 38218,
+      "sha256": "27f9fa81cad86cb74b3fc01a75b864c9c21d4e2eb7eba6f9391f2491a113d001"
+    },
+    {
+      "path": "Docs/research/oscillator-fidelity-audit-2026-10-19.md",
+      "bytes": 6890,
+      "sha256": "f4a89a462a92bcd54df009ecb7794bd2a21b0da9d23f0946e4fb52382a4b4530"
+    },
+    {
+      "path": "Docs/research/oscillator-half-sine-audit-2026-10-19.json",
+      "bytes": 11074,
+      "sha256": "e43667a58dd49911e9310eaf3b5526bfade117ffb13ca1deab9ff01f7d52c8cd"
+    },
+    {
+      "path": "Docs/research/oscillator-half-sine-audit-2026-10-19.md",
+      "bytes": 8095,
+      "sha256": "ec7f20439205244f8fb32f3ba5498b71d1ce4983a56a83024b1216937946e11b"
+    },
+    {
+      "path": "Docs/research/oscillator-half-squared-audit-2026-10-19.json",
+      "bytes": 85863,
+      "sha256": "beff3e975f94ebe1276cc734ddf6974684e07d992a3b180270db8be5b85aa723"
+    },
+    {
+      "path": "Docs/research/oscillator-half-squared-audit-2026-10-19.md",
+      "bytes": 9324,
+      "sha256": "6320fdd4d387248bb8805e25e595a5d3bbf7b6776056fa19437c47e87b64ef47"
+    },
+    {
+      "path": "Docs/research/oscillator-signed-square-audit-2026-10-19.json",
+      "bytes": 161101,
+      "sha256": "92ead92b1660becf4b5b347360e45b393b061ab7310161a6c0bd543be3260fba"
+    },
+    {
+      "path": "Docs/research/oscillator-signed-square-audit-2026-10-19.md",
+      "bytes": 8143,
+      "sha256": "edd1e51b5a4d11070be7dbe1f00da12985b7d900c9c3a5bcd03ea4bc6c8588f1"
+    },
+    {
+      "path": "Docs/research/oscillator-sine-audit-2026-10-19.json",
+      "bytes": 98162,
+      "sha256": "c3b3ae40da80d8eb054e3be711b4e378e8733f3755b26d8587e9653940c1c2be"
+    },
+    {
+      "path": "Docs/research/oscillator-sine-audit-2026-10-19.md",
+      "bytes": 6838,
+      "sha256": "ba7a651a97274d3907b825e0edcdd747419545c1edb88aec35f773d583614521"
+    },
+    {
+      "path": "Docs/research/pm-envelope-v2-state-2026-10-19.json",
+      "bytes": 29680,
+      "sha256": "a759b7db64fc6089ad4a4ba2e91bee60be25b27e5b3e859f7ccdbf058fb0a356"
+    },
+    {
+      "path": "Docs/research/pm-envelope-v2-status-2026-10-19.md",
+      "bytes": 3792,
+      "sha256": "ce98ee6fc5d8c52f1750e1cdd190c7ca4dbe21cb00956e76bfc96cc4d29a4553"
+    },
+    {
+      "path": "Docs/research/target-am-net-trace-2026-10-19.json",
+      "bytes": 10614,
+      "sha256": "0773c0ea80141e51a41b266cb51d29408f658bde4d39f2541c701ae45a26d95e"
+    },
+    {
+      "path": "Docs/research/target-am-net-trace-2026-10-19.md",
+      "bytes": 6129,
+      "sha256": "ab60a779dabfd5365a31d8acfd0295234a059d579cd5315be7a33f7b9dfc7283"
+    },
+    {
+      "path": "Docs/validation/drive-pm-independent-review-2026-10-19.json",
+      "bytes": 128676,
+      "sha256": "4a22931e4d30a07cf47a06925237664b318ec3ffc0690098b28fff2466a443a2"
+    },
+    {
+      "path": "Docs/validation/waveform-independent-review-2026-10-19.json",
+      "bytes": 21252,
+      "sha256": "6b7ae4bf55963e112e14bcd33d0bae4492ba7281458d9a3b138790730fdcdb3e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 31884,
+      "sha256": "27567af27d1281cf85f390045052fa6c914521354534df628817b2be20460b77"
+    },
+    {
+      "path": "Tools/prototypes/drive-output-separation-20261019/Probe.cpp",
+      "bytes": 1813,
+      "sha256": "e4e3913ece2620e84911eafbe406d84ce079d62fbe03ce9f368eaeb996758e63"
+    },
+    {
+      "path": "Tools/prototypes/drive-output-separation-20261019/README.md",
+      "bytes": 1925,
+      "sha256": "c3a038971068cbb9681caae4829415d55fce27567dd847a54c0abbf2352a8201"
+    },
+    {
+      "path": "Tools/prototypes/drive-output-separation-20261019/analyze.py",
+      "bytes": 7579,
+      "sha256": "32c657d402c3d738136547f4f663c4519ee56bd733a09627550a0c7a159f542d"
+    },
+    {
+      "path": "Tools/prototypes/drive-output-separation-20261019/design-frozen.json",
+      "bytes": 3802,
+      "sha256": "160a562991465fbaa08da8d8f470baf968d84c68c62a23148aa609c44573e96c"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-sine-audit-20261019/HalfSineProbe.cpp",
+      "bytes": 7638,
+      "sha256": "18ad48c967641d0e9c073a647b4f1bf321ce7193b3e8f5b4275b505e06413def"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-sine-audit-20261019/README.md",
+      "bytes": 2248,
+      "sha256": "30a478cf3f76889cf0102f866425d6272b1acc416853d78f248cf4619b2bce36"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-sine-audit-20261019/design-frozen.json",
+      "bytes": 3572,
+      "sha256": "e5f0abecac69e243a5630d5475f9cc96a95a28c0165fc09888c6b65d4bf19ff6"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-sine-audit-20261019/native-validation.json",
+      "bytes": 767,
+      "sha256": "8fb1c5a2971a1c4aa15c841a3f02941deefa7e4ba2e0751cecadc02e12d9415b"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-squared-audit-20261019/HalfSquaredProbe.cpp",
+      "bytes": 3083,
+      "sha256": "4a7b326a7fd298dcc811529534f74908ceeef23535bf6bc251c65c0db742cc03"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-squared-audit-20261019/README.md",
+      "bytes": 2615,
+      "sha256": "922e8e94b06a6d2176dd3a2aff1b5a29bff575658cf9c1f7c0caeb50ad502bce"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-squared-audit-20261019/analyze.py",
+      "bytes": 8760,
+      "sha256": "26daf3f157a47bc45f17fcff0b11de8ab6263cc1a8356c826955dfac24f7ad79"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-squared-audit-20261019/design-before-null-scope.json",
+      "bytes": 5061,
+      "sha256": "a0cdf753b2300569ba6e4e2c87e1008e90ea2997023d05052d3849b93f7da47b"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-squared-audit-20261019/design-frozen.json",
+      "bytes": 5834,
+      "sha256": "b8d2fdeb85a9ccd0908651c86796b10db07081e29f840aad73db6f0acbbdea19"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-squared-audit-20261019/implementation-bound.json",
+      "bytes": 943,
+      "sha256": "3f7ca894f2b0224eacc6f7294f1c4ad0bad534b49644570e06cad4a551b0ba93"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-squared-audit-20261019/manifest.json",
+      "bytes": 1912,
+      "sha256": "49352b60393467da4fc929c41d3c41022ac9bc80e0c0ce6d5bdcf89e27a31548"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-squared-audit-20261019/native-validation.json",
+      "bytes": 798,
+      "sha256": "6231313ee2e402e29b4810c9f90865b658d3875112ddd8dd0b6b122ba5b0db55"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/Probe.cpp",
+      "bytes": 2582,
+      "sha256": "32465f5d9973105b4e43b96e3e64fc7eab407c045a6f74fe54bb3bea7c9d58c5"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/README.md",
+      "bytes": 2523,
+      "sha256": "d3c5083175ac2592abec3285f942fcb51541043d9b64502affb41a6c97548de8"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/analyze-first-failed.py",
+      "bytes": 4037,
+      "sha256": "40c1ff09640a3ed0df66566960be3a0d352ff6169643c37b2781e8f44590f27a"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/analyze.py",
+      "bytes": 4028,
+      "sha256": "eb32b08367bce51cc76f84c925e316ebcf18a0941a995ae33c096451453e60ad"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/check-first-failed.py",
+      "bytes": 2959,
+      "sha256": "e4e61bdda2ebae1e3eaa7c78ce3c475a1236f6c4f59031f04659fab977de89d2"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/check-first-failure.json",
+      "bytes": 646,
+      "sha256": "b6b9685eec6eeda4b6845e6bd713881eabbd80d7bbdf6e8c4858664e96d1170f"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/check-second-failed.py",
+      "bytes": 3076,
+      "sha256": "287aec681650fde4d9c8598dd061f8da384af5171dfed39c23a2c1dbc8652d24"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/check-second-failure.json",
+      "bytes": 901,
+      "sha256": "f58d2e7c1dd56ec15c11af92fed772142d9db7579b9bbec1e2805f8668f6b8cc"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/check-third-failed.py",
+      "bytes": 3349,
+      "sha256": "2e4579e0962a95e9f4a1f6e1f6e153c8c680fe1c9aac123ab15805da41e0e28e"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/check-third-failure.json",
+      "bytes": 666,
+      "sha256": "e20eb134c826b5c86db95dec9bd2ae12a308753283a5b5f93f05e466122d4090"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/check.py",
+      "bytes": 3385,
+      "sha256": "0e23628b433ff5318bef80c9dff7f8ab4a5006cccbbc76ae119febf9eb9266ac"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/derive.py",
+      "bytes": 2735,
+      "sha256": "ba9080047cf5be54b22781cc90ec98a118377c6fc7a94b6a1e60068f0258d868"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/design-frozen.json",
+      "bytes": 2731,
+      "sha256": "a4fe63f9cc8e4178a84d3810a9d6a49860932e01bb2971498c4f4179e1809372"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-signed-square-audit-20261019/first-failure.json",
+      "bytes": 491,
+      "sha256": "c71d765819eac33ef9a200819a15e94c2112d4e84fedb7e7539bb0b31a0560f1"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-sine-audit-20261019/README.md",
+      "bytes": 1282,
+      "sha256": "0f2d05333ba3c2ea3ba58b3beb7bcd47dfbd59dd05ac8411463f7809e3e65142"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-sine-audit-20261019/design-frozen.json",
+      "bytes": 3367,
+      "sha256": "9ce16c3223d0d0da3ba2c3c1a39bf450b1eb1e34448550451f5b00efd1d0e990"
+    },
+    {
+      "path": "Tools/prototypes/oscillator-sine-audit-20261019/probe.py",
+      "bytes": 6841,
+      "sha256": "cd3a4559216cb72a32281a29f759fbce7ea1a06b76f2f09440f507929c45f488"
+    },
+    {
+      "path": "Tools/prototypes/target-am-net-trace-20261019/README.md",
+      "bytes": 1308,
+      "sha256": "ec169416a2bb00689b0c8e6cae9a8d84f73b9a967151725bfd0609202f2deef4"
+    },
+    {
+      "path": "Tools/prototypes/target-am-net-trace-20261019/check.py",
+      "bytes": 7513,
+      "sha256": "40e57e1b2f97db7d928fa0d67ad127ba013a1eeaf10598e61311977cf1760d42"
+    },
+    {
+      "path": "Tools/prototypes/target-am-net-trace-20261019/input.json",
+      "bytes": 5815,
+      "sha256": "8bb8ebc5414f1988d63205fe7b8cb7f3d7dc9bc8374ec353755954a8a29eccad"
+    }
+  ]
+}

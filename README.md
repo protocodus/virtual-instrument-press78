@@ -198,6 +198,8 @@ Open [the interactive design preview](Assets/Design/index.html). Layout study 11
 
 ## Known gaps
 
+The [four-waveform fidelity audit](Docs/research/oscillator-fidelity-audit-2026-10-19.md) verifies the current mathematical shapes and exposes higher-partial, internal-DC and capture-chain constraints. Low-order shape agreement does not establish OPU ROM precision, arithmetic or native timing. The separate Drive/output study distinguishes creative saturation and safety limiting from unidentified hardware overload.
+
 A focused [Human Voice 1 release audit](Docs/research/human-voice1-release-audit.md) finds a tail deficit under the original inferred timing. At 150–220 ms after the clearest inferred note-off, its tracked carrier component falls about 16 dB in the recording versus 60 dB in the model. The preset import is correct and the baseline has no target-voice steals. The separate [Reverb performance effect](Docs/research/reverb-release-evidence.md) is not modeled; its exact envelope behavior remains unidentified. The [release A/B report](build/release-analysis-20261018T0905/report.html) includes carrier-only RR6/RR5 experiments, with timing, overlap and allocation caveats. A subsequent [timing sensitivity test](Docs/research/timing-sensitivity-2026-10-19.md) reverses Human Voice 1's joint-band preference under all three alternative maps, so the original score does not select a replacement release law. These are diagnostic candidates, not factory or DSP changes.
 
 - The plug-in has only passed the checks CI runs; it has not been tried in a DAW. Its editor is a plain control grid, not the designed panel.

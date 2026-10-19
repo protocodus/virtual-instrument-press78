@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-19",
+  "purpose": "HALF(index2) operator DC and phase-placement identifiability audit; no hardware parameter fit and no production edits",
+  "scope": "Mathematical and native-source invariants, retained carrier-only metadata only; no audio decode, download, synthesis demo, or listening preference experiment",
+  "frozen_before_probe_implementation": true,
+  "inputs": {
+    "Source/DSP/Press78Engine.cpp": {
+      "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+      "bytes": 28519
+    },
+    "Source/DSP/Press78Engine.h": {
+      "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+      "bytes": 10040
+    },
+    "Docs/research/recording-holdout-audit-2026-10-18.json": {
+      "sha256": "da86e8730c722244cca1c632f66a1292864ba81d2146b403d9f6d100f7f7d7bb",
+      "bytes": 38254
+    }
+  },
+  "methods": [
+    "Directly compile the unchanged current Press78Engine.cpp into a research probe; use its preexisting friend test seam and callable local wave helper without editing production files.",
+    "Integrate one unit period with 262144 equally spaced samples; compare mean and Fourier coefficients h1..12 to independently derived half-sine series. This quadrature count is a numerical test resolution, not physical OPU precision.",
+    "Compare actual Voice::next with max(sin(phi),0) carrier-phase modulation at no feedback, instant attack, constant amplitude, three TLs, four carrier/modulator integer-ratio pairs, and MIDI36/60/84. Test source wiring only.",
+    "For a constant carrier-only half waveform, compare current output DC block responses for h and h-1/pi, with all other effects disabled; expected difference is (1/pi)*r^n. The 10 Hz coefficient is read from current code, not newly asserted hardware data.",
+    "Use fixed synthetic carrier/modulator phases to compare mean-preserving vs mean-subtracted modulation. Verify phase delta=8*g and finite-difference delta frequency=(4/pi)*dg/dt. A constant g creates no steady frequency delta. Test 48000 ticks, fixture g=.2, with a 100ms linear rise, 200ms hold, 100ms fall, remainder zero; fixture durations are arbitrary algebra tests, not hardware envelope predictions.",
+    "Compare post-output high-pass responses for coherent fixed synthetic fc=fm=125Hz, mod amplitude .2, one second, without optimizing anything. Require a nonzero difference even after 0.5s settling; this proves post-output DC filtering cannot substitute for mean subtraction before the nonlinear carrier lookup. It does not decide the hardware choice.",
+    "Reuse the exact previously published PSS680 carrier-table2 window 39.12..39.32s and frozen harmonic measurements. Compute ideal-vs-observed harmonic deltas, without fitting an output curve or interpreting residuals as quantization."
+  ],
+  "gates": {
+    "half_sine_mean_abs_error": 1e-09,
+    "fourier_coefficient_abs_error": 1e-09,
+    "actual_voice_equation_abs_error": 1e-12,
+    "dc_block_closed_form_abs_error": 1e-10,
+    "phase_delta_identity_abs_error": 1e-11,
+    "instantaneous_phase_delta_hz_abs_error": 1e-07,
+    "post_dc_different_relative_rms_min": 0.001,
+    "source_files_unchanged": true
+  },
+  "non_promotion_rules": [
+    "No mathematical DC fact is promoted to measured OPU bias.",
+    "No current 48k update rate, TL law, 10Hz DC pole, 8*pi modulation index scale, phase reset, or feedback history is promoted to hardware fact.",
+    "No production default/engine edit is allowed from these tests; the carrier-only observation cannot resolve internal modulator DC."
+  ]
+}

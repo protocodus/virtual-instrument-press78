@@ -1,0 +1,20 @@
+{
+  "chronology": "Bound before compile or execution; no raw PCM is opened by this experiment.",
+  "files": {
+    "design-frozen.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/oscillator-half-squared-audit-20261019/design-frozen.json",
+      "bytes": 5834,
+      "sha256": "b8d2fdeb85a9ccd0908651c86796b10db07081e29f840aad73db6f0acbbdea19"
+    },
+    "HalfSquaredProbe.cpp": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/oscillator-half-squared-audit-20261019/HalfSquaredProbe.cpp",
+      "bytes": 3083,
+      "sha256": "4a7b326a7fd298dcc811529534f74908ceeef23535bf6bc251c65c0db742cc03"
+    },
+    "analyze.py": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/oscillator-half-squared-audit-20261019/analyze.py",
+      "bytes": 8760,
+      "sha256": "26daf3f157a47bc45f17fcff0b11de8ab6263cc1a8356c826955dfac24f7ad79"
+    }
+  }
+}

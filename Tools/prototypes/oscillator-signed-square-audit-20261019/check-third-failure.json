@@ -1,0 +1,7 @@
+{
+  "status": "strict algebraic bit-identity check failed; retained",
+  "observed_max_error": 5.5510850082625078e-17,
+  "cause": "Optimized compiled reference-expression subtraction is not guaranteed bit-identical to separately returned arithmetic, despite algebraic identity; compiler contraction is permitted. This is below one float64 machine epsilon at unit amplitude.",
+  "correction": "Use one float64 machine epsilon for maximum unit-amplitude algebra/PM error; preserve actual observed errors and do not claim bit-exact hardware arithmetic.",
+  "effects": "No compiler flag, compiled probe, source engine, native render or captured-data analysis changed."
+}

@@ -1,0 +1,200 @@
+{
+  "schema": "press78.target-am-net-trace-input.v1",
+  "date": "2026-10-19",
+  "scope": "Bounded source reinspection and grouped exclusion sensitivity of existing exploratory correspondences; not fresh held-out validation.",
+  "inputs": [
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/target-am-board-20261019/commons-06.jpg",
+      "bytes": 810212,
+      "sha256": "8a4c7fce6231d73a523ea28b949079501d14793500fcb4ac717ff808dd13fe55"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/target-am-board-20261019/commons-03.jpg",
+      "bytes": 1003639,
+      "sha256": "6ec2ff036d79f24c0034226760bbb4aa419bc3ffe03d304fb885eb85ef991799"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/target-am-board-2026-10-19.json",
+      "bytes": 23206,
+      "sha256": "d27fe5289de9fed7e623bbff9d74712c09d92296ae149a9969be6bf1f0fee06e"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/target-am-registration-v2-2026-10-19.json",
+      "bytes": 27005,
+      "sha256": "d525b2f267d60b0b67418f6a26f4b310586945bb4b6059b524e91162fc38db3c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/target-am-clock-trace-2026-10-19.json",
+      "bytes": 9032,
+      "sha256": "67129591b268f2d0a8149523e65409515437c9c8a7ae197c5c1507a2447e850a"
+    },
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206-characteristics-p76.png",
+      "bytes": 109552,
+      "sha256": "f343fc8d35eaab1fe4f3c85644d93f6cf424b5437d7caafa5e1c26ac5cf76e9a"
+    },
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3102-oscillator-p107.png",
+      "bytes": 238796,
+      "sha256": "957e327d6d207dad66e8e8f6050c943d3b3a4bfe4647c871a8f64b76f3eb09db"
+    }
+  ],
+  "criteria": {
+    "named_net_requires": [
+      "Unambiguous package identity and manufacturer top-view orientation",
+      "Independently identifiable component-side board-plane contacts and matching copper pads",
+      "A quantified prediction-error bound below pad spacing, with enough margin for contact-location uncertainty",
+      "Literal visible copper continuity; no join inferred from proximity or manufacturer example topology"
+    ],
+    "no_new_fit_without_fresh_landmarks": true,
+    "do_not_use_expected_circuit_to_choose_correspondences": true
+  },
+  "grouped_exclusions": [
+    {
+      "id": "paired-near-rows",
+      "excluded_indices": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "id": "paired-region-including-jumpers",
+      "excluded_indices": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        22,
+        23,
+        24,
+        25
+      ]
+    }
+  ],
+  "manual_uncertainty_scenario": {
+    "component_contact_radius_px": 6,
+    "copper_pad_center_radius_px": 3,
+    "meaning": "Upper manual location estimates from prior registration ledger, not measured confidence intervals. The sensitivity sum must not be called a statistical or proven whole-board bound."
+  },
+  "inspections": [
+    {
+      "output": "component-local.png",
+      "source_index": 0,
+      "crop": [
+        920,
+        950,
+        1350,
+        1250
+      ],
+      "enlarge": 3
+    },
+    {
+      "output": "copper-local.png",
+      "source_index": 1,
+      "crop": [
+        1550,
+        290,
+        1860,
+        710
+      ],
+      "enlarge": 3
+    },
+    {
+      "output": "component-whole.png",
+      "source_index": 0,
+      "crop": [
+        250,
+        300,
+        1750,
+        1379
+      ],
+      "enlarge": 1
+    },
+    {
+      "output": "copper-whole.png",
+      "source_index": 1,
+      "crop": [
+        900,
+        250,
+        1970,
+        1290
+      ],
+      "enlarge": 1
+    }
+  ],
+  "conditional_hypotheses": [
+    {
+      "id": "H1",
+      "status": "NOT_ACCEPTED_NAMED_NET",
+      "if": "IC2/MN3206 has near row at copper y=340 and far row at y=391, x increasing left to right",
+      "visible_group": "group01",
+      "conditional_pins": [
+        {
+          "part": "MN3206",
+          "pin": 8,
+          "name": "OUT2",
+          "xy": [
+            1625,
+            391
+          ]
+        },
+        {
+          "part": "MN3206",
+          "pin": 7,
+          "name": "OUT1",
+          "xy": [
+            1645,
+            392
+          ]
+        }
+      ],
+      "claim": "Existing broad copper bridge would join the two BBD output pins if the footprint mapping is true; a familiar output-summing topology is not mapping proof."
+    },
+    {
+      "id": "H2",
+      "status": "NOT_ACCEPTED_NAMED_NET",
+      "if": "H1 footprint identity plus neighboring package is MN3102, with near row y=428 and far row y=483, x increasing left to right",
+      "visible_group": "group02",
+      "conditional_pins": [
+        {
+          "part": "MN3206",
+          "pin": 6,
+          "name": "CP2",
+          "xy": [
+            1665,
+            391
+          ]
+        },
+        {
+          "part": "MN3102",
+          "pin": 4,
+          "name": "CP2",
+          "xy": [
+            1685,
+            428
+          ]
+        }
+      ],
+      "claim": "Existing diagonal copper would join like-named CP2 pins; this consistency cannot independently verify the selected footprints."
+    }
+  ],
+  "prohibited_inferences": [
+    "Numerical clock or BBD delay",
+    "68P/390K/2.7K component-to-pad or RC pairing",
+    "Named rail, rail voltage, gain or bias",
+    "Converter transfer or bit depth",
+    "Clipping, supply sag or distortion law",
+    "Electrically unconnected OX2 solely from no visible trace",
+    "Production DSP, presets, noise or drive calibration"
+  ]
+}

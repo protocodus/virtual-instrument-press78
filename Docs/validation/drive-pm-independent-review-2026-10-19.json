@@ -1,0 +1,2192 @@
+{
+  "status": "passed scoped read-only independent review; no actionable discrepancy found",
+  "observed_at_utc": "2026-10-19T16:42:14.576617+00:00",
+  "checks": 984,
+  "binding_checks": 193,
+  "input_documents": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/pm-envelope-v2-state-2026-10-19.json",
+      "bytes": 29680,
+      "sha256": "a759b7db64fc6089ad4a4ba2e91bee60be25b27e5b3e859f7ccdbf058fb0a356"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/pm-envelope-v2-status-2026-10-19.md",
+      "bytes": 3792,
+      "sha256": "ce98ee6fc5d8c52f1750e1cdd190c7ca4dbe21cb00956e76bfc96cc4d29a4553"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/drive-output-separation-2026-10-19.md",
+      "bytes": 7969,
+      "sha256": "3deef4405e383a0162b20b79f7d8714981adce644256901ceb7eb150411ffa6e"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/drive-output-separation-2026-10-19.json",
+      "bytes": 123461,
+      "sha256": "e87f53107a2b3790c9adeb5fe8af3d5b33688f900d02fceb95e5c62cf4f5845a"
+    }
+  ],
+  "script": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/drive-pm-independent-review-20261019/review.py",
+    "bytes": 12914,
+    "sha256": "a365d14b1c5aa4fd49a51401df3080a16218cb2c4200cfc3399c897e852ad1c6"
+  },
+  "pm": {
+    "observed_coarse": 73,
+    "expected_coarse": 93,
+    "observed_nested_artifacts": 0,
+    "expected_nested": 12,
+    "final_result": false,
+    "source_requested": false,
+    "source_artifacts": [],
+    "informative": [
+      {
+        "id": "new-informative-00",
+        "quantities": {
+          "A": {
+            "width_db_per_second": 68.47823454299673,
+            "precision": false,
+            "covered": true,
+            "nonzero": false,
+            "passed": false
+          },
+          "beta": {
+            "width_db_per_second": 33.434557609158816,
+            "precision": false,
+            "covered": true,
+            "nonzero": false,
+            "passed": false
+          }
+        },
+        "joint_passed": false
+      },
+      {
+        "id": "new-informative-01",
+        "quantities": {
+          "A": {
+            "width_db_per_second": 1.4839906868983448,
+            "precision": true,
+            "covered": true,
+            "nonzero": true,
+            "passed": true
+          },
+          "beta": {
+            "width_db_per_second": 4.732177729326828,
+            "precision": false,
+            "covered": true,
+            "nonzero": true,
+            "passed": false
+          }
+        },
+        "joint_passed": false
+      },
+      {
+        "id": "new-informative-02",
+        "quantities": {
+          "A": {
+            "width_db_per_second": 69.90397474738097,
+            "precision": false,
+            "covered": true,
+            "nonzero": false,
+            "passed": false
+          },
+          "beta": {
+            "width_db_per_second": 33.51427758438332,
+            "precision": false,
+            "covered": true,
+            "nonzero": false,
+            "passed": false
+          }
+        },
+        "joint_passed": false
+      },
+      {
+        "id": "new-informative-03",
+        "quantities": {
+          "A": {
+            "width_db_per_second": 1.5629605525603516,
+            "precision": true,
+            "covered": true,
+            "nonzero": true,
+            "passed": true
+          },
+          "beta": {
+            "width_db_per_second": 4.904372875811774,
+            "precision": false,
+            "covered": true,
+            "nonzero": true,
+            "passed": false
+          }
+        },
+        "joint_passed": false
+      },
+      {
+        "id": "new-informative-04",
+        "quantities": {
+          "A": {
+            "width_db_per_second": 68.88791412329027,
+            "precision": false,
+            "covered": true,
+            "nonzero": false,
+            "passed": false
+          },
+          "beta": {
+            "width_db_per_second": 33.469634398257604,
+            "precision": false,
+            "covered": true,
+            "nonzero": false,
+            "passed": false
+          }
+        },
+        "joint_passed": false
+      },
+      {
+        "id": "new-informative-05",
+        "quantities": {
+          "A": {
+            "width_db_per_second": 1.4861342115942442,
+            "precision": true,
+            "covered": true,
+            "nonzero": true,
+            "passed": true
+          },
+          "beta": {
+            "width_db_per_second": 4.744932925362747,
+            "precision": false,
+            "covered": true,
+            "nonzero": true,
+            "passed": false
+          }
+        },
+        "joint_passed": false
+      },
+      {
+        "id": "new-informative-06",
+        "quantities": {
+          "A": {
+            "width_db_per_second": 70.14316136325934,
+            "precision": false,
+            "covered": true,
+            "nonzero": false,
+            "passed": false
+          },
+          "beta": {
+            "width_db_per_second": 33.600375157625805,
+            "precision": false,
+            "covered": true,
+            "nonzero": false,
+            "passed": false
+          }
+        },
+        "joint_passed": false
+      },
+      {
+        "id": "new-informative-07",
+        "quantities": {
+          "A": {
+            "width_db_per_second": 1.567660745758026,
+            "precision": true,
+            "covered": true,
+            "nonzero": true,
+            "passed": true
+          },
+          "beta": {
+            "width_db_per_second": 4.917128071847689,
+            "precision": false,
+            "covered": true,
+            "nonzero": true,
+            "passed": false
+          }
+        },
+        "joint_passed": false
+      }
+    ],
+    "ps": {
+      "args": [
+        "ps",
+        "-p",
+        "31589",
+        "-o",
+        "pid=,etime=,time=,%cpu=,rss=,command="
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "not retained",
+      "scope": "One actual ps call in first review. Its explicit absence guard passed before later duration assertion; values reconstructed from that guard, not a new ps call. Full tool-output transcript does not print subprocess stdout."
+    },
+    "exit_cause": "unknown"
+  },
+  "drive": {
+    "cases": 72,
+    "independent_condition_number": 1.416421811931155,
+    "max_imd_formula_difference": 0,
+    "drive_h3_loud_quiet_db": [
+      -9.717156442922137,
+      -17.565267848459197
+    ]
+  },
+  "static_review": [
+    "Public Probe.cpp uses actual Press78Engine API, sets raw carrier TL and plugin MasterGain independently, fresh engine per case, no note-offs/effects/clock jitter/level fitting. All72 parameter tuples match frozen design.",
+    "Engine output source applies shared Drive after sum and linear circuit, followed by chorus/DC, then plugin master gain and final softBound limiter. Voice-local feedback enters phase before carrier; AnalogOutput is six linear SOS. This supports separator mechanism without identifying hardware stage location.",
+    "MasterGain is not identified as hardware MELODY VOLUME. OutputLimit is safety protection, not target overload. FM feedback is synthesis, not shared postmix distortion. Report explicitly separates all three.",
+    "PM status clearly labels old continuation paragraph as earlier preregistration, preserves full scope, reports unknown exit cause, and does not call incomplete run complete or failed-control method eligible for source inference."
+  ],
+  "limitations": [
+    "No native C++ compilation/execution, audio render, source recording decode, PM extraction, process restart or public-source mutation by this review.",
+    "Drive raw PCM was deliberately discarded by experiment. Per-case PCM hashes and waveform-derived additivity/carrier/normalized-waveform errors cannot be independently recomputed here. Review verifies source/parameter bindings and independently recomputable numeric aggregates; it does not certify raw sample metrics independently.",
+    "Stored PM source-request flags and absent source artifacts establish retained run state, not a universal claim about unrelated process history. PID absence observed once; exit cause remains unknown."
+  ],
+  "bindings": [
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/pm-envelope-v2-protocol-20261019.json",
+      "bytes": 95277,
+      "sha256": "7f36c537159b609f4b620d8c9b24271bbf83c0fceb7a49ee6e8d1e78f3d37e25"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-20261019/execution-binding-v1.json",
+      "bytes": 5163,
+      "sha256": "4f8781d50a8f82fa8d5673c7fb225e72c0950c50707889f44aa50a00a42409b7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/run-started.json",
+      "bytes": 446,
+      "sha256": "e9c914bed12439a8e8a570826b734e5a8bf1eae6b84d4c04eb39e2d512ebd51e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/pm-envelope-v2-protocol-20261019.json",
+      "bytes": 95277,
+      "sha256": "7f36c537159b609f4b620d8c9b24271bbf83c0fceb7a49ee6e8d1e78f3d37e25"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-20261019/execution-binding-v1.json",
+      "bytes": 5163,
+      "sha256": "4f8781d50a8f82fa8d5673c7fb225e72c0950c50707889f44aa50a00a42409b7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/measure_pm_envelope_v2.py",
+      "bytes": 52541,
+      "sha256": "a07e815c6f4307988e7a536826040be95b1c85a7fe009fe0dc2cd354a5c68367"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/H1-null-result.json",
+      "bytes": 2194,
+      "sha256": "73a3d1e049ebad53c0d8cd928bcd6f890566d062331ef8ab6cf2503330ec8214"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-00-result.json",
+      "bytes": 10287,
+      "sha256": "665fae4a2b3f3f833d6fd84d42423def4b84f79ee9038d04fbca16040d8ee19b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-01-result.json",
+      "bytes": 10299,
+      "sha256": "216c17ffec096eabb068595ebe0578f941905872103b495808795979f5f6340d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-02-result.json",
+      "bytes": 10317,
+      "sha256": "98bfc42eb7980595cfa49d672e68e3a4e6ed870fb25b896b0650f10b8a3f3248"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-03-result.json",
+      "bytes": 10297,
+      "sha256": "27c9c2a5165990eb60e0f31e17181ee119c25f65e6d29287f326cb2f3c6bd7e5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-04-result.json",
+      "bytes": 10282,
+      "sha256": "1fddfc928cafaf5147abe6807e7580474d809f469dc5ed3cad8dd6c0c0093a3e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-05-result.json",
+      "bytes": 10313,
+      "sha256": "e1fcf4cd54daa0c6f358b3147c046863c7c024b90527b2ce9cfae0cb781fe2be"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-06-result.json",
+      "bytes": 10207,
+      "sha256": "a2f181c01b9a1a4190e790a0486cc6eca67d7a916a8c1f9c1bcf0351eddeac84"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-07-result.json",
+      "bytes": 10312,
+      "sha256": "8fd105b3cbfa63761acdc33612e49b5030ee742d9862bb191ff5c5ea3710f5ce"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-08-result.json",
+      "bytes": 10289,
+      "sha256": "eee10495e61f410ae2991dcad1ecb8b5b0e8a336ea45e19c9f80532a697d48cb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-09-result.json",
+      "bytes": 10292,
+      "sha256": "8d2827b33cb3362a3ff034d8d4a2ada16ab838021864abeb6cba99cd8b9e71d0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-10-result.json",
+      "bytes": 10301,
+      "sha256": "a4deb60081b30256fd59e8bb92346c04a1a74dee12313f96138f862e79a8bc0c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-11-result.json",
+      "bytes": 10304,
+      "sha256": "bb4e971b7d8e4c00fcd0a36d8395292e9f4a612ce09d50ec0ba9063960cc46d3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-12-result.json",
+      "bytes": 10290,
+      "sha256": "00ea5df26d2d18c6b074bf5830a9ca4440feaacab55630be8fe81afcc358bf0d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-13-result.json",
+      "bytes": 10302,
+      "sha256": "f88cc721e86193d5b387e93f4ad22a201b2b7f3d1b82222ca542aaabc6b49be0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-14-result.json",
+      "bytes": 10305,
+      "sha256": "c9c49476acbe0138f04605048e290a55af175e1adb161b28d3363f781ea29f75"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-15-result.json",
+      "bytes": 10307,
+      "sha256": "f3f64561b35a6b6135a8241df8fefc5b6bf839adb4c699b95c5703b6fbcc2cb3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-16-result.json",
+      "bytes": 10290,
+      "sha256": "d54198ae99fa7844a1131f11b8b85faf5c77e2450b49be39522748a24670bbaa"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-17-result.json",
+      "bytes": 10313,
+      "sha256": "64c265bdc0e530cc265d9c44bfd2032a577f907eec43a82a46c14a020ff05d4c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-18-result.json",
+      "bytes": 10212,
+      "sha256": "a5389199bc16f649b2dab59cc3c191a227bfc0d962825c5e265e28d32ae3eb29"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-19-result.json",
+      "bytes": 10309,
+      "sha256": "b69ae3aaa2e51c20975336837937baef16107428b437ea58504ba1afc23254c8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-20-result.json",
+      "bytes": 10302,
+      "sha256": "3973062f469609f3c7dddd132e6f23ef0488f4906f766d1d3f8bf79678ad220d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-21-result.json",
+      "bytes": 10303,
+      "sha256": "c0c593d200716c6638c3dff8a4755d31c55dc317a6eb657a0d1f883d65999f0b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-22-result.json",
+      "bytes": 10303,
+      "sha256": "d0628fa0c82afef623ef4a04f8c458a53a59d8b7cbf9ff55f55cf5c84b87cff6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-23-result.json",
+      "bytes": 10309,
+      "sha256": "0c46498abfa35809ace48fe8f292e93f486b31c3fae14f31987c55fbce7fd87b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-24-result.json",
+      "bytes": 10294,
+      "sha256": "6ae07d6dd18d36148c3fa7fa8b59ff58471018558fc5da3482e64393b7e7a4a3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-25-result.json",
+      "bytes": 10300,
+      "sha256": "223bd7569fcb75d9d6e8c68c4e5a0c4e50014729c18c52d0861bfdfaec764783"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-26-result.json",
+      "bytes": 10289,
+      "sha256": "24d8337f1b075f8a63d95edeac1e6520ae68ae4a7ff78928f8ff9b9508309186"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-27-result.json",
+      "bytes": 10304,
+      "sha256": "81cca82c74654ce28488a163b689d9f33b5b040c06a60c7ecc6ae3e56dae16f4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-28-result.json",
+      "bytes": 10308,
+      "sha256": "b60fb447fa280979a603e302cb29cd5cb13fc90663dcecbda8c801f20bb7a111"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-29-result.json",
+      "bytes": 10303,
+      "sha256": "a2b5e8e24d4e6c5283e6ead1ba2caf8721c72eb9870ec55fc9b8f49b53561e70"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-30-result.json",
+      "bytes": 10213,
+      "sha256": "2b2c3b683175917ea6b578b341c08ae67e0c30993fc977cfc9f359c99612d9ac"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-31-result.json",
+      "bytes": 10302,
+      "sha256": "4e4f5b09b5c861b1cf1637f8398516ba7a0d2f2fcd32c868135fa5b0cf869093"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-32-result.json",
+      "bytes": 10306,
+      "sha256": "f386bdb17e50677fd2633f1668e111838614a09abd7482a6c8e718619a52a687"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-33-result.json",
+      "bytes": 10296,
+      "sha256": "0d63cf9f8475c6d18aa04bd41e09002535a1cc2fbef41460d0689446fb34824d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-34-result.json",
+      "bytes": 10296,
+      "sha256": "bf50448fc3c666f012539059fb0eb5924afd52d5473f9188ef924ccea1702581"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-35-result.json",
+      "bytes": 10295,
+      "sha256": "4fa14e2c15dfc8193e6bf2079d3daeb58ed1f2993e743ec9feb8333de4f27d5f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/compressor-result.json",
+      "bytes": 10382,
+      "sha256": "62c4b216951b0a929388bb36fdce53f9654c34aa9cd8453c5dbbb866bf138fb0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/constant-beta-result.json",
+      "bytes": 9157,
+      "sha256": "eb56c4d9cd52b2252f8519dfb770af563616898d936f6d439c0dc006a6b8f375"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/delayedcopy-result.json",
+      "bytes": 2938,
+      "sha256": "d2a9a1c9642be9be105ddb13af8c39c223070145a6f2d2aca3905e86201434fb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/dynamic-gain-nonidentifiability-result.json",
+      "bytes": 10418,
+      "sha256": "d97c3b95fbd5c858b47c4c51dac834a337bffbcfe1f7c2f5d56f67f1eaee2516"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/fractionaldelay-result.json",
+      "bytes": 10348,
+      "sha256": "d31d70b02de79117d807066cdc2e4ed278c5f0aac5b5967af98ae9e9795e0880"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/highpass-result.json",
+      "bytes": 10319,
+      "sha256": "9aba4f9db615c597dd38f4a52961a4d18b284eeb32e146c9c945f29f6060777b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/lowpass-result.json",
+      "bytes": 10317,
+      "sha256": "f1bd3282b99456f9b71a1a1384fc895345e15e2324ae6c621382d3bd5ceae488"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-left-result.json",
+      "bytes": 9915,
+      "sha256": "dc9effe6a75af2e829319c056d3fbc730e6e1e93848e4a5e18e25190031495b7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-mid-result.json",
+      "bytes": 10070,
+      "sha256": "81a3eb5ae135c46d41cc2c2c2850c00d41185d9cd83ef2c372fae0d2122031ad"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-0-result.json",
+      "bytes": 10168,
+      "sha256": "48d3432cb782e5296949feae9c306b39c2089962ff6eefe0d6f1b184c9f30e0f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-20-result.json",
+      "bytes": 10167,
+      "sha256": "df5a35a6ccf6537600256208bcb0d5fa892654ced3520750a04016fcc0cb344a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-0-result.json",
+      "bytes": 10160,
+      "sha256": "ca41f1586fbc045e5db6a42c0f3775f5280f3483cb34ecdb8cbcccfe4890a39a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-20-result.json",
+      "bytes": 10166,
+      "sha256": "0de12d6b105fd9be61659658834101cc3b55dbfbe5fe2fe02edf106014b9685e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-0-result.json",
+      "bytes": 10169,
+      "sha256": "5e7cef1b2c9a4edd35c7264147564e40def26a3f39fe79bafe9128f27f162750"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-20-result.json",
+      "bytes": 10170,
+      "sha256": "fd0ac489c83a217c04717693c0011310b52743fb0e750cc34b3c9eafa8042dea"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-36-result.json",
+      "bytes": 9120,
+      "sha256": "dedd6101a86f5289610ba5d72f2b9bd5cbfbfb328c9ac2383b252f7ccef062b4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-60-result.json",
+      "bytes": 9137,
+      "sha256": "206e51b8c6c38dbba0b4385c9231f4afb21026eddf779055e67067d668f199c9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-00-result.json",
+      "bytes": 10300,
+      "sha256": "80dd4bb7ea7e16cb4035f6ceee8908e6727d2d5af6dbb36b8896e36994d47a84"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-01-result.json",
+      "bytes": 10331,
+      "sha256": "598292d5a64a6dea226d154ea30b3ffaccf22aeebab6cc4ede6d5b26091ed762"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-02-result.json",
+      "bytes": 10409,
+      "sha256": "437ab84fbf9f3072ecb8e84a8e466fdcfab8785b76ffa63df4588f68d42ff6b8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-03-result.json",
+      "bytes": 10406,
+      "sha256": "8210a7bd0161b8903b0beff2b3da28aff34c349061919f8f797ab06de9e8151c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-04-result.json",
+      "bytes": 10291,
+      "sha256": "c6fa52167c1b6612713364a1c75a4eae246794c62b3af92be0ad57b27ac02bde"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-05-result.json",
+      "bytes": 10322,
+      "sha256": "f04c8ee1d5e675aa99d72f1e6069b8542b2cbdc219b02dc37a3e32baf320a978"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-06-result.json",
+      "bytes": 10399,
+      "sha256": "48f101c353ef6c5be8489171f3aba5a1d62ebeb03b257b28f5e86c86add1e92a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-07-result.json",
+      "bytes": 10425,
+      "sha256": "2bace8685064401e1c90844b16aa5ba9f25e910d9bc000d67362a668c2be0d91"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-08-result.json",
+      "bytes": 10327,
+      "sha256": "45227f737ff0c1524f5c2dc914252bea15ad4448f41df7a096e5e52450eaa82c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-00-result.json",
+      "bytes": 10338,
+      "sha256": "f69334bdfbc27886c1994ef6b17ae9db48554c2839d79e28a33448bedf5f71f7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-01-result.json",
+      "bytes": 10438,
+      "sha256": "a28edffef1021f65b90968fd125f4354f872bb636ff436816cc6b458c74deb71"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-02-result.json",
+      "bytes": 10340,
+      "sha256": "117f05e8af7ba56fbadb73d87ad40d3e56f099b70de1078b1b1987032d60ccd9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-03-result.json",
+      "bytes": 10454,
+      "sha256": "82c42789f8fc9bd619ee40d56156c3ae4f018c4ba9dcb80f00e5478dd134e162"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-04-result.json",
+      "bytes": 10339,
+      "sha256": "2c1a78a1a111458428cca4ad724bb3686a84ca3ec012129ab52142a6ebc83e27"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-05-result.json",
+      "bytes": 10447,
+      "sha256": "0fb20fb9aecfdedf7ddf9703e15b0276f0df33dbd38244849afd65ae68a21c9b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-06-result.json",
+      "bytes": 10339,
+      "sha256": "5f70fcf3f6da16b9abce169484edfebda3ee54ddcd20bac1d044e75d62d5f147"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-07-result.json",
+      "bytes": 10452,
+      "sha256": "5689ae2597f8dc191ea9a0cc6a62cbf4b4db433a970fcfd7382628109f63fa06"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/sine-no-beta-result.json",
+      "bytes": 9159,
+      "sha256": "db2885ba71ef27ea93f7e03110f97bfaad684c7dacb434105063b6e282dfefd4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/two-tone-result.json",
+      "bytes": 2959,
+      "sha256": "f0395f72562d44edb6d232504c4b646165d0a2190a39a2917a459364467c2285"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/pm-envelope-v2-protocol-20261019.json",
+      "bytes": 95277,
+      "sha256": "7f36c537159b609f4b620d8c9b24271bbf83c0fceb7a49ee6e8d1e78f3d37e25"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/measure_pm_envelope_v2.py",
+      "bytes": 52541,
+      "sha256": "a07e815c6f4307988e7a536826040be95b1c85a7fe009fe0dc2cd354a5c68367"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/measure_pm_envelope.py",
+      "bytes": 24874,
+      "sha256": "49f9a5e42ff15b9e47809583bc1caeb013ae045bdff849f8802fe64cf07da577"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/result.json",
+      "bytes": 434797,
+      "sha256": "f47478c93eba885783f8242ceaf4ac6bbfd85ad81bbf965122c09b1ccd31ca1f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-0.wav",
+      "bytes": 705644,
+      "sha256": "f6aded04d68b47e6cf0603aa9db1e9297e74ad326c0abd1fad744e9d5f421510"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-0-render.json",
+      "bytes": 1333,
+      "sha256": "841f355d8decc112f9576717a98ecd8319d1d16021c42e13c26d91f9da658f44"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-20.wav",
+      "bytes": 705644,
+      "sha256": "ef10ce459249a8fecd7721a8177a8647f6f5f032fe8e92906b24b28d38c6107f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-20-render.json",
+      "bytes": 1336,
+      "sha256": "b5d324be57c99021d6d8924c4eee5ab4cc3e0f079cff4aab83f129c02067a924"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-0.wav",
+      "bytes": 705644,
+      "sha256": "3dabcb02588c4edd79d3abdcbc3decd553449501c05e6aa7ba6a86bf45b41af8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-0-render.json",
+      "bytes": 1333,
+      "sha256": "9f0e399baf6f8e0ba6f88bad56c7d5e6021c60329506e7a5b31167f57e2a967b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-20.wav",
+      "bytes": 705644,
+      "sha256": "0bac92d1993e1f29b12543a9f44b85c7a1b1055a3c7c7074dc28653482ba79d8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-20-render.json",
+      "bytes": 1334,
+      "sha256": "934176218fd35bbaeeb7d29d6f6c087993bab6d2cf2d44d7112ba61d0daf7e92"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-0.wav",
+      "bytes": 705644,
+      "sha256": "52324042ae4371cfced760055195afa42c9c582d5532f489819da1c1e39151f3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-0-render.json",
+      "bytes": 1333,
+      "sha256": "04880f9f49b1bbac64da1b01157491eb70cd62520aaf9a66f5fedf6ddc446b4e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-20.wav",
+      "bytes": 705644,
+      "sha256": "d702732bcf0167c31a2f1e938be662960503d29af1ebd98d6ef952aeffa20ce6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-20-render.json",
+      "bytes": 1336,
+      "sha256": "2f42202b1bdf0694551c667abf6deb3635c18299720e178b5febe07afbcf190d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-36.wav",
+      "bytes": 705644,
+      "sha256": "be801f01d8e87ea134687cc278fb4643f952c0d3574d5f06362598afc3bed561"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-36-render.json",
+      "bytes": 1335,
+      "sha256": "e26a4752cb86288d0eea846a456b9635ac650a0befb1ddd2bb225ded7dcaf8c2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-60.wav",
+      "bytes": 705644,
+      "sha256": "1a5f3cad0ea8f77588d84d37ec893bdaba20a2d346f09702f6fe746d45769316"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-60-render.json",
+      "bytes": 1335,
+      "sha256": "f884b13ab906f2917d195941b0f078065ad014864ee08aee5bf8bedecf577b3b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-mid.wav",
+      "bytes": 705644,
+      "sha256": "a1eb1e278cc345b415ea97b0c22de129f3e751077c9fd08083baf07f172eb105"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-mid-render.json",
+      "bytes": 1342,
+      "sha256": "c104517e65db39ace7cc938ff8450ddb0aff5b7f70cb3f4f3aaeff5d2c580f28"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-left.wav",
+      "bytes": 705644,
+      "sha256": "a1eb1e278cc345b415ea97b0c22de129f3e751077c9fd08083baf07f172eb105"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-left-render.json",
+      "bytes": 1343,
+      "sha256": "a8e995d72528755a5cf9a4e3541c071f4b341bca172bef0cc0d9456ebce821d9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-33-cells.npz",
+      "bytes": 24253,
+      "sha256": "335078f9bc174b390d387343a0b9b0fe8274a19a616e36734fd019f2ce83b8a2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-04-cells.npz",
+      "bytes": 2869732,
+      "sha256": "a4c3b209eba7ac4ddf740845e93147c7273b90acadf10eb6922f533c59073d1d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-01-cells.npz",
+      "bytes": 11525,
+      "sha256": "05a2f252cc47ab560467707a6b54a4c0e50ddfd8b32f6f4e61e22d3ed46a4acc"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-14-cells.npz",
+      "bytes": 208900,
+      "sha256": "ceaceb736a311ecdc0b3fec6956cf5aafb6478213a52acf8e3b7a2a21cef1808"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/compressor-cells.npz",
+      "bytes": 98577,
+      "sha256": "5e62cb3f3cb511c5dc5b654b512e05282dc54eaaa586c7f2dee9fbe74ce59a87"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-26-cells.npz",
+      "bytes": 207745,
+      "sha256": "ba04411b6a80a1dec234d50a06d2329e54c816e294e3479613caea2042020467"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-01-cells.npz",
+      "bytes": 90967,
+      "sha256": "c1c7eb6a4c0d38f2680aa2ca80ecb18006aed79fa22c7a5eeecf7b3ddb184cc2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-08-cells.npz",
+      "bytes": 92339,
+      "sha256": "17ba23b44768c8d8c152897674d018889d29120436b1023fb366ad152581c474"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/two-tone-cells.npz",
+      "bytes": 570,
+      "sha256": "7784d43ef9f8c8b58c4b75768efdebabce2c4a3f809c7e357733cd5af92b4161"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-11-cells.npz",
+      "bytes": 47689,
+      "sha256": "df20a3378321673c2a018e17d21728e35b740ba9c92931e04d65ef9a383057c0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-23-cells.npz",
+      "bytes": 48392,
+      "sha256": "4f2b899ee34cba324589cbb389cfda4450f995dcd7c7ddcc3187ba7a32e111ef"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-04-cells.npz",
+      "bytes": 2793093,
+      "sha256": "b44d7914960d3f2601d6745770417cab78fab6b7def37cacc40ba09e10396b27"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-08-cells.npz",
+      "bytes": 2847543,
+      "sha256": "56a5a06a7b5fa80daea519d7fe321d797c5989f20a1a825863f9f03710c241c1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-0-cells.npz",
+      "bytes": 15525,
+      "sha256": "79c514126812a1c040629c6a4ac874976ed3e49568bd3bc4a97078990522759b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-18-cells.npz",
+      "bytes": 1924798,
+      "sha256": "19fc4496310d1fa09721e0d666824fb6308827d05a29038326efe5c7f0ec47bf"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-04-cells.npz",
+      "bytes": 145496,
+      "sha256": "a6a2722de6c8eee5437b4b3dc9c3a663580fda48dff5288a69271be23a8e34c3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-01-cells.npz",
+      "bytes": 3016167,
+      "sha256": "6e7e7d87eb71f11316bf2e1bb3f827c216bd9fdde274e596baab905c284baf29"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-29-cells.npz",
+      "bytes": 35488,
+      "sha256": "0f3817f8c901973053d50169fb0b3313356756b82ffe1a2f89cd67d112e28a8b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-02-cells.npz",
+      "bytes": 47445,
+      "sha256": "c094c52d91852a98276e654d3ebe5606aa16d17ad593efce36272bc7fb5571f0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-07-cells.npz",
+      "bytes": 131778,
+      "sha256": "e1a9361c033cb1f5b552f16998b64b96e4420c62d9666cd2d6db189e26468375"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-20-cells.npz",
+      "bytes": 15468,
+      "sha256": "4f2cf761bb217aab6ee4c1ed96ed349f252ef937b38e6bb215bf86c5b929b274"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-35-cells.npz",
+      "bytes": 48116,
+      "sha256": "bc09fe7b354bec1175d8e09b6c42fcdfa5b3ddb4c88e66ed10e3c982ae0264a0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-20-cells.npz",
+      "bytes": 89244,
+      "sha256": "0e2112ddf4d66ba66ed275c014a9a0f5a708535d4ce7ac090a3754a26d255e89"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-07-cells.npz",
+      "bytes": 334389,
+      "sha256": "8a0ab6601b0312b5f76480f92406f71e4f753f70ded727eba382a599c2c6087f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/fractionaldelay-cells.npz",
+      "bytes": 204961,
+      "sha256": "c9978368a54c88a060a38be40473f28d01d47754c0ec9412459a7d54c7806d1b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-60-cells.npz",
+      "bytes": 2504239,
+      "sha256": "83dcf01467de09b100a8f650fcdc283fbe54ea8ff9aa554ed3861e7770e21c11"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-12-cells.npz",
+      "bytes": 38846,
+      "sha256": "034bd3d5598f1d828be4114e9faebe36701b1097f2f6316699d78bfa0e56c0fb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/delayedcopy-cells.npz",
+      "bytes": 570,
+      "sha256": "7784d43ef9f8c8b58c4b75768efdebabce2c4a3f809c7e357733cd5af92b4161"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/lowpass-cells.npz",
+      "bytes": 204786,
+      "sha256": "860d5ea564b2843fc13f0b619b5f5853172c5da4cddea016bf9e577361cb9a47"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-25-cells.npz",
+      "bytes": 11354,
+      "sha256": "f13cbd83c39f66a027c721579b0fbbc5d3e7a887ec6595b4ad7b450f01a9d3b0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-02-cells.npz",
+      "bytes": 2798278,
+      "sha256": "6653e4711e3d00f09b130bc71402b8148c261d94ac49d3d7603913f70f2a7d53"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-17-cells.npz",
+      "bytes": 35757,
+      "sha256": "fe6dde50f881da6959de408190e2238b8aaf3e266fc43a5f13e999e45a3994ae"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/constant-beta-cells.npz",
+      "bytes": 5907848,
+      "sha256": "83e02a171052c048b016000c176b28bb823d6a7971078951e583eac1c66ce8d9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-02-cells.npz",
+      "bytes": 205097,
+      "sha256": "01d018234c7392066b3961dbe36fbe89e8d111153b14bd771e096353ce2460ee"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-07-cells.npz",
+      "bytes": 86110,
+      "sha256": "7459bfb1ff33373bb1ab55ad41660e3c5a01376e9719850faf87da5595534fea"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-30-cells.npz",
+      "bytes": 1926250,
+      "sha256": "1f3f8f6cc9ab81e179e90c9608daf00479205eb5787f11ca70d493c27237c9ec"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/dynamic-gain-nonidentifiability-cells.npz",
+      "bytes": 127199,
+      "sha256": "50e5e1235ac9215690f07a7406b984142b8e666af297e02fb7ca9ada919a11df"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-05-cells.npz",
+      "bytes": 35930,
+      "sha256": "710f65b2ff3e11343a824c0a95ce4c36e5210e491602b3a71d7443dfc827f7cd"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-0-cells.npz",
+      "bytes": 15490,
+      "sha256": "9223f1d846cb5179aa4905e7822db5e8f44d1a1821dbe135ee7265d1b089e34a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-00-cells.npz",
+      "bytes": 2851484,
+      "sha256": "047499a5667429ba4a15142c40cb81cd8aae9165cf4c799e763c34d477186948"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-mid-cells.npz",
+      "bytes": 42841,
+      "sha256": "238f291dfdd5f019e54e222fbd2c2466f483f24857560b3c2f57d8179240b6b3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-19-cells.npz",
+      "bytes": 126932,
+      "sha256": "d1ff7b41dd40869375d81fb2af2c49078f7f3df97f9fca0ab56c2ebb2e960c52"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-20-cells.npz",
+      "bytes": 15360,
+      "sha256": "a677b841ab6e2a31abee6ecc13d6fa000f475fc3d29f96377e46686d9070e96b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-05-cells.npz",
+      "bytes": 91257,
+      "sha256": "441ec7236173421141891e6c14cb014edec33eb424e255a1e5dba644a8b7c553"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-22-cells.npz",
+      "bytes": 169507,
+      "sha256": "c110af501788b487e6fb1a58bccc316fd626ebadd487cee49e27cbf208cfcbb3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/highpass-cells.npz",
+      "bytes": 193141,
+      "sha256": "0be146f824a9bcc65e74576eacb1e51e8c60261f160ef0b207964270793315f1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-20-cells.npz",
+      "bytes": 15520,
+      "sha256": "e2582a5577a0eeae6219e19f412a0d58dbb1e5ef64e6c7e2304902b1cffa78de"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-10-cells.npz",
+      "bytes": 166145,
+      "sha256": "28b6f6074beb8d213a9e11eeea12ac020c7b5e19cd87e84f740a28c7f312cb8a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-00-cells.npz",
+      "bytes": 2789369,
+      "sha256": "3c104a424422c19f215e3d2d7be324b411e6dcd665a49c7a19e1669aed9c547e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-27-cells.npz",
+      "bytes": 51813,
+      "sha256": "ad4160ded0480aa5570b46eab89fe34e70c9d7c63499a9495b5d82e0a4386d95"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-left-cells.npz",
+      "bytes": 884,
+      "sha256": "ead0b03b73abc3f57016e6cd36bc65586c96c9c3f7481795a82a1a86de122bb3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-09-cells.npz",
+      "bytes": 24270,
+      "sha256": "77c04d0e68d218e091e59a11074c775d4fad347f4ca39231e270b163950d957a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-15-cells.npz",
+      "bytes": 51673,
+      "sha256": "8966bfb876efbe15cb4685f968d4f121710b779a2d2c2ffaa4c8d5e250744b2d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-05-cells.npz",
+      "bytes": 3075196,
+      "sha256": "55be1b8f76d97031ea3f54aa7e674ed328e9cf1de95a53cb32d1c305c0208966"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-00-cells.npz",
+      "bytes": 39193,
+      "sha256": "0bc8a10814016e71c82b21f408045589b57e4c7b459862640191e9d91b9501f9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-32-cells.npz",
+      "bytes": 89780,
+      "sha256": "f53564a7dd77673cd90fe0b4e3342290b3a74e5d031ba0c63922f4322684fb8d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-31-cells.npz",
+      "bytes": 127030,
+      "sha256": "a225757a2bfc3f01186e88445a01d740d00eb59689c3661168c75e0fe82bf935"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-03-cells.npz",
+      "bytes": 51842,
+      "sha256": "44be69ac28343358d4ea64ec69bff30bcacdf4f0090227bce46328c0ff6fc8aa"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-0-cells.npz",
+      "bytes": 15523,
+      "sha256": "104171ca8943d89ac1139441c976a977a88541b2d75f0bded0c5f2d213fbf2d4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-06-cells.npz",
+      "bytes": 113783,
+      "sha256": "b88e78d70b06f611de9668e95757c723b3ce3558e5124f82ea58ce6980d9413e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/sine-no-beta-cells.npz",
+      "bytes": 6336578,
+      "sha256": "244362e91ba7da2bf676122f5ad6cc3665a3e873974a0b5d4a7583adc0e198d6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-16-cells.npz",
+      "bytes": 148029,
+      "sha256": "fb6209bfb773e4a6a59cb5a59f523d98103db3883165c7ace72fa18c18c46c1b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-03-cells.npz",
+      "bytes": 328312,
+      "sha256": "e1c8c2ea3118f13d497c171ada0bd32ee1fbf2577ca0619360a79e0f5aa3f879"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-24-cells.npz",
+      "bytes": 38828,
+      "sha256": "8f0d24ead472401d2a0dcd77afe81efd2896ae707e8431d7b390337f4a8eb59e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-13-cells.npz",
+      "bytes": 11376,
+      "sha256": "3c718220f9f3953a7f3b5add34e2455323bbfebbddc428368a3fde94303e0b2d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-06-cells.npz",
+      "bytes": 2800174,
+      "sha256": "db603ca8a6f3635d05e829ee9b323a4930425f6391556ecd29dd6597314e45be"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-21-cells.npz",
+      "bytes": 24240,
+      "sha256": "f43a18ef87002110002cc5c27a68a0a211b78bea7e7ab2848240557601db228f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-36-cells.npz",
+      "bytes": 2531203,
+      "sha256": "4713c96f55c0aef8d533217166da65b783c199ea34babe408d4826de6b3e095f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-34-cells.npz",
+      "bytes": 170218,
+      "sha256": "cd294ea0c24d85c9a2efa83a68560f42c7c3ff3ab6d2e86b9ad8b3e1eeed60d2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-03-cells.npz",
+      "bytes": 35378,
+      "sha256": "ab2819bbfe3aa03237d1fcc919f99b093f1fd0435cacad7c1d72569d39f0eee5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-28-cells.npz",
+      "bytes": 148022,
+      "sha256": "9b2b455a9a2a3fdbe459d15949febd682c92f3f6b614d5c8b24874e8304dfcfb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-06-cells.npz",
+      "bytes": 1914836,
+      "sha256": "4fd441e9b89c79ea86d703db39bbd622f5c9c22ce9bb15cc7468047ec3a03e5d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/drive-output-separation-20261019/design-frozen.json",
+      "bytes": 3802,
+      "sha256": "160a562991465fbaa08da8d8f470baf968d84c68c62a23148aa609c44573e96c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/drive-output-separation-20261019/Probe.cpp",
+      "bytes": 1813,
+      "sha256": "e4e3913ece2620e84911eafbe406d84ce079d62fbe03ce9f368eaeb996758e63"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/drive-output-separation-20261019/analyze.py",
+      "bytes": 7579,
+      "sha256": "32c657d402c3d738136547f4f663c4519ee56bd733a09627550a0c7a159f542d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/drive-output-separation-20261019/probe",
+      "bytes": 56584,
+      "sha256": "d1e4a210e36b747d7c9b56b0c5af2072c45b2dee246da5ee3e070b05afd560f5"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/AnalogOutput.h",
+      "bytes": 2195,
+      "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/CircuitNoise.h",
+      "bytes": 8721,
+      "sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/FactoryVoices.h",
+      "bytes": 12722,
+      "sha256": "6f45afd021de03e226ffe7e09f953799b4f72f48cf1f062348b6d6b328eabed3"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/FirmwarePitch.h",
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/OutputKernelTable.h",
+      "bytes": 1642464,
+      "sha256": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/OversampledAnalogOutput.h",
+      "bytes": 6548,
+      "sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.cpp",
+      "bytes": 28519,
+      "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.h",
+      "bytes": 10040,
+      "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78OutputBus.h",
+      "bytes": 10270,
+      "sha256": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/RecordedChorus.h",
+      "bytes": 3581,
+      "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/RecordedChorusProfile.h",
+      "bytes": 1073,
+      "sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/drive-output-separation-20261019/result.json",
+      "bytes": 120136,
+      "sha256": "dfdf319af401bf8bb0b7cefaf4d2181cfa7761265c78807df025afd848cb6d26"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/lofi-signal-path-audit-20261019/pss780-owner-p14.png",
+      "bytes": 165972,
+      "sha256": "4e121ef07686eb5a4a2127fd68f5a0f28981e9e72339647803fc7218a36043b4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/lofi-signal-path-audit-20261019/pss780-owner-p32.png",
+      "bytes": 161959,
+      "sha256": "025d91757408e86b528deaaf120e72387a89f6770fde3725195ca488e51c3913"
+    }
+  ],
+  "check_labels": [
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/Reference/Research/pm-envelope-v2-protocol-20261019.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/Reference/Research/pm-envelope-v2-protocol-20261019.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-20261019/execution-binding-v1.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-20261019/execution-binding-v1.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/run-started.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/run-started.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/Reference/Research/pm-envelope-v2-protocol-20261019.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/Reference/Research/pm-envelope-v2-protocol-20261019.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-20261019/execution-binding-v1.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-20261019/execution-binding-v1.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/Tools/measure_pm_envelope_v2.py",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/Tools/measure_pm_envelope_v2.py",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/H1-null-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/H1-null-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-00-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-00-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-01-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-01-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-02-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-02-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-03-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-03-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-04-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-04-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-05-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-05-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-06-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-06-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-07-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-07-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-08-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-08-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-09-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-09-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-10-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-10-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-11-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-11-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-12-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-12-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-13-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-13-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-14-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-14-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-15-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-15-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-16-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-16-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-17-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-17-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-18-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-18-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-19-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-19-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-20-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-20-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-21-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-21-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-22-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-22-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-23-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-23-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-24-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-24-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-25-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-25-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-26-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-26-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-27-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-27-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-28-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-28-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-29-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-29-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-30-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-30-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-31-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-31-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-32-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-32-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-33-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-33-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-34-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-34-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-35-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-35-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/compressor-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/compressor-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/constant-beta-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/constant-beta-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/delayedcopy-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/delayedcopy-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/dynamic-gain-nonidentifiability-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/dynamic-gain-nonidentifiability-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/fractionaldelay-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/fractionaldelay-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/highpass-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/highpass-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/lowpass-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/lowpass-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-left-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-left-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-mid-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-mid-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-0-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-0-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-20-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-20-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-0-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-0-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-20-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-20-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-0-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-0-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-20-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-20-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-36-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-36-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-60-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-60-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-00-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-00-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-01-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-01-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-02-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-02-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-03-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-03-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-04-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-04-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-05-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-05-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-06-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-06-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-07-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-07-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-08-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-08-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-00-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-00-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-01-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-01-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-02-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-02-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-03-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-03-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-04-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-04-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-05-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-05-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-06-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-06-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-07-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-07-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/sine-no-beta-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/sine-no-beta-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/two-tone-result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/two-tone-result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/Reference/Research/pm-envelope-v2-protocol-20261019.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/Reference/Research/pm-envelope-v2-protocol-20261019.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/Tools/measure_pm_envelope_v2.py",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/Tools/measure_pm_envelope_v2.py",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/Tools/measure_pm_envelope.py",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/Tools/measure_pm_envelope.py",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/result.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-0.wav",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-0.wav",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-0-render.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-0-render.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-20.wav",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-20.wav",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-20-render.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-36-20-render.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-0.wav",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-0.wav",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-0-render.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-0-render.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-20.wav",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-20.wav",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-20-render.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-60-20-render.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-0.wav",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-0.wav",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-0-render.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-0-render.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-20.wav",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-20.wav",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-20-render.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-dry-82-20-render.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-36.wav",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-36.wav",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-36-render.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-36-render.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-60.wav",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-60.wav",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-60-render.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-recipe-60-render.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-mid.wav",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-mid.wav",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-mid-render.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-mid-render.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-left.wav",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-left.wav",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-left-render.json",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-controls-20261019/native-Real-left-render.json",
+    "original runner hash",
+    "migrated runner exact original",
+    "migrated protocol exact original",
+    "all expected coarse count93",
+    "observed coarse73",
+    "observed results exactly metadata set",
+    "20 missing cases exactly metadata",
+    "no nested artifacts",
+    "no final result",
+    "not source requested",
+    "source artifact absence",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-33-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-33-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-04-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-04-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-01-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-01-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-14-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-14-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/compressor-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/compressor-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-26-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-26-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-01-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-01-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-08-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-08-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/two-tone-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/two-tone-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-11-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-11-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-23-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-23-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-04-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-04-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-08-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-08-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-0-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-0-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-18-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-18-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-04-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-04-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-01-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-01-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-29-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-29-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-02-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-02-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-07-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-07-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-20-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-20-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-35-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-35-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-20-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-20-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-07-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-07-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/fractionaldelay-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/fractionaldelay-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-60-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-60-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-12-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-12-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/delayedcopy-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/delayedcopy-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/lowpass-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/lowpass-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-25-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-25-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-02-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-02-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-17-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-17-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/constant-beta-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/constant-beta-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-02-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-02-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-07-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-07-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-30-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-30-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/dynamic-gain-nonidentifiability-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/dynamic-gain-nonidentifiability-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-05-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-05-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-0-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-0-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-00-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-00-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-mid-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-mid-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-19-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-19-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-20-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-20-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-05-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-05-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-22-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-22-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/highpass-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/highpass-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-20-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-20-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-10-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-10-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-00-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-00-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-27-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-27-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-left-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-left-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-09-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-09-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-15-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-15-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-05-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-05-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-00-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-00-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-32-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-32-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-31-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-31-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-03-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-03-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-0-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-0-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-06-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-06-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/sine-no-beta-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/sine-no-beta-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-16-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-16-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-03-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-03-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-24-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-24-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-13-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-13-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-06-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-06-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-21-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-21-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-36-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-36-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-34-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-34-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-03-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-03-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-28-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-28-cells.npz",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-06-cells.npz",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-06-cells.npz",
+    "new-informative-00 A width arithmetic",
+    "new-informative-00 A precision flag",
+    "new-informative-00 A coverage flag",
+    "new-informative-00 A zero exclusion flag",
+    "new-informative-00 beta width arithmetic",
+    "new-informative-00 beta precision flag",
+    "new-informative-00 beta coverage flag",
+    "new-informative-00 beta zero exclusion flag",
+    "new-informative-00 state snapshot late quantities",
+    "new-informative-00 joint gate exact",
+    "new-informative-00 generating branch retained",
+    "new-informative-01 A width arithmetic",
+    "new-informative-01 A precision flag",
+    "new-informative-01 A coverage flag",
+    "new-informative-01 A zero exclusion flag",
+    "new-informative-01 beta width arithmetic",
+    "new-informative-01 beta precision flag",
+    "new-informative-01 beta coverage flag",
+    "new-informative-01 beta zero exclusion flag",
+    "new-informative-01 state snapshot late quantities",
+    "new-informative-01 joint gate exact",
+    "new-informative-01 generating branch retained",
+    "new-informative-02 A width arithmetic",
+    "new-informative-02 A precision flag",
+    "new-informative-02 A coverage flag",
+    "new-informative-02 A zero exclusion flag",
+    "new-informative-02 beta width arithmetic",
+    "new-informative-02 beta precision flag",
+    "new-informative-02 beta coverage flag",
+    "new-informative-02 beta zero exclusion flag",
+    "new-informative-02 state snapshot late quantities",
+    "new-informative-02 joint gate exact",
+    "new-informative-02 generating branch retained",
+    "new-informative-03 A width arithmetic",
+    "new-informative-03 A precision flag",
+    "new-informative-03 A coverage flag",
+    "new-informative-03 A zero exclusion flag",
+    "new-informative-03 beta width arithmetic",
+    "new-informative-03 beta precision flag",
+    "new-informative-03 beta coverage flag",
+    "new-informative-03 beta zero exclusion flag",
+    "new-informative-03 state snapshot late quantities",
+    "new-informative-03 joint gate exact",
+    "new-informative-03 generating branch retained",
+    "new-informative-04 A width arithmetic",
+    "new-informative-04 A precision flag",
+    "new-informative-04 A coverage flag",
+    "new-informative-04 A zero exclusion flag",
+    "new-informative-04 beta width arithmetic",
+    "new-informative-04 beta precision flag",
+    "new-informative-04 beta coverage flag",
+    "new-informative-04 beta zero exclusion flag",
+    "new-informative-04 state snapshot late quantities",
+    "new-informative-04 joint gate exact",
+    "new-informative-04 generating branch retained",
+    "new-informative-05 A width arithmetic",
+    "new-informative-05 A precision flag",
+    "new-informative-05 A coverage flag",
+    "new-informative-05 A zero exclusion flag",
+    "new-informative-05 beta width arithmetic",
+    "new-informative-05 beta precision flag",
+    "new-informative-05 beta coverage flag",
+    "new-informative-05 beta zero exclusion flag",
+    "new-informative-05 state snapshot late quantities",
+    "new-informative-05 joint gate exact",
+    "new-informative-05 generating branch retained",
+    "new-informative-06 A width arithmetic",
+    "new-informative-06 A precision flag",
+    "new-informative-06 A coverage flag",
+    "new-informative-06 A zero exclusion flag",
+    "new-informative-06 beta width arithmetic",
+    "new-informative-06 beta precision flag",
+    "new-informative-06 beta coverage flag",
+    "new-informative-06 beta zero exclusion flag",
+    "new-informative-06 state snapshot late quantities",
+    "new-informative-06 joint gate exact",
+    "new-informative-06 generating branch retained",
+    "new-informative-07 A width arithmetic",
+    "new-informative-07 A precision flag",
+    "new-informative-07 A coverage flag",
+    "new-informative-07 A zero exclusion flag",
+    "new-informative-07 beta width arithmetic",
+    "new-informative-07 beta precision flag",
+    "new-informative-07 beta coverage flag",
+    "new-informative-07 beta zero exclusion flag",
+    "new-informative-07 state snapshot late quantities",
+    "new-informative-07 joint gate exact",
+    "new-informative-07 generating branch retained",
+    "8 completed informative cases",
+    "all8 joint fail",
+    "all8 beta fail",
+    "4 A pass",
+    "state informative necessary gate failed",
+    "PID31589 absent independent single ps",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/drive-output-separation-20261019/design-frozen.json",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/drive-output-separation-20261019/design-frozen.json",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/drive-output-separation-20261019/Probe.cpp",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/drive-output-separation-20261019/Probe.cpp",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/drive-output-separation-20261019/analyze.py",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/drive-output-separation-20261019/analyze.py",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/build/drive-output-separation-20261019/probe",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/build/drive-output-separation-20261019/probe",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/AnalogOutput.h",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/AnalogOutput.h",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/CircuitNoise.h",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/CircuitNoise.h",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/FactoryVoices.h",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/FactoryVoices.h",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/FirmwarePitch.h",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/FirmwarePitch.h",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/OutputKernelTable.h",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/OutputKernelTable.h",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/OversampledAnalogOutput.h",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/OversampledAnalogOutput.h",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.cpp",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.cpp",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.h",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.h",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78OutputBus.h",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78OutputBus.h",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/RecordedChorus.h",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/RecordedChorus.h",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/RecordedChorusProfile.h",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/RecordedChorusProfile.h",
+    "bytes /Users/vojta/Dev/press78-waveform-audit-20261019/build/drive-output-separation-20261019/result.json",
+    "sha256 /Users/vojta/Dev/press78-waveform-audit-20261019/build/drive-output-separation-20261019/result.json",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/lofi-signal-path-audit-20261019/pss780-owner-p14.png",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/lofi-signal-path-audit-20261019/pss780-owner-p14.png",
+    "bytes /Users/vojta/Dev/virtual-instrument-press78/build/lofi-signal-path-audit-20261019/pss780-owner-p32.png",
+    "sha256 /Users/vojta/Dev/virtual-instrument-press78/build/lofi-signal-path-audit-20261019/pss780-owner-p32.png",
+    "public frozen drive field scope",
+    "public frozen drive field case_count",
+    "public frozen drive field bindings",
+    "public frozen drive field shipping_source_bindings",
+    "public frozen drive field frequencies_hz",
+    "public frozen drive field imd_witness_frequencies_hz",
+    "public frozen drive field matrix_condition_number",
+    "public frozen drive field cases",
+    "public frozen drive field additivity",
+    "public frozen drive field master_gain_placement",
+    "public frozen drive field carrier_level_dependence",
+    "public frozen drive field limit_vs_linear",
+    "public frozen drive field failed_contracts",
+    "public frozen drive field passed",
+    "public frozen drive field rendered_seconds",
+    "public frozen drive field no_pcm_retained",
+    "public frozen drive field no_hardware_calibration",
+    "public frozen drive field native_stderr",
+    "72 full Cartesian cases",
+    "case parameter order ('linear', 0, 0.25, [45])",
+    "case finite metrics ('linear', 0, 0.25, [45])",
+    "case nonnegative metrics ('linear', 0, 0.25, [45])",
+    "30 coefficients ('linear', 0, 0.25, [45])",
+    "case parameter order ('linear', 0, 0.25, [51])",
+    "case finite metrics ('linear', 0, 0.25, [51])",
+    "case nonnegative metrics ('linear', 0, 0.25, [51])",
+    "30 coefficients ('linear', 0, 0.25, [51])",
+    "case parameter order ('linear', 0, 0.25, [45, 51])",
+    "case finite metrics ('linear', 0, 0.25, [45, 51])",
+    "case nonnegative metrics ('linear', 0, 0.25, [45, 51])",
+    "30 coefficients ('linear', 0, 0.25, [45, 51])",
+    "case parameter order ('linear', 0, 2.0, [45])",
+    "case finite metrics ('linear', 0, 2.0, [45])",
+    "case nonnegative metrics ('linear', 0, 2.0, [45])",
+    "30 coefficients ('linear', 0, 2.0, [45])",
+    "case parameter order ('linear', 0, 2.0, [51])",
+    "case finite metrics ('linear', 0, 2.0, [51])",
+    "case nonnegative metrics ('linear', 0, 2.0, [51])",
+    "30 coefficients ('linear', 0, 2.0, [51])",
+    "case parameter order ('linear', 0, 2.0, [45, 51])",
+    "case finite metrics ('linear', 0, 2.0, [45, 51])",
+    "case nonnegative metrics ('linear', 0, 2.0, [45, 51])",
+    "30 coefficients ('linear', 0, 2.0, [45, 51])",
+    "case parameter order ('linear', 24, 0.25, [45])",
+    "case finite metrics ('linear', 24, 0.25, [45])",
+    "case nonnegative metrics ('linear', 24, 0.25, [45])",
+    "30 coefficients ('linear', 24, 0.25, [45])",
+    "case parameter order ('linear', 24, 0.25, [51])",
+    "case finite metrics ('linear', 24, 0.25, [51])",
+    "case nonnegative metrics ('linear', 24, 0.25, [51])",
+    "30 coefficients ('linear', 24, 0.25, [51])",
+    "case parameter order ('linear', 24, 0.25, [45, 51])",
+    "case finite metrics ('linear', 24, 0.25, [45, 51])",
+    "case nonnegative metrics ('linear', 24, 0.25, [45, 51])",
+    "30 coefficients ('linear', 24, 0.25, [45, 51])",
+    "case parameter order ('linear', 24, 2.0, [45])",
+    "case finite metrics ('linear', 24, 2.0, [45])",
+    "case nonnegative metrics ('linear', 24, 2.0, [45])",
+    "30 coefficients ('linear', 24, 2.0, [45])",
+    "case parameter order ('linear', 24, 2.0, [51])",
+    "case finite metrics ('linear', 24, 2.0, [51])",
+    "case nonnegative metrics ('linear', 24, 2.0, [51])",
+    "30 coefficients ('linear', 24, 2.0, [51])",
+    "case parameter order ('linear', 24, 2.0, [45, 51])",
+    "case finite metrics ('linear', 24, 2.0, [45, 51])",
+    "case nonnegative metrics ('linear', 24, 2.0, [45, 51])",
+    "30 coefficients ('linear', 24, 2.0, [45, 51])",
+    "case parameter order ('circuit', 0, 0.25, [45])",
+    "case finite metrics ('circuit', 0, 0.25, [45])",
+    "case nonnegative metrics ('circuit', 0, 0.25, [45])",
+    "30 coefficients ('circuit', 0, 0.25, [45])",
+    "case parameter order ('circuit', 0, 0.25, [51])",
+    "case finite metrics ('circuit', 0, 0.25, [51])",
+    "case nonnegative metrics ('circuit', 0, 0.25, [51])",
+    "30 coefficients ('circuit', 0, 0.25, [51])",
+    "case parameter order ('circuit', 0, 0.25, [45, 51])",
+    "case finite metrics ('circuit', 0, 0.25, [45, 51])",
+    "case nonnegative metrics ('circuit', 0, 0.25, [45, 51])",
+    "30 coefficients ('circuit', 0, 0.25, [45, 51])",
+    "case parameter order ('circuit', 0, 2.0, [45])",
+    "case finite metrics ('circuit', 0, 2.0, [45])",
+    "case nonnegative metrics ('circuit', 0, 2.0, [45])",
+    "30 coefficients ('circuit', 0, 2.0, [45])",
+    "case parameter order ('circuit', 0, 2.0, [51])",
+    "case finite metrics ('circuit', 0, 2.0, [51])",
+    "case nonnegative metrics ('circuit', 0, 2.0, [51])",
+    "30 coefficients ('circuit', 0, 2.0, [51])",
+    "case parameter order ('circuit', 0, 2.0, [45, 51])",
+    "case finite metrics ('circuit', 0, 2.0, [45, 51])",
+    "case nonnegative metrics ('circuit', 0, 2.0, [45, 51])",
+    "30 coefficients ('circuit', 0, 2.0, [45, 51])",
+    "case parameter order ('circuit', 24, 0.25, [45])",
+    "case finite metrics ('circuit', 24, 0.25, [45])",
+    "case nonnegative metrics ('circuit', 24, 0.25, [45])",
+    "30 coefficients ('circuit', 24, 0.25, [45])",
+    "case parameter order ('circuit', 24, 0.25, [51])",
+    "case finite metrics ('circuit', 24, 0.25, [51])",
+    "case nonnegative metrics ('circuit', 24, 0.25, [51])",
+    "30 coefficients ('circuit', 24, 0.25, [51])",
+    "case parameter order ('circuit', 24, 0.25, [45, 51])",
+    "case finite metrics ('circuit', 24, 0.25, [45, 51])",
+    "case nonnegative metrics ('circuit', 24, 0.25, [45, 51])",
+    "30 coefficients ('circuit', 24, 0.25, [45, 51])",
+    "case parameter order ('circuit', 24, 2.0, [45])",
+    "case finite metrics ('circuit', 24, 2.0, [45])",
+    "case nonnegative metrics ('circuit', 24, 2.0, [45])",
+    "30 coefficients ('circuit', 24, 2.0, [45])",
+    "case parameter order ('circuit', 24, 2.0, [51])",
+    "case finite metrics ('circuit', 24, 2.0, [51])",
+    "case nonnegative metrics ('circuit', 24, 2.0, [51])",
+    "30 coefficients ('circuit', 24, 2.0, [51])",
+    "case parameter order ('circuit', 24, 2.0, [45, 51])",
+    "case finite metrics ('circuit', 24, 2.0, [45, 51])",
+    "case nonnegative metrics ('circuit', 24, 2.0, [45, 51])",
+    "30 coefficients ('circuit', 24, 2.0, [45, 51])",
+    "case parameter order ('drive', 0, 0.25, [45])",
+    "case finite metrics ('drive', 0, 0.25, [45])",
+    "case nonnegative metrics ('drive', 0, 0.25, [45])",
+    "30 coefficients ('drive', 0, 0.25, [45])",
+    "case parameter order ('drive', 0, 0.25, [51])",
+    "case finite metrics ('drive', 0, 0.25, [51])",
+    "case nonnegative metrics ('drive', 0, 0.25, [51])",
+    "30 coefficients ('drive', 0, 0.25, [51])",
+    "case parameter order ('drive', 0, 0.25, [45, 51])",
+    "case finite metrics ('drive', 0, 0.25, [45, 51])",
+    "case nonnegative metrics ('drive', 0, 0.25, [45, 51])",
+    "30 coefficients ('drive', 0, 0.25, [45, 51])",
+    "case parameter order ('drive', 0, 2.0, [45])",
+    "case finite metrics ('drive', 0, 2.0, [45])",
+    "case nonnegative metrics ('drive', 0, 2.0, [45])",
+    "30 coefficients ('drive', 0, 2.0, [45])",
+    "case parameter order ('drive', 0, 2.0, [51])",
+    "case finite metrics ('drive', 0, 2.0, [51])",
+    "case nonnegative metrics ('drive', 0, 2.0, [51])",
+    "30 coefficients ('drive', 0, 2.0, [51])",
+    "case parameter order ('drive', 0, 2.0, [45, 51])",
+    "case finite metrics ('drive', 0, 2.0, [45, 51])",
+    "case nonnegative metrics ('drive', 0, 2.0, [45, 51])",
+    "30 coefficients ('drive', 0, 2.0, [45, 51])",
+    "case parameter order ('drive', 24, 0.25, [45])",
+    "case finite metrics ('drive', 24, 0.25, [45])",
+    "case nonnegative metrics ('drive', 24, 0.25, [45])",
+    "30 coefficients ('drive', 24, 0.25, [45])",
+    "case parameter order ('drive', 24, 0.25, [51])",
+    "case finite metrics ('drive', 24, 0.25, [51])",
+    "case nonnegative metrics ('drive', 24, 0.25, [51])",
+    "30 coefficients ('drive', 24, 0.25, [51])",
+    "case parameter order ('drive', 24, 0.25, [45, 51])",
+    "case finite metrics ('drive', 24, 0.25, [45, 51])",
+    "case nonnegative metrics ('drive', 24, 0.25, [45, 51])",
+    "30 coefficients ('drive', 24, 0.25, [45, 51])",
+    "case parameter order ('drive', 24, 2.0, [45])",
+    "case finite metrics ('drive', 24, 2.0, [45])",
+    "case nonnegative metrics ('drive', 24, 2.0, [45])",
+    "30 coefficients ('drive', 24, 2.0, [45])",
+    "case parameter order ('drive', 24, 2.0, [51])",
+    "case finite metrics ('drive', 24, 2.0, [51])",
+    "case nonnegative metrics ('drive', 24, 2.0, [51])",
+    "30 coefficients ('drive', 24, 2.0, [51])",
+    "case parameter order ('drive', 24, 2.0, [45, 51])",
+    "case finite metrics ('drive', 24, 2.0, [45, 51])",
+    "case nonnegative metrics ('drive', 24, 2.0, [45, 51])",
+    "30 coefficients ('drive', 24, 2.0, [45, 51])",
+    "case parameter order ('limit', 0, 0.25, [45])",
+    "case finite metrics ('limit', 0, 0.25, [45])",
+    "case nonnegative metrics ('limit', 0, 0.25, [45])",
+    "30 coefficients ('limit', 0, 0.25, [45])",
+    "case parameter order ('limit', 0, 0.25, [51])",
+    "case finite metrics ('limit', 0, 0.25, [51])",
+    "case nonnegative metrics ('limit', 0, 0.25, [51])",
+    "30 coefficients ('limit', 0, 0.25, [51])",
+    "case parameter order ('limit', 0, 0.25, [45, 51])",
+    "case finite metrics ('limit', 0, 0.25, [45, 51])",
+    "case nonnegative metrics ('limit', 0, 0.25, [45, 51])",
+    "30 coefficients ('limit', 0, 0.25, [45, 51])",
+    "case parameter order ('limit', 0, 2.0, [45])",
+    "case finite metrics ('limit', 0, 2.0, [45])",
+    "case nonnegative metrics ('limit', 0, 2.0, [45])",
+    "30 coefficients ('limit', 0, 2.0, [45])",
+    "case parameter order ('limit', 0, 2.0, [51])",
+    "case finite metrics ('limit', 0, 2.0, [51])",
+    "case nonnegative metrics ('limit', 0, 2.0, [51])",
+    "30 coefficients ('limit', 0, 2.0, [51])",
+    "case parameter order ('limit', 0, 2.0, [45, 51])",
+    "case finite metrics ('limit', 0, 2.0, [45, 51])",
+    "case nonnegative metrics ('limit', 0, 2.0, [45, 51])",
+    "30 coefficients ('limit', 0, 2.0, [45, 51])",
+    "case parameter order ('limit', 24, 0.25, [45])",
+    "case finite metrics ('limit', 24, 0.25, [45])",
+    "case nonnegative metrics ('limit', 24, 0.25, [45])",
+    "30 coefficients ('limit', 24, 0.25, [45])",
+    "case parameter order ('limit', 24, 0.25, [51])",
+    "case finite metrics ('limit', 24, 0.25, [51])",
+    "case nonnegative metrics ('limit', 24, 0.25, [51])",
+    "30 coefficients ('limit', 24, 0.25, [51])",
+    "case parameter order ('limit', 24, 0.25, [45, 51])",
+    "case finite metrics ('limit', 24, 0.25, [45, 51])",
+    "case nonnegative metrics ('limit', 24, 0.25, [45, 51])",
+    "30 coefficients ('limit', 24, 0.25, [45, 51])",
+    "case parameter order ('limit', 24, 2.0, [45])",
+    "case finite metrics ('limit', 24, 2.0, [45])",
+    "case nonnegative metrics ('limit', 24, 2.0, [45])",
+    "30 coefficients ('limit', 24, 2.0, [45])",
+    "case parameter order ('limit', 24, 2.0, [51])",
+    "case finite metrics ('limit', 24, 2.0, [51])",
+    "case nonnegative metrics ('limit', 24, 2.0, [51])",
+    "30 coefficients ('limit', 24, 2.0, [51])",
+    "case parameter order ('limit', 24, 2.0, [45, 51])",
+    "case finite metrics ('limit', 24, 2.0, [45, 51])",
+    "case nonnegative metrics ('limit', 24, 2.0, [45, 51])",
+    "30 coefficients ('limit', 24, 2.0, [45, 51])",
+    "case parameter order ('fm0', 0, 0.25, [45])",
+    "case finite metrics ('fm0', 0, 0.25, [45])",
+    "case nonnegative metrics ('fm0', 0, 0.25, [45])",
+    "30 coefficients ('fm0', 0, 0.25, [45])",
+    "case parameter order ('fm0', 0, 0.25, [51])",
+    "case finite metrics ('fm0', 0, 0.25, [51])",
+    "case nonnegative metrics ('fm0', 0, 0.25, [51])",
+    "30 coefficients ('fm0', 0, 0.25, [51])",
+    "case parameter order ('fm0', 0, 0.25, [45, 51])",
+    "case finite metrics ('fm0', 0, 0.25, [45, 51])",
+    "case nonnegative metrics ('fm0', 0, 0.25, [45, 51])",
+    "30 coefficients ('fm0', 0, 0.25, [45, 51])",
+    "case parameter order ('fm0', 0, 2.0, [45])",
+    "case finite metrics ('fm0', 0, 2.0, [45])",
+    "case nonnegative metrics ('fm0', 0, 2.0, [45])",
+    "30 coefficients ('fm0', 0, 2.0, [45])",
+    "case parameter order ('fm0', 0, 2.0, [51])",
+    "case finite metrics ('fm0', 0, 2.0, [51])",
+    "case nonnegative metrics ('fm0', 0, 2.0, [51])",
+    "30 coefficients ('fm0', 0, 2.0, [51])",
+    "case parameter order ('fm0', 0, 2.0, [45, 51])",
+    "case finite metrics ('fm0', 0, 2.0, [45, 51])",
+    "case nonnegative metrics ('fm0', 0, 2.0, [45, 51])",
+    "30 coefficients ('fm0', 0, 2.0, [45, 51])",
+    "case parameter order ('fm0', 24, 0.25, [45])",
+    "case finite metrics ('fm0', 24, 0.25, [45])",
+    "case nonnegative metrics ('fm0', 24, 0.25, [45])",
+    "30 coefficients ('fm0', 24, 0.25, [45])",
+    "case parameter order ('fm0', 24, 0.25, [51])",
+    "case finite metrics ('fm0', 24, 0.25, [51])",
+    "case nonnegative metrics ('fm0', 24, 0.25, [51])",
+    "30 coefficients ('fm0', 24, 0.25, [51])",
+    "case parameter order ('fm0', 24, 0.25, [45, 51])",
+    "case finite metrics ('fm0', 24, 0.25, [45, 51])",
+    "case nonnegative metrics ('fm0', 24, 0.25, [45, 51])",
+    "30 coefficients ('fm0', 24, 0.25, [45, 51])",
+    "case parameter order ('fm0', 24, 2.0, [45])",
+    "case finite metrics ('fm0', 24, 2.0, [45])",
+    "case nonnegative metrics ('fm0', 24, 2.0, [45])",
+    "30 coefficients ('fm0', 24, 2.0, [45])",
+    "case parameter order ('fm0', 24, 2.0, [51])",
+    "case finite metrics ('fm0', 24, 2.0, [51])",
+    "case nonnegative metrics ('fm0', 24, 2.0, [51])",
+    "30 coefficients ('fm0', 24, 2.0, [51])",
+    "case parameter order ('fm0', 24, 2.0, [45, 51])",
+    "case finite metrics ('fm0', 24, 2.0, [45, 51])",
+    "case nonnegative metrics ('fm0', 24, 2.0, [45, 51])",
+    "30 coefficients ('fm0', 24, 2.0, [45, 51])",
+    "case parameter order ('fm6', 0, 0.25, [45])",
+    "case finite metrics ('fm6', 0, 0.25, [45])",
+    "case nonnegative metrics ('fm6', 0, 0.25, [45])",
+    "30 coefficients ('fm6', 0, 0.25, [45])",
+    "case parameter order ('fm6', 0, 0.25, [51])",
+    "case finite metrics ('fm6', 0, 0.25, [51])",
+    "case nonnegative metrics ('fm6', 0, 0.25, [51])",
+    "30 coefficients ('fm6', 0, 0.25, [51])",
+    "case parameter order ('fm6', 0, 0.25, [45, 51])",
+    "case finite metrics ('fm6', 0, 0.25, [45, 51])",
+    "case nonnegative metrics ('fm6', 0, 0.25, [45, 51])",
+    "30 coefficients ('fm6', 0, 0.25, [45, 51])",
+    "case parameter order ('fm6', 0, 2.0, [45])",
+    "case finite metrics ('fm6', 0, 2.0, [45])",
+    "case nonnegative metrics ('fm6', 0, 2.0, [45])",
+    "30 coefficients ('fm6', 0, 2.0, [45])",
+    "case parameter order ('fm6', 0, 2.0, [51])",
+    "case finite metrics ('fm6', 0, 2.0, [51])",
+    "case nonnegative metrics ('fm6', 0, 2.0, [51])",
+    "30 coefficients ('fm6', 0, 2.0, [51])",
+    "case parameter order ('fm6', 0, 2.0, [45, 51])",
+    "case finite metrics ('fm6', 0, 2.0, [45, 51])",
+    "case nonnegative metrics ('fm6', 0, 2.0, [45, 51])",
+    "30 coefficients ('fm6', 0, 2.0, [45, 51])",
+    "case parameter order ('fm6', 24, 0.25, [45])",
+    "case finite metrics ('fm6', 24, 0.25, [45])",
+    "case nonnegative metrics ('fm6', 24, 0.25, [45])",
+    "30 coefficients ('fm6', 24, 0.25, [45])",
+    "case parameter order ('fm6', 24, 0.25, [51])",
+    "case finite metrics ('fm6', 24, 0.25, [51])",
+    "case nonnegative metrics ('fm6', 24, 0.25, [51])",
+    "30 coefficients ('fm6', 24, 0.25, [51])",
+    "case parameter order ('fm6', 24, 0.25, [45, 51])",
+    "case finite metrics ('fm6', 24, 0.25, [45, 51])",
+    "case nonnegative metrics ('fm6', 24, 0.25, [45, 51])",
+    "30 coefficients ('fm6', 24, 0.25, [45, 51])",
+    "case parameter order ('fm6', 24, 2.0, [45])",
+    "case finite metrics ('fm6', 24, 2.0, [45])",
+    "case nonnegative metrics ('fm6', 24, 2.0, [45])",
+    "30 coefficients ('fm6', 24, 2.0, [45])",
+    "case parameter order ('fm6', 24, 2.0, [51])",
+    "case finite metrics ('fm6', 24, 2.0, [51])",
+    "case nonnegative metrics ('fm6', 24, 2.0, [51])",
+    "30 coefficients ('fm6', 24, 2.0, [51])",
+    "case parameter order ('fm6', 24, 2.0, [45, 51])",
+    "case finite metrics ('fm6', 24, 2.0, [45, 51])",
+    "case nonnegative metrics ('fm6', 24, 2.0, [45, 51])",
+    "30 coefficients ('fm6', 24, 2.0, [45, 51])",
+    "all30 frequency vector derivation",
+    "6 crossnote frequencies",
+    "independent common basis condition",
+    "IMD equivalent amplitude norm ('linear', 0, 0.25)",
+    "independent-voice recorded contract linear",
+    "IMD equivalent amplitude norm ('linear', 0, 2.0)",
+    "independent-voice recorded contract linear",
+    "IMD equivalent amplitude norm ('linear', 24, 0.25)",
+    "independent-voice recorded contract linear",
+    "IMD equivalent amplitude norm ('linear', 24, 2.0)",
+    "independent-voice recorded contract linear",
+    "IMD equivalent amplitude norm ('circuit', 0, 0.25)",
+    "independent-voice recorded contract circuit",
+    "IMD equivalent amplitude norm ('circuit', 0, 2.0)",
+    "independent-voice recorded contract circuit",
+    "IMD equivalent amplitude norm ('circuit', 24, 0.25)",
+    "independent-voice recorded contract circuit",
+    "IMD equivalent amplitude norm ('circuit', 24, 2.0)",
+    "independent-voice recorded contract circuit",
+    "IMD equivalent amplitude norm ('drive', 0, 0.25)",
+    "IMD equivalent amplitude norm ('drive', 0, 2.0)",
+    "IMD equivalent amplitude norm ('drive', 24, 0.25)",
+    "IMD equivalent amplitude norm ('drive', 24, 2.0)",
+    "IMD equivalent amplitude norm ('limit', 0, 0.25)",
+    "IMD equivalent amplitude norm ('limit', 0, 2.0)",
+    "IMD equivalent amplitude norm ('limit', 24, 0.25)",
+    "IMD equivalent amplitude norm ('limit', 24, 2.0)",
+    "IMD equivalent amplitude norm ('fm0', 0, 0.25)",
+    "independent-voice recorded contract fm0",
+    "IMD equivalent amplitude norm ('fm0', 0, 2.0)",
+    "independent-voice recorded contract fm0",
+    "IMD equivalent amplitude norm ('fm0', 24, 0.25)",
+    "independent-voice recorded contract fm0",
+    "IMD equivalent amplitude norm ('fm0', 24, 2.0)",
+    "independent-voice recorded contract fm0",
+    "IMD equivalent amplitude norm ('fm6', 0, 0.25)",
+    "independent-voice recorded contract fm6",
+    "IMD equivalent amplitude norm ('fm6', 0, 2.0)",
+    "independent-voice recorded contract fm6",
+    "IMD equivalent amplitude norm ('fm6', 24, 0.25)",
+    "independent-voice recorded contract fm6",
+    "IMD equivalent amplitude norm ('fm6', 24, 2.0)",
+    "independent-voice recorded contract fm6",
+    "master RMS independent recomputation ('linear', 0, [45])",
+    "nonlimit master RMS x8 linear",
+    "nonlimit recorded exact normalized error linear",
+    "nonlimit coefficients x8 linear",
+    "master RMS independent recomputation ('linear', 0, [51])",
+    "nonlimit master RMS x8 linear",
+    "nonlimit recorded exact normalized error linear",
+    "nonlimit coefficients x8 linear",
+    "master RMS independent recomputation ('linear', 0, [45, 51])",
+    "nonlimit master RMS x8 linear",
+    "nonlimit recorded exact normalized error linear",
+    "nonlimit coefficients x8 linear",
+    "master RMS independent recomputation ('linear', 24, [45])",
+    "nonlimit master RMS x8 linear",
+    "nonlimit recorded exact normalized error linear",
+    "nonlimit coefficients x8 linear",
+    "master RMS independent recomputation ('linear', 24, [51])",
+    "nonlimit master RMS x8 linear",
+    "nonlimit recorded exact normalized error linear",
+    "nonlimit coefficients x8 linear",
+    "master RMS independent recomputation ('linear', 24, [45, 51])",
+    "nonlimit master RMS x8 linear",
+    "nonlimit recorded exact normalized error linear",
+    "nonlimit coefficients x8 linear",
+    "master RMS independent recomputation ('circuit', 0, [45])",
+    "nonlimit master RMS x8 circuit",
+    "nonlimit recorded exact normalized error circuit",
+    "nonlimit coefficients x8 circuit",
+    "master RMS independent recomputation ('circuit', 0, [51])",
+    "nonlimit master RMS x8 circuit",
+    "nonlimit recorded exact normalized error circuit",
+    "nonlimit coefficients x8 circuit",
+    "master RMS independent recomputation ('circuit', 0, [45, 51])",
+    "nonlimit master RMS x8 circuit",
+    "nonlimit recorded exact normalized error circuit",
+    "nonlimit coefficients x8 circuit",
+    "master RMS independent recomputation ('circuit', 24, [45])",
+    "nonlimit master RMS x8 circuit",
+    "nonlimit recorded exact normalized error circuit",
+    "nonlimit coefficients x8 circuit",
+    "master RMS independent recomputation ('circuit', 24, [51])",
+    "nonlimit master RMS x8 circuit",
+    "nonlimit recorded exact normalized error circuit",
+    "nonlimit coefficients x8 circuit",
+    "master RMS independent recomputation ('circuit', 24, [45, 51])",
+    "nonlimit master RMS x8 circuit",
+    "nonlimit recorded exact normalized error circuit",
+    "nonlimit coefficients x8 circuit",
+    "master RMS independent recomputation ('drive', 0, [45])",
+    "nonlimit master RMS x8 drive",
+    "nonlimit recorded exact normalized error drive",
+    "nonlimit coefficients x8 drive",
+    "master RMS independent recomputation ('drive', 0, [51])",
+    "nonlimit master RMS x8 drive",
+    "nonlimit recorded exact normalized error drive",
+    "nonlimit coefficients x8 drive",
+    "master RMS independent recomputation ('drive', 0, [45, 51])",
+    "nonlimit master RMS x8 drive",
+    "nonlimit recorded exact normalized error drive",
+    "nonlimit coefficients x8 drive",
+    "master RMS independent recomputation ('drive', 24, [45])",
+    "nonlimit master RMS x8 drive",
+    "nonlimit recorded exact normalized error drive",
+    "nonlimit coefficients x8 drive",
+    "master RMS independent recomputation ('drive', 24, [51])",
+    "nonlimit master RMS x8 drive",
+    "nonlimit recorded exact normalized error drive",
+    "nonlimit coefficients x8 drive",
+    "master RMS independent recomputation ('drive', 24, [45, 51])",
+    "nonlimit master RMS x8 drive",
+    "nonlimit recorded exact normalized error drive",
+    "nonlimit coefficients x8 drive",
+    "master RMS independent recomputation ('limit', 0, [45])",
+    "master RMS independent recomputation ('limit', 0, [51])",
+    "master RMS independent recomputation ('limit', 0, [45, 51])",
+    "master RMS independent recomputation ('limit', 24, [45])",
+    "master RMS independent recomputation ('limit', 24, [51])",
+    "master RMS independent recomputation ('limit', 24, [45, 51])",
+    "master RMS independent recomputation ('fm0', 0, [45])",
+    "nonlimit master RMS x8 fm0",
+    "nonlimit recorded exact normalized error fm0",
+    "nonlimit coefficients x8 fm0",
+    "master RMS independent recomputation ('fm0', 0, [51])",
+    "nonlimit master RMS x8 fm0",
+    "nonlimit recorded exact normalized error fm0",
+    "nonlimit coefficients x8 fm0",
+    "master RMS independent recomputation ('fm0', 0, [45, 51])",
+    "nonlimit master RMS x8 fm0",
+    "nonlimit recorded exact normalized error fm0",
+    "nonlimit coefficients x8 fm0",
+    "master RMS independent recomputation ('fm0', 24, [45])",
+    "nonlimit master RMS x8 fm0",
+    "nonlimit recorded exact normalized error fm0",
+    "nonlimit coefficients x8 fm0",
+    "master RMS independent recomputation ('fm0', 24, [51])",
+    "nonlimit master RMS x8 fm0",
+    "nonlimit recorded exact normalized error fm0",
+    "nonlimit coefficients x8 fm0",
+    "master RMS independent recomputation ('fm0', 24, [45, 51])",
+    "nonlimit master RMS x8 fm0",
+    "nonlimit recorded exact normalized error fm0",
+    "nonlimit coefficients x8 fm0",
+    "master RMS independent recomputation ('fm6', 0, [45])",
+    "nonlimit master RMS x8 fm6",
+    "nonlimit recorded exact normalized error fm6",
+    "nonlimit coefficients x8 fm6",
+    "master RMS independent recomputation ('fm6', 0, [51])",
+    "nonlimit master RMS x8 fm6",
+    "nonlimit recorded exact normalized error fm6",
+    "nonlimit coefficients x8 fm6",
+    "master RMS independent recomputation ('fm6', 0, [45, 51])",
+    "nonlimit master RMS x8 fm6",
+    "nonlimit recorded exact normalized error fm6",
+    "nonlimit coefficients x8 fm6",
+    "master RMS independent recomputation ('fm6', 24, [45])",
+    "nonlimit master RMS x8 fm6",
+    "nonlimit recorded exact normalized error fm6",
+    "nonlimit coefficients x8 fm6",
+    "master RMS independent recomputation ('fm6', 24, [51])",
+    "nonlimit master RMS x8 fm6",
+    "nonlimit recorded exact normalized error fm6",
+    "nonlimit coefficients x8 fm6",
+    "master RMS independent recomputation ('fm6', 24, [45, 51])",
+    "nonlimit master RMS x8 fm6",
+    "nonlimit recorded exact normalized error fm6",
+    "nonlimit coefficients x8 fm6",
+    "lowgain limiter fullstream hash equal (0, [45])",
+    "lowgain limiter exact recorded error (0, [45])",
+    "lowgain limiter fullstream hash equal (0, [51])",
+    "lowgain limiter exact recorded error (0, [51])",
+    "lowgain limiter fullstream hash equal (0, [45, 51])",
+    "lowgain limiter exact recorded error (0, [45, 51])",
+    "lowgain limiter fullstream hash equal (24, [45])",
+    "lowgain limiter exact recorded error (24, [45])",
+    "lowgain limiter fullstream hash equal (24, [51])",
+    "lowgain limiter exact recorded error (24, [51])",
+    "lowgain limiter fullstream hash equal (24, [45, 51])",
+    "lowgain limiter exact recorded error (24, [45, 51])",
+    "Drive label H3/H1 0",
+    "Drive label H3/H1 24",
+    "duration43.2seconds",
+    "no failed native contracts",
+    "no hardware calibration claim"
+  ],
+  "issues": []
+}

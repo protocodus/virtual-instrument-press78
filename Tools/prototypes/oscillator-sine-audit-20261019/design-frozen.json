@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-19",
+  "classification": "New bounded reanalysis of an already inspected sibling capture; not an independent holdout or a hardware-parameter fit.",
+  "scope": "Table 0 (SIN), source-observability and half-wave antisymmetry only; no production DSP change, no audio generation, no new download, no additional noise.",
+  "source": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/kevin-KAHq65dWzG4.wav",
+  "expected_source_sha256": "66a0317fe6bd010909560e1e51e40e39025297ed743c1453ce48a503cd87a951",
+  "old_analysis": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/kevin-waveform-analysis.json",
+  "source_window_seconds": [10.5, 10.85],
+  "frequency_rule": "Use unchanged table-0 f0 from retained analysis (523.0663737370845 Hz); no new frequency search or phase alignment.",
+  "subdivision_rule": "One full window and its seven contiguous 50 ms interiors, without inspection-dependent rejection.",
+  "channels": ["left", "right", "arithmetic-mid"],
+  "capture_fits": {
+    "base": "Hann-weighted least squares, DC and sine/cosine coefficients for harmonics 1..12; fixed f0; local time centered at midpoint.",
+    "nuisance_orders": [0, 1, 2],
+    "nuisance_basis": "For order 1/2, add t*sin(f0*t), t*cos(f0*t), and then t^2*sin(f0*t), t^2*cos(f0*t). These are diagnostics for slowly changing carrier amplitude/phase, not hardware law estimates.",
+    "reported": ["midpoint fundamental amplitude", "H2/H1", "H3/H1", "H2 phase minus twice fundamental phase", "unweighted residual RMS relative to capture RMS", "weighted residual RMS relative to weighted capture RMS"],
+    "excluded": "No EQ, per-harmonic correction, input/capture nonlinearity fit, gain calibration, sample-rate estimate, bit-depth or physical parameter adoption. Every predeclared fit is retained."
+  },
+  "synthetic_probe": {
+    "period_samples": 65536,
+    "phase_address_bits": [6, 7, 8, 9, 10, 11, 12, 13, 14],
+    "symmetric_linear_amplitude_bits": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "definition": "Uniform phase addresses; midpoint sampled sine, second half made exactly the negative of first; symmetric round-to-nearest signed amplitude levels. Check y(theta+pi)=-y(theta), DC and even harmonics. These widths are a separating synthetic sweep only, never proposed OPU specifications.",
+    "positive_control": "Add a known quadratic term to ideal sine to demonstrate the harmonic estimator detects broken half-wave antisymmetry; alpha=0.04 is an arbitrary test-fixture constant, not a proposed hardware distortion.",
+    "no_claim": "The probe does not enumerate asymmetric ROMs, phase-dependent special bit logic, dynamic clock/update aliases, nonstationary modulation, DACs, speakers, microphones or codecs. It cannot identify the target's arithmetic width."
+  },
+  "acceptance": "All source hashes must match; every declared fit/candidate must be emitted. Synthetic half-wave equality must hold exactly, all even harmonic magnitudes/DC below 1e-12 relative to fundamental, and the quadratic positive control H2/H1 must equal alpha/2 within 1e-12 absolute. No promotion gate or product change is implied.",
+  "chronology": "This document was written before executing the new capture fits or synthetic sweep. The old full-window harmonic result was known before design; no claim of pristine holdout."
+}

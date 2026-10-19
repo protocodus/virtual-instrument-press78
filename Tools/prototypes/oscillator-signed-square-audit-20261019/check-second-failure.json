@@ -1,0 +1,8 @@
+{
+  "status": "overprecise logarithmic comparison failed; retained original check",
+  "cause": "Independent fit evaluates t*f*h rather than the original t*h*f. Fitted amplitude differences are 1.87e-16 to 6.38e-16, but relative dB of very quiet harmonics amplifies them to 3.18e-10dB, exceeding an unjustified 1e-10dB invariant.",
+  "per_table_max_db_difference": [3.1798208510736004e-10,1.37674760480877e-10,6.208722425071755e-11,5.931610758125316e-11],
+  "per_table_max_amplitude_difference": [6.38378239159465e-16,6.106226635438361e-16,2.498001805406602e-16,1.8723493892466858e-16],
+  "correction": "Compare all 48 linear fitted amplitudes with a 64 machine-epsilon bound scaled by the largest partial. The two numerical implementations are intentionally independent; no hardware gate changes.",
+  "effects": "No measured or model source, frequency, window, coefficient, score or audio changed."
+}

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-19",
+  "status": "frozen-before-new-audio-inspection",
+  "purpose": "Audit signed squared sine higher partials and identify stereo-midpoint cancellation using exact retained waveform windows/frequencies. No new frequency/window/parameter search; no model fitting or promotion gate.",
+  "inputs": {
+    "capture": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/recording-audit-20261018/kevin-KAHq65dWzG4.wav",
+      "bytes": 23365684,
+      "sha256": "66a0317fe6bd010909560e1e51e40e39025297ed743c1453ce48a503cd87a951"
+    },
+    "old_analysis": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/recording-holdout-audit-2026-10-18.json",
+      "bytes": 38254,
+      "sha256": "da86e8730c722244cca1c632f66a1292864ba81d2146b403d9f6d100f7f7d7bb"
+    },
+    "engine": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.cpp",
+      "bytes": 28519,
+      "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+    }
+  },
+  "windows": [
+    {
+      "table": 0,
+      "start": 10.5,
+      "end": 10.85,
+      "f0_hz": 523.0663737370845
+    },
+    {
+      "table": 1,
+      "start": 29.85,
+      "end": 30.2,
+      "f0_hz": 523.0676963516906
+    },
+    {
+      "table": 2,
+      "start": 39.12,
+      "end": 39.32,
+      "f0_hz": 523.1208910330005
+    },
+    {
+      "table": 3,
+      "start": 47.38,
+      "end": 47.68,
+      "f0_hz": 523.0806687438304
+    }
+  ],
+  "estimator": "Twelve sine/cosine harmonic pairs plus DC, fixed prior fundamental, Hann-weighted ordinary least squares (weights apply to basis and signal). L/R/mid/side separately; full original window and three equal thirds. Absolute phases refer to first sample of each window; report amplitudes, relative dB, complex ratio/phase and fit residual.",
+  "native_probe": "Actual shipping wave() in unchanged Engine.cpp via translation-unit include. One-second stationary carrier table1 at exact source frequency through engine with outputCircuit false/true, tone0, chorus0, drive0, limiterfalse, dcBlockfalse, clock0; analyze last350ms. Additional 65536-phase coherent direct wave1 identity/DC/PM algebra checks, no hardware equivalence claim.",
+  "math": "Signed square sine odd-harmonic coefficients b_n=-8/(pi*n*(n*n-4)) for positive odd n; b_even=0; DC0. Reference higher harmonics never fitted from capture.",
+  "limits": [
+    "Manual note gates, source effect/capture state and response unknown.",
+    "No exact-ROM, bit-depth, arithmetic-width, native-clock or DAC inference.",
+    "No production code edits; no audio rerender beyond two short native stationary controls.",
+    "No novel physical constants or artificial noise."
+  ]
+}

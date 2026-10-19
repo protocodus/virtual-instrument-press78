@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-19",
+  "scope": "Research-only shipping-engine public-API mechanism separation, not a hardware calibration or an adopted nonlinear model.",
+  "chronology": "Frozen before native execution or waveform metrics. Code inspection and manufacturer source warnings were already known.",
+  "sample_rate_hz": 48000,
+  "duration_seconds": 0.6,
+  "analysis_seconds": [0.2, 0.6],
+  "block_frames": 64,
+  "notes": [45, 51],
+  "note_sets": [[45], [51], [45, 51]],
+  "velocity": 127,
+  "carrier_raw_tl": [0, 24],
+  "master_gain": [0.25, 2.0],
+  "modes": ["linear", "circuit", "drive", "limit", "fm0", "fm6"],
+  "patch": "Independent initPatch, both sine/multiple1, instant AR63, D1R=D2R=D1L=RKS=LKS=DT1=DT2=AMS=PMS=0, no effects. Carrier TL from grid. Modulator TL127 (mute), except fm0/fm6 TL24. Feedback0 except fm6 feedback6. RR10/SRR5 retained but no note-off occurs.",
+  "controls": "Equal-tempered pitch model0, no drift/offset/tuning/bend, no modulation of pitch/amplitude, velocitySensitivity0, velocityToModulation0, modulationAmount1. OutputCircuit only in circuit. Drive1 only in drive. OutputLimit only in limit. Tone/DC block/chorus off. MasterGain from grid, polyphony12. Controls seeded before noteOn. Native48k and unchanged32-tick resampler latency retained.",
+  "case_count": 72,
+  "metrics": {
+    "raw": "Analysis-window RMS, peak, PCM float32 SHA256, fundamental/H2/H3 coefficients from fixed-frequency joint Hann-weighted LS; no frequency, phase, level or timing fit.",
+    "basis": "DC and sin/cos for harmonics1..12 of both equal-tempered frequencies, plus difference/sum f2-f1, f1+f2, abs(2f1-f2), 2f2-f1, 2f1+f2, 2f2+f1. Shared basis and declared analysis window for all cases. Report conditioning.",
+    "additivity": "At each mode/TL/gain, chord minus separately rendered single45 and single51. Report RMS relative to chord; this cancels independent per-voice FM before assessing shared postmix nonlinearity. Report RMS-equivalent energy in six fixed IMD witness coefficients of that residual, relative to chord. These are named witnesses, not total IMD or a calibrated hardware measurement.",
+    "master_gain_placement": "Compare high-master waveform divided by2 against low-master waveform divided by0.25 at fixed mode/TL/note set. Report relative RMS disagreement and RMS ratio. No fitted gain.",
+    "carrier_level_dependence": "Divide each TL24 waveform by the existing engine's nominal raw-TL gain10^(-24*0.75/20), compare against TL0 at same mode/gain/note set. Report relative RMS disagreement; this checks where an unchanged engine's current level parameter excites nonlinear stages, not a recovered hardware TL law.",
+    "counterfactuals": "Mode differences and level-normalized differences are computed from same frozen grid; no additional render or selected replacement window."
+  },
+  "verification": "All72cases finite and both output channels exactly equal. Linear/circuit/fm0/fm6 chord-additivity relative error <2e-6; all non-limit modes master placement relative error <2e-6; low-gain limit mode equals linear at TL0/TL24; no assertions that drive/limit matches any target distortion. Every failed contract is retained, never loosened to obtain a desired conclusion.",
+  "storage": "Render native public API once per case. Capture raw float32 through a subprocess pipe in memory; emit metrics and per-case hashes only. No audio files or recordings saved, no hardware/media downloads, no physical constants fitted.",
+  "exclusions": "No factory payload, no physical-electrical gain mapping, no YM3420 width/clock/transfer law, no supply or BBD constants, no additive noise, no production source/default/preset/package changes. Front-panel displayed Total Level and Melody Volume are not claimed equivalent to raw carrier TL or plugin MasterGain."
+}
