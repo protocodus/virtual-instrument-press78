@@ -27133,5 +27133,29 @@
         "sha256": "e6adf79b9e31d17c997f637e3f7fc9936c993aa790de613b17e7d8b77a015066"
       }
     ]
+  },
+  "subsequent_corrected_fixture_comparison": {
+    "scope": "Separate frozen2x2 old/corrected metadata by Legacy/Original allocator. Earlier result is unchanged.",
+    "evidence": [
+      {
+        "path": "Reference/Research/midi-fixture-comparison-20261019.md",
+        "sha256": "139ec061054561a2d81490541d4cbb6092d33fd00d1a3ab3a04574d3f6d39b4e"
+      },
+      {
+        "path": "Reference/Research/midi-fixture-comparison-20261019.json",
+        "sha256": "605ca6f6cc38e68211046bb1b018f08fe644b9ef9d8ce5fad5d9e0651d4f79ce"
+      },
+      {
+        "path": "Reference/Research/midi-fixture-comparison-protocol-20261019.json",
+        "sha256": "34c7d67681cf067aa5cf1d67834e5e489126bd7130fd3715f07004ab55db06d4"
+      }
+    ],
+    "absolute_score_objects": 1632,
+    "contrasts": 8160,
+    "independent_checks": 34437,
+    "corrected_audio_gates_passed": false,
+    "failed_gate": "Short repeatedSine diagnostic exceeds fixed+0.10dB ceiling on all4maps.",
+    "promotion": false,
+    "production_changed": false
   }
 }

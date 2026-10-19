@@ -1,0 +1,47 @@
+{
+  "schema": "press78.mode00-program-command-export.v1",
+  "frozen_utc": "2026-10-19T12:36:20.576644+00:00",
+  "export_tests_started": false,
+  "scope": "Firmware-free command/state research source with synthetic tests and original functional state/key outputs only; no factory sound payload/ROM/audio.",
+  "files": {
+    "firmware_allocator.py": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439",
+    "program_loader.py": "a5e5d3eb033da8996a719daa2c4a5078ff77770d1207ce00f5b6fc606bd35d16",
+    "check.py": "355947b9d6ec0185a091ebc1574960dc4809f9e406a05a15d457819f38dd899e",
+    "check_retained_state.py": "906f5e7f375dd4e3ec01ff728d25d00e584a8c7d3e6e07015c3fcb327b5e8ff8",
+    "state_fixture.json": "fe847803c819980f9415d8df2b39c8383f8d73888f6076fcc806731f8a4a8794",
+    "validation.json": "c7f6fb195420a356b66e3ee77b183612382c7e99dc111db4921176d6371cf1ce",
+    "README.md": "7034345a3ee4a50a6d889091433bf06834fdaee985a81afb68c3fdf57aa00a58"
+  },
+  "unchanged_bound_sources": {
+    "firmware_allocator.py": {
+      "ignored_path": "build/mode00-program-command-adapter-20261019/prototype/firmware_allocator.py",
+      "sha256": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439",
+      "export_bytes_identical": true
+    },
+    "program_loader.py": {
+      "ignored_path": "build/mode00-program-command-adapter-20261019/prototype/program_loader.py",
+      "sha256": "a5e5d3eb033da8996a719daa2c4a5078ff77770d1207ce00f5b6fc606bd35d16",
+      "export_bytes_identical": true
+    },
+    "check.py": {
+      "ignored_path": "build/mode00-program-command-adapter-20261019/prototype/check.py",
+      "sha256": "355947b9d6ec0185a091ebc1574960dc4809f9e406a05a15d457819f38dd899e",
+      "export_bytes_identical": true
+    }
+  },
+  "local_full_comparison": {
+    "design": {
+      "path": "build/mode00-program-command-adapter-20261019/design-frozen.json",
+      "sha256": "0871274b08bfb2906b98cfd8efc62fcf423f83b809cfcf90e46ef6ce05066ebe"
+    },
+    "implementation_binding": {
+      "path": "build/mode00-program-command-adapter-20261019/implementation-bound.json",
+      "sha256": "dde2d8e010dd84150467200439436f93fcf36be71a9064f3018f5594ab8068e3"
+    },
+    "validation": {
+      "path": "build/mode00-program-command-adapter-20261019/validation.json",
+      "sha256": "c7f6fb195420a356b66e3ee77b183612382c7e99dc111db4921176d6371cf1ce"
+    }
+  },
+  "known_failure_preserved": "Published prior40-case postprocessor initially generalized780 behavior to680. Its original failure remains immutable; no such failure occurred in the new12-case executions or first60-case adapter comparison."
+}

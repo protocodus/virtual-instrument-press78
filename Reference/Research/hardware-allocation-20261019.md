@@ -51,6 +51,8 @@ Four new metadata fixtures from the [reference-event exporter](midi-reference-ex
 
 The later [original program-load study](opu-mode00-program-load-20261019.md), independently checked against all 48 retained CPU witnesses, also confirms a target-specific command omission. Both models rewrite all 12 normal slots on selection; the tested PSS-780 path clears held/pending serial input state, whereas PSS-680 preserves it. The comparison here keeps existing plugin voice snapshots on program change and therefore models neither complete loader. The audible response to those original writes remains unresolved. No past event, score or gate has been changed to accommodate this finding.
 
+A separate [corrected-fixture comparison](midi-fixture-comparison-20261019.md) has now completed with every old score preserved. It crosses old/corrected metadata with Legacy/Original allocation and retains all 1,632 scores and 8,160 contrasts. Corrected allocation improves the global band mean but still fails the fixed short repeated-sine limit. The earlier failed decision here is unchanged; no result is replaced or default promoted.
+
 ## Reproducibility and decision
 
 An independent audit passes 34,341 checks: all source/fixture and eight complete identity targets; 1,224 score objects, 3,264 deltas and 144 aggregate values; every gate/regression list; 30 fresh metric computations with zero difference; and 20 exact float32 four-part audition reconstructions. The reconstructed auditions are finite and stay at or below 0.900001 peak. New WAV storage peaks at 652,449,832 bytes, below the prospective 800 MB limit.
