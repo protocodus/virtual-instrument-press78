@@ -1,0 +1,58 @@
+{
+  "schema": "press78.assumed-hardware-audition.v1",
+  "authorization": "User explicitly asked to estimate or assume missing hardware behavior, 2026-10-19.",
+  "scope": "Research-only candidates. A unchanged native implementation; B one hypothesis. No production adoption or hardware-fidelity claim.",
+  "sample_rate": 48000,
+  "block_frames": 64,
+  "duration_seconds": 14,
+  "controls": {
+    "masterGain": 0.5,
+    "pitchModel": 1,
+    "sustainMode": 1,
+    "clockOffsetPpm": 0,
+    "clockDriftPpm": 0,
+    "outputCircuit": true,
+    "toneCutoffHz": 0,
+    "dcBlock": true,
+    "outputLimit": false,
+    "drive": 0,
+    "chorusMix": 0,
+    "polyphony": 12,
+    "sustain_switch": false,
+    "other_controls": "Native Controls defaults"
+  },
+  "envelope": {
+    "presets": [65, 93, 97],
+    "notes": [[40, 52], [48, 60], [60, 72]],
+    "note_on_seconds": [0.25, 7.25],
+    "note_off_seconds": [1.75, 8.75],
+    "velocity": 110,
+    "candidate": "Assumed Reverb enabled: carrier attenuation before the native tick >=18 dB gates both operators; cap each release at its own native RR4/SRR4 + existing RKS/note law. Preserve already slower rates.",
+    "no_other_changes": "No RR x3, attack/decay scaling, allocator, waveform, output, chorus or clock changes."
+  },
+  "output": {
+    "candidate": "Shared zero-centered biased tanh before existing analog filter. Assumed normalized H=1, b=.14. No voltage/bit-depth identification.",
+    "events": [
+      [0.25, "patch", 99], [0.25, "on", 45, 96], [1.25, "off", 45],
+      [2.25, "on", 45, 127], [2.25, "on", 52, 127], [2.25, "on", 57, 127],
+      [3.75, "off", 45], [3.75, "off", 52], [3.75, "off", 57],
+      [5.0, "patch", 79], [5.0, "on", 28, 127], [5.5, "off", 28],
+      [6.0, "on", 31, 127], [6.5, "off", 31],
+      [7.0, "on", 28, 127], [7.0, "on", 35, 127], [7.0, "on", 40, 127],
+      [8.5, "off", 28], [8.5, "off", 35], [8.5, "off", 40],
+      [9.5, "patch", 93], [9.5, "on", 48, 127], [9.5, "on", 55, 127],
+      [9.5, "on", 60, 127], [9.5, "on", 64, 127],
+      [11.5, "off", 48], [11.5, "off", 55], [11.5, "off", 60], [11.5, "off", 64]
+    ]
+  },
+  "matching": "Each pair: whole-file stereo RMS to quieter member, then same peak safety factor min(1, .95/max_peak). No dynamic processing.",
+  "validation": [
+    "Production DSP unchanged against recorded HEAD",
+    "Exact Reverb-OFF helper parity, unchanged held portions, actual release change",
+    "64 versus 257 frame processing identical for representative native scenarios",
+    "Fresh no-note renders exactly zero for baseline and each candidate",
+    "Output transfer finite, monotonic, bounded, zero centered and unity slope near zero",
+    "Finite audio, deterministic reset, no voice pressure in sparse release tests"
+  ],
+  "metrics": "Model behavior only: tail threshold times, differences, native transfer harmonics and gain matching. No new hardware benchmark or authenticity score."
+}

@@ -1,0 +1,311 @@
+{
+  "schema": "press78.assumed-hardware-independent-review.v1",
+  "date": "2026-10-19",
+  "verdict": "passed for the declared research audition and its stored artifacts; no hardware-fidelity approval or production adoption",
+  "reviewer": "regional_target_schematic independent audit",
+  "audition": {
+    "directory": "build/assumed-hardware-20261019/run-02",
+    "result_sha256": "3921241329587b8b4cd3933b571c0ae28a8883ef994a3a7101e0c35d90a94455",
+    "inputs_sha256": "b9d7b08b9f8797ea3632613360823f83c7c9166d67019759d0736cf46d36ae55",
+    "recorded_head": "0c3fd0b5a542a05db9ffd837477424a7d3d57bee",
+    "sample_rate": 48000,
+    "frames_per_file": 672000,
+    "raw_wavs": 8,
+    "matched_wavs": 8
+  },
+  "scope_and_actions": {
+    "independent_audio_and_source_checks": 244,
+    "additional_preservation_and_reset_binding_checks": 31,
+    "additional_check_names": [
+      "audition-result-unchanged",
+      "audition-inputs-unchanged",
+      "run-01:snapshot:EnvelopeHypothesis.h",
+      "run-01:snapshot:OutputHypothesis.h",
+      "run-01:snapshot:Renderer.cpp",
+      "run-01:snapshot:design-frozen.json",
+      "run-01:snapshot:envelope-notes.md",
+      "run-01:snapshot:output-notes.md",
+      "run-01:snapshot:run.py",
+      "run-02:snapshot:EnvelopeHypothesis.h",
+      "run-02:snapshot:OutputHypothesis.h",
+      "run-02:snapshot:Renderer.cpp",
+      "run-02:snapshot:design-frozen.json",
+      "run-02:snapshot:envelope-notes.md",
+      "run-02:snapshot:output-notes.md",
+      "run-02:snapshot:run.py",
+      "hypothesis-header-preserved-across-failed-precheck",
+      "audition-first-precheck-failure-preserved",
+      "reset-probe-sha",
+      "baseline:reset-recorded-result",
+      "baseline:reset-empty-error-compile-logs",
+      "baseline:reset-binary-present",
+      "envelope:reset-recorded-result",
+      "envelope:reset-empty-error-compile-logs",
+      "envelope:reset-binary-present",
+      "output:reset-recorded-result",
+      "output:reset-empty-error-compile-logs",
+      "output:reset-binary-present",
+      "first-reset-failure-preserved",
+      "reset-only-post-off-wait-changed",
+      "reset-active-state-witness-present"
+    ],
+    "stored_pcm_recalculations": true,
+    "native_audio_rerenders": 0,
+    "source_recording_reads": 0,
+    "historical_score_refreshes": 0,
+    "javascript_or_archive_work": false,
+    "root_contract_tests_not_independently_rerun": true,
+    "method": "Read RIFF/WAVE chunks independently using Python struct; verify raw/PCM/WAV hashes, float32 shape/finiteness, mono equality, exact constant-gain samples, independently norm-based RMS and Human93 tail windows; inspect exact generated native bodies and recorded supplemental checks."
+  },
+  "source_review": {
+    "baseline": "Generated baseline is exactly current native Press78Engine.cpp plus two inert helper includes and the common renderer include; every Source/DSP file matches both recorded run inputs and git HEAD recorded by the run.",
+    "envelope_hook": "Only the original paired Envelope::next calls are replaced. One pre-tick carrier attenuation snapshot controls both operators. Helper temporarily caps each actual native release coefficient using unchanged updateRelease RR4/RKS/note calculation, advances only the original envelope and restores its ordinary coefficient. Disabled/finished/native entered-release behavior stays native.",
+    "output_hook": "Only one process(mono) call is inserted directly before existing analog_.process(mono); oscillator, allocator, resampler, downstream native analog filter and controls remain native.",
+    "no_hidden_production_changes": true,
+    "assumptions": "18dB absolute carrier EG knee, native RR4 cap, always-on research Reverb state, H=1 and bias=.14 are chosen assumptions, not recovered chip/circuit values. No quantization, random excitation, supply process, alternate waveform, artificial noise or second renderer is introduced."
+  },
+  "audio_checks": {
+    "all_raw_and_matched_wav_hashes_match": true,
+    "all_raw_pcm_hashes_match": true,
+    "all_constant_gain_matching_samples_exact": true,
+    "all_files_48k_stereo_float32_finite_14seconds": true,
+    "raw_channels_exactly_equal": true,
+    "first_raw_held_span_exact_for_all_three_envelope_pairs": {
+      "frames_compared": 84032,
+      "scope": "Through first note-off plus native32-frame latency; no claim that later analog history or globally gain-matched held PCM is bit-identical."
+    },
+    "max_independent_raw_rms_relative_difference": 5.1653286604445863e-14,
+    "pair_metrics": {
+      "65": {
+        "A": {
+          "raw_rms_independent_norm": 0.020231777335576656,
+          "matched_rms_independent_norm": 0.020231777335576656,
+          "raw_wav_sha256": "b72d84333dfc4e972f76d44b3cb13d7e715e1eda4ee05cd8d6b32f155cf6588b",
+          "matched_wav_sha256": "b72d84333dfc4e972f76d44b3cb13d7e715e1eda4ee05cd8d6b32f155cf6588b",
+          "peak": 0.1493365615606308
+        },
+        "B": {
+          "raw_rms_independent_norm": 0.02024528393694066,
+          "matched_rms_independent_norm": 0.020231777335523355,
+          "raw_wav_sha256": "7267be9bddaa6bd6bcfdce91748f8e4bd2039a612c53a72874534f6ee0fce889",
+          "matched_wav_sha256": "12cac777b549d69e2ae789709f7278dce94f20c8aac781cbd4be50fa9155ace5",
+          "peak": 0.14923693239688873
+        },
+        "matched_rms_relative_difference": 2.6005704864030244e-12
+      },
+      "93": {
+        "A": {
+          "raw_rms_independent_norm": 0.021555266199685646,
+          "matched_rms_independent_norm": 0.021555266199685646,
+          "raw_wav_sha256": "1fffe06e4defd149e4a4aee88360b36a8f1483509e473c2a65a4ab564f0f9dce",
+          "matched_wav_sha256": "1fffe06e4defd149e4a4aee88360b36a8f1483509e473c2a65a4ab564f0f9dce",
+          "peak": 0.08116541802883148
+        },
+        "B": {
+          "raw_rms_independent_norm": 0.021565106935538512,
+          "matched_rms_independent_norm": 0.021555266199209153,
+          "raw_wav_sha256": "262510e2958df9538d48b875bc7c882e55708d2ad8b8c3ad98000c25e8f90c58",
+          "matched_wav_sha256": "b413844d41954083e5a5ceacbcff2df68890491e21a68c302d6938fd0ecea0af",
+          "peak": 0.08112838119268417
+        },
+        "matched_rms_relative_difference": 2.2130790391852296e-11
+      },
+      "97": {
+        "A": {
+          "raw_rms_independent_norm": 0.02303653641626278,
+          "matched_rms_independent_norm": 0.02303653641626278,
+          "raw_wav_sha256": "41048c344e6ce5dd30f02c594899ea4b9f47070750bbaa0e5c0c338721684f28",
+          "matched_wav_sha256": "41048c344e6ce5dd30f02c594899ea4b9f47070750bbaa0e5c0c338721684f28",
+          "peak": 0.08873589336872101
+        },
+        "B": {
+          "raw_rms_independent_norm": 0.02304521564572376,
+          "matched_rms_independent_norm": 0.02303653641606078,
+          "raw_wav_sha256": "93e8d179c90b62d27ff65fe663d86fcf2bab677ba20aa34ecc94285793e6b54a",
+          "matched_wav_sha256": "bdae9792d6e444cb6ef55689828d354a0d1d7599e7c58bf60007db76fe739c0e",
+          "peak": 0.0887024775147438
+        },
+        "matched_rms_relative_difference": 8.745405210473718e-12
+      },
+      "output": {
+        "A": {
+          "raw_rms_independent_norm": 0.0655559490538875,
+          "matched_rms_independent_norm": 0.0627071654921206,
+          "raw_wav_sha256": "baedf8c3f9df1b4bfdd213ddea46ec24af767902f7120055da66b335701f4abb",
+          "matched_wav_sha256": "4b322c13c1d36815907b4c9e51f263cfe9afa4b8844a62f829857037218d094a",
+          "peak": 0.31536346673965454
+        },
+        "B": {
+          "raw_rms_independent_norm": 0.06270716549310773,
+          "matched_rms_independent_norm": 0.06270716549310773,
+          "raw_wav_sha256": "a51fd9d8bad132085963c5fc15840b5f3769245c24e267ea04e373f7a53dc3af",
+          "matched_wav_sha256": "a51fd9d8bad132085963c5fc15840b5f3769245c24e267ea04e373f7a53dc3af",
+          "peak": 0.309859961271286
+        },
+        "matched_rms_relative_difference": 1.5706665590181958e-11
+      }
+    },
+    "human_voice_1_tail": {
+      "A": {
+        "hold_reference_rms": 0.0475115741194219,
+        "last_above_20ms_window_end_seconds_from_MIDI_off": {
+          "20": 0.06,
+          "40": 0.12,
+          "60": 0.18
+        }
+      },
+      "B": {
+        "hold_reference_rms": 0.0475115741194219,
+        "last_above_20ms_window_end_seconds_from_MIDI_off": {
+          "20": 0.1,
+          "40": 0.54,
+          "60": 0.98
+        }
+      }
+    },
+    "output_raw_difference_rms_db": {
+      "stored": -24.009264102737294,
+      "mean_square_recalculation": -24.009264102737294,
+      "independent_norm_recalculation": -24.00926410273864,
+      "norm_difference_db": -1.3464784842653899e-12
+    }
+  },
+  "tail_metric_limits": [
+    "Reported values are endpoints of the last20ms complete RMS window at or above a threshold relative to held RMS, not fitted envelope time constants.",
+    "Elapsed time starts at MIDI note-off. Native32-frame latency(0.6666667ms at48kHz) is retained; output filtering and native waveform modulation can affect the RMS threshold.",
+    "Only Human93 tail scalars were independently recalculated here; native code and raw held spans were checked across all three envelope pairs.",
+    "Whole-file stereo RMS matching uses one constant gain per14second phrase and shared peak safety, not perceptual loudness normalization or per-note matching."
+  ],
+  "preserved_failures": {
+    "audition_precheck": "run-01 compiled variants but failed before audio: assertion incorrectly treated already-entered native stage3 as held when released=false. Correction separates stage2 held and stage3 preserved witnesses. Both hypothesis headers are identical across runs; all seven historical source snapshots match original inputs exactly.",
+    "first_reset_probe": "Original post-off wait65536frames left fixture idle; baseline stopped at the explicit active-voice witness before reset comparison. Original source/binary/logs/failure retained. Corrected8192frame wait exercises an active releasing voice; only that loop bound changed. No audition WAV regenerated.",
+    "independent_review_arithmetic": {
+      "first": "All preceding checks passed, then independent norm-based dB contrast failed an unnecessarily strict1e-12dB review threshold. Observed discrepancy -1.3464784842653899e-12dB. No DSP or data changed.",
+      "second": "Reread stored WAVs once to retain full review; direct mean-square recalculation matches stored exactly; independent norm comparison uses explicit2e-12dB arithmetic tolerance. This is not a hardware/adoption gate."
+    }
+  },
+  "post_excitation_reset_supplement": {
+    "receipt": "build/assumed-hardware-20261019/run-02/reset-contracts.json",
+    "receipt_sha256": "13c0d66b4ac278d2fec048b22f332db1f559ff040359059a402c7c6e97bccab6",
+    "probe": "Tools/prototypes/assumed-hardware-20261019/ResetContracts.cpp",
+    "probe_sha256": "cc16afeb4d84f55756560b4c364d0377b2ceeb80eebaf771c4dd9a97003349ca",
+    "recorded_results": {
+      "baseline": {
+        "post_excitation_reset_matches_fresh": true,
+        "reset_silence_frames": 1024,
+        "comparison_frames": 131072
+      },
+      "envelope": {
+        "post_excitation_reset_matches_fresh": true,
+        "reset_silence_frames": 1024,
+        "comparison_frames": 131072
+      },
+      "output": {
+        "post_excitation_reset_matches_fresh": true,
+        "reset_silence_frames": 1024,
+        "comparison_frames": 131072
+      }
+    },
+    "artifacts": {
+      "baseline": {
+        "stdout_sha256": "7a144631bd7cda7d34113f253891c150bf75ad06b5426ce37ecf5fd5ddc4f229",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "binary_sha256": "36aed9657ca2f264285000ef83333aa3adb6f5508a85737298eb147a6aed4c5a"
+      },
+      "envelope": {
+        "stdout_sha256": "7a144631bd7cda7d34113f253891c150bf75ad06b5426ce37ecf5fd5ddc4f229",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "binary_sha256": "631308c988ebbc8404d7b027cd7c9f4c70d7182c73b85aaef22a8e5cf83af960"
+      },
+      "output": {
+        "stdout_sha256": "7a144631bd7cda7d34113f253891c150bf75ad06b5426ce37ecf5fd5ddc4f229",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "binary_sha256": "5b5051388691b0851c0ef6be712aed031ebed8033df5f0188dc36c65129bc894"
+      }
+    },
+    "review_scope": "Inspected probe, source-bound metadata, recorded passing stdout and empty compile/error logs; no independent binary rerun. Original audition fresh-instance reproducibility label alone did not establish post-excitation reset."
+  },
+  "historical_source_bindings": {
+    "run-01": {
+      "input_sha256": "7e243cc4f35ff3946735b65e997e724b8484d4095e7773494fa239ccb0c61e8e",
+      "source_snapshots": {
+        "EnvelopeHypothesis.h": {
+          "sha256": "9d823db0bbe9378689a228675f637b6c0b6a1595121ec8d73ec5a31968207317",
+          "path": "build/assumed-hardware-20261019/run-01/source-snapshots/EnvelopeHypothesis.h"
+        },
+        "OutputHypothesis.h": {
+          "sha256": "17d2e2863d5a47cfd42ee68bd5273599ed695751593f1bf1822f78e548b8f4d7",
+          "path": "build/assumed-hardware-20261019/run-01/source-snapshots/OutputHypothesis.h"
+        },
+        "Renderer.cpp": {
+          "sha256": "1883a2f8055e41378948653974b992c08ff7eb5ee919ab9736bf640a3d2c64a8",
+          "path": "build/assumed-hardware-20261019/run-01/source-snapshots/Renderer.cpp"
+        },
+        "design-frozen.json": {
+          "sha256": "cbba976439a3cc6787f7701e9978a90546938bcc7ca3927d02519e0e5769f1ae",
+          "path": "build/assumed-hardware-20261019/run-01/source-snapshots/design-frozen.json"
+        },
+        "envelope-notes.md": {
+          "sha256": "608933fb1cc5450d089cfe236184dda2eb33a603e6eac1253ff94ae292ade75d",
+          "path": "build/assumed-hardware-20261019/run-01/source-snapshots/envelope-notes.md"
+        },
+        "output-notes.md": {
+          "sha256": "f166ae0ad6cc45fb0b9dbbd905a7bb0da9cb69e2ef19dba42e351abfb40b095b",
+          "path": "build/assumed-hardware-20261019/run-01/source-snapshots/output-notes.md"
+        },
+        "run.py": {
+          "sha256": "10e367078335d4c50fa3b16cc3f7133291281ddaa671d3d8d8964d4f62d5e7b2",
+          "path": "build/assumed-hardware-20261019/run-01/source-snapshots/run.py"
+        }
+      }
+    },
+    "run-02": {
+      "input_sha256": "b9d7b08b9f8797ea3632613360823f83c7c9166d67019759d0736cf46d36ae55",
+      "source_snapshots": {
+        "EnvelopeHypothesis.h": {
+          "sha256": "9d823db0bbe9378689a228675f637b6c0b6a1595121ec8d73ec5a31968207317",
+          "path": "build/assumed-hardware-20261019/run-02/source-snapshots/EnvelopeHypothesis.h"
+        },
+        "OutputHypothesis.h": {
+          "sha256": "17d2e2863d5a47cfd42ee68bd5273599ed695751593f1bf1822f78e548b8f4d7",
+          "path": "build/assumed-hardware-20261019/run-02/source-snapshots/OutputHypothesis.h"
+        },
+        "Renderer.cpp": {
+          "sha256": "d979c54e18ab745413f4f2e91082201cac93808e3d90584b3c29199047c4e4dd",
+          "path": "build/assumed-hardware-20261019/run-02/source-snapshots/Renderer.cpp"
+        },
+        "design-frozen.json": {
+          "sha256": "cbba976439a3cc6787f7701e9978a90546938bcc7ca3927d02519e0e5769f1ae",
+          "path": "build/assumed-hardware-20261019/run-02/source-snapshots/design-frozen.json"
+        },
+        "envelope-notes.md": {
+          "sha256": "9372a8cc756eedfd8008d5ba2906d6f81d4de612270a4018eb7dbbe5fb9e5f0e",
+          "path": "build/assumed-hardware-20261019/run-02/source-snapshots/envelope-notes.md"
+        },
+        "output-notes.md": {
+          "sha256": "f166ae0ad6cc45fb0b9dbbd905a7bb0da9cb69e2ef19dba42e351abfb40b095b",
+          "path": "build/assumed-hardware-20261019/run-02/source-snapshots/output-notes.md"
+        },
+        "run.py": {
+          "sha256": "18da84d50cf42a11822338af0e5e2a754eed7f496b67b03417b92b637e707320",
+          "path": "build/assumed-hardware-20261019/run-02/source-snapshots/run.py"
+        }
+      }
+    }
+  },
+  "implementation_and_claim_limits": [
+    "No original hardware capture, new hardware benchmark or authenticity score was evaluated. hardware_fidelity_score remains null.",
+    "No numerical transfer-harmonic measurement was performed by run.py. Harmonic figures in output notes are illustrative analytical leading-order expectations, not measured results or acceptance targets.",
+    "Frozen design metrics mention native-transfer harmonics; that item is unmeasured in this audition and must not be advertised as completed.",
+    "Model cadence, TL law, RKS arithmetic, native envelopes, phase reset and existing output circuit remain inherited hypotheses.",
+    "Estimated memoryless output nonlinearity runs at48kHz without extra oversampling; high harmonic folding is a numerical limit, not identified chip behavior.",
+    "This review establishes stored artifact consistency and declared software behavior, not subjective sound quality, target circuit identification, production realtime performance or Reason/Recon behavior."
+  ],
+  "work_receipt": {
+    "path": "build/assumed-hardware-20261019/independent-review-work.json",
+    "sha256": "c44de984d98d33cc56c6224a28641f9e0fc081070869e4f691a9d2ddebb71654"
+  }
+}

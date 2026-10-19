@@ -187,3 +187,14 @@ Target-filtered Wayback index results expose the catalogue HTML and generic down
 For [Labelwhore's original archive](https://forum.image-line.com/viewtopic.php?t=157755), successful exact-URL Wayback availability responses returned empty snapshot objects, and one exact CDX response returned no rows. Broader prefix/domain requests and one narrower follow-up returned HTTP 503 with a temporary-offline page; these are service failures, not negative archival results. Exact author/filename mirror searches and GitHub searches found no retrievable copy. Two Internet Archive item searches returned no matches. Common Crawl checks of December 2016 and September 2026 found no matching captures in those two indexes; other crawl dates remain unchecked. Arquivo.pt exact-URL history also returned no versions. These bounded observations do not prove that the samples or manual are absent from all archives.
 
 Only small metadata, HTML and static-script responses were recovered. No new PDF or sample audio, physical calibration, fitting, rerender or DSP change resulted. Original failed requests and earlier receipts remain preserved; archive access through ordinary HTTPS succeeded where the web reader had reported an internal error. The new request records remain under ignored `build/wayback-labelwhore-20261019/` and `build/labelwhore-mirror-search-20261019/`, alongside the manual records above.
+
+## Explicitly authorized assumptions
+
+The user's subsequent request to estimate missing behavior authorizes a separate
+experimental route. The [assumed-hardware auditions](assumed-hardware-auditions-2026-10-19.md)
+now implement a carrier-triggered release knee and shared asymmetric output
+headroom as isolated native-engine candidates. Four new sparse, RMS-matched A/B
+sets preserve the unchanged shipping baseline, raw audio, matching gains and
+explicit chosen constants. They demonstrate audible possibilities without new
+hardware calibration, recording scores or production adoption. Existing failed
+experiments and the target-identification limits above remain unchanged.
