@@ -3,11 +3,12 @@ from pathlib import Path
 import argparse
 import json
 import math
+import re
 import xml.etree.ElementTree as ET
-from modern_bank import load_modern, preset_relative_path
+from modern_bank import load_modern, load_rack_startup, preset_relative_path
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0b15'
+VERSION='0.1.0b16'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -127,11 +128,28 @@ def write_patch(path,rows,overrides):
     path.write_bytes(b'<?xml version="1.0"?>\n'+ET.tostring(patch,encoding='utf-8',xml_declaration=False)+b'\n')
 
 
+def update_info(text,startup):
+    # Preserve authored identity/category metadata. Require one plain string
+    # assignment per generated field rather than silently creating or guessing it.
+    for field,value in [('version_number',VERSION),('default_patch',startup['default_patch'])]:
+        assignments=re.findall(rf'^[ \t]*{field}[ \t]*=',text,re.MULTILINE)
+        pattern=rf'^([ \t]*{field}[ \t]*=[ \t]*)"[^"\n]*"([ \t]*(?:--[^\n]*)?)$'
+        if len(assignments)!=1 or len(re.findall(pattern,text,re.MULTILINE))!=1:
+            raise ValueError(f'info.lua must contain exactly one quoted {field} assignment')
+        text=re.sub(pattern,lambda match:match[1]+json.dumps(value)+match[2],text,flags=re.MULTILINE)
+    return text
+
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('device',type=Path);args=parser.parse_args()
     device=args.device.resolve();device.mkdir(parents=True,exist_ok=True)
     rows=specs()
-    (ROOT/'Assets/controls.json').write_text(json.dumps({'product':PRODUCT,'version':VERSION,'startup_profile':{'name':'Real','values':REAL_DEFAULTS},'controls':rows},indent=2)+'\n')
+    modern=load_modern()
+    startup=load_rack_startup(modern)
+    info_path=device/'info.lua'
+    info=update_info(info_path.read_text(),startup)
+    (ROOT/'Assets/controls.json').write_text(json.dumps({'product':PRODUCT,'version':VERSION,'startup_profile':{'name':'Real','values':REAL_DEFAULTS},'rack_startup':startup,'controls':rows},indent=2)+'\n')
+    info_path.write_text(info)
     lua=['format_version = "4.0"','custom_properties = jbox.property_set{',
          ' document_owner = { properties = {']
     for row in rows:
@@ -192,7 +210,6 @@ def main():
     bank=json.loads((ROOT/'Assets/FactoryBank/press78-factory.json').read_text())
     for voice in bank['voices']:
         write_patch(public/(voice['name'].replace('/','-')+'.repatch'),rows,{**decode(voice['raw_data']),**FACTORY_CHARACTER})
-    modern=load_modern()
     for voice in modern:
         destination=public/preset_relative_path(voice)
         destination.parent.mkdir(parents=True,exist_ok=True)
@@ -216,7 +233,7 @@ def main():
          if row['target']=='patch' else
          f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode") else "double"}>(physical(k_{row["id"]}));'
          for row in rows if row['id'] not in ('bendRange','modWheelDepth')])+'\n')
-    print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS +{len(modern)} modern patches at {device}')
+    print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS +{len(modern)} modern patches at {device}; startup: {startup["name"]}')
 
 
 if __name__=='__main__':main()

@@ -11,7 +11,7 @@ import json
 import math
 import re
 import xml.etree.ElementTree as ET
-from modern_bank import load_modern, preset_relative_path
+from modern_bank import load_modern, load_rack_startup, preset_relative_path
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -34,8 +34,13 @@ def main():
     assert rows['sustainMode']['default']==0 and rows['sustainMode']['startup_default']==1
     assert schema['startup_profile']['values']['sustainMode']==1
     info = (device/'info.lua').read_text()
-    for field, expected in [('product_id', schema['product']), ('version_number', schema['version'])]:
-        assert re.search(rf'{field}\s*=\s*"([^"]+)"', info)[1] == expected
+    startup=load_rack_startup()
+    assert schema['rack_startup']==startup
+    for field, expected in [('product_id', schema['product']), ('version_number', schema['version']),
+                            ('default_patch', startup['default_patch'])]:
+        assignments=re.findall(rf'^[ \t]*{field}[ \t]*=',info,re.MULTILINE)
+        values=re.findall(rf'^[ \t]*{field}[ \t]*=[ \t]*"([^"\n]*)"[ \t]*(?:--[^\n]*)?$',info,re.MULTILINE)
+        assert len(assignments)==len(values)==1 and values[0]==expected, (field,values,expected)
     assert schema['product'].split('.')[-1] == 'Press78'
     mother = (device/'motherboard_def.lua').read_text()
     cpp = (device/'Parameters.h').read_text()
@@ -100,6 +105,8 @@ def main():
     assert len(paths) == 151
     assert {p.stem for p in paths} == set(expected)
     assert {p.relative_to(device/'Resources/Public').as_posix() for p in paths if p.parts[-3]=='Modern'} == {preset_relative_path(v).as_posix() for v in modern}
+    startup_path=device/'Resources'/startup['default_patch'].lstrip('/')
+    assert startup_path in paths and startup_path.stem==startup['name']
     for path in paths:
         # Python accepts declarations which the Recon SXML reader rejects.
         assert path.read_bytes().startswith(b'<?xml version="1.0"?>\n'), (path.name, 'SDK5 patch XML declaration')
@@ -122,6 +129,7 @@ def main():
             target = expected[path.stem].get(key, row['default'])
             assert abs(physical-target) < 1e-9, (path.name, key, physical, target)
     result = dict(passed=True, controls=len(rows), visible_controls=len(visible), hidden_compatibility_properties=sorted(hidden), performance_inputs=3, patches=len(paths),
+                  rack_startup=startup,
                   automation_mappings=len(ids),
                   localization_references=len(used), scope='Generated source contracts; no host execution',
                   sha256={str(p.relative_to(device)): hashlib.sha256(p.read_bytes()).hexdigest()
