@@ -1,0 +1,2248 @@
+{
+  "date": "2026-10-19",
+  "status": "research only; no runtime, presets, alignment, host, build/package or git changes",
+  "source_url": "https://www.youtube.com/watch?v=ONfIvtDOog0",
+  "classification": "Reused recording, not fresh holdout; metadata-frozen observables plus separately declared exploratory diagnostics; no synthesis-model fit or production constant adoption.",
+  "protocol": {
+    "frozen_utc": "2026-10-18T22:41:35.013389+00:00",
+    "classification": "Protocol frozen from metadata before inspecting these retrigger audio windows; source already used in prior fidelity work, not fresh recording holdout.",
+    "source_url": "https://www.youtube.com/watch?v=ONfIvtDOog0",
+    "source_audio": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/user-ONfIvtDOog0.wav",
+    "source_event_metadata": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia-events.json",
+    "metadata_sha256": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4",
+    "audio_sha256": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba",
+    "selection": "All same-channel/same-pitch Sine99 notes whose predecessor off is within0.1ms of new on, plus the gapped MIDI67/75 onsets at180.855717s (prior off180.414626s). Select by metadata only. Program99 start175.562626s.",
+    "cases": [
+      {
+        "id": "m70-at-176.224263",
+        "type": "zero-gap",
+        "midi": 70,
+        "channel": 0,
+        "previous": {
+          "start": 174.7056960000009,
+          "midi": 70,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76032,
+          "gate": 0.6617639999999767,
+          "end": 175.36746000000088,
+          "index": 1723,
+          "source_on": 175.56262644158983,
+          "source_off": 176.22426273029325
+        },
+        "new": {
+          "start": 175.36746000000088,
+          "midi": 70,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76320,
+          "gate": 0.44117599999998447,
+          "end": 175.80863600000086,
+          "index": 1733,
+          "source_on": 176.22426273029325,
+          "source_off": 176.66535358942886
+        },
+        "gap_seconds": 0.0
+      },
+      {
+        "id": "m63-at-176.885899",
+        "type": "zero-gap",
+        "midi": 63,
+        "channel": 0,
+        "previous": {
+          "start": 175.36746000000088,
+          "midi": 63,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76320,
+          "gate": 0.6617639999999767,
+          "end": 176.02922400000085,
+          "index": 1731,
+          "source_on": 176.22426273029325,
+          "source_off": 176.88589901899667
+        },
+        "new": {
+          "start": 176.02922400000085,
+          "midi": 63,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76608,
+          "gate": 0.4411760000000129,
+          "end": 176.47040000000086,
+          "index": 1737,
+          "source_on": 176.88589901899664,
+          "source_off": 177.32698987813228
+        },
+        "gap_seconds": -2.842170943040401e-14
+      },
+      {
+        "id": "m67-at-176.885899",
+        "type": "zero-gap",
+        "midi": 67,
+        "channel": 0,
+        "previous": {
+          "start": 175.36746000000088,
+          "midi": 67,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76320,
+          "gate": 0.6617639999999767,
+          "end": 176.02922400000085,
+          "index": 1732,
+          "source_on": 176.22426273029325,
+          "source_off": 176.88589901899667
+        },
+        "new": {
+          "start": 176.02922400000085,
+          "midi": 67,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76608,
+          "gate": 0.4411760000000129,
+          "end": 176.47040000000086,
+          "index": 1738,
+          "source_on": 176.88589901899664,
+          "source_off": 177.32698987813228
+        },
+        "gap_seconds": -2.842170943040401e-14
+      },
+      {
+        "id": "m68-at-177.988626",
+        "type": "zero-gap",
+        "midi": 68,
+        "channel": 0,
+        "previous": {
+          "start": 176.47040000000086,
+          "midi": 68,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76800,
+          "gate": 0.6617639999999767,
+          "end": 177.13216400000084,
+          "index": 1741,
+          "source_on": 177.32698987813228,
+          "source_off": 177.9886261668357
+        },
+        "new": {
+          "start": 177.13216400000084,
+          "midi": 68,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 77088,
+          "gate": 0.6617639999999767,
+          "end": 177.79392800000082,
+          "index": 1750,
+          "source_on": 177.98862616683567,
+          "source_off": 178.6502624555391
+        },
+        "gap_seconds": -2.842170943040401e-14
+      },
+      {
+        "id": "m68-at-178.650262",
+        "type": "zero-gap",
+        "midi": 68,
+        "channel": 0,
+        "previous": {
+          "start": 177.13216400000084,
+          "midi": 68,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 77088,
+          "gate": 0.6617639999999767,
+          "end": 177.79392800000082,
+          "index": 1750,
+          "source_on": 177.98862616683567,
+          "source_off": 178.6502624555391
+        },
+        "new": {
+          "start": 177.79392800000082,
+          "midi": 68,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 77376,
+          "gate": 0.4411760000000129,
+          "end": 178.23510400000083,
+          "index": 1755,
+          "source_on": 178.6502624555391,
+          "source_off": 179.09135331467473
+        },
+        "gap_seconds": 0.0
+      },
+      {
+        "id": "m67-at-180.855717",
+        "type": "gapped-late-tail",
+        "midi": 67,
+        "channel": 0,
+        "previous": {
+          "start": 178.23510400000083,
+          "midi": 67,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 77568,
+          "gate": 1.3235280000000387,
+          "end": 179.55863200000087,
+          "index": 1760,
+          "source_on": 179.09135331467473,
+          "source_off": 180.41462589208163
+        },
+        "new": {
+          "start": 179.99980800000085,
+          "midi": 67,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 78336,
+          "gate": 0.8823520000000258,
+          "end": 180.88216000000088,
+          "index": 1770,
+          "source_on": 180.85571675121722,
+          "source_off": 181.73789846948847
+        },
+        "gap_seconds": 0.4410908591355849
+      },
+      {
+        "id": "m75-at-180.855717",
+        "type": "gapped-late-tail",
+        "midi": 75,
+        "channel": 0,
+        "previous": {
+          "start": 178.23510400000083,
+          "midi": 75,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 77568,
+          "gate": 1.3235280000000387,
+          "end": 179.55863200000087,
+          "index": 1761,
+          "source_on": 179.09135331467473,
+          "source_off": 180.41462589208163
+        },
+        "new": {
+          "start": 179.99980800000085,
+          "midi": 75,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 78336,
+          "gate": 0.8823520000000258,
+          "end": 180.88216000000088,
+          "index": 1771,
+          "source_on": 180.85571675121722,
+          "source_off": 181.73789846948847
+        },
+        "gap_seconds": 0.4410908591355849
+      },
+      {
+        "id": "m75-at-181.737898",
+        "type": "zero-gap",
+        "midi": 75,
+        "channel": 0,
+        "previous": {
+          "start": 179.99980800000085,
+          "midi": 75,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 78336,
+          "gate": 0.8823520000000258,
+          "end": 180.88216000000088,
+          "index": 1771,
+          "source_on": 180.85571675121722,
+          "source_off": 181.73789846948847
+        },
+        "new": {
+          "start": 180.88216000000088,
+          "midi": 75,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 78720,
+          "gate": 0.4411760000000129,
+          "end": 181.3233360000009,
+          "index": 1775,
+          "source_on": 181.7378984694885,
+          "source_off": 182.17898932862414
+        },
+        "gap_seconds": 2.842170943040401e-14
+      }
+    ],
+    "frozen_observables": [
+      "Fixed nominal-frequency complex coefficient (magnitude and phase) in Hann-tapered joint sine/cosine least squares, per left/right/arithmetic mid; preserve absolute carrier phase against one source-time origin so phases across frames are comparable.",
+      "Observe windows source[-.15,+.25] around frozen new-note time; estimator widths8,12,20ms and1ms hop. This is short enough to inspect transient overlap; report design condition numbers. Include all metadata fundamental pitches active or released within preceding2s, plus new pitches in following.25s. Reject condition>1e5 and report, never prune retrospectively to improve a preferred result.",
+      "No engine/model render or per-model shift/gain/frequency/envelope fit. Nominal equal temperament only in first pass. Slow true detuning appears as phase drift and will be reported rather than corrected away.",
+      "A local observed complex change time may be measured in common+20..+100ms search interval using largest 4ms coefficient change, with pre/post descriptors[-40,-15],[+15,+40],[+40,+80]ms relative to that measured change. This is data-derived timing, not hardware gate and not a model optimization.",
+      "Compare old held coefficient extrapolation and post-onset coefficient trajectory qualitatively: additive old release can make a decaying complex residual toward a new steady phasor; reuse/reset can cause a discontinuity followed by no independent old residual. One same-frequency mixture cannot uniquely label two voices without stronger phase/reset assumptions.",
+      "Amplitude overshoot or notches alone do not identify allocation because old/new phase, attack, chorus/circuit memory, timing delivery and harmonic overlap can cause them. Never assume hardware phase resets to zero.",
+      "Primary test MIDI75 at181.737898s: simultaneous fresh79/87 onsets help establish common observed activity. Other zero-gap retriggers are preselected corroboration, not confirmation-only searches.",
+      "Any later fitted discriminator or changed estimator must be explicitly separated as exploratory; no production recommendation unless observations exclude an allocation alternative after the listed confounds."
+    ],
+    "predeclared_limitations": [
+      "Physical Chorus andReverb are on. Effects can retain prior sound even if oscillator voice is replaced. Early20\u201330ms may include chorus history, whose exact delay/phase is uncertain.",
+      "Actual MIDI hardware arrivals are not captured; prior observed onsets lag global MIDI alignment by40\u201360ms. No per-model local shifts.",
+      "Nominally equal-pitched voices cannot be algebraically separated by one sinusoidal coefficient; slowdetuning/chorus may mimic a residual trajectory.",
+      "MIDI75 is not expected to receive a lower held note octave harmonic in the primary181.737898 window; other cases have explicit metadata-based harmonic confounds.",
+      "Polyphonic source may have voice stealing; no recovered hardware voice allocator or physical note count can be assumed."
+    ]
+  },
+  "first_pass": {
+    "protocol_file": "protocol-frozen.json",
+    "method": "Hann taper applied to signal and design matrix;local-centered sin/cos+DC design; coefficients rotated back to absolute source phase as(cosCoef-i*sinCoef)*exp(-i*2*pi*frequency*centerSourceSeconds);1ms hop; absolute source-time phase preserved; no frequency/timing/engine fit. Observed change selection uses arithmeticmid4ms complex difference in declared20..100ms interval.",
+    "rows": [
+      {
+        "case_id": "m70-at-176.224263",
+        "midi": 70,
+        "nominal_on_seconds": 176.22426273029325,
+        "hann_taper_ms": 8,
+        "dictionary_midi": [
+          34,
+          39,
+          43,
+          46,
+          51,
+          55,
+          63,
+          67,
+          70,
+          75,
+          77,
+          79
+        ],
+        "design_condition": 364521973290761.9,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m70-at-176.224263",
+        "midi": 70,
+        "nominal_on_seconds": 176.22426273029325,
+        "hann_taper_ms": 12,
+        "dictionary_midi": [
+          34,
+          39,
+          43,
+          46,
+          51,
+          55,
+          63,
+          67,
+          70,
+          75,
+          77,
+          79
+        ],
+        "design_condition": 6961288181.598182,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m70-at-176.224263",
+        "midi": 70,
+        "nominal_on_seconds": 176.22426273029325,
+        "hann_taper_ms": 20,
+        "dictionary_midi": [
+          34,
+          39,
+          43,
+          46,
+          51,
+          55,
+          63,
+          67,
+          70,
+          75,
+          77,
+          79
+        ],
+        "design_condition": 36801.96888194957,
+        "accepted": true,
+        "channels": [
+          {
+            "name": "left",
+            "descriptors": [
+              {
+                "label": "pre",
+                "relative_to_observed_change_seconds": [
+                  -0.04,
+                  -0.015
+                ],
+                "mean_complex_real": 0.051490800391376323,
+                "mean_complex_imag": -0.021334945541444977,
+                "magnitude_of_mean_dbfs": -25.07731098907627,
+                "mean_magnitude_dbfs": -25.077720994653237,
+                "magnitude_peak_to_peak_db": 1.6336107852195205,
+                "phase_of_mean_radians": -0.3928110973324835,
+                "complex_scatter_rms": 0.003457168589595286
+              },
+              {
+                "label": "post_early",
+                "relative_to_observed_change_seconds": [
+                  0.015,
+                  0.04
+                ],
+                "mean_complex_real": -0.06231963398489262,
+                "mean_complex_imag": 0.05964887805510717,
+                "magnitude_of_mean_dbfs": -21.283263575645215,
+                "mean_magnitude_dbfs": -21.286670164094712,
+                "magnitude_peak_to_peak_db": 0.864478423778813,
+                "phase_of_mean_radians": 2.378088085083792,
+                "complex_scatter_rms": 0.0031426112347643295
+              },
+              {
+                "label": "post_late",
+                "relative_to_observed_change_seconds": [
+                  0.04,
+                  0.08
+                ],
+                "mean_complex_real": -0.07063849446271556,
+                "mean_complex_imag": 0.07289268672294977,
+                "magnitude_of_mean_dbfs": -19.870303703373132,
+                "mean_magnitude_dbfs": -19.88121744125019,
+                "magnitude_peak_to_peak_db": 1.7528260586081323,
+                "phase_of_mean_radians": 2.3404905369932227,
+                "complex_scatter_rms": 0.00622308702008938
+              }
+            ],
+            "late_minus_pre_complex_abs": 0.15425437220290295,
+            "late_vs_pre_phase_delta_radians": 2.733301634325706
+          },
+          {
+            "name": "right",
+            "descriptors": [
+              {
+                "label": "pre",
+                "relative_to_observed_change_seconds": [
+                  -0.04,
+                  -0.015
+                ],
+                "mean_complex_real": 0.13418047432515764,
+                "mean_complex_imag": 0.054123620927706666,
+                "magnitude_of_mean_dbfs": -16.791526340606488,
+                "mean_magnitude_dbfs": -16.797083351771672,
+                "magnitude_peak_to_peak_db": 1.6047192766177574,
+                "phase_of_mean_radians": 0.38340331710302394,
+                "complex_scatter_rms": 0.0066446910916602535
+              },
+              {
+                "label": "post_early",
+                "relative_to_observed_change_seconds": [
+                  0.015,
+                  0.04
+                ],
+                "mean_complex_real": -0.12684611048126518,
+                "mean_complex_imag": -0.033559070023952205,
+                "magnitude_of_mean_dbfs": -17.64064039665716,
+                "mean_magnitude_dbfs": -17.641908965839935,
+                "magnitude_peak_to_peak_db": 0.6826402498557478,
+                "phase_of_mean_radians": -2.882953211221777,
+                "complex_scatter_rms": 0.003315889455316569
+              },
+              {
+                "label": "post_late",
+                "relative_to_observed_change_seconds": [
+                  0.04,
+                  0.08
+                ],
+                "mean_complex_real": -0.11608330789301524,
+                "mean_complex_imag": -0.02885291871943322,
+                "magnitude_of_mean_dbfs": -18.444263715735122,
+                "mean_magnitude_dbfs": -18.44574791426345,
+                "magnitude_peak_to_peak_db": 0.8617310965635845,
+                "phase_of_mean_radians": -2.89797581418748,
+                "complex_scatter_rms": 0.004203040656277312
+              }
+            ],
+            "late_minus_pre_complex_abs": 0.2636608936151861,
+            "late_vs_pre_phase_delta_radians": 3.0018061758890826
+          },
+          {
+            "name": "mid",
+            "descriptors": [
+              {
+                "label": "pre",
+                "relative_to_observed_change_seconds": [
+                  -0.04,
+                  -0.015
+                ],
+                "mean_complex_real": 0.09283563735826697,
+                "mean_complex_imag": 0.016394337693130843,
+                "magnitude_of_mean_dbfs": -20.51233586468537,
+                "mean_magnitude_dbfs": -20.518331787893366,
+                "magnitude_peak_to_peak_db": 1.708160074571758,
+                "phase_of_mean_radians": 0.17479314656646155,
+                "complex_scatter_rms": 0.004596975158812348
+              },
+              {
+                "label": "post_early",
+                "relative_to_observed_change_seconds": [
+                  0.015,
+                  0.04
+                ],
+                "mean_complex_real": -0.09458287223307886,
+                "mean_complex_imag": 0.013044904015577473,
+                "magnitude_of_mean_dbfs": -20.401914320079584,
+                "mean_magnitude_dbfs": -20.400699052276323,
+                "magnitude_peak_to_peak_db": 0.30665465341746057,
+                "phase_of_mean_radians": 3.004536952128355,
+                "complex_scatter_rms": 0.0020233608460639664
+              },
+              {
+                "label": "post_late",
+                "relative_to_observed_change_seconds": [
+                  0.04,
+                  0.08
+                ],
+                "mean_complex_real": -0.0933609011778654,
+                "mean_complex_imag": 0.022019884001758278,
+                "magnitude_of_mean_dbfs": -20.36158684076788,
+                "mean_magnitude_dbfs": -20.353972582811437,
+                "magnitude_peak_to_peak_db": 0.4278612115248741,
+                "phase_of_mean_radians": 2.909968070860483,
+                "complex_scatter_rms": 0.0044431669831832814
+              }
+            ],
+            "late_minus_pre_complex_abs": 0.18628150132020072,
+            "late_vs_pre_phase_delta_radians": 2.7351749242940215
+          }
+        ],
+        "observed_change_seconds_after_nominal_on": 0.05400810304008985,
+        "observed_change_source_seconds": 176.27827083333335,
+        "change_vs_pre95_ratio": 19.939111299407312
+      },
+      {
+        "case_id": "m63-at-176.885899",
+        "midi": 63,
+        "nominal_on_seconds": 176.88589901899664,
+        "hann_taper_ms": 8,
+        "dictionary_midi": [
+          34,
+          39,
+          43,
+          46,
+          51,
+          55,
+          58,
+          63,
+          67,
+          70,
+          72,
+          75,
+          77,
+          79
+        ],
+        "design_condition": 1.9403688868568868e+16,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m63-at-176.885899",
+        "midi": 63,
+        "nominal_on_seconds": 176.88589901899664,
+        "hann_taper_ms": 12,
+        "dictionary_midi": [
+          34,
+          39,
+          43,
+          46,
+          51,
+          55,
+          58,
+          63,
+          67,
+          70,
+          72,
+          75,
+          77,
+          79
+        ],
+        "design_condition": 2714196049510.5327,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m63-at-176.885899",
+        "midi": 63,
+        "nominal_on_seconds": 176.88589901899664,
+        "hann_taper_ms": 20,
+        "dictionary_midi": [
+          34,
+          39,
+          43,
+          46,
+          51,
+          55,
+          58,
+          63,
+          67,
+          70,
+          72,
+          75,
+          77,
+          79
+        ],
+        "design_condition": 319589.33738561964,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m67-at-176.885899",
+        "midi": 67,
+        "nominal_on_seconds": 176.88589901899664,
+        "hann_taper_ms": 8,
+        "dictionary_midi": [
+          34,
+          39,
+          43,
+          46,
+          51,
+          55,
+          58,
+          63,
+          67,
+          70,
+          72,
+          75,
+          77,
+          79
+        ],
+        "design_condition": 1.9403688868568868e+16,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m67-at-176.885899",
+        "midi": 67,
+        "nominal_on_seconds": 176.88589901899664,
+        "hann_taper_ms": 12,
+        "dictionary_midi": [
+          34,
+          39,
+          43,
+          46,
+          51,
+          55,
+          58,
+          63,
+          67,
+          70,
+          72,
+          75,
+          77,
+          79
+        ],
+        "design_condition": 2714196049510.5327,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m67-at-176.885899",
+        "midi": 67,
+        "nominal_on_seconds": 176.88589901899664,
+        "hann_taper_ms": 20,
+        "dictionary_midi": [
+          34,
+          39,
+          43,
+          46,
+          51,
+          55,
+          58,
+          63,
+          67,
+          70,
+          72,
+          75,
+          77,
+          79
+        ],
+        "design_condition": 319589.33738561964,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m68-at-177.988626",
+        "midi": 68,
+        "nominal_on_seconds": 177.98862616683567,
+        "hann_taper_ms": 8,
+        "dictionary_midi": [
+          34,
+          39,
+          41,
+          43,
+          46,
+          51,
+          53,
+          55,
+          56,
+          58,
+          62,
+          63,
+          67,
+          68,
+          70,
+          72,
+          75,
+          77
+        ],
+        "design_condition": 8.434253483050299e+16,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m68-at-177.988626",
+        "midi": 68,
+        "nominal_on_seconds": 177.98862616683567,
+        "hann_taper_ms": 12,
+        "dictionary_midi": [
+          34,
+          39,
+          41,
+          43,
+          46,
+          51,
+          53,
+          55,
+          56,
+          58,
+          62,
+          63,
+          67,
+          68,
+          70,
+          72,
+          75,
+          77
+        ],
+        "design_condition": 3.355470665998272e+16,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m68-at-177.988626",
+        "midi": 68,
+        "nominal_on_seconds": 177.98862616683567,
+        "hann_taper_ms": 20,
+        "dictionary_midi": [
+          34,
+          39,
+          41,
+          43,
+          46,
+          51,
+          53,
+          55,
+          56,
+          58,
+          62,
+          63,
+          67,
+          68,
+          70,
+          72,
+          75,
+          77
+        ],
+        "design_condition": 35861282643625.5,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m68-at-178.650262",
+        "midi": 68,
+        "nominal_on_seconds": 178.6502624555391,
+        "hann_taper_ms": 8,
+        "dictionary_midi": [
+          34,
+          41,
+          43,
+          46,
+          53,
+          55,
+          56,
+          58,
+          62,
+          63,
+          67,
+          68,
+          70,
+          72,
+          77
+        ],
+        "design_condition": 3.983188603967488e+16,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m68-at-178.650262",
+        "midi": 68,
+        "nominal_on_seconds": 178.6502624555391,
+        "hann_taper_ms": 12,
+        "dictionary_midi": [
+          34,
+          41,
+          43,
+          46,
+          53,
+          55,
+          56,
+          58,
+          62,
+          63,
+          67,
+          68,
+          70,
+          72,
+          77
+        ],
+        "design_condition": 5475344230873288.0,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m68-at-178.650262",
+        "midi": 68,
+        "nominal_on_seconds": 178.6502624555391,
+        "hann_taper_ms": 20,
+        "dictionary_midi": [
+          34,
+          41,
+          43,
+          46,
+          53,
+          55,
+          56,
+          58,
+          62,
+          63,
+          67,
+          68,
+          70,
+          72,
+          77
+        ],
+        "design_condition": 245355529.09636667,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m67-at-180.855717",
+        "midi": 67,
+        "nominal_on_seconds": 180.85571675121722,
+        "hann_taper_ms": 8,
+        "dictionary_midi": [
+          39,
+          46,
+          47,
+          51,
+          56,
+          58,
+          59,
+          62,
+          67,
+          68,
+          70,
+          75
+        ],
+        "design_condition": 3269151976337120.5,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m67-at-180.855717",
+        "midi": 67,
+        "nominal_on_seconds": 180.85571675121722,
+        "hann_taper_ms": 12,
+        "dictionary_midi": [
+          39,
+          46,
+          47,
+          51,
+          56,
+          58,
+          59,
+          62,
+          67,
+          68,
+          70,
+          75
+        ],
+        "design_condition": 97617711103.96275,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m67-at-180.855717",
+        "midi": 67,
+        "nominal_on_seconds": 180.85571675121722,
+        "hann_taper_ms": 20,
+        "dictionary_midi": [
+          39,
+          46,
+          47,
+          51,
+          56,
+          58,
+          59,
+          62,
+          67,
+          68,
+          70,
+          75
+        ],
+        "design_condition": 114338.29812576075,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m75-at-180.855717",
+        "midi": 75,
+        "nominal_on_seconds": 180.85571675121722,
+        "hann_taper_ms": 8,
+        "dictionary_midi": [
+          39,
+          46,
+          47,
+          51,
+          56,
+          58,
+          59,
+          62,
+          67,
+          68,
+          70,
+          75
+        ],
+        "design_condition": 3269151976337120.5,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m75-at-180.855717",
+        "midi": 75,
+        "nominal_on_seconds": 180.85571675121722,
+        "hann_taper_ms": 12,
+        "dictionary_midi": [
+          39,
+          46,
+          47,
+          51,
+          56,
+          58,
+          59,
+          62,
+          67,
+          68,
+          70,
+          75
+        ],
+        "design_condition": 97617711103.96275,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m75-at-180.855717",
+        "midi": 75,
+        "nominal_on_seconds": 180.85571675121722,
+        "hann_taper_ms": 20,
+        "dictionary_midi": [
+          39,
+          46,
+          47,
+          51,
+          56,
+          58,
+          59,
+          62,
+          67,
+          68,
+          70,
+          75
+        ],
+        "design_condition": 114338.29812576075,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m75-at-181.737898",
+        "midi": 75,
+        "nominal_on_seconds": 181.7378984694885,
+        "hann_taper_ms": 8,
+        "dictionary_midi": [
+          39,
+          46,
+          47,
+          51,
+          58,
+          59,
+          67,
+          75,
+          79,
+          87
+        ],
+        "design_condition": 8798840544.324295,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m75-at-181.737898",
+        "midi": 75,
+        "nominal_on_seconds": 181.7378984694885,
+        "hann_taper_ms": 12,
+        "dictionary_midi": [
+          39,
+          46,
+          47,
+          51,
+          58,
+          59,
+          67,
+          75,
+          79,
+          87
+        ],
+        "design_condition": 2940259.809115366,
+        "accepted": false,
+        "channels": []
+      },
+      {
+        "case_id": "m75-at-181.737898",
+        "midi": 75,
+        "nominal_on_seconds": 181.7378984694885,
+        "hann_taper_ms": 20,
+        "dictionary_midi": [
+          39,
+          46,
+          47,
+          51,
+          58,
+          59,
+          67,
+          75,
+          79,
+          87
+        ],
+        "design_condition": 1448.2832942107834,
+        "accepted": true,
+        "channels": [
+          {
+            "name": "left",
+            "descriptors": [
+              {
+                "label": "pre",
+                "relative_to_observed_change_seconds": [
+                  -0.04,
+                  -0.015
+                ],
+                "mean_complex_real": 0.07759083087109708,
+                "mean_complex_imag": -0.04027827800021291,
+                "magnitude_of_mean_dbfs": -21.167545107311184,
+                "mean_magnitude_dbfs": -21.18975650528702,
+                "magnitude_peak_to_peak_db": 2.559491826218405,
+                "phase_of_mean_radians": -0.4788195034219031,
+                "complex_scatter_rms": 0.008627708038548294
+              },
+              {
+                "label": "post_early",
+                "relative_to_observed_change_seconds": [
+                  0.015,
+                  0.04
+                ],
+                "mean_complex_real": 0.06733638848243738,
+                "mean_complex_imag": 0.03101784995147376,
+                "magnitude_of_mean_dbfs": -22.599298684963255,
+                "mean_magnitude_dbfs": -22.603393444068583,
+                "magnitude_peak_to_peak_db": 1.144817828605749,
+                "phase_of_mean_radians": 0.4316670350285034,
+                "complex_scatter_rms": 0.00262409557995674
+              },
+              {
+                "label": "post_late",
+                "relative_to_observed_change_seconds": [
+                  0.04,
+                  0.08
+                ],
+                "mean_complex_real": 0.05215533838484558,
+                "mean_complex_imag": 0.021818868203219335,
+                "magnitude_of_mean_dbfs": -24.953603009057698,
+                "mean_magnitude_dbfs": -24.99411961218611,
+                "magnitude_peak_to_peak_db": 3.3326568919770096,
+                "phase_of_mean_radians": 0.39621939890340396,
+                "complex_scatter_rms": 0.005755605389664162
+              }
+            ],
+            "late_minus_pre_complex_abs": 0.06710454414291625,
+            "late_vs_pre_phase_delta_radians": 0.8750389023253071
+          },
+          {
+            "name": "right",
+            "descriptors": [
+              {
+                "label": "pre",
+                "relative_to_observed_change_seconds": [
+                  -0.04,
+                  -0.015
+                ],
+                "mean_complex_real": 0.10230175828257,
+                "mean_complex_imag": 0.06356325651825544,
+                "magnitude_of_mean_dbfs": -18.384542032451222,
+                "mean_magnitude_dbfs": -18.39179542666934,
+                "magnitude_peak_to_peak_db": 1.7902800341829739,
+                "phase_of_mean_radians": 0.5559566009683292,
+                "complex_scatter_rms": 0.00886103646335769
+              },
+              {
+                "label": "post_early",
+                "relative_to_observed_change_seconds": [
+                  0.015,
+                  0.04
+                ],
+                "mean_complex_real": 0.025004417484218208,
+                "mean_complex_imag": 0.14153934258089848,
+                "magnitude_of_mean_dbfs": -16.848989788810844,
+                "mean_magnitude_dbfs": -16.831293213860228,
+                "magnitude_peak_to_peak_db": 0.5824143288513,
+                "phase_of_mean_radians": 1.3959399133800623,
+                "complex_scatter_rms": 0.010022361933910399
+              },
+              {
+                "label": "post_late",
+                "relative_to_observed_change_seconds": [
+                  0.04,
+                  0.08
+                ],
+                "mean_complex_real": 0.05987543681527568,
+                "mean_complex_imag": 0.13405693611126096,
+                "magnitude_of_mean_dbfs": -16.66425175453861,
+                "mean_magnitude_dbfs": -16.62278337216784,
+                "magnitude_peak_to_peak_db": 0.3870805528915362,
+                "phase_of_mean_radians": 1.150738554658446,
+                "complex_scatter_rms": 0.014627757617474884
+              }
+            ],
+            "late_minus_pre_complex_abs": 0.08227606952089728,
+            "late_vs_pre_phase_delta_radians": 0.5947819536901168
+          },
+          {
+            "name": "mid",
+            "descriptors": [
+              {
+                "label": "pre",
+                "relative_to_observed_change_seconds": [
+                  -0.04,
+                  -0.015
+                ],
+                "mean_complex_real": 0.08994629457683355,
+                "mean_complex_imag": 0.011642489259021265,
+                "magnitude_of_mean_dbfs": -20.848174474152373,
+                "mean_magnitude_dbfs": -20.864770828213114,
+                "magnitude_peak_to_peak_db": 2.0643379762340253,
+                "phase_of_mean_radians": 0.12872253158721547,
+                "complex_scatter_rms": 0.0072424607798678015
+              },
+              {
+                "label": "post_early",
+                "relative_to_observed_change_seconds": [
+                  0.015,
+                  0.04
+                ],
+                "mean_complex_real": 0.04617040298332779,
+                "mean_complex_imag": 0.0862785962661861,
+                "magnitude_of_mean_dbfs": -20.188293648842823,
+                "mean_magnitude_dbfs": -20.18300626634531,
+                "magnitude_peak_to_peak_db": 0.4616989845877342,
+                "phase_of_mean_radians": 1.079440014000817,
+                "complex_scatter_rms": 0.004267405184854961
+              },
+              {
+                "label": "post_late",
+                "relative_to_observed_change_seconds": [
+                  0.04,
+                  0.08
+                ],
+                "mean_complex_real": 0.056015387600060626,
+                "mean_complex_imag": 0.07793790215724013,
+                "magnitude_of_mean_dbfs": -20.356441735891654,
+                "mean_magnitude_dbfs": -20.340452043052874,
+                "magnitude_peak_to_peak_db": 0.6121624130034071,
+                "phase_of_mean_radians": 0.947617974840785,
+                "complex_scatter_rms": 0.006500034056238346
+              }
+            ],
+            "late_minus_pre_complex_abs": 0.07447407750091128,
+            "late_vs_pre_phase_delta_radians": 0.8188954432535696
+          }
+        ],
+        "observed_change_seconds_after_nominal_on": 0.06199736384483856,
+        "observed_change_source_seconds": 181.79989583333332,
+        "change_vs_pre95_ratio": 15.949593376096436
+      }
+    ]
+  },
+  "exploratory_demod_protocol": {
+    "classification": "Exploratory sensitivity check declared after first-pass primary75 notch observation; not the frozen primary protocol and not a fresh holdout.",
+    "purpose": "Test whether the deep final75 retrigger notch survives an estimator without a nearly collinear bass nuisance dictionary.",
+    "selection": "All8 metadata-frozen cases; report inter-pitch interference, especially target68 near older67, rather than tuning bands per result.",
+    "method": "Complex mix arithmetic-mid/left/right with exp(-i*2*pi*nominalFrequency*absoluteTime), fixed4th-order Butterworth lowpass at60,90,120Hz, forward/backward filtering on source context[-.5,+.5]s; multiply output by2 for sinusoidal peak amplitude. No fitted phase, pitch or gain. Display central[-.15,+.25]s only. Filter transient smoothing and stopband leakage remain confounds.",
+    "observables": "Minimum amplitude and timing in frozen nominal+20..+100ms interval, relative to median frozen nominal[-60,-20]ms magnitude; phase either side; compare widths and channels. Report nearest competing fundamental spacing. Use a shared fixed nominal search range, not per-model timing fits.",
+    "decision_limit": "Persistence of a notch supports actual transient loss rather than joint-basis pathology, but does not itself separate allocator, actual MIDI off/on delivery gap, fast choke or external processing. No engine comparison or production correction in this sensitivity step."
+  },
+  "exploratory_demod_results": {
+    "protocol": "exploratory-demod-protocol.json",
+    "rows": [
+      {
+        "case_id": "m70-at-176.224263",
+        "cutoff_hz": 60,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -27.721203394255895,
+            "minimum_dbfs": -38.44245733235256,
+            "minimum_relative_to_pre_db": -10.721253938096666,
+            "minimum_seconds_after_nominal_on": 0.04611226970675375,
+            "phase_before_rad": -0.44555802511601517,
+            "phase_after_rad": 2.7802384132450206
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -16.450861594807563,
+            "minimum_dbfs": -28.68493532496815,
+            "minimum_relative_to_pre_db": -12.234073730160588,
+            "minimum_seconds_after_nominal_on": 0.04690393637341117,
+            "phase_before_rad": 0.3482204711765498,
+            "phase_after_rad": -2.6764963194173883
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -20.41946005617372,
+            "minimum_dbfs": -32.62350130406141,
+            "minimum_relative_to_pre_db": -12.204041247887695,
+            "minimum_seconds_after_nominal_on": 0.046549769706757615,
+            "phase_before_rad": 0.12182042096105027,
+            "phase_after_rad": -2.9701840817969094
+          }
+        ]
+      },
+      {
+        "case_id": "m70-at-176.224263",
+        "cutoff_hz": 90,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -27.629752041384013,
+            "minimum_dbfs": -50.75089432612556,
+            "minimum_relative_to_pre_db": -23.12114228474155,
+            "minimum_seconds_after_nominal_on": 0.06909143637341231,
+            "phase_before_rad": -2.731321481912414,
+            "phase_after_rad": 1.0332229678632296
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -16.471887819319758,
+            "minimum_dbfs": -43.27810182338137,
+            "minimum_relative_to_pre_db": -26.806214004061612,
+            "minimum_seconds_after_nominal_on": 0.046799769706751704,
+            "phase_before_rad": 0.34399618041579105,
+            "phase_after_rad": -2.241487916311162
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -20.413333110830198,
+            "minimum_dbfs": -53.1910550352888,
+            "minimum_relative_to_pre_db": -32.777721924458604,
+            "minimum_seconds_after_nominal_on": 0.04650810304008246,
+            "phase_before_rad": 0.12265862556116504,
+            "phase_after_rad": -2.5004831555727236
+          }
+        ]
+      },
+      {
+        "case_id": "m70-at-176.224263",
+        "cutoff_hz": 120,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -27.2611314387217,
+            "minimum_dbfs": -53.10153087074541,
+            "minimum_relative_to_pre_db": -25.840399432023705,
+            "minimum_seconds_after_nominal_on": 0.055716436373415945,
+            "phase_before_rad": -0.8419492019877589,
+            "phase_after_rad": 0.9914586518462981
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -16.427079713819793,
+            "minimum_dbfs": -51.24086844391603,
+            "minimum_relative_to_pre_db": -34.813788730096235,
+            "minimum_seconds_after_nominal_on": 0.047341436373415036,
+            "phase_before_rad": 0.29468509688402567,
+            "phase_after_rad": -2.137558475433308
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -20.3274616283179,
+            "minimum_dbfs": -70.12257645840853,
+            "minimum_relative_to_pre_db": -49.79511483009063,
+            "minimum_seconds_after_nominal_on": 0.047028936373408214,
+            "phase_before_rad": 0.07043403009516651,
+            "phase_after_rad": -2.3637521697966477
+          }
+        ]
+      },
+      {
+        "case_id": "m63-at-176.885899",
+        "cutoff_hz": 60,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -20.45860912824786,
+            "minimum_dbfs": -30.192759372803803,
+            "minimum_relative_to_pre_db": -9.734150244555941,
+            "minimum_seconds_after_nominal_on": 0.05443431433670298,
+            "phase_before_rad": 0.06299040168563305,
+            "phase_after_rad": -0.6931786974180713
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -16.566711204418716,
+            "minimum_dbfs": -23.60470120848406,
+            "minimum_relative_to_pre_db": -7.0379900040653425,
+            "minimum_seconds_after_nominal_on": 0.05360098100337041,
+            "phase_before_rad": 0.8317270911556692,
+            "phase_after_rad": 0.5074632343688158
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -19.28923344788972,
+            "minimum_dbfs": -27.141161105683803,
+            "minimum_relative_to_pre_db": -7.851927657794082,
+            "minimum_seconds_after_nominal_on": 0.053621814336707985,
+            "phase_before_rad": 0.5819182377114159,
+            "phase_after_rad": 0.07707084425450787
+          }
+        ]
+      },
+      {
+        "case_id": "m63-at-176.885899",
+        "cutoff_hz": 90,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -19.57774855433312,
+            "minimum_dbfs": -38.21804728425727,
+            "minimum_relative_to_pre_db": -18.640298729924147,
+            "minimum_seconds_after_nominal_on": 0.057913481003367906,
+            "phase_before_rad": 0.4142718627795522,
+            "phase_after_rad": -1.850401861885006
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -14.662786588746279,
+            "minimum_dbfs": -35.06701664863958,
+            "minimum_relative_to_pre_db": -20.4042300598933,
+            "minimum_seconds_after_nominal_on": 0.02472598100337109,
+            "phase_before_rad": 0.5602119591556676,
+            "phase_after_rad": 1.5537798536863432
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -17.6056879354594,
+            "minimum_dbfs": -34.107189793277406,
+            "minimum_relative_to_pre_db": -16.501501857818006,
+            "minimum_seconds_after_nominal_on": 0.02422598100335449,
+            "phase_before_rad": 0.4104344668862018,
+            "phase_after_rad": 1.1830847439291852
+          }
+        ]
+      },
+      {
+        "case_id": "m63-at-176.885899",
+        "cutoff_hz": 120,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -18.45436624381529,
+            "minimum_dbfs": -67.2391052524709,
+            "minimum_relative_to_pre_db": -48.78473900865562,
+            "minimum_seconds_after_nominal_on": 0.025642647670025553,
+            "phase_before_rad": -0.7843870149771349,
+            "phase_after_rad": -0.1607721091150742
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -13.297692823235163,
+            "minimum_dbfs": -43.81180350865385,
+            "minimum_relative_to_pre_db": -30.51411068541869,
+            "minimum_seconds_after_nominal_on": 0.05822598100337473,
+            "phase_before_rad": 1.5248874402001085,
+            "phase_after_rad": -1.156418673687887
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -16.71753071534699,
+            "minimum_dbfs": -41.642324862653226,
+            "minimum_relative_to_pre_db": -24.924794147306237,
+            "minimum_seconds_after_nominal_on": 0.023142647670027827,
+            "phase_before_rad": 1.427850665357527,
+            "phase_after_rad": 2.004318224712732
+          }
+        ]
+      },
+      {
+        "case_id": "m67-at-176.885899",
+        "cutoff_hz": 60,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -25.399191417269698,
+            "minimum_dbfs": -39.45117067085637,
+            "minimum_relative_to_pre_db": -14.051979253586673,
+            "minimum_seconds_after_nominal_on": 0.05451764767002487,
+            "phase_before_rad": 0.7219906922082346,
+            "phase_after_rad": -2.2651200623721888
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -16.011569845322434,
+            "minimum_dbfs": -27.23714464332273,
+            "minimum_relative_to_pre_db": -11.225574798000295,
+            "minimum_seconds_after_nominal_on": 0.05858014767002828,
+            "phase_before_rad": 0.7740084607993729,
+            "phase_after_rad": -2.3086846853887724
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -19.810160882268654,
+            "minimum_dbfs": -30.951261496016286,
+            "minimum_relative_to_pre_db": -11.141100613747632,
+            "minimum_seconds_after_nominal_on": 0.057767647670033284,
+            "phase_before_rad": 0.7340970817688858,
+            "phase_after_rad": -2.277725503195466
+          }
+        ]
+      },
+      {
+        "case_id": "m67-at-176.885899",
+        "cutoff_hz": 90,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -21.356712575979735,
+            "minimum_dbfs": -59.413677738338855,
+            "minimum_relative_to_pre_db": -38.05696516235912,
+            "minimum_seconds_after_nominal_on": 0.07780931433669025,
+            "phase_before_rad": -2.077808038608916,
+            "phase_after_rad": 2.0583257748974395
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -14.878622774063565,
+            "minimum_dbfs": -30.67260995669935,
+            "minimum_relative_to_pre_db": -15.793987182635785,
+            "minimum_seconds_after_nominal_on": 0.058955147670019414,
+            "phase_before_rad": 0.24528805833758452,
+            "phase_after_rad": -1.9550488256470555
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -18.17919277748957,
+            "minimum_dbfs": -33.613726000823696,
+            "minimum_relative_to_pre_db": -15.434533223334128,
+            "minimum_seconds_after_nominal_on": 0.05843431433669366,
+            "phase_before_rad": 0.16061945347683165,
+            "phase_after_rad": -1.9205120519208339
+          }
+        ]
+      },
+      {
+        "case_id": "m67-at-176.885899",
+        "cutoff_hz": 120,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -19.672646943592362,
+            "minimum_dbfs": -69.6535659556332,
+            "minimum_relative_to_pre_db": -49.980919012040836,
+            "minimum_seconds_after_nominal_on": 0.03537181433668479,
+            "phase_before_rad": -2.381055043748297,
+            "phase_after_rad": -1.5991010094650195
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -14.476683339198212,
+            "minimum_dbfs": -48.27427544878142,
+            "minimum_relative_to_pre_db": -33.797592109583206,
+            "minimum_seconds_after_nominal_on": 0.02424681433669207,
+            "phase_before_rad": 0.34112451364149304,
+            "phase_after_rad": 0.23871723147885826
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -17.57071094723118,
+            "minimum_dbfs": -65.22765369096909,
+            "minimum_relative_to_pre_db": -47.656942743737915,
+            "minimum_seconds_after_nominal_on": 0.06695514767002919,
+            "phase_before_rad": 1.5471257808991004,
+            "phase_after_rad": 2.977732632730489
+          }
+        ]
+      },
+      {
+        "case_id": "m68-at-177.988626",
+        "cutoff_hz": 60,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -28.46576417877221,
+            "minimum_dbfs": -50.044995339241744,
+            "minimum_relative_to_pre_db": -21.579231160469533,
+            "minimum_seconds_after_nominal_on": 0.05583216649765177,
+            "phase_before_rad": 3.116941323002774,
+            "phase_after_rad": 0.06472013723969978
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -16.408806453603297,
+            "minimum_dbfs": -29.341955044166784,
+            "minimum_relative_to_pre_db": -12.933148590563487,
+            "minimum_seconds_after_nominal_on": 0.09712383316431783,
+            "phase_before_rad": -1.255697914788713,
+            "phase_after_rad": -0.7042805706223478
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -20.511921951460486,
+            "minimum_dbfs": -36.529253258485284,
+            "minimum_relative_to_pre_db": -16.017331307024797,
+            "minimum_seconds_after_nominal_on": 0.09649883316433261,
+            "phase_before_rad": -1.0887944212664418,
+            "phase_after_rad": -0.47977897789561746
+          }
+        ]
+      },
+      {
+        "case_id": "m68-at-177.988626",
+        "cutoff_hz": 90,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -28.01416350408549,
+            "minimum_dbfs": -47.080173428060974,
+            "minimum_relative_to_pre_db": -19.066009923975482,
+            "minimum_seconds_after_nominal_on": 0.04668633316433102,
+            "phase_before_rad": 3.0717712998798925,
+            "phase_after_rad": -2.0486950747633736
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -16.295123431002246,
+            "minimum_dbfs": -39.29334633419527,
+            "minimum_relative_to_pre_db": -22.998222903193025,
+            "minimum_seconds_after_nominal_on": 0.07718633316432033,
+            "phase_before_rad": -1.1102410355514611,
+            "phase_after_rad": -0.5969318921804139
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -20.327191128268844,
+            "minimum_dbfs": -72.04203393859986,
+            "minimum_relative_to_pre_db": -51.714842810331014,
+            "minimum_seconds_after_nominal_on": 0.07637383316432533,
+            "phase_before_rad": -0.9877030405014781,
+            "phase_after_rad": -0.42065183182040544
+          }
+        ]
+      },
+      {
+        "case_id": "m68-at-177.988626",
+        "cutoff_hz": 120,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -24.693204423351972,
+            "minimum_dbfs": -56.42186595912882,
+            "minimum_relative_to_pre_db": -31.72866153577685,
+            "minimum_seconds_after_nominal_on": 0.05633216649766837,
+            "phase_before_rad": 2.8997433458469346,
+            "phase_after_rad": 0.425704192897843
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -15.63941416433547,
+            "minimum_dbfs": -28.700088946203813,
+            "minimum_relative_to_pre_db": -13.060674781868343,
+            "minimum_seconds_after_nominal_on": 0.07974883316433079,
+            "phase_before_rad": -0.976620212609523,
+            "phase_after_rad": -0.5906561811857509
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -19.43149852964924,
+            "minimum_dbfs": -32.37839199095554,
+            "minimum_relative_to_pre_db": -12.946893461306303,
+            "minimum_seconds_after_nominal_on": 0.07587383316433716,
+            "phase_before_rad": -0.8464744886058323,
+            "phase_after_rad": -0.27332644392633404
+          }
+        ]
+      },
+      {
+        "case_id": "m68-at-178.650262",
+        "cutoff_hz": 60,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -17.82285990782173,
+            "minimum_dbfs": -31.891002308289234,
+            "minimum_relative_to_pre_db": -14.068142400467504,
+            "minimum_seconds_after_nominal_on": 0.08827921112757053,
+            "phase_before_rad": 2.5441427961106644,
+            "phase_after_rad": 2.981808656244433
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -21.696446334908895,
+            "minimum_dbfs": -37.454057322074576,
+            "minimum_relative_to_pre_db": -15.75761098716568,
+            "minimum_seconds_after_nominal_on": 0.08817504446091107,
+            "phase_before_rad": -2.7292488754458963,
+            "phase_after_rad": -2.197342369754344
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -20.50422704274698,
+            "minimum_dbfs": -35.09387513087752,
+            "minimum_relative_to_pre_db": -14.589648088130541,
+            "minimum_seconds_after_nominal_on": 0.08805004446091402,
+            "phase_before_rad": 3.0634394235634996,
+            "phase_after_rad": -2.673517685059568
+          }
+        ]
+      },
+      {
+        "case_id": "m68-at-178.650262",
+        "cutoff_hz": 90,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -18.009674862156793,
+            "minimum_dbfs": -72.30681074335769,
+            "minimum_relative_to_pre_db": -54.297135881200894,
+            "minimum_seconds_after_nominal_on": 0.08875837779424955,
+            "phase_before_rad": 2.538876312716851,
+            "phase_after_rad": 3.0045774019175657
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -21.7057762798646,
+            "minimum_dbfs": -64.74342293558034,
+            "minimum_relative_to_pre_db": -43.03764665571574,
+            "minimum_seconds_after_nominal_on": 0.06871671112756417,
+            "phase_before_rad": -1.984764681619074,
+            "phase_after_rad": -2.010386801501554
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -20.67442925322995,
+            "minimum_dbfs": -42.985397590431205,
+            "minimum_relative_to_pre_db": -22.310968337201256,
+            "minimum_seconds_after_nominal_on": 0.08852921112756462,
+            "phase_before_rad": 3.070556972691405,
+            "phase_after_rad": -2.627148646952041
+          }
+        ]
+      },
+      {
+        "case_id": "m68-at-178.650262",
+        "cutoff_hz": 120,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -17.17237256676401,
+            "minimum_dbfs": -41.73636685963282,
+            "minimum_relative_to_pre_db": -24.563994292868806,
+            "minimum_seconds_after_nominal_on": 0.08598754446092016,
+            "phase_before_rad": 2.52665886160903,
+            "phase_after_rad": 3.0379778788416236
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -19.951012787570477,
+            "minimum_dbfs": -54.625589226607914,
+            "minimum_relative_to_pre_db": -34.67457643903744,
+            "minimum_seconds_after_nominal_on": 0.02502921112758827,
+            "phase_before_rad": -1.047598196397724,
+            "phase_after_rad": -2.1950300055249254
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -19.57262265852507,
+            "minimum_dbfs": -51.13811279229536,
+            "minimum_relative_to_pre_db": -31.56549013377029,
+            "minimum_seconds_after_nominal_on": 0.06825837779425115,
+            "phase_before_rad": -2.844729199429829,
+            "phase_after_rad": -2.2703166813600077
+          }
+        ]
+      },
+      {
+        "case_id": "m67-at-180.855717",
+        "cutoff_hz": 60,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -39.71367794967794,
+            "minimum_dbfs": -56.004207245655174,
+            "minimum_relative_to_pre_db": -16.290529295977237,
+            "minimum_seconds_after_nominal_on": 0.052741582116112795,
+            "phase_before_rad": -1.1051052692620815,
+            "phase_after_rad": -0.7491690950706841
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -41.24102238540058,
+            "minimum_dbfs": -62.89189090397709,
+            "minimum_relative_to_pre_db": -21.65086851857651,
+            "minimum_seconds_after_nominal_on": 0.0536374154494581,
+            "phase_before_rad": -0.22390751375117365,
+            "phase_after_rad": 0.1271937880836745
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -41.80323880410287,
+            "minimum_dbfs": -74.29106421177843,
+            "minimum_relative_to_pre_db": -32.487825407675565,
+            "minimum_seconds_after_nominal_on": 0.05317908211611666,
+            "phase_before_rad": -0.5700893907520423,
+            "phase_after_rad": -0.18989914791613452
+          }
+        ]
+      },
+      {
+        "case_id": "m67-at-180.855717",
+        "cutoff_hz": 90,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -39.48223640138991,
+            "minimum_dbfs": -52.743619274951385,
+            "minimum_relative_to_pre_db": -13.261382873561473,
+            "minimum_seconds_after_nominal_on": 0.04036658211612121,
+            "phase_before_rad": -1.0410849771436184,
+            "phase_after_rad": -2.18029079494792
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -41.148634353129864,
+            "minimum_dbfs": -63.06869233519292,
+            "minimum_relative_to_pre_db": -21.920057982063057,
+            "minimum_seconds_after_nominal_on": 0.055054082116129166,
+            "phase_before_rad": -0.1869926258504767,
+            "phase_after_rad": 0.07093977995354442
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -41.66193442769753,
+            "minimum_dbfs": -63.61578295745439,
+            "minimum_relative_to_pre_db": -21.95384852975686,
+            "minimum_seconds_after_nominal_on": 0.05453324878277499,
+            "phase_before_rad": -0.41570666090999825,
+            "phase_after_rad": -0.26113892982002196
+          }
+        ]
+      },
+      {
+        "case_id": "m67-at-180.855717",
+        "cutoff_hz": 120,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -30.97902049843231,
+            "minimum_dbfs": -40.238087751096316,
+            "minimum_relative_to_pre_db": -9.259067252664007,
+            "minimum_seconds_after_nominal_on": 0.05436658211613121,
+            "phase_before_rad": -0.2593550618396743,
+            "phase_after_rad": -1.0245614699195134
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -36.49034904209397,
+            "minimum_dbfs": -61.36413446043114,
+            "minimum_relative_to_pre_db": -24.87378541833717,
+            "minimum_seconds_after_nominal_on": 0.05453324878277499,
+            "phase_before_rad": 0.36087432937198416,
+            "phase_after_rad": 0.03889062461067273
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -34.074408539329056,
+            "minimum_dbfs": -47.28616516643825,
+            "minimum_relative_to_pre_db": -13.211756627109196,
+            "minimum_seconds_after_nominal_on": 0.05413741544944628,
+            "phase_before_rad": 0.21634371607140349,
+            "phase_after_rad": -0.32222288350599076
+          }
+        ]
+      },
+      {
+        "case_id": "m75-at-180.855717",
+        "cutoff_hz": 60,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -47.180013877996416,
+            "minimum_dbfs": -54.81118065402565,
+            "minimum_relative_to_pre_db": -7.631166776029232,
+            "minimum_seconds_after_nominal_on": 0.0482624154494431,
+            "phase_before_rad": -2.969614383668851,
+            "phase_after_rad": -2.0638817168039565
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -39.03348444323406,
+            "minimum_dbfs": -43.32061363241776,
+            "minimum_relative_to_pre_db": -4.287129189183702,
+            "minimum_seconds_after_nominal_on": 0.05009574878278045,
+            "phase_before_rad": 3.087435470084505,
+            "phase_after_rad": -2.587460645508687
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -42.46773530305313,
+            "minimum_dbfs": -46.85262942703717,
+            "minimum_relative_to_pre_db": -4.38489412398404,
+            "minimum_seconds_after_nominal_on": 0.049470748782795226,
+            "phase_before_rad": 3.130591317724817,
+            "phase_after_rad": -2.4141659547911782
+          }
+        ]
+      },
+      {
+        "case_id": "m75-at-180.855717",
+        "cutoff_hz": 90,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -47.332204389890435,
+            "minimum_dbfs": -57.26657826023689,
+            "minimum_relative_to_pre_db": -9.934373870346455,
+            "minimum_seconds_after_nominal_on": 0.05240824878279682,
+            "phase_before_rad": -2.904105547953454,
+            "phase_after_rad": -1.884305545353569
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -38.92213699649576,
+            "minimum_dbfs": -42.512623928340716,
+            "minimum_relative_to_pre_db": -3.590486931844957,
+            "minimum_seconds_after_nominal_on": 0.05388741544945219,
+            "phase_before_rad": 3.109305436082514,
+            "phase_after_rad": -2.5808627397715225
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -42.484929571106974,
+            "minimum_dbfs": -46.61291252140234,
+            "minimum_relative_to_pre_db": -4.127982950295369,
+            "minimum_seconds_after_nominal_on": 0.053074915449457194,
+            "phase_before_rad": 3.1413580457711214,
+            "phase_after_rad": -2.373143022863146
+          }
+        ]
+      },
+      {
+        "case_id": "m75-at-180.855717",
+        "cutoff_hz": 120,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -47.39300815435378,
+            "minimum_dbfs": -62.99570155544522,
+            "minimum_relative_to_pre_db": -15.602693401091443,
+            "minimum_seconds_after_nominal_on": 0.0544499154494531,
+            "phase_before_rad": -2.9765255641310002,
+            "phase_after_rad": -1.8042188789917912
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -38.94702137757834,
+            "minimum_dbfs": -43.677728131783226,
+            "minimum_relative_to_pre_db": -4.730706754204888,
+            "minimum_seconds_after_nominal_on": 0.055616582116130076,
+            "phase_before_rad": -3.0818752789370976,
+            "phase_after_rad": -2.620303518281454
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -42.497165465253865,
+            "minimum_dbfs": -48.12189611673816,
+            "minimum_relative_to_pre_db": -5.624730651484292,
+            "minimum_seconds_after_nominal_on": 0.05503324878279159,
+            "phase_before_rad": -3.0945613121566926,
+            "phase_after_rad": -2.399536480833133
+          }
+        ]
+      },
+      {
+        "case_id": "m75-at-181.737898",
+        "cutoff_hz": 60,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -19.67383269826826,
+            "minimum_dbfs": -32.896847218292756,
+            "minimum_relative_to_pre_db": -13.223014520024496,
+            "minimum_seconds_after_nominal_on": 0.059018197178176024,
+            "phase_before_rad": -0.561684163427417,
+            "phase_after_rad": 0.4557881142294583
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -18.69268693585668,
+            "minimum_dbfs": -27.587318368721455,
+            "minimum_relative_to_pre_db": -8.894631432864774,
+            "minimum_seconds_after_nominal_on": 0.05874736384484436,
+            "phase_before_rad": 0.47738586904572566,
+            "phase_after_rad": 1.5156715994027188
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -20.379299363417125,
+            "minimum_dbfs": -31.184844426966457,
+            "minimum_relative_to_pre_db": -10.805545063549332,
+            "minimum_seconds_after_nominal_on": 0.05872653051150678,
+            "phase_before_rad": 0.06278449894143091,
+            "phase_after_rad": 1.1351110586432933
+          }
+        ]
+      },
+      {
+        "case_id": "m75-at-181.737898",
+        "cutoff_hz": 90,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -19.661010787908076,
+            "minimum_dbfs": -40.67433069807442,
+            "minimum_relative_to_pre_db": -21.013319910166345,
+            "minimum_seconds_after_nominal_on": 0.05958069717817693,
+            "phase_before_rad": -0.5655389286161852,
+            "phase_after_rad": 0.44966030001216944
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -18.693614355929164,
+            "minimum_dbfs": -32.69213157402629,
+            "minimum_relative_to_pre_db": -13.998517218097128,
+            "minimum_seconds_after_nominal_on": 0.059414030511504734,
+            "phase_before_rad": 0.4497832435743121,
+            "phase_after_rad": 1.487972524139581
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -20.350063081148356,
+            "minimum_dbfs": -37.35245638266441,
+            "minimum_relative_to_pre_db": -17.00239330151605,
+            "minimum_seconds_after_nominal_on": 0.05930986384484527,
+            "phase_before_rad": 0.040573557727984814,
+            "phase_after_rad": 1.1172747189054537
+          }
+        ]
+      },
+      {
+        "case_id": "m75-at-181.737898",
+        "cutoff_hz": 120,
+        "channels": [
+          {
+            "channel": "left",
+            "pre_median_dbfs": -19.6516878467476,
+            "minimum_dbfs": -55.710079452702786,
+            "minimum_relative_to_pre_db": -36.05839160595519,
+            "minimum_seconds_after_nominal_on": 0.0596848638448364,
+            "phase_before_rad": -0.567985723477156,
+            "phase_after_rad": 0.47647395537582504
+          },
+          {
+            "channel": "right",
+            "pre_median_dbfs": -18.69595427078883,
+            "minimum_dbfs": -41.0336266649989,
+            "minimum_relative_to_pre_db": -22.337672394210067,
+            "minimum_seconds_after_nominal_on": 0.059476530511489045,
+            "phase_before_rad": 0.44081189088680695,
+            "phase_after_rad": 1.422463605843096
+          },
+          {
+            "channel": "mid",
+            "pre_median_dbfs": -20.350189902756426,
+            "minimum_dbfs": -53.29676620578787,
+            "minimum_relative_to_pre_db": -32.94657630303144,
+            "minimum_seconds_after_nominal_on": 0.059351530511492,
+            "phase_before_rad": 0.03504285647129062,
+            "phase_after_rad": 1.0788990860443783
+          }
+        ]
+      }
+    ]
+  },
+  "exploratory_phase_protocol": {
+    "classification": "Exploratory descriptive phasor check, declared after first-pass plots; no synthesis-model fit or production adoption score.",
+    "selection": "Two first-pass accepted20ms cases only, final MIDI75 and earlierMIDI70. Other short dictionaries remain rejected.",
+    "method": "Use already generated20ms absolute-time complex coefficients. Unwrap arithmetic-mid phase and fit straight lines separately in fixed nominal[-120,+20]ms and[+80,+200]ms windows. Report phase-rate Hz and difference of line predictions at the measured complex-change time modulo2pi. No frequency correction applied to coefficients; no shift chosen to favor a model.",
+    "purpose": "Distinguish a simple same-carrier phase interpolation explanation for an amplitude notch from an independently observable amplitude loss. An instantaneous equal-amplitude mixture between phasors separated bydelta has minimum blend magnitude abs(cos(delta/2)); compare this geometric benchmark only, not a fitted allocator model.",
+    "limits": "Actual note-off and note-on arrival may differ. Chorus/spectral leakage and a changing envelope can invalidate equal-amplitude assumptions. Geometric disagreement cannot determine whether hardware reuses, kills, steals, or receives a delivery gap."
+  },
+  "exploratory_phase_results": {
+    "protocol": "phase-observable-protocol.json",
+    "rows": [
+      {
+        "case_id": "m70-at-176.224263",
+        "phase_fits": [
+          {
+            "label": "old",
+            "nominal_relative_seconds": [
+              -0.12,
+              0.02
+            ],
+            "phase_slope_radians_per_second": -3.066273904167974,
+            "relative_frequency_hz": -0.48801264872201766,
+            "r_squared": 0.9952829758720646,
+            "phase_at_measured_change_radians": 0.07993947964251907,
+            "mean_amplitude_dbfs": -20.449765062456603
+          },
+          {
+            "label": "new",
+            "nominal_relative_seconds": [
+              0.08,
+              0.2
+            ],
+            "phase_slope_radians_per_second": -3.156685172725002,
+            "relative_frequency_hz": -0.5024020490240775,
+            "r_squared": 0.9778980097138982,
+            "phase_at_measured_change_radians": 3.099168572255301,
+            "mean_amplitude_dbfs": -20.311144165408685
+          }
+        ],
+        "extrapolated_phase_jump_radians": 3.019229092612782,
+        "equal_amplitude_instant_phase_blend_minimum_relative_db": -24.272977298113474,
+        "observed20ms_minimum_relative_to_fixed_pre_db": -10.370429744649094
+      },
+      {
+        "case_id": "m75-at-181.737898",
+        "phase_fits": [
+          {
+            "label": "old",
+            "nominal_relative_seconds": [
+              -0.12,
+              0.02
+            ],
+            "phase_slope_radians_per_second": -4.486798779632778,
+            "relative_frequency_hz": -0.7140962044372403,
+            "r_squared": 0.9985670246903331,
+            "phase_at_measured_change_radians": -0.010867705730193022,
+            "mean_amplitude_dbfs": -20.368702896561892
+          },
+          {
+            "label": "new",
+            "nominal_relative_seconds": [
+              0.08,
+              0.2
+            ],
+            "phase_slope_radians_per_second": -4.55113362589996,
+            "relative_frequency_hz": -0.7243354132337195,
+            "r_squared": 0.9888333089273973,
+            "phase_at_measured_change_radians": 1.2092562697956721,
+            "mean_amplitude_dbfs": -20.325061697688806
+          }
+        ],
+        "extrapolated_phase_jump_radians": 1.220123975525865,
+        "equal_amplitude_instant_phase_blend_minimum_relative_db": -1.7278284766824,
+        "observed20ms_minimum_relative_to_fixed_pre_db": -11.011085497911665
+      }
+    ]
+  },
+  "conditioning_summary": {
+    "configurations": 24,
+    "accepted": 2,
+    "rejected": 22,
+    "rule": "frozen design condition limit1e5; no dictionary pruning to rescue rejected cases"
+  },
+  "protocol_qualification": "Initial frozen protocol expectation of no lower-note octave harmonic at primary75 was too broad: MIDI39 eighth and MIDI51 fourth harmonics coincide with75. Their levels were not independently bounded. Original frozen protocol is preserved unchanged; direct fundamental dictionary does not separate coincident harmonics.",
+  "primary_recorded_observation": {
+    "midi": 75,
+    "nominal_on_seconds": 181.7378984694885,
+    "measured_change_seconds_after_nominal": 0.06199736384483856,
+    "20ms_joint_minimum_after_nominal_seconds": 0.058997363844838446,
+    "20ms_joint_minimum_dbfs": -31.380102566839373,
+    "fixed_pre_median_dbfs": -20.369017068927704,
+    "20ms_joint_dip_relative_db": -11.011085497911665,
+    "classification": "Amplitude interruption and phase discontinuity of recorded sinusoidal component; no actual hardware event timestamp"
+  },
+  "hypotheses": [
+    {
+      "model": "unchanged same-oscillator continuation",
+      "assessment": "disfavored by primary complex discontinuity"
+    },
+    {
+      "model": "instant equal-amplitude phase-only step with positive smoothing",
+      "assessment": "restricted geometric model insufficient: measured primary phase difference1.220rad implies minimum-1.728dB versus observed-11.011dB; not a complete circuit/recording model"
+    },
+    {
+      "model": "same-pitch reuse/choke",
+      "assessment": "compatible, not identified"
+    },
+    {
+      "model": "old/new always stack with ordinary old release",
+      "assessment": "unvalidated; no discriminating engine render or recovered isolated arrival/gate here; same-frequency component cannot uniquely label two voices"
+    },
+    {
+      "model": "voice stealing under chord change",
+      "assessment": "compatible; hardware allocator unknown"
+    },
+    {
+      "model": "actual off/on delivery gap",
+      "assessment": "compatible; source events same tick does not record actual hardware arrivals"
+    },
+    {
+      "model": "effects/circuit/recording memory or gain processing",
+      "assessment": "remains a confound; retained old sound does not establish an old oscillator survives"
+    }
+  ],
+  "recommendation": "Keep stacking/phase allocation explicitly unverified; do not adopt a specific rule from this evidence. Future dry isolated repeated-note capture with actual MIDI timestamps, several off/on gaps and a nonharmonic held gain-control tone would discriminate alternatives.",
+  "provenance": [
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/user-ONfIvtDOog0.wav",
+      "bytes": 35710514,
+      "sha256": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba"
+    },
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia-events.json",
+      "bytes": 379472,
+      "sha256": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/analyze_retriggers.py",
+      "bytes": 5372,
+      "sha256": "c1bb911eebeb2b6ab5c0e305a11e21e97095bee4321d93ae5e796aeefb26da61"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/demod-sensitivity-results.json",
+      "bytes": 29310,
+      "sha256": "d31fb561a715cfddc29fe23e8de609e79f32f7776847b562b782c100f9804759"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/demod_sensitivity.py",
+      "bytes": 2250,
+      "sha256": "38295a2329b93967d1899bd267d3860bfa6ac9ffc3a56573332b5738d14e344b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/exploratory-demod-protocol.json",
+      "bytes": 1444,
+      "sha256": "6a200e0bb55434b4bac32eb22cd97e10e4ffa4cf3565e1d8e80544392e4a2206"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/freeze_protocol.py",
+      "bytes": 5012,
+      "sha256": "ab1836f156f1053ae4688ce9bb4b8a68794a4c64b415a16a704ada3ce147628b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m63-at-176.885899-demod-sensitivity.png",
+      "bytes": 250735,
+      "sha256": "4d34a404bcc134f09db16072f772e7a9090a95571eb988c937791623e9b94e75"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m67-at-176.885899-demod-sensitivity.png",
+      "bytes": 221253,
+      "sha256": "39cecfc5c2551d8e410692ef8c3202f8865866c685184ad30cfc213b94725a22"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m67-at-180.855717-demod-sensitivity.png",
+      "bytes": 153482,
+      "sha256": "86479747bb4406d2c43081dc21176d60e0625de0f1b1297746b9f540b20d6520"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m68-at-177.988626-demod-sensitivity.png",
+      "bytes": 210468,
+      "sha256": "440b87388634fda31c131ea4a6e02087907879dfdbbb17c323b1cb50c85c47bc"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m68-at-178.650262-demod-sensitivity.png",
+      "bytes": 220728,
+      "sha256": "28bb88601fd8d543276b95d8d15a6153cb0a5740fc0c5d7253a1d169f86eb3af"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m70-at-176.224263-20ms.npz",
+      "bytes": 23252,
+      "sha256": "13991cd451919eaff92bc253a8ebe62e078aaf8e6178d07ba0d5049352b3eb84"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m70-at-176.224263-20ms.png",
+      "bytes": 213892,
+      "sha256": "b7a218e8806aafc3b5473bbe2f932477d41f9e2048715e24e5482b4c9c5219aa"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m70-at-176.224263-demod-sensitivity.png",
+      "bytes": 169739,
+      "sha256": "6f39abb2f44389f9905d2c5a78161f62de8613da4618a9148dacab7c9227d632"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m75-at-180.855717-demod-sensitivity.png",
+      "bytes": 136315,
+      "sha256": "d2a2aa1735d8f99c1abbee9fac876f6b37fe860c956c263fb642ad736e4426b9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m75-at-181.737898-20ms.npz",
+      "bytes": 23252,
+      "sha256": "f6008b2934ad80d012bcd1dbb1ec41aa7477dca115848a921e2132af6b8c8c47"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m75-at-181.737898-20ms.png",
+      "bytes": 227757,
+      "sha256": "ad44337bc32591e8aee88928767768e5d3e97b502b2d14322618affdbff53340"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/m75-at-181.737898-demod-sensitivity.png",
+      "bytes": 143508,
+      "sha256": "2d5fcb7f4f83858950b0e6b458f5a96a12c6630a4bf7e63e5fe5ff2464dabb2d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/phase-observable-protocol.json",
+      "bytes": 1264,
+      "sha256": "295a4ed946ac91644d5e17f4194ea0eb530204114230b50c6c48ec22531e7d84"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/phase-observable-results.json",
+      "bytes": 2339,
+      "sha256": "42456c92e9884f20f206068375aa003fe49c002cb53b8fc9427a01d64878a27e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/protocol-frozen.json",
+      "bytes": 10797,
+      "sha256": "c5db2802f55afad131964b8478a86d2766a568d5a7cdeaa875b574158eedfc1b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/retrigger-allocation-audit-20261019/results-first-pass.json",
+      "bytes": 23070,
+      "sha256": "2d1a5063f8e8d6cb862f4f142fd56833d455e8919d338d50e534bb7ef66b8ff0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/envelope-capture-forensics-20261018.md",
+      "bytes": 15130,
+      "sha256": "24cd4ed4a8cd808c5e663bb67c0dd8da0b41d0d0f930300c219372cd891ce780"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/codec-tail-audit-20261018.md",
+      "bytes": 8356,
+      "sha256": "b77e6f76b7909431b95952bc90cd092da17d2283b49040a973fd0a243f94b5fa"
+    }
+  ]
+}

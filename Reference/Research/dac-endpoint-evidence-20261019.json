@@ -1,0 +1,1124 @@
+{
+  "schema": 1,
+  "date": "2026-10-19",
+  "scope": "A posthoc discriminator on the reused exact PSS-780 Sine99 recording and refreshed public source gaps; not an independent recording or a recovered DAC model.",
+  "protocol": {
+    "status": "declared after inspecting prior endpoint curves; not an unseen holdout",
+    "source": "Exact PSS-780 tour ONfIvtDOog0, previously decoded Opus251 and AAC140",
+    "off_frame_48k": 8744591,
+    "channels": [
+      "left",
+      "right",
+      "mid"
+    ],
+    "existing_joint_fit": "40 ms squared-Hann fixed-frequency simultaneous sine/cosine fit at MIDI 39,46,58,59,67,75,79,87 plus DC and linear trend",
+    "fixed_contexts_after_off_seconds": [
+      [
+        1.15,
+        1.25
+      ],
+      [
+        1.35,
+        1.45
+      ],
+      [
+        2.2,
+        2.8
+      ]
+    ],
+    "discriminator": "At the first recorded partial loss (MIDI87), compare its level change with simultaneous surviving MIDI39/75/79, and with adjacent-band recorded background. A common scalar gate cannot selectively remove one partial while the others survive at continuous levels. This does not distinguish a per-voice endpoint from capture spectral gating or a nonlinear postmix quantizer.",
+    "background_analysis": "48 kHz float source without gain changes; Hann-windowed 100 ms periodograms, 50 ms hop, power spectrum integrated over fixed bands 2500-3500,4000-6000,7000-9000 Hz. These contain no ideal harmonics of the specified pure sine source but may contain analog distortion/capture/codec content. No source of background is inferred.",
+    "production_effect": "none",
+    "prohibited_inference": [
+      "No DAC bit depth from a dBFS threshold",
+      "No hardware EG endpoint from lossy audio alone",
+      "No additive noise or gate added",
+      "No exact sample-clock inference"
+    ]
+  },
+  "measurements": {
+    "schema": 1,
+    "inputs": [
+      {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/codec-tail-audit-20261018/opus251-float48.wav",
+        "sha256": "613084aecf53c3cea83f78e0506eef61dec4c4f21fb938a266d8d4120a60508e",
+        "size_bytes": 71420964,
+        "sample_rate": 48000,
+        "shape": [
+          8927609,
+          2
+        ],
+        "dtype": "float32"
+      },
+      {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/codec-tail-audit-20261018/aac140-float48.wav",
+        "sha256": "8f7e7452003b46c291c7b0b489a56a34026225c6190fe4dbef743a2b098247b2",
+        "size_bytes": 71438796,
+        "sample_rate": 48000,
+        "shape": [
+          8929838,
+          2
+        ],
+        "dtype": "float32"
+      }
+    ],
+    "curve_input": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/codec-tail-audit-20261018/joint-curves.npz",
+      "sha256": "53f82415a6472085b6bdfd74774b7cbdf65e204ea9df74e951d1adbb8566c114"
+    },
+    "fixed_partial_levels": [
+      {
+        "format": "opus251_float",
+        "channel": "left",
+        "window_after_frozen_off_seconds": [
+          1.15,
+          1.25
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -52.30668929749487,
+          "75": -50.2107729318152,
+          "79": -52.620004521820114,
+          "87": -55.46022183744487
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "left",
+        "window_after_frozen_off_seconds": [
+          1.35,
+          1.45
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -54.54631908916727,
+          "75": -62.8556494098537,
+          "79": -57.81761426151973,
+          "87": -91.34398453046349
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "left",
+        "window_after_frozen_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -91.3343991068475,
+          "75": -96.40362602435856,
+          "79": -96.42968958925623,
+          "87": -96.78297170153394
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "left",
+        "comparison": "after minus before, unnormalized medians",
+        "delta_db": {
+          "39": -2.2396297916723995,
+          "75": -12.644876478038498,
+          "79": -5.197609739699615,
+          "87": -35.88376269301862
+        },
+        "midi87_minus_survivor_delta_db": {
+          "39": -33.64413290134622,
+          "75": -23.23888621498012,
+          "79": -30.686152953319002
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "right",
+        "window_after_frozen_off_seconds": [
+          1.15,
+          1.25
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -61.04528138419724,
+          "75": -60.16930679097739,
+          "79": -56.33166825514551,
+          "87": -65.36027538076675
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "right",
+        "window_after_frozen_off_seconds": [
+          1.35,
+          1.45
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -61.40355500895913,
+          "75": -53.423569682386116,
+          "79": -56.02232450401321,
+          "87": -95.28645010931581
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "right",
+        "window_after_frozen_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -88.31965590211237,
+          "75": -95.77335065841366,
+          "79": -95.98742520662022,
+          "87": -95.7805790656586
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "right",
+        "comparison": "after minus before, unnormalized medians",
+        "delta_db": {
+          "39": -0.3582736247618925,
+          "75": 6.745737108591271,
+          "79": 0.30934375113229606,
+          "87": -29.926174728549057
+        },
+        "midi87_minus_survivor_delta_db": {
+          "39": -29.567901103787165,
+          "75": -36.67191183714033,
+          "79": -30.235518479681353
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "mid",
+        "window_after_frozen_off_seconds": [
+          1.15,
+          1.25
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -55.639283798322204,
+          "75": -54.43589387689742,
+          "79": -55.733750568770056,
+          "87": -60.28742639751013
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "mid",
+        "window_after_frozen_off_seconds": [
+          1.35,
+          1.45
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -57.77459915423931,
+          "75": -57.285037831228195,
+          "79": -58.207605111261174,
+          "87": -95.671267104832
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "mid",
+        "window_after_frozen_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -93.2310940670447,
+          "75": -99.41628672347399,
+          "79": -99.04977702249168,
+          "87": -98.48591560173452
+        }
+      },
+      {
+        "format": "opus251_float",
+        "channel": "mid",
+        "comparison": "after minus before, unnormalized medians",
+        "delta_db": {
+          "39": -2.1353153559171076,
+          "75": -2.8491439543307777,
+          "79": -2.473854542491118,
+          "87": -35.383840707321866
+        },
+        "midi87_minus_survivor_delta_db": {
+          "39": -33.24852535140476,
+          "75": -32.53469675299109,
+          "79": -32.90998616483075
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "left",
+        "window_after_frozen_off_seconds": [
+          1.15,
+          1.25
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -52.46987204531416,
+          "75": -50.1300611741138,
+          "79": -52.522364265151815,
+          "87": -55.60855784223071
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "left",
+        "window_after_frozen_off_seconds": [
+          1.35,
+          1.45
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -54.47613186530694,
+          "75": -62.675815985423,
+          "79": -57.66190338811536,
+          "87": -90.54089425489464
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "left",
+        "window_after_frozen_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -91.38064483262079,
+          "75": -96.24071609711756,
+          "79": -96.87409682022611,
+          "87": -96.82474109683389
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "left",
+        "comparison": "after minus before, unnormalized medians",
+        "delta_db": {
+          "39": -2.0062598199927777,
+          "75": -12.545754811309202,
+          "79": -5.139539122963548,
+          "87": -34.93233641266393
+        },
+        "midi87_minus_survivor_delta_db": {
+          "39": -32.92607659267115,
+          "75": -22.386581601354727,
+          "79": -29.79279728970038
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "right",
+        "window_after_frozen_off_seconds": [
+          1.15,
+          1.25
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -60.89597845675988,
+          "75": -60.350940227258896,
+          "79": -56.102360168598224,
+          "87": -65.39045681066469
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "right",
+        "window_after_frozen_off_seconds": [
+          1.35,
+          1.45
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -61.48061051791612,
+          "75": -53.43139056956859,
+          "79": -56.08493676983656,
+          "87": -94.48597500484748
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "right",
+        "window_after_frozen_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -88.36814595494998,
+          "75": -95.59215153463613,
+          "79": -95.65275095678476,
+          "87": -96.21806110297013
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "right",
+        "comparison": "after minus before, unnormalized medians",
+        "delta_db": {
+          "39": -0.5846320611562419,
+          "75": 6.919549657690304,
+          "79": 0.017423398761664544,
+          "87": -29.095518194182787
+        },
+        "midi87_minus_survivor_delta_db": {
+          "39": -28.510886133026546,
+          "75": -36.01506785187309,
+          "79": -29.112941592944452
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "mid",
+        "window_after_frozen_off_seconds": [
+          1.15,
+          1.25
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -55.750565923990514,
+          "75": -54.31020937421799,
+          "79": -55.54844904468808,
+          "87": -60.24975115652231
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "mid",
+        "window_after_frozen_off_seconds": [
+          1.35,
+          1.45
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -57.77099599957715,
+          "75": -57.329479243847416,
+          "79": -58.224819658935175,
+          "87": -98.33508175790337
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "mid",
+        "window_after_frozen_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "partial_amplitudes_dbfs": {
+          "39": -93.40881931905295,
+          "75": -99.35680684840011,
+          "79": -99.15479389015653,
+          "87": -98.68633064191458
+        }
+      },
+      {
+        "format": "aac140",
+        "channel": "mid",
+        "comparison": "after minus before, unnormalized medians",
+        "delta_db": {
+          "39": -2.0204300755866385,
+          "75": -3.019269869629426,
+          "79": -2.676370614247098,
+          "87": -38.08533060138106
+        },
+        "midi87_minus_survivor_delta_db": {
+          "39": -36.06490052579442,
+          "75": -35.066060731751634,
+          "79": -35.40895998713396
+        }
+      }
+    ],
+    "recorded_background": [
+      {
+        "format": "opus251_float",
+        "channel": "left",
+        "window_after_off_seconds": [
+          1.05,
+          1.25
+        ],
+        "rms_dbfs": -47.993920576107215,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -83.29447942723546
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -82.74651140300728
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.25091484792591
+          }
+        ]
+      },
+      {
+        "format": "opus251_float",
+        "channel": "left",
+        "window_after_off_seconds": [
+          1.4,
+          1.6
+        ],
+        "rms_dbfs": -56.48129990518121,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -85.09785102852221
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -83.22348960369635
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.3079618225003
+          }
+        ]
+      },
+      {
+        "format": "opus251_float",
+        "channel": "left",
+        "window_after_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "rms_dbfs": -71.1501878684793,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -85.04448714031614
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -83.79379793828171
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.06873948194026
+          }
+        ]
+      },
+      {
+        "format": "opus251_float",
+        "channel": "right",
+        "window_after_off_seconds": [
+          1.05,
+          1.25
+        ],
+        "rms_dbfs": -53.04438762729734,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -83.06088367396956
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -82.20931114692462
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.88710101192389
+          }
+        ]
+      },
+      {
+        "format": "opus251_float",
+        "channel": "right",
+        "window_after_off_seconds": [
+          1.4,
+          1.6
+        ],
+        "rms_dbfs": -55.24157723211062,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -84.81287042340603
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -83.41304556592243
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.05770131828301
+          }
+        ]
+      },
+      {
+        "format": "opus251_float",
+        "channel": "right",
+        "window_after_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "rms_dbfs": -71.12636374352056,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -85.90999041557885
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -84.04839321680001
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.32307890171764
+          }
+        ]
+      },
+      {
+        "format": "opus251_float",
+        "channel": "mid",
+        "window_after_off_seconds": [
+          1.05,
+          1.25
+        ],
+        "rms_dbfs": -51.21295190165295,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -86.26531227938332
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -85.3444620038011
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -81.33266475918808
+          }
+        ]
+      },
+      {
+        "format": "opus251_float",
+        "channel": "mid",
+        "window_after_off_seconds": [
+          1.4,
+          1.6
+        ],
+        "rms_dbfs": -57.046310474547745,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -87.95382330941324
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -86.36140417163388
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -81.14420439900547
+          }
+        ]
+      },
+      {
+        "format": "opus251_float",
+        "channel": "mid",
+        "window_after_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "rms_dbfs": -76.80861888751032,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -88.79239074132671
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -86.85616187671614
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -81.07646465000657
+          }
+        ]
+      },
+      {
+        "format": "aac140",
+        "channel": "left",
+        "window_after_off_seconds": [
+          1.05,
+          1.25
+        ],
+        "rms_dbfs": -47.96211129846324,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -83.35736545075896
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -83.08038895550146
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.23840772518847
+          }
+        ]
+      },
+      {
+        "format": "aac140",
+        "channel": "left",
+        "window_after_off_seconds": [
+          1.4,
+          1.6
+        ],
+        "rms_dbfs": -56.55010566384082,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -85.26732299625664
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -83.80374232266598
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.34019469917418
+          }
+        ]
+      },
+      {
+        "format": "aac140",
+        "channel": "left",
+        "window_after_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "rms_dbfs": -71.12025735334416,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -85.50523154911389
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -83.97070494268063
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.19653254552878
+          }
+        ]
+      },
+      {
+        "format": "aac140",
+        "channel": "right",
+        "window_after_off_seconds": [
+          1.05,
+          1.25
+        ],
+        "rms_dbfs": -53.046277409401284,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -83.36745842072801
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -82.59317430450861
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.58238123207019
+          }
+        ]
+      },
+      {
+        "format": "aac140",
+        "channel": "right",
+        "window_after_off_seconds": [
+          1.4,
+          1.6
+        ],
+        "rms_dbfs": -55.24476276886429,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -85.44928774376876
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -84.0781980226668
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.1423614497496
+          }
+        ]
+      },
+      {
+        "format": "aac140",
+        "channel": "right",
+        "window_after_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "rms_dbfs": -71.1114959764601,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -86.08036445360196
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -84.21146405476156
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -80.47705112883943
+          }
+        ]
+      },
+      {
+        "format": "aac140",
+        "channel": "mid",
+        "window_after_off_seconds": [
+          1.05,
+          1.25
+        ],
+        "rms_dbfs": -51.186497535288716,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -86.66850539057367
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -85.63900243957221
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -81.04665457838979
+          }
+        ]
+      },
+      {
+        "format": "aac140",
+        "channel": "mid",
+        "window_after_off_seconds": [
+          1.4,
+          1.6
+        ],
+        "rms_dbfs": -57.06642900981726,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -88.51638228882504
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -86.97945614906052
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -81.10393207789231
+          }
+        ]
+      },
+      {
+        "format": "aac140",
+        "channel": "mid",
+        "window_after_off_seconds": [
+          2.2,
+          2.8
+        ],
+        "rms_dbfs": -76.81531538294543,
+        "bands": [
+          {
+            "frequency_band_hz": [
+              2500,
+              3500
+            ],
+            "integrated_power_dbfs": -89.12177798184224
+          },
+          {
+            "frequency_band_hz": [
+              4000,
+              6000
+            ],
+            "integrated_power_dbfs": -87.08660068784432
+          },
+          {
+            "frequency_band_hz": [
+              7000,
+              9000
+            ],
+            "integrated_power_dbfs": -81.09527172075444
+          }
+        ]
+      }
+    ],
+    "raw_recomputation": [
+      {
+        "format": "opus251_float",
+        "channel": "left",
+        "raw_recompute_max_abs_amplitude_error": 4.336808689942018e-19,
+        "centers_checked": 200
+      },
+      {
+        "format": "opus251_float",
+        "channel": "right",
+        "raw_recompute_max_abs_amplitude_error": 4.336808689942018e-19,
+        "centers_checked": 200
+      },
+      {
+        "format": "opus251_float",
+        "channel": "mid",
+        "raw_recompute_max_abs_amplitude_error": 4.336808689942018e-19,
+        "centers_checked": 200
+      },
+      {
+        "format": "aac140",
+        "channel": "left",
+        "raw_recompute_max_abs_amplitude_error": 4.336808689942018e-19,
+        "centers_checked": 200
+      },
+      {
+        "format": "aac140",
+        "channel": "right",
+        "raw_recompute_max_abs_amplitude_error": 4.336808689942018e-19,
+        "centers_checked": 200
+      },
+      {
+        "format": "aac140",
+        "channel": "mid",
+        "raw_recompute_max_abs_amplitude_error": 4.336808689942018e-19,
+        "centers_checked": 200
+      }
+    ],
+    "interpretation": "Selective-frequency loss excludes a single common scalar gate as complete explanation, subject to separated-partial identity. Nonlinear quantization and frequency-selective capture gating remain untested mechanisms. No bit-depth inference."
+  },
+  "technical_source_refresh": [
+    {
+      "path": "build/dac-endpoint-evidence-20261019/dtech-yamaha-chips.html",
+      "sha256": "7a28928fe49505506353b8a369c214df7384fd616d672c976c3b000fc4cd5f41",
+      "size_bytes": 198626,
+      "url": "https://dtech.lv/techarticles_yamaha_chips.html",
+      "acquisition": "curl with default TLS verification, --fail --location; exit 0",
+      "obtained_utc": "2026-10-18T22:44:37.538979+00:00"
+    },
+    {
+      "path": "build/dac-endpoint-evidence-20261019/mame-ympsr16.cpp",
+      "sha256": "62f85855a15dab3706f028dd6500103ed23742e0d73f755904b4d38e09c2205b",
+      "size_bytes": 6623,
+      "url": "https://raw.githubusercontent.com/mamedev/mame/master/src/mame/yamaha/ympsr16.cpp",
+      "acquisition": "curl with default TLS verification, --fail --location; exit 0",
+      "obtained_utc": "2026-10-18T22:44:37.539212+00:00"
+    },
+    {
+      "path": "build/dac-endpoint-evidence-20261019/ymfm-readme.md",
+      "sha256": "85fa831f01bb266efe5384e56d0d1f921ca4275a4415ba0123c5226602a44a1a",
+      "size_bytes": 5891,
+      "url": "https://raw.githubusercontent.com/aaronsgiles/ymfm/main/README.md",
+      "acquisition": "curl with default TLS verification, --fail --location; exit 0",
+      "obtained_utc": "2026-10-18T22:44:37.539260+00:00"
+    }
+  ],
+  "web_search_scope": {
+    "queries": [
+      "YM3420 OPU DAC resolution envelope bit datasheet Yamaha",
+      "YM3420 DAC bit",
+      "YM3420 patent",
+      "YM3420 die decap",
+      "YM3420 resolution",
+      "YM3420 envelope counter",
+      "YM3420 \u30c7\u30fc\u30bf\u30b7\u30fc\u30c8",
+      "YM3420 D/A"
+    ],
+    "negative_leads": [
+      {
+        "url": "https://siliconpr0n.org/archive/doku.php?id=vendor%3Ayamaha",
+        "result": "Search index lists a YM3420 row, but web fetch is 403; no die image or tracing acquired."
+      },
+      {
+        "url": "https://www.bitsavers.org/components/yamaha/",
+        "result": "Web fetch is 403; indexed Yamaha DAC PDFs concern other model numbers."
+      }
+    ],
+    "limitation": "A bounded unsuccessful search is not proof that no relevant public document exists."
+  },
+  "classification": {
+    "common_scalar_output_gate": "Selective loss contradicts this as the sole cause, conditional on separated components representing their own sources.",
+    "per_voice_eg_endpoint": "Compatible but unidentified; factory LKS and carrier TL prevent a fixed EG-domain inference.",
+    "per_voice_total_attenuation_truncation": "Compatible but unidentified; requires controlled TL/velocity/LKS sweeps.",
+    "memoryless_postmix_quantizer": "Not ruled out by the scalar-gain comparison; it is nonlinear, and no code transfer or clock is recovered.",
+    "capture_spectral_gate_or_earlier_lossy_processing": "Still compatible; two YouTube transcodes share an unknown upload master.",
+    "uniform_pcm_bit_depth": "Not measurable from these endpoint dBFS figures; analog gain, stereo chorus, losses, filtering and unknown code domain prevent the inference."
+  },
+  "no_runtime_or_factory_change": true,
+  "no_additive_noise": true,
+  "artifact_hashes": [
+    {
+      "path": "build/dac-endpoint-evidence-20261019/protocol.json",
+      "sha256": "1ed5ac01c8e1d92ecd6620ed84fe0f18ebd2b95f5c63642e14c1124dd09df7e1",
+      "size_bytes": 1434
+    },
+    {
+      "path": "build/dac-endpoint-evidence-20261019/measure_endpoint.py",
+      "sha256": "5f3c478544501a219cf0896aad70a59ae22464086d14eb31c847122f0f8e43b6",
+      "size_bytes": 4778
+    },
+    {
+      "path": "build/dac-endpoint-evidence-20261019/measurement.json",
+      "sha256": "0e3dd8e2fa8e0172d1921acdb5f9a321594e12c41c3ad364dc357c31793c6d54",
+      "size_bytes": 22849
+    },
+    {
+      "path": "build/dac-endpoint-evidence-20261019/source-refresh.json",
+      "sha256": "af0a8c8ae2a5896694958dd990fa2ee02809d7f24468d83e3cb26c036b8e8093",
+      "size_bytes": 793
+    },
+    {
+      "path": "build/dac-endpoint-evidence-20261019/write_report.py",
+      "sha256": "84626376a365447554a1117acd9e1f8c23c3ea25f755c350da4c410629e8e6de",
+      "size_bytes": 4415
+    }
+  ],
+  "technical_source_refresh_note": "Initial Python urllib attempts failed because its local trust store could not verify certificates. Subsequent curl requests used normal TLS verification and succeeded; no certificate verification was disabled."
+}

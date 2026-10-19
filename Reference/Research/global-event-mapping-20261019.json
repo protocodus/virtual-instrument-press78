@@ -1,0 +1,2848 @@
+{
+  "date": "2026-10-19",
+  "scope": "Frozen calibration-only candidate mapping, held-out timing observations within one already reused PSS-780 recording.",
+  "baseline_revision": "2d0e0c4069ecefc1b263e46cbf5b5703e5e90699",
+  "source_url": "https://www.youtube.com/watch?v=ONfIvtDOog0",
+  "protocol": {
+    "version": 1,
+    "date_utc": "2026-10-19",
+    "status": "frozen before new onset audio measurement",
+    "purpose": "Held-out audible-event timing validation within one already reused hardware recording; not an independent recording or chip-clock identification.",
+    "source_files": {
+      "calibration_report": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/midi-alignment-audit-20261018.json",
+        "sha256": "0cf58c3ea9ba42af9302a0a21c6c34279f8582284088fe692a2476be33032236"
+      },
+      "bank": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/press78-factory.json",
+        "sha256": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
+      },
+      "alignment": {
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/alignment.json",
+        "sha256": "97f0072ef21b48fe9b80b43fd42a1217160208997103dacda4d2b74b7b2f2947"
+      },
+      "events": {
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia-events.json",
+        "sha256": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4"
+      },
+      "timeline": {
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v3_program_timeline.json",
+        "sha256": "1978645805679691f0b39269c5ac1db762d59a9f6c65cd399cbafffe555650eb"
+      },
+      "recording": {
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/user-ONfIvtDOog0.wav",
+        "sha256": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba"
+      },
+      "analysis_tool": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/audit_global_event_mapping.py",
+        "sha256": "e8f6ad4c00952d8f9c8fef5cec8bec2e06ffa73a66ce2708dc52003c558e6d80"
+      }
+    },
+    "calibration_patches": [
+      5,
+      18,
+      88,
+      99
+    ],
+    "validation_patches": [
+      19,
+      52,
+      91,
+      98
+    ],
+    "old_alignment": {
+      "source": "user-ONfIvtDOog0.wav",
+      "midi": "eugenia.mid",
+      "formula": "video_audio_seconds = offset_seconds + scale * midi_seconds",
+      "offset_seconds": 0.8906462238832541,
+      "scale": 0.9998070138348876,
+      "chroma_similarity": 0.6572448881699976,
+      "local_checks": [
+        {
+          "midi_start_seconds": 0.0,
+          "residual_seconds": 0.0020000000000002793,
+          "score": 0.7715056431862928
+        },
+        {
+          "midi_start_seconds": 15.0,
+          "residual_seconds": 0.004000000000000281,
+          "score": 0.7856406934385606
+        },
+        {
+          "midi_start_seconds": 30.0,
+          "residual_seconds": 0.006000000000000283,
+          "score": 0.6122840996056358
+        },
+        {
+          "midi_start_seconds": 45.0,
+          "residual_seconds": 0.018000000000000294,
+          "score": 0.7042602477281003
+        },
+        {
+          "midi_start_seconds": 60.0,
+          "residual_seconds": 0.022000000000000297,
+          "score": 0.69028904083396
+        },
+        {
+          "midi_start_seconds": 75.0,
+          "residual_seconds": -0.05599999999999977,
+          "score": 0.5589677567257958
+        },
+        {
+          "midi_start_seconds": 90.0,
+          "residual_seconds": -0.05199999999999977,
+          "score": 0.6937594054786976
+        },
+        {
+          "midi_start_seconds": 105.0,
+          "residual_seconds": -0.01999999999999974,
+          "score": 0.6918974445213947
+        },
+        {
+          "midi_start_seconds": 120.0,
+          "residual_seconds": 0.004000000000000281,
+          "score": 0.5606446589395567
+        },
+        {
+          "midi_start_seconds": 135.0,
+          "residual_seconds": 0.016000000000000292,
+          "score": 0.4852341609598673
+        },
+        {
+          "midi_start_seconds": 150.0,
+          "residual_seconds": -0.0019999999999997242,
+          "score": 0.6265665959062042
+        },
+        {
+          "midi_start_seconds": 165.0,
+          "residual_seconds": 0.032000000000000306,
+          "score": 0.7656833953311408
+        }
+      ],
+      "median_abs_local_residual_ms": 17.00000000000029,
+      "method": "Globally whitened 12-bin STFT chroma; fixed harmonic MIDI chroma; global affine grid/differential evolution, no local warping.",
+      "caveats": [
+        "Approximate chroma onset alignment depends on patch attack.",
+        "MIDI file identity is supported by description and global pitch progression; sender settings and channel routing remain unknown.",
+        "All source MIDI velocities are127; this does not independently verify hardware velocity processing."
+      ]
+    },
+    "calibration_note_count": 18,
+    "calibration_onset_groups": [
+      {
+        "patch": 5,
+        "midi_on": 9.264696,
+        "old_mapped_on": 10.153554265731282,
+        "audible_on": 10.17871553152208,
+        "old_map_residual_seconds": 0.025161265790797454,
+        "midi_notes": [
+          72
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 5,
+        "midi_on": 9.485284,
+        "old_mapped_on": 10.37409969529909,
+        "audible_on": 10.397322104527879,
+        "old_map_residual_seconds": 0.023222409228787596,
+        "midi_notes": [
+          74
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 5,
+        "midi_on": 9.926459999999999,
+        "old_mapped_on": 10.815190554434711,
+        "audible_on": 10.837395778502982,
+        "old_map_residual_seconds": 0.022205224068271166,
+        "midi_notes": [
+          77
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 18,
+        "midi_on": 32.20584799999993,
+        "old_mapped_on": 33.09027894078347,
+        "audible_on": 33.13037969860275,
+        "old_map_residual_seconds": 0.04010075781928005,
+        "midi_notes": [
+          77
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 18,
+        "midi_on": 32.42643599999993,
+        "old_mapped_on": 33.31082437035128,
+        "audible_on": 33.33824860283866,
+        "old_map_residual_seconds": 0.02742423248738419,
+        "midi_notes": [
+          74
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 88,
+        "midi_on": 155.95571600000116,
+        "old_mapped_on": 156.81626492832623,
+        "audible_on": 156.85398808301838,
+        "old_map_residual_seconds": 0.037723154692157035,
+        "midi_notes": [
+          74,
+          77
+        ],
+        "valid_note_count": 2,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 88,
+        "midi_on": 156.17630400000115,
+        "old_mapped_on": 157.036810357894,
+        "audible_on": 157.09253717313734,
+        "old_map_residual_seconds": 0.05572681524333184,
+        "midi_notes": [
+          79
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 88,
+        "midi_on": 156.61748000000114,
+        "old_mapped_on": 157.47790121702963,
+        "audible_on": 157.5311930214405,
+        "old_map_residual_seconds": 0.05329180441086829,
+        "midi_notes": [
+          72
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 99,
+        "midi_on": 174.9262840000009,
+        "old_mapped_on": 175.78317187115763,
+        "audible_on": 175.82300632744082,
+        "old_map_residual_seconds": 0.039834456283196186,
+        "midi_notes": [
+          77
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 99,
+        "midi_on": 175.80863600000086,
+        "old_mapped_on": 176.66535358942883,
+        "audible_on": 176.70669384854142,
+        "old_map_residual_seconds": 0.041340259112588526,
+        "midi_notes": [
+          72
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 99,
+        "midi_on": 176.69098800000086,
+        "old_mapped_on": 177.5475353077001,
+        "audible_on": 177.5906458368541,
+        "old_map_residual_seconds": 0.043110529153998524,
+        "midi_notes": [
+          72
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 99,
+        "midi_on": 176.91157600000085,
+        "old_mapped_on": 177.76808073726787,
+        "audible_on": 177.8220357675516,
+        "old_map_residual_seconds": 0.053955030283726786,
+        "midi_notes": [
+          77
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 99,
+        "midi_on": 177.57334000000083,
+        "old_mapped_on": 178.42971702597129,
+        "audible_on": 178.47666612247616,
+        "old_map_residual_seconds": 0.046949096504861156,
+        "midi_notes": [
+          72
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 99,
+        "midi_on": 178.23510400000083,
+        "old_mapped_on": 179.09135331467473,
+        "audible_on": 179.1547384979746,
+        "old_map_residual_seconds": 0.06338518329985997,
+        "midi_notes": [
+          75
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 99,
+        "midi_on": 179.99980800000085,
+        "old_mapped_on": 180.85571675121722,
+        "audible_on": 180.91670811022624,
+        "old_map_residual_seconds": 0.06099135900902537,
+        "midi_notes": [
+          75
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": true
+      },
+      {
+        "patch": 99,
+        "midi_on": 180.88216000000088,
+        "old_mapped_on": 181.7378984694885,
+        "audible_on": 181.799400478009,
+        "old_map_residual_seconds": 0.06150200852050725,
+        "midi_notes": [
+          79,
+          87
+        ],
+        "valid_note_count": 2,
+        "invalid_note_count": 0,
+        "calibration": true
+      }
+    ],
+    "equal_weight_calibration_patch_summaries": [
+      {
+        "patch": 5,
+        "unique_onset_groups": 3,
+        "median_midi_time": 9.485284,
+        "median_old_map_residual_seconds": 0.023222409228787596,
+        "summary_audible_time": 10.397322104527879
+      },
+      {
+        "patch": 18,
+        "unique_onset_groups": 2,
+        "median_midi_time": 32.31614199999993,
+        "median_old_map_residual_seconds": 0.033762495153332114,
+        "summary_audible_time": 33.23431415072071
+      },
+      {
+        "patch": 88,
+        "unique_onset_groups": 3,
+        "median_midi_time": 156.17630400000115,
+        "median_old_map_residual_seconds": 0.05329180441086829,
+        "summary_audible_time": 157.09010216230487
+      },
+      {
+        "patch": 99,
+        "unique_onset_groups": 8,
+        "median_midi_time": 177.24245800000085,
+        "median_old_map_residual_seconds": 0.05045206339429397,
+        "summary_audible_time": 178.14935094501388
+      }
+    ],
+    "calibration_rule": "Aggregate simultaneous notes by median residual first; then summarize each calibration patch by median unique-onset MIDI time and median unique-onset residual. Summary audible time=oldOffset+oldScale*medianTime+medianResidual. Four patch summaries have equal weight.",
+    "candidate_fit_rules": {
+      "unchanged": "Original affine map.",
+      "old_scale_median_offset": "Retain old scale; add median of four patch-summary residuals to old offset.",
+      "nominal_scale_median_intercept": "Fix scale1; intercept=median of four(summaryAudibleTime-summaryMidiTime).",
+      "equal_patch_robust_affine": "Scale=median of six pairwise slopes among four patch-summary(time,audibleTime) points; intercept=median of four(audibleTime-scale*time)."
+    },
+    "calibration_pairwise_slopes": [
+      1.0002686734853723,
+      1.0000119984016462,
+      0.999969329719903,
+      0.9999646860754384,
+      0.9999221728253428,
+      0.999672212721378
+    ],
+    "candidate_maps": [
+      {
+        "id": "unchanged",
+        "offset_seconds": 0.8906462238832541,
+        "scale": 0.9998070138348876
+      },
+      {
+        "id": "old_scale_median_offset",
+        "offset_seconds": 0.9327535031570672,
+        "scale": 0.9998070138348876
+      },
+      {
+        "id": "nominal_scale_median_intercept",
+        "offset_seconds": 0.9129181334157996,
+        "scale": 1.0
+      },
+      {
+        "id": "equal_patch_robust_affine",
+        "offset_seconds": 0.9158456466155656,
+        "scale": 0.9999670078976708
+      }
+    ],
+    "metadata_selected_validation_notes": [
+      {
+        "start": 92.20578400000062,
+        "midi": 77,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 40128,
+        "gate": 0.22058800000000645,
+        "end": 92.42637200000063,
+        "id": 938,
+        "audio_on": 93.07863578322852,
+        "audio_off": 93.29918121279634,
+        "patch": 52,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 698.4564628660078,
+        "previous_same_note_gap_seconds": 1.5438180069747176
+      },
+      {
+        "start": 92.42637200000063,
+        "midi": 74,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 40224,
+        "gate": 0.22058800000000645,
+        "end": 92.64696000000063,
+        "id": 942,
+        "audio_on": 93.29918121279634,
+        "audio_off": 93.51972664236416,
+        "patch": 52,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 587.3295358348151,
+        "previous_same_note_gap_seconds": 0.4410908591356275
+      },
+      {
+        "start": 160.80865200000108,
+        "midi": 77,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 69984,
+        "gate": 0.22058799999999223,
+        "end": 161.02924000000107,
+        "id": 1576,
+        "audio_on": 161.66826437881795,
+        "audio_off": 161.88880980838576,
+        "patch": 91,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 698.4564628660078,
+        "previous_same_note_gap_seconds": 1.5438180069746466
+      },
+      {
+        "start": 161.02924000000107,
+        "midi": 76,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 70080,
+        "gate": 0.22058799999999223,
+        "end": 161.24982800000106,
+        "id": 1577,
+        "audio_on": 161.88880980838576,
+        "audio_off": 162.10935523795357,
+        "patch": 91,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 659.2551138257398,
+        "previous_same_note_gap_seconds": 33.52290529430698
+      },
+      {
+        "start": 161.69100400000104,
+        "midi": 76,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 70368,
+        "gate": 0.22058799999999223,
+        "end": 161.91159200000104,
+        "id": 1586,
+        "audio_on": 162.55044609708918,
+        "audio_off": 162.77099152665699,
+        "patch": 91,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 659.2551138257398,
+        "previous_same_note_gap_seconds": 0.4410908591356133
+      },
+      {
+        "start": 173.38216800000092,
+        "midi": 82,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 75456,
+        "gate": 0.22058799999999223,
+        "end": 173.6027560000009,
+        "id": 1711,
+        "audio_on": 174.239353864183,
+        "audio_off": 174.4598992937508,
+        "patch": 98,
+        "carrier_multiple": 4,
+        "frequency_nominal_hz": 3729.3100921447194,
+        "previous_same_note_gap_seconds": 6.39581745746645
+      },
+      {
+        "start": 174.0439320000009,
+        "midi": 75,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 75744,
+        "gate": 0.22058799999999223,
+        "end": 174.26452000000089,
+        "id": 1717,
+        "audio_on": 174.90099015288638,
+        "audio_off": 175.1215355824542,
+        "patch": 98,
+        "carrier_multiple": 4,
+        "frequency_nominal_hz": 2489.0158697766474,
+        "previous_same_note_gap_seconds": 0.8821817182711982
+      }
+    ],
+    "validation_selection": [
+      {
+        "patch": 19,
+        "name": "PSS 19 Glass Celesta",
+        "raw_data": [
+          4,
+          3,
+          1,
+          62,
+          10,
+          83,
+          96,
+          127,
+          127,
+          89,
+          17,
+          87,
+          17,
+          2,
+          7,
+          64,
+          56,
+          159,
+          11,
+          46,
+          81,
+          100,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "metadata_criteria": {
+          "both_operators_raw_ar63": true,
+          "modulator_tl_at_least40": true,
+          "carrier_sine": true,
+          "voice_vibrato_flag_off": true
+        },
+        "selected_note_count": 0,
+        "metadata_rejections": [
+          {
+            "id": 328,
+            "midi": 62,
+            "audio_on": 34.413551518190324,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 329,
+            "midi": 70,
+            "audio_on": 34.413551518190324,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 330,
+            "midi": 46,
+            "audio_on": 34.413551518190324,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 331,
+            "midi": 53,
+            "audio_on": 34.413551518190324,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 332,
+            "midi": 58,
+            "audio_on": 34.413551518190324,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 333,
+            "midi": 41,
+            "audio_on": 34.854642377325945,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 334,
+            "midi": 53,
+            "audio_on": 34.854642377325945,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 335,
+            "midi": 38,
+            "audio_on": 35.07518780689376,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 336,
+            "midi": 50,
+            "audio_on": 35.07518780689376,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 337,
+            "midi": 39,
+            "audio_on": 35.295733236461565,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 338,
+            "midi": 51,
+            "audio_on": 35.295733236461565,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 339,
+            "midi": 65,
+            "audio_on": 35.51627866602937,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 340,
+            "midi": 41,
+            "audio_on": 35.51627866602937,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 341,
+            "midi": 53,
+            "audio_on": 35.51627866602937,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 342,
+            "midi": 67,
+            "audio_on": 35.736824095597186,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 343,
+            "midi": 39,
+            "audio_on": 35.736824095597186,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 344,
+            "midi": 51,
+            "audio_on": 35.736824095597186,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 345,
+            "midi": 69,
+            "audio_on": 35.95736952516499,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 346,
+            "midi": 36,
+            "audio_on": 35.95736952516499,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 347,
+            "midi": 48,
+            "audio_on": 35.95736952516499,
+            "reasons": [
+              "midi_below72"
+            ]
+          }
+        ]
+      },
+      {
+        "patch": 52,
+        "name": "PSS 52 Jazz Guitar",
+        "raw_data": [
+          2,
+          3,
+          1,
+          48,
+          11,
+          130,
+          185,
+          191,
+          191,
+          23,
+          11,
+          196,
+          12,
+          86,
+          6,
+          64,
+          56,
+          159,
+          11,
+          46,
+          84,
+          84,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "metadata_criteria": {
+          "both_operators_raw_ar63": true,
+          "modulator_tl_at_least40": true,
+          "carrier_sine": true,
+          "voice_vibrato_flag_off": true
+        },
+        "selected_note_count": 2,
+        "metadata_rejections": [
+          {
+            "id": 933,
+            "midi": 70,
+            "audio_on": 92.6375449240929,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 934,
+            "midi": 74,
+            "audio_on": 92.6375449240929,
+            "reasons": [
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 935,
+            "midi": 41,
+            "audio_on": 92.6375449240929,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 936,
+            "midi": 53,
+            "audio_on": 92.6375449240929,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 937,
+            "midi": 65,
+            "audio_on": 92.85809035366071,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 939,
+            "midi": 53,
+            "audio_on": 93.07863578322852,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 940,
+            "midi": 58,
+            "audio_on": 93.07863578322852,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 941,
+            "midi": 62,
+            "audio_on": 93.07863578322852,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 943,
+            "midi": 63,
+            "audio_on": 93.51972664236416,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 944,
+            "midi": 65,
+            "audio_on": 93.51972664236416,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 945,
+            "midi": 41,
+            "audio_on": 93.51972664236416,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 946,
+            "midi": 53,
+            "audio_on": 93.51972664236416,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 947,
+            "midi": 67,
+            "audio_on": 93.74027207193197,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 948,
+            "midi": 53,
+            "audio_on": 93.96081750149979,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 949,
+            "midi": 57,
+            "audio_on": 93.96081750149979,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 950,
+            "midi": 63,
+            "audio_on": 94.18136293106761,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 951,
+            "midi": 65,
+            "audio_on": 94.18136293106761,
+            "reasons": [
+              "midi_below72"
+            ]
+          }
+        ]
+      },
+      {
+        "patch": 91,
+        "name": "PSS 91 Vibraphone",
+        "raw_data": [
+          1,
+          165,
+          1,
+          47,
+          12,
+          149,
+          7,
+          127,
+          191,
+          22,
+          139,
+          0,
+          11,
+          68,
+          4,
+          64,
+          74,
+          159,
+          11,
+          238,
+          82,
+          82,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "metadata_criteria": {
+          "both_operators_raw_ar63": true,
+          "modulator_tl_at_least40": true,
+          "carrier_sine": true,
+          "voice_vibrato_flag_off": true
+        },
+        "selected_note_count": 3,
+        "metadata_rejections": [
+          {
+            "id": 1571,
+            "midi": 70,
+            "audio_on": 161.44771894925015,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1572,
+            "midi": 74,
+            "audio_on": 161.44771894925015,
+            "reasons": [
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 1573,
+            "midi": 79,
+            "audio_on": 161.44771894925015,
+            "reasons": [
+              "less_than100ms_after_inferred_program_boundary",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1574,
+            "midi": 41,
+            "audio_on": 161.44771894925015,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 1575,
+            "midi": 53,
+            "audio_on": 161.44771894925015,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 1578,
+            "midi": 53,
+            "audio_on": 161.88880980838576,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1579,
+            "midi": 58,
+            "audio_on": 161.88880980838576,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 1580,
+            "midi": 62,
+            "audio_on": 161.88880980838576,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 1581,
+            "midi": 70,
+            "audio_on": 162.10935523795357,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1582,
+            "midi": 74,
+            "audio_on": 162.10935523795357,
+            "reasons": [
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1583,
+            "midi": 77,
+            "audio_on": 162.10935523795357,
+            "reasons": [
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1584,
+            "midi": 50,
+            "audio_on": 162.32990066752137,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 1585,
+            "midi": 62,
+            "audio_on": 162.32990066752137,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1587,
+            "midi": 74,
+            "audio_on": 162.77099152665699,
+            "reasons": [
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1588,
+            "midi": 77,
+            "audio_on": 162.77099152665699,
+            "reasons": [
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1589,
+            "midi": 53,
+            "audio_on": 162.77099152665699,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 1590,
+            "midi": 58,
+            "audio_on": 162.77099152665699,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 1591,
+            "midi": 62,
+            "audio_on": 162.77099152665699,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          }
+        ]
+      },
+      {
+        "patch": 98,
+        "name": "PSS 98 Music Box",
+        "raw_data": [
+          3,
+          47,
+          4,
+          53,
+          25,
+          1,
+          0,
+          191,
+          127,
+          50,
+          23,
+          0,
+          23,
+          120,
+          5,
+          64,
+          56,
+          159,
+          23,
+          46,
+          85,
+          83,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "metadata_criteria": {
+          "both_operators_raw_ar63": true,
+          "modulator_tl_at_least40": true,
+          "carrier_sine": true,
+          "voice_vibrato_flag_off": true
+        },
+        "selected_note_count": 2,
+        "metadata_rejections": [
+          {
+            "id": 1705,
+            "midi": 68,
+            "audio_on": 173.79826300504737,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 1706,
+            "midi": 71,
+            "audio_on": 173.79826300504737,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 1707,
+            "midi": 75,
+            "audio_on": 173.79826300504737,
+            "reasons": [
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 1708,
+            "midi": 47,
+            "audio_on": 173.79826300504737,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 1709,
+            "midi": 59,
+            "audio_on": 173.79826300504737,
+            "reasons": [
+              "midi_below72",
+              "less_than100ms_after_inferred_program_boundary"
+            ]
+          },
+          {
+            "id": 1710,
+            "midi": 80,
+            "audio_on": 174.01880843461518,
+            "reasons": [
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1712,
+            "midi": 44,
+            "audio_on": 174.239353864183,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 1713,
+            "midi": 56,
+            "audio_on": 174.239353864183,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 1714,
+            "midi": 80,
+            "audio_on": 174.4598992937508,
+            "reasons": [
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1715,
+            "midi": 39,
+            "audio_on": 174.6804447233186,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 1716,
+            "midi": 51,
+            "audio_on": 174.6804447233186,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 1718,
+            "midi": 68,
+            "audio_on": 175.1215355824542,
+            "reasons": [
+              "midi_below72",
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1719,
+            "midi": 75,
+            "audio_on": 175.1215355824542,
+            "reasons": [
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1720,
+            "midi": 80,
+            "audio_on": 175.1215355824542,
+            "reasons": [
+              "previous_same_note_midi_off_less_than250ms_ago"
+            ]
+          },
+          {
+            "id": 1721,
+            "midi": 35,
+            "audio_on": 175.1215355824542,
+            "reasons": [
+              "midi_below72"
+            ]
+          },
+          {
+            "id": 1722,
+            "midi": 47,
+            "audio_on": 175.1215355824542,
+            "reasons": [
+              "midi_below72"
+            ]
+          }
+        ]
+      }
+    ],
+    "selection_rule": "Fixed patches19/52/91/98; both operators rawAR63, modTL>=40, carrier sine, voiceVibratoOFF. MIDI>=72; at least.10s after inferred program boundary; at least.25s since previous same-pitch source MIDI off. Zero-case patches stay absent; no replacement training/validation cases.",
+    "measurement_rule": "Exactly previous onset audit: arithmetic stereo mid, nominal carrier-frequency centered Hann demodulation12/24/48ms. Median beforeoldOn[-.12,-.07] and afteroldOn[+.07,+.11] define amplitude step; first crossing10/50/90% overoldOn[-.08,+.14], persist >threshold for >90% of next2ms samples. Primary24ms50% needs a crossing, after>before and after>=2*before. All failures retained. Candidate maps never change measurement windows.",
+    "evaluation_rule": "Aggregate valid simultaneous-note primary residuals by median to one audible-onset group. For each map, groupResidual=measuredAudibleOn-(offset+scale*sourceMidiOn). Per-patch error=median(abs(groupResidual)); primary score=mean of per-patch errors with equal weight across usable validation patches. Report signed patch medians, extrema, every group, and12/48ms sensitivity separately.",
+    "acceptance_rule": {
+      "minimum_usable_validation_patches": 3,
+      "minimum_total_valid_onset_groups": 6,
+      "minimum_valid_groups_per_usable_patch": 2,
+      "minimum_primary_score_reduction_fraction_vs_unchanged": 0.2,
+      "maximum_per_patch_median_absolute_error_regression_seconds": 0.005,
+      "minimum_primary_score_margin_seconds_for_unique_map_selection": 0.003,
+      "unique_selection_explanation": "A unique supported candidate must satisfy coverage, improve primary score>=20% vs unchanged, regress no patch by>5ms, and beat every other improved eligible candidate by>=3ms. Otherwise improved maps remain indistinguishable/provisional; no production map is adopted."
+    },
+    "no_dsp_model_render_spectral_metric_local_alignment_or_new_recording": true,
+    "existing_alignment_scores_runtime_and_packages_unchanged": true
+  },
+  "result": {
+    "protocol_sha256": "13c20f46868af731914e5d5bfdd9c88b30d4958b159804f2d3f8b655fa595dd2",
+    "source_sha256": {
+      "calibration_report": "0cf58c3ea9ba42af9302a0a21c6c34279f8582284088fe692a2476be33032236",
+      "bank": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2",
+      "alignment": "97f0072ef21b48fe9b80b43fd42a1217160208997103dacda4d2b74b7b2f2947",
+      "events": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4",
+      "timeline": "1978645805679691f0b39269c5ac1db762d59a9f6c65cd399cbafffe555650eb",
+      "recording": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba",
+      "analysis_tool": "e8f6ad4c00952d8f9c8fef5cec8bec2e06ffa73a66ce2708dc52003c558e6d80"
+    },
+    "measurements": [
+      {
+        "note": {
+          "start": 92.20578400000062,
+          "midi": 77,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 40128,
+          "gate": 0.22058800000000645,
+          "end": 92.42637200000063,
+          "id": 938,
+          "audio_on": 93.07863578322852,
+          "audio_off": 93.29918121279634,
+          "patch": 52,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 698.4564628660078,
+          "previous_same_note_gap_seconds": 1.5438180069747176
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.001969910230654232,
+            "after_amplitude": 0.08189092839405185,
+            "contrast": 41.57089349541316,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.05709668351807208,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.05476230577524439,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.05306435705841698,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.000862821780974831,
+            "after_amplitude": 0.08182614873079455,
+            "contrast": 94.83551590265368,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.06041624175171054,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.05569180296811798,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.05226726930028318,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0008951894511795009,
+            "after_amplitude": 0.08121887603412488,
+            "contrast": 90.72814243634234,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.06688051749173522,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.057569994548613064,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.050709965062864536,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 92.42637200000063,
+          "midi": 74,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 40224,
+          "gate": 0.22058800000000645,
+          "end": 92.64696000000063,
+          "id": 942,
+          "audio_on": 93.29918121279634,
+          "audio_off": 93.51972664236416,
+          "patch": 52,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 587.3295358348151,
+          "previous_same_note_gap_seconds": 0.4410908591356275
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.019954478465366667,
+            "after_amplitude": 0.07644624675355166,
+            "contrast": 3.831032060609004,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.06917472339336603,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.06770214407449922,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.06627556647278784,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.001969882361263883,
+            "after_amplitude": 0.07727336232078644,
+            "contrast": 39.227399483493826,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.07287102757178668,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.06808673657654592,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.06492150573302526,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0013992619810156335,
+            "after_amplitude": 0.076869311760321,
+            "contrast": 54.93561091721119,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.0792400329907136,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.0701797670383723,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.06357073768960392,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 160.80865200000108,
+          "midi": 77,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 69984,
+          "gate": 0.22058799999999223,
+          "end": 161.02924000000107,
+          "id": 1576,
+          "audio_on": 161.66826437881795,
+          "audio_off": 161.88880980838576,
+          "patch": 91,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 698.4564628660078,
+          "previous_same_note_gap_seconds": 1.5438180069746466
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.034258094360547844,
+            "after_amplitude": 0.06003985654825541,
+            "contrast": 1.7525743234976388,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.07348775379056446,
+                "valid": false
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.07312976826202826,
+                "valid": false
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.0727024496083826,
+                "valid": false
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.013418655205701173,
+            "after_amplitude": 0.05725110129627571,
+            "contrast": 4.26653046960708,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.050926219350090354,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.0403718689231892,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.0747358430734519,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.01349232322438607,
+            "after_amplitude": 0.057827148025447556,
+            "contrast": 4.285929640414379,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.03346445341542674,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.04414784116735926,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.0768710872018044,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 161.02924000000107,
+          "midi": 76,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 70080,
+          "gate": 0.22058799999999223,
+          "end": 161.24982800000106,
+          "id": 1577,
+          "audio_on": 161.88880980838576,
+          "audio_off": 162.10935523795357,
+          "patch": 91,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 659.2551138257398,
+          "previous_same_note_gap_seconds": 33.52290529430698
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.06893994209046513,
+            "after_amplitude": 0.08784637664150792,
+            "contrast": 1.2742450019211387,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.078217898006408,
+                "valid": false
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.07780590021110058,
+                "valid": false
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.07730702866015565,
+                "valid": false
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.040620128740799205,
+            "after_amplitude": 0.08568057849855316,
+            "contrast": 2.109313317180476,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.07812484730776384,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.05449084580277008,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.05654687946638164,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.003940736435325807,
+            "after_amplitude": 0.08436641466958492,
+            "contrast": 21.408794029791487,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.043426909375949285,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.05401823151793825,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.07657071613377579,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 161.69100400000104,
+          "midi": 76,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 70368,
+          "gate": 0.22058799999999223,
+          "end": 161.91159200000104,
+          "id": 1586,
+          "audio_on": 162.55044609708918,
+          "audio_off": 162.77099152665699,
+          "patch": 91,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 659.2551138257398,
+          "previous_same_note_gap_seconds": 0.4410908591356133
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.028288219549248334,
+            "after_amplitude": 0.0471467147267209,
+            "contrast": 1.6666554303511711,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.07398268221899877,
+                "valid": false
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.02943747744582831,
+                "valid": false
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.01944795129368885,
+                "valid": false
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.015184313810964311,
+            "after_amplitude": 0.05154079693164994,
+            "contrast": 3.3943448201415123,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.031098299394571118,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.03145823142680206,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.03247080751398379,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.004421876417914719,
+            "after_amplitude": 0.05357933822497585,
+            "contrast": 12.116878257362728,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.023589065814024292,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.02941251680554359,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.03378879901382251,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 173.38216800000092,
+          "midi": 82,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 75456,
+          "gate": 0.22058799999999223,
+          "end": 173.6027560000009,
+          "id": 1711,
+          "audio_on": 174.239353864183,
+          "audio_off": 174.4598992937508,
+          "patch": 98,
+          "carrier_multiple": 4,
+          "frequency_nominal_hz": 3729.3100921447194,
+          "previous_same_note_gap_seconds": 6.39581745746645
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 3.88334396673774e-05,
+            "after_amplitude": 0.021843188070617855,
+            "contrast": 562.483989512975,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.04844882521073572,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.05087639699798143,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.05282017814278541,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 3.5914292294059327e-05,
+            "after_amplitude": 0.021762497034825346,
+            "contrast": 605.956449221892,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.04529861376468975,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.050284906477009055,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.05427561167670578,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 1.8118839937057923e-05,
+            "after_amplitude": 0.021647161995076672,
+            "contrast": 1194.7322273542677,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.0390016862056984,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.04916268098992351,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.057566880958194504,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 174.0439320000009,
+          "midi": 75,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 75744,
+          "gate": 0.22058799999999223,
+          "end": 174.26452000000089,
+          "id": 1717,
+          "audio_on": 174.90099015288638,
+          "audio_off": 175.1215355824542,
+          "patch": 98,
+          "carrier_multiple": 4,
+          "frequency_nominal_hz": 2489.0158697766474,
+          "previous_same_note_gap_seconds": 0.8821817182711982
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 4.979667366450342e-05,
+            "after_amplitude": 0.022857503810632868,
+            "contrast": 459.01667980137375,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.03663215110869578,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.0390377642769874,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.040768135280898114,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 4.2697124312901276e-05,
+            "after_amplitude": 0.02266582489463218,
+            "contrast": 530.851322176363,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.033369034766001025,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.03810485122294221,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.041624491936577794,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 3.087815310127772e-05,
+            "after_amplitude": 0.02236249522793103,
+            "contrast": 724.2173829044744,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.02674823362983857,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.036338714556805395,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.04356511364726974,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "validation_onset_groups": [
+      {
+        "patch": 52,
+        "midi_on": 92.20578400000062,
+        "old_mapped_on": 93.07863578322852,
+        "audible_on": 93.02294398026041,
+        "old_map_residual_seconds": -0.05569180296811798,
+        "midi_notes": [
+          77
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": false
+      },
+      {
+        "patch": 52,
+        "midi_on": 92.42637200000063,
+        "old_mapped_on": 93.29918121279634,
+        "audible_on": 93.2310944762198,
+        "old_map_residual_seconds": -0.06808673657654592,
+        "midi_notes": [
+          74
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": false
+      },
+      {
+        "patch": 91,
+        "midi_on": 160.80865200000108,
+        "old_mapped_on": 161.66826437881795,
+        "audible_on": 161.70863624774114,
+        "old_map_residual_seconds": 0.0403718689231892,
+        "midi_notes": [
+          77
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": false
+      },
+      {
+        "patch": 91,
+        "midi_on": 161.02924000000107,
+        "old_mapped_on": 161.88880980838576,
+        "audible_on": 161.94330065418853,
+        "old_map_residual_seconds": 0.05449084580277008,
+        "midi_notes": [
+          76
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": false
+      },
+      {
+        "patch": 91,
+        "midi_on": 161.69100400000104,
+        "old_mapped_on": 162.55044609708918,
+        "audible_on": 162.58190432851598,
+        "old_map_residual_seconds": 0.03145823142680206,
+        "midi_notes": [
+          76
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": false
+      },
+      {
+        "patch": 98,
+        "midi_on": 173.38216800000092,
+        "old_mapped_on": 174.239353864183,
+        "audible_on": 174.28963877066,
+        "old_map_residual_seconds": 0.050284906477009055,
+        "midi_notes": [
+          82
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": false
+      },
+      {
+        "patch": 98,
+        "midi_on": 174.0439320000009,
+        "old_mapped_on": 174.90099015288638,
+        "audible_on": 174.93909500410933,
+        "old_map_residual_seconds": 0.03810485122294221,
+        "midi_notes": [
+          75
+        ],
+        "valid_note_count": 1,
+        "invalid_note_count": 0,
+        "calibration": false
+      }
+    ],
+    "scores": [
+      {
+        "candidate": {
+          "id": "unchanged",
+          "offset_seconds": 0.8906462238832541,
+          "scale": 0.9998070138348876
+        },
+        "primary_score_seconds": 0.04881867251516544,
+        "patches": [
+          {
+            "patch": 19,
+            "valid_group_count": 0,
+            "usable_for_primary": false,
+            "median_signed_residual_seconds": null,
+            "median_absolute_residual_seconds": null,
+            "minimum_residual_seconds": null,
+            "maximum_residual_seconds": null
+          },
+          {
+            "patch": 52,
+            "valid_group_count": 2,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": -0.06188926977232967,
+            "median_absolute_residual_seconds": 0.06188926977232967,
+            "minimum_residual_seconds": -0.06808673657654651,
+            "maximum_residual_seconds": -0.055691802968112825
+          },
+          {
+            "patch": 91,
+            "valid_group_count": 3,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": 0.040371868923188,
+            "median_absolute_residual_seconds": 0.040371868923188,
+            "minimum_residual_seconds": 0.0314582314267966,
+            "maximum_residual_seconds": 0.05449084580277486
+          },
+          {
+            "patch": 98,
+            "valid_group_count": 2,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": 0.044194878849978636,
+            "median_absolute_residual_seconds": 0.044194878849978636,
+            "minimum_residual_seconds": 0.03810485122295404,
+            "maximum_residual_seconds": 0.05028490647700323
+          }
+        ],
+        "groups": [
+          {
+            "patch": 52,
+            "midi_on": 92.20578400000062,
+            "old_mapped_on": 93.07863578322852,
+            "audible_on": 93.02294398026041,
+            "old_map_residual_seconds": -0.05569180296811798,
+            "midi_notes": [
+              77
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.055691802968112825
+          },
+          {
+            "patch": 52,
+            "midi_on": 92.42637200000063,
+            "old_mapped_on": 93.29918121279634,
+            "audible_on": 93.2310944762198,
+            "old_map_residual_seconds": -0.06808673657654592,
+            "midi_notes": [
+              74
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.06808673657654651
+          },
+          {
+            "patch": 91,
+            "midi_on": 160.80865200000108,
+            "old_mapped_on": 161.66826437881795,
+            "audible_on": 161.70863624774114,
+            "old_map_residual_seconds": 0.0403718689231892,
+            "midi_notes": [
+              77
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": 0.040371868923188
+          },
+          {
+            "patch": 91,
+            "midi_on": 161.02924000000107,
+            "old_mapped_on": 161.88880980838576,
+            "audible_on": 161.94330065418853,
+            "old_map_residual_seconds": 0.05449084580277008,
+            "midi_notes": [
+              76
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": 0.05449084580277486
+          },
+          {
+            "patch": 91,
+            "midi_on": 161.69100400000104,
+            "old_mapped_on": 162.55044609708918,
+            "audible_on": 162.58190432851598,
+            "old_map_residual_seconds": 0.03145823142680206,
+            "midi_notes": [
+              76
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": 0.0314582314267966
+          },
+          {
+            "patch": 98,
+            "midi_on": 173.38216800000092,
+            "old_mapped_on": 174.239353864183,
+            "audible_on": 174.28963877066,
+            "old_map_residual_seconds": 0.050284906477009055,
+            "midi_notes": [
+              82
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": 0.05028490647700323
+          },
+          {
+            "patch": 98,
+            "midi_on": 174.0439320000009,
+            "old_mapped_on": 174.90099015288638,
+            "audible_on": 174.93909500410933,
+            "old_map_residual_seconds": 0.03810485122294221,
+            "midi_notes": [
+              75
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": 0.03810485122295404
+          }
+        ],
+        "primary_reduction_fraction_vs_unchanged": 0.0,
+        "maximum_patch_error_regression_seconds": 0.0,
+        "improved_eligible": false
+      },
+      {
+        "candidate": {
+          "id": "old_scale_median_offset",
+          "offset_seconds": 0.9327535031570672,
+          "scale": 0.9998070138348876
+        },
+        "primary_score_seconds": 0.0402452081733955,
+        "patches": [
+          {
+            "patch": 19,
+            "valid_group_count": 0,
+            "usable_for_primary": false,
+            "median_signed_residual_seconds": null,
+            "median_absolute_residual_seconds": null,
+            "minimum_residual_seconds": null,
+            "maximum_residual_seconds": null
+          },
+          {
+            "patch": 52,
+            "valid_group_count": 2,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": -0.10399654904615119,
+            "median_absolute_residual_seconds": 0.10399654904615119,
+            "minimum_residual_seconds": -0.11019401585036803,
+            "maximum_residual_seconds": -0.09779908224193434
+          },
+          {
+            "patch": 91,
+            "valid_group_count": 3,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": -0.0017354103506193042,
+            "median_absolute_residual_seconds": 0.010649047847010706,
+            "minimum_residual_seconds": -0.010649047847010706,
+            "maximum_residual_seconds": 0.012383566528967549
+          },
+          {
+            "patch": 98,
+            "valid_group_count": 2,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": 0.0020875995761713284,
+            "median_absolute_residual_seconds": 0.006090027627024597,
+            "minimum_residual_seconds": -0.004002428050853268,
+            "maximum_residual_seconds": 0.008177627203195925
+          }
+        ],
+        "groups": [
+          {
+            "patch": 52,
+            "midi_on": 92.20578400000062,
+            "old_mapped_on": 93.07863578322852,
+            "audible_on": 93.02294398026041,
+            "old_map_residual_seconds": -0.05569180296811798,
+            "midi_notes": [
+              77
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.09779908224193434
+          },
+          {
+            "patch": 52,
+            "midi_on": 92.42637200000063,
+            "old_mapped_on": 93.29918121279634,
+            "audible_on": 93.2310944762198,
+            "old_map_residual_seconds": -0.06808673657654592,
+            "midi_notes": [
+              74
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.11019401585036803
+          },
+          {
+            "patch": 91,
+            "midi_on": 160.80865200000108,
+            "old_mapped_on": 161.66826437881795,
+            "audible_on": 161.70863624774114,
+            "old_map_residual_seconds": 0.0403718689231892,
+            "midi_notes": [
+              77
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.0017354103506193042
+          },
+          {
+            "patch": 91,
+            "midi_on": 161.02924000000107,
+            "old_mapped_on": 161.88880980838576,
+            "audible_on": 161.94330065418853,
+            "old_map_residual_seconds": 0.05449084580277008,
+            "midi_notes": [
+              76
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": 0.012383566528967549
+          },
+          {
+            "patch": 91,
+            "midi_on": 161.69100400000104,
+            "old_mapped_on": 162.55044609708918,
+            "audible_on": 162.58190432851598,
+            "old_map_residual_seconds": 0.03145823142680206,
+            "midi_notes": [
+              76
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.010649047847010706
+          },
+          {
+            "patch": 98,
+            "midi_on": 173.38216800000092,
+            "old_mapped_on": 174.239353864183,
+            "audible_on": 174.28963877066,
+            "old_map_residual_seconds": 0.050284906477009055,
+            "midi_notes": [
+              82
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": 0.008177627203195925
+          },
+          {
+            "patch": 98,
+            "midi_on": 174.0439320000009,
+            "old_mapped_on": 174.90099015288638,
+            "audible_on": 174.93909500410933,
+            "old_map_residual_seconds": 0.03810485122294221,
+            "midi_notes": [
+              75
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.004002428050853268
+          }
+        ],
+        "primary_reduction_fraction_vs_unchanged": 0.17561854716771763,
+        "maximum_patch_error_regression_seconds": 0.04210727927382152,
+        "improved_eligible": false
+      },
+      {
+        "candidate": {
+          "id": "nominal_scale_median_intercept",
+          "offset_seconds": 0.9129181334157996,
+          "scale": 1.0
+        },
+        "primary_score_seconds": 0.042170678961357545,
+        "patches": [
+          {
+            "patch": 19,
+            "valid_group_count": 0,
+            "usable_for_primary": false,
+            "median_signed_residual_seconds": null,
+            "median_absolute_residual_seconds": null,
+            "minimum_residual_seconds": null,
+            "maximum_residual_seconds": null
+          },
+          {
+            "patch": 52,
+            "valid_group_count": 2,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": -0.10197690517632196,
+            "median_absolute_residual_seconds": 0.10197690517632196,
+            "minimum_residual_seconds": -0.1081956571966316,
+            "maximum_residual_seconds": -0.09575815315601233
+          },
+          {
+            "patch": 91,
+            "valid_group_count": 3,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": -0.012933885675721513,
+            "median_absolute_residual_seconds": 0.012933885675721513,
+            "minimum_residual_seconds": -0.022017804900855253,
+            "maximum_residual_seconds": 0.0011425207716797559
+          },
+          {
+            "patch": 98,
+            "valid_group_count": 2,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": -0.011601246032029167,
+            "median_absolute_residual_seconds": 0.011601246032029167,
+            "minimum_residual_seconds": -0.01775512930734635,
+            "maximum_residual_seconds": -0.005447362756711982
+          }
+        ],
+        "groups": [
+          {
+            "patch": 52,
+            "midi_on": 92.20578400000062,
+            "old_mapped_on": 93.07863578322852,
+            "audible_on": 93.02294398026041,
+            "old_map_residual_seconds": -0.05569180296811798,
+            "midi_notes": [
+              77
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.09575815315601233
+          },
+          {
+            "patch": 52,
+            "midi_on": 92.42637200000063,
+            "old_mapped_on": 93.29918121279634,
+            "audible_on": 93.2310944762198,
+            "old_map_residual_seconds": -0.06808673657654592,
+            "midi_notes": [
+              74
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.1081956571966316
+          },
+          {
+            "patch": 91,
+            "midi_on": 160.80865200000108,
+            "old_mapped_on": 161.66826437881795,
+            "audible_on": 161.70863624774114,
+            "old_map_residual_seconds": 0.0403718689231892,
+            "midi_notes": [
+              77
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.012933885675721513
+          },
+          {
+            "patch": 91,
+            "midi_on": 161.02924000000107,
+            "old_mapped_on": 161.88880980838576,
+            "audible_on": 161.94330065418853,
+            "old_map_residual_seconds": 0.05449084580277008,
+            "midi_notes": [
+              76
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": 0.0011425207716797559
+          },
+          {
+            "patch": 91,
+            "midi_on": 161.69100400000104,
+            "old_mapped_on": 162.55044609708918,
+            "audible_on": 162.58190432851598,
+            "old_map_residual_seconds": 0.03145823142680206,
+            "midi_notes": [
+              76
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.022017804900855253
+          },
+          {
+            "patch": 98,
+            "midi_on": 173.38216800000092,
+            "old_mapped_on": 174.239353864183,
+            "audible_on": 174.28963877066,
+            "old_map_residual_seconds": 0.050284906477009055,
+            "midi_notes": [
+              82
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.005447362756711982
+          },
+          {
+            "patch": 98,
+            "midi_on": 174.0439320000009,
+            "old_mapped_on": 174.90099015288638,
+            "audible_on": 174.93909500410933,
+            "old_map_residual_seconds": 0.03810485122294221,
+            "midi_notes": [
+              75
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.01775512930734635
+          }
+        ],
+        "primary_reduction_fraction_vs_unchanged": 0.13617727011611602,
+        "maximum_patch_error_regression_seconds": 0.040087635403992294,
+        "improved_eligible": false
+      },
+      {
+        "candidate": {
+          "id": "equal_patch_robust_affine",
+          "offset_seconds": 0.9158456466155656,
+          "scale": 0.9999670078976708
+        },
+        "primary_score_seconds": 0.04040410025589362,
+        "patches": [
+          {
+            "patch": 19,
+            "valid_group_count": 0,
+            "usable_for_primary": false,
+            "median_signed_residual_seconds": null,
+            "median_absolute_residual_seconds": null,
+            "minimum_residual_seconds": null,
+            "maximum_residual_seconds": null
+          },
+          {
+            "patch": 52,
+            "valid_group_count": 2,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": -0.10185871688408099,
+            "median_absolute_residual_seconds": 0.10185871688408099,
+            "minimum_residual_seconds": -0.10807383007345095,
+            "maximum_residual_seconds": -0.09564360369471103
+          },
+          {
+            "patch": 91,
+            "valid_group_count": 3,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": -0.010555983373308209,
+            "median_absolute_residual_seconds": 0.010555983373308209,
+            "minimum_residual_seconds": -0.019610791950952944,
+            "maximum_residual_seconds": 0.0035277007359866275
+          },
+          {
+            "patch": 98,
+            "valid_group_count": 2,
+            "usable_for_primary": true,
+            "median_signed_residual_seconds": -0.008797600510291659,
+            "median_absolute_residual_seconds": 0.008797600510291659,
+            "minimum_residual_seconds": -0.014940567292796914,
+            "maximum_residual_seconds": -0.002654633727786404
+          }
+        ],
+        "groups": [
+          {
+            "patch": 52,
+            "midi_on": 92.20578400000062,
+            "old_mapped_on": 93.07863578322852,
+            "audible_on": 93.02294398026041,
+            "old_map_residual_seconds": -0.05569180296811798,
+            "midi_notes": [
+              77
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.09564360369471103
+          },
+          {
+            "patch": 52,
+            "midi_on": 92.42637200000063,
+            "old_mapped_on": 93.29918121279634,
+            "audible_on": 93.2310944762198,
+            "old_map_residual_seconds": -0.06808673657654592,
+            "midi_notes": [
+              74
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.10807383007345095
+          },
+          {
+            "patch": 91,
+            "midi_on": 160.80865200000108,
+            "old_mapped_on": 161.66826437881795,
+            "audible_on": 161.70863624774114,
+            "old_map_residual_seconds": 0.0403718689231892,
+            "midi_notes": [
+              77
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.010555983373308209
+          },
+          {
+            "patch": 91,
+            "midi_on": 161.02924000000107,
+            "old_mapped_on": 161.88880980838576,
+            "audible_on": 161.94330065418853,
+            "old_map_residual_seconds": 0.05449084580277008,
+            "midi_notes": [
+              76
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": 0.0035277007359866275
+          },
+          {
+            "patch": 91,
+            "midi_on": 161.69100400000104,
+            "old_mapped_on": 162.55044609708918,
+            "audible_on": 162.58190432851598,
+            "old_map_residual_seconds": 0.03145823142680206,
+            "midi_notes": [
+              76
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.019610791950952944
+          },
+          {
+            "patch": 98,
+            "midi_on": 173.38216800000092,
+            "old_mapped_on": 174.239353864183,
+            "audible_on": 174.28963877066,
+            "old_map_residual_seconds": 0.050284906477009055,
+            "midi_notes": [
+              82
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.002654633727786404
+          },
+          {
+            "patch": 98,
+            "midi_on": 174.0439320000009,
+            "old_mapped_on": 174.90099015288638,
+            "audible_on": 174.93909500410933,
+            "old_map_residual_seconds": 0.03810485122294221,
+            "midi_notes": [
+              75
+            ],
+            "valid_note_count": 1,
+            "invalid_note_count": 0,
+            "calibration": false,
+            "candidate_residual_seconds": -0.014940567292796914
+          }
+        ],
+        "primary_reduction_fraction_vs_unchanged": 0.17236380724317824,
+        "maximum_patch_error_regression_seconds": 0.03996944711175132,
+        "improved_eligible": false
+      }
+    ],
+    "coverage": {
+      "usable_patches": [
+        52,
+        91,
+        98
+      ],
+      "valid_groups_in_usable_patches": 7,
+      "acceptance_coverage_pass": true
+    },
+    "unique_candidate_satisfying_frozen_rule": null,
+    "window_sensitivity": [
+      {
+        "note_id": 938,
+        "patch": 52,
+        "midi": 77,
+        "half_crossings_seconds": {
+          "12": -0.05476230577524439,
+          "24": -0.05569180296811798,
+          "48": -0.057569994548613064
+        },
+        "absolute_24_vs48_difference_seconds": 0.0018781915804950838
+      },
+      {
+        "note_id": 942,
+        "patch": 52,
+        "midi": 74,
+        "half_crossings_seconds": {
+          "12": -0.06770214407449922,
+          "24": -0.06808673657654592,
+          "48": -0.0701797670383723
+        },
+        "absolute_24_vs48_difference_seconds": 0.0020930304618263784
+      },
+      {
+        "note_id": 1576,
+        "patch": 91,
+        "midi": 77,
+        "half_crossings_seconds": {
+          "12": null,
+          "24": 0.0403718689231892,
+          "48": 0.04414784116735926
+        },
+        "absolute_24_vs48_difference_seconds": 0.0037759722441700616
+      },
+      {
+        "note_id": 1577,
+        "patch": 91,
+        "midi": 76,
+        "half_crossings_seconds": {
+          "12": null,
+          "24": 0.05449084580277008,
+          "48": 0.05401823151793825
+        },
+        "absolute_24_vs48_difference_seconds": 0.0004726142848318349
+      },
+      {
+        "note_id": 1586,
+        "patch": 91,
+        "midi": 76,
+        "half_crossings_seconds": {
+          "12": null,
+          "24": 0.03145823142680206,
+          "48": 0.02941251680554359
+        },
+        "absolute_24_vs48_difference_seconds": 0.0020457146212584723
+      },
+      {
+        "note_id": 1711,
+        "patch": 98,
+        "midi": 82,
+        "half_crossings_seconds": {
+          "12": 0.05087639699798143,
+          "24": 0.050284906477009055,
+          "48": 0.04916268098992351
+        },
+        "absolute_24_vs48_difference_seconds": 0.001122225487085543
+      },
+      {
+        "note_id": 1717,
+        "patch": 98,
+        "midi": 75,
+        "half_crossings_seconds": {
+          "12": 0.0390377642769874,
+          "24": 0.03810485122294221,
+          "48": 0.036338714556805395
+        },
+        "absolute_24_vs48_difference_seconds": 0.0017661366661368139
+      }
+    ],
+    "interpretation": "Held-out timing observations within reused audio; no production map adopted, no chip-clock recovery claimed.",
+    "old_alignment_scores_runtime_and_packages_changed": false
+  },
+  "validation": {
+    "protocol_sha256": "13c20f46868af731914e5d5bfdd9c88b30d4958b159804f2d3f8b655fa595dd2",
+    "result_sha256": "96d43f3772eb72a787139df8a482719da305bb9db48f37d3d461e96de810ccd0",
+    "verification_script_sha256": "20dee656adcffe7c48fe069a17a0e1cf2ca54ad149b9e49302b78c107c64d0f0",
+    "input_hashes_pass": true,
+    "all_four_candidate_parameters_recomputed": true,
+    "equal_patch_scores_recomputed": true,
+    "usable_patch_counts": {
+      "52": 2,
+      "91": 3,
+      "98": 2
+    },
+    "corrected_score_span_seconds": 0.0019254707879620483,
+    "no_corrected_candidate_passes_frozen_acceptance": true,
+    "all_three_corrected_scores_within_frozen_uniqueness_margin": true,
+    "no_data_or_protocol_changed": true
+  },
+  "artifacts": [
+    {
+      "path": "build/global-event-mapping-20261019/analysis-tool-snapshot.py",
+      "sha256": "e8f6ad4c00952d8f9c8fef5cec8bec2e06ffa73a66ce2708dc52003c558e6d80",
+      "bytes": 19943
+    },
+    {
+      "path": "build/global-event-mapping-20261019/candidate-validation-residuals.png",
+      "sha256": "694e9fa4262a20137c068482c88b2b5145479d4cf6130a976268886e2e1a5961",
+      "bytes": 28825
+    },
+    {
+      "path": "build/global-event-mapping-20261019/protocol-frozen.json",
+      "sha256": "13c20f46868af731914e5d5bfdd9c88b30d4958b159804f2d3f8b655fa595dd2",
+      "bytes": 34905
+    },
+    {
+      "path": "build/global-event-mapping-20261019/result.json",
+      "sha256": "96d43f3772eb72a787139df8a482719da305bb9db48f37d3d461e96de810ccd0",
+      "bytes": 43177
+    },
+    {
+      "path": "build/global-event-mapping-20261019/validation-onset-traces.png",
+      "sha256": "64e66e3617d7a8ac78bd944490c6d856279266ca1885f7752688f0b79295d038",
+      "bytes": 172532
+    },
+    {
+      "path": "build/global-event-mapping-20261019/validation.json",
+      "sha256": "3133816101ca05bbd1cd96b811bbfa69639a490a50ec83dbcbfd5e08d0225a98",
+      "bytes": 696
+    },
+    {
+      "path": "build/global-event-mapping-20261019/verify_fixed_protocol.py",
+      "sha256": "20dee656adcffe7c48fe069a17a0e1cf2ca54ad149b9e49302b78c107c64d0f0",
+      "bytes": 3122
+    }
+  ],
+  "tracked_tool": {
+    "path": "Tools/audit_global_event_mapping.py",
+    "sha256": "e8f6ad4c00952d8f9c8fef5cec8bec2e06ffa73a66ce2708dc52003c558e6d80"
+  },
+  "conclusion": {
+    "all_corrected_maps_numerically_improve_primary_average": true,
+    "any_map_passes_frozen_adoption": false,
+    "near_equivalent_corrected_predictive_family": [
+      "old_scale_median_offset",
+      "nominal_scale_median_intercept",
+      "equal_patch_robust_affine"
+    ],
+    "family_primary_score_span_seconds": 0.0019254707879620483,
+    "cause_of_rejection": "Each score reduction<20%, and each correction worsens JazzGuitar52 by~40-42ms. Local timing variation is not resolved by these global maps.",
+    "no_map_adopted": true
+  },
+  "original_alignment_scores_dsp_presets_packages_host_changed": false,
+  "fresh_hardware_recording": false,
+  "dsp_fitting_performed": false,
+  "extra_training_from_validation": false,
+  "limitations": [
+    "GlassCelesta19 has no eligible MIDI>=72 cases; no substitute was introduced.",
+    "Three usable validation patches span93-175s, with seven groups; coverage is sparse and patch/time confounded.",
+    "Vibraphone12ms measurements fail contrast and remain recorded.",
+    "Frequency-selective audible onsets are not delivered MIDI timestamps.",
+    "No physical OPU clock or chip latency is recovered."
+  ],
+  "next_use": "Preserve exact fixed maps as labeled envelope-benchmark sensitivity conditions, with no per-window or DSP-specific timing optimization."
+}
