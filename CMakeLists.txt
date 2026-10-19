@@ -58,4 +58,6 @@ if(BUILD_TESTING AND Python3_Interpreter_FOUND)
     ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_chorus_profile.py --check)
   add_test(NAME Press78.FirmwarePitch COMMAND ${Python3_EXECUTABLE}
     ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_firmware_pitch.py --check)
+  add_test(NAME Press78.LocalSupply COMMAND ${Python3_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/Tools/check_supply.py)
 endif()

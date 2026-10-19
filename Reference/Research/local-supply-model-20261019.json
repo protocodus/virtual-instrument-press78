@@ -1,0 +1,338 @@
+{
+  "schema": "press78.local-supply-validation.v1",
+  "scope": "Research-only PSS480 incremental local RC supply; not audio or target780 validation.",
+  "components": {
+    "r_ohm": 47.0,
+    "c_farad": 0.00047
+  },
+  "time_constant_seconds": 0.02209,
+  "corner_hz": 7.204841244540306,
+  "checks": [
+    {
+      "name": "AC KCL two-port transfer",
+      "passed": true,
+      "max_normalized_error": 1.690236019232186e-16
+    },
+    {
+      "name": "Piecewise source/load versus independent RK4 KCL",
+      "passed": true,
+      "max_voltage_error": 3.8163916471489756e-17
+    },
+    {
+      "name": "One mA load steady change is minus47mV",
+      "passed": true
+    },
+    {
+      "name": "Source/load cancellation",
+      "passed": true
+    },
+    {
+      "name": "No excitation is exactly silent",
+      "passed": true
+    },
+    {
+      "name": "Elapsed time partition invariant",
+      "passed": true
+    },
+    {
+      "name": "Zero duration preserves state",
+      "passed": true
+    },
+    {
+      "name": "Same RC, doubled source resistance doubles load droop only",
+      "passed": true
+    },
+    {
+      "name": "Nonphysical or nonfinite inputs rejected",
+      "passed": true,
+      "rejected": 9
+    }
+  ],
+  "passed": true,
+  "frequency_response": [
+    {
+      "hz": 0,
+      "upstream_voltage_gain_db": 0.0,
+      "upstream_phase_deg": 0.0,
+      "load_impedance_magnitude_ohm": 47.0
+    },
+    {
+      "hz": 0.1,
+      "upstream_voltage_gain_db": -0.000836553366807926,
+      "upstream_phase_deg": -0.7951889403379091,
+      "load_impedance_magnitude_ohm": 46.99547356499499
+    },
+    {
+      "hz": 1,
+      "upstream_voltage_gain_db": -0.08286774183039425,
+      "upstream_phase_deg": -7.901916676871212,
+      "load_impedance_magnitude_ohm": 46.55372864770871
+    },
+    {
+      "hz": 5,
+      "upstream_voltage_gain_db": -1.7073249673360036,
+      "upstream_phase_deg": -34.759790170480755,
+      "load_impedance_magnitude_ohm": 38.61282791925096
+    },
+    {
+      "hz": 7.2049,
+      "upstream_voltage_gain_db": -3.010335373342361,
+      "upstream_phase_deg": -45.000233622506244,
+      "load_impedance_magnitude_ohm": 33.233883204380334
+    },
+    {
+      "hz": 10,
+      "upstream_voltage_gain_db": -4.663367813327939,
+      "upstream_phase_deg": -54.22784883566361,
+      "load_impedance_magnitude_ohm": 27.474479104064198
+    },
+    {
+      "hz": 50,
+      "upstream_voltage_gain_db": -16.91616477512863,
+      "upstream_phase_deg": -81.8003017813244,
+      "load_impedance_magnitude_ohm": 6.703314862333833
+    },
+    {
+      "hz": 60,
+      "upstream_voltage_gain_db": -18.47271203189011,
+      "upstream_phase_deg": -83.15266920974749,
+      "load_impedance_magnitude_ohm": 5.603537160349948
+    },
+    {
+      "hz": 100,
+      "upstream_voltage_gain_db": -22.86999748584284,
+      "upstream_phase_deg": -85.87905078215452,
+      "load_impedance_magnitude_ohm": 3.3775204220215627
+    },
+    {
+      "hz": 120,
+      "upstream_voltage_gain_db": -24.44676408880042,
+      "upstream_phase_deg": -86.56406641074454,
+      "load_impedance_magnitude_ohm": 2.81682361815198
+    },
+    {
+      "hz": 1000,
+      "upstream_voltage_gain_db": -42.847737119864824,
+      "upstream_phase_deg": -89.5872001473045,
+      "load_impedance_magnitude_ohm": 0.33861874980226403
+    }
+  ],
+  "unit_response_1mA_extra_load": [
+    {
+      "duration_seconds": 0.001,
+      "local_delta_v": -0.0020802192453801206
+    },
+    {
+      "duration_seconds": 0.01,
+      "local_delta_v": -0.01711208926991131
+    },
+    {
+      "duration_seconds": 0.02209,
+      "local_delta_v": -0.02970966626494221
+    },
+    {
+      "duration_seconds": 0.1,
+      "local_delta_v": -0.04649175296646462
+    },
+    {
+      "duration_seconds": 1,
+      "local_delta_v": -0.047
+    }
+  ],
+  "unit_response_limit": "Specified1mA sensitivity probe, not measured instrument current or default audio sag.",
+  "bindings": [
+    {
+      "path": "Reference/Python/circuit/supply.py",
+      "bytes": 3388,
+      "sha256": "79cfd2f3bd760bd91665871a771c30b566acf2835d31e185ecc38e553c6ed1be"
+    },
+    {
+      "path": "Tools/check_supply.py",
+      "bytes": 6268,
+      "sha256": "b6c1c8db9dc5bf5de6d63e9dfd502a83864fb84b647379ee5e32f08dfccb05a5"
+    },
+    {
+      "path": "Reference/Research/lofi-signal-path-audit-20261019.json",
+      "bytes": 27732,
+      "sha256": "e631f3337958e462413d95275fc8291c3359b942e983f688d9ab3e85d9f443bb"
+    }
+  ],
+  "excluded": [
+    "noise/excitation generation",
+    "actual operating point",
+    "DAC/headroom/pitch voltage coupling",
+    "regulator/input battery model",
+    "capacitor ESR/aging or tolerance distribution",
+    "target780 topology equivalence",
+    "production DSP changes"
+  ],
+  "date": "2026-10-19",
+  "primary_source": {
+    "drawing": "Yamaha PSS-480 KEC-11861",
+    "url": "https://forum.mamedev.org/download/file.php?id=323",
+    "context": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017",
+    "observed_node": "AVDD41 alone uses filtered+5A; local470uF toAGND43; VDD40 joinsVDD39 and+5D",
+    "raster": {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-full-schematic.png",
+      "bytes": 2112423,
+      "sha256": "3f92f921e12e75aad9ea5d31e28d026a42ad690473d05a6e61406c16c76226b2"
+    },
+    "visually_rechecked_crop": {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-opu-output.png",
+      "bytes": 70141,
+      "sha256": "2838c85d9e06218b5046e4d09a5ceb5b63ca836883946cffb4bb34c701bf7cc9"
+    }
+  },
+  "implementation": "Exact piecewise-constant incremental two-port local RC solution; prescribed source voltage and load current. No excitation source or audio coupling.",
+  "current_production": {
+    "version": "0.1.0b13",
+    "dsp_changed": false,
+    "noise_removed": true,
+    "maintained_paths": [
+      "FM operators and feedback",
+      "related-hardware linear AnalogOutput",
+      "Recorded/Studio chorus",
+      "common digital clock control",
+      "creative Drive and safety limiting, separately labeled"
+    ],
+    "gaps": [
+      "No calibratedYM3420 DAC nonlinearity/quantization",
+      "No measured lowvoltage buffer or BBD nonlinear transfer",
+      "No calibrated current draw vs voices/audio",
+      "No voltage-to-audio/pitch coefficient"
+    ]
+  },
+  "interpretation": "100Hz upstream ripple attenuation is a property of this sibling local idealRC subnetwork, not measured input ripple, supply PSRR, DAC modulation or audible product character.",
+  "independent_source_lead": {
+    "url": "https://zlovecraft.bandcamp.com/album/rs-sample-pack-xvii-psr",
+    "released": "2026-01-29",
+    "publisher": "Mali Baden-Powell / Z Lovecraft / Rhythm Section International",
+    "reported_capture": "Pair of modern Focusrite ISA preamps",
+    "scope": "Manufacturer model and raw settings/gates not specified; page identifiesYM3420/YM3419. Isolated bass/lead sample listings are a lead, not calibratedDAC/EG data.",
+    "download": "Paid\u00a310or more; not purchased or downloaded",
+    "new_audio_measurement": false
+  },
+  "reproduction": "python3 Tools/check_supply.py --output build/local-supply-20261019/validation.json",
+  "independent_review": {
+    "agent": "push_scope_audit",
+    "physics": "KCL signs, exactZOH, independentstep/cornerchecks pass; no existing equivalent found",
+    "source": "Initial draft pin40misread corrected after independent original-resolution review; root checked enlarged trace. VDD40 is digital+5D, not filteredAVDD. Math and numerical results unchanged.",
+    "production_changed": false,
+    "final_review": {
+      "schema": "press78.local-supply-independent-review.v2",
+      "date": "2026-10-19",
+      "reviewer": "push_scope_audit",
+      "passed": true,
+      "scope": "Read-only source/topology/API/math review plus a dependency-free checker execution and CTest-registration review; only ignored review receipts written. No production edit, capture, build or host run.",
+      "topology_review": {
+        "method": "Visually inspected original-resolution retained OPU crop, traced pins41/40/39 independently.",
+        "verified": "Only AVDD41 uses 47ohm from+5A with470uF toAGND43. VDD40 joinsVDD39/+5D.",
+        "correction": "Initial draft combinedAVDD41/VDD40 label was wrong; corrected beforefinalreview, originaldraftreceipt retained. Equations unchanged."
+      },
+      "physics": "C*dV/dt=(U-V)/R-I; Hsource=1/(1+sRC); Zload=-R/(1+sRC). Positive load delta lowerslocalrail.",
+      "checks": [
+        {
+          "name": "Independent constant-source/load analytic step",
+          "cases": 6,
+          "max_absolute_error_v": 0.0,
+          "passed": true
+        },
+        {
+          "name": "Corner gain and load sign",
+          "passed": true
+        },
+        {
+          "name": "Current validation binds final checker/module/source receipt; prior topology evidence remains valid",
+          "passed": true,
+          "validated_file_bindings": 3
+        },
+        {
+          "name": "Fresh supplied checker execution",
+          "passed": true,
+          "summary": {
+            "passed": true,
+            "checks": 9,
+            "corner_hz": 7.204841244540306,
+            "max_rk4_voltage_error": 3.8163916471489756e-17
+          }
+        },
+        {
+          "name": "Checker runs without Python site packages",
+          "command": "python3 -S -B Tools/check_supply.py",
+          "passed": true,
+          "exit_code": 0,
+          "summary": {
+            "passed": true,
+            "checks": 9,
+            "corner_hz": 7.204841244540306,
+            "max_rk4_voltage_error": 3.8163916471489756e-17
+          }
+        },
+        {
+          "name": "CMake registers Press78.LocalSupply with discovered Python3 interpreter",
+          "passed": true,
+          "scope": "Static registration review only; parent owns CMake configure/CTest invocation."
+        }
+      ],
+      "bindings": [
+        {
+          "path": "Reference/Python/circuit/supply.py",
+          "bytes": 3388,
+          "sha256": "79cfd2f3bd760bd91665871a771c30b566acf2835d31e185ecc38e553c6ed1be"
+        },
+        {
+          "path": "Tools/check_supply.py",
+          "bytes": 6268,
+          "sha256": "b6c1c8db9dc5bf5de6d63e9dfd502a83864fb84b647379ee5e32f08dfccb05a5"
+        },
+        {
+          "path": "build/local-supply-20261019/validation.json",
+          "bytes": 4711,
+          "sha256": "352b2701494f8a06f749649090c914e03d2e86d43a936dc6e403b53f266db767"
+        },
+        {
+          "path": "build/opu-sibling-clock-circuit-20261019/pss480-opu-output.png",
+          "bytes": 70141,
+          "sha256": "2838c85d9e06218b5046e4d09a5ceb5b63ca836883946cffb4bb34c701bf7cc9"
+        },
+        {
+          "path": "build/local-supply-20261019/receipt-before-pin40-review.json",
+          "bytes": 7139,
+          "sha256": "74ba91a2abc72d4636a976db8221c70ba96df0bbfaa3b6fcb06f936335315ffb"
+        },
+        {
+          "path": "CMakeLists.txt",
+          "bytes": 3279,
+          "sha256": "77dc7f56ee708b58322578c73f93b8a2f2eb3cc972842060121a8dfede111d8e"
+        }
+      ],
+      "scope_limits": [
+        "Sibling480 ideal incremental network only; exact780topology not recovered",
+        "No actual excitation,current,DCoperatingpoint,ESR,regulator,noise,aging or tolerance distribution",
+        "No couplingfromsupplytoDACgain/nonlinearity/clock/audio inferred",
+        "No equivalent dynamic local-supply module found in pre-existing Reference/Python/circuit files; unrelated static5V/BBD modelsremain"
+      ],
+      "integration_refresh": {
+        "reason": "Checker imports dependency-free module directly; CTest registration added. Circuit model and numerical results unchanged.",
+        "prior_review": {
+          "path": "build/local-supply-20261019/independent-review-before-no-site.json",
+          "bytes": 2746,
+          "sha256": "1867d22a6a21fae9b1d77a78abdc1dcd94dc856f742799560eb1e5d686fccc64"
+        },
+        "checker_import": "Direct sys.path module import bypasses circuit/__init__.py and its NumPy/SciPy dependencies; checker and supply module require only the standard library."
+      }
+    },
+    "binding": {
+      "path": "build/local-supply-20261019/independent-review.json",
+      "bytes": 4141,
+      "sha256": "8301e6f00d2ee85994f7ec28ac4849a870cdf382571a5388f173f31eaf51725f"
+    }
+  },
+  "ci_integration": {
+    "ctest": "Press78.LocalSupply",
+    "local": "Passed underfreshCMakeconfiguration AppleClang21/Python3.14.7",
+    "site_packages_disabled": "python3-S Tools/check_supply.py passed; standardlibrary only",
+    "broader_core_tests_repeated": false,
+    "reason": "No production DSP changes; earlierb13core/package receipts remain unchanged"
+  }
+}
