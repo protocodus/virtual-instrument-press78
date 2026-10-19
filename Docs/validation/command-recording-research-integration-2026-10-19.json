@@ -1,0 +1,467 @@
+{
+  "schema": "press78.command-recording-research-integration-validation.v1",
+  "utc": "2026-10-19T18:36:31.963929+00:00",
+  "status": "pass",
+  "checks": 253,
+  "documents": [
+    {
+      "before": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/oscillator-fidelity-audit-2026-10-19.md",
+        "bytes": 15998,
+        "sha256": "64ac40010fdd87377d3e372024b27a3cf46ecb77c309afab8e694ac6f53aa55a"
+      },
+      "after": {
+        "path": "Docs/research/oscillator-fidelity-audit-2026-10-19.md",
+        "bytes": 16807,
+        "sha256": "f0515249292d3b5f771328a7cbbf73d76a959c877ceb238ea1edd5226f615e70"
+      }
+    },
+    {
+      "before": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/fidelity-roadmap-2026-10-18.md",
+        "bytes": 42759,
+        "sha256": "0712b685f9881b7a5044f377c0c318b3a0af8907069db54735be031b9ac5374f"
+      },
+      "after": {
+        "path": "Docs/research/fidelity-roadmap-2026-10-18.md",
+        "bytes": 43573,
+        "sha256": "1dfb89e0e911d81e33b512f9f774559c99e919c9b32f9f28895e4d6c0e9289fe"
+      }
+    }
+  ],
+  "syntax_and_links": {
+    "python_AST_files": 5,
+    "JSON_files": 10,
+    "Markdown_files": 8,
+    "local_links_checked": 142
+  },
+  "execution_invariance": {
+    "original_root_gate_sha256": "fef5218cd8b530c656052d0ea56ee3277b7459b4019c16e05d07d60dac70c0ff",
+    "original_design_sha256": "503bbea625bff10c31be09b2d6649cdc3cd3d24c08805d834a641329e5847f92",
+    "original_terminal_exit_code": 0,
+    "completed_cells": 16,
+    "complete_score_objects": 1632,
+    "successful_scratch_deletion_receipts": 16,
+    "scratch_and_run_failure_absent": true,
+    "all_gate_implementation_and_frozen_source_hashes_unchanged": true
+  },
+  "production_DSP": {
+    "comparison": "git diff --no-ext-diff --exit-code origin/main -- Source/DSP",
+    "same_as_local_origin_main": true,
+    "origin_main": "727f6e5efb8600aee4ecc945df3c4c03a807877e",
+    "HEAD": "6834a2fd4c73a89095bd1b03f41aef9c66d1c256",
+    "files": 11,
+    "remote_fetch_performed": false
+  },
+  "git_diff_check": {
+    "exit_code": 0,
+    "output": ""
+  },
+  "retained_benchmark_bytes": 39729646,
+  "bindings": [
+    {
+      "path": "Docs/research/oscillator-fidelity-audit-2026-10-19.md",
+      "bytes": 16807,
+      "sha256": "f0515249292d3b5f771328a7cbbf73d76a959c877ceb238ea1edd5226f615e70"
+    },
+    {
+      "path": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "bytes": 43573,
+      "sha256": "1dfb89e0e911d81e33b512f9f774559c99e919c9b32f9f28895e4d6c0e9289fe"
+    },
+    {
+      "path": "Tools/prototypes/command-recording-benchmark-20261019/export_listening.py",
+      "bytes": 5450,
+      "sha256": "b2742986082d7aa0c74771f2c1b78f7fe84fcfddaafa9e86c679af3600a98c4f"
+    },
+    {
+      "path": "Tools/prototypes/command-recording-benchmark-20261019/run.py",
+      "bytes": 21485,
+      "sha256": "22d4ab1153585a59d060f26279be0efcec0f11d6931de32a692c5433a87689b7"
+    },
+    {
+      "path": "Tools/prototypes/command-recording-benchmark-20261019/test_runner_guards.py",
+      "bytes": 3875,
+      "sha256": "e1cec68c1d3052070f18c29dfac5827fc12cfeb54fa2c0ebc61076074dfe740d"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-ac-constraints-20261019/check.py",
+      "bytes": 8462,
+      "sha256": "2d00af837e667d7b7369bf56c28e22b2a96e7d45d02fb6679b9f1c956888db7d"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-ac-constraints-20261019/mn3206_ac.py",
+      "bytes": 6618,
+      "sha256": "4e6a11ef4e43af9a80b0a3da2bb2e51d045a032601e27d4778cd774a714182ae"
+    },
+    {
+      "path": "Docs/research/command-recording-benchmark-2026-10-19.json",
+      "bytes": 3049343,
+      "sha256": "5e8b624c7d0f3ceab6a75df6bffe55c851cc87d2a43a9659b4a8736e962067fc"
+    },
+    {
+      "path": "Docs/research/mn3206-ac-constraints-2026-10-19.json",
+      "bytes": 15146,
+      "sha256": "9bb675c0021978cc660f2d83c55ad9e4d5d1549f9ceb9ae1b9e258a21904ea61"
+    },
+    {
+      "path": "Docs/research/reverb-knee-domain-2026-10-19.json",
+      "bytes": 14526,
+      "sha256": "83ee3b084c9b08cbebc97fd5992f7a31d113b34df27dc099cbc173a066c6a956"
+    },
+    {
+      "path": "Docs/validation/command-recording-benchmark-independent-review-2026-10-19.json",
+      "bytes": 7722,
+      "sha256": "657b11f3d5bed930408c359c33b70dda587f0011b543ee26fe1a711ae5610ec4"
+    },
+    {
+      "path": "Docs/validation/mn3206-ac-constraints-independent-review-2026-10-19.json",
+      "bytes": 22200,
+      "sha256": "d779806f92f25d51d2ceee6fc1778b6306274597505b71f8ceab0d31816ce809"
+    },
+    {
+      "path": "Docs/validation/reverb-knee-domain-independent-review-2026-10-19.json",
+      "bytes": 2798,
+      "sha256": "a02b1b6e187ff9c11c5556d538f17ff04e578fef0ceb0f5a1c3169cddbdc5669"
+    },
+    {
+      "path": "Tools/prototypes/command-recording-benchmark-20261019/design-frozen.json",
+      "bytes": 41753,
+      "sha256": "503bbea625bff10c31be09b2d6649cdc3cd3d24c08805d834a641329e5847f92"
+    },
+    {
+      "path": "Tools/prototypes/command-recording-benchmark-20261019/listening-design-frozen.json",
+      "bytes": 9867,
+      "sha256": "5c0e735e0111fbd4f41c880dc4ad2f126da9ba89d13394b312924fe135523f4d"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-ac-constraints-20261019/design-frozen.json",
+      "bytes": 6642,
+      "sha256": "f1bc043760ef6c45cbf6af129ec90e52755842c1c0b58efba292bc38e2aa1e7f"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-ac-constraints-20261019/implementation-bound.json",
+      "bytes": 707,
+      "sha256": "32fdb977e4e198977a1f7a63a839d54e4583841b7feefb8b89df95fe44d9a661"
+    },
+    {
+      "path": "Docs/research/command-recording-benchmark-2026-10-19.md",
+      "bytes": 10619,
+      "sha256": "d25230468ccdee011317a92dc35c6f5783ce5628c071e22ab6eda461de9cc2b3"
+    },
+    {
+      "path": "Docs/research/mn3206-ac-constraints-2026-10-19.md",
+      "bytes": 5400,
+      "sha256": "a67610fc2634819892f487b3af11695e09bf0be390098f7c7a6f71b1da5f0d8b"
+    },
+    {
+      "path": "Docs/research/reverb-knee-domain-2026-10-19.md",
+      "bytes": 5431,
+      "sha256": "b229e25dbaedc6877cf7dcd901ab7d381bcf405f657f079871a08be68bb4a330"
+    },
+    {
+      "path": "Tools/prototypes/command-recording-benchmark-20261019/README.md",
+      "bytes": 4675,
+      "sha256": "bb96904727ce92bc9c73f5a6b62f8beff771d93e0851a730aa3e36ab97e0cbf7"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-ac-constraints-20261019/README.md",
+      "bytes": 1861,
+      "sha256": "7fc2e2ffb789415cfa3e21377bfdcff99ec81bd8142028064293e162d1850c9b"
+    },
+    {
+      "path": "Tools/prototypes/reverb-knee-domain-20261019/README.md",
+      "bytes": 1157,
+      "sha256": "1247ab13ca4800eeb1fdeddb52a2fb947e0c9da8a7f2afe0bd572713a08d5f09"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/root-execution-review.json",
+      "bytes": 2245,
+      "sha256": "fef5218cd8b530c656052d0ea56ee3277b7459b4019c16e05d07d60dac70c0ff"
+    },
+    {
+      "path": "Tools/prototypes/command-recording-benchmark-20261019/BenchmarkSequence.h",
+      "bytes": 3666,
+      "sha256": "940d1ae7d70b05b66ef82f1d6152a47f0f992a07e8ebbc01c311bd5ec23c5416"
+    },
+    {
+      "path": "Tools/prototypes/command-recording-benchmark-20261019/BenchmarkRenderer.cpp",
+      "bytes": 9649,
+      "sha256": "d622061f8d2494fe065cacaed428145a25a0e2ad5e2a68af4a4358905ce3f67c"
+    },
+    {
+      "path": "Tools/prototypes/command-recording-benchmark-20261019/ContractTests.cpp",
+      "bytes": 8153,
+      "sha256": "e1c73344b1105e38249cee6786dbeeaa57ccaa214426fde3c95151db4e9eeb14"
+    },
+    {
+      "path": "Source/DSP/Press78Engine.cpp",
+      "bytes": 28519,
+      "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+    },
+    {
+      "path": "Source/DSP/Press78Engine.h",
+      "bytes": 10040,
+      "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+    },
+    {
+      "path": "Source/DSP/FirmwarePitch.h",
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    {
+      "path": "Source/DSP/AnalogOutput.h",
+      "bytes": 2195,
+      "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+    },
+    {
+      "path": "Source/DSP/RecordedChorus.h",
+      "bytes": 3581,
+      "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/Mode00CompleteCommands.h",
+      "bytes": 9817,
+      "sha256": "47ef1babcf44c77df8a1e818474d683a364b72e04eff29e31ba9f424572dd6bf"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/FirmwareLevel.h",
+      "bytes": 3679,
+      "sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+    },
+    {
+      "path": "Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "bytes": 7339,
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f"
+    },
+    {
+      "path": "Tools/prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+      "bytes": 4043,
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a"
+    },
+    {
+      "path": "Tools/prototypes/command-audio-consumer-20261019/CommandAudioConsumer.h",
+      "bytes": 13971,
+      "sha256": "4b16aecdce0d593a53a1f63604ae5fb949127b9f50731ae60ace56d2469cdaf9"
+    },
+    {
+      "path": "Source/DSP/RecordedChorusProfile.h",
+      "bytes": 1073,
+      "sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/prechecks-04/prechecks.json",
+      "bytes": 5360,
+      "sha256": "aa17e12a7d553c71b0101a1dde4663a24052cbeac7f97c753bb74eb237de49e3"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/terminal-observation.json",
+      "bytes": 1162,
+      "sha256": "3a81e1649a15b2db7f4764115b8e1bb1a9028de4d5ce4f9e27378f4ea90c04db"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/result.json",
+      "bytes": 2797814,
+      "sha256": "6a5cb54e795e044d1f09ae96f6dbaccd8a67c6d39165d3bd6f8ad7feb4f25dc9"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/driver-01.stdout",
+      "bytes": 1604,
+      "sha256": "0dbc3c7d122f8d0a9e8f9944a924302afc6168fa4eacd848e071492f0911c482"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/driver-01.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/old_scale_median_offset--descending_track--B-scores.json",
+      "bytes": 116821,
+      "sha256": "2b31ec5087d8f58e1ebedf8f801732e35e1181c7113c428a8d3c9974c396c484"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/old_scale_median_offset--descending_track--B-scratch-deleted.json",
+      "bytes": 445,
+      "sha256": "e8c08140acade59fffdc971af5d0a5d5a90c293af75cb3e9ab62020d18a6f0ea"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/old_scale_median_offset--ascending_track--A-scores.json",
+      "bytes": 116807,
+      "sha256": "1d3760266a77cdada99cfa47d11a79c681c51556f020a44ccc722808454ba878"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/old_scale_median_offset--ascending_track--A-scratch-deleted.json",
+      "bytes": 444,
+      "sha256": "123e433bde79f8d9ca92d71ef5753d648730a378affccb3f484757b438404af6"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/nominal_scale_median_intercept--ascending_track--B-scores.json",
+      "bytes": 116820,
+      "sha256": "8c815793b84285534948b6fa581c94968500ca0f655527a752d270228b743e7f"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/nominal_scale_median_intercept--ascending_track--B-scratch-deleted.json",
+      "bytes": 451,
+      "sha256": "8de98138bde5b52ba8418c2f23ee319aa5ee8b16830a4fed57bfda5585273b1e"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/equal_patch_robust_affine--descending_track--B-scores.json",
+      "bytes": 116835,
+      "sha256": "c467306b925e2eaa27a1a9a70f3411d6f866bc94e96f67d0bf068b0c3b46e3e1"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/equal_patch_robust_affine--descending_track--B-scratch-deleted.json",
+      "bytes": 447,
+      "sha256": "ce1712488e2a05f9cdf72c04b187f025caadd4ce2ba0311b665dd55c8b5267e0"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/equal_patch_robust_affine--ascending_track--B-scores.json",
+      "bytes": 116840,
+      "sha256": "51aba9cf1b7405d69a34aadd136847c682938f8300406cb9f6170e8192a2896f"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/equal_patch_robust_affine--ascending_track--B-scratch-deleted.json",
+      "bytes": 446,
+      "sha256": "6caf3d27d8cfd4584447814855bbcb2c146e305c600b0aced3e9b5ea23cedf85"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/nominal_scale_median_intercept--descending_track--B-scores.json",
+      "bytes": 116841,
+      "sha256": "2f928fd76f9178042f944e561b46fb80e0a708e0c9c53f7f521941a638c47d54"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/nominal_scale_median_intercept--descending_track--B-scratch-deleted.json",
+      "bytes": 452,
+      "sha256": "ebd3e846a4466e1a0fc47fdf8d866c2c1efbc25573a1ef54de67f9269821d1d2"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/unchanged--descending_track--B-scores.json",
+      "bytes": 116648,
+      "sha256": "9aec413841a13a4d5e5ecc753e23ae124c97a3ae074f0b6bd770b08baae2ce65"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/unchanged--descending_track--B-scratch-deleted.json",
+      "bytes": 431,
+      "sha256": "624e86246e7830885d242eb0985529b0c1488cb54309b0eed40aee95b88680ed"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/unchanged--ascending_track--B-scores.json",
+      "bytes": 116645,
+      "sha256": "f07520eecc01ebf572240dd555c9dbdb19526b704fd95c9f8071decd8c2700f4"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/unchanged--ascending_track--B-scratch-deleted.json",
+      "bytes": 430,
+      "sha256": "2e3d43588d58940c0853208f444e5f32a40368ec285ed70634552c7ff437be52"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/unchanged--ascending_track--A-scores.json",
+      "bytes": 116661,
+      "sha256": "6dc9361dbe9e532e918d6d3cb17a023c68c8dd2b63ea6c676d95e110cff47a83"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/unchanged--ascending_track--A-scratch-deleted.json",
+      "bytes": 430,
+      "sha256": "2edb6a508456229590492484cb1327c0f1836b07d7844b8dd0095dc6e319030f"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/unchanged--descending_track--A-scores.json",
+      "bytes": 116674,
+      "sha256": "556a0acb6a3b7fbe0a851f0ae16c0b82111afc5b7755b93fa8166df9ba15fe6c"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/unchanged--descending_track--A-scratch-deleted.json",
+      "bytes": 431,
+      "sha256": "3678b01a1351206300708d6997eb4d075243a48888f99fcb7e5052680ee00a00"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/nominal_scale_median_intercept--descending_track--A-scores.json",
+      "bytes": 116872,
+      "sha256": "86a88a3b221fa56ee9c7846e46d75d04cc6ac3dc8bea529fbf01da0cae818279"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/nominal_scale_median_intercept--descending_track--A-scratch-deleted.json",
+      "bytes": 452,
+      "sha256": "3e8081442a5416573d8693410748863fd8928772e11cb16f67b2b72041347629"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/equal_patch_robust_affine--ascending_track--A-scores.json",
+      "bytes": 116859,
+      "sha256": "3f459133ddd1225021e24101f6e2bfd7af47b44365ac8791917949ccaf4c4f57"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/equal_patch_robust_affine--ascending_track--A-scratch-deleted.json",
+      "bytes": 446,
+      "sha256": "ca36bff1f55adcf00b103c6a9c732cbbb91cc8d6c7db2ebf3078eee9d0964ebf"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/equal_patch_robust_affine--descending_track--A-scores.json",
+      "bytes": 116851,
+      "sha256": "ee90b972a63042908d260e7b5cf6005bea8a336c9c4896c004550c84b7a15335"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/equal_patch_robust_affine--descending_track--A-scratch-deleted.json",
+      "bytes": 447,
+      "sha256": "5ef38ba65d562ca340bdac8a4406a50fed16d85aa8ff74652980c5cf9998f94b"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/nominal_scale_median_intercept--ascending_track--A-scores.json",
+      "bytes": 116845,
+      "sha256": "1d27da27edad0af64ffa9844f2a0416d4b9039fffb33f8ef447e45a403292639"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/nominal_scale_median_intercept--ascending_track--A-scratch-deleted.json",
+      "bytes": 451,
+      "sha256": "83dae1e47b9560c33e36f751ff321cb116dd76abff007dc6dd53a372536652a4"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/old_scale_median_offset--descending_track--A-scores.json",
+      "bytes": 116829,
+      "sha256": "049742141203e170054c5c9ede2fac4c0ba157928e278f190ad7f1e8bb3b4693"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/old_scale_median_offset--descending_track--A-scratch-deleted.json",
+      "bytes": 445,
+      "sha256": "400b59835223ea8674de5ea0a30f6627c8c2e7fde2509e547946b900d549388a"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/old_scale_median_offset--ascending_track--B-scores.json",
+      "bytes": 116819,
+      "sha256": "c6f6a203bf86256ff31ea549aba9471048c7ae1ce05e408a2363bb3dace820aa"
+    },
+    {
+      "path": "build/command-recording-benchmark-20261019/run-01/old_scale_median_offset--ascending_track--B-scratch-deleted.json",
+      "bytes": 444,
+      "sha256": "38472ea5508772a33b74cece930c7d9fb3d3d1c09c70ed3208ce870cf40dd857"
+    },
+    {
+      "path": "Source/DSP/CircuitNoise.h",
+      "bytes": 8721,
+      "sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+    },
+    {
+      "path": "Source/DSP/FactoryVoices.h",
+      "bytes": 12722,
+      "sha256": "6f45afd021de03e226ffe7e09f953799b4f72f48cf1f062348b6d6b328eabed3"
+    },
+    {
+      "path": "Source/DSP/OutputKernelTable.h",
+      "bytes": 1642464,
+      "sha256": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7"
+    },
+    {
+      "path": "Source/DSP/OversampledAnalogOutput.h",
+      "bytes": 6548,
+      "sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1"
+    },
+    {
+      "path": "Source/DSP/Press78OutputBus.h",
+      "bytes": 10270,
+      "sha256": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9"
+    }
+  ],
+  "scope": "Insertion-only summary integration preserves all pre-existing uncommitted knee/AC text. Validates hashes, AST/JSON syntax, local links, frozen gate/source/terminal/checkpoint metadata and production DSP equality. No native/firmware/research source execution, scorer/audio/PCM access, numerical recalculation, new renders, artifact regeneration, cleanup, commits or pushes.",
+  "gaps": [
+    "Physical synthesis/circuit laws and promotion remain unresolved; this integration adds no new hardware or numerical evidence."
+  ]
+}

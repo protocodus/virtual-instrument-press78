@@ -1,0 +1,138 @@
+{
+  "schema": "press78.command-recording-benchmark-independent-review.v1",
+  "date": "2026-10-19",
+  "status": "pass: execution/retention/publication evidence; model remains research only",
+  "publication_checks": 333,
+  "unique_artifacts_rehashed": 173,
+  "author_publication": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/command-recording-benchmark-2026-10-19.md",
+      "bytes": 10619,
+      "sha256": "d25230468ccdee011317a92dc35c6f5783ce5628c071e22ab6eda461de9cc2b3"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/command-recording-benchmark-2026-10-19.json",
+      "bytes": 3049343,
+      "sha256": "5e8b624c7d0f3ceab6a75df6bffe55c851cc87d2a43a9659b4a8736e962067fc"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/command-recording-benchmark-20261019/README.md",
+      "bytes": 4675,
+      "sha256": "bb96904727ce92bc9c73f5a6b62f8beff771d93e0851a730aa3e36ab97e0cbf7"
+    }
+  ],
+  "review_receipts": {
+    "pre-execution-review.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/pre-execution-review.json",
+      "bytes": 18244,
+      "sha256": "9e5f927a705efa4fec471e5bd4e0fd911aea930f5faaa6f99d078155026587c9"
+    },
+    "focused-pcm-metric-review.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/focused-pcm-metric-review.json",
+      "bytes": 15570,
+      "sha256": "2591868e977fccf178a1c71aa3702257279aa9959e0bd9bb0df2deed09f2f978"
+    },
+    "scalar-result-review.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/scalar-result-review.json",
+      "bytes": 41588,
+      "sha256": "0fd07ee733b0e29d173f5fae27e7129ae1e834ca87dcf35d4097335d7629489b"
+    },
+    "listening-copy-review.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/listening-copy-review.json",
+      "bytes": 7357,
+      "sha256": "cef0acbcefcfa14b6f9fae8bda7bb4b27a2466d174ebfdc2589e72a5d62e0d39"
+    }
+  },
+  "execution_bindings": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/result.json",
+      "bytes": 2797814,
+      "sha256": "6a5cb54e795e044d1f09ae96f6dbaccd8a67c6d39165d3bd6f8ad7feb4f25dc9"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/root-execution-review.json",
+      "bytes": 2245,
+      "sha256": "fef5218cd8b530c656052d0ea56ee3277b7459b4019c16e05d07d60dac70c0ff"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/terminal-observation.json",
+      "bytes": 1162,
+      "sha256": "3a81e1649a15b2db7f4764115b8e1bb1a9028de4d5ce4f9e27378f4ea90c04db"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/publication-self-check.json",
+      "bytes": 372,
+      "sha256": "aa6952dfa4522ce987ade1fb8cebc94e3a1c935851b6c26ba61bad803f9af206"
+    }
+  ],
+  "reviewer_sources_and_before_execution_bindings": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/finalize_pre_execution_review.py",
+      "bytes": 9942,
+      "sha256": "0071185fa8276040543bce74a8a2abce6f81989883168e18ec242922e3f76dff"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/finalize_publication_review.py",
+      "bytes": 11396,
+      "sha256": "e59570e95c0db9989b1075d34db8749cf789a6ad705f1cb3a99b4035d8a38d62"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/recheck_focused_pcm.py",
+      "bytes": 8115,
+      "sha256": "a2440c0640319b1fe240ccce95d2c56938061ede1df4e67acfbd5c17a6bb3c04"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/review_listening_copies.py",
+      "bytes": 6562,
+      "sha256": "5ba3faadb061a9f9bab462795104635db52f789d00ffcdd8a4164c6599ea73cf"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/review_reverb_static.py",
+      "bytes": 4466,
+      "sha256": "7e88a94442848e2d13dd43915be80af0a6e098dfc053d6c94dd51521cb11deb0"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/review_scalar_results.py",
+      "bytes": 8737,
+      "sha256": "2f97f49909ad19ca06ccbc30db9f20800c35846a4654d79f20f9d876450808af"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/bound-before-post-run-review.json",
+      "bytes": 1808,
+      "sha256": "d3bd65498a4b022f3a4c68404236cd04bf45185b012114cce9483fb3d471c0c8"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/bound-before-listening-review.json",
+      "bytes": 1291,
+      "sha256": "4e0ab57a2e82b7261bce17cf04ed6cb1167e3cb034f8c5f9c6d668db22c8dd56"
+    }
+  ],
+  "summary": {
+    "pre_execution_checks": 174,
+    "focused_metric_checks": 408,
+    "independent_frozen_scorer_calls_total": 12,
+    "maximum_numeric_metric_difference": 0.0,
+    "scalar_ledger_checks": 7031,
+    "complete_score_objects_inspected": 1632,
+    "command_rows_checked": 350204,
+    "listening_formula_checks": 183,
+    "listening_different_float32_samples": 0,
+    "listening_additional_scorer_calls": 0,
+    "reported_author_peak_subtree_bytes": 97296930,
+    "current_measured_author_subtree_bytes": 39729646,
+    "storage_limit_bytes": 209715200
+  },
+  "findings": [
+    "The initial source-size guard was corrected before source replay or processing. Independent WAV-header metadata confirmed8927609source frames versus8931705historical model frames; crop32 and ignore4064padding without changing supports.",
+    "All8fixed map/order conditions improve all100mean band/mid/convergence discrepancy but worsen mean STFT-log discrepancy. Original100voice band regressions remain disclosed; Saw and repeated75 remain material focused counterexamples.",
+    "Public JSON preserves the original immutable1632score-object result exactly, adds separate current review/derived-listening bindings, and leaves older failed comparisons unchanged."
+  ],
+  "scope_limits": [
+    "One complete command-policy bundle using exactly one allocator, fixed12slots and inherited shipping audio laws; not an isolated EG, Reverb, DAC, phase-reset or clock-cadence identification.",
+    "Only the six predeclared unchanged/ascending stereo supports, both paths, received independent PCM metric recalculation. No independent full discarded-performance PCM recalculation claim.",
+    "The5msVDT service grid, source receiver/order/mapping assumptions, neutral volume9 and unsupported capture-ON Reverb policy remain explicit. No fitted response/default or production/host/UI/SDK change is approved.",
+    "Separate derived files use frozen stored gains and one Float32 rounding; their review makes no additional scorer, synth render, original-capture access or listening-preference claim."
+  ],
+  "new_native_renders_by_reviewer": 0,
+  "production_changes_by_reviewer": false
+}

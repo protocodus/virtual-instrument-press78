@@ -1,0 +1,230 @@
+{
+  "schema": "press78.command-recording-listening-copy.v1",
+  "utc": "2026-10-19T18:27:54.012709+00:00",
+  "stage": "Frozen before first listening-copy write; root explicitly authorized this constant-gain export after terminal benchmark completion.",
+  "inputs": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/result.json",
+      "bytes": 2797814,
+      "sha256": "6a5cb54e795e044d1f09ae96f6dbaccd8a67c6d39165d3bd6f8ad7feb4f25dc9"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/key.json",
+      "bytes": 15046,
+      "sha256": "0879c9a1ccdae087db3a6769d009e0974af2b1eeaffd01ac28ad37488fa2cf6f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/command-recording-benchmark-20261019/run.py",
+      "bytes": 21485,
+      "sha256": "22d4ab1153585a59d060f26279be0efcec0f11d6931de32a692c5433a87689b7"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/65/A.wav",
+      "bytes": 448058,
+      "sha256": "fb49954e46443ed999a4bc395ae194bd037691bfe9ebacbd04b280463d98e0f8"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/65/B.wav",
+      "bytes": 448058,
+      "sha256": "f7b0804194774323bc71505a02cc31e8caa89d1251fff07f3f316dc2954be002"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/93/A.wav",
+      "bytes": 448058,
+      "sha256": "aa8aa0b87cdce5f53b25ccc4b35262b03a3c5b131042e721d4cd2a0866bdcca0"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/93/B.wav",
+      "bytes": 448058,
+      "sha256": "fbf8777828a691f27636061efb085edf088c6ff61b93e2cf50be00bf0fd229bf"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/97/A.wav",
+      "bytes": 435258,
+      "sha256": "fbc64fdca939a339e7fef93128b4e6e5c4c3f866fc492c9f4b9019ef29204cf0"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/97/B.wav",
+      "bytes": 435258,
+      "sha256": "3e3abc5e97990a3cea519e063eadcbf39c7f7e5e53729034262b1509e876a45e"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/99/A.wav",
+      "bytes": 768058,
+      "sha256": "2a7d3672f3652ef6701fc1fd350a26c4dc8b6c6c1286c0f240dd07d6ba30862e"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/99/B.wav",
+      "bytes": 768058,
+      "sha256": "f3c3a1347f08d961010a5f33a8615afbca33fb9687e90a4cba1d58ce8bd40743"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/199/A.wav",
+      "bytes": 3110458,
+      "sha256": "4a6b04d1fca8303d6166bf32011c7a4d350a20eac11ede25585a258780c122f2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/199/B.wav",
+      "bytes": 3110458,
+      "sha256": "1b9e473a397de9a6539211368c4dae748fa44c7361ec0755ca34000f682523ed"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/200/A.wav",
+      "bytes": 249658,
+      "sha256": "45822d4a1f471039e0575112d8f71111be3ffe28512136676cc7637d809af057"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/200/B.wav",
+      "bytes": 249658,
+      "sha256": "2301636c73634dfa32a6c86f4e014edd511b9ef3529dea71abd9143d8db54429"
+    }
+  ],
+  "exporter_sha256": "b2742986082d7aa0c74771f2c1b78f7fe84fcfddaafa9e86c679af3600a98c4f",
+  "formula": "output_float32 = float32(float64(source_float32) * (stored_binary64_listening_pair_RMS_gain * stored_binary64_common_pair_listening_safety)); exactly pre-existing key.json gains, no recomputation/fitting; one Float32 rounding.",
+  "supports": [
+    65,
+    93,
+    97,
+    99,
+    199,
+    200
+  ],
+  "copies": [
+    {
+      "support": 65,
+      "letter": "A",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/65/A.wav",
+        "bytes": 448058,
+        "sha256": "fb49954e46443ed999a4bc395ae194bd037691bfe9ebacbd04b280463d98e0f8"
+      },
+      "listening_pair_RMS_gain": 0.45130566706521225,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 65,
+      "letter": "B",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/65/B.wav",
+        "bytes": 448058,
+        "sha256": "f7b0804194774323bc71505a02cc31e8caa89d1251fff07f3f316dc2954be002"
+      },
+      "listening_pair_RMS_gain": 0.4279185548607558,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 93,
+      "letter": "A",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/93/A.wav",
+        "bytes": 448058,
+        "sha256": "aa8aa0b87cdce5f53b25ccc4b35262b03a3c5b131042e721d4cd2a0866bdcca0"
+      },
+      "listening_pair_RMS_gain": 0.44409238280077357,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 93,
+      "letter": "B",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/93/B.wav",
+        "bytes": 448058,
+        "sha256": "fbf8777828a691f27636061efb085edf088c6ff61b93e2cf50be00bf0fd229bf"
+      },
+      "listening_pair_RMS_gain": 0.42441539608174994,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 97,
+      "letter": "A",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/97/A.wav",
+        "bytes": 435258,
+        "sha256": "fbc64fdca939a339e7fef93128b4e6e5c4c3f866fc492c9f4b9019ef29204cf0"
+      },
+      "listening_pair_RMS_gain": 0.4787827852035537,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 97,
+      "letter": "B",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/97/B.wav",
+        "bytes": 435258,
+        "sha256": "3e3abc5e97990a3cea519e063eadcbf39c7f7e5e53729034262b1509e876a45e"
+      },
+      "listening_pair_RMS_gain": 0.45479974482933333,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 99,
+      "letter": "A",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/99/A.wav",
+        "bytes": 768058,
+        "sha256": "2a7d3672f3652ef6701fc1fd350a26c4dc8b6c6c1286c0f240dd07d6ba30862e"
+      },
+      "listening_pair_RMS_gain": 0.4149901520008906,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 99,
+      "letter": "B",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/99/B.wav",
+        "bytes": 768058,
+        "sha256": "f3c3a1347f08d961010a5f33a8615afbca33fb9687e90a4cba1d58ce8bd40743"
+      },
+      "listening_pair_RMS_gain": 0.40545249831945746,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 199,
+      "letter": "A",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/199/A.wav",
+        "bytes": 3110458,
+        "sha256": "4a6b04d1fca8303d6166bf32011c7a4d350a20eac11ede25585a258780c122f2"
+      },
+      "listening_pair_RMS_gain": 0.42451288227277195,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 199,
+      "letter": "B",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/199/B.wav",
+        "bytes": 3110458,
+        "sha256": "1b9e473a397de9a6539211368c4dae748fa44c7361ec0755ca34000f682523ed"
+      },
+      "listening_pair_RMS_gain": 0.4105173391294822,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 200,
+      "letter": "A",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/200/A.wav",
+        "bytes": 249658,
+        "sha256": "45822d4a1f471039e0575112d8f71111be3ffe28512136676cc7637d809af057"
+      },
+      "listening_pair_RMS_gain": 0.4570018966149958,
+      "common_pair_listening_safety": 1.0
+    },
+    {
+      "support": 200,
+      "letter": "B",
+      "source": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-20261019/run-01/focus/200/B.wav",
+        "bytes": 249658,
+        "sha256": "2301636c73634dfa32a6c86f4e014edd511b9ef3529dea71abd9143d8db54429"
+      },
+      "listening_pair_RMS_gain": 0.41697908393470423,
+      "common_pair_listening_safety": 1.0
+    }
+  ],
+  "output": "build/command-recording-benchmark-20261019/listening-01",
+  "maximum_output_bytes": 12582912,
+  "budget": "Same entire-subtree200MiB cap and64MiB free headroom; checked before each write. Original raw focusedPCM/result/key immutable.",
+  "forbidden": "No native/Engine process call, original source audio decode/excerpt, new gain fit or metric scorer execution."
+}

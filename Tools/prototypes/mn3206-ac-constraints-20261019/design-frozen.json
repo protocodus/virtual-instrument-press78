@@ -1,0 +1,138 @@
+{
+  "schema": "press78.mn3206-ac-constraint-design.v1",
+  "date": "2026-10-19",
+  "scope": "Fixed-condition typical aggregate THD versus explicitly named manufacturer graph input-level axis; no audio transfer.",
+  "frozen_before_model_construction_and_execution": true,
+  "prior_inspection": "The primary page was already inspected qualitatively in v4 and its U shape was known. This pass inspected retained p76/p77 images and selected/read source pixel coordinates before freezing this design. No oracle, candidate signal or numerical THD evaluation has been constructed or run.",
+  "sources": {
+    "curve_page": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v4-MN3206-curves-p77.png",
+      "bytes": 120114,
+      "sha256": "34916e399deedf1f7247c5c1e481197854786d1604bb6e292a26b66d1c1dd90f"
+    },
+    "table_page": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206-characteristics-p76.png",
+      "bytes": 109552,
+      "sha256": "f343fc8d35eaab1fe4f3c85644d93f6cf424b5437d7caafa5e1c26ac5cf76e9a"
+    },
+    "manufacturer_pdf": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206.pdf",
+      "bytes": 188245,
+      "sha256": "045fb6a1c7f5bc1e5cb0cf51497bf64b4bf29bfe7be1b193a16a62e93c795fe2"
+    },
+    "url": "https://github.com/fmillion/yamaha-pss270/blob/8943bf963f196f20b4e2fc714f15400db578891b/datasheets/MN3206.pdf",
+    "printed_page": 77,
+    "panel": "upper-right THD-Vi",
+    "dimensions_px": [
+      1377,
+      1800
+    ]
+  },
+  "axis": {
+    "x_low_px": 951,
+    "x_low_dbm": -20,
+    "x_high_px": 1218,
+    "x_high_dbm": 4,
+    "y_zero_px": 553,
+    "y_high_px": 195,
+    "y_high_thd_percent": "16/5",
+    "axis_endpoint_reading_radius_px": 1,
+    "dbm_voltage_reference": "Unresolved: retained p76 does not define 0 dBm as a particular Vrms. No voltage/power conversion is provided by the oracle."
+  },
+  "readings": {
+    "pixel_x": [
+      955,
+      965,
+      985,
+      1005,
+      1025,
+      1045,
+      1065,
+      1085,
+      1125,
+      1145,
+      1155,
+      1160,
+      1165
+    ],
+    "pixel_y": [
+      506,
+      511.5,
+      519,
+      523.5,
+      525.5,
+      525,
+      522,
+      518,
+      504.5,
+      488.5,
+      471,
+      454,
+      421
+    ],
+    "trace_coordinate_reading_radius_px": 3,
+    "method": "Manual centerline readings on retained raster, assisted by coordinate overlay and inspected dark-pixel runs; no curve fit or target/audio feedback. Denser supported points near the visible rising branch. Half-pixel centers are retained exactly. The steep trace has larger vertical ink thickness; horizontal reading scenarios are retained explicitly, not misrepresented as a full physical bound.",
+    "unsupported": [
+      {
+        "x_px": 1105,
+        "y_px": null,
+        "reason": "Vertical grid ink confounds a distinct centerline at this initially considered column; excluded rather than assigned or shifted."
+      }
+    ],
+    "unread_extent": "No point at or beyond x1170 is used: near-vertical trace/grid overlap cannot establish a stable centerline at the visual high-level endpoint. There is no extrapolation to 0 dBm or to the axis maximum."
+  },
+  "ports": {
+    "mode": "typical_thd_graph_only",
+    "input": "input_level_axis_dbm: numeric coordinate on this manufacturer graph, not an identified PSS780 signal voltage or inferred load power.",
+    "voltage_reference": "Explicit supply voltages are relative to chip GND/VSS=0 V. Input AC bias is unspecified by this panel.",
+    "conditions": {
+      "vdd_v": 5,
+      "vgg_v_exact": "14/3",
+      "vgg_binary64_alias_hex": "0x1.2aaaaaaaaaaabp+2",
+      "vss_v": 0,
+      "cp_hz": 40000,
+      "signal_hz": 1000,
+      "temperature_c": 25,
+      "lpf_hz": 20000,
+      "lpf_db_per_octave": -48
+    },
+    "axis_reference": "manufacturer_dbm_reference_unspecified",
+    "conditions_policy": "Every condition and axis-reference label is mandatory. Exact rational VGG14/3 and its sole correctly rounded binary64 alias are accepted without coercing nearby rationals; every other condition is exact. No operating tolerances inferred.",
+    "unspecified": [
+      "DC input bias",
+      "output pin joining and measurement load",
+      "analyzer noise subtraction and harmonic phases",
+      "dBm voltage/power convention"
+    ]
+  },
+  "oracle": {
+    "nominal": "Exact-rational piecewise-linear interpolation through the frozen pixel readings, mapped by the two linear axes. This is an explicit graph-reading approximation.",
+    "reading_scenarios": "Enumerate64 corners: each of four axis endpoints shifts by +/-1px, and requested horizontal/vertical trace coordinates by +/-3px. Return minimum/maximum of these declared reading scenarios plus nominal. This is neither device spread, statistical confidence nor a bound over all continuous traces within boxes.",
+    "support": "Common input-level support where every horizontal axis/trace corner remains inside measured pixel knots. Reject extrapolation. Nominal raw support and conservative common support both reported with exact rationals; binary64 public endpoints rounded inward.",
+    "comparison": "Optional supplied aggregate THD is classified below/within/above declared graph-reading scenarios at an otherwise valid fixed-condition query. Classification is not hardware pass/fail or a bound on manufactured parts.",
+    "excluded": [
+      "Audio/sample processor",
+      "Memoryless or DC-derived audio nonlinearity",
+      "Harmonic amplitudes/phases/decomposition",
+      "Noise synthesis or a THD-floor cause",
+      "Target PSS780 input level/bias/clock/filter/Drive identification",
+      "Gi-Vi or table-Vrms fusion",
+      "Clock, temperature, supply, load or frequency scaling",
+      "Physical device tolerance or extrapolated overload"
+    ]
+  },
+  "validation": {
+    "required": [
+      "Source/design/readings hashes",
+      "Every supported knot and independent axis conversion",
+      "Independent exact-rational interpolation and all64 corners at fixed query grid",
+      "Support endpoints and nextafter/outside rejection",
+      "Exact rational VGG and sole binary64 alias; adjacent/nearby rational rejection",
+      "Explicit missing/invalid/nonfinite/bool ports and exact fixed conditions",
+      "Query-order independence and stateless repeatability",
+      "No model-import/audio/production dependency",
+      "Reading-scenario shape comparison at preselected levels -18,-12,-4,-2 dBm; may report only supported levels",
+      "Standalone check receipt written without overwrite"
+    ]
+  }
+}

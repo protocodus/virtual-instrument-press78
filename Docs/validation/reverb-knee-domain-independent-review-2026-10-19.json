@@ -1,0 +1,38 @@
+{
+  "schema": "press78.reverb-knee-domain-independent-review.v1",
+  "date": "2026-10-19",
+  "status": "pass: static evidence composition and conditional algebra; no knee adopted",
+  "note_bindings": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/reverb-knee-domain-2026-10-19.md",
+      "bytes": 5431,
+      "sha256": "b229e25dbaedc6877cf7dcd901ab7d381bcf405f657f079871a08be68bb4a330"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/reverb-knee-domain-2026-10-19.json",
+      "bytes": 14526,
+      "sha256": "83ee3b084c9b08cbebc97fd5992f7a31d113b34df27dc099cbc173a066c6a956"
+    }
+  ],
+  "independent_receipt": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/reverb-static-review.json",
+    "bytes": 2390,
+    "sha256": "a63d1c92d539e889dce1aa548bb739427f72f29ac44d7cd9ab290739152abad0"
+  },
+  "reviewer_source": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-recording-benchmark-independent-review-20261019/review_reverb_static.py",
+    "bytes": 4466,
+    "sha256": "7e88a94442848e2d13dd43915be80af0a6e098dfc053d6c94dd51521cb11deb0"
+  },
+  "checks_reused": 785,
+  "lookup_entries_compared": 640,
+  "command_findings": "Exact table coordinates and integer commands for notes39/75/79/87 agree with retained lookup/helper and Sine99 rawTL13/LKS0xB9. All ten retained note74 volume witnesses match the note. The four other notes remain composed commands, not new direct serial witnesses. Unknown common volume preserves C39-C79=2 command units; no dB conversion is justified.",
+  "algebra_review": {
+    "passed": true,
+    "reason": "For each fixed note and static command, subtracting A(C_n) from both sides makes E_n(t)+A(C_n)>=T exactly E_n(t)>=T-A(C_n). Identical initial state, rates and output imply identical trajectories. This does not establish a hardware law or a pitch-independent threshold.",
+    "plateau_condition": "Static TL/gain cancel only when the observed component is separable, held E_n(pre)=0, and q_n(t)=q_n(pre). The note states these restrictions.",
+    "command_contrast": "C39-C79=2 integer command units for every documented common volume addend; no dB conversion supported."
+  },
+  "limits": "The symbolic key-dependent EG knee K_n=T-A(C_n) is observationally identical to a total-domain condition under the stated same-state/rates/output assumptions. A fixed pitch-independent EG knee is a narrower hypothesis. Single-patch pitch/command confounding and time-varying effects remain unresolved.",
+  "execution_scope": "Publishes the already completed785-check static receipt; no original CPU, audio/PCM/curve access, new estimator, algebra harness, rendering or model change."
+}

@@ -1,0 +1,422 @@
+{
+  "schema": "press78.reverb-knee-domain.structural-identifiability.v1",
+  "date": "2026-10-19",
+  "status": "Underidentified from this source; no new knee estimator or physical domain selected",
+  "scope": "Read existing public ledgers, reachable lookup helper and retained original-program command observations only. No saved-curve evaluation, capturedPCM access, media download/decode, nativeaudio generation, originalCPU rerun, synthetic algebra test harness, UI/host action or productionchange.",
+  "prior_bindings": {
+    "Docs/research/exact-sine-release-2026-10-18.json": "e71c726a178ef264d84f001a381da084f0f1bd48a4c6ccf1573ff2e7e7cc7016",
+    "Docs/research/codec-tail-audit-2026-10-18.json": "69b10835ef73ddbbf8d36f21562d048e656ac3362d588719dc98e3c5c67e6da1",
+    "Docs/research/rks0-release-slopes-2026-10-19.json": "1bb7d15c0c78376b8b4b62a2d4e3ec35b8fa60d1f34e25cfb1da3682eee4c21b",
+    "Docs/research/envelope-capture-forensics-2026-10-18.json": "066955a81c999ab88824506fe57e38ba63063e1837720fe5a15906c1e0d5d165",
+    "Docs/research/reverb-envelope-benchmark-2026-10-18.json": "503ffbdecc189a2578552b83ad06354caac8cbf4d39a09d8d4ec20c006945b12",
+    "Docs/research/opu-level-command-path-2026-10-19.json": "775c1a763cb58245c059e56c0df738c09cf926b043217bc4b86595f7e3d08d69",
+    "Docs/research/opu-release-command-path-2026-10-19.json": "8d0603033eab325f8a9ed61bbd530752a65d45566a343c67aa64a1dafbef6fa9",
+    "Docs/research/mode00-complete-command-2026-10-19.json": "c8f0145d749928cceda928091e124cc27c5192fedc9466360cea8afbaa0fd414",
+    "Docs/research/mode00-benchmark-2026-10-19.json": "ce6ac9dda4c23cd2eb2e326c05c7a73dc1fcb53c374baf796e7bc8140623b5e1"
+  },
+  "command_evidence": {
+    "status": "Existing-evidence command composition verified; no original CPU or audio rerun",
+    "all640_helper_entries_equal_retained_original_lookup": true,
+    "direct_sine99_note74_volume_witnesses": [
+      {
+        "model": "PSS780",
+        "mode": 0,
+        "panel": 99,
+        "volume_index": 0,
+        "call": {
+          "pc": 52095,
+          "slot": 0,
+          "note": 74,
+          "program": 255,
+          "extra": 32,
+          "kind": 0,
+          "bank": 2
+        },
+        "level_writes": [
+          [
+            608,
+            127
+          ],
+          [
+            616,
+            46
+          ]
+        ]
+      },
+      {
+        "model": "PSS780",
+        "mode": 0,
+        "panel": 99,
+        "volume_index": 1,
+        "call": {
+          "pc": 52095,
+          "slot": 0,
+          "note": 74,
+          "program": 255,
+          "extra": 32,
+          "kind": 0,
+          "bank": 2
+        },
+        "level_writes": [
+          [
+            608,
+            127
+          ],
+          [
+            616,
+            46
+          ]
+        ]
+      },
+      {
+        "model": "PSS780",
+        "mode": 0,
+        "panel": 99,
+        "volume_index": 2,
+        "call": {
+          "pc": 52095,
+          "slot": 0,
+          "note": 74,
+          "program": 255,
+          "extra": 28,
+          "kind": 0,
+          "bank": 2
+        },
+        "level_writes": [
+          [
+            608,
+            127
+          ],
+          [
+            616,
+            42
+          ]
+        ]
+      },
+      {
+        "model": "PSS780",
+        "mode": 0,
+        "panel": 99,
+        "volume_index": 3,
+        "call": {
+          "pc": 52095,
+          "slot": 0,
+          "note": 74,
+          "program": 255,
+          "extra": 24,
+          "kind": 0,
+          "bank": 2
+        },
+        "level_writes": [
+          [
+            608,
+            127
+          ],
+          [
+            616,
+            38
+          ]
+        ]
+      },
+      {
+        "model": "PSS780",
+        "mode": 0,
+        "panel": 99,
+        "volume_index": 4,
+        "call": {
+          "pc": 52095,
+          "slot": 0,
+          "note": 74,
+          "program": 255,
+          "extra": 20,
+          "kind": 0,
+          "bank": 2
+        },
+        "level_writes": [
+          [
+            608,
+            127
+          ],
+          [
+            616,
+            34
+          ]
+        ]
+      },
+      {
+        "model": "PSS780",
+        "mode": 0,
+        "panel": 99,
+        "volume_index": 5,
+        "call": {
+          "pc": 52095,
+          "slot": 0,
+          "note": 74,
+          "program": 255,
+          "extra": 16,
+          "kind": 0,
+          "bank": 2
+        },
+        "level_writes": [
+          [
+            608,
+            127
+          ],
+          [
+            616,
+            30
+          ]
+        ]
+      },
+      {
+        "model": "PSS780",
+        "mode": 0,
+        "panel": 99,
+        "volume_index": 6,
+        "call": {
+          "pc": 52095,
+          "slot": 0,
+          "note": 74,
+          "program": 255,
+          "extra": 12,
+          "kind": 0,
+          "bank": 2
+        },
+        "level_writes": [
+          [
+            608,
+            127
+          ],
+          [
+            616,
+            26
+          ]
+        ]
+      },
+      {
+        "model": "PSS780",
+        "mode": 0,
+        "panel": 99,
+        "volume_index": 7,
+        "call": {
+          "pc": 52095,
+          "slot": 0,
+          "note": 74,
+          "program": 255,
+          "extra": 8,
+          "kind": 0,
+          "bank": 2
+        },
+        "level_writes": [
+          [
+            608,
+            127
+          ],
+          [
+            616,
+            22
+          ]
+        ]
+      },
+      {
+        "model": "PSS780",
+        "mode": 0,
+        "panel": 99,
+        "volume_index": 8,
+        "call": {
+          "pc": 52095,
+          "slot": 0,
+          "note": 74,
+          "program": 255,
+          "extra": 4,
+          "kind": 0,
+          "bank": 2
+        },
+        "level_writes": [
+          [
+            608,
+            127
+          ],
+          [
+            616,
+            18
+          ]
+        ]
+      },
+      {
+        "model": "PSS780",
+        "mode": 0,
+        "panel": 99,
+        "volume_index": 9,
+        "call": {
+          "pc": 52095,
+          "slot": 0,
+          "note": 74,
+          "program": 255,
+          "extra": 0,
+          "kind": 0,
+          "bank": 2
+        },
+        "level_writes": [
+          [
+            608,
+            127
+          ],
+          [
+            616,
+            14
+          ]
+        ]
+      }
+    ],
+    "retained_main_serial_note_coverage": [
+      0,
+      23,
+      35,
+      36,
+      59,
+      60,
+      61,
+      74,
+      96,
+      97,
+      108,
+      127
+    ],
+    "primary_pair_not_directly_reexecuted": true,
+    "pernote_commands": [
+      {
+        "note": 39,
+        "pair_index": 7,
+        "table": "lower",
+        "row": 9,
+        "column": 7,
+        "signed_offset": 4,
+        "raw_carrier_tl": 13,
+        "base_command": 17,
+        "with_common_mode00_volume": "17 + u",
+        "reverb_on_full_word": "145 + u",
+        "direct_serial_witness_for_this_note_in_retained_main_sweep": false
+      },
+      {
+        "note": 75,
+        "pair_index": 25,
+        "table": "upper",
+        "row": 11,
+        "column": 7,
+        "signed_offset": 1,
+        "raw_carrier_tl": 13,
+        "base_command": 14,
+        "with_common_mode00_volume": "14 + u",
+        "reverb_on_full_word": "142 + u",
+        "direct_serial_witness_for_this_note_in_retained_main_sweep": false
+      },
+      {
+        "note": 79,
+        "pair_index": 27,
+        "table": "upper",
+        "row": 11,
+        "column": 9,
+        "signed_offset": 2,
+        "raw_carrier_tl": 13,
+        "base_command": 15,
+        "with_common_mode00_volume": "15 + u",
+        "reverb_on_full_word": "143 + u",
+        "direct_serial_witness_for_this_note_in_retained_main_sweep": false
+      },
+      {
+        "note": 87,
+        "pair_index": 31,
+        "table": "upper",
+        "row": 11,
+        "column": 13,
+        "signed_offset": 3,
+        "raw_carrier_tl": 13,
+        "base_command": 16,
+        "with_common_mode00_volume": "16 + u",
+        "reverb_on_full_word": "144 + u",
+        "direct_serial_witness_for_this_note_in_retained_main_sweep": false
+      }
+    ],
+    "source_bindings": {
+      "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/FirmwareLevel.h": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283",
+      "/Users/vojta/Dev/virtual-instrument-press78/build/opu-level-command-path-20261019/table-exploration.json": "0dd1588b5f668d28166e70f4f83313a2ee85f2c2f9c7a5f384dbf508fb87a57d",
+      "/Users/vojta/Dev/virtual-instrument-press78/build/opu-level-command-path-20261019/serial-validation.json": "561200a956cda6de1e9fccf99aae96fa2f3df2b1012be8720f9b88b598d4a5d5"
+    },
+    "saved_curves_or_source_pcm_opened": false,
+    "native_audio_or_tests_executed": false
+  },
+  "source_mode_boundary": "Mode00/unchanged source-note mapping and stable common volume are the existing recording assumptions, not measured wire/controller logs. All four final notes fall in accepted36..96.",
+  "unknown_common_volume": {
+    "symbol": "u",
+    "documented_mode00_volume_indices": "1..9",
+    "possible_addends": [
+      32,
+      28,
+      24,
+      20,
+      16,
+      12,
+      8,
+      4,
+      0
+    ],
+    "constructed_index0_addend": 32,
+    "source_volume_recovered": false,
+    "saturation": "None for base14..17 plus u0..32; difference C39-C79=2 survives unknown common u.",
+    "not_db": "Integer command units; unknown A(C) prevents assigning1.5dB to the2-command contrast."
+  },
+  "prior_cap_audit": {
+    "source": "reverb-envelope-benchmark-2026-10-18.json",
+    "models": [
+      "rr3_carrier",
+      "rr3_independent",
+      "all3_carrier"
+    ],
+    "domain": "All use fixed18dB internalEG attenuation excluding TL/velocity/AM; rawRR4 cap through assumedrate/RKS law.",
+    "not_compared": "No total-attenuation-domain candidate or crossedTL/pitch evidence. The fits/calibration and mixed prior scores do not select the hardware domain.",
+    "chronology": "Earlier exact-tour Sine99 tail supplied calibration and TX81Z analogy suggested18dB; reused recording, not new hardware holdout."
+  },
+  "algebra": {
+    "definitions": {
+      "C_n": "Recovered pernote seven-bit level command including common volume addend.",
+      "A": "Unknown command-to-staticattenuation map; no0.75dB assumption.",
+      "E_n_t": "Unobserved internal carrier EG attenuation, with arbitrary still-unidentified fast/slow rate/key dependence.",
+      "T": "Symbolic total-attenuation knee, not a numerical hardware constant.",
+      "K_n": "Symbolic EG-state knee, potentially key dependent.",
+      "g_n": "Unknown static output/capture loggain at note frequency.",
+      "q_n_t": "Possible time-varying effect/capture/overlap contribution to the observed component."
+    },
+    "observable_model": "L_n(t)=g_n-A(C_n)-E_n(t)+q_n(t). This separable loglevel model is itself conditional on the measured component behaving as one carrier.",
+    "plateau_relative_drop": "If E_n(pre)=0 and q_n(t)=q_n(pre), H_n-L_n(t)=E_n(t). Static gain and staticTL cancel within a note; time-varying effects/overlap need independent bounds.",
+    "EG_constant_restricted_model": "K_n=K for every pitch, so ideal relative knee drop isK; unknown rates change knee time, not that drop. This is a restricted testable hypothesis, not establishedhardwaretruth.",
+    "total_domain_model": "Trigger when E_n(t)+A(C_n)>=T, so ideal relative knee drop isT-A(C_n).",
+    "exact_competing_EG_model": "Set K_n=T-A(C_n) and keep the same initial states, fast/slow rate functions and output path. Then E_n(t)>=K_n is exactly the same condition as E_n(t)+A(C_n)>=T for every observednote/time. The full predicted curves, not only a knee statistic, coincide.",
+    "why_saved_curves_cannot_remove_counterexample": "Each pitch is observed at one key-scaled command. Pitch andTLcommand are not independently varied. Allowing still-unidentified key-dependent EG/Reverb behavior absorbs the total-domain dependence. The source does not identify A(C) or independently bound q_n(t).",
+    "not_a_hardware_claim": "This counterexample does not assert that hardware has key-dependent thresholds; it demonstrates a permissible competing explanation that the present source cannot exclude."
+  },
+  "overlap_limits": {
+    "primary_pair": [
+      39,
+      79
+    ],
+    "39": "Prior same-pitch release can overlap; short-basswindows have few cycles.",
+    "79": "Cleaner same-pitch history but a prior67 secondharmonic coincides and bass39 tenth harmonic is nearby.",
+    "75_87": "75=8*39 and87=16*39. Harmonic contributions/75retrigger prevent treating them as independentvoicecontrols.",
+    "rate_evidence": "Published rawRKS0 early/late audible slopes differ across pitches. Those observations do not identify intrinsic EG rates or justify assuming no key-dependent competing mechanism.",
+    "endpoint": "Prior frequency-specific endings do not identify EG cutoff or totalattenuation cutoff and occur after the earlyknee windows. No disappearingtail is used to infer theknee."
+  },
+  "missing_discriminator": {
+    "samepitch_TL_variation": "Repeat one independently authored purecarrier at fixed pitch/rates/RKS/gates with several different verified levelcommands. An EG-only knee independent ofTL predicts the same plateau-relative knee drop; a total-domain knee predicts lower relative drop/earlier crossing when staticattenuation increases, conditional on unchanged EG initialization and capture.",
+    "equal_command_different_pitch": "Cross pitches with adjusted rawTL/LKS so their final levelcommands are equal. This separates command dependence from pitch/rate/key dependence rather than allowing both to vary together.",
+    "independent_effect_and_capture": "Separate Reverb off/on and Chorus off/on conditions, stable unprocessed direct-output gain, long voice-clearing gaps, single-note controls, actual command/gate delivery and otherwise unchanged rawpatch. The existingcapture kit is a starting fixture, not evidence that this has been measured.",
+    "no_hardware_access_question_or_new_protocol": true
+  },
+  "decision": {
+    "physical_domain_adopted": null,
+    "existing_internalEG18_cap_promoted": false,
+    "production_changed": false,
+    "new_estimator_or_audio": false,
+    "reason": "Exact frontendlevel commands improve inputknowledge but do not identify the chip internal ordering, dynamic law or TLtoattenuation conversion. A domain choice would still substitute an unverified mechanism."
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "schema": "press78.mn3206-ac-publication.v1",
+  "date": "2026-10-19",
+  "passed": true,
+  "scope": "Fixed-condition typical manufacturer THD graph oracle, signal-level axis explicit; no audio transfer or identified target operation.",
+  "design": {
+    "schema": "press78.mn3206-ac-constraint-design.v1",
+    "date": "2026-10-19",
+    "scope": "Fixed-condition typical aggregate THD versus explicitly named manufacturer graph input-level axis; no audio transfer.",
+    "frozen_before_model_construction_and_execution": true,
+    "prior_inspection": "The primary page was already inspected qualitatively in v4 and its U shape was known. This pass inspected retained p76/p77 images and selected/read source pixel coordinates before freezing this design. No oracle, candidate signal or numerical THD evaluation has been constructed or run.",
+    "sources": {
+      "curve_page": {
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v4-MN3206-curves-p77.png",
+        "bytes": 120114,
+        "sha256": "34916e399deedf1f7247c5c1e481197854786d1604bb6e292a26b66d1c1dd90f"
+      },
+      "table_page": {
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206-characteristics-p76.png",
+        "bytes": 109552,
+        "sha256": "f343fc8d35eaab1fe4f3c85644d93f6cf424b5437d7caafa5e1c26ac5cf76e9a"
+      },
+      "manufacturer_pdf": {
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206.pdf",
+        "bytes": 188245,
+        "sha256": "045fb6a1c7f5bc1e5cb0cf51497bf64b4bf29bfe7be1b193a16a62e93c795fe2"
+      },
+      "url": "https://github.com/fmillion/yamaha-pss270/blob/8943bf963f196f20b4e2fc714f15400db578891b/datasheets/MN3206.pdf",
+      "printed_page": 77,
+      "panel": "upper-right THD-Vi",
+      "dimensions_px": [
+        1377,
+        1800
+      ]
+    },
+    "axis": {
+      "x_low_px": 951,
+      "x_low_dbm": -20,
+      "x_high_px": 1218,
+      "x_high_dbm": 4,
+      "y_zero_px": 553,
+      "y_high_px": 195,
+      "y_high_thd_percent": "16/5",
+      "axis_endpoint_reading_radius_px": 1,
+      "dbm_voltage_reference": "Unresolved: retained p76 does not define 0 dBm as a particular Vrms. No voltage/power conversion is provided by the oracle."
+    },
+    "readings": {
+      "pixel_x": [
+        955,
+        965,
+        985,
+        1005,
+        1025,
+        1045,
+        1065,
+        1085,
+        1125,
+        1145,
+        1155,
+        1160,
+        1165
+      ],
+      "pixel_y": [
+        506,
+        511.5,
+        519,
+        523.5,
+        525.5,
+        525,
+        522,
+        518,
+        504.5,
+        488.5,
+        471,
+        454,
+        421
+      ],
+      "trace_coordinate_reading_radius_px": 3,
+      "method": "Manual centerline readings on retained raster, assisted by coordinate overlay and inspected dark-pixel runs; no curve fit or target/audio feedback. Denser supported points near the visible rising branch. Half-pixel centers are retained exactly. The steep trace has larger vertical ink thickness; horizontal reading scenarios are retained explicitly, not misrepresented as a full physical bound.",
+      "unsupported": [
+        {
+          "x_px": 1105,
+          "y_px": null,
+          "reason": "Vertical grid ink confounds a distinct centerline at this initially considered column; excluded rather than assigned or shifted."
+        }
+      ],
+      "unread_extent": "No point at or beyond x1170 is used: near-vertical trace/grid overlap cannot establish a stable centerline at the visual high-level endpoint. There is no extrapolation to 0 dBm or to the axis maximum."
+    },
+    "ports": {
+      "mode": "typical_thd_graph_only",
+      "input": "input_level_axis_dbm: numeric coordinate on this manufacturer graph, not an identified PSS780 signal voltage or inferred load power.",
+      "voltage_reference": "Explicit supply voltages are relative to chip GND/VSS=0 V. Input AC bias is unspecified by this panel.",
+      "conditions": {
+        "vdd_v": 5,
+        "vgg_v_exact": "14/3",
+        "vgg_binary64_alias_hex": "0x1.2aaaaaaaaaaabp+2",
+        "vss_v": 0,
+        "cp_hz": 40000,
+        "signal_hz": 1000,
+        "temperature_c": 25,
+        "lpf_hz": 20000,
+        "lpf_db_per_octave": -48
+      },
+      "axis_reference": "manufacturer_dbm_reference_unspecified",
+      "conditions_policy": "Every condition and axis-reference label is mandatory. Exact rational VGG14/3 and its sole correctly rounded binary64 alias are accepted without coercing nearby rationals; every other condition is exact. No operating tolerances inferred.",
+      "unspecified": [
+        "DC input bias",
+        "output pin joining and measurement load",
+        "analyzer noise subtraction and harmonic phases",
+        "dBm voltage/power convention"
+      ]
+    },
+    "oracle": {
+      "nominal": "Exact-rational piecewise-linear interpolation through the frozen pixel readings, mapped by the two linear axes. This is an explicit graph-reading approximation.",
+      "reading_scenarios": "Enumerate64 corners: each of four axis endpoints shifts by +/-1px, and requested horizontal/vertical trace coordinates by +/-3px. Return minimum/maximum of these declared reading scenarios plus nominal. This is neither device spread, statistical confidence nor a bound over all continuous traces within boxes.",
+      "support": "Common input-level support where every horizontal axis/trace corner remains inside measured pixel knots. Reject extrapolation. Nominal raw support and conservative common support both reported with exact rationals; binary64 public endpoints rounded inward.",
+      "comparison": "Optional supplied aggregate THD is classified below/within/above declared graph-reading scenarios at an otherwise valid fixed-condition query. Classification is not hardware pass/fail or a bound on manufactured parts.",
+      "excluded": [
+        "Audio/sample processor",
+        "Memoryless or DC-derived audio nonlinearity",
+        "Harmonic amplitudes/phases/decomposition",
+        "Noise synthesis or a THD-floor cause",
+        "Target PSS780 input level/bias/clock/filter/Drive identification",
+        "Gi-Vi or table-Vrms fusion",
+        "Clock, temperature, supply, load or frequency scaling",
+        "Physical device tolerance or extrapolated overload"
+      ]
+    },
+    "validation": {
+      "required": [
+        "Source/design/readings hashes",
+        "Every supported knot and independent axis conversion",
+        "Independent exact-rational interpolation and all64 corners at fixed query grid",
+        "Support endpoints and nextafter/outside rejection",
+        "Exact rational VGG and sole binary64 alias; adjacent/nearby rational rejection",
+        "Explicit missing/invalid/nonfinite/bool ports and exact fixed conditions",
+        "Query-order independence and stateless repeatability",
+        "No model-import/audio/production dependency",
+        "Reading-scenario shape comparison at preselected levels -18,-12,-4,-2 dBm; may report only supported levels",
+        "Standalone check receipt written without overwrite"
+      ]
+    }
+  },
+  "first_run": {
+    "passed": true,
+    "scope": "Fixed-condition typical aggregate THD versus explicitly named manufacturer graph input-level axis; no audio transfer.",
+    "checks": {
+      "design_binding": 1,
+      "primary_source_binding": 3,
+      "implementation_before_execution_binding": 4,
+      "independent_common_support": 1,
+      "nominal_support": 1,
+      "all_knots_axis_inversion": 13,
+      "supported_knots": 11,
+      "independent_nominal_interpolation": 101,
+      "independent_corner_containment": 6464,
+      "independent_corner_min": 101,
+      "independent_corner_max": 101,
+      "nominal_containment": 101,
+      "inclusive_supported_endpoints": 4,
+      "no_extrapolation": 7,
+      "exact_and_alias_vgg": 2,
+      "nearby_vgg_rejection": 6,
+      "mandatory_conditions": 10,
+      "unsupported_conditions": 10,
+      "invalid_condition_values": 56,
+      "invalid_level_values": 7,
+      "query_order_independence": 1,
+      "comparison_below": 4,
+      "comparison_within": 4,
+      "comparison_above": 4,
+      "invalid_candidate": 6
+    },
+    "total_checks": 7023,
+    "input_support_exact_axis_dbm": [
+      "-1716/89",
+      "-100/89"
+    ],
+    "input_support_axis_dbm": [
+      -19.280898876404493,
+      -1.1235955056179776
+    ],
+    "nominal_input_support_exact_axis_dbm": [
+      "-1748/89",
+      "-68/89"
+    ],
+    "examples": {
+      "-18": {
+        "input_level_axis_dbm": -18.0,
+        "nominal_thd_percent": 0.34329608938547485,
+        "graph_scenario_low_percent": 0.2941340782122905,
+        "graph_scenario_high_percent": 0.39245810055865926
+      },
+      "-12": {
+        "input_level_axis_dbm": -12.0,
+        "nominal_thd_percent": 0.24916201117318434,
+        "graph_scenario_low_percent": 0.2125139664804469,
+        "graph_scenario_high_percent": 0.28581005586592184
+      },
+      "-4": {
+        "input_level_axis_dbm": -4.0,
+        "nominal_thd_percent": 0.46212290502793296,
+        "graph_scenario_low_percent": 0.3977653631284916,
+        "graph_scenario_high_percent": 0.5264804469273744
+      },
+      "-2": {
+        "input_level_axis_dbm": -2.0,
+        "nominal_thd_percent": 0.6743016759776537,
+        "graph_scenario_low_percent": 0.5759776536312848,
+        "graph_scenario_high_percent": 0.7763128491620113
+      }
+    },
+    "shape_constraints": {
+      "minus18_lower_above_minus12_upper": true,
+      "minus2_lower_above_minus12_upper": true,
+      "meaning": "Only a shape constraint across these declared graph-reading scenarios. It identifies no harmonic content, noise cause, target operating point or voltage-reference conversion."
+    },
+    "files": [
+      {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-ac-constraints-20261019/design-frozen.json",
+        "bytes": 6642,
+        "sha256": "f1bc043760ef6c45cbf6af129ec90e52755842c1c0b58efba292bc38e2aa1e7f"
+      },
+      {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-ac-constraints-20261019/mn3206_ac.py",
+        "bytes": 6618,
+        "sha256": "4e6a11ef4e43af9a80b0a3da2bb2e51d045a032601e27d4778cd774a714182ae"
+      },
+      {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-ac-constraints-20261019/check.py",
+        "bytes": 8462,
+        "sha256": "2d00af837e667d7b7369bf56c28e22b2a96e7d45d02fb6679b9f1c956888db7d"
+      },
+      {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mn3206-ac-constraints-20261019/implementation-bound.json",
+        "bytes": 707,
+        "sha256": "32fdb977e4e198977a1f7a63a839d54e4583841b7feefb8b89df95fe44d9a661"
+      }
+    ],
+    "conditions": {
+      "mode": "typical_thd_graph_only",
+      "axis_reference": "manufacturer_dbm_reference_unspecified",
+      "vdd_v": 5,
+      "vgg_v": "14/3",
+      "vss_v": 0,
+      "cp_hz": 40000,
+      "signal_hz": 1000,
+      "temperature_c": 25,
+      "lpf_hz": 20000,
+      "lpf_db_per_octave": -48
+    },
+    "excluded_claims": [
+      "Audio/sample processor",
+      "Memoryless or DC-derived audio nonlinearity",
+      "Harmonic amplitudes/phases/decomposition",
+      "Noise synthesis or a THD-floor cause",
+      "Target PSS780 input level/bias/clock/filter/Drive identification",
+      "Gi-Vi or table-Vrms fusion",
+      "Clock, temperature, supply, load or frequency scaling",
+      "Physical device tolerance or extrapolated overload"
+    ]
+  },
+  "bindings": [
+    {
+      "path": "Tools/prototypes/mn3206-ac-constraints-20261019/design-frozen.json",
+      "bytes": 6642,
+      "sha256": "f1bc043760ef6c45cbf6af129ec90e52755842c1c0b58efba292bc38e2aa1e7f"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-ac-constraints-20261019/mn3206_ac.py",
+      "bytes": 6618,
+      "sha256": "4e6a11ef4e43af9a80b0a3da2bb2e51d045a032601e27d4778cd774a714182ae"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-ac-constraints-20261019/check.py",
+      "bytes": 8462,
+      "sha256": "2d00af837e667d7b7369bf56c28e22b2a96e7d45d02fb6679b9f1c956888db7d"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-ac-constraints-20261019/implementation-bound.json",
+      "bytes": 707,
+      "sha256": "32fdb977e4e198977a1f7a63a839d54e4583841b7feefb8b89df95fe44d9a661"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-ac-constraints-20261019/README.md",
+      "bytes": 1861,
+      "sha256": "7fc2e2ffb789415cfa3e21377bfdcff99ec81bd8142028064293e162d1850c9b"
+    },
+    {
+      "path": "build/mn3206-ac-constraints-20261019/validation-first-run.json",
+      "bytes": 4196,
+      "sha256": "a28d6315bb16696616f1f48e687d354210585c6d9b1adba946f28d50497c9e6e"
+    },
+    {
+      "path": "build/mn3206-ac-constraints-20261019/thd-coordinate-inspection.png",
+      "bytes": 219895,
+      "sha256": "81edd46ee3b5c0df338e5d1ef88e14b069a4a59c2e8c764bf978bc1b7b1026d9"
+    },
+    {
+      "path": "build/mn3206-ac-constraints-20261019/frozen-reading-overlay.png",
+      "bytes": 199552,
+      "sha256": "1728007ee24f96d0c4e3cb76c9ff5ae137397a48c7dce7bb1ac3c18a53eb2928"
+    },
+    {
+      "path": "Docs/research/mn3206-ac-constraints-2026-10-19.md",
+      "bytes": 5400,
+      "sha256": "a67610fc2634819892f487b3af11695e09bf0be390098f7c7a6f71b1da5f0d8b"
+    }
+  ],
+  "interpretation": {
+    "novelty": "Numerical oracle for an already inspected typical curve; no newly acquired source or hardware holdout.",
+    "shape": "Declared graph scenarios preserve THD(-18)>THD(-12) and THD(-2)>THD(-12). A sole monotonic compressive cubic before fold-back cannot cover that shape; no unique physical cause inferred.",
+    "unknown_voltage_reference": "No 0 dBm Vrms convention found on retained p76, so no conversion provided and no .25 Vrms table-to-graph mapping.",
+    "no_joint_gain_fit": "Gi-Vi panel has incomplete matching condition labels and is excluded.",
+    "no_production_edits": true
+  },
+  "independent_review_status": "Requested; first-run checker is implementation-author verification, not an independent-agent review.",
+  "documentation_only_precision_clarification": {
+    "scope": "Report-only API precision explanation; numerical module, checker, README, implementation-bound, design/readings and first-run receipt remain unchanged. No execution repeated.",
+    "archived_originals": [
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/author-report-before-precision-note.md",
+        "bytes": 5105,
+        "sha256": "2152f210b5acfd54011552078cb6ac49c6fc3b445e7fd464533f43e3b83f7be4"
+      },
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/author-publication-before-precision-note.json",
+        "bytes": 14172,
+        "sha256": "7c2ddc6be0bdcb83fbac196ff999c4c30df7acd62214ece6fec4a58ebfd6da32"
+      }
+    ],
+    "semantics": "Returned binary64 bounds round outward; compare_aggregate_thd classifies against exact rational extrema. Rounded displayed bound fed back may classify just outside by less than1ulp; no physical tolerance implied."
+  }
+}
