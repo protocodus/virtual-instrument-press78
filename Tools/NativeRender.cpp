@@ -1,4 +1,4 @@
-#include "Press78Engine.h"
+#include "Press78OutputBus.h"
 #include "RecordedChorusProfile.h"
 
 #include <algorithm>
@@ -114,7 +114,7 @@ int main(int argc, char** argv) {
         if (!frames) throw std::runtime_error("Duration rounds to zero samples");
         const auto gateFrame = gate >= duration ? frames : static_cast<std::size_t>(std::llround(gate * rate));
         std::vector<float> left(frames), right(frames);
-        auto engine = std::make_unique<press78::Press78Engine>();
+        auto engine = std::make_unique<press78::Press78OutputBus>();
         engine->prepare(rate); engine->setPatch(patch); engine->setControls(controls);
         if (gateFrame > 0) engine->noteOn(note, velocity);
         std::size_t cursor = 0;
@@ -132,6 +132,9 @@ int main(int argc, char** argv) {
             energy += (static_cast<double>(left[i]) * left[i] + static_cast<double>(right[i]) * right[i]) * 0.5;
         }
         std::cout << "{\"frames\":" << frames << ",\"rate\":" << rate << ",\"latency_samples\":" << engine->latencySamples()
+                  << ",\"nominal_latency_seconds\":" << engine->nominalLatencySeconds()
+                  << ",\"clipped_channel_samples\":" << engine->clippedChannels()
+                  << ",\"maximum_clip_delta\":" << engine->maximumClipDelta()
                   << ",\"pitch_model\":" << engine->effectivePitchModel()
                   << ",\"sustain_mode\":" << engine->effectiveSustainMode()
                   << ",\"peak\":" << peak << ",\"rms\":" << std::sqrt(energy / frames) << "}\n";

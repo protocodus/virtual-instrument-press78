@@ -1,0 +1,277 @@
+{
+  "schema": "press78.output-b14-rack-validation.v1",
+  "passed": true,
+  "recorded_utc": "2026-10-19T10:01:31.496322+00:00",
+  "version": "0.1.0b14",
+  "scope": "Intentional non48 output-timebase correction;48 audio/preset values unchanged; no recovered DAC nonlinear or supply-to-audio transfer.",
+  "source_manifest": {
+    "schema_version": 1,
+    "source": "virtual-instrument-press78/Source/DSP",
+    "destination": "DSP",
+    "hash_algorithm": "sha256",
+    "files": [
+      {
+        "path": "AnalogOutput.h",
+        "bytes": 2195,
+        "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+      },
+      {
+        "path": "CircuitNoise.h",
+        "bytes": 8721,
+        "sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+      },
+      {
+        "path": "FactoryVoices.h",
+        "bytes": 12725,
+        "sha256": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7"
+      },
+      {
+        "path": "FirmwarePitch.h",
+        "bytes": 5430,
+        "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+      },
+      {
+        "path": "OutputKernelTable.h",
+        "bytes": 1642464,
+        "sha256": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7"
+      },
+      {
+        "path": "OversampledAnalogOutput.h",
+        "bytes": 6548,
+        "sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1"
+      },
+      {
+        "path": "Press78Engine.cpp",
+        "bytes": 28519,
+        "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+      },
+      {
+        "path": "Press78Engine.h",
+        "bytes": 10040,
+        "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+      },
+      {
+        "path": "Press78OutputBus.h",
+        "bytes": 10270,
+        "sha256": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9"
+      },
+      {
+        "path": "RecordedChorus.h",
+        "bytes": 3581,
+        "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+      },
+      {
+        "path": "RecordedChorusProfile.h",
+        "bytes": 1073,
+        "sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+      }
+    ]
+  },
+  "wrapper_groups": 36,
+  "sanitized_wrapper_groups": 36,
+  "wrapper_bytes": 194848,
+  "render_allocations": 0,
+  "latency_frames": [
+    [
+      44100,
+      126
+    ],
+    [
+      48000,
+      32
+    ],
+    [
+      88200,
+      236
+    ],
+    [
+      96000,
+      256
+    ],
+    [
+      192000,
+      512
+    ]
+  ],
+  "archive_sha256": "94d514d57e25624c09aec6767c79845bf768499990abce65ce489cec7925bcde",
+  "archive_bytes": 11665466,
+  "host": {
+    "recorded_at_utc": "2026-10-19T10:00:38.515722+00:00",
+    "passed": true,
+    "status": "protected_cli_validation_passed",
+    "product_id": "cz.protocodus.Press78",
+    "version": "0.1.0b14",
+    "host": {
+      "capability_sha256": "ec7bf6037438d99dd3536d1c72997c1a53d5460706be9243dd4ab5c0b32aee04",
+      "host_sha256": "9c6373121e9ce60fbaf77a8a8723539aed3d66a19b35c11b6a8807892eaa739e",
+      "host_version": "14.0.2d7 build 20275 TESTING VERSION",
+      "sdk": [
+        "JukeboxSDK_500_028",
+        "TargetVersion=5.0"
+      ]
+    },
+    "session": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001",
+    "host_exit_code": 0,
+    "protection_preflight_passed": true,
+    "protection_checks": [
+      {
+        "check": "protected_create_gate_before_existing_files",
+        "pass": true
+      },
+      {
+        "check": "task_write_runtime",
+        "pass": true
+      },
+      {
+        "check": "task_write_Vojta Hord_j_uk_360456667",
+        "pass": true
+      },
+      {
+        "check": "protected_create",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "protected_truncate",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "protected_unlink",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "protected_rename",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "protected_chmod",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "profile_write",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "symlink_escape",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "hardlink_escape",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "original_scratch_open_write_db.cmif",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "original_scratch_open_write_5015baf6-6279-4f5c-bb82-d66a57900bcf.cachemanager",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "child_and_grandchild_denied",
+        "pass": true
+      },
+      {
+        "check": "fixture_preserved",
+        "pass": true
+      }
+    ],
+    "device_creation_count": 3,
+    "create_re_pass": true,
+    "data_conversion_pass": true,
+    "native_module_observed": true,
+    "production_preserved": true,
+    "scratch_restored": true,
+    "payload_unchanged": true,
+    "production_files_before": 4900,
+    "production_files_after": 4900,
+    "archive_sha256": "94d514d57e25624c09aec6767c79845bf768499990abce65ce489cec7925bcde",
+    "native_modules": {
+      "Press78-arm64.dylib": {
+        "architectures": [
+          "arm64"
+        ],
+        "sha256": "74a7707bb6e939dbfcfadcc454e8f3562f8a54b232ce463863eb0cc65041161f"
+      },
+      "Press78.dylib": {
+        "architectures": [
+          "x86_64"
+        ],
+        "sha256": "738f8243f7e14e7edf27325aa876c28704bdb7992c912d2c68729787f1517637"
+      }
+    },
+    "scope": [
+      "CLI creation/conversions do not verify default-patch loading, interactive playback, song persistence, host performance, or publication."
+    ],
+    "artifacts": [
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001/candidate.json",
+        "sha256": "a009e29d9874f81bbdb9f77f39ddee413c86438687a9e92692cce41ecd931a1d"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001/host-result.json",
+        "sha256": "d6afc4fe7196c52dd1c68f2958819c2cbc90b0c0e1670daa832e90d8ba01392a"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001/runtime/preflight.json",
+        "sha256": "32a779a43c4ffece3413cfa7c6cfd795632e485e9e9d2dd73a066f290bf2c6c8"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001/runtime/recon-test.log",
+        "sha256": "e9e78d7d745150c5c1613fa76619cc50a751afd8af6e9cc167763b4e9e07d8ab"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001/runtime/recon-device.log",
+        "sha256": "93b3b58bac4d744527d02f5c273bd3a5ee97674a8682fb8bb541273fc081105a"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001/launch-plan.json",
+        "sha256": "5b1341273803c86ba65bc7e8330bfc024810c92e9911ee3fe62e6c2f7930e995"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001/production-comparison.json",
+        "sha256": "b784898527352b2ea46539f3fc294d50b6931070366278b3d6285d3c845e6c3f"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001/production-before.json",
+        "sha256": "d80e9f09908ed5b5e4f8d6d2880227d04cfef1414035a434f38bf7e7157b6fc7"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001/production-after.json",
+        "sha256": "ecbb549126f9afaa88417fa33e50d577129655ebb97de28e84188859d2d2422a"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-output-b14-20261019/recon/cli-001/scratch-baseline.json",
+        "sha256": "5c01c0e21729c24cf0df6f4293984317160420f639cdc5d357f744eed4d9a049"
+      }
+    ]
+  },
+  "source_receipts": {
+    "wrapper-native.json": "a6d9765ad5d999af1baa00582fd4e3fde138f3845c0c7c215782ba659b49af95",
+    "wrapper-sanitized.json": "61b2604493d6ef7f46ac8eb48a1d037e1ba042374542242c33556b9366025773",
+    "latency-contract.json": "e63c299c06e0e53c947585cc91e94be191dfc0f53cac94202c9316de2eefa804",
+    "gui-validation.json": "7a287a1d0eeac340545005957d3bc1433a523cdae2178b9ae23de6b2d73bd54f",
+    "readout-contract.json": "b52dff5d9735f2cf695ce44fabaeefc69d48814ca526692c50f6f7fe57856275",
+    "rack-contract.json": "ddf944740a302a2320e5a59f67590acd1c49606ebb8896180def5a86653609e9",
+    "package.json": "208bfe1904812c1370b48c525a4eb37f2dc2e71e3185262c2d0c46e7eacbcfe0",
+    "recon-cli.json": "e3ffed7dd295ac770ee84d38f20df31681a9e0f0e525ff033cc861bd2339a96a",
+    "output-b14-patch-compatibility.json": "5dd1bca85503247964b5f478bbf1bcbc1797f39c09dd344131c4a09c76bc4296",
+    "local-native-payload.json": "df18462cbcca601b93da69ee7402def3ec8b9087100d43dd42b8abf9962a2e5d"
+  },
+  "not_verified": [
+    "interactive playback",
+    "named default-patch loading",
+    "song persistence",
+    "Reason host CPU",
+    "portal delivery acceptance"
+  ]
+}

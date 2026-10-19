@@ -1,0 +1,113 @@
+{
+  "schema": "press78.fixed-output-bus.design.v5",
+  "created_utc": "2026-10-19T09:21:24.556103+00:00",
+  "status": "Prospective design frozen before prototype rendering; root premeasurement review pending.",
+  "scope": "Isolated research wrapper around unchanged b13 Press78Engine prepared at48k. No Source/native/default/preset edits, no thirdparty audio score, no hardware sample-rate claim.",
+  "source_sha256": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "Source/DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+    "Source/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+    "Source/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+  },
+  "architectural_invariants": {
+    "host48": "Direct delegation of every audio/control/event call to unchanged Engine48; zero newSRC or extra delay, including clockdrift and effects.",
+    "other_hosts": "Unchanged Engine48 produces stereo physical-time output frames into fixedhistory; causal final stereoSRC converts those output frames tohost. Analog/chorus and outputcontrols stayatfixed48physicaltime; digitalclockvariation remains exactly theexisting Engine behavior.",
+    "events": "Before each actual mutating call, produce allpending48bus ticks strictlybefore currenthosttimestamp usingoldstate; applyevent forceil48timestamp. Keep sameframecallorder. Do not retrospectively fix legacy Engine internalclock scheduling.",
+    "position": "IntegralFs:exactuint64quotient/remainder. NonintegralFs:exactbinary64two-limb rational computation,128-step portableuint64division. No accumulatedtime, floatingceil, ULPsnap, longdouble or128bitcompilerextension. Overflow saturatesexplicitly.",
+    "history": "2048 stereo floatframes, zero prehistory; outputs fromEngine storedasfloat withoutgainchange.",
+    "outputs": "Nulloutputs advancetime; aliasoutput meansrightwins asoldEngine. No postSRCclamp or gainnormalization.",
+    "prepare_reset": "Prepare clamps/sanitizes hostrate8k..192k, enginealways48k. Resetreturnsbothphysicalbus/captureepochsto0 andclearsfilterhistory whilepreservingcurrentpatch/controls asEngine.",
+    "lut": "Generated immutableglobalheader, no runtimeconstructor/lazyinit/mutation. Tablecontinuousprototypekernel; no per-instancefullphasetable."
+  },
+  "filter": {
+    "base_reference_rate_hz": 48000,
+    "rate_ratio_r": "min(1,hostFs/48000)",
+    "kernel": "r * 0.95*sinc(0.95*r*x)*Kaiser((r*x)/96,beta10), supportabs(r*x)<=96; sinc=sin(pi*x)/(pi*x)",
+    "table": "Evenprototypekernel at256intervals perinputsample over0..96 inclusive;24577floatconstants,checkedgenerator. Linearinterpolation intablecoordinate.",
+    "normalization": "Perfraction coefficient-sum normalization for unityDC only; fixedlinearoperation independent ofsignal/patch/ratefit.",
+    "half_delay_ticks": "ceil(96/r) physical48bus ticks; host48 bypassdelay0",
+    "maximum_evaluated_taps": "2*ceil(96/r)+1:193 at>=48,1153 at8k; endpointzerosincluded.",
+    "latency": "Engine nominal32digitalticks plus finalhalfdelayphysical48ticks atnon48. Exposeexactnominalseconds andceilhostframes; digitalclockvariation retainsEngine fractional variation. Host48 exactlyoldlatency.",
+    "examples_extra_delay_ms": {
+      "44100": 2.1875,
+      "48000": 0,
+      "96000": 2,
+      "192000": 2,
+      "8000": 12
+    }
+  },
+  "rates": [
+    8000,
+    11025,
+    16000,
+    22050,
+    24000,
+    32000,
+    44100,
+    44117,
+    48000,
+    88200,
+    96000,
+    176400,
+    192000
+  ],
+  "prospective_tests": {
+    "identity48": {
+      "fixtures": "Sine/FB0FM/highfeedback/hotpolyphony; dryandReal; zero/constantoffset/drift; controlsandrawpedal changes; noteoff/reset/stealfades; severalblockpartitions. Samefloatbytecomparison toEngine48.",
+      "full_performance": "If existingfrozen8performancefixturecanbereused withoutscope drift, streamcomparewholeWAVhashes oneoutputatatime. Otherwise reportunperformed ratherthanclaimcomplete."
+    },
+    "independent_SRC_reference": {
+      "input": "Deterministicimpulse/DC/multitone/chirp andfixed48enginecontrolsequence, noise-free.",
+      "reference": "Offline directdoubleprecision sinc+Kaiser evaluation independent ofLUT using scipy/numpy; samecausalnormalization/support. Compare component andfullwrapper against event-quantized48reference.",
+      "sample_error_max_absolute": 2e-06,
+      "sample_error_max_relative_rms": 2e-05,
+      "guard": "Also compare nominalfixed48reference against independentpolyphaseresampler forcommonband amplitudes/phase, with its own response/latency stated.",
+      "fixture_length": "Native component and fullengine fixtures2seconds; exactsamefinitezero-prehistory reference, compare allsamples includingstartup. Steady-state tone/polyphasecrosscheck cropfirst0.1s andlast0.1s. Inputsource hasatleast0.05s zero padding afterlastrequestedtime."
+    },
+    "passband": {
+      "frequencies": "DC plus24 linearlyspaced frequencies20Hz..20000Hz for everyhost>=44100. Below44100 use20Hz..0.8*hostNyquist, also report20k as unavailable whereaboveNyquist. Amplitude0.25,bothchannelsdifferentfixedphase; completephasecyclefrequencyresponse/longsteady-state output.",
+      "maximum_absolute_gain_error_db": 0.01,
+      "maximum_delay_removed_phase_error_degrees": 0.05
+    },
+    "alias_rejection": {
+      "downsampling": "Exact analytic complex coefficient response at everyphase in integral-host rationalcycle. Sourcefrequencies hostNyquist+1Hz plus32 equallyspaced hostNyquist+1Hz..23900Hz. Maximum magnitude over allphases is a conservative bound on anyfolded steady-state sine amplitude; require<=-80dB. No settling/window choice.",
+      "upsampling": "Exact analytic complex coefficient response to each passbandfrequency over complete integral-host phasecycle, remove idealcausaldelay; DFT responsecycle and requirelargest nonDC image coefficient<=-80dB relativefundamental. No finitewindow leakage or settling choice.",
+      "minimum_stopband_rejection_db": 80,
+      "no_conflation": "Host48bypass doesnotclaimnewantialiasfilter. No test above availableoutputNyquist. Reportsourcecorealiasing separately."
+    },
+    "event_causality": "At0,.1,.12345,1s and16hostframeoffsets aroundthem, allsupportedrates; also exactrational boundaries after24h and7days withoutlongrender. No newlyaffectedphysicalbus tick mayprecedeeventtime; sameframeorderandceilbusquantization tested. This fixesonlynewwrapper host-to-physical48grid backdating; unchanged Engine48 internalFM fractionalclock eventbehavior is preserved,notrepaired. Instrumentactual last-produced referenceindex and firstsubsequentindex aroundeverymutator,notjustcomputedtimestamp. Additionalnonintegerhosts44100.5/48000.25 use declared2ULPsnap. Testtimestampsrationally onintegerhosts independently.",
+    "temporal": "Wholeversus64/127/1frameblocks, constantoffset/drift, controllers,sustainmodes, resetchorusphase, null/aliasoutputs, silence, disabledoutputsadvance.",
+    "overshoot": "Impulse/step/nearNyquist/hotmultitone andmaxpolyphony withdrive0/1andlimittrue/false. Preserveunclampedfloatpeaks; reportanalyticnormalized-kernel l1bound plus observedmax and independentlyverifybound. No arbitraryheadroomchange.",
+    "resources": "sizeofwrapper<=196608bytes, render andeventmethods allocatezero; sharedkernelread-only. Nativeperf retainmean/p99/max for1/12voices atallhostrates, deadlinecomparison; meanwallfraction<0.5 requiredforresearchready onreportedmachine, nohardrealtimeguarantee. Meanwallfraction is onlya researchsanitygate; noReason/native deployment claim.",
+    "invalid": "NaN/inf/negative/outofrange preparevalues sanitizefinite; everyexistingAPI controlclamp delegated; zerolength/hugeblock bookkeeping bounded."
+  },
+  "policy": "Freeze implementation/source hashes separately before first result; preserveeveryfailedtest andfixed-sourceattempt. No thresholdtuning or recordingfit. Passing is componentengineeringevidence only; production/native adoption notauthorized.",
+  "amendment": {
+    "reason": "Root prospective review requires DC..20kHz passband at normal hosts >=44100Hz; no prototype implementation or result existed before this correction. Also require exact rational timing for integral host rates.",
+    "prior_design_sha256": "f38ac13bc05fcf832b37e985d022374f37d2c3fe10027796bd8e231a6fa94195",
+    "prior_design_path": "Reference/Prototypes/fixed-output-bus-20261019/design-before-fullband-review.json"
+  },
+  "fixture_review_addendum": {
+    "reason": "Independent prospective review; exact numerical fixture choices before implementation or measurements.",
+    "previous_design_sha256": "44d1bbdada87d3d853e5d874d29eb2054c027c3dc79af75b5661f2299eb0d170"
+  },
+  "panic_addendum": {
+    "previous_design_sha256": "3ab7843481ca8b0337a0b7a5f0ab92092f3eb63be98384d94df916f61a08fb9f",
+    "created_utc": "2026-10-19T09:23:05.158657+00:00",
+    "before_any_compile_test_or_render": true,
+    "semantics": "allSoundOff flushes strictlypast physicalticks, applies existingenginepanic, then clearsouterSRCsignalhistory immediately while preserving host andphysicalframecounters. allNotesOff retainsallhistory/releases. Independentreference applies thesameexplicitpanichistoryclear. This is a discontinuous panic operation,not an LTIresampler claim.",
+    "safety": "PostSRC peaks areunclamped. A peak above1withoutputLimit enabled blocks productionreadiness undercurrentlimitercontract; research maystilldocument exactbehavior."
+  },
+  "timestamp_bugfix": {
+    "prior_design_sha256": "b1c62ae059da16ebbf20c6b81ae5d4436e1db243b62b9e5b85b7965babbd499f",
+    "failure_artifact": "build/fixed-output-bus-20261019/timestamp-failure-01.txt",
+    "reason": "2ULP snapping violated exact floor after7days at48000.25Hz. Preserve failure; no gate changes.",
+    "rule": "For nonintegral valid binary64Fs, extractIEEE754 significand/exponent bymemcpy; form frame*48000*2^shift in two uint64 limbs (<=120bits), divide by53-bit significand using bounded128-step longdivision (remainder<53bits), derivefloor/ceil fromexactquotient/remainder. No __int128,longdouble,ULP snapping or runtimewideinteger helper. IntegralFs fastpath unchanged.",
+    "scope": "This source amendment changesonlynonintegral hosttimestamp calculation; kernel/gain/event contracts remainfrozen."
+  }
+}

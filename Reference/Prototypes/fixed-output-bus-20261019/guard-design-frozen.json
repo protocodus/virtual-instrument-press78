@@ -1,0 +1,17 @@
+{
+  "schema": "press78.fixed-output-bus.guard.v1",
+  "created_utc": "2026-10-19T09:37:45.032105+00:00",
+  "raw_wrapper_sha256": "1ec5e262c3048a0c3d4ed05774cb367536a86e2b835b46525c2533242995c73c",
+  "raw_source_binding": "build/fixed-output-bus-20261019/implementation-bound-03.json",
+  "authorization": "Root explicit software-output-safety direction after rawcomponent gates pass. No production integration.",
+  "policy": "Separate GuardedOutputBus wrapper: Host48 directdelegation unchanged; otherhosts finitefaults->0; whenControls.outputLimit true clamp only valuesoutside[-1,1]; false preservesallfiniteoutputs. No secondsoftlimiter, gainnormalization, hardwaredistortion claim.",
+  "diagnostics": "Count clippedchannels/nonfinitefaults andmaximum absoluteclipdelta; no output-dependentparameterfit. RawSRC peakreport retained.",
+  "prospective_tests": [
+    "All13rates: guardedvsraw exact atlowgain andlimitfalse creative/hot scenarios.",
+    "All13rates: hot12voicemasterGain2/drive1/widechorus transients; outputLimittrue finiteand<=1, observedclipcounts/deltasretained.",
+    "Host48 byteidentity allvariants; addedlatency exactlyunchanged.",
+    "Synthetic knownovershoot\u00b11.1/\u00b12 andnonfiniteguard, pureprotection function.",
+    "Same splitblock/null/alias/eventtimeandallocation contracts asraw; protected class sizeof<=196608.",
+    "No claim nativeReason CPU/memory/latency approval; extraSRC latencyandlimiterdelta stated."
+  ]
+}

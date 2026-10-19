@@ -1,0 +1,152 @@
+{
+  "passed": true,
+  "scope": "Metadata-only latency rounding correction; all18native plus18listening WAVs byte-identical. No changed audio controls/fixtures/gates.",
+  "original_result_sha256": "9399655783a533d78ed3781c9df67b1d1f5aab9b10b32ef42463ecef93812590",
+  "final_result_sha256": "6670df6c08c34175ca64f3a4f902b579dd2876d967fc7482cf60cad95e274c15",
+  "files": [
+    {
+      "name": "pss65-44100-candidate-native.wav",
+      "sha256": "fa8d0cecb89f4b513bd9210cbbb2bcf5ac39e469cbaf3edcbec4d988664080e9"
+    },
+    {
+      "name": "pss65-44100-candidate.wav",
+      "sha256": "d40c60d249df1fcb160f38f7e4bb981b89f4f08c54e3c255a7e081de2f5a3669"
+    },
+    {
+      "name": "pss65-44100-old-native.wav",
+      "sha256": "fb8ab9fac0594803ef304f6a5a203cfd1a78bbf2f57a2b576a499d19d2c8233f"
+    },
+    {
+      "name": "pss65-44100-old.wav",
+      "sha256": "1d8b189059ac223de9a65810da6dafdd60b07bf964dbac02f24d91f3d9091ac7"
+    },
+    {
+      "name": "pss65-48000-candidate-native.wav",
+      "sha256": "5b1df7addc337845f8f047bfe045f057a0b87823885fae040d2448f6d9625970"
+    },
+    {
+      "name": "pss65-48000-candidate.wav",
+      "sha256": "485a519349b454301b1ce225f3499f5877a0711a70b5a1a5137744272f0539d7"
+    },
+    {
+      "name": "pss65-48000-old-native.wav",
+      "sha256": "5b1df7addc337845f8f047bfe045f057a0b87823885fae040d2448f6d9625970"
+    },
+    {
+      "name": "pss65-48000-old.wav",
+      "sha256": "485a519349b454301b1ce225f3499f5877a0711a70b5a1a5137744272f0539d7"
+    },
+    {
+      "name": "pss65-96000-candidate-native.wav",
+      "sha256": "786c0566ac5871922e324c3ea5423d028edff7de05944b6dd256e3cf0a079542"
+    },
+    {
+      "name": "pss65-96000-candidate.wav",
+      "sha256": "efa0d345fdd2b64b1678f13dbd0a8fc30f867f0ebba7eb137ceb45cac6c4828a"
+    },
+    {
+      "name": "pss65-96000-old-native.wav",
+      "sha256": "1d54fccf25926f86f0aaeeffdbbe9308f29393a26e180801693b31ae19801532"
+    },
+    {
+      "name": "pss65-96000-old.wav",
+      "sha256": "f312da0b82671a113711df063b3d367edf62464430aa2bc5524f5d2152303536"
+    },
+    {
+      "name": "pss93-44100-candidate-native.wav",
+      "sha256": "f52eaa40ffd6645f5878e14d791bb2555e7706bc02a13c11310ffc59f58e123d"
+    },
+    {
+      "name": "pss93-44100-candidate.wav",
+      "sha256": "d0d1de806087795ecf127943ce4e395cae1f26e2afd9e93d511292cd1727eb15"
+    },
+    {
+      "name": "pss93-44100-old-native.wav",
+      "sha256": "f81fd6765bfde59a3f8e91d629658d08578b05d823245370fe292a73323cf91b"
+    },
+    {
+      "name": "pss93-44100-old.wav",
+      "sha256": "f9bfb620cee7dd49f04c2b4b6ee3a898956069dd740b76f3e5bb999b13d5cb91"
+    },
+    {
+      "name": "pss93-48000-candidate-native.wav",
+      "sha256": "1f7a2fbc66802e6d85de1260d3f3174e9a48cdd7764cb34e4a37132b278196c6"
+    },
+    {
+      "name": "pss93-48000-candidate.wav",
+      "sha256": "acc849bdebbb6987739ebf9cfb52ccf9463154f3c15955827c2e8de02e32d9a0"
+    },
+    {
+      "name": "pss93-48000-old-native.wav",
+      "sha256": "1f7a2fbc66802e6d85de1260d3f3174e9a48cdd7764cb34e4a37132b278196c6"
+    },
+    {
+      "name": "pss93-48000-old.wav",
+      "sha256": "acc849bdebbb6987739ebf9cfb52ccf9463154f3c15955827c2e8de02e32d9a0"
+    },
+    {
+      "name": "pss93-96000-candidate-native.wav",
+      "sha256": "7ffc298430ae34f6fdee3b15d7acacd53c98de2cf3ecedc00e7eb9061ce01d0e"
+    },
+    {
+      "name": "pss93-96000-candidate.wav",
+      "sha256": "a15f60e96601798f29eca3b6eb96cd17d2a5e6c46ccb171b96c328a25c6406bf"
+    },
+    {
+      "name": "pss93-96000-old-native.wav",
+      "sha256": "78e4388f22c8fe4b270ab7284c0fe1dd96a33cc1687e861c5b8565d5018299a4"
+    },
+    {
+      "name": "pss93-96000-old.wav",
+      "sha256": "0b245e66eb6a6de1dd45aa14516b7181c8d85d0044a023c9ca0787dfaa7d34db"
+    },
+    {
+      "name": "pss97-44100-candidate-native.wav",
+      "sha256": "832b586a728105ac5a3c854f1f845a59c2f356eb10f8aee4f38f8e81f432ecdc"
+    },
+    {
+      "name": "pss97-44100-candidate.wav",
+      "sha256": "552697323dd6682cd376dc5bffdc54e318c0b9b74e2bf2e709a8dec931f94221"
+    },
+    {
+      "name": "pss97-44100-old-native.wav",
+      "sha256": "a0445410c722cca04d3ca1ea046c4409d03bc6c4c799f1b381292d76c431d585"
+    },
+    {
+      "name": "pss97-44100-old.wav",
+      "sha256": "35f4bff341d46565fa0f40aa253cc1bee943f08140ecb3c7d7b7f0d6785c697e"
+    },
+    {
+      "name": "pss97-48000-candidate-native.wav",
+      "sha256": "ff532a61320dbfe6bbbde6404a539becff4465a6e982b6050f5093b40643e067"
+    },
+    {
+      "name": "pss97-48000-candidate.wav",
+      "sha256": "bb2eeffa57e6ecbd632149d2ce8e267da14c6a7c58de8550bbbda7aee362772e"
+    },
+    {
+      "name": "pss97-48000-old-native.wav",
+      "sha256": "ff532a61320dbfe6bbbde6404a539becff4465a6e982b6050f5093b40643e067"
+    },
+    {
+      "name": "pss97-48000-old.wav",
+      "sha256": "bb2eeffa57e6ecbd632149d2ce8e267da14c6a7c58de8550bbbda7aee362772e"
+    },
+    {
+      "name": "pss97-96000-candidate-native.wav",
+      "sha256": "32dcd4a31fe7d685caf00b7920f9f2e3b7c75cfe5f7bf952077b58a19c63684c"
+    },
+    {
+      "name": "pss97-96000-candidate.wav",
+      "sha256": "2022045839d7a70269b1cf77348e8e7115259a770158d7ae3cd9f19dddce7422"
+    },
+    {
+      "name": "pss97-96000-old-native.wav",
+      "sha256": "fcb742b53c8f0903169979d0439e626645d3dd5bac8d131d445f89cba41de013"
+    },
+    {
+      "name": "pss97-96000-old.wav",
+      "sha256": "c5298d309298490c02f21694921a47ba226b5d42a33a15b7fe4f3cef4e02279b"
+    }
+  ]
+}

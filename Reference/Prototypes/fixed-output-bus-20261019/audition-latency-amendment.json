@@ -1,0 +1,8 @@
+{
+  "reason": "Exact nonnative latency integer-ceil correction only; same phrase, gates, controls and rendering/analysis tools. Preserve original design/result and all failed metadata evidence.",
+  "original_design_sha256": "0bfc6e90ab699b0b3f5f12572e23663808ab6c82ab596f0b89f7be22f331617e",
+  "original_result": "build/fixed-output-audition-20261019/result.json",
+  "source_snapshot_mapping": "build/fixed-output-bus-20261019/pre-latency-correction/mapping.json",
+  "retest_directory": "build/fixed-output-audition-b14-final-20261019",
+  "extra_gate": "All18 native and listening WAVs must remain byte-identical to original audition. No new fit or gate relaxation."
+}

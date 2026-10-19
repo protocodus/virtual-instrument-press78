@@ -1,0 +1,99 @@
+{
+  "schema": "press78.fixed-output-audition.v1",
+  "scope": "Host-rate consistency against unchanged b13 48k model; NOT hardware accuracy.",
+  "presets": [
+    65,
+    93,
+    97
+  ],
+  "rates": [
+    44100,
+    48000,
+    96000
+  ],
+  "duration_seconds": 7,
+  "events": [
+    [
+      0.25,
+      60,
+      100
+    ],
+    [
+      1.5,
+      60,
+      0
+    ],
+    [
+      2.25,
+      48,
+      95
+    ],
+    [
+      2.25,
+      55,
+      100
+    ],
+    [
+      2.25,
+      60,
+      105
+    ],
+    [
+      3.75,
+      48,
+      0
+    ],
+    [
+      3.75,
+      55,
+      0
+    ],
+    [
+      3.75,
+      60,
+      0
+    ],
+    [
+      4.25,
+      67,
+      100
+    ],
+    [
+      4.75,
+      67,
+      0
+    ]
+  ],
+  "controls": "NativeRender --real defaults: Original pitch/Sustain, 20ppm hypothetical clock drift, recorded chorus, analog filter, gain .25, tone14k, DC/limit enabled; no added noise/drive.",
+  "score_window_seconds": [
+    0.25,
+    6.75
+  ],
+  "analysis_and_listening_rate": 48000,
+  "alignment": "Remove ONLY declared candidate extra SRC delay:105 ticks at44.1k,96 at96k. Common32tick base delay retained. No fitted lag/gain/pitch.",
+  "resample": "scipy.signal.resample_poly, Kaiser beta12, padtype constant; float64 analysis.",
+  "level": "Unity post-render gain for all clips; no normalization.",
+  "metrics": "Stereo/channel NRMSE; STFT1024/hop256 joint log magnitude RMS over reference bins >-60dB relative global peak,100..16000Hz. No perceptual or hardware interpretation.",
+  "prospective_checks": "All six non48 preset/rate candidate NRMSEs lower than old; all three48 renders byte-identical; all raw output finite. Retain all adverse results.",
+  "sources": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "Source/DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+    "Source/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+    "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+    "Source/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "Reference/Prototypes/fixed-output-bus-20261019/FixedOutputBus.h": "1ec5e262c3048a0c3d4ed05774cb367536a86e2b835b46525c2533242995c73c",
+    "Reference/Prototypes/fixed-output-bus-20261019/GuardedOutputBus.h": "7bc5250f4fbe3105caebd5e19f9b7a87e8d76e6d6fa36ae2990a14d36d79f57c",
+    "Reference/Prototypes/fixed-output-bus-20261019/KernelTable.h": "f72ddef9c99333fcf82eecc0cd08a6a2163b7115a7dfd1776f6ae0ec6e794f3c",
+    "Reference/Prototypes/fixed-output-bus-20261019/Audition.cpp": "d4db195ab15c3e9175ab35b45de2821e6d6d3f497ce4cc951e2d838d60a9309f",
+    "Reference/Prototypes/fixed-output-bus-20261019/run_audition.py": "26496ff1bc0c190ea6e92069113d55d6188413e5d61ddda398486072507e1d8b"
+  },
+  "environment": {
+    "python": "3.11.0",
+    "numpy": "1.26.4",
+    "scipy": "1.14.1"
+  }
+}
