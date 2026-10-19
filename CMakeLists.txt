@@ -55,6 +55,8 @@ if(PRESS78_BUILD_TOOLS)
 endif()
 find_package(Python3 COMPONENTS Interpreter)
 if(BUILD_TESTING AND Python3_Interpreter_FOUND)
+  add_test(NAME Press78.ModernFactoryBank COMMAND ${Python3_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/Tools/modern_bank.py)
   add_test(NAME Press78.OutputKernel COMMAND ${Python3_EXECUTABLE}
     ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_output_kernel.py --check)
   add_test(NAME Press78.FactoryBank COMMAND ${Python3_EXECUTABLE}

@@ -4,9 +4,10 @@ import argparse
 import json
 import math
 import xml.etree.ElementTree as ET
+from modern_bank import load_modern, preset_relative_path
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0b14'
+VERSION='0.1.0b15'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -191,6 +192,11 @@ def main():
     bank=json.loads((ROOT/'Resources/FactoryBank/press78-factory.json').read_text())
     for voice in bank['voices']:
         write_patch(public/(voice['name'].replace('/','-')+'.repatch'),rows,{**decode(voice['raw_data']),**FACTORY_CHARACTER})
+    modern=load_modern()
+    for voice in modern:
+        destination=public/preset_relative_path(voice)
+        destination.parent.mkdir(parents=True,exist_ok=True)
+        write_patch(destination,rows,voice['parameters'])
     header=['#pragma once','#include <array>','namespace press78rack {',
         'struct Parameter { const char* name; double minimum, maximum, initial; bool stepped; };',
         f'inline constexpr std::array<Parameter,{len(rows)+3}> kParameters{{{{']
@@ -210,7 +216,7 @@ def main():
          if row['target']=='patch' else
          f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode") else "double"}>(physical(k_{row["id"]}));'
          for row in rows if row['id'] not in ('bendRange','modWheelDepth')])+'\n')
-    print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS patches at {device}')
+    print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS +{len(modern)} modern patches at {device}')
 
 
 if __name__=='__main__':main()

@@ -154,8 +154,13 @@ def decode(v):
  p.update({'controls.pitchModel':1,'controls.chorusMode':1,'controls.chorusRateHz':0.9546467517767424,'controls.chorusDepthMs':math.hypot(0.0495126833338911,0.4943632948117077)})
  return {'number':v['number'],'name':v['name'],'values':p}
 presets=[decode(v) for v in bank['voices']]
+import sys
+sys.path.insert(0,str(ROOT/'Tools'))
+from modern_bank import load_modern, FRAGMENTS
+for index,voice in enumerate(load_modern(),100):
+ presets.append({'number':index,'name':voice['name'],'values':{c['binding']:voice['parameters'][c['property_id']] for c in controls}})
 preview={d['binding']:d['default'] for d in controls};preview.update(presets[0]['values'])
-geom={'version':'Press78 layout study 06','logical_size':{'width':W,'height':H,'rack_units':8},'folded_size':{'width':W,'height':30},'status':'Shared geometry for interactive design preview and native prototype widgets','palette':C,'appearance':APPEARANCE,'native_patch_selector':{'x':247,'y':11,'width':315,'height':28,'kind':'host_native_placeholder'},'controls':controls,'sections':sections,'annotations':annotations,'spacing':{'section_gap':16,'section_padding':20,'operator_knob_row_pitch':64,'global_row_pitch':66,'rear_row_pitch':66,'caption_offset':48},'notes':['34 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.','Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.','Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.','Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator.']}
+geom={'version':'Press78 layout study 06','logical_size':{'width':W,'height':H,'rack_units':8},'folded_size':{'width':W,'height':30},'status':'Shared geometry for interactive design preview and native prototype widgets','palette':C,'appearance':APPEARANCE,'native_patch_selector':{'x':247,'y':11,'width':315,'height':28,'kind':'host_native_placeholder'},'controls':controls,'sections':sections,'annotations':annotations,'spacing':{'section_gap':16,'section_padding':20,'operator_knob_row_pitch':64,'global_row_pitch':66,'rear_row_pitch':66,'caption_offset':48},'notes':['34 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.','Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; 100 original patches use the PSS prefix;50 modern sounds use category names.','Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.','Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator.']}
 geom['sockets']=[{'id':key,'property_path':path,'label':label,'panel':'rear','section':'connections','x':x,'y':506,'width':24,'height':24,'widget_bounds':{'x':x-12,'y':494,'width':24,'height':24},'caption':{'x':x+20,'baseline_y':510,'font_size':11,'anchor':'start'}} for key,path,label,x in [('gate_cv','/cv_inputs/gate_cv','GATE CV',68),('note_cv','/cv_inputs/note_cv','NOTE CV',177),('fm_cv','/cv_inputs/fm_cv','FM CV',286),('level_cv','/cv_inputs/level_cv','LEVEL CV',395),('left','/audio_outputs/left','LEFT',550),('right','/audio_outputs/right','RIGHT',659)]]
 geom['routing_icons']=[{'x':525,'y':498,'asset':'Routing_Icon_White_01_1frames'},{'x':634,'y':498,'asset':'Routing_Icon_White_02_1frames'}]
 geom['device_name_positions']={'front':{'x':586,'y':13},'back':{'x':586,'y':13},'folded_front':{'x':610,'y':9},'folded_back':{'x':610,'y':9}}
@@ -171,7 +176,7 @@ geom['version']='Press78 layout study 11'
 geom['branding']=BRANDING
 geom['material_bounds']={'photo_asset':PHOTO_ASSET,'photo_source_sha256':hashlib.sha256((OUT/PHOTO_ASSET).read_bytes()).hexdigest(),'front_header_seam_y':49,'front_section_inset':20,'photo_pockets':{s['id']:{k:s[k] for k in ('x','y','width','height')} for s in sections['front']}}
 geom['group_markers']=[{'panel':'rear','type':'bar','x':39,'y':134,'width':3,'height':44,'color':'cyan'},{'panel':'rear','type':'bar','x':39,'y':200,'width':3,'height':44,'color':'lavender'}]
-geom.update(preview_patch=0,preview_state=preview,sdk={'root':'/Users/vojta/Dev/reason-rack-extension/SDK','version':'JukeboxSDK_500_028','target':'5.0'},source_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'Source/DSP/Press78Engine.h',ROOT/'Resources/controls.json',ROOT/'Resources/FactoryBank/press78-factory.json']})
+geom.update(preview_patch=0,preview_state=preview,sdk={'root':'/Users/vojta/Dev/reason-rack-extension/SDK','version':'JukeboxSDK_500_028','target':'5.0'},source_sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'Source/DSP/Press78Engine.h',ROOT/'Resources/controls.json',ROOT/'Resources/FactoryBank/press78-factory.json',ROOT/'Tools/modern_bank.py',*[ROOT/'Resources/FactoryBank'/name for name in FRAGMENTS]]})
 (OUT/'geometry.json').write_text(json.dumps(geom,indent=2)+'\n')
 
 def txt(x,y,s,size=11,color='ink',anchor='start',weight=400,display=False):
@@ -306,4 +311,4 @@ template=template.replace('__PANEL_HEIGHT__',str(H)).replace('__RACK_UNITS__',st
 template=template.replace('62 mapped controls',str(len(controls))+' mapped controls')
 template=template.replace('__GEOMETRY__',json.dumps(geom).replace('<','\\u003c')).replace('__PRESETS__',json.dumps(presets).replace('<','\\u003c'))
 (OUT/'index.html').write_text(template)
-print(f'Built interactive Design/index.html; all 100 factory previews and {len(controls)} canonical properties embedded.')
+print(f'Built interactive Design/index.html; all150 factory previews and {len(controls)} canonical properties embedded.')

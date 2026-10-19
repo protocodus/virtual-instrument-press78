@@ -2,11 +2,11 @@
 
 Press78 is an editable two-operator FM instrument derived from the PSS-780 research experiment. It has an independent C++17 engine, an eight-unit Reason Rack Extension prototype, and an interactive panel design. It uses original Press78 branding and focuses on synthesis; it does not reproduce the keyboard, rhythms or accompaniment system.
 
-This is an early development version, **0.1.0b14**. It is a behavioral model, not a bit-exact YM3420 emulator. Commercial redistribution of the imported factory bank has not been cleared.
+This is an early development version, **0.1.0b15**. It is a behavioral model, not a bit-exact YM3420 emulator. Commercial redistribution of the imported factory bank has not been cleared.
 
 [Product metadata](SHOP.md) follows the same shop format as the other Protocodus synths. It is generated from the Rack adapter’s authored `SHOP.md`; its front, rear and thumbnail images show the current native panel.
 
-Open [the interactive design preview](Design/index.html). Layout study 11 uses an eight-rack-unit panel with consistent section padding and puts 34 main sound/performance controls on the front, with 30 detailed sound, calibration and configuration controls on the rear. It combines the canonical Protocodus logo, YouKnow's DIN lettering and recessed groups with charcoal ABS, cyan, lavender, coral and ivory inspired by the PSS-780 moodboard. Doubled pointer arrows remain clear of the knob number wells. The preview has editable operator controls and all 100 factory voices. It demonstrates layout and parameter relationships, without audio. [Design notes](Design/README.md) describe the front, rear and folded panels. Both native GUI asset sets and the native local/universal builds carry this styling. Level increases clockwise while preserving the original raw attenuation values; clearer envelope/unit labels and value arcs improve editing. The current layout follows the photographic recesses, shares vertical centres within each row and aligns the header controls.
+Open [the interactive design preview](Design/index.html). Layout study 11 uses an eight-rack-unit panel with consistent section padding and puts 34 main sound/performance controls on the front, with 30 detailed sound, calibration and configuration controls on the rear. It combines the canonical Protocodus logo, YouKnow's DIN lettering and recessed groups with charcoal ABS, cyan, lavender, coral and ivory inspired by the PSS-780 moodboard. Doubled pointer arrows remain clear of the knob number wells. The preview has editable operator controls, all 100 PSS originals and 50 modern sounds. It demonstrates layout and parameter relationships, without audio. [Design notes](Design/README.md) describe the front, rear and folded panels. Both native GUI asset sets and the native local/universal builds carry this styling. Level increases clockwise while preserving the original raw attenuation values; clearer envelope/unit labels and value arcs improve editing. The current layout follows the photographic recesses, shares vertical centres within each row and aligns the header controls.
 
 ## Repository layout
 
@@ -16,7 +16,7 @@ The layout follows the sibling Protocodus instrument repositories: portable engi
 | --- | --- |
 | `Source/DSP` | Fixed-storage polyphonic engine and generated circuit/preset tables |
 | `Resources/controls.json` | Rack contract:64 controls, two inert legacy noise properties and hidden release compatibility |
-| `Resources/FactoryBank` | 100 imported parameter patches, all named with `PSS` prefix, plus provenance |
+| `Resources/FactoryBank` | 100 original `PSS` parameter patches plus 50 original modern sounds and provenance |
 | `Design` | Shared geometry, SVG/PNG panels and interactive HTML wireframe |
 | `Reference/Python` | Frozen research implementation used as the comparison oracle |
 | `Reference/migration.json` | Original source location and file hashes |
@@ -145,3 +145,7 @@ The subsequent b13 [Rack validation](Tests/results/sustain-b13-rack-validation.j
 B14 preserves the established48k output character across host rates through a fixed output bus and a final stereo converter. It intentionally changes non48k audio and latency in existing documents; all48k renders remain unchanged. [Adoption and A/B evidence](Reference/Research/output-bus-b14-20261019.md) separates improved host-rate consistency from still-unidentified DAC, BBD nonlinear and voltage-to-audio behavior. No noise generator or new sound-control property is added.
 
 The [b14 Rack receipt](Tests/results/output-b14-rack-validation.json) records the final source-aligned package and protected Recon creation/conversion checks. All36 wrapper contracts pass normally/under ASan/UBSan; the actual Lua latency agrees at all five native rates. Interactive playback, persistence and host CPU remain separate.
+
+B15 bundles 100 original `PSS` sounds plus 50 new modern presets: 12 basses, 8 donks, 12 plucks, 8 leads, 6 pads and 4 FX. The new sounds have authored velocity-to-level/FM and mod-wheel response, with category folders in Reason’s standard patch browser. [Playing guide](Docs/FactoryPresets.md) lists every sound and suggested register. Init and all 100 original parameter maps remain unchanged; no DSP or control changes are made.
+
+[Audition all 50 new sounds](Docs/ModernPresets.html). The [b15 validation](Tests/results/modern-b15-delivery.json) records 450 native-wrapper renders, original-bank preservation, final 151-patch packaging and fresh protected Recon creation/conversion checks. Only preset data, metadata and preview/catalog support change; shipping native/DSP sources match b14 exactly.

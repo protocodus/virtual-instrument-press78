@@ -3035,7 +3035,7 @@
   },
   "notes": [
     "34 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.",
-    "Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.",
+    "Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; 100 original patches use the PSS prefix;50 modern sounds use category names.",
     "Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.",
     "Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator."
   ],
@@ -3491,8 +3491,12 @@
     "target": "5.0"
   },
   "source_sha256": {
-    "Source/DSP/Press78Engine.h": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0",
-    "Resources/controls.json": "97ceb238116aa810735f869a03091a38c18da08bc3f69c3d2940104d70daaa9e",
-    "Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
+    "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "Resources/controls.json": "e8cfec4e0287f7b128ae456e8380596d3fbbc9db4c9a68e884084b32788c9bff",
+    "Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2",
+    "Tools/modern_bank.py": "89ced323309a198b46261bc38280f447c03847df472c11f2c975b727ba33bec1",
+    "Resources/FactoryBank/modern-low-end.json": "4253e3f9ed516705252b2f86906dfc7278a64263837f47847554e9334a3d95f6",
+    "Resources/FactoryBank/modern-played.json": "8893efc9088d9bf1fc2ee471257ababe90cdfd57f568e95dbe7b95865a41baeb",
+    "Resources/FactoryBank/modern-atmospheres.json": "2f9668527161aa6fa7ba7997814355f0992b9b94b88dc9a3dac83801a88e550f"
   }
 }

@@ -1,0 +1,1457 @@
+{
+  "schema": "press78.modern-b15-audition-summary.v1",
+  "passed": true,
+  "original_pss": 100,
+  "new_modern": 50,
+  "init": 1,
+  "new_categories": {
+    "Bass": 12,
+    "Donk": 8,
+    "Pluck": 12,
+    "Lead": 8,
+    "Pad": 6,
+    "FX": 4
+  },
+  "scope": "Actual generated .repatch loading through native CPress78 and typed SDK5 MOM. No Reason host, subjective listening or hardware accuracy claim.",
+  "render_count": 450,
+  "final_result_sha256": "2adce30d0a02ba0f8118311dcd21678761282fac4e900d824a25d80f8f9e1758",
+  "protocol_sha256": "0949e084bcb0af6333c8dea5883017d82496dcc44b2536676928ad4b441824cf",
+  "source_sha256": {
+    "/Users/vojta/Dev/virtual-instrument-press78/Tools/audition_modern_presets.py": "814dcfbde179ad1050cd5c77dfdf139a95c801ef6ee3959b59324fd7a3f78881",
+    "/Users/vojta/Dev/virtual-instrument-press78/Tools/modern_bank.py": "89ced323309a198b46261bc38280f447c03847df472c11f2c975b727ba33bec1",
+    "/Users/vojta/Dev/virtual-instrument-press78/Tools/generate_rack.py": "fe8727ee929142d719d7507f4c3a706266bd8bcb997249275e89dc7a87374575",
+    "/Users/vojta/Dev/virtual-instrument-press78/Resources/controls.json": "e8cfec4e0287f7b128ae456e8380596d3fbbc9db4c9a68e884084b32788c9bff",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Tests/FactoryPresetAudition.cpp": "e4c130812bca28421d45af42243fe8f5320f72de97a532c55f1bb806f5c2d7b6",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Tests/WrapperHostContract.cpp": "c5f71381b430f9e10337dd55bb498223253b6a8cfe1116df58df53b6662e70df",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Press78.cpp": "511889664e56f93ab0be74e767f24f6a35cab88237d6b3fb83c9ff6382ed79b0",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Press78.h": "59ecea890240c806c7c17224a684cff5720e43bf1c9042be0d7ae06a67b9df8c",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Parameters.h": "48bf14fd1942580ea5cae892642ed9dd78dd24c92c82053968126cc1d7433f75",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/ApplyParameters.inc": "77d1a6707f03160c2bc538f7264a25bb1eee9302a2435b00eff5a1fd42456020",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/OutputKernelTable.h": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/Press78OutputBus.h": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+    "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/modern-atmospheres.json": "2f9668527161aa6fa7ba7997814355f0992b9b94b88dc9a3dac83801a88e550f",
+    "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/modern-low-end.json": "4253e3f9ed516705252b2f86906dfc7278a64263837f47847554e9334a3d95f6",
+    "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/modern-played.json": "8893efc9088d9bf1fc2ee471257ababe90cdfd57f568e95dbe7b95865a41baeb",
+    "/Users/vojta/Dev/reason-rack-extension/SDK/version.txt": "81f10bc015321c5e4f7a9e8297426cebf92ced49de1dd1dd1be9d65a726011c4",
+    "/Users/vojta/Dev/reason-rack-extension/SDK/API/Jukebox.h": "0898b48e9c785d800be3e097bb0a41dfbdd819bbee048cb27be644a8a81fdf17",
+    "/Users/vojta/Dev/reason-rack-extension/SDK/API/JukeboxTypes.h": "37febdd4f7a4fbe072a31f61b353b0755b029512df17143bae0a8189c180ea84",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Low Gravity.repatch": "c09ea892175f0e2ae06284a267d6e8d1308aa1a54d0932cd449faa54946760e4",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Rubber Relay.repatch": "046dcdfa5c80248ee8db566ae1ca0e3815cc33f6020b225e36eff3048e936a9a",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Split Current.repatch": "7996f63535e304e0dc5caf8d72f8dcd8ee6d2c65279dc5a149650564166b06c3",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Vowel Engine.repatch": "494160ff94b6965ab5e42ef105b86c18b0fb3b108ae4bf51219e0ed052e1ce41",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Alloy Teeth.repatch": "72c1cc4a92bc53ef66b43c7e41a753351caa251d61b79d3c01afe645f9d44764",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Acid Fuse.repatch": "fb359f572dd16125b9e6257ae13a94c675826f708778a95d45cd52b8ccf7e9f3",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Pulse Stencil.repatch": "311826326ae73b73f42a92622070c61c1d21554cc9d81c10cb68b0734b038870",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Hollow Stack.repatch": "b9c648498096bbabe0abef8a322dca63caf7906945042eb4254fed24d5a95c51",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Undergrid.repatch": "3558f6d2faf3ab22e7cf4ba4aa1a6c5e6564ef6faeda9a6be10fa9e1dc2d9c76",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Wire Tension.repatch": "9543eebac51e768fe329c561d6f8ea71acc2c1f8ff97289dd0539595d42d2049",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Pluck Circuit.repatch": "e1224be314982cbef8a44bda6da6d2c6ba0338e7733fb2725ccb4149e6723521",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Bass/BASS - Slow Crush.repatch": "726381f3e7ac733df8faecd0cf30c0bcf5fb0083c58c7edc754c767badc92030",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Donk/DONK - Concrete Knock.repatch": "7f6d195dfc054acc1b4e4505ba3d223ac06083d768d39eadd5939da4c8450957",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Donk/DONK - Hollow Impact.repatch": "c5c153a8109290e31a9fcd0ae4413fade1530a24f016c0f420012c748e7e8080",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Donk/DONK - Glass Hammer.repatch": "eb7285c3818a4a349ab6a6b9ee2baa8ce5b637e49ae2363e40f57e2693603592",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Donk/DONK - Timber Trigger.repatch": "9fecd30d2dca8a6980e605e3c65e39e0060b0d2b9b0a65c3bfd52bc5bac9d187",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Donk/DONK - Sub Mallet.repatch": "b607e60dd369c94f5fa1b53265c93769f54fef909ebd5f878d7bfc1c367ab71a",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Donk/DONK - Laser Knuckle.repatch": "81d699a170c39af8bf081e2e5d136ee6d2859bfbddcbd2cbb1028da78717b4fd",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Donk/DONK - Rebound.repatch": "88b899e40ccd79efa860269dcf85888ab1af65a3a1da9df9cc09f15cecce6b6c",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Donk/DONK - Scrap Bounce.repatch": "2da6294069d9644356d57030cfb52bf3fe3269f468dd1c38b1c29a7c9afb4618",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Kinetic Tine.repatch": "2858852c78872adf7c7d6ee576b7ccdb201ebd9518a44f4a7a8fbae2a1e36469",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Velvet Mallet.repatch": "41ae972a3e28b5b35445740d6e46c0ae774f14a09360dfc153f3edfbe7df2562",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Glass Thread.repatch": "d432fd5b37bc969686c3a0a38da2b53a63163691ad0bd204b1623efd37578e69",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Rubber Relay.repatch": "48de7f90811cf09b1d998ad694785d362f0c20d47fa8aa9ff6d3310eadecb895",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Copper Drop.repatch": "e441cc92fd88a8ca05736fffb1117831a21d9b6e22befa71776bc97edce775d6",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Pixel Chord.repatch": "bc5599d736fe0760ac767ac3ffff07bc249db804abfc5dc6d4e1a21c416b57d3",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Prism Keys.repatch": "c1bde562fac7381e6121709319ef2fbb2ac8a2cf2badffc661ad0cd4f6fb9dfc",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Bamboo Pulse.repatch": "73616da3c68fd6169a36b5f11367348130b827b581d562327db0d3be7386417d",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Chrome Pin.repatch": "d3ad75e748655ffceadc476bdb1bc599ccbd3868791c9fb54080ac08ba090492",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Soft Circuit.repatch": "cc25add501d91d01b446801bc667cbfdc33d79545ea587a06e88a500be3f9623",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Magnet Bell.repatch": "3607ab1fafb6bfae3330b9b776b25502651a5834d7415246a53285e1765129a1",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pluck/PLUCK - Afterimage.repatch": "62af9e00f6c70e7e6b7a7dfbbf9d6889e525b771d89323724ae26c8f05a332ac",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Lead/LEAD - Neon Wire.repatch": "8f51c29f9b8c0f4d374da382a1f85cb3f598eebf3cfff180b8ae93700085c2b9",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Lead/LEAD - Signal Silk.repatch": "0ad90e487455e193bab46237cde86af0f861310d7d99aa1132782e8049809238",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Lead/LEAD - Vector Reed.repatch": "aab4abf8f82d182251907c1b57cfca374ffa0e90129b67a692f522a81153d7e9",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Lead/LEAD - Pixel Brass.repatch": "b9fedb530e8b02d84a18f5a9c01fda78f7033bd7297ff934da8c9803897b8f02",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Lead/LEAD - Spline Solo.repatch": "cc47aa8d840b9a1f64b2af6aa4b3d9bdea6d6c444617d99e0e65add5e103ae52",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Lead/LEAD - Meteor Square.repatch": "393b06878ff233ee4ea063a6a165ce185da053bedb3397f4cb0470b62711df33",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Lead/LEAD - Glass Current.repatch": "4f9d98fa187b215d5b5e6be56e10964dbe53ea62d55b0995c72d983378d3c18e",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Lead/LEAD - Amber Hook.repatch": "3b8f534d2619132d84295e6aaffc600862078d12f194ddb9bca863b0cddfb94b",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pad/PAD - Afterglow.repatch": "137fc8326ab6f5d4f0b383de87c3178fc1eff010b2ced40b9f57365bc8bcdc79",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pad/PAD - Glass Tides.repatch": "0d9a81b7a59bbc597c5ee4116abd8354a2e9a5ce5f28f146277abd5e18899c9f",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pad/PAD - Velvet Circuit.repatch": "565a019d4ab086e7ecf1fa573cc5fa3221b93a0083b8c15defa2199be28cdbfc",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pad/PAD - Prism Choir.repatch": "3862f0a00ad7d2841df1e080296e8062afa0cb9f854072af3e634c4d31984fda",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pad/PAD - Neon Suspension.repatch": "245fd617237f804b6a2c659dcfc45dd0153677fe31660bcc3150472abecd9a38",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/Pad/PAD - Low Orbit.repatch": "6e85d6cbd5a52e85978c9a34c3ee2dc09c756fb74250f088087d2cc73f108000",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/FX/FX - Ion Drop.repatch": "1c9c2b340534c61d733fbab0165ebee7fd34cadf843a689c821826ae27d3ca32",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/FX/FX - Broken Beacon.repatch": "ecb1890aaff4591caf3cb7bbed4f07062d05236211eaf2379ed1f1f7b6d4f80a",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/FX/FX - Phase Flare.repatch": "31e856be9e5e7461efe3fb37a1e8d8410377592fa1a108ffa3c38c7d7ed35a51",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Resources/Public/Modern/FX/FX - Gravity Well.repatch": "73db9c40e03c53c15ecb854a7b6abd10cf91f4c19309250b1bfe5072d66a6c3d"
+  },
+  "firstpass_result_sha256": "f3a3f5f7cb1e88b2525f6f3f500db9e109df5869999fb928d406382bd5b36e64",
+  "authoring_level_review": {
+    "scope": "Authoring gain only: reduce polyphonic pad jump and raise selected quiet sounds; no per-audio normalization or other soundparameter change. Firstpass retained.",
+    "changes": [
+      {
+        "id": "pad-01",
+        "old_masterGain": 0.29,
+        "new_masterGain": 0.12
+      },
+      {
+        "id": "pad-02",
+        "old_masterGain": 0.3,
+        "new_masterGain": 0.1
+      },
+      {
+        "id": "pad-03",
+        "old_masterGain": 0.31,
+        "new_masterGain": 0.19
+      },
+      {
+        "id": "pad-04",
+        "old_masterGain": 0.27,
+        "new_masterGain": 0.12
+      },
+      {
+        "id": "pad-06",
+        "old_masterGain": 0.28,
+        "new_masterGain": 0.15
+      },
+      {
+        "id": "fx-03",
+        "old_masterGain": 0.23,
+        "new_masterGain": 0.5
+      },
+      {
+        "id": "bass-06",
+        "old_masterGain": 0.25,
+        "new_masterGain": 0.4
+      },
+      {
+        "id": "bass-09",
+        "old_masterGain": 0.25,
+        "new_masterGain": 0.38
+      }
+    ],
+    "original_results_sha256": "f3a3f5f7cb1e88b2525f6f3f500db9e109df5869999fb928d406382bd5b36e64",
+    "additional_pad_review": "Final pad phrase peak<=.8 and RMS between\u221223 and\u221217dBFS; retain all results even outside this desired review range."
+  },
+  "possible_duplicate_flags": 0,
+  "review_warnings": 0,
+  "render_allocations": 0,
+  "peak_max": 0.6107584238052368,
+  "velocity_rms_rise_db_min": 2.6444244746780132,
+  "wheel_relative_difference_min": 0.023051562390673738,
+  "independent_review": "77 source bindings,450 WAV hashes/formats/finiteness/levels,6 representative velocity/wheel/mono computations;8 masterGain-only changes independently verified.",
+  "tail_and_subjective_listening_review_complete": false,
+  "presets": [
+    {
+      "id": "bass-01",
+      "name": "BASS - Low Gravity",
+      "category": "Bass",
+      "recommended_notes": [
+        28,
+        52
+      ],
+      "phrase_peak": 0.20649442076683044,
+      "phrase_rms_dbfs": -22.78415777295796,
+      "velocity_rms_rise_db": 4.781459099603039,
+      "wheel_relative_difference": 0.023051562390673738,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "4f43b3572f7f602e92153abb10e9eff56c6338577fdd69ac2167a118edeee8d3",
+        "low": "57999cdb18f4a4f86de884a173de452abfcea2357dffe5bf8aa52b0a8560a692",
+        "mid": "04d82478a9f43937d24cd8370e90f1cb232bec335546a304271ba3e126432f43",
+        "high": "a08211fe7a4eacec61cf185293925cce115361bbe80d5aa5762446859fda6ca1",
+        "soft": "b764c05667f863d08a967d726c454eee040f1b1ca4658cc92ec70bf733d76af8",
+        "wheel": "c1fc2acb56de1303e5f588c871a0adb6822097c62dbf672223c93380ee6ab152",
+        "mono": "04d82478a9f43937d24cd8370e90f1cb232bec335546a304271ba3e126432f43",
+        "common48": "4fbbb6b0f8918f14b251a83291c4dc840cd789123e07e670fb998a5fed2506a7",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-02",
+      "name": "BASS - Rubber Relay",
+      "category": "Bass",
+      "recommended_notes": [
+        31,
+        55
+      ],
+      "phrase_peak": 0.16345268487930298,
+      "phrase_rms_dbfs": -28.055407228993925,
+      "velocity_rms_rise_db": 5.0621426403651935,
+      "wheel_relative_difference": 0.041698522509517146,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "238c542bd8b7fdb410af3fcbb0b9ad3168fc3f79f757626001915625ed167c71",
+        "low": "e2f02744bd65a0cedf1be21809acbe8434785adfd1307507985546735b0bf5f6",
+        "mid": "5eafb42911c0a0aa58cab3be5afca4b5459741e72e172f75ed1ba6357ff62e24",
+        "high": "3bda52744ac8962b19c9060bc638ef5f4bc32b8dc74bc5baa5be76e62d543d7a",
+        "soft": "b8687ae16a1bfd41f4a6772b5b04bda67b7a9cc4b76fe89ef1001e2837e79153",
+        "wheel": "5036d2444a4b4a1979e7fcc1b44f2aa3b0db46fce6261e1e9672d7b2c436a977",
+        "mono": "5eafb42911c0a0aa58cab3be5afca4b5459741e72e172f75ed1ba6357ff62e24",
+        "common48": "c267e455dc3a3750aa5f7eae88bcb0694e300e0ffd4310740e817c6ac8b6dcc1",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-03",
+      "name": "BASS - Split Current",
+      "category": "Bass",
+      "recommended_notes": [
+        29,
+        53
+      ],
+      "phrase_peak": 0.21370655298233032,
+      "phrase_rms_dbfs": -28.02962559342168,
+      "velocity_rms_rise_db": 4.451914032655484,
+      "wheel_relative_difference": 0.08547634853509126,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "59afd5b06395a83593ac8b916d1bb897579e07b24fcaa91e88f37524696f815c",
+        "low": "bf7fb81b7982e3b1b093f0c1d332b59c21468534fc8514a2eeab4b32ed4eb43d",
+        "mid": "3af47072ee918c814228a9a7ba71fb6d4caf77f3642ba1daa2118bb735ffaddb",
+        "high": "6120d8cfbb81b9d8cb7b53cf0153342de5aeb855ea7f0ffd2c26dec7c2a5ffa9",
+        "soft": "5fa69a61f5ef03915bb789e208d30efc30e70ddc21f900ae0caf3a30d8f0336c",
+        "wheel": "05003f6cbbfc0a1e91396a7f362c6690240050ad0199a860b760ac917d5cd5ba",
+        "mono": "58c12c8d66c121c8f788ce9ab6ed5cc442c4412f7e520f3a80d14718944dec35",
+        "common48": "5bb851cbf1684000c271bc40959382d124ab3a00ceccbc8741eeb099c66b6629",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-04",
+      "name": "BASS - Vowel Engine",
+      "category": "Bass",
+      "recommended_notes": [
+        30,
+        54
+      ],
+      "phrase_peak": 0.18181511759757996,
+      "phrase_rms_dbfs": -24.670828843857898,
+      "velocity_rms_rise_db": 4.976216896628465,
+      "wheel_relative_difference": 0.18672603352567843,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "8ff4a3c17e6414973e01115fc3fe01b6091cea92f9d0021f41a249517332dc45",
+        "low": "64c31e6bb6d5d58e28342a12151ab20caf555121cb789e7b6f8cc025e74a1fd6",
+        "mid": "55e2f0ad1fedbd20739464129eac88291e3f636c8f922cd4a03b773b0c8f9f54",
+        "high": "ec3a793fb7bf47c670ca74bffa8596d93b5937e34072e90e3065c6c3a315e2cf",
+        "soft": "89708115fbd41f999d60739fa0f6d0aab38e7cd8fe5de23835d223518b926da1",
+        "wheel": "4a9c5741c950f449a72afcf19328729198ffa219f64234fcb80fc8bad1c2296d",
+        "mono": "55e2f0ad1fedbd20739464129eac88291e3f636c8f922cd4a03b773b0c8f9f54",
+        "common48": "f0af60ae1a566a38d07338688f37134524f215e19de5f97b8e76d143cf05b772",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-05",
+      "name": "BASS - Alloy Teeth",
+      "category": "Bass",
+      "recommended_notes": [
+        31,
+        55
+      ],
+      "phrase_peak": 0.18584515154361725,
+      "phrase_rms_dbfs": -28.701915484286886,
+      "velocity_rms_rise_db": 5.087491927552136,
+      "wheel_relative_difference": 0.08411121457749202,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "641276c2017bb8870509f70255c8d311615402a54d92d09430f94c241dcba064",
+        "low": "57a259f212cf1355c869e2ded9628dc5df0055dc0ed2dfd05e679e1ec312a548",
+        "mid": "42a11bf6aefa46f57a50d4353f7ad5d2a6d30e39209812c7d1895ce5a745ce38",
+        "high": "ef94a236f59dbb2c31a6371c3bd931f01e07d08f6de19755a1b5e03489f879c4",
+        "soft": "d54367fb128f8051eb02d0ce5f8c24ad57fddae6b6b5707b2e2b73f89ce9d39b",
+        "wheel": "d48b9f51be84de762fec23d2ecb21417468a2d6fd420f3eec202f426d26e687e",
+        "mono": "8e574816f7837cfe6857900dbf0c6493f54af2df5f405d7690436d41d2fd1243",
+        "common48": "9658024ed0b2e8116d6361d386995605253237f7e31b188cd3f0e1522926cfd3",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-06",
+      "name": "BASS - Acid Fuse",
+      "category": "Bass",
+      "recommended_notes": [
+        30,
+        55
+      ],
+      "phrase_peak": 0.16640640795230865,
+      "phrase_rms_dbfs": -30.133468462957907,
+      "velocity_rms_rise_db": 4.136805706642713,
+      "wheel_relative_difference": 0.03642865862229504,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "8d5ba8a00b83f80eff1f5aad12b596bfa358f03220620cb0e8561d8277ce2acb",
+        "low": "5733f51bf5946c88b914c10bd63dafcee11b4a685e53667a870b1874e3d79320",
+        "mid": "117237dfb65c41646da8a87ff4513f60874551c3208d64d75578c37e3b7d39ee",
+        "high": "b31e2589d03d4f994004d567828be3bc32ce0939e7260c2ad1266b0748e46003",
+        "soft": "22c32fc14985ff54d8fc5963ef78c6d554e48d47cb01527ff5ab923ad94db62e",
+        "wheel": "1bdd709acf360aaf35277e5a0307c6f02d49f7526a66cb0b452d6f50750f4603",
+        "mono": "117237dfb65c41646da8a87ff4513f60874551c3208d64d75578c37e3b7d39ee",
+        "common48": "4e7514e2aa4d7e7dec3796fa7fbc379b244998c6e541a03dcae26b33e8765e7c",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-07",
+      "name": "BASS - Pulse Stencil",
+      "category": "Bass",
+      "recommended_notes": [
+        30,
+        54
+      ],
+      "phrase_peak": 0.21592339873313904,
+      "phrase_rms_dbfs": -23.87372064987618,
+      "velocity_rms_rise_db": 5.200674704299811,
+      "wheel_relative_difference": 0.06802415079209229,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "a76046c6ec8dbf5f44d19bb8ba7a2e382cc8532b1b0237e2c0ddd6fe0ac4590a",
+        "low": "7231fa0bf83604e38ee55b547d32db4f4d97b99bf624a54c0451b23651a40c5f",
+        "mid": "b5e178ae00e1221d803b6eb286b080a36dff6a4fe118648a2015990aa8ec7727",
+        "high": "4dc1d15e02c4b9664af38263dbfdf11f275583579c19ca52799f081ada93cb80",
+        "soft": "385bca5d4b391690eb44378cb3abdcb39ceacbf3288d1ea3f934a6824b73227e",
+        "wheel": "744954010567ef43c8fcd34cd50d2609fab5252616844a9401dbc0e3806083df",
+        "mono": "b5e178ae00e1221d803b6eb286b080a36dff6a4fe118648a2015990aa8ec7727",
+        "common48": "c76767cf7bb608aa04013ba124185445e0b69fe278ee8c87d759c7524ba34999",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-08",
+      "name": "BASS - Hollow Stack",
+      "category": "Bass",
+      "recommended_notes": [
+        31,
+        57
+      ],
+      "phrase_peak": 0.21569599211215973,
+      "phrase_rms_dbfs": -25.198434269380698,
+      "velocity_rms_rise_db": 5.1313947835135,
+      "wheel_relative_difference": 0.05822334637908616,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "a87e58d8a5b5e4a7b99fa0e6db456606d819f3309d39cfddcdc5d8e633da962a",
+        "low": "a59e9e2f6f761ed3f1125d7b2ed469293c4f0e99305902ca8bec0b496ae52332",
+        "mid": "e69ad4f8bf7a44d9afd128433922a6aa6dbd10b9aac3dac8b01e0b419e4edf9d",
+        "high": "3402ce92b64e35dce843cfd33e006538045b9eeafa2cad470aa893cc4793e8ff",
+        "soft": "324791a0987e3bc48f4a649a74d09c87582c3773018424437abad4731e977cfa",
+        "wheel": "b2bb9e2aff96d000cac49e899e7a59c87336b5cbd029d3fba8160ae578dde2ac",
+        "mono": "e69ad4f8bf7a44d9afd128433922a6aa6dbd10b9aac3dac8b01e0b419e4edf9d",
+        "common48": "9ac3025f28498660d8bd2ceb6b99e570d748c6cce9e56eb350925f9e464d3ff6",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-09",
+      "name": "BASS - Undergrid",
+      "category": "Bass",
+      "recommended_notes": [
+        36,
+        60
+      ],
+      "phrase_peak": 0.23636077344417572,
+      "phrase_rms_dbfs": -26.251980471719808,
+      "velocity_rms_rise_db": 4.875351342314832,
+      "wheel_relative_difference": 0.04442669087670939,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "fe562768e2f8da2212afe3b7ed9a18d2efb37f84e94015f27770292a8e7f8f60",
+        "low": "741d108ed2308fcf3b49464181cf1cfd458f1c8df546754e32ecf5bc7aa0e83d",
+        "mid": "4dbeb37bd139476f6404bc3715b7441fb69abdfb9b29a7e33a41c4c67739d60d",
+        "high": "abd760f1a0042c4b4caa03e32dec11200a99f77f1ca1d82b22becc934760d10c",
+        "soft": "e2bbeab165d9fa0d37497959a0934d728f2a658fa0a3c486cab4b5178edc0539",
+        "wheel": "a6b0e007cd2f7ffe258f182f3da9ff7e8a5eb449335e08fc6becf0bb16537128",
+        "mono": "4dbeb37bd139476f6404bc3715b7441fb69abdfb9b29a7e33a41c4c67739d60d",
+        "common48": "4dbeb37bd139476f6404bc3715b7441fb69abdfb9b29a7e33a41c4c67739d60d",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-10",
+      "name": "BASS - Wire Tension",
+      "category": "Bass",
+      "recommended_notes": [
+        32,
+        55
+      ],
+      "phrase_peak": 0.23302678763866425,
+      "phrase_rms_dbfs": -26.253951358662803,
+      "velocity_rms_rise_db": 5.091163958161528,
+      "wheel_relative_difference": 0.031079005302715658,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "c15e05fda145ab32b4dda27a40ea30d530426386ce97b513e680e45be580932b",
+        "low": "2c9f314987efafdd4a71f6583ee828496a979965b89c2ca41fe374c8b2832c1d",
+        "mid": "7fddf9d9365e3369839b4f6f92319266477ddb76b667144e66f2050982bf2138",
+        "high": "e98469b8aad4ebd6851d576d249cb0c0c811d67404758c075b2b2653a13fefd4",
+        "soft": "fd36f02a69f6ed335bdd2c16518afc74bf438dd9dd83234c0adfb512ad49cfe9",
+        "wheel": "b2b30a0617d1ad64619111163ff3f05c7a077817070686a8c7ad27065a7ae6d1",
+        "mono": "7fddf9d9365e3369839b4f6f92319266477ddb76b667144e66f2050982bf2138",
+        "common48": "d2fdb785e61e5432adafe931da292ebc749bb6b7618047b480f0c6be77c80d76",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-11",
+      "name": "BASS - Pluck Circuit",
+      "category": "Bass",
+      "recommended_notes": [
+        30,
+        58
+      ],
+      "phrase_peak": 0.16789622604846954,
+      "phrase_rms_dbfs": -31.95324552553764,
+      "velocity_rms_rise_db": 5.848142249771673,
+      "wheel_relative_difference": 0.032088294115947893,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "29f1d050f4163e1dcf21ea6ad3be653a44afa8850ea48310ce280e685b602f9a",
+        "low": "af313247a6b77cc54cb0c2da8467f19608b89b5d2531192ca19540eab4a1ea21",
+        "mid": "58be21c2187175cd15010205efda07cb7ef3d4d21d774247ce0a14aab71a616f",
+        "high": "81ed6abd2d136b639eef3faaf0fecf3556e5e7307418123cc282b999478bf84f",
+        "soft": "7e6aec199b079c69ecd63579b10dbe2591eaeba6bcbfb57ad374700b19814def",
+        "wheel": "d796db3f974fe9b7bb29a307572dd9c393c600a6b744dc04aca45ea55f2e4720",
+        "mono": "58be21c2187175cd15010205efda07cb7ef3d4d21d774247ce0a14aab71a616f",
+        "common48": "773cf871faf94927a6f69e59334adf868eb3ce3865180e1779e6bff34c723838",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "bass-12",
+      "name": "BASS - Slow Crush",
+      "category": "Bass",
+      "recommended_notes": [
+        30,
+        54
+      ],
+      "phrase_peak": 0.21229855716228485,
+      "phrase_rms_dbfs": -26.72291385593352,
+      "velocity_rms_rise_db": 4.03038587155076,
+      "wheel_relative_difference": 0.3703348815099494,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "2dedf8a8f7e532ce3047c9b271b4ce0056291e1facb04b916452b459b9802605",
+        "low": "5130760f67778ae82fc3ad749a52056076a283a2be507c86d17c338ba3b9b542",
+        "mid": "26f47b4a7963915f1f32a9dd9d9f59aea503dc2023801734ab83232645ab379e",
+        "high": "128f0bc8882f4ff8afc44c4f5a436f2b340f298fe920e02854b7adb5ace9be0c",
+        "soft": "975d40a1be8502576b65ebfffcbf52857ac38153f433167e2963bab5961d537b",
+        "wheel": "5a34de4be39c8c32b11512206e322d756027509917d0fe67c4b908e35b31b505",
+        "mono": "385068581d662b4761e4347da3d05c5ba8cc16fbee3ec4cfdc65ea723e834095",
+        "common48": "784fd0b1facffbee25c0f1b7215e7695cdf6de8cef305906b098bf3c4005bf5b",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "donk-01",
+      "name": "DONK - Concrete Knock",
+      "category": "Donk",
+      "recommended_notes": [
+        36,
+        60
+      ],
+      "phrase_peak": 0.18957051634788513,
+      "phrase_rms_dbfs": -30.062326621393304,
+      "velocity_rms_rise_db": 5.228667539656272,
+      "wheel_relative_difference": 0.03364894730334146,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "3ed4629ba327a2677513796b58bd02efe2ed5b21ba8d01b3903dae8ae91e188d",
+        "low": "2e881f3b14504bb4ab88ee493a1d12e7fbdb71dd071456a50f0c87be841f7dcc",
+        "mid": "a5bf84516c7da04e3b680eb51e3d98df59d1963172a3799707903dc7a0411c94",
+        "high": "4af16bdfb64242131d9737b4bc2d99f2e2a5ee15d778c0f632e4ce1ebb245458",
+        "soft": "394caa316b4ea16af3ea0e06c9b1f0de6eb786b4f45c4c5e0a3873dda1ebfd1d",
+        "wheel": "450c4cee22a1597cf5e204e08a98e11fe7929d98ae70b17209ab7fd7196d97e3",
+        "mono": "a5bf84516c7da04e3b680eb51e3d98df59d1963172a3799707903dc7a0411c94",
+        "common48": "a5bf84516c7da04e3b680eb51e3d98df59d1963172a3799707903dc7a0411c94",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "donk-02",
+      "name": "DONK - Hollow Impact",
+      "category": "Donk",
+      "recommended_notes": [
+        38,
+        62
+      ],
+      "phrase_peak": 0.1897960901260376,
+      "phrase_rms_dbfs": -32.85514600513932,
+      "velocity_rms_rise_db": 5.056960543796104,
+      "wheel_relative_difference": 0.026971476432309224,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "b175cbe909ae0c3cd13870f3c215f31a9c140719e4b2264d141111e6ace1cb40",
+        "low": "3ccc9a74f9e381db3c9855dadc588bc8195a0bb470a1311080d5c746ec2a996a",
+        "mid": "ab1081c524c25d99c9d9bf302b390ccff99326d31ffb4cc354bf83fec34f9713",
+        "high": "5ad612ecbbb1d9be5f29cacaa18560098f51c761ca61f5f959a3bdd4497bcba7",
+        "soft": "211185bc794301c9d61d1dd34707c205f8efdb0eb250b2962067c0120326e5e7",
+        "wheel": "e3f0ca6c4e25fc60305a30dc008c43642a92fff43faad6fc5042a8c6a3793a3c",
+        "mono": "ab1081c524c25d99c9d9bf302b390ccff99326d31ffb4cc354bf83fec34f9713",
+        "common48": "49a24ba680da7c52f9c2471c2d05ab93ae8c5768d542f7569bd9dc4562bf6efa",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "donk-03",
+      "name": "DONK - Glass Hammer",
+      "category": "Donk",
+      "recommended_notes": [
+        40,
+        64
+      ],
+      "phrase_peak": 0.18101678788661957,
+      "phrase_rms_dbfs": -30.99434613900435,
+      "velocity_rms_rise_db": 5.081127760907139,
+      "wheel_relative_difference": 0.05020924280267034,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "e9aea88be5cdcca5344ae9005003a29b66f2915b344a3807603124416efe129b",
+        "low": "5981ad9052bcd83753c56fd0fe2de207a6960cfb3c0aefd597d314fb5388f63a",
+        "mid": "7c217b3b6303d3ec38392dc887d9f40f07de38ab58f087fbe7996de6e82fca5c",
+        "high": "0edeb88073f5741d249fb8f035069e4728f986fde0e2ab798f1a8888a8c2b87c",
+        "soft": "dbcaa4f6780e6e308ca6fc419c7823a37a0cdb039754af33fddcee8346a13098",
+        "wheel": "340e4430167c7c2027f082b8b95a37d8b8e38b44266644761e2080f6162c308f",
+        "mono": "0f403ae47beb8a6c640635ce32056d2e8b6cbed3d0d99790a003991bc08bc0c4",
+        "common48": "06ba7e96aec423a323e896b7d6641e6d66bf46275c5f44ada95b6154226f04a5",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "donk-04",
+      "name": "DONK - Timber Trigger",
+      "category": "Donk",
+      "recommended_notes": [
+        36,
+        60
+      ],
+      "phrase_peak": 0.20461341738700867,
+      "phrase_rms_dbfs": -33.04388946905271,
+      "velocity_rms_rise_db": 4.779738364048283,
+      "wheel_relative_difference": 0.030652527092609003,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "29a1c92cff2131b1b60cf5fe8846df7f6b49dfc9fcf454201c50c3d34444ad48",
+        "low": "b796c5e4564b0909bbe096d844896cc82bd288921a5a7336e5794a8312b534a8",
+        "mid": "462a747feb0dff78c6318e122602da93deaceba721558303396d7c0f2786234d",
+        "high": "5545481f423677ad9e5fef2b49496fbe93f38cf1323d7c9bea0e3dcb70ec6a53",
+        "soft": "a7b65a0da0dd2b157bd8a5da21afa473f48014d7497b76940dfbcc034f561b7c",
+        "wheel": "7eefcffa701cb3465ec103c2fae08aa6379e5c5d20f1d52f496c7d36adae1153",
+        "mono": "462a747feb0dff78c6318e122602da93deaceba721558303396d7c0f2786234d",
+        "common48": "462a747feb0dff78c6318e122602da93deaceba721558303396d7c0f2786234d",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "donk-05",
+      "name": "DONK - Sub Mallet",
+      "category": "Donk",
+      "recommended_notes": [
+        48,
+        72
+      ],
+      "phrase_peak": 0.2422451376914978,
+      "phrase_rms_dbfs": -27.707655372037134,
+      "velocity_rms_rise_db": 4.888716730804003,
+      "wheel_relative_difference": 0.030720536067952622,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "a93429c4c7dce8273edb74494476c4a7bf80c9cb3c38a08ab29014877a6ec614",
+        "low": "fc8cba345e7b64b833fc7f44066849d93cc6190188f2ff458ac468aaacd40ca7",
+        "mid": "49baa16cf2899c909a2ba671ce8b534b35b90da65c2299eb39b12f1ba4ccca49",
+        "high": "3a05c6d238fce6e4c41988506f0df692628f115da131cc02cb9eb536eeda7899",
+        "soft": "ee4ec7629c9d45cf772683cae2c350a2b3478bd9861a33a90aad09d60275fac7",
+        "wheel": "c2ebe99f9313fb29dbebc993362be38199fca2922eb28b4869304319e9f4d722",
+        "mono": "49baa16cf2899c909a2ba671ce8b534b35b90da65c2299eb39b12f1ba4ccca49",
+        "common48": "fc8cba345e7b64b833fc7f44066849d93cc6190188f2ff458ac468aaacd40ca7",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "donk-06",
+      "name": "DONK - Laser Knuckle",
+      "category": "Donk",
+      "recommended_notes": [
+        38,
+        62
+      ],
+      "phrase_peak": 0.1739044338464737,
+      "phrase_rms_dbfs": -32.06258771854102,
+      "velocity_rms_rise_db": 5.058968423959427,
+      "wheel_relative_difference": 0.045703442297822916,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "6d5611e3f05705315e37e86a2f5f0cb83104f78eb93ea5cd1b8d7c8d950b728c",
+        "low": "78b0c61ebe787769875c236060a1192779866b61cb8772cbdaf514415e403c83",
+        "mid": "f8f2eecf4f74c51fae7fdb321abf3855966627492a08c9a7b5d2107c5ca01e3a",
+        "high": "c3ffddb5ac0affe3e174640b321e5d636050088ad430ba603d9c9c1949a3fa2c",
+        "soft": "01a541152953612eb7bf0baf8a448b1d8a70606a2e6696f236f55cac1ab323bc",
+        "wheel": "265a0578af77ed5f928dddd227a85d7d0d5f2fc2e4785f32d38989f145e22b09",
+        "mono": "f8f2eecf4f74c51fae7fdb321abf3855966627492a08c9a7b5d2107c5ca01e3a",
+        "common48": "7b01aceadd5d42469221e57be9975a651381786084d2d949b148923b48ec77eb",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "donk-07",
+      "name": "DONK - Rebound",
+      "category": "Donk",
+      "recommended_notes": [
+        36,
+        60
+      ],
+      "phrase_peak": 0.1940091997385025,
+      "phrase_rms_dbfs": -29.79265752012551,
+      "velocity_rms_rise_db": 5.111889657674994,
+      "wheel_relative_difference": 0.05280707645754595,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "c21c1410387c24fb034e68c62d4c973fe1ea997da1b4081ea2edfa2ad4c04b40",
+        "low": "0b4483d3f76e8d2cf9dac07cc5249ae11e80d2b66a4382555034673fcf5fc17b",
+        "mid": "e2f1efd20c7558196a97ea3cb3ba50ae0437d7fd85d65c1b76767e02e59988e1",
+        "high": "5c5f135289c497cc9fc56496ca0d842648dbdc93f62cc17c9af664a4ecd3a771",
+        "soft": "70b86de8696d0e2852c68bae1835475ea3c249c8c7c2a9ef480eddfb6e602597",
+        "wheel": "9b0246e6fabc89623575726eba3fea8b748464e0d4f2c619347aed02f8c13bf8",
+        "mono": "fbb204f671a7db413582b06a8d37e875678c7137f4341bc16a2ec11d98e5d71a",
+        "common48": "e2f1efd20c7558196a97ea3cb3ba50ae0437d7fd85d65c1b76767e02e59988e1",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "donk-08",
+      "name": "DONK - Scrap Bounce",
+      "category": "Donk",
+      "recommended_notes": [
+        38,
+        62
+      ],
+      "phrase_peak": 0.15924547612667084,
+      "phrase_rms_dbfs": -33.67938393550182,
+      "velocity_rms_rise_db": 4.834942986489093,
+      "wheel_relative_difference": 0.042956084789761054,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "4f55f5054fc7f5d1e548013142f7735a0d9036b7366c5e17368e47860dd1f2ec",
+        "low": "6151796c9baea30822582375fec56f9173bcb02285425ce63597d28ae459af01",
+        "mid": "d363c7e98327234a6cb0025b6439321713c83486103fb67ed18848bdcf72ce5c",
+        "high": "f3291ba97e7a074538c6c7568801d4df85d3e84e8e05d934e17be80e328faa37",
+        "soft": "587839e0fae29bca28470b973bc332442648080ddf36292909687812682aeb99",
+        "wheel": "293cf7ee99fdfdb566c843f2cefa054ddfbc6c37e1060965904c12242531bddf",
+        "mono": "d363c7e98327234a6cb0025b6439321713c83486103fb67ed18848bdcf72ce5c",
+        "common48": "47bb280f48950ba7157574998060e79db75ab91c4883c58c0a93dab344bc26d4",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-01",
+      "name": "PLUCK - Kinetic Tine",
+      "category": "Pluck",
+      "recommended_notes": [
+        48,
+        84
+      ],
+      "phrase_peak": 0.3072948753833771,
+      "phrase_rms_dbfs": -32.84311379442622,
+      "velocity_rms_rise_db": 7.3864460389851665,
+      "wheel_relative_difference": 0.20882347274225194,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "346d7adf0883c8b335de211239f1e4ca2e8e6f399aa1eb11feb9f35e8911815d",
+        "low": "7dc6c8378d01b762c151a2f09285812c762901526ba33b883ff050fef213502e",
+        "mid": "813b5e65315c72afb3c90a7c9869370b1479bcd1a01f51cca3ef8bb8cd474ecf",
+        "high": "a386f197a3374d1c0264377c48f09d85b6b450da04308d8325fd10a3c968ddfa",
+        "soft": "17cade011fa0a7702b89e75f7a7d85ef2cbde2cf2a8dcb531bca321f806ebbda",
+        "wheel": "16fc84a8d9c6ef632e7e59b90d9882dbd3be42941f0b23c0f2f6a8157c944843",
+        "mono": "502c2723215291b6e491916a2bab2c9d8bca3a7d9aa683bf8a24a226416446bc",
+        "common48": "7dc6c8378d01b762c151a2f09285812c762901526ba33b883ff050fef213502e",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-02",
+      "name": "PLUCK - Velvet Mallet",
+      "category": "Pluck",
+      "recommended_notes": [
+        45,
+        81
+      ],
+      "phrase_peak": 0.34821149706840515,
+      "phrase_rms_dbfs": -32.13374718591547,
+      "velocity_rms_rise_db": 8.156901186451073,
+      "wheel_relative_difference": 0.10569216571283557,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "a8e8d243c6914631f0a6658056e8dedfc50b0666e022ed95eb3890f800cac2e2",
+        "low": "94c0b74d73dd44b5abc3c99a0731c5e17ed7571ceeacbf390b96b36f816fe74f",
+        "mid": "e750f7e8d4fef4f97321a568dacf62559f83e77581469d4f41ab2dddbbd7bbb0",
+        "high": "e3aa8b2d174eb37ec329642b276b1e2ba3680fa0dafe6b00cec0e688761b140c",
+        "soft": "d0a1133867a66f71e15870accf53d72cb314b97c24c864a338cc1a221954f464",
+        "wheel": "70cd4e087bf16c1d3101c22d469a63f21bcc797888942327bec91115b71d1e88",
+        "mono": "f43cd0fb189cc85e16f7d9e712181c63582066903be4917aa238f16a33cdc687",
+        "common48": "bd92c86d38940f41fac9435717f691ed91c41077b9fd169d5cc620fca5141144",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-03",
+      "name": "PLUCK - Glass Thread",
+      "category": "Pluck",
+      "recommended_notes": [
+        48,
+        79
+      ],
+      "phrase_peak": 0.2882159948348999,
+      "phrase_rms_dbfs": -31.615174247619883,
+      "velocity_rms_rise_db": 6.5951553882418645,
+      "wheel_relative_difference": 0.20436010791131676,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "f3f402216a1c49977ebe15e66420429236e0886d9cdb4f8c004b95ac67a0fdca",
+        "low": "71825e2bfa6d3b3fc3c2e07e221706a80143f63346bd05aaabfd8f4ec19ce82e",
+        "mid": "4cb23af2c474cfdae25dcb1f5571c1af076ebcaa3144039107449b2d56473aca",
+        "high": "6622045b5d157544f41571671a6b1e09decf2910f95e98022ac18bc55fdef9f8",
+        "soft": "40d96ff2de46b20d922a8a78ce6a0d51cc565b26a04265c2cc0e99580c2f212b",
+        "wheel": "ebd96ade004c16ce32e266cc563a3f0f960eecb8bbf0798f9899bac6d898c6a2",
+        "mono": "6459ac0ba47c51995f16b50487653080b249a768047fd1adc5c3f6a39eeec25e",
+        "common48": "71825e2bfa6d3b3fc3c2e07e221706a80143f63346bd05aaabfd8f4ec19ce82e",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-04",
+      "name": "PLUCK - Rubber Relay",
+      "category": "Pluck",
+      "recommended_notes": [
+        36,
+        76
+      ],
+      "phrase_peak": 0.25963863730430603,
+      "phrase_rms_dbfs": -37.244186388235704,
+      "velocity_rms_rise_db": 5.477167308838825,
+      "wheel_relative_difference": 0.12475000973033151,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "24096f9f5ba9e7ca8eb9b4581181c5f0aacee7f68f20bf5ab5195a4ff704d662",
+        "low": "f9ca18e670a863fc79f9341484f7c527d4b95e138d01d97987bf87f4fd25b1b7",
+        "mid": "7b60a2eb59ec65fd8cd372169f049e618f09e09d9a833c01e8588cf131c10a95",
+        "high": "cfb68b0b5552ca547d78b1971621750c5e612f5ca4687c0b5d6578222743b109",
+        "soft": "1504385aa16ab449c9c5131c770c2dd57f6ad04ed9c1bd7141b01dcb022559f2",
+        "wheel": "29969ed1c902cff0c2bcb55ca0022c6cc9c56d2e6df24a0bf339aab596014c60",
+        "mono": "2c8a6ba0d1066179be2433717f94207f5697ad7482bf063e1097c3a1f67c773d",
+        "common48": "88e1c9e32dabddb449fabff2c54fae4a65eab85824008fc907704cb8cb48e562",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-05",
+      "name": "PLUCK - Copper Drop",
+      "category": "Pluck",
+      "recommended_notes": [
+        43,
+        79
+      ],
+      "phrase_peak": 0.32137688994407654,
+      "phrase_rms_dbfs": -33.355764998493925,
+      "velocity_rms_rise_db": 7.273685905487954,
+      "wheel_relative_difference": 0.22220466549433268,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "784d1a0dd0ef5b81cfb8152b47ffa87949eab505dc6f398bd0c328fb7266ff36",
+        "low": "a170b1014dce10be7da4073901fbb05b175fe9eeb8554adab99e1ea2c649e1c6",
+        "mid": "4f4a5c6987aaeca3befbbc815ec0a6c1a4100de9284d4e24ea44d9585a0f7d4b",
+        "high": "e3f3749c2cd6b17c744256096c31a98fbd3f7cba3bd044751d7dd58c5e11967c",
+        "soft": "dc15c3ee6776ad1403f1147d79dc794da4831cc58ecf58039a5020d3cbecd729",
+        "wheel": "810fa000fdb4ec32efc95d775def4e04e1652b0d2beaca0b1bb008827907af3e",
+        "mono": "28e9320632b702c0a76591d8a554d529bf82c17e6a350995c7a3964ddf69d0d6",
+        "common48": "271be494c44251c8ada09b7eede46415012100ffda79e2770c696dc7e78bee3b",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-06",
+      "name": "PLUCK - Pixel Chord",
+      "category": "Pluck",
+      "recommended_notes": [
+        48,
+        84
+      ],
+      "phrase_peak": 0.31168073415756226,
+      "phrase_rms_dbfs": -33.43363840579626,
+      "velocity_rms_rise_db": 6.03092251053794,
+      "wheel_relative_difference": 0.20428959475132927,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "9683033e20c2ae3c6c4da8e8e36b592d830413ffb968060dd55c46d59de4752a",
+        "low": "7f3b50aac9289ec399f0c2a91b79add91a2148502928ca36f092aad0b459b500",
+        "mid": "9c311b158b9e3d68f6c0036624e58a372979a734e9b9ed061530b2dd71873f31",
+        "high": "6cd4802b984fa70274f04e3a8dc202adb9ebf12081c64f709b7fa9c2c0c50081",
+        "soft": "62e6fd5ac1404a3963a70bbc781200b26432c0dc2a356e793558caa7cc480462",
+        "wheel": "ae741deac4deb6d27c3d754090a7ae0114048aded5a3665c8d4a1252ebc92b35",
+        "mono": "94f9dc85f3159101514043efcecfe3c1be86857760f97505332dd580daace8f4",
+        "common48": "7f3b50aac9289ec399f0c2a91b79add91a2148502928ca36f092aad0b459b500",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-07",
+      "name": "PLUCK - Prism Keys",
+      "category": "Pluck",
+      "recommended_notes": [
+        48,
+        84
+      ],
+      "phrase_peak": 0.33010318875312805,
+      "phrase_rms_dbfs": -30.512831426082464,
+      "velocity_rms_rise_db": 6.580662210411646,
+      "wheel_relative_difference": 0.23489728301035467,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "2a86f768be18b6d0023c8f867ab1c7b0ab5e64b95d2453e5f902d882de41b97e",
+        "low": "51e3a3cc9272ca5e44e9e00f2a9d252bc3276998716c93fc82db0c2be12d68b6",
+        "mid": "dd51738b800bdbe2224c0508f4d4ece731b0f54f9ea8942ff95b469dcfdb46bb",
+        "high": "a49bf99ac8e525933c0a598d65b557e24db6c4a83a46aa067cf106dec1315d69",
+        "soft": "ef5d97428fd28196f61e95e56a98046c34b27e08b03f5b5ceab3dc94e0e3bd95",
+        "wheel": "3cc79e269dc5f4b2afbf0a454657689972b14b7aa0ab7c4cd92a61f5023e2004",
+        "mono": "8dc6cf7244f0fbf660a47cb735e43c1f961ebad671f68b9dbb9affffaeabcba9",
+        "common48": "51e3a3cc9272ca5e44e9e00f2a9d252bc3276998716c93fc82db0c2be12d68b6",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-08",
+      "name": "PLUCK - Bamboo Pulse",
+      "category": "Pluck",
+      "recommended_notes": [
+        43,
+        81
+      ],
+      "phrase_peak": 0.30584171414375305,
+      "phrase_rms_dbfs": -35.53272901406367,
+      "velocity_rms_rise_db": 7.720833063480134,
+      "wheel_relative_difference": 0.15577894745805462,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "ae20ae56218253ce5b62b025757f51baf6d43d6c5ea93ed259a85fa1c6cce950",
+        "low": "80284261676d7501c632815039653238d0860c09ec23205a6f37555d6682df3a",
+        "mid": "2fc61cb095b44165aa77ec513945cefadcbb5be2baf41dbb6dc009b74c559c30",
+        "high": "ec309417962ba35e532983f79b3dd5bf6d4ca5d03c3ddaabce541c51f099cf12",
+        "soft": "5a87238c4c3aa5b4159bef9dae3f9f6a5a080816f09599958442154a0af6e8e0",
+        "wheel": "6c97818457a74ea72baadc723e1464bc704a03dcd36413a123f316a445ec6681",
+        "mono": "05eb341f1bb581774c1606a0d409166d363725b9f0d14c6720c853dff913e0d3",
+        "common48": "253e2c7f6017137ce45a71a9ca9f24961d7b70458fee88376bd596156147d22c",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-09",
+      "name": "PLUCK - Chrome Pin",
+      "category": "Pluck",
+      "recommended_notes": [
+        48,
+        76
+      ],
+      "phrase_peak": 0.3432174026966095,
+      "phrase_rms_dbfs": -35.40749835443406,
+      "velocity_rms_rise_db": 8.775582866238986,
+      "wheel_relative_difference": 0.09851766840311221,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "db6123a6eb56a5bb4306f2d44b322ad53c2e3bb2e464ebc6e2525115c9385ccb",
+        "low": "c881865b1a11c2b877ccc2f2ace110fece95c1ba182626c42d6cbc3d6f140f01",
+        "mid": "5a4b5a9a76ac453fe9ffe70a3d6f1bfd358e4877441817f80353e4d31083b75e",
+        "high": "b42fccf5fd384e970e9ab7d8be3f80b42a031644cc66e2bea53bf9f8110770f4",
+        "soft": "df9181fc9218cbd7ff1532332648d5b0d064769a4e5064dc93a67c453aa66bf4",
+        "wheel": "d313a369b4f01f3c0a20b8d9396e407fff4feab9cfb51845f8275ae3171044e3",
+        "mono": "14d561d77f369edcb706a1bcb3869f32f673dead9a2dc325cba7a7ee3fe9c050",
+        "common48": "c881865b1a11c2b877ccc2f2ace110fece95c1ba182626c42d6cbc3d6f140f01",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-10",
+      "name": "PLUCK - Soft Circuit",
+      "category": "Pluck",
+      "recommended_notes": [
+        36,
+        81
+      ],
+      "phrase_peak": 0.28503429889678955,
+      "phrase_rms_dbfs": -34.686393679780714,
+      "velocity_rms_rise_db": 5.65284790233626,
+      "wheel_relative_difference": 0.15742287783970133,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "9d8e43d032dddfafac9b55bb3e62e6303df826aac3e21c4cbeebe7c15a1d67f8",
+        "low": "c0f0637c80527f84ab6f020442534450ff18a60c8eba82fc192f82110c2940ca",
+        "mid": "b8065a8aecf588085782b7ca6359746f4f58f99df05a7f88624034b1036ef41c",
+        "high": "b0716d212d50dfd9c03c4b6631e30687727e12aebdfec05811e0ef9d51c61bd7",
+        "soft": "3325716837f3ad0ba6e8f91b8d8ef3bdbaf9e3143a3bc57e356cd07e9a8ac699",
+        "wheel": "07f436bc0818b301ac7b6dca5b896fc1ef6351dfcf41848ab15dfa78ea295826",
+        "mono": "3bad4d061cc9dbc6dfb48d8f669829563dfabc13d2e335927fd1b4e91010744d",
+        "common48": "e2e248511c3dcec76bc1f37fa6057c8d4aa3778ffb6452184015e36b4da7dfee",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-11",
+      "name": "PLUCK - Magnet Bell",
+      "category": "Pluck",
+      "recommended_notes": [
+        45,
+        81
+      ],
+      "phrase_peak": 0.2784165143966675,
+      "phrase_rms_dbfs": -31.375129948705826,
+      "velocity_rms_rise_db": 6.934001229993449,
+      "wheel_relative_difference": 0.2578592926772436,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "9e03c42d36574f98977f7e26b8f1672c5711e5cdbe18fee2e96b88247a32e47d",
+        "low": "bfa304aa6b39eec289a12fefbbdb98e05d72c768ab3f48e299d3db194ce1a5d7",
+        "mid": "c75abe51a4aa4722ca49d7690f5c94fcbefda9e1e18ece70984034bb6d2e8b70",
+        "high": "ea9af9d6d1a29153119ea5e0762e7c4f333e7115b478ce92d15ef37bc49746f5",
+        "soft": "2dc0c35b7891d5263dc2f7c5b610a868d3f9ea9905d669e4fc6393748ca27df2",
+        "wheel": "825b65ce036e5895ef15de7fd215bd06c37f77db4ae08a053bd1fffde7e16199",
+        "mono": "5b810d5baebfd3ae73cf44f0f014ae15685a1b5ee8125d60622329433239b479",
+        "common48": "78c68b860ee8417a78a7035dd4d635889a2db3851899520009289b395e3e0dfa",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pluck-12",
+      "name": "PLUCK - Afterimage",
+      "category": "Pluck",
+      "recommended_notes": [
+        48,
+        84
+      ],
+      "phrase_peak": 0.31071406602859497,
+      "phrase_rms_dbfs": -34.06049692426234,
+      "velocity_rms_rise_db": 6.269353347137518,
+      "wheel_relative_difference": 0.19348101718262642,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "cae8fb2a99e35708701a5b6adfc5af6ad4692b8365bd639358952bb0c2ecd424",
+        "low": "88413246cccb49c05f6b4b2514ff8eab4eb976207fbbed43a147c8bb725296e3",
+        "mid": "ddd660e2822f0b3c4b23100f3fc183e556de88394744c33a0da03cdc413a9fe7",
+        "high": "2b876e30c6b441b25dced40ec7c888d93dd869bcc47957cacad5c28e5ca10e40",
+        "soft": "944d8988f1313465d151714798ec835c266af63109a8cfd0fc8b4879400dc59b",
+        "wheel": "f4cfe192694d7af8308a2f9034cf3a68a4f132b494112e3730c9be5782e02bac",
+        "mono": "1127f636900c00f50cbe4d61ff11e55a1023af119ec0f0740b859366708e7795",
+        "common48": "88413246cccb49c05f6b4b2514ff8eab4eb976207fbbed43a147c8bb725296e3",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "lead-01",
+      "name": "LEAD - Neon Wire",
+      "category": "Lead",
+      "recommended_notes": [
+        48,
+        84
+      ],
+      "phrase_peak": 0.17099888622760773,
+      "phrase_rms_dbfs": -27.727604123614636,
+      "velocity_rms_rise_db": 3.4146518178355167,
+      "wheel_relative_difference": 0.6035320416094556,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "9c8793fb9111b86fbdf0eea0b1e2ae858d94f983c12f9eff4cd0b0351d16e9c5",
+        "low": "52d7089c85366dd40dbbbb979cfb6e901a232cde78cce2be4248daadb5937228",
+        "mid": "9a811a3ef6720574ba6954853f810bdf6aa460d8c580fb5a590cccff955f82da",
+        "high": "73b45eebd7833a8ec062bc00fa864e70704045c0e0bc4a572ac37420445c06d7",
+        "soft": "fc6ab2ee36fe92cc841fa1053f591009f3947b49adb41f29e0815dc40cbbd3b2",
+        "wheel": "a602c8dd427bc3f7c8649688b89ff3194eeb5d650dc6c474dc5f068702298a64",
+        "mono": "66e966efdf5a1e0d631f4ad206423e7c48e1688f612abe7715ccb8663c2f3848",
+        "common48": "52d7089c85366dd40dbbbb979cfb6e901a232cde78cce2be4248daadb5937228",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "lead-02",
+      "name": "LEAD - Signal Silk",
+      "category": "Lead",
+      "recommended_notes": [
+        43,
+        84
+      ],
+      "phrase_peak": 0.3416101336479187,
+      "phrase_rms_dbfs": -25.681210139722175,
+      "velocity_rms_rise_db": 5.214421737053968,
+      "wheel_relative_difference": 0.30642864788883256,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "3bf06b618c2abf7ef1cc4fbcea7263420574c1f37282b9a3d3cd4d49fb72d59d",
+        "low": "6f5ffd243838c879966e17120d624d05382c0f8ee31431f821641270852cc77c",
+        "mid": "944097c49788d6fd21b0e69e4eeb896f0e918e7a8069908bac3e6b7478f42c03",
+        "high": "9226d2459e3c09ac75ed58d6f5550181f5546c932cb019c34a447f46264fbd36",
+        "soft": "2fcb230a182a07618684b0495fe1130eb33262ae07014acb28ce1db64d22f469",
+        "wheel": "abf7dbe60e07c3d0fe6c84e97a61070580e14a9a8757e2148ec2f7f0f4560893",
+        "mono": "f8b091813bbaa269eed15f11b67ede16bd4fcfc5deae4087f8bc8fc0f574a5f7",
+        "common48": "afaaa319e6469414b1ba8125e76866d73d86a44e15a4051c16319121c18adec5",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "lead-03",
+      "name": "LEAD - Vector Reed",
+      "category": "Lead",
+      "recommended_notes": [
+        43,
+        84
+      ],
+      "phrase_peak": 0.3660610318183899,
+      "phrase_rms_dbfs": -23.01737880237105,
+      "velocity_rms_rise_db": 5.287536576270265,
+      "wheel_relative_difference": 0.4117293918057648,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "ae6018654d4ba5b7c0dbda93950351879fea0cba1e2b528524444c6226d78e0e",
+        "low": "d214c9bba96d95821586ce17c26de33fd9e9e902697a605e0a9733bc5f08228a",
+        "mid": "21fceb0b0a158ba8bc73a69fa7cb6e7c31f2ea03ab32bdbd8b6c44ba84c64beb",
+        "high": "b2351ba205ff9469b973ea71b6cfe605b485282d361677476d0af91f0ed32106",
+        "soft": "f3fb4b74909c266a7247b17fff5c69e4946dfb992255c9ebd76fa462b2be4e7a",
+        "wheel": "26ee7b4df2f36307ed49890d83c81f1ff5371dc10b6ba5754cc8afa99fb85107",
+        "mono": "b6bb2651eec42389fcf884ba69b0d6eacd9979515755b2e30d0df2a037b50709",
+        "common48": "64e5e73138da53aabf6b60edb3f43e48bc8f4d3450c1b9ac26967c8201d29726",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "lead-04",
+      "name": "LEAD - Pixel Brass",
+      "category": "Lead",
+      "recommended_notes": [
+        43,
+        79
+      ],
+      "phrase_peak": 0.32788318395614624,
+      "phrase_rms_dbfs": -28.23733683518027,
+      "velocity_rms_rise_db": 3.527338717387256,
+      "wheel_relative_difference": 0.6838022463672386,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "19a7ab8a6133a6b071fa56c962dd55f3dc5562851d5c8794948102b3c1d820e1",
+        "low": "a2218fff4394049fea84694928d52893227f7eb0e89b80b42be862578031b6b7",
+        "mid": "a86724f8bacca94c6936d147e45b7b7d59a93d7e155d29fc2b2af9fac99fc50c",
+        "high": "a3db3df349ec382daf6008fdfd55548bd0febd5ae508901724a7ede5aea603f8",
+        "soft": "e96c244e8be87bf97bda8df87b00a1ca462984422e43f4aa42359bd8a89f4d2f",
+        "wheel": "0196591e163cc2b70bf4badb51b0ec44f58919e221151793e55ca090af2d9128",
+        "mono": "7f80a96300a36d5ccd4b4c9883682e3fc5aa2ceecd7fed1250fd358dec3d6597",
+        "common48": "71bd4fb10d35c623f0a061fe9e3a57d2dc22f7f2d75e97853239beef7e5fbae7",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "lead-05",
+      "name": "LEAD - Spline Solo",
+      "category": "Lead",
+      "recommended_notes": [
+        36,
+        84
+      ],
+      "phrase_peak": 0.1934317648410797,
+      "phrase_rms_dbfs": -24.75674582224641,
+      "velocity_rms_rise_db": 3.5827116729347623,
+      "wheel_relative_difference": 0.4425484500449231,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "3127b7727ad63328480f5484c0956c73283cc902686498281b12eff8bfb49a6d",
+        "low": "41f04d52ed5ae2958ddb668956e0ab2cef6bc49310fc50d82d7477f8fe90d243",
+        "mid": "60328be29b743248db0ede3f4f78c1d51b6349b529933658b73bc8359d26d09a",
+        "high": "ce49d4e2e42766fbcc44941cd7bafa27ae4e431e6e09c1c5580516dcb14b81a3",
+        "soft": "7713ce2ec89000b6474f001246d5271f25f6ec55433548408907177d88b8b4a8",
+        "wheel": "1a5f515c61257044fc3b6299eb7e7b01d0a96c6549ab5a72d3b4f75fc392fc03",
+        "mono": "10c803f76ef2d1561c3649cf9dcfdd2b72769363829b01a12638bb0070299577",
+        "common48": "924a252c382b3a31a249a8c1d65fd31c2ecbf9666ce3d09f498ae7ed0b098e03",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "lead-06",
+      "name": "LEAD - Meteor Square",
+      "category": "Lead",
+      "recommended_notes": [
+        43,
+        81
+      ],
+      "phrase_peak": 0.2610420286655426,
+      "phrase_rms_dbfs": -27.776120733782687,
+      "velocity_rms_rise_db": 2.6444244746780132,
+      "wheel_relative_difference": 0.60326449404384,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "770f773e8b85827966a46faed45f1b13e2b42c3237352d804e957939e3529027",
+        "low": "2753eddaf53b6d1fc0977cce8e8787629b6a73bc159882ebc1372e59f05bd6d2",
+        "mid": "df8240a015ad14060e0c4d01dbb4e1d537e435e5b72977f179994ac2c0e5b8fa",
+        "high": "8051f95d6f48d9ef0c478557820730e550442d59b2c6b51e9b24f0f439bfb11b",
+        "soft": "807f2dadb4a6f5cedc2ebab0f6722054807ff934e5eb9fe0157d8cb930b5a191",
+        "wheel": "c780aa1b2dd8c205ab315da5fbc75c3761c5703ac00ab0b92f8c9dae736c9577",
+        "mono": "3f79a4bbff9d4425852d7a30e8b55b200c8e3221b4dc72d58eb138d6b5a6052d",
+        "common48": "0ae5fa2da0e8da407363d19cac57b003c74bfd1629a57ff514157a7d8783f091",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "lead-07",
+      "name": "LEAD - Glass Current",
+      "category": "Lead",
+      "recommended_notes": [
+        48,
+        84
+      ],
+      "phrase_peak": 0.3652592599391937,
+      "phrase_rms_dbfs": -24.310631842951977,
+      "velocity_rms_rise_db": 5.458337276872667,
+      "wheel_relative_difference": 0.5096697833653178,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "aa41b6774a6ee608d18dd3d5393ed9b853be8fee73e1b6d9ccc432a8788eecdd",
+        "low": "6d976f062d0de09258c720fb646d6cc713d0f73272a0946c1fc7a5a75c9b44ad",
+        "mid": "6ce3b2016ff9239df94f7c11a10aaa606a5baea7ceec3bc49a2d6dc3017189f7",
+        "high": "8f09f1edcc70d29d5631a21015e66b610bf44b84c37f90a1e78405f4061e28e8",
+        "soft": "4fa153075e5b8eaefe66cb0bc6dd89e21db9f8f866641059ee97ae99763c3e7c",
+        "wheel": "80771b20efdeebeceaf9353a912971a442a7dbb56cc556891b09a46be0b44594",
+        "mono": "f20e7bf0ac8fdbc2e17fd6e4f521322e62826ca38bd8bdcc5c2038503269500f",
+        "common48": "6d976f062d0de09258c720fb646d6cc713d0f73272a0946c1fc7a5a75c9b44ad",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "lead-08",
+      "name": "LEAD - Amber Hook",
+      "category": "Lead",
+      "recommended_notes": [
+        43,
+        84
+      ],
+      "phrase_peak": 0.38306117057800293,
+      "phrase_rms_dbfs": -24.748873024037653,
+      "velocity_rms_rise_db": 4.734169491123713,
+      "wheel_relative_difference": 0.5688718036144604,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "6f7471609a91700296439f171f0f7ec1de451aae7061d7832477518033d0aff9",
+        "low": "00c098b902a115d44efdd9488224b49a3ed9fa7f07a6380137db81f03a153a0e",
+        "mid": "27048ee5f8108b254b0f6eed538e70ba4d34e6b2baf3a5d33b9038bc7caaf72b",
+        "high": "3750a8984e6473c64ecee29e097c846f56f8a6476df385fc2ae9ebfe69fd07c0",
+        "soft": "adc3cf31cf38292622f92ad290962c7503117842d9813308189a595daaffcdcf",
+        "wheel": "0baac9a17164f010db87f5c23e09fea7e88025af64a2ea2ca3afbac0e4904d58",
+        "mono": "0d3522d89c4e1796f54846841b6baa4369760755d612d3154520c62f0603addf",
+        "common48": "47a71b33ce956f7d2df5ce4c554611af075f0ac4b1b1313f8959a3043c5f0a6f",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pad-01",
+      "name": "PAD - Afterglow",
+      "category": "Pad",
+      "recommended_notes": [
+        48,
+        84
+      ],
+      "phrase_peak": 0.37892773747444153,
+      "phrase_rms_dbfs": -20.154223286491582,
+      "velocity_rms_rise_db": 4.614088266533441,
+      "wheel_relative_difference": 0.2578318501088357,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "8b4981690de7e4cdbcf1e69c1a5d389511b992f4ac09178420336e96fc383d7b",
+        "low": "eb554545188ffad4895d3f99351da697121ad0a830740abf94776ee9a7d35d8f",
+        "mid": "5241497a01f9054fe4fc90377965b1d0b4627457f9e1f7c77059d35c20ad5bc2",
+        "high": "ae86347678d0430cb4b9b072ef4c5a4621a721dc439e56099208a4d9e4c49562",
+        "soft": "196362562085cf8b5ef5eae36ab7f69982090e17fe83400e01818f8609a78417",
+        "wheel": "8dab6006c586dc1e5f4e1877f5af2df8a6c008c6dffc7bfa7163fec641f0a75f",
+        "mono": "567f849b56dc905427e748d38f41ca42eca4a6ba478a7daf558666177483b84c",
+        "common48": "eb554545188ffad4895d3f99351da697121ad0a830740abf94776ee9a7d35d8f",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pad-02",
+      "name": "PAD - Glass Tides",
+      "category": "Pad",
+      "recommended_notes": [
+        52,
+        88
+      ],
+      "phrase_peak": 0.39409324526786804,
+      "phrase_rms_dbfs": -20.92219712112267,
+      "velocity_rms_rise_db": 4.77128764703853,
+      "wheel_relative_difference": 0.5661168926136558,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "1eb4603e9ebeb00ebbb6f9f0f84c716437f63dbf4eeaa9cde3ac7196eb78ba13",
+        "low": "00d21238f8d73afac3b5f403e4adf7cdb9895d04df38017514ff7e533b8b45f3",
+        "mid": "891622fbbb679b451fb30de78f5f0c6762dce56949e0cecfb0960e17da70e03a",
+        "high": "0f40b4ed8d6738009be5fc0874558de7e1359111ec5f2384c6df58b5bd9397ea",
+        "soft": "6ec939a897d036287891395acb3ffc3a50b5560948527ddf302b8635f76228bf",
+        "wheel": "9f211919c99524efbdbfe66579633d8e1cc8c90b97d0baa2602a4b2b5669540d",
+        "mono": "4125c4c0c44398d05850ade978d644bf565a8c3a331854de442fa014da125826",
+        "common48": "0fe9daa6ec86a72b6399427e94932c6413400df78559f296a779279e59177307",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pad-03",
+      "name": "PAD - Velvet Circuit",
+      "category": "Pad",
+      "recommended_notes": [
+        43,
+        79
+      ],
+      "phrase_peak": 0.4027493894100189,
+      "phrase_rms_dbfs": -18.998057841164076,
+      "velocity_rms_rise_db": 4.567658924574109,
+      "wheel_relative_difference": 1.3886704792240327,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "a7fbac2e655a1605e1b77bd2abcca9e3380c2a4a50c2a260be053189a54b414d",
+        "low": "b4deef0fafb5039f9f08ae3500dafb4658566cb60ed1040527cae85006b3ed5a",
+        "mid": "1d123b9f30c2e8a62315e2a4fd6a358b28887a662ed702280aa7684a282168e1",
+        "high": "bf391b6e4a0df44b689bc7d1a331a4ca8b54d4d1a4b97600dc69cf12d72d62eb",
+        "soft": "97423a83dcc49b49028f89bf33830960b7c78f176d834e46f25784c3ac03c479",
+        "wheel": "8cd565e58018422e1ee799aa2f271e19d4bffdadee563b676b669db5d7c86090",
+        "mono": "f1d25ce7877d2d6fdcc4fcfd81f0eaf0966bf53b7c1434be5c495df532b043bc",
+        "common48": "2bffa7a5b51cbebcea8f739af0f4ccef5d6f3df7a4dcef989fba70e285428e76",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pad-04",
+      "name": "PAD - Prism Choir",
+      "category": "Pad",
+      "recommended_notes": [
+        48,
+        81
+      ],
+      "phrase_peak": 0.3526199758052826,
+      "phrase_rms_dbfs": -19.63184431379392,
+      "velocity_rms_rise_db": 5.094331740357712,
+      "wheel_relative_difference": 0.20291538202708678,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "46afa71a44a6aa4b5706e5575e8c169b2639a6d54fc67c4f7d2694f6ad0debda",
+        "low": "895bba26de3b19f84e85277ac51aab7676ff6fdc4b8dccf7383ea40cf81a516f",
+        "mid": "215e36ffc56a089d8855bdf456391f8c2e25abc8b490acfbc0fa57cc588b4453",
+        "high": "455f62d07b6ff11658110fba71d39e1a574a4ba3dd6a1ced5371c6493bc49735",
+        "soft": "5fd2a75e14acdb79faa78d75367f795c7025fa5ce29398c2551b6ce01c76aecd",
+        "wheel": "af0a83ea162115f41468d63666d65a49c0090a6466cbc3438c698e4ed67c921f",
+        "mono": "80c7e89d6f86cc2b0ef2b44521eb14bc9ecd42296c0121a63e8e5d795e3af59d",
+        "common48": "895bba26de3b19f84e85277ac51aab7676ff6fdc4b8dccf7383ea40cf81a516f",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pad-05",
+      "name": "PAD - Neon Suspension",
+      "category": "Pad",
+      "recommended_notes": [
+        48,
+        84
+      ],
+      "phrase_peak": 0.6107584238052368,
+      "phrase_rms_dbfs": -19.686399309511682,
+      "velocity_rms_rise_db": 4.7612916310510425,
+      "wheel_relative_difference": 0.4146478401220371,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "f427ea49a989198a5076890e52aa82d3014a06e191e7f07c0a92c77c05982a30",
+        "low": "da999c37ff03451b4a156c773c7a378de20147b704c0877e5959ec1f9d800a27",
+        "mid": "e48501d132d7f68d13c5504cc1dd464e311285c7681924be9a9e73cad4812caa",
+        "high": "4fe9d9346ff188f8d768e56ff8bd626d131aa776bce59c785592dcc0791f3bdc",
+        "soft": "8f6b0322996f062a60a361e64485d05ab62a926eeaed5a7797f2cd34bd312c80",
+        "wheel": "c9fe33d95e465bed1951fffa3767cf4844d3c0721d50980f639b6e01d953de15",
+        "mono": "d68d65ce1cfce731d5682bfa7354eab2fc999c588e728c8fc53a3c9e56ad239c",
+        "common48": "da999c37ff03451b4a156c773c7a378de20147b704c0877e5959ec1f9d800a27",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "pad-06",
+      "name": "PAD - Low Orbit",
+      "category": "Pad",
+      "recommended_notes": [
+        36,
+        67
+      ],
+      "phrase_peak": 0.4175131618976593,
+      "phrase_rms_dbfs": -18.998777037189377,
+      "velocity_rms_rise_db": 4.7620671400432695,
+      "wheel_relative_difference": 0.042856945659450384,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "6662396a86dbed240ce3829c4263ae2b299b7b7bd97e460ff77ff614f8f0c0d0",
+        "low": "7eaa7f7d77934720e6fbbc2ddae2273237509f806dd573b99887ad5cb5af44f7",
+        "mid": "70af8b6b54c5eafc1de9a769ffdee39151f25ca4a8edce481d26c1041efc4390",
+        "high": "1a56880371545c3ea91c8b9f77c1377df334aabfdd7ded01552d9ff806e5e6e0",
+        "soft": "0545663b5fa2048b5c68ef4daa50b2bda151dd0ed36e5357a4aeeb26e280f561",
+        "wheel": "c19a67e00306cfaaffc00a652f88382fa9f088689a796446a38774702fcc3100",
+        "mono": "ff31545eb9269d801a6a506c39a6bd9584b484d439467b7e7301ca9ad1aa213f",
+        "common48": "e236b0bb18775ac04164d708c84c3f44af869dba6971955a66a246a6da421218",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "fx-01",
+      "name": "FX - Ion Drop",
+      "category": "FX",
+      "recommended_notes": [
+        36,
+        76
+      ],
+      "phrase_peak": 0.18049153685569763,
+      "phrase_rms_dbfs": -36.014658477686524,
+      "velocity_rms_rise_db": 4.392524601095513,
+      "wheel_relative_difference": 0.6966728526156417,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "52ec1bd62ae6cdd302d048f2301a6680632ff9376f3c838eae84b2bc3b193d66",
+        "low": "054dc13667f64eaae8fba35d0ae9f8058b8022d96a538d39484080053325ee98",
+        "mid": "03fc5b74cd6dd4a18dae421ad4f20902c69f1ecaa4686829269d795a4cddc7a3",
+        "high": "45e090da43371aaebdd846e08c43f2f7b50e99cc2bf35403c79e667c32f0025b",
+        "soft": "49a6418c52ec95117783f4d65b7f8d289c7d8c95b617ffd85d9e44ec4330cc58",
+        "wheel": "1dd4ad314f13f590e51b8717444965e30ed3f19dc372dfe4e02e2cf52bcffd30",
+        "mono": "08221092b45432c8ac94aa4614e8a77035a15fa5c7410d31e4b84e84f430e982",
+        "common48": "631a4b487a8c46ca8b1b53384a78747c2b24abf61ba1f68b01168c12712def0b",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "fx-02",
+      "name": "FX - Broken Beacon",
+      "category": "FX",
+      "recommended_notes": [
+        48,
+        88
+      ],
+      "phrase_peak": 0.1861215978860855,
+      "phrase_rms_dbfs": -30.271650235988368,
+      "velocity_rms_rise_db": 4.733934982555767,
+      "wheel_relative_difference": 0.8680727844342688,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "49d44bca859098b3cb2249295bfc98a590d9436b5c127e7447518e7fc1b7a5da",
+        "low": "22fc94dc81651827343412c69afa549605bde416a99df8bcfcfbd173ef793b9b",
+        "mid": "5394a66f9220f09fedf8257432fa550ba28bf4319acaeddddfd33dfe1d67d6ce",
+        "high": "dd8454b834d5f8a6d711b03c9a8f356892a4b5bb23af4ff0349e26064bbda750",
+        "soft": "dc659496d22bde27ae2700b12366c339105e1e6c452f6eee44fe60690e3522e5",
+        "wheel": "b2f74a015380ab0db03a81c70d38677662db0b09a7b16baadee7f75ab6574f13",
+        "mono": "f232fdfa19beda99d101ea19606abc1f3d93f532b9063fde2399d2d505107440",
+        "common48": "22fc94dc81651827343412c69afa549605bde416a99df8bcfcfbd173ef793b9b",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "fx-03",
+      "name": "FX - Phase Flare",
+      "category": "FX",
+      "recommended_notes": [
+        36,
+        76
+      ],
+      "phrase_peak": 0.28740307688713074,
+      "phrase_rms_dbfs": -38.46765191438508,
+      "velocity_rms_rise_db": 3.965122708567217,
+      "wheel_relative_difference": 0.45031917317011755,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "ae2fdeeb976505211d303dad9ea7bbb6bc05cb11f3aa319f809e9c878dd52df1",
+        "low": "5aeef776efb833e386f6df166f38ef98d1c47c1d900ff52826facc77cba0f127",
+        "mid": "78244e9580690a45c89bf3566dfa7fb30d7fb1b99540c1f35ca9d324dfefe86d",
+        "high": "4435e5ed4b4ebc55b35147bc63ef7679f971cde2da5281f65fd1a0ff7b5e015d",
+        "soft": "7d449c69340ca4e018e745f853e6e28adcdd2405b1cd99c5b019b8a2ce046afd",
+        "wheel": "214da11b77f6b38f0bc4fa2441196d39fea406d7590248c7dbad7219d11877c1",
+        "mono": "03c384316d83172262185629017dcc249c87c3498f532e188d09dd918a6f1d74",
+        "common48": "251a1a6e0a6ffe16f149b7aaf3dcf35adaff86b98df9ca9e6efc8942949fd7e6",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    },
+    {
+      "id": "fx-04",
+      "name": "FX - Gravity Well",
+      "category": "FX",
+      "recommended_notes": [
+        28,
+        60
+      ],
+      "phrase_peak": 0.25302305817604065,
+      "phrase_rms_dbfs": -23.323333432079597,
+      "velocity_rms_rise_db": 4.701763387306468,
+      "wheel_relative_difference": 1.447138392681838,
+      "mono_fold_max_error": 0.0,
+      "all_nine_checks_passed": true,
+      "render_sha256": {
+        "phrase": "4e22ab9d08df95cc3ff3c21fff5b325262bc45ff6dc402e57f12eb3bde93baca",
+        "low": "ac51dd61151af8b3012f9f5573a3b41c4ac46797605e6a019f129e9ea06548f1",
+        "mid": "3dbd87f419fc01b037ac3e54fc3e60092692daed3e828c22a6b753d6ecb267f9",
+        "high": "70ffe38911ab562669090a5b54e56601a0e5b20e2674674cbc449ab689e9afed",
+        "soft": "bc04b5afb22dbd11a8a67a5f4ede2f3194fb06827c5566b5bf905acc3d8287d7",
+        "wheel": "e0976e87e84bcd7aa214dbf31302129cb57f1aba87ccad9a40bbafd2ad42c7cd",
+        "mono": "99234dd9779242bf21c12b4cd3fd74fcb0dc6cd3936bf0bfbfb83b1b743bf816",
+        "common48": "6236e83c8e7599ed17f65c650f19d802c48a9247e0caf7d5c07a485ba9d39ccb",
+        "idle": "a286cd3f10a7f0c9382cfe7b2dd392b51b65f7c1286712e5289fd2ce6c9918dc"
+      }
+    }
+  ],
+  "audio_catalog_manifest_sha256": "57e3b0b0715089458205ba63e04cab30edc047a0dbdfb7a07dcda7b1a4c71445"
+}

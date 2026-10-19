@@ -1,0 +1,410 @@
+{
+  "schema": "press78.modern-audio-catalog.v1",
+  "audition_results_sha256": "2adce30d0a02ba0f8118311dcd21678761282fac4e900d824a25d80f8f9e1758",
+  "builder_sha256": "d3209dc47d904be67ee0d2d1e7f9c710442e794b82602157ef7cc7229fc1b166",
+  "encoding": "160kbps stereo MP3; fixed source gain; no normalization or dynamics processing",
+  "encoder": "ffmpeg version 8.1.1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "files": [
+    {
+      "id": "bass-01",
+      "name": "BASS - Low Gravity",
+      "input_wav_sha256": "4f43b3572f7f602e92153abb10e9eff56c6338577fdd69ac2167a118edeee8d3",
+      "mp3_sha256": "e3191a0105a8a6ef01c090949009c57a7fd30ce05947c52bc22fa4e09b3d1b2b",
+      "path": "Docs/audio/modern/bass-01.mp3",
+      "input_peak": 0.20649442076683044
+    },
+    {
+      "id": "bass-02",
+      "name": "BASS - Rubber Relay",
+      "input_wav_sha256": "238c542bd8b7fdb410af3fcbb0b9ad3168fc3f79f757626001915625ed167c71",
+      "mp3_sha256": "da9161e5b555c1720b3365fef2178664723e06fc9646698d1922acef3d39988a",
+      "path": "Docs/audio/modern/bass-02.mp3",
+      "input_peak": 0.16345268487930298
+    },
+    {
+      "id": "bass-03",
+      "name": "BASS - Split Current",
+      "input_wav_sha256": "59afd5b06395a83593ac8b916d1bb897579e07b24fcaa91e88f37524696f815c",
+      "mp3_sha256": "0f46cd868b5d5d36e7c83e8b9e9b6e15d5777d8d2036b13235b6fe1bbfc97b5d",
+      "path": "Docs/audio/modern/bass-03.mp3",
+      "input_peak": 0.21370655298233032
+    },
+    {
+      "id": "bass-04",
+      "name": "BASS - Vowel Engine",
+      "input_wav_sha256": "8ff4a3c17e6414973e01115fc3fe01b6091cea92f9d0021f41a249517332dc45",
+      "mp3_sha256": "7db6b3a0a2db5d2d81b8a26bc02de7eaf8ca7827591f2d598c07b3d5fdd8756e",
+      "path": "Docs/audio/modern/bass-04.mp3",
+      "input_peak": 0.18181511759757996
+    },
+    {
+      "id": "bass-05",
+      "name": "BASS - Alloy Teeth",
+      "input_wav_sha256": "641276c2017bb8870509f70255c8d311615402a54d92d09430f94c241dcba064",
+      "mp3_sha256": "11fa93756383d1a603b9f81442453a10307af1f6f07215b984edfa3d9d66ae99",
+      "path": "Docs/audio/modern/bass-05.mp3",
+      "input_peak": 0.18584515154361725
+    },
+    {
+      "id": "bass-06",
+      "name": "BASS - Acid Fuse",
+      "input_wav_sha256": "8d5ba8a00b83f80eff1f5aad12b596bfa358f03220620cb0e8561d8277ce2acb",
+      "mp3_sha256": "1dd313b436d7be0c08a926b9f2fe5250a74d4eae7ad47183b626b9b3c29e3e10",
+      "path": "Docs/audio/modern/bass-06.mp3",
+      "input_peak": 0.16640640795230865
+    },
+    {
+      "id": "bass-07",
+      "name": "BASS - Pulse Stencil",
+      "input_wav_sha256": "a76046c6ec8dbf5f44d19bb8ba7a2e382cc8532b1b0237e2c0ddd6fe0ac4590a",
+      "mp3_sha256": "439fc543e8cbde5a5b7cc4acfe38a38cbccc6b038948eafb0a28af631bd30694",
+      "path": "Docs/audio/modern/bass-07.mp3",
+      "input_peak": 0.21592339873313904
+    },
+    {
+      "id": "bass-08",
+      "name": "BASS - Hollow Stack",
+      "input_wav_sha256": "a87e58d8a5b5e4a7b99fa0e6db456606d819f3309d39cfddcdc5d8e633da962a",
+      "mp3_sha256": "a23716c67fb523f01a282ecb4d7c0708272b39570e6f55a682dbdeea910d9f3f",
+      "path": "Docs/audio/modern/bass-08.mp3",
+      "input_peak": 0.21569599211215973
+    },
+    {
+      "id": "bass-09",
+      "name": "BASS - Undergrid",
+      "input_wav_sha256": "fe562768e2f8da2212afe3b7ed9a18d2efb37f84e94015f27770292a8e7f8f60",
+      "mp3_sha256": "476e3d8f6dcc5b41daaa0e1fec5534efa02127c5c007784d1c4896bdcc787200",
+      "path": "Docs/audio/modern/bass-09.mp3",
+      "input_peak": 0.23636077344417572
+    },
+    {
+      "id": "bass-10",
+      "name": "BASS - Wire Tension",
+      "input_wav_sha256": "c15e05fda145ab32b4dda27a40ea30d530426386ce97b513e680e45be580932b",
+      "mp3_sha256": "718e6d50ec91e1c5e1df536ad92d27b310890a58dd237344158efd574a9e8773",
+      "path": "Docs/audio/modern/bass-10.mp3",
+      "input_peak": 0.23302678763866425
+    },
+    {
+      "id": "bass-11",
+      "name": "BASS - Pluck Circuit",
+      "input_wav_sha256": "29f1d050f4163e1dcf21ea6ad3be653a44afa8850ea48310ce280e685b602f9a",
+      "mp3_sha256": "2d1ede8ff98ad0aca88598fc672d24b80745b8e9fd91c3c57e8dedf7d716c8ed",
+      "path": "Docs/audio/modern/bass-11.mp3",
+      "input_peak": 0.16789622604846954
+    },
+    {
+      "id": "bass-12",
+      "name": "BASS - Slow Crush",
+      "input_wav_sha256": "2dedf8a8f7e532ce3047c9b271b4ce0056291e1facb04b916452b459b9802605",
+      "mp3_sha256": "230167cdea5b526ebe780c541d6e74c9cad80e5337d99bea4ad6c4aac0e94c41",
+      "path": "Docs/audio/modern/bass-12.mp3",
+      "input_peak": 0.21229855716228485
+    },
+    {
+      "id": "donk-01",
+      "name": "DONK - Concrete Knock",
+      "input_wav_sha256": "3ed4629ba327a2677513796b58bd02efe2ed5b21ba8d01b3903dae8ae91e188d",
+      "mp3_sha256": "db2569f29aff06ec036c5ee4a343862bee190863f1b13fef0e69266f314d48c9",
+      "path": "Docs/audio/modern/donk-01.mp3",
+      "input_peak": 0.18957051634788513
+    },
+    {
+      "id": "donk-02",
+      "name": "DONK - Hollow Impact",
+      "input_wav_sha256": "b175cbe909ae0c3cd13870f3c215f31a9c140719e4b2264d141111e6ace1cb40",
+      "mp3_sha256": "90af1f46275784a759fb62ff11534d5a3897f4e1d10678d6eaf4fcf28a129144",
+      "path": "Docs/audio/modern/donk-02.mp3",
+      "input_peak": 0.1897960901260376
+    },
+    {
+      "id": "donk-03",
+      "name": "DONK - Glass Hammer",
+      "input_wav_sha256": "e9aea88be5cdcca5344ae9005003a29b66f2915b344a3807603124416efe129b",
+      "mp3_sha256": "9f16d2396cf3100a31a0e79a0c293b4f64fed02ddd6d2b25932b4f2d1b2e9319",
+      "path": "Docs/audio/modern/donk-03.mp3",
+      "input_peak": 0.18101678788661957
+    },
+    {
+      "id": "donk-04",
+      "name": "DONK - Timber Trigger",
+      "input_wav_sha256": "29a1c92cff2131b1b60cf5fe8846df7f6b49dfc9fcf454201c50c3d34444ad48",
+      "mp3_sha256": "03de1cbc3393e1312065185f6bf0bd43a6c6fcbfd5105f0cf3058825ca8b440a",
+      "path": "Docs/audio/modern/donk-04.mp3",
+      "input_peak": 0.20461341738700867
+    },
+    {
+      "id": "donk-05",
+      "name": "DONK - Sub Mallet",
+      "input_wav_sha256": "a93429c4c7dce8273edb74494476c4a7bf80c9cb3c38a08ab29014877a6ec614",
+      "mp3_sha256": "aa78c644bf555f284e02a3e5abc6cb1d8089f3d3199501cc944c63f02bc320b0",
+      "path": "Docs/audio/modern/donk-05.mp3",
+      "input_peak": 0.2422451376914978
+    },
+    {
+      "id": "donk-06",
+      "name": "DONK - Laser Knuckle",
+      "input_wav_sha256": "6d5611e3f05705315e37e86a2f5f0cb83104f78eb93ea5cd1b8d7c8d950b728c",
+      "mp3_sha256": "32df1d2f0fd4701604903881e57273fed979e742d6de887b6e33fb6fa5155293",
+      "path": "Docs/audio/modern/donk-06.mp3",
+      "input_peak": 0.1739044338464737
+    },
+    {
+      "id": "donk-07",
+      "name": "DONK - Rebound",
+      "input_wav_sha256": "c21c1410387c24fb034e68c62d4c973fe1ea997da1b4081ea2edfa2ad4c04b40",
+      "mp3_sha256": "1eae3b8bb768c9bb5e05667557772fc1912f23cbdd8e6d17b994f0899f5e23b1",
+      "path": "Docs/audio/modern/donk-07.mp3",
+      "input_peak": 0.1940091997385025
+    },
+    {
+      "id": "donk-08",
+      "name": "DONK - Scrap Bounce",
+      "input_wav_sha256": "4f55f5054fc7f5d1e548013142f7735a0d9036b7366c5e17368e47860dd1f2ec",
+      "mp3_sha256": "293d19b8389884d6eb9bbc27b535e1c0bb1a2145b61252979a9cf9439960e643",
+      "path": "Docs/audio/modern/donk-08.mp3",
+      "input_peak": 0.15924547612667084
+    },
+    {
+      "id": "pluck-01",
+      "name": "PLUCK - Kinetic Tine",
+      "input_wav_sha256": "346d7adf0883c8b335de211239f1e4ca2e8e6f399aa1eb11feb9f35e8911815d",
+      "mp3_sha256": "1d26e216ef638a417f8ecc302d9c1389901477a825194b066ee05b32fb65e62c",
+      "path": "Docs/audio/modern/pluck-01.mp3",
+      "input_peak": 0.3072948753833771
+    },
+    {
+      "id": "pluck-02",
+      "name": "PLUCK - Velvet Mallet",
+      "input_wav_sha256": "a8e8d243c6914631f0a6658056e8dedfc50b0666e022ed95eb3890f800cac2e2",
+      "mp3_sha256": "dcaf8a83e6927ec6818af1dcffbb42414d8e397c69140eadff04e756a0a075ce",
+      "path": "Docs/audio/modern/pluck-02.mp3",
+      "input_peak": 0.34821149706840515
+    },
+    {
+      "id": "pluck-03",
+      "name": "PLUCK - Glass Thread",
+      "input_wav_sha256": "f3f402216a1c49977ebe15e66420429236e0886d9cdb4f8c004b95ac67a0fdca",
+      "mp3_sha256": "f4de0428829d0cf37a0245b86fe5dde11c4377d0a610543b9d2f79e9d32d6621",
+      "path": "Docs/audio/modern/pluck-03.mp3",
+      "input_peak": 0.2882159948348999
+    },
+    {
+      "id": "pluck-04",
+      "name": "PLUCK - Rubber Relay",
+      "input_wav_sha256": "24096f9f5ba9e7ca8eb9b4581181c5f0aacee7f68f20bf5ab5195a4ff704d662",
+      "mp3_sha256": "2a770fdb906ec1704f7dfa54d449fbd1d0eb3701f3ba3a8d92625e8e246bcff0",
+      "path": "Docs/audio/modern/pluck-04.mp3",
+      "input_peak": 0.25963863730430603
+    },
+    {
+      "id": "pluck-05",
+      "name": "PLUCK - Copper Drop",
+      "input_wav_sha256": "784d1a0dd0ef5b81cfb8152b47ffa87949eab505dc6f398bd0c328fb7266ff36",
+      "mp3_sha256": "590a2f44ba6c8904c8831e6a811eca7df14cfcb4c481646834dab9d42eb2ec4d",
+      "path": "Docs/audio/modern/pluck-05.mp3",
+      "input_peak": 0.32137688994407654
+    },
+    {
+      "id": "pluck-06",
+      "name": "PLUCK - Pixel Chord",
+      "input_wav_sha256": "9683033e20c2ae3c6c4da8e8e36b592d830413ffb968060dd55c46d59de4752a",
+      "mp3_sha256": "e1edd88c67d41c6fd57acc99767bb84261db86a9015be8f0ab33a74437da7265",
+      "path": "Docs/audio/modern/pluck-06.mp3",
+      "input_peak": 0.31168073415756226
+    },
+    {
+      "id": "pluck-07",
+      "name": "PLUCK - Prism Keys",
+      "input_wav_sha256": "2a86f768be18b6d0023c8f867ab1c7b0ab5e64b95d2453e5f902d882de41b97e",
+      "mp3_sha256": "ad223fd819106d0665979ddf0dc5165184263a77097819c2632a1f674115923f",
+      "path": "Docs/audio/modern/pluck-07.mp3",
+      "input_peak": 0.33010318875312805
+    },
+    {
+      "id": "pluck-08",
+      "name": "PLUCK - Bamboo Pulse",
+      "input_wav_sha256": "ae20ae56218253ce5b62b025757f51baf6d43d6c5ea93ed259a85fa1c6cce950",
+      "mp3_sha256": "9891a82f72c4ac40d39ae6fc9a0a2bd5ffd78fb673754cbc6eadf6a57eb5d539",
+      "path": "Docs/audio/modern/pluck-08.mp3",
+      "input_peak": 0.30584171414375305
+    },
+    {
+      "id": "pluck-09",
+      "name": "PLUCK - Chrome Pin",
+      "input_wav_sha256": "db6123a6eb56a5bb4306f2d44b322ad53c2e3bb2e464ebc6e2525115c9385ccb",
+      "mp3_sha256": "185fd0902a37236b3963cc751bb95cba87ab7a221efab292d61a7f649917abfa",
+      "path": "Docs/audio/modern/pluck-09.mp3",
+      "input_peak": 0.3432174026966095
+    },
+    {
+      "id": "pluck-10",
+      "name": "PLUCK - Soft Circuit",
+      "input_wav_sha256": "9d8e43d032dddfafac9b55bb3e62e6303df826aac3e21c4cbeebe7c15a1d67f8",
+      "mp3_sha256": "a1bae5fa47d95a319ede2f36ad25dc96996c5112e45d3b0f603fa848c6bd03a7",
+      "path": "Docs/audio/modern/pluck-10.mp3",
+      "input_peak": 0.28503429889678955
+    },
+    {
+      "id": "pluck-11",
+      "name": "PLUCK - Magnet Bell",
+      "input_wav_sha256": "9e03c42d36574f98977f7e26b8f1672c5711e5cdbe18fee2e96b88247a32e47d",
+      "mp3_sha256": "33b75a69ad26db021541d80382c25707a21b1c35e920e69341caed28344d05a2",
+      "path": "Docs/audio/modern/pluck-11.mp3",
+      "input_peak": 0.2784165143966675
+    },
+    {
+      "id": "pluck-12",
+      "name": "PLUCK - Afterimage",
+      "input_wav_sha256": "cae8fb2a99e35708701a5b6adfc5af6ad4692b8365bd639358952bb0c2ecd424",
+      "mp3_sha256": "a8fcb74e946a7bdc7ee532394c25dc16fef6ca07d6cde2f8b7e6a3abdc2a233c",
+      "path": "Docs/audio/modern/pluck-12.mp3",
+      "input_peak": 0.31071406602859497
+    },
+    {
+      "id": "lead-01",
+      "name": "LEAD - Neon Wire",
+      "input_wav_sha256": "9c8793fb9111b86fbdf0eea0b1e2ae858d94f983c12f9eff4cd0b0351d16e9c5",
+      "mp3_sha256": "de994661503845450f532a74ec889071286e225b9616b3ed1d8f5f0ebdf2d966",
+      "path": "Docs/audio/modern/lead-01.mp3",
+      "input_peak": 0.17099888622760773
+    },
+    {
+      "id": "lead-02",
+      "name": "LEAD - Signal Silk",
+      "input_wav_sha256": "3bf06b618c2abf7ef1cc4fbcea7263420574c1f37282b9a3d3cd4d49fb72d59d",
+      "mp3_sha256": "1341dc6d616072a3d530dd508f1c2729b438e5e1cef8aa2efe0ca6fa6e1e1b69",
+      "path": "Docs/audio/modern/lead-02.mp3",
+      "input_peak": 0.3416101336479187
+    },
+    {
+      "id": "lead-03",
+      "name": "LEAD - Vector Reed",
+      "input_wav_sha256": "ae6018654d4ba5b7c0dbda93950351879fea0cba1e2b528524444c6226d78e0e",
+      "mp3_sha256": "3b1cfbb9b683ee277ea4684b9493ce28d8eccc20eff0fa488d27debe66a94fcc",
+      "path": "Docs/audio/modern/lead-03.mp3",
+      "input_peak": 0.3660610318183899
+    },
+    {
+      "id": "lead-04",
+      "name": "LEAD - Pixel Brass",
+      "input_wav_sha256": "19a7ab8a6133a6b071fa56c962dd55f3dc5562851d5c8794948102b3c1d820e1",
+      "mp3_sha256": "0c9821257fcb14b37ab6466e650b1cec2f2ec1683f551b7dd2867636a21fd50f",
+      "path": "Docs/audio/modern/lead-04.mp3",
+      "input_peak": 0.32788318395614624
+    },
+    {
+      "id": "lead-05",
+      "name": "LEAD - Spline Solo",
+      "input_wav_sha256": "3127b7727ad63328480f5484c0956c73283cc902686498281b12eff8bfb49a6d",
+      "mp3_sha256": "67abf91746963765457b590eebe2da02ee1fb4c6a1f2b078379b276a08109199",
+      "path": "Docs/audio/modern/lead-05.mp3",
+      "input_peak": 0.1934317648410797
+    },
+    {
+      "id": "lead-06",
+      "name": "LEAD - Meteor Square",
+      "input_wav_sha256": "770f773e8b85827966a46faed45f1b13e2b42c3237352d804e957939e3529027",
+      "mp3_sha256": "77312b2c2ae6d5cf7e569e734f1d7bb324291ad6f6752277e718b683cf359ab1",
+      "path": "Docs/audio/modern/lead-06.mp3",
+      "input_peak": 0.2610420286655426
+    },
+    {
+      "id": "lead-07",
+      "name": "LEAD - Glass Current",
+      "input_wav_sha256": "aa41b6774a6ee608d18dd3d5393ed9b853be8fee73e1b6d9ccc432a8788eecdd",
+      "mp3_sha256": "b53055d317516d52efd15addaa382cc21ef0e196bc2e110108a53360c7307b41",
+      "path": "Docs/audio/modern/lead-07.mp3",
+      "input_peak": 0.3652592599391937
+    },
+    {
+      "id": "lead-08",
+      "name": "LEAD - Amber Hook",
+      "input_wav_sha256": "6f7471609a91700296439f171f0f7ec1de451aae7061d7832477518033d0aff9",
+      "mp3_sha256": "70295ed10b0e8584f0b82e9dd713ca59b5026b0c5bc0214ac2951e1a6d6af313",
+      "path": "Docs/audio/modern/lead-08.mp3",
+      "input_peak": 0.38306117057800293
+    },
+    {
+      "id": "pad-01",
+      "name": "PAD - Afterglow",
+      "input_wav_sha256": "8b4981690de7e4cdbcf1e69c1a5d389511b992f4ac09178420336e96fc383d7b",
+      "mp3_sha256": "7cdc1b1c1a7bb14c12440f032f70b243fd301719eec142606de4afa7f43953f7",
+      "path": "Docs/audio/modern/pad-01.mp3",
+      "input_peak": 0.37892773747444153
+    },
+    {
+      "id": "pad-02",
+      "name": "PAD - Glass Tides",
+      "input_wav_sha256": "1eb4603e9ebeb00ebbb6f9f0f84c716437f63dbf4eeaa9cde3ac7196eb78ba13",
+      "mp3_sha256": "bca9e0cf377e123b97a7463ddad3ac6a5aaccdb62054ad042316fd79ace805e6",
+      "path": "Docs/audio/modern/pad-02.mp3",
+      "input_peak": 0.39409324526786804
+    },
+    {
+      "id": "pad-03",
+      "name": "PAD - Velvet Circuit",
+      "input_wav_sha256": "a7fbac2e655a1605e1b77bd2abcca9e3380c2a4a50c2a260be053189a54b414d",
+      "mp3_sha256": "148f1548fae0d73fe85f78292bae10fb7bf1d5aebfdc013257511bb910ec514b",
+      "path": "Docs/audio/modern/pad-03.mp3",
+      "input_peak": 0.4027493894100189
+    },
+    {
+      "id": "pad-04",
+      "name": "PAD - Prism Choir",
+      "input_wav_sha256": "46afa71a44a6aa4b5706e5575e8c169b2639a6d54fc67c4f7d2694f6ad0debda",
+      "mp3_sha256": "ce6dda506ec15e0de05d1a3a7fa9761205c39fca8620720afe375f4f83abf64a",
+      "path": "Docs/audio/modern/pad-04.mp3",
+      "input_peak": 0.3526199758052826
+    },
+    {
+      "id": "pad-05",
+      "name": "PAD - Neon Suspension",
+      "input_wav_sha256": "f427ea49a989198a5076890e52aa82d3014a06e191e7f07c0a92c77c05982a30",
+      "mp3_sha256": "40430902fb85ecf4610f8ee37dcc271d7574ad0350daac662d9a078205b2925a",
+      "path": "Docs/audio/modern/pad-05.mp3",
+      "input_peak": 0.6107584238052368
+    },
+    {
+      "id": "pad-06",
+      "name": "PAD - Low Orbit",
+      "input_wav_sha256": "6662396a86dbed240ce3829c4263ae2b299b7b7bd97e460ff77ff614f8f0c0d0",
+      "mp3_sha256": "f4a0dc9978367d45399fe43f1ecf00ba71dd35316f8f913d63cdbc382a4aec2c",
+      "path": "Docs/audio/modern/pad-06.mp3",
+      "input_peak": 0.4175131618976593
+    },
+    {
+      "id": "fx-01",
+      "name": "FX - Ion Drop",
+      "input_wav_sha256": "52ec1bd62ae6cdd302d048f2301a6680632ff9376f3c838eae84b2bc3b193d66",
+      "mp3_sha256": "593cc7945dc2ac7d6b55cf56624108c5f3cb935def608bbc1649197a934b0467",
+      "path": "Docs/audio/modern/fx-01.mp3",
+      "input_peak": 0.18049153685569763
+    },
+    {
+      "id": "fx-02",
+      "name": "FX - Broken Beacon",
+      "input_wav_sha256": "49d44bca859098b3cb2249295bfc98a590d9436b5c127e7447518e7fc1b7a5da",
+      "mp3_sha256": "589e5f118d895bfdda285276f2257a1bf6cc2df94a215e0a3e1dc7af1c6e9e31",
+      "path": "Docs/audio/modern/fx-02.mp3",
+      "input_peak": 0.1861215978860855
+    },
+    {
+      "id": "fx-03",
+      "name": "FX - Phase Flare",
+      "input_wav_sha256": "ae2fdeeb976505211d303dad9ea7bbb6bc05cb11f3aa319f809e9c878dd52df1",
+      "mp3_sha256": "491486606c48686d7e215c0e250d718058aa2b239e7f811146a9c69acc2f396c",
+      "path": "Docs/audio/modern/fx-03.mp3",
+      "input_peak": 0.28740307688713074
+    },
+    {
+      "id": "fx-04",
+      "name": "FX - Gravity Well",
+      "input_wav_sha256": "4e22ab9d08df95cc3ff3c21fff5b325262bc45ff6dc402e57f12eb3bde93baca",
+      "mp3_sha256": "6b4bf853ea3db057372161a4faeb52713c9b165005e29c33d0527a80fed668d5",
+      "path": "Docs/audio/modern/fx-04.mp3",
+      "input_peak": 0.25302305817604065
+    }
+  ],
+  "catalog_sha256": "8339b91148cf71967e30619b28099478ac3dcc806077e070eb4d6c065c80d42a"
+}

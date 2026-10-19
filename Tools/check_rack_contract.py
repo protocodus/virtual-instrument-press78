@@ -11,6 +11,7 @@ import json
 import math
 import re
 import xml.etree.ElementTree as ET
+from modern_bank import load_modern, preset_relative_path
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -92,9 +93,13 @@ def main():
                       chorusDepthMs=math.hypot(0.0495126833338911,0.4943632948117077))
         assert voice['name'].startswith('PSS ')
         expected[voice['name'].replace('/', '-')] = values
-    paths = sorted((device/'Resources/Public').glob('*.repatch'))
-    assert len(paths) == 101
+    modern = load_modern()
+    for voice in modern:
+        expected[voice['name']] = voice['parameters']
+    paths = sorted((device/'Resources/Public').rglob('*.repatch'))
+    assert len(paths) == 151
     assert {p.stem for p in paths} == set(expected)
+    assert {p.relative_to(device/'Resources/Public').as_posix() for p in paths if p.parts[-3]=='Modern'} == {preset_relative_path(v).as_posix() for v in modern}
     for path in paths:
         # Python accepts declarations which the Recon SXML reader rejects.
         assert path.read_bytes().startswith(b'<?xml version="1.0"?>\n'), (path.name, 'SDK5 patch XML declaration')
