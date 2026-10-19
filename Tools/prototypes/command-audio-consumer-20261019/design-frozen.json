@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-19",
+  "classification": "New research-only command-to-audio path using inherited shipping DSP hypotheses; no production/default/adoption claim or original-hardware audio comparison.",
+  "inputs": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.cpp",
+      "bytes": 28519,
+      "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.h",
+      "bytes": 10040,
+      "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/FirmwarePitch.h",
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/AnalogOutput.h",
+      "bytes": 2195,
+      "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/RecordedChorus.h",
+      "bytes": 3581,
+      "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/Mode00CompleteCommands.h",
+      "bytes": 9817,
+      "sha256": "47ef1babcf44c77df8a1e818474d683a364b72e04eff29e31ba9f424572dd6bf"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/FirmwareLevel.h",
+      "bytes": 3679,
+      "sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "bytes": 7339,
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+      "bytes": 4043,
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a"
+    }
+  ],
+  "architecture": {
+    "frontend": "One committed Mode00CompleteCommands owns allocation/effects/patch/cache. A temporary copy may preview an event transaction; it is discarded on preflight rejection and is never an independently clocked allocator. Commit only after the entire consumer plan is valid.",
+    "fixed_slots": "Use existing Press78Engine.voices_[0..11] as fixed physical slots through the existing Press78SustainTestAccess friend seam, in standalone research translation units that include unchanged Engine.cpp. Never call Engine.noteOn/noteOff/setPatch/allSoundOff or source allocation/steal operations. Keep polyphony12 and every steal tail empty.",
+    "reused_DSP": "Actual unchanged Voice.configure/updatePatch/next, Envelope, wave helpers, synthesizeTick/process/output, LFO, resampler and circuit/chorus path. No copied oscillator, envelope or output implementation. A small raw-FNUM/block bridge necessarily expresses the existing empirical frequency scale/operator-step equation for actual packed words.",
+    "initialization": "Explicit silent empty frontend snapshot and model controls; no hardware boot. Register fields start unknown, keys explicitly off. A complete parameter reload and pitch words must precede any key-on. Reject unsupported initialization/controller policies before mutation.",
+    "control_guards": "Fixed model48k internal cadence; host48000 for initial frozen renders. polyphony12, pitchModel0, sustainMode0, host pitch/tuning controls0, clockoffset/drift0 and velocity1 on fixed slots. Modulation/output/LFO controls reuse shipping implementation; no second LKS/velocity/VDT/Sustain stage.",
+    "reverb_policy": "Caller must explicitly choose StoreReverbBitWithoutAudioEffect. Store each TL control high bit, expose unsupported-audio state, and never create an envelope law. Other/default policy rejects initialization. Frozen equivalence/A-B material uses Reverb off; separate tests verify storage/ignored-audio behavior."
+  },
+  "command_semantics": {
+    "domain": "Only the complete frontend register subset in OPU0200..02ff, preserving every raw address/value/order. Reject unknown addresses/reserved normal-mode bits, overcapacity/non-Ok plans, malformed paired key fields and key-on before required fields exist. Preflight entire plan against staged register image and source metadata; on failure preserve frontend, register/image/history, all operator/output state, counters and last accepted trace.",
+    "parameter_registers": "Six operator groups240/260/280/2a0/2c0/2e0 plus carrier+8 and physical slot displacement; decode DT/multiplier, adjustedTL/Reverb, AR/RKS, D1R/DT2/AM, D2R/wave, D1L/RR. Neutralise LKS and raw velocity because TL is already compiled. Native sustain=false and SRR unused: low RR nibble is the actual commanded release selection.",
+    "feedback_and_PMS": "220..225 selectorbit7, normal bit6=1, feedback bits3..5;218..21d selectorbit7 and cachedPMS/AMS mask73. Native VDT0 and Vibrato=true; nonzero PMS is already gated by explicit frontend vibrato service. Preserve phase/envelope/history through coefficient writes.",
+    "pitch": "Decode three actual packed228/230/238 words, maintain selector/field validity. Use floor(FNUM*2^(block-3))*5500000/(6*2^24), exactly the inherited shipping downstream hypothesis, then shipping multiplier/detune law. Original mapped note from the one frontend cache supplies inherited RKS; do not substitute bent pitch for LKS or apply LKS again.",
+    "key": "208 normal paired bits: each operator pair fully on/off, pair0..5, bit7clear. Only genuine off->on invokes actual Voice.configure (zero phase/history inherited); true->true does not reset. Keyoff sets release/held flags directly in that fixed slot, without allocating or resetting output history.",
+    "epochs": "All writes in a plan occur in their original order at one caller epoch, without sample advancement between words. Intermediate RR15 and pitch fields remain recorded even if they have no audio duration. Caller explicitly chooses service invocations and audio frames; no bus delay or firmware service period is invented.",
+    "TL127": "Updates the inherited gain/mute behavior without a panic, key-state reset, phase reset, or analog/BBD/output-history clear. Native96dB retirement and phase freezing remain inherited hypotheses, not hardware facts."
+  },
+  "validation": {
+    "command_fidelity": "Compare each accepted raw plan byte-for-byte with the emitted frontend plan and independent declared small command fixtures; no historical CPU or PCM rerun. Check image/validity, packed pitch/slot selectors, paired key bits, live adjustedTL/RR/PMS/wave writes, shared effect state and all rejection atomicity. No command conformance result is called audible silicon validation.",
+    "native_equivalence": "All4tables, neutralLKS, volume9/addend0, velocity127, no effects, identical operators/envelopes/feedback and current original-frequency hypothesis. Compare complete outputs of shipping baseline Engine API against fixed-slot consumer under the same event epochs where no allocation/control policy differs. Require exact float output bytes for these declared equivalence cases; preserve any failed equality before diagnosis.",
+    "audio_state_tests": "All4tables and feedback; release and liveRR/CC64 coefficient updates; liveTL127/restore and waveform changes preserve state; PMS delay applied only once; RVbit stores but audio remains unchanged under explicit store-only policy. Verify output/circuit/chorus memory is not reset by program TL127 or keyoff. Chunk/block invariance where event epochs are identical. Atomic rejection verified by unchanged raw/frontend state and identical subsequent audio versus an unchanged copy.",
+    "builds": "Optimized C++17 strict warnings and ASan/UBSan, detect_leaks=0 on this platform. No allocation in command application or audio processing if instrumented; loading/writing fixtures excluded from measurement.",
+    "frozen_renders": {
+      "sample_rate": 48000,
+      "seconds": 2.0,
+      "channels": 2,
+      "format": "Float32 WAV",
+      "cases": [
+        {
+          "id": "01",
+          "table": 0,
+          "purpose": "isolated-note baseline equivalence"
+        },
+        {
+          "id": "02",
+          "table": 1,
+          "purpose": "isolated-note baseline equivalence"
+        },
+        {
+          "id": "03",
+          "table": 2,
+          "purpose": "isolated-note baseline equivalence"
+        },
+        {
+          "id": "04",
+          "table": 3,
+          "purpose": "isolated-note baseline equivalence"
+        },
+        {
+          "id": "05",
+          "table": 0,
+          "purpose": "same-pitch retrigger with overlapping release; explicit policy divergence, not hardware improvement"
+        }
+      ],
+      "common_patch": "Independently authored synthetic working patch: modTL24/carTL20, LKS0, AR63/D1R0/D1L0/D2R0, mod/car multiplier1, feedback1, RR8/SRR5, VDT0/PMS0/AMS0/effectflags0; both wave tables set to the case table. Case05 uses modTL127 and RR4 to expose release ownership.",
+      "events_cases01_to04": [
+        "frame0 on36 and one keyservice at same epoch",
+        "frame16800 off36",
+        "frame36000 on48 and one keyservice at same epoch",
+        "frame52800 off48"
+      ],
+      "events_case05": [
+        "frame0 on36 and one keyservice at same epoch",
+        "frame14400 off36",
+        "frame15360 on36 and one keyservice at same epoch",
+        "frame31200 off36"
+      ],
+      "output_controls": "Same shipping controls: masterGain0.25, outputCircuittrue, cutoff14000, drive0, chorusMix0, DCblocktrue, outputLimittrue; globaltriangleLFO5.24Hz. A uses shipping Engine note API with Original pitch1; B decodes exact words into the same inherited frequency hypothesis with engine pitchModel0 to avoid a second pitch stage.",
+      "naming": "Case directories01..05, filesA.wav/B.wav only. A is unchanged shipping baseline, B the command path. Separatekey.md explains mapping. No listener preference or promotion selected.",
+      "gain_rule": "Same controls and no post-render gain/EQ/phase/time fitting. Cases01..04 must be exact equal. Case05 deliberately judges release overlap/level, so report raw RMS/peak and do not remove that difference with normalization.",
+      "freeze": "Render exactly once after a bound passing implementation; preserve any earlier render/failure unchanged in a separate directory. No mass historical demos/benchmarks rerendered."
+    },
+    "failures": "Preserve every compile/assertion/conformance/render failure and source/binding version. No gate relaxation, fitting hardware constants or changing old failed audio experiments."
+  },
+  "unknowns": [
+    "target ROM/arithmetic/phase reset",
+    "native synthesis/feedback/envelope cadence",
+    "actual command-to-decibel/DAC transfer and endpoint",
+    "Reverb chip response",
+    "live-register transient response and supply sensitivity",
+    "physical scheduler/serial bus timing"
+  ],
+  "chronology": "Frozen after root reviewed and approved constraints, before consumer implementation, compilation, execution or new renders."
+}

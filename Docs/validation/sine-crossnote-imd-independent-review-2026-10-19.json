@@ -1,0 +1,240 @@
+{
+  "schema": "press78.sine-crossnote-imd-independent-review.v1",
+  "date": "2026-10-19",
+  "passed": true,
+  "scope": "Read-only source, scalar coefficient/gate algebra and retained-result provenance review; no source PCM open/hash/decode, no synthesis, fitting/SVD or native execution.",
+  "checks": 479,
+  "bindings": [
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/NativeProbe.cpp",
+      "sha256": "8bf4b5136a19406d0b730fe5bca6643f7ed88dd33cd314ded0b93951ae397955"
+    },
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/design-frozen.json",
+      "sha256": "31dad8c2db647e1567a1ca9af7c0d79ffee77592c8bafa4fe8f12718366cf113"
+    },
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/NativeSuperpositionProbe.cpp",
+      "sha256": "1474d13c008f1ecf3139041755aa1c508d837d62b23a70093c4815ae6600ef31"
+    },
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/README.md",
+      "sha256": "139b8e7c0e5cd4eff5ee2b2270f7bc4d58b841859d18056bd768c724fd680a32"
+    },
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/analyze.py",
+      "sha256": "2040c3293c215a44cf9069ec589380f76ba90c500b74f5d3558e26f46d711808"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/result.json",
+      "sha256": "d91f21038fa7b757bd4cf80f09251e6b604189b81fb3d040f77d1ff3a20a6229"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/qualification.json",
+      "sha256": "f18fd55dbc0c9a6eafb2c3fa37b1f3a8788b3582708d270ffd2ac7395ad7b775"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/execution-start.json",
+      "sha256": "f69e4ea8353da6e9f970355f648322d8013db4d6a721c0d7d645959d67839fe1"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/superposition.json",
+      "sha256": "86a2456a7a6775e5536fa72a63dfb8b84da8f05b1ebef4ca887b0512428ec726"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/superposition-reproduction.json",
+      "sha256": "d283e1b5ddbb7c9685cda35778541cc8357ff3f49d6f3131a3fb8ac3f4914bcd"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/superposition-reproduction-frozen.json",
+      "sha256": "e4f13a4a6cc167f3fb98a43654f0d91741affdcaa3da7c733a05a44e95f2f825"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/supplemental-artifact-manifest.json",
+      "sha256": "b48be45d7cf3adfd76eb47812355e4df015e98e789aae0d1c52e60ce0ccbf7fc"
+    },
+    {
+      "path": "Docs/research/exact-sine-release-2026-10-18.json",
+      "sha256": "e71c726a178ef264d84f001a381da084f0f1bd48a4c6ccf1573ff2e7e7cc7016"
+    },
+    {
+      "path": "Docs/research/codec-tail-audit-2026-10-18.json",
+      "sha256": "69b10835ef73ddbbf8d36f21562d048e656ac3362d588719dc98e3c5c67e6da1"
+    },
+    {
+      "path": "Docs/research/envelope-capture-forensics-2026-10-18.json",
+      "sha256": "066955a81c999ab88824506fe57e38ba63063e1837720fe5a15906c1e0d5d165"
+    },
+    {
+      "path": "Docs/research/dac-endpoint-evidence-2026-10-19.json",
+      "sha256": "473347eb29dc50c2f281d8ea8972a89da6962edd0664fb206868e86bf90e01e2"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/AnalogOutput.h",
+      "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/CircuitNoise.h",
+      "sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/FactoryVoices.h",
+      "sha256": "6f45afd021de03e226ffe7e09f953799b4f72f48cf1f062348b6d6b328eabed3"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/FirmwarePitch.h",
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/OutputKernelTable.h",
+      "sha256": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/OversampledAnalogOutput.h",
+      "sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/Press78Engine.cpp",
+      "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/Press78Engine.h",
+      "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/Press78OutputBus.h",
+      "sha256": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/RecordedChorus.h",
+      "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native-source/RecordedChorusProfile.h",
+      "sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/native_probe",
+      "sha256": "77b4935d5a7f9d71ba77e6bc04c27f50104b3ac36ee10c52d87b96d9f2086b6f"
+    },
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/NativeSuperpositionProbe.cpp",
+      "sha256": "1474d13c008f1ecf3139041755aa1c508d837d62b23a70093c4815ae6600ef31"
+    },
+    {
+      "path": "build/sine-crossnote-imd-20261019/superposition_probe",
+      "sha256": "359d60d759663623e1466a8519e6271af1418c48900437aedd05562a11d8b52b"
+    }
+  ],
+  "publications": [
+    {
+      "path": "Docs/research/sine-crossnote-imd-2026-10-19.json",
+      "sha256": "d2bd5e0fbb14d4449711cfe67027c7f3c7ed734dd33754d69e7cbd9fd8831c0b"
+    },
+    {
+      "path": "Docs/research/sine-crossnote-imd-2026-10-19.md",
+      "sha256": "0a22595ddf179e24b123b1a8de22bd5188148d2d70149696c512e4b0989f04e1"
+    }
+  ],
+  "qualification_cases": [
+    {
+      "case": "clean_linear",
+      "passed": true,
+      "worst_db": -216.47644119884598,
+      "positive_complex_error": null,
+      "positive_phase_error_rad": null
+    },
+    {
+      "case": "independent_harmonic",
+      "passed": true,
+      "worst_db": -122.30381924106437,
+      "positive_complex_error": null,
+      "positive_phase_error_rad": null
+    },
+    {
+      "case": "detuned_harmonic",
+      "passed": false,
+      "worst_db": -35.74968534069356,
+      "positive_complex_error": null,
+      "positive_phase_error_rad": null
+    },
+    {
+      "case": "linear_chorus",
+      "passed": false,
+      "worst_db": 14.39074379094097,
+      "positive_complex_error": null,
+      "positive_phase_error_rad": null
+    },
+    {
+      "case": "independent_nonlinearity",
+      "passed": true,
+      "worst_db": -148.8465873176898,
+      "positive_complex_error": null,
+      "positive_phase_error_rad": null
+    },
+    {
+      "case": "quadratic_positive",
+      "passed": true,
+      "worst_db": -47.98193674834408,
+      "positive_complex_error": 0.0072510851837337825,
+      "positive_phase_error_rad": 0.00713823842549552
+    },
+    {
+      "case": "quadratic_after_chorus_positive",
+      "passed": false,
+      "worst_db": 14.62157089317495,
+      "positive_complex_error": 1350.461339484403,
+      "positive_phase_error_rad": 2.795022784108711
+    },
+    {
+      "case": "native_dry",
+      "passed": true,
+      "worst_db": -90.28910905117337,
+      "positive_complex_error": null,
+      "positive_phase_error_rad": null
+    },
+    {
+      "case": "native_circuit",
+      "passed": true,
+      "worst_db": -77.41629549274056,
+      "positive_complex_error": null,
+      "positive_phase_error_rad": null
+    },
+    {
+      "case": "native_chorus",
+      "passed": false,
+      "worst_db": 2.522367263449908,
+      "positive_complex_error": null,
+      "positive_phase_error_rad": null
+    },
+    {
+      "case": "native_both",
+      "passed": false,
+      "worst_db": 2.619768000419043,
+      "positive_complex_error": null,
+      "positive_phase_error_rad": null
+    }
+  ],
+  "math_review": [
+    "The peak-cosine complex convention gives quadratic mixed products alpha*Z79*Z39 and alpha*Z79*conj(Z39); the onset phase translation sign is correct.",
+    "MIDI75/87 exactly share bass39 harmonics8/16. Both witness lines lie6.1734126583Hz above bass39 harmonics9/11.",
+    "The weighted objective applies Hann to basis and observations, so it uses squared-Hann weights.",
+    "273 columns follow from the43 explicitly enumerated nuisance lines plus2 witnesses and3 polynomial envelope terms; completeness of all possible nuisance/alias lines is not established."
+  ],
+  "conclusions": [
+    "The estimator fails all three fixed condition-number limits and several known independent/linear controls; this prevents a source distortion result.",
+    "A clean global-quadratic positive control passing does not qualify the failed overall estimator.",
+    "The finite native superposition checks are supplementary implementation diagnostics, not physical keyboard evidence. The initial posthoc execution and unnecessary already-known repeat are both preserved explicitly.",
+    "No new hardware linearity, nonlinearity, distortion bound, DAC-bit, circuit location or hardware transfer inference is justified."
+  ],
+  "limits": [
+    "Stored coefficient arithmetic and threshold gates were recomputed, not the fitted coefficients, condition numbers, native signals or RMS measurements.",
+    "Fitted primary coefficients are not retained individually, so amplitude normalization is reviewed through code and stored ratio/dB identities, without a new fit.",
+    "Original source PCM hashes are metadata inherited from prior ledgers; no source PCM bytes were accessed by this reviewer.",
+    "Source abstention is consistent with retained code/receipts; no system-call audit was performed."
+  ],
+  "reviewer_runner": {
+    "path": "build/command-audio-independent-review-20261019/review_imd_receipts.py",
+    "sha256": "6a5811ee59ef2db552d5ed9a30a268250239d06a7f147ec3d8673c966b331d63"
+  }
+}

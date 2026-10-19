@@ -1,0 +1,195 @@
+{
+  "schema": "press78.source-ordered-midi-protocol.v1",
+  "frozen_at_utc": "2026-10-19T17:40:45.514338+00:00",
+  "stage": "Frozen before compiler implementation or new event export",
+  "source_scope": "Retained candidate SMF, not proven original transmitted bytes; no sender timing recovered",
+  "sample_rate": 48000,
+  "mode00_pitch_range": [
+    36,
+    96
+  ],
+  "accepted_channels": "Both raw channels retained, conditional on receiver acceptance; channel identity retained",
+  "scenarios": [
+    "ascending_track",
+    "descending_track"
+  ],
+  "ordering": "frame; inferred patch first at equal frame (timeline ordinal); note events by original tick, ascending/descending track, then within-track message ordinal. Never pitch-sort or globally OFF-before-ON-sort. Distinct ticks collapsed to one frame retain tick order.",
+  "time": "Integrate integer microsecond tempos with exact rational arithmetic. Duplicated identical tempos at a tick are accepted; conflicting tempos at one tick rejected. Map each source tick once using exact binary64 values of the existing coefficients and nearest ties-to-even rounding. Note-offs are mapped endpoint ticks, never rounded onset plus rounded gate.",
+  "programs": "Existing inferred timeline remains independently timed; evaluate its existing binary64 midi_start_seconds with existing binary64 coefficients and historical round(float expression). Patch-first is an explicit convention, not observed MIDI. No source-SMF program messages are invented.",
+  "supported_smf": "PPQN format 0/1 only; strict chunk/VLQ/status/data/EOT bounds; exact tempo. Emit source note-on/off only; note-on velocity0 maps to off with raw status preserved. Non-note channel/system events rejected to avoid silently incomplete playback. Meta events retained in source ledger.",
+  "outputs": "Only under ignored build/source-ordered-midi-20261019/<new-run>; exclusive creation, no overwrite. Public code/synthetic tests and compact reports only; no original media, full note/event fixtures or preset payloads published.",
+  "validation": "Synthetic adversarial timing/order/parser tests; independent raw-byte/source-time comparison with preexisting auditor and retained decoded events/notes. Check193 same-channel contiguous OFF-before-ON,18low exclusions,MIDI62 cross-channel overlap and MIDI51 intertrack boundary under both scenarios. Bind code before export and rehash all frozen inputs after. Preserve failed attempts.",
+  "restrictions": [
+    "No historical exporter/event/score/audio mutation",
+    "No fitting offsets, gains, sender timing or MIDI serialization delays",
+    "No new audio/render, DSP, production, host, UI or PR changes",
+    "No claim that source ordering fixes historical failed audio gates"
+  ],
+  "inputs": {
+    "raw_midi": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia.mid",
+      "bytes": 15128,
+      "sha256": "7ab6f4551b8116590d52dd0566c3f5a7fad89097eb1b64ddf97b60fba47167cf"
+    },
+    "original_parser": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/parse_midi.py",
+      "bytes": 5120,
+      "sha256": "2453c473351f7f5e215bff872e07e56ff71c303ee8dfb2e9de825aaeead6ae3f"
+    },
+    "notes": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia-events.json",
+      "bytes": 379472,
+      "sha256": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4"
+    },
+    "alignment": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/alignment.json",
+      "bytes": 2355,
+      "sha256": "97f0072ef21b48fe9b80b43fd42a1217160208997103dacda4d2b74b7b2f2947"
+    },
+    "timeline": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v3_program_timeline.json",
+      "bytes": 22348,
+      "sha256": "1978645805679691f0b39269c5ac1db762d59a9f6c65cd399cbafffe555650eb"
+    },
+    "historical_exporter": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/envelope_timing_sensitivity.py",
+      "bytes": 19927,
+      "sha256": "e3d020b60fe889404cc92f59867dab083ef367d829212dc531fd7de6cc84df97"
+    },
+    "historical_snapshot": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/snapshots/historical_tool.py",
+      "bytes": 19927,
+      "sha256": "e3d020b60fe889404cc92f59867dab083ef367d829212dc531fd7de6cc84df97"
+    },
+    "sequence_fixture": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/snapshots/HardwareSequencePressure.cpp",
+      "bytes": 6000,
+      "sha256": "2e52c4a5f7da4f06ea74cd22b4489cac66ba73d525e66a4bf92b73e4d1425a0f"
+    },
+    "mode00_protocol": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/protocol-frozen.json",
+      "bytes": 115908,
+      "sha256": "8a97f902c9ab96e41da2ff0cd0761209f15b591163cc246d0a9b184cdd15edf9"
+    },
+    "allocator_design": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-v3-20261019/design-frozen.json",
+      "bytes": 26153,
+      "sha256": "e332f2229bd41a897fb64af801f47b162e68840bc37b42a63401c642948c8ef1"
+    },
+    "mode_effects_note": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/recording-mode-effects-audit-20261019.md",
+      "bytes": 6797,
+      "sha256": "892004f1e360aab8a1eedec5b9b4729264a4423a290abf4d106dc922d06143de"
+    },
+    "mode_effects_ledger": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/recording-mode-effects-audit-20261019.json",
+      "bytes": 353648,
+      "sha256": "71f778c48324d7a0c430101b6118efc372f077ea5c642afa22a6dd62d1981225"
+    },
+    "ownership_note": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/opu-mode00-midi-ownership-20261019.md",
+      "bytes": 3475,
+      "sha256": "f76738efb736d6e0ee2e1a80f461244f56863923c388d65bfa08ed57f41b14bf"
+    },
+    "bank": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/press78-factory.json",
+      "bytes": 64721,
+      "sha256": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
+    },
+    "unchanged_historical_events": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/unchanged/events.txt",
+      "bytes": 73548,
+      "sha256": "d11b10ce696eda8b3ffadbaf6818497688bbcdf3c9ac99235233070cb6a3def2"
+    },
+    "unchanged_filtered_events": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/unchanged/events.txt",
+      "bytes": 72886,
+      "sha256": "4d91a9c507156f858bec46792d42b3d169d3ce100c987a5f0523932913d642c4"
+    },
+    "old_scale_median_offset_historical_events": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/old_scale_median_offset/events.txt",
+      "bytes": 73548,
+      "sha256": "397fe4fec10545cd17ff054cca0283d4627e33be6fd2b8d243ba4ca01c150990"
+    },
+    "old_scale_median_offset_filtered_events": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/old_scale_median_offset/events.txt",
+      "bytes": 72886,
+      "sha256": "4a12d62062edd7b1362039c54ab13b7ef89bb1fc1058fa97defb73cf2c52a1ef"
+    },
+    "nominal_scale_median_intercept_historical_events": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/nominal_scale_median_intercept/events.txt",
+      "bytes": 73548,
+      "sha256": "587b71f984a915b7d64cff3cbd61bb835514ef0987692a278155216a65fbef1d"
+    },
+    "nominal_scale_median_intercept_filtered_events": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/nominal_scale_median_intercept/events.txt",
+      "bytes": 72886,
+      "sha256": "7f59667ccafe3c821af9df2d93a75424b520edda1f0335fbce7b339c702e927b"
+    },
+    "equal_patch_robust_affine_historical_events": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/equal_patch_robust_affine/events.txt",
+      "bytes": 73548,
+      "sha256": "000b80f0ea98e99b886dec92b83adc8cfdee5f36d58cbfe28d6d22dfad8d9500"
+    },
+    "equal_patch_robust_affine_filtered_events": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/equal_patch_robust_affine/events.txt",
+      "bytes": 72886,
+      "sha256": "49b537e34bbc5facee2dfb1c38f3626e1ad2af20008c2508483e783f07bea1a9"
+    },
+    "published_audit": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/midi-event-order-audit-2026-10-19.json",
+      "bytes": 257648,
+      "sha256": "dcdc48366abd4092cafcf16152cac13fb5f0414ae229cfad63c775c5122cecd7"
+    },
+    "published_validation": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/midi-event-order-validation-2026-10-19.json",
+      "bytes": 1447,
+      "sha256": "5984452c3c59fda4f0ff850728af925d3beaf5771926f267540b5700e305983e"
+    },
+    "old_auditor": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/audit.py",
+      "bytes": 12043,
+      "sha256": "479851b87aa47571496be525989e5b2502a25fe1bbc83e7af91ed5891a73209b"
+    },
+    "old_decoded_events": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/decoded-events.json",
+      "bytes": 1646429,
+      "sha256": "5bb4d652fad05971df535449f36b0791bee63cc0d763c9d4cdda994541a28c39"
+    },
+    "old_decoded_notes": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/decoded-notes.json",
+      "bytes": 707843,
+      "sha256": "50bd790787a905404cca6d70c063d3c7346a9fbdc41ccaba17faae6ec54b1bac"
+    }
+  },
+  "maps": [
+    {
+      "id": "unchanged",
+      "offset_seconds": 0.8906462238832541,
+      "scale": 0.9998070138348876,
+      "offset_exact_binary64": "8022228003999125/9007199254740992",
+      "scale_exact_binary64": "562841311868651/562949953421312"
+    },
+    {
+      "id": "old_scale_median_offset",
+      "offset_seconds": 0.9327535031570672,
+      "scale": 0.9998070138348876,
+      "offset_exact_binary64": "8401496658493385/9007199254740992",
+      "scale_exact_binary64": "562841311868651/562949953421312"
+    },
+    {
+      "id": "nominal_scale_median_intercept",
+      "offset_seconds": 0.9129181334157996,
+      "scale": 1.0,
+      "offset_exact_binary64": "1027854441367791/1125899906842624",
+      "scale_exact_binary64": "1"
+    },
+    {
+      "id": "equal_patch_robust_affine",
+      "offset_seconds": 0.9158456466155656,
+      "scale": 0.9999670078976708,
+      "offset_exact_binary64": "32223454006459/35184372088832",
+      "scale_exact_binary64": "1125862761037685/1125899906842624"
+    }
+  ]
+}

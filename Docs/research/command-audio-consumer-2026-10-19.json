@@ -1,0 +1,356 @@
+{
+  "date": "2026-10-19",
+  "classification": "Research command audio consumer using inherited shipping DSP hypotheses; no original-hardware audio validation, production edit or promotion.",
+  "status": "pass within declared synthetic integration scope",
+  "frozen_design": {
+    "path": "Tools/prototypes/command-audio-consumer-20261019/design-frozen.json",
+    "bytes": 11423,
+    "sha256": "8980465c531f64b882ca95bb15444c16d43fdf823418d5d79445e935fdba506b"
+  },
+  "initial_source_binding": {
+    "path": "build/command-audio-consumer-20261019/run-01/source-bound-before-execution.json",
+    "bytes": 1274,
+    "sha256": "626e8c8b124f43a644b23e5949aeefd25c0a50576081ecd0846a2e9c46997c31"
+  },
+  "initial_source_binding_payload": {
+    "chronology": "Bound after clean optimized compile, before first consumer test execution or renders.",
+    "sources": [
+      {
+        "path": "Tools/prototypes/command-audio-consumer-20261019/design-frozen.json",
+        "bytes": 11423,
+        "sha256": "8980465c531f64b882ca95bb15444c16d43fdf823418d5d79445e935fdba506b"
+      },
+      {
+        "path": "Tools/prototypes/command-audio-consumer-20261019/CommandAudioConsumer.h",
+        "bytes": 13971,
+        "sha256": "4b16aecdce0d593a53a1f63604ae5fb949127b9f50731ae60ace56d2469cdaf9"
+      },
+      {
+        "path": "Tools/prototypes/command-audio-consumer-20261019/consumer_test.cpp",
+        "bytes": 21678,
+        "sha256": "eab9c5eab7b8a39ef12bfad8606d47317d9f4af5077433c61761159e0d8dde7c"
+      },
+      {
+        "path": "Source/DSP/Press78Engine.cpp",
+        "bytes": 28519,
+        "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+      },
+      {
+        "path": "Source/DSP/Press78Engine.h",
+        "bytes": 10040,
+        "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+      },
+      {
+        "path": "Tools/prototypes/mode00-complete-command-20261019/Mode00CompleteCommands.h",
+        "bytes": 9817,
+        "sha256": "47ef1babcf44c77df8a1e818474d683a364b72e04eff29e31ba9f424572dd6bf"
+      }
+    ]
+  },
+  "one_owner_contract": "One committed Mode00CompleteCommands; fixed existing voices[12]; temporary transactional preview only. applyRaw is a caller-metadata research fixture boundary and must not be driven by a second independently advancing allocator. Plan slot/edge annotations are retained but not interpreted.",
+  "epochs": "All plan words at one caller epoch, no inter-word audio or invented bus delay. Separate explicit key/vibrato service invocations; VDT does not count samples.",
+  "reverb": "Caller explicitly chooses StoreReverbBitWithoutAudioEffect; raw TL high bit retained and unsupported audio flag exposed; no invented law. Renders Reverb off.",
+  "inherited_audio_hypotheses": [
+    "analytic waveform helpers, no target ROM recovered",
+    "zero phase/history configure on genuine off-to-on only",
+    "48kHz native cadence",
+    "TL0.75dB/step and >=99 mute endpoint",
+    "96dB envelope retirement and current rate/RKS laws",
+    "original mapped-note RKS rather than inferred silicon FNUM/block keycode",
+    "FNUM grid/reference-clock frequency hypothesis and multiplier/detune law",
+    "two-sample feedback history",
+    "existing output/chorus behavior; no new supply/noise law"
+  ],
+  "tests": {
+    "optimized": {
+      "assertions": 1290419,
+      "allocations_during_measured_operations": 0,
+      "frame_differences": [
+        0,
+        0,
+        0,
+        0,
+        80608
+      ],
+      "overlap_A_rms": 0.017854740811329033,
+      "overlap_A_peak": 0.06406326591968536,
+      "overlap_B_rms": 0.014663732820739987,
+      "overlap_B_peak": 0.03679601103067398,
+      "consumer_bytes": 178856
+    },
+    "sanitized": {
+      "assertions": 1290419,
+      "allocations_during_measured_operations": 0,
+      "frame_differences": [
+        0,
+        0,
+        0,
+        0,
+        80608
+      ],
+      "overlap_A_rms": 0.017854740811329033,
+      "overlap_A_peak": 0.06406326591968536,
+      "overlap_B_rms": 0.014663732820739987,
+      "overlap_B_peak": 0.03679601103067398,
+      "consumer_bytes": 178856
+    },
+    "sanitizer_policy": "ASan/UBSan with detect_leaks=0; no leak-sanitizer claim",
+    "result_bytes_equal": true,
+    "consumer_compile_or_test_failures": [],
+    "receipts": [
+      {
+        "path": "build/command-audio-consumer-20261019/run-01/validation.json",
+        "bytes": 2811,
+        "sha256": "135e2618ec7795a78d9838d63139bbe0f769bed02b9b7167d9766ba344813261"
+      },
+      {
+        "path": "build/command-audio-consumer-20261019/run-01/test-opt.json",
+        "bytes": 276,
+        "sha256": "42c8d45a138566f8a874a997b5eb70b178f6596c45d27cec249168c4f22ee5cc"
+      },
+      {
+        "path": "build/command-audio-consumer-20261019/run-01/test-san.json",
+        "bytes": 276,
+        "sha256": "42c8d45a138566f8a874a997b5eb70b178f6596c45d27cec249168c4f22ee5cc"
+      }
+    ]
+  },
+  "independent_review": {
+    "result": {
+      "passed": true,
+      "independent_assertions": 528,
+      "asymmetric_physical_slots": 12,
+      "complete_raw_plan_words": 204,
+      "additional_witnesses": [
+        "paired_missing_pitch_atomicity",
+        "carrier_TL127_continues_actual_DSP"
+      ]
+    },
+    "artifacts": [
+      {
+        "path": "build/command-audio-consumer-independent-review-20261019/IndependentWitness.cpp",
+        "bytes": 7075,
+        "sha256": "d6c9f99e41e4450de44caffbb9fb40776c9a4bf14621a77dc9d08e0478919227"
+      },
+      {
+        "path": "build/command-audio-consumer-independent-review-20261019/independent-result.json",
+        "bytes": 201,
+        "sha256": "4c929948a3a85e2fec9413f0ce6cba9e96dd1646d45ab6c48d890564f69d29bc"
+      },
+      {
+        "path": "build/command-audio-consumer-independent-review-20261019/independent-source-bound-before-execution.json",
+        "bytes": 1706,
+        "sha256": "9627ec77868dcee41fca2294db87df52723a5eb27ceb6979e4182a70aaa0bc9b"
+      }
+    ],
+    "verdict": "No blocking consumer source/semantic issue. Independent asymmetric all-slot witness passes.",
+    "runner_hardening": "Reviewer recommended rejecting changed expected input bindings before compilation; implemented and verified without changing consumer/test source."
+  },
+  "runner_checks": {
+    "valid_inputs": {
+      "path": "build/command-audio-consumer-20261019/runner-input-check-01/validation.json",
+      "bytes": 2091,
+      "sha256": "47defc6b9b869dbabce2e0a8e5f048075385f37bf33a0fc2bc9a6a93a3f85936"
+    },
+    "constructed_wrong_hash": {
+      "status": "pass",
+      "classification": "Constructed negative runner test, not a consumer/audio failure.",
+      "wrong_SHA_rejected_before_compilation": true,
+      "real_frozen_design_unchanged": true
+    },
+    "negative_receipt": {
+      "path": "build/command-audio-consumer-20261019/runner-negative-test-01/rejected-run/validation.json",
+      "bytes": 520,
+      "sha256": "2d6a6652ddda75730e916285ffb7dcba534dd00e1f3eb685387da2bfc4d2e4c6"
+    },
+    "before_hardening_source": {
+      "path": "build/command-audio-consumer-20261019/run_validation-before-expected-input-check.py",
+      "bytes": 3904,
+      "sha256": "f8437d86f098a42b99d199a7456c4e812f64b5c10c033b55b7718849c08b85c6"
+    },
+    "classification": "Input-binding checks only; no additional DSP execution or WAV export."
+  },
+  "frozen_wavs": {
+    "status": "pass",
+    "classification": "One-time synthetic research A/B, not original hardware benchmark or adoption evidence.",
+    "source_binding": "bound-before-render.json",
+    "sample_rate": 48000,
+    "channels": 2,
+    "frames": 96000,
+    "format": "IEEE Float32 WAV",
+    "post_render_processing": "none; same controls, no gain/EQ/phase/time fit",
+    "level_matching": "Exact equivalence in01\u201304; overlap level itself is judged in05 and no RMS normalization is applied.",
+    "cases": [
+      {
+        "id": "01",
+        "interpretation": "unchanged baseline equivalence",
+        "different_stereo_frames": 0,
+        "files": [
+          {
+            "letter": "A",
+            "path": "build/command-audio-consumer-20261019/frozen-01/01/A.wav",
+            "bytes": 768044,
+            "sha256": "2f861513f7475c726bddc62ff33997c2c024eaf87776eea3f8da21c99b6b1b34",
+            "frames": 96000,
+            "rms": 0.016701880191597216,
+            "peak": 0.04450015351176262
+          },
+          {
+            "letter": "B",
+            "path": "build/command-audio-consumer-20261019/frozen-01/01/B.wav",
+            "bytes": 768044,
+            "sha256": "2f861513f7475c726bddc62ff33997c2c024eaf87776eea3f8da21c99b6b1b34",
+            "frames": 96000,
+            "rms": 0.016701880191597216,
+            "peak": 0.04450015351176262
+          }
+        ]
+      },
+      {
+        "id": "02",
+        "interpretation": "unchanged baseline equivalence",
+        "different_stereo_frames": 0,
+        "files": [
+          {
+            "letter": "A",
+            "path": "build/command-audio-consumer-20261019/frozen-01/02/A.wav",
+            "bytes": 768044,
+            "sha256": "0be693bd5acde99ad8e69fe05c55aeeabdb76f03224a36f6da235e7a16dc7351",
+            "frames": 96000,
+            "rms": 0.013373426299858548,
+            "peak": 0.04263253137469292
+          },
+          {
+            "letter": "B",
+            "path": "build/command-audio-consumer-20261019/frozen-01/02/B.wav",
+            "bytes": 768044,
+            "sha256": "0be693bd5acde99ad8e69fe05c55aeeabdb76f03224a36f6da235e7a16dc7351",
+            "frames": 96000,
+            "rms": 0.013373426299858548,
+            "peak": 0.04263253137469292
+          }
+        ]
+      },
+      {
+        "id": "03",
+        "interpretation": "unchanged baseline equivalence",
+        "different_stereo_frames": 0,
+        "files": [
+          {
+            "letter": "A",
+            "path": "build/command-audio-consumer-20261019/frozen-01/03/A.wav",
+            "bytes": 768044,
+            "sha256": "aed8e2ac673142c89871e71144a48b2e14142587b9fe82c6974645c0bb2ed655",
+            "frames": 96000,
+            "rms": 0.005051812100807802,
+            "peak": 0.03339100629091263
+          },
+          {
+            "letter": "B",
+            "path": "build/command-audio-consumer-20261019/frozen-01/03/B.wav",
+            "bytes": 768044,
+            "sha256": "aed8e2ac673142c89871e71144a48b2e14142587b9fe82c6974645c0bb2ed655",
+            "frames": 96000,
+            "rms": 0.005051812100807802,
+            "peak": 0.03339100629091263
+          }
+        ]
+      },
+      {
+        "id": "04",
+        "interpretation": "unchanged baseline equivalence",
+        "different_stereo_frames": 0,
+        "files": [
+          {
+            "letter": "A",
+            "path": "build/command-audio-consumer-20261019/frozen-01/04/A.wav",
+            "bytes": 768044,
+            "sha256": "962fb1e74cbffb8d733b6cf08a37b6fb3d908ee268a4239ae6545a98df50470d",
+            "frames": 96000,
+            "rms": 0.004444985826119875,
+            "peak": 0.03333820775151253
+          },
+          {
+            "letter": "B",
+            "path": "build/command-audio-consumer-20261019/frozen-01/04/B.wav",
+            "bytes": 768044,
+            "sha256": "962fb1e74cbffb8d733b6cf08a37b6fb3d908ee268a4239ae6545a98df50470d",
+            "frames": 96000,
+            "rms": 0.004444985826119875,
+            "peak": 0.03333820775151253
+          }
+        ]
+      },
+      {
+        "id": "05",
+        "interpretation": "intentional command/allocator overlap-policy divergence; not silicon audio validation",
+        "different_stereo_frames": 80608,
+        "files": [
+          {
+            "letter": "A",
+            "path": "build/command-audio-consumer-20261019/frozen-01/05/A.wav",
+            "bytes": 768044,
+            "sha256": "3893c28b34c7c85117e5d1918ee628b2975067a048d5ef9e8274950f9323f095",
+            "frames": 96000,
+            "rms": 0.017854740811329033,
+            "peak": 0.06406326591968536
+          },
+          {
+            "letter": "B",
+            "path": "build/command-audio-consumer-20261019/frozen-01/05/B.wav",
+            "bytes": 768044,
+            "sha256": "f089fd5424b9fd0947c79333c42fb2a2b64ff23f869979736304f66181d9bc61",
+            "frames": 96000,
+            "rms": 0.014663732820739987,
+            "peak": 0.03679601103067398
+          }
+        ]
+      }
+    ],
+    "export_stderr_bytes": 0,
+    "initial_test_receipt_equal": true
+  },
+  "render_binding": {
+    "path": "build/command-audio-consumer-20261019/frozen-01/bound-before-render.json",
+    "bytes": 1455,
+    "sha256": "53e29bdae80dd8c5c51c5f8685b506415143657dfb95940c6ba8d98de9db8238"
+  },
+  "render_receipt": {
+    "path": "build/command-audio-consumer-20261019/frozen-01/validation.json",
+    "bytes": 4796,
+    "sha256": "b961e853f6cc9b0d5136f6f386eda9bc1d91da4d648fdf5f060117a98ce47cf3"
+  },
+  "chronology_notes": [
+    "Design frozen before implementation or execution. Initial header/test optimized and sanitizer source bindings are unchanged.",
+    "Transitive RecordedChorusProfile.h was first explicitly bound before the one-time WAV export; it is not retrospectively claimed part of the initial pre-execution binding.",
+    "WAV export followed root and independent source/witness clearance, using the exact initially passing optimized binary, once.",
+    "A constructed wrong-hash protocol copy intentionally rejects in runner verification. It is not a consumer/audio regression or a replacement protocol."
+  ],
+  "public_artifacts": [
+    {
+      "path": "Tools/prototypes/command-audio-consumer-20261019/design-frozen.json",
+      "bytes": 11423,
+      "sha256": "8980465c531f64b882ca95bb15444c16d43fdf823418d5d79445e935fdba506b"
+    },
+    {
+      "path": "Tools/prototypes/command-audio-consumer-20261019/CommandAudioConsumer.h",
+      "bytes": 13971,
+      "sha256": "4b16aecdce0d593a53a1f63604ae5fb949127b9f50731ae60ace56d2469cdaf9"
+    },
+    {
+      "path": "Tools/prototypes/command-audio-consumer-20261019/consumer_test.cpp",
+      "bytes": 21678,
+      "sha256": "eab9c5eab7b8a39ef12bfad8606d47317d9f4af5077433c61761159e0d8dde7c"
+    },
+    {
+      "path": "Tools/prototypes/command-audio-consumer-20261019/run_validation.py",
+      "bytes": 4665,
+      "sha256": "6ba954590da573c14737bb1f8f6242db7db446124b89942823398e867f507cbe"
+    },
+    {
+      "path": "Docs/research/command-audio-consumer-2026-10-19.md",
+      "bytes": 11558,
+      "sha256": "a667ba2aa5d8ac38715c7cdf44f39dc3c52999cedb0d58bb209e03276754537a"
+    }
+  ]
+}
