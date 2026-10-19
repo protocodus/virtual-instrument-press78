@@ -189,8 +189,15 @@ void editorContract()
     for (auto* child : editor->getChildren())
         if (auto* tooltip = dynamic_cast<juce::SettableTooltipClient*> (child); tooltip && tooltip->getTooltip().isNotEmpty())
             check (shown.insert (tooltip->getTooltip()).second, "one editor control per parameter");
-    for (auto* parameter : p.getParameters())
-        check (shown.count (parameter->getName (64)) == 1, "the editor shows " + parameter->getName (64));
+    const auto& parameters = p.getParameters();
+    for (int i = 0; i < parameters.size(); ++i)
+    {
+        const auto name = parameters[i]->getName (64);
+        if (press78::kPluginControls[static_cast<std::size_t> (i)].hidden)
+            check (shown.count (name) == 0, "the editor omits the inert " + name);
+        else
+            check (shown.count (name) == 1, "the editor shows " + name);
+    }
 
     const auto image = editor->createComponentSnapshot (editor->getLocalBounds(), true, 1.0f);
     check (image.getPixelAt (4, 4).getAlpha() == 255, "the editor paints an opaque panel");
