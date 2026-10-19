@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-10-19T02:52:38.097764+00:00",
+  "scope": "Current b11 additive-noise removal audit; production unchanged. Historical noise-removal.json remains a separate earlier-source comparison.",
+  "version": "0.1.0b11",
+  "source_commit": "998a273627529a883ce6c0db7dfac1680b82bf7d",
+  "active_controls": 63,
+  "hidden_inert_legacy_fields": [
+    "noiseRms",
+    "noiseModel"
+  ],
+  "all101_native_patches_zero_noise": true,
+  "runtime_include_closure": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/Press78Engine.cpp": "76c9f2bff45743c1c26ba7cf30efd208814290a6ad8292b203e17bd442cd23e4",
+    "Source/DSP/Press78Engine.h": "ddab76c7e5f548c15bee1cfa115f903fdcd49e71611a302e29bad52dc4d1b6c7",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+  },
+  "no_runtime_noise_prng_or_research_noise_header": true,
+  "shared_dsp_files": [
+    {
+      "upstream": "Source/DSP/AnalogOutput.h",
+      "native": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/AnalogOutput.h",
+      "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+    },
+    {
+      "upstream": "Source/DSP/CircuitNoise.h",
+      "native": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/CircuitNoise.h",
+      "sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+    },
+    {
+      "upstream": "Source/DSP/FactoryVoices.h",
+      "native": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/FactoryVoices.h",
+      "sha256": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7"
+    },
+    {
+      "upstream": "Source/DSP/OversampledAnalogOutput.h",
+      "native": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/OversampledAnalogOutput.h",
+      "sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1"
+    },
+    {
+      "upstream": "Source/DSP/Press78Engine.cpp",
+      "native": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/Press78Engine.cpp",
+      "sha256": "76c9f2bff45743c1c26ba7cf30efd208814290a6ad8292b203e17bd442cd23e4"
+    },
+    {
+      "upstream": "Source/DSP/Press78Engine.h",
+      "native": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/Press78Engine.h",
+      "sha256": "ddab76c7e5f548c15bee1cfa115f903fdcd49e71611a302e29bad52dc4d1b6c7"
+    },
+    {
+      "upstream": "Source/DSP/RecordedChorus.h",
+      "native": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/RecordedChorus.h",
+      "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+    },
+    {
+      "upstream": "Source/DSP/RecordedChorusProfile.h",
+      "native": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/RecordedChorusProfile.h",
+      "sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+    }
+  ],
+  "fresh_native_validation": {
+    "command": "cmake --build build --parallel 4 && ctest --test-dir build --output-on-failure",
+    "ctest_suites_passed": 4,
+    "ctest_suites_failed": 0,
+    "includes": "44 core contracts including legacy-noise silence, stereo identity, invalid inputs, live automation, reset, split blocks and sound-off; 5 rendered modulation contracts; factory and chorus generators",
+    "scope_limit": "Native software contracts; not a new sanitizer run or interactive Reason playback test."
+  },
+  "independent_review": {
+    "reviewer": "hardware_recording_audit",
+    "runtime_and_wrapper_inert": true,
+    "all_active_gui_formats_have_no_noise_controls": true,
+    "source_package_installed_payload_and_existing_b11_receipts_agree": true,
+    "scope_limit": "Read-only source/artifact/receipt review; no fresh package build, installation or host run."
+  },
+  "existing_package": {
+    "path": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/dist/Press78-0.1.0b11.u45",
+    "sha256": "a73e454ea8f372e8bba042269c9850c56fcd5090da4bda052fd3f77855613676",
+    "bytes": 9780965
+  },
+  "research_boundary": "Standalone historical CircuitNoise header/probe/tools are outside instrument runtime; no generated hiss is bundled into presets or synthesis.",
+  "source_sha256": {
+    "Source/DSP/Press78Engine.cpp": "76c9f2bff45743c1c26ba7cf30efd208814290a6ad8292b203e17bd442cd23e4",
+    "Source/DSP/Press78Engine.h": "ddab76c7e5f548c15bee1cfa115f903fdcd49e71611a302e29bad52dc4d1b6c7",
+    "Tests/test_dsp.cpp": "91359774c91d0e2cca4c79fd50155e5bffef26d1e47ba376b3ab90a77314aaba",
+    "Resources/controls.json": "0b627e60f366fd47a8bf1cb836c5d7d59fa238175d67a659c64e5b5866135753"
+  }
+}
