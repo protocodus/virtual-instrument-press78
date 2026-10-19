@@ -1,0 +1,78 @@
+{
+  "schema": "press78.sustain-b13-rack-validation.v1",
+  "passed": true,
+  "version": "0.1.0b13",
+  "product_id": "cz.protocodus.Press78",
+  "archive_sha256": "0f96a6c414fd990f3383036d28daa67c39202c857ec2e2e1c3deba556944e80a",
+  "archive_bytes": 9867062,
+  "source_synced_from_commit": "586c80e9475b35d00135eaec21365c95d5e2cba2",
+  "builds": [
+    "local45 Deployment",
+    "universal45"
+  ],
+  "package": {
+    "passed": true,
+    "archive": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Output/Universal45/Press78.u45",
+    "archive_sha256": "0f96a6c414fd990f3383036d28daa67c39202c857ec2e2e1c3deba556944e80a",
+    "archive_bytes": 9867062,
+    "patches": 101,
+    "chip_inputs": [
+      "chip_binaries/Deployment/Press7832.ll",
+      "chip_binaries/Deployment/Press7864.ll",
+      "chip_binaries/Testing/Press7832.ll",
+      "chip_binaries/Testing/Press7864.ll"
+    ],
+    "native_modules": [
+      "Press78.dylib",
+      "Press78-arm64.dylib"
+    ],
+    "installed": "/Users/vojta/Library/Application Support/Propellerhead Software/RackExtensions_Dev/Press78",
+    "scope": "Source-aligned local/universal payload inspection; no host execution or delivery acceptance"
+  },
+  "host": {
+    "capability_sha256": "ec7bf6037438d99dd3536d1c72997c1a53d5460706be9243dd4ab5c0b32aee04",
+    "host_sha256": "9c6373121e9ce60fbaf77a8a8723539aed3d66a19b35c11b6a8807892eaa739e",
+    "host_version": "14.0.2d7 build 20275 TESTING VERSION",
+    "sdk": [
+      "JukeboxSDK_500_028",
+      "TargetVersion=5.0"
+    ]
+  },
+  "creation_count": 3,
+  "protection_checks_passed": 15,
+  "production_files_preserved": 4900,
+  "scratch_restored": true,
+  "payload_unchanged": true,
+  "native_modules": {
+    "Press78-arm64.dylib": {
+      "architectures": [
+        "arm64"
+      ],
+      "sha256": "a84384a3e6bf85f1c2c75d52ad16be03407d6430a32494f1d8dcbef937a249a8"
+    },
+    "Press78.dylib": {
+      "architectures": [
+        "x86_64"
+      ],
+      "sha256": "dbe1bb9b9212c178f5729bac82b36dfdb7fd0dcd5e1026c221693fca2971fd23"
+    }
+  },
+  "named_patch_loading_verified": false,
+  "interactive_playback_verified": false,
+  "song_persistence_verified": false,
+  "host_CPU_verified": false,
+  "source_receipts": {
+    "Tests/results/package.json": {
+      "sha256": "30042f9e25b2417008be99ad40cf10c18c384b78399ad248bf64f58a2fbf39fc"
+    },
+    "Tests/results/recon-cli.json": {
+      "sha256": "459a1e85e665551323b5c68e32fe8c4fa8ad035b1f33b6284d81266455f2de95"
+    },
+    "Tests/results/local-native-payload.json": {
+      "sha256": "33e7c4b4cc0e809478684445781b2228f3dcdae2723a37be7f539cb586bd5353"
+    }
+  },
+  "limitations": [
+    "CLI creation/conversions do not verify default-patch loading, interactive playback, song persistence, host performance, or publication."
+  ]
+}

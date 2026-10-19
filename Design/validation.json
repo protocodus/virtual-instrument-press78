@@ -34,7 +34,7 @@
     "Design/preview_template.html": "db5add4edaa5505e3de37f1f61511ef4ff88edfe476a939d723e5ab2f3cd5634",
     "Design/index.html": "8b42316555757a4fde3e86b28fe456920a22fa48a5490badfd6fdb2b460d690b",
     "Design/render_preview.cjs": "fa345aea4e6fcb20b8cdd7c665b75ac203e901d292ee1e4faf073ceeebbba217",
-    "Resources/controls.json": "5b7536198609114c84ccbd5aaf8ee6a7384e7445544ac632216b122fec5b9af5"
+    "Resources/controls.json": "3dce228f9a12faa92ad1a93b90e7eb526fadfea9a8281ac7a1448def694466a4"
   },
   "branding_fold_clearance_min_px": 15,
   "header_group_center_tolerance_px": 0.5,

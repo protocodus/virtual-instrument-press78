@@ -1,517 +1,834 @@
 {
   "passed": true,
-  "scope": "Source patch maps versus immutable b12 U45; no host loading or audio claim",
-  "archive": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Output/Universal45/Press78.u45",
-  "archive_sha256": "11ce1b17c1b1d9eaaf5cfde9f104bba719777882add6cc7b345e448e04e40e57",
+  "scope": "Final source and versioned b13 archive patch maps versus immutable versioned b12 U45; no host loading or audio claim",
+  "product_id": "cz.protocodus.Press78",
+  "version": "0.1.0b13",
+  "baseline_version": "0.1.0b12",
+  "baseline_archive": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/dist/Press78-0.1.0b12.u45",
+  "baseline_archive_sha256": "11ce1b17c1b1d9eaaf5cfde9f104bba719777882add6cc7b345e448e04e40e57",
+  "baseline_archive_bytes": 9839431,
+  "archive": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/dist/Press78-0.1.0b13.u45",
+  "archive_sha256": "0f96a6c414fd990f3383036d28daa67c39202c857ec2e2e1c3deba556944e80a",
+  "archive_bytes": 9867062,
   "patches": 101,
+  "existing_properties_per_patch": 66,
+  "stored_properties_per_patch": 67,
   "only_added_property": {
     "sustainMode": 1
   },
+  "all_existing_property_values_identical": true,
+  "source_matches_b13_archive": true,
+  "patch_xml_metadata_verified": true,
+  "prior_receipt": "sustain-b13-patch-compatibility-before-version.json",
+  "prior_receipt_sha256": "f821f4b9a907658c4d4269ff72b1b69733ea68cdd199125819973db29871adb6",
   "rows": [
     {
-      "patch": "PSS 05 Toy Piano.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "9ae0df7fd97c2b3c4462c3cac4944d96c5e815ae68db9c23206eeced60ced872"
-    },
-    {
-      "patch": "PSS 17 Funky Clavi.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "ae6ac6f0368aa45ce8a50dd72426bc6b9776657c56ad5a367bf03b12ec8776ac"
-    },
-    {
-      "patch": "PSS 37 Basson.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "83a2785e65340a7fef92d5e71a392616a0cb20c0195c51a551d2c63f8afc3d01"
-    },
-    {
-      "patch": "PSS 64 Wood Bass 2.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "2f5409d127dd39154681e52af260ed790a62a15eebd6c90a82a9c7f021d744c9"
-    },
-    {
-      "patch": "PSS 88 Glockenspiel.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "5f89a80b4b36ac6750ec0be4e462618b6c1f83085be32bcdc802ded25981372e"
-    },
-    {
-      "patch": "PSS 33 Tenor Sax.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "ff2463632d5dc922f281ad99d277a95fd3c0db7dfd74cd0084f9ca8bbf9bbe08"
-    },
-    {
-      "patch": "PSS 51 Hawaiian Guitar.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "a7fcdd6777a9b735511c26db3391f57cca50102770640ac2cb9b5d1f3b99ceb2"
-    },
-    {
-      "patch": "PSS 95 Whistle.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "1486fc35ec73704cf4a7a448d1ee52e82ca688d16520e9d71a2aa4f2adbb4589"
-    },
-    {
-      "patch": "PSS 44 Bagpipe.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "fe2b8a24dcacffb7e9956e57166cef5d988cae82151ab1de5d663ba7ac006669"
-    },
-    {
-      "patch": "PSS 42 Ocarina.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "32b460fffb702bdfc7bdc2860f3380ae9f105f056b3d196d3c1dd1e2b727f3a9"
-    },
-    {
-      "patch": "PSS 93 Human Voice 1.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "0dc5a157904625a4c7bf20ab011245e1e0c2e77ed881f6cd470cc358ed9bb687"
-    },
-    {
-      "patch": "PSS 19 Glass Celesta.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "557f97df3fec151884c35b8d235656c660e34f9fb14e44ee52e1938f3ecbdbea"
-    },
-    {
-      "patch": "PSS 15 Harpsichord 1.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "b4280b9ef2018c6b84ace4d3d63b634a64584edb8a832627499c454362a8c460"
-    },
-    {
-      "patch": "PSS 68 Mandolin.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "5068d61b2710e6ddf98a076309e02dce89b3aefae9eff1123ef39104f1ee3e73"
-    },
-    {
-      "patch": "PSS 71 Shamisen.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "43f0340b8b3e52f9302a96281801630dea54ab7de946894f1b6613e30aef3704"
-    },
-    {
-      "patch": "PSS 61 Picked Bass.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "ba736e22a988a7bfd68865a9d4af8bd4f815ef25f096bc79c8a177e6def37eca"
-    },
-    {
-      "patch": "PSS 56 Pedal Steel Guitar.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "72a1e9dd2298030d1b5cce391dae035d9c4dc35e50a1d97c784e62d51adcc1ae"
-    },
-    {
-      "patch": "PSS 47 Kazoo.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "89c1d1304c54a6d3e8cf633cb6e262bd51738df87e67eac20631a4bbb6642e78"
-    },
-    {
-      "patch": "PSS 96 Ice Block.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "60d2b0061b037f87953650afc09457ceda09a74e595bd8e71584e79185d8285a"
-    },
-    {
-      "patch": "PSS 73 Koto.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "fe9cb5ae48c534c2ea1ce24aaad462b53493e10bd712ef1ee3fb849758c4ac8a"
-    },
-    {
-      "patch": "PSS 25 Electric Trumpet.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "e746182acb4a42d66771081fd6da2407560d1f6589e72a496ec98f0e28cd7cae"
-    },
-    {
-      "patch": "PSS 99 Sine Wave.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "c0962dadc1bea78d133091d4e89bbfa110261769dfc487210061daa2c7b76113"
-    },
-    {
-      "patch": "PSS 54 Rock Guitar 2.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "eb3d9c90ee971f62125266389afb3b1d3d55cd8897a06233bfcbcda55fe5c5d4"
-    },
-    {
-      "patch": "PSS 48 Samba Whistle.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "6f349be216de2da21d9664149217ed6d145e09825a7681dcac0cf7faae75c8de"
-    },
-    {
-      "patch": "PSS 66 Banjo.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "488f6a47c560424f38308d6a6e3dfd229a7c565af4b2ac847d8e38fc91f3a134"
-    },
-    {
-      "patch": "PSS 08 Pipe Organ 2.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "4f136537479a8cb78df3ce8012005e2864a2f6329b47778490b85eea795a4839"
-    },
-    {
-      "patch": "PSS 65 Bowed Bass.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "4d0be363d7d289322b75cb9e66c6f1b6cf86a5da8b4cb4c1d0339aff25e147f8"
-    },
-    {
-      "patch": "PSS 98 Music Box.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "19d224901ce4ff28510b9e91014dad91d45e81cd23ac55272fe930ce508845c6"
-    },
-    {
-      "patch": "PSS 01 Piano 2.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "f71fe7ec4a7b54f993112fda03bb2ee4694a0c3a2d78c28ff8568673d02fca67"
-    },
-    {
       "patch": "Init.repatch",
+      "archive_path": "Public/Init.repatch",
       "unchanged_existing_properties": 66,
-      "source_sha256": "1c13cfc9364476ed5586b9fd0a8c2bd5c308498d997767943e958baed2afb02f"
-    },
-    {
-      "patch": "PSS 30 Brass Ensemble.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "c55451c31619616961f9314f7b716dbe0f1bbfb7432f09980f4e01ad149c96df"
-    },
-    {
-      "patch": "PSS 82 Chimes.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "91232cea07312da2f9999c9ba1f1b722c055a1dd5b8581eab2aa049e3591af9f"
-    },
-    {
-      "patch": "PSS 22 Trumpet.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "f9a167a541f51da9efac447dd95e375adcca6f8e584d72109f1e2e6327ca7497"
-    },
-    {
-      "patch": "PSS 43 Woodwind Ensemble.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "c3edefa8fd328f24ae547ab3df88e03ab5098d209f766e69c296e99647903c23"
-    },
-    {
-      "patch": "PSS 52 Jazz Guitar.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "d5b578dfec8cc464378751141390f3cc8b283961c9beb7da66c8e60414c38b1b"
-    },
-    {
-      "patch": "PSS 24 Wow Trumpet.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "3507112a02360ab75d34d2249ba1d53961eea6fa0a3792a876e0c3cbd5b7c91d"
-    },
-    {
-      "patch": "PSS 63 Wood Bass 1.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "6c109be6ec2adcbd09692e6c1c2ddee5e14c3490b7f1462147fa3506eee8e001"
-    },
-    {
-      "patch": "PSS 20 Accordion.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "0a5ee485f7e6e4e6829a37becb7f91d4795177fa56acc4a9b4f5fbd493543482"
-    },
-    {
-      "patch": "PSS 97 Musical Saw.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "07ce64e3f8a7805ffe69d1e6846696d7afba051bae0b34bad69a0a205b8b8827"
-    },
-    {
-      "patch": "PSS 18 Celesta.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "7bf23653f6f9db12c0337e6214e7966d47a56c7e1fbb869869a0d62db9dc80e2"
-    },
-    {
-      "patch": "PSS 23 Mute Trumpet.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "8b939e4d47dccdf7929494e9249b2182a04a530c505e6cf9a6930f543af72c74"
-    },
-    {
-      "patch": "PSS 74 Violin 1.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "b4af441f27823d1b1575663fba2a79c5fa2855ee8084a681831af4b459e05861"
-    },
-    {
-      "patch": "PSS 07 Pipe Organ 1.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "a51d8dd91c0476fe5c1aed4fdb53b4d1647c5b8e0929e5ec4eaae436d8bb859b"
+      "source_sha256": "ecfdfa86ef7759fe8d65fe3df7bbad01af5b7cdfdca8c55ee74ee2e2bb348517",
+      "b12_patch_sha256": "e65786edb0595d6012c73f84ca396a76c296b2e0da548a2827cca4b4b1414d17",
+      "b13_patch_sha256": "ecfdfa86ef7759fe8d65fe3df7bbad01af5b7cdfdca8c55ee74ee2e2bb348517"
     },
     {
       "patch": "PSS 00 Piano 1.repatch",
+      "archive_path": "Public/PSS 00 Piano 1.repatch",
       "unchanged_existing_properties": 66,
-      "source_sha256": "01f7882c307cbc3ee90580dd8faba3acde1d5d54c1281fcbd01889ada9246718"
+      "source_sha256": "01d778fc1732e1da2e83ae53238b0d56dbf609ee57daf6821693a597d45f8b66",
+      "b12_patch_sha256": "5db4cdde2745e869868399fa3e9f7a1d9cc1d8e088dc34e56bda977b917cd887",
+      "b13_patch_sha256": "01d778fc1732e1da2e83ae53238b0d56dbf609ee57daf6821693a597d45f8b66"
     },
     {
-      "patch": "PSS 85 Timpani.repatch",
+      "patch": "PSS 01 Piano 2.repatch",
+      "archive_path": "Public/PSS 01 Piano 2.repatch",
       "unchanged_existing_properties": 66,
-      "source_sha256": "b8d743cd19562c14b7275d5a931363f990abaa0d60e65e4e700646fe56cc90df"
-    },
-    {
-      "patch": "PSS 75 Violin 2.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "4fcd0fa6638c6715b73a85efbdca76f05922cf4ee31c1fa6c945fa7e67cdfc97"
-    },
-    {
-      "patch": "PSS 21 Bandoneon.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "4a736f3591a634805ea5a3eda326b0b74496ce7db7254b9a85732e0654527cb4"
-    },
-    {
-      "patch": "PSS 04 Honky-Tonk Piano.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "7f78cd9328910af2969acf3eff717a135e159149c68fabc83c45df7f437d6780"
-    },
-    {
-      "patch": "PSS 89 Marimba 1.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "d264cdf968e1af9007441587023043c27bcb6aed28e31b140fccd31b696f2a7b"
-    },
-    {
-      "patch": "PSS 38 Piccolo.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "ff5b81befcbc5b0330bff7761941b1960e2e08ca4759ac06b4959a98665dcc75"
-    },
-    {
-      "patch": "PSS 62 Slap Bass.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "7af6d7be96f65252d69735ede4d3f21460703160bd9fa5422d1663767c582841"
-    },
-    {
-      "patch": "PSS 83 Hand Bell.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "583d5a0bd49622979b51aac8ea3d7d18a988cf5b8f5f277273519358a1367d03"
-    },
-    {
-      "patch": "PSS 10 Electronic Organ.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "7fc35467a61c0c849bf55f46c47aa3884151a580108303a2337cac805391f9fa"
-    },
-    {
-      "patch": "PSS 91 Vibraphone.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "72cf31062983e75b5bfea6f43d3df6b1c4de53072b527c78d376ea7a8b94534f"
-    },
-    {
-      "patch": "PSS 28 Trombone.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "1fff445c01965f5355ae15dfbfade912efd3b23b33e683cd47d93407ee1c0a65"
-    },
-    {
-      "patch": "PSS 34 Clarinet.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "9be09dccb5d4d7a01690c64f6977edc63164d874de8f7ec630d4633e3feca978"
-    },
-    {
-      "patch": "PSS 53 Rock Guitar 1.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "d2d76ff66afebef9a74a4fb564a438ca504e8a13ce230b8b04298b010d82df6f"
-    },
-    {
-      "patch": "PSS 80 Synth Tom.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "29d942860bd1b624726e1681893a34b1a9827d3cc56892f2c99801c9e84210e7"
-    },
-    {
-      "patch": "PSS 26 Horn.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "c6e0a7bd2badfe85acd0a97f2b4a9b93788e783e49056ad8e1ae6856f77dcce1"
-    },
-    {
-      "patch": "PSS 55 Rock Guitar 3.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "e16394ce30c8b10f7052121fbff21c5c40988165d9ec55d68d795e53b6e246c2"
-    },
-    {
-      "patch": "PSS 67 Ukulele.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "efd93f9d9645466f7f5b6abc7bfe92bf2f131c3c5048ae5a4d0125da8f14a16b"
-    },
-    {
-      "patch": "PSS 03 Electric Piano 2.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "67bc86dfbc4e82ca8c2241352ffdc30362b4aa57b419d2ebd2f183b7e579b6b0"
-    },
-    {
-      "patch": "PSS 49 Acoustic Guitar.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "e0596770ed847d824f7d041bd5cddb235c1c974931b167d5c9b8391da05e18d7"
-    },
-    {
-      "patch": "PSS 29 Tuba.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "7e76ed027e6099758c9497bb13b9d53ec21f51addac46fa478f6c9c6e3ce710a"
-    },
-    {
-      "patch": "PSS 84 Tubular Bells.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "fdca2eb20c99c6bf7d485b404f78ebac729c49b4233fa359c157e767313ffb00"
+      "source_sha256": "d9361672aa622c40616d8c40f4efeecea88ecaf3652780acc66be25c26d86975",
+      "b12_patch_sha256": "fd78757bc037a2d87515119bcc1de4abfae662acb32046d7e3f8575d962d82fc",
+      "b13_patch_sha256": "d9361672aa622c40616d8c40f4efeecea88ecaf3652780acc66be25c26d86975"
     },
     {
       "patch": "PSS 02 Electric Piano 1.repatch",
+      "archive_path": "Public/PSS 02 Electric Piano 1.repatch",
       "unchanged_existing_properties": 66,
-      "source_sha256": "b4e34218bd585969bf3edb954358b8044d8103bbf4a78a00d8b2e145700f2d15"
+      "source_sha256": "117615acb8472b8331bd65081efa572093c3269bb86b2f077dcbc5924cfb93a0",
+      "b12_patch_sha256": "c502b2145c6564d7377e75e822ce36acf8e517d3091ca92a3b0a10087a51fdc2",
+      "b13_patch_sha256": "117615acb8472b8331bd65081efa572093c3269bb86b2f077dcbc5924cfb93a0"
     },
     {
-      "patch": "PSS 77 Strings.repatch",
+      "patch": "PSS 03 Electric Piano 2.repatch",
+      "archive_path": "Public/PSS 03 Electric Piano 2.repatch",
       "unchanged_existing_properties": 66,
-      "source_sha256": "fbf6075c8e72aaf6ca94e2ed52ae6ee5ceeabd1a709bd5b49b5333b11a23e2ad"
+      "source_sha256": "e3a46000489ad5b0914fb9148aac72fdf3eabcaab6bf12109b37fdd0fef43b4a",
+      "b12_patch_sha256": "06288618c34e636035e2c0a08a9749169ae33237da8ddcdd303803f207d869e8",
+      "b13_patch_sha256": "e3a46000489ad5b0914fb9148aac72fdf3eabcaab6bf12109b37fdd0fef43b4a"
     },
     {
-      "patch": "PSS 50 Classic Guitar.repatch",
+      "patch": "PSS 04 Honky-Tonk Piano.repatch",
+      "archive_path": "Public/PSS 04 Honky-Tonk Piano.repatch",
       "unchanged_existing_properties": 66,
-      "source_sha256": "1c59e083e0081db4cc0fa18a6b6ce1bb63ed2a5002df49adfde0aa0891d14f5b"
+      "source_sha256": "549f9eaa2e015d59142cffee37e0f9f64ccf648fd113aa5f010791089efe5a77",
+      "b12_patch_sha256": "f17c15599614dd8b9d77dc4f149e39a285fb1efe54d9a0a05feee64601cfdbf1",
+      "b13_patch_sha256": "549f9eaa2e015d59142cffee37e0f9f64ccf648fd113aa5f010791089efe5a77"
     },
     {
-      "patch": "PSS 78 Synth Brass.repatch",
+      "patch": "PSS 05 Toy Piano.repatch",
+      "archive_path": "Public/PSS 05 Toy Piano.repatch",
       "unchanged_existing_properties": 66,
-      "source_sha256": "75b3faffe54ec4fd92c6ab273dae119618d34dbeca55414eb328e29e56ea3557"
-    },
-    {
-      "patch": "PSS 94 Human Voice 2.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "516191ca381bffb889b9f4d99ff5333875325e5f421ad2fd4cfdee0cfb8c6005"
-    },
-    {
-      "patch": "PSS 58 12String Guitar.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "bac8b13e20f4e9ac46d6a8e23977054ebed8361474b3e4c1e1f7097a913f6642"
-    },
-    {
-      "patch": "PSS 92 Human Chorus.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "86d8d0546a5f7af1fd41ad556658dd5564a09b321ac240e82037508f89870803"
-    },
-    {
-      "patch": "PSS 35 Bass Clarinet.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "3f37c5c57a2ce1c9ce82d0122f3d075e6b69987b6993a607548c6825093885c8"
-    },
-    {
-      "patch": "PSS 59 Electric Bass.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "8a20d8aba14ec1904c48fe8bfffd8a8c4fce316d728784f705da131d9a3ed385"
-    },
-    {
-      "patch": "PSS 60 Mute Bass.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "7596d672e88caafae8c5d2f75e566e9f9204eb3ff7251be52f8ac989fcc61b9b"
-    },
-    {
-      "patch": "PSS 46 Jug.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "c6537c794358c5a152cc15eb1fd7ff80c181c02589a154eefeb450e3dc45cdf0"
-    },
-    {
-      "patch": "PSS 69 Harp.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "88bf23c73e27eb7adc10848a200a623f82b10d327667515083ecd67108087250"
-    },
-    {
-      "patch": "PSS 45 Harmonica.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "5387f22f5d05490f1d545171fd6f99556a2b6aa7d9f9a2d5983341939b3fad3a"
-    },
-    {
-      "patch": "PSS 41 Recorder.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "071a2206962eb7283e19a298f6f3efc4c3c64dc01ae9cbc351799f336539e247"
-    },
-    {
-      "patch": "PSS 11 Transistor Organ.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "bdbb70d02e9f65fb4f81f72bf7e7cfc827013a3ad34a9ec1b42079371eea793a"
-    },
-    {
-      "patch": "PSS 32 Alto Sax.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "a203088354c5b7517ca93f7d646f0a8fe65ad83f5b9cf6fdfbf8fd5c40072d33"
-    },
-    {
-      "patch": "PSS 70 Sitar.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "00f097c516521f09561e5c7d45ad6af520bd83a1d57df123477fd943824d106a"
-    },
-    {
-      "patch": "PSS 76 Cello.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "135f35a64d6fc016ed0d6b404ef0b432f856f9f997e8fd29cd489ec75937f907"
-    },
-    {
-      "patch": "PSS 86 Steel Drum 1.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "e44e0ff6087a06154c8454e6170e1f62bce04a46ac9c62dc19dbb2c7ec68ee29"
-    },
-    {
-      "patch": "PSS 87 Steel Drum 2.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "e984987606bdf3f4af58f9873f05a83d086e04e8cd3721b4ebe4266df824f295"
-    },
-    {
-      "patch": "PSS 90 Marimba 2.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "7376ae9a5116dcc378ca979f9651ced08cc8203f0e33c06d890b3d3946fde2ea"
-    },
-    {
-      "patch": "PSS 57 Tremolo Guitar.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "778536af9e48540a5f110233553ef9203e4652d320ae6991f9fbfb2c268a52f4"
-    },
-    {
-      "patch": "PSS 40 Panflute.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "13e39f44208e27fded7fe0aa1ccc334fa7d17adf8c98cf0da3aa03022f243fda"
-    },
-    {
-      "patch": "PSS 79 Synth Bass.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "7e22127fd7ba360631f14cf2dd9322d5c8b143611ba43e29ac64643616e029d6"
-    },
-    {
-      "patch": "PSS 81 Carillon.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "c6889e7af2ffe6c44279c345d139e8801acb2c97ffdd26397f0a2929be5bd304"
-    },
-    {
-      "patch": "PSS 14 Street Organ.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "395e9de6984116baac776a8b29283fde36a49d850efb17b322054bb7b2cf57aa"
-    },
-    {
-      "patch": "PSS 09 Small Church Organ.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "0399f7e4cf021e01778f9b4bd77a9dec7a8f8d25995e4938d560ae2a11c00e60"
-    },
-    {
-      "patch": "PSS 12 Tremolo Organ.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "9e02d5076a6ecfc2de1ddcdcfbec6aae87cd46181299207783e19d712318c240"
-    },
-    {
-      "patch": "PSS 31 Soprano Sax.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "7bf91b2de5280cef3fd8d10af1a227363033ef908de1d5505290f8cd3aa5a855"
-    },
-    {
-      "patch": "PSS 36 Oboe.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "aa0cca47b7c6fc7218fb87fd9e746717b0a8be0b939b1f768b80ef6638a31403"
-    },
-    {
-      "patch": "PSS 72 Jamisen.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "c5206a8e6f5d2148959fc1844d67c2949a8bfcfc70113640ed507ecee8eb88f1"
-    },
-    {
-      "patch": "PSS 13 Jazz Organ.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "534b2ca0597ccffeeba92e3c1ae08d02e128ddab4cae499817a6df530304641e"
-    },
-    {
-      "patch": "PSS 16 Harpsichord 2.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "2351d6af7821359b8b0a3e0f8a1e7c728aa26242f7093dcadfd04fabdbe8ad92"
-    },
-    {
-      "patch": "PSS 39 Flute.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "1e86d6c4c059968f2f8f1125a03f095ada5fb5a54c118a0b1d2430a7610f31ec"
-    },
-    {
-      "patch": "PSS 27 Alpenhorn.repatch",
-      "unchanged_existing_properties": 66,
-      "source_sha256": "cac62c9bf7362eba919acceac397ec66790dacbfeb131dad225b939fbb60101c"
+      "source_sha256": "7c22b38ba46ff9b6f85ca43f403cb4f1470edd310ba08ac13b4674367e54f847",
+      "b12_patch_sha256": "d9fbdce94e723e114e817492403f46cfbcc09f037bb7c9092974ae187762d7f5",
+      "b13_patch_sha256": "7c22b38ba46ff9b6f85ca43f403cb4f1470edd310ba08ac13b4674367e54f847"
     },
     {
       "patch": "PSS 06 Reed Organ.repatch",
+      "archive_path": "Public/PSS 06 Reed Organ.repatch",
       "unchanged_existing_properties": 66,
-      "source_sha256": "1533b09ff2af94aaa241470ba82ce057422763aecd90f1f27770566a1013b4eb"
+      "source_sha256": "69c913bced1e640e52702bdf524d964b4f87ffb8a46ffc3e3bfbac8d446013d9",
+      "b12_patch_sha256": "0324a1c856df74c15654ea1cd2ccb3b84ed1f07c005639876f7d064d2dd98a73",
+      "b13_patch_sha256": "69c913bced1e640e52702bdf524d964b4f87ffb8a46ffc3e3bfbac8d446013d9"
+    },
+    {
+      "patch": "PSS 07 Pipe Organ 1.repatch",
+      "archive_path": "Public/PSS 07 Pipe Organ 1.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "9f7751af4688d5bdb319971ae2857acbf12739564d086f8c5cc46bab89151ad1",
+      "b12_patch_sha256": "ee01cbb4842d98f444fa94ebf7d0c9238eafa189ad10a537432971c165673701",
+      "b13_patch_sha256": "9f7751af4688d5bdb319971ae2857acbf12739564d086f8c5cc46bab89151ad1"
+    },
+    {
+      "patch": "PSS 08 Pipe Organ 2.repatch",
+      "archive_path": "Public/PSS 08 Pipe Organ 2.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "49c177b5f90b62524bf776e695c33f5f2d62f70d36df2bade66749a055e55fee",
+      "b12_patch_sha256": "1d7ade4841e77feca27b19ba260b8ac2c1478b11caf7d8191123ae42bcd0c744",
+      "b13_patch_sha256": "49c177b5f90b62524bf776e695c33f5f2d62f70d36df2bade66749a055e55fee"
+    },
+    {
+      "patch": "PSS 09 Small Church Organ.repatch",
+      "archive_path": "Public/PSS 09 Small Church Organ.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "29269fb04e6ebdb69b5221928d46c828e2f658300dbe8a2708ca112dd6ed5583",
+      "b12_patch_sha256": "8c2f27a10b58f3fab0e4767a4d08b5401c28fb318d4ec2f861f50392fb0c7f57",
+      "b13_patch_sha256": "29269fb04e6ebdb69b5221928d46c828e2f658300dbe8a2708ca112dd6ed5583"
+    },
+    {
+      "patch": "PSS 10 Electronic Organ.repatch",
+      "archive_path": "Public/PSS 10 Electronic Organ.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "439a7c22cb5ffa9ba00159341e18f3e2f75b4b85406d0dd4d0f9d10ca3b030b6",
+      "b12_patch_sha256": "8cd9b27ec20e808017ae750a66b938811ed1e29005f5eba73fc8e0441cb1826d",
+      "b13_patch_sha256": "439a7c22cb5ffa9ba00159341e18f3e2f75b4b85406d0dd4d0f9d10ca3b030b6"
+    },
+    {
+      "patch": "PSS 11 Transistor Organ.repatch",
+      "archive_path": "Public/PSS 11 Transistor Organ.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "97066e65a6bb5397037b0762490844cfd5bc6a5d6b7d6415a924a0fcdb4e632e",
+      "b12_patch_sha256": "b6d48a9f1c8e84909e1a0368d52bf64dc9cddccd4a831722861d7db91a81b6f0",
+      "b13_patch_sha256": "97066e65a6bb5397037b0762490844cfd5bc6a5d6b7d6415a924a0fcdb4e632e"
+    },
+    {
+      "patch": "PSS 12 Tremolo Organ.repatch",
+      "archive_path": "Public/PSS 12 Tremolo Organ.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "05800c62e2da99ca5f16e92e3524981a2403c38758aaa961e9622c3e7a373ed8",
+      "b12_patch_sha256": "4be5d68c0e168b949d0a1536d7dc6b9028a27cd198fdf6389ff3282eea50f479",
+      "b13_patch_sha256": "05800c62e2da99ca5f16e92e3524981a2403c38758aaa961e9622c3e7a373ed8"
+    },
+    {
+      "patch": "PSS 13 Jazz Organ.repatch",
+      "archive_path": "Public/PSS 13 Jazz Organ.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "00de4048e9ec6e40e7cd24f1887db84abf0416fa93af6fdc63a46506424f9dcc",
+      "b12_patch_sha256": "272cbb4242557bce662619c4c9b2224c41484717c833e7be509b30e7819f56a3",
+      "b13_patch_sha256": "00de4048e9ec6e40e7cd24f1887db84abf0416fa93af6fdc63a46506424f9dcc"
+    },
+    {
+      "patch": "PSS 14 Street Organ.repatch",
+      "archive_path": "Public/PSS 14 Street Organ.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "f22e4f697494774957633c09aa72b7cfd155b55f7a46782b6bb182e136f53d3e",
+      "b12_patch_sha256": "6b4c1f1d12ec0fb43fc48bc047e2f986aff80c343b4b2a50b7c3b8f1b8a59683",
+      "b13_patch_sha256": "f22e4f697494774957633c09aa72b7cfd155b55f7a46782b6bb182e136f53d3e"
+    },
+    {
+      "patch": "PSS 15 Harpsichord 1.repatch",
+      "archive_path": "Public/PSS 15 Harpsichord 1.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "8f1fb86250160986a544e9fd85f41b509543e5837803265cda37b3ab2cd97ce4",
+      "b12_patch_sha256": "6638e9eca0f33b820fbd6782bdeaa49efe3040fbce23971957a6a7b23bbe23d1",
+      "b13_patch_sha256": "8f1fb86250160986a544e9fd85f41b509543e5837803265cda37b3ab2cd97ce4"
+    },
+    {
+      "patch": "PSS 16 Harpsichord 2.repatch",
+      "archive_path": "Public/PSS 16 Harpsichord 2.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "677c1b5cf12b635dc80369472d45ccf40f641588a6e0f184f9b584e262f78587",
+      "b12_patch_sha256": "9044fcd3a7aa4c6d8696b5144f5b08ba2eeeab6358f43033f54d186aeba0dfb9",
+      "b13_patch_sha256": "677c1b5cf12b635dc80369472d45ccf40f641588a6e0f184f9b584e262f78587"
+    },
+    {
+      "patch": "PSS 17 Funky Clavi.repatch",
+      "archive_path": "Public/PSS 17 Funky Clavi.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "8f9d135f3d91a5ec6b51903d8d7037fd9333d8f1e2b8ab3f3bc5c00b9f00bbfb",
+      "b12_patch_sha256": "06d9c930fcf5448dc1690e2a1d754f268f0cf5cc363ee49a48bc0be69aa9a2d9",
+      "b13_patch_sha256": "8f9d135f3d91a5ec6b51903d8d7037fd9333d8f1e2b8ab3f3bc5c00b9f00bbfb"
+    },
+    {
+      "patch": "PSS 18 Celesta.repatch",
+      "archive_path": "Public/PSS 18 Celesta.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "354022f5b91459566674c0a93d921a78f49168fb3f615c471ee80e7dc1497221",
+      "b12_patch_sha256": "a9b78ea0621d2abb982f3edf100105295aa9f817c7d09a7202f5cfa3715b72f0",
+      "b13_patch_sha256": "354022f5b91459566674c0a93d921a78f49168fb3f615c471ee80e7dc1497221"
+    },
+    {
+      "patch": "PSS 19 Glass Celesta.repatch",
+      "archive_path": "Public/PSS 19 Glass Celesta.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "e37ab80f7acbaf88ea1a95b9850a1afd65d3eecabcce5fce8bde0a77486b610c",
+      "b12_patch_sha256": "34b608ceb46268b5c154bba5a926113cf03e1da8874eaac591ecca0abd3022ce",
+      "b13_patch_sha256": "e37ab80f7acbaf88ea1a95b9850a1afd65d3eecabcce5fce8bde0a77486b610c"
+    },
+    {
+      "patch": "PSS 20 Accordion.repatch",
+      "archive_path": "Public/PSS 20 Accordion.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "aca46a87eac1bde4ed00a10110e519a1ee75e07fbc80d8c7ba26f22abebe1408",
+      "b12_patch_sha256": "3b0438eee5e98fa54cd8d889b4879daea2baa24c9a06262e23b09fbc1b9871e9",
+      "b13_patch_sha256": "aca46a87eac1bde4ed00a10110e519a1ee75e07fbc80d8c7ba26f22abebe1408"
+    },
+    {
+      "patch": "PSS 21 Bandoneon.repatch",
+      "archive_path": "Public/PSS 21 Bandoneon.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "4a42ab0a74c3c68c9f2adacf3103c65362d2bb9a505811709690e97cc8fc8d27",
+      "b12_patch_sha256": "aaccb0faaba94591f0d36ea53b6dd69bda5ab7da801e286ab5f9a13809bf6eb7",
+      "b13_patch_sha256": "4a42ab0a74c3c68c9f2adacf3103c65362d2bb9a505811709690e97cc8fc8d27"
+    },
+    {
+      "patch": "PSS 22 Trumpet.repatch",
+      "archive_path": "Public/PSS 22 Trumpet.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "b1c6e87606f9fc34e10556cb40a6420db782afa51969394fedaaf89ba5f33ea9",
+      "b12_patch_sha256": "cc9daedd276ac7fa2b0b7bc0fa7cfc68eb0d796af5166bc4d91ac5a25c2686bd",
+      "b13_patch_sha256": "b1c6e87606f9fc34e10556cb40a6420db782afa51969394fedaaf89ba5f33ea9"
+    },
+    {
+      "patch": "PSS 23 Mute Trumpet.repatch",
+      "archive_path": "Public/PSS 23 Mute Trumpet.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "838a28065e769236bde98a47fdc3c3ab7cfdb9a306adc176c33c402dcbea61e9",
+      "b12_patch_sha256": "2af0799ddff8572961c8bac0237cffcbcf8714e14ff3139e7588a02dabf54717",
+      "b13_patch_sha256": "838a28065e769236bde98a47fdc3c3ab7cfdb9a306adc176c33c402dcbea61e9"
+    },
+    {
+      "patch": "PSS 24 Wow Trumpet.repatch",
+      "archive_path": "Public/PSS 24 Wow Trumpet.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "ea30aa801c1f86d11748360ed07f9c0b83febf5633618558792c74688c7a68f8",
+      "b12_patch_sha256": "16545911ebf2acc51f29b7fc625e955d0b47a30648499b20fa21da91c44241d2",
+      "b13_patch_sha256": "ea30aa801c1f86d11748360ed07f9c0b83febf5633618558792c74688c7a68f8"
+    },
+    {
+      "patch": "PSS 25 Electric Trumpet.repatch",
+      "archive_path": "Public/PSS 25 Electric Trumpet.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "6fdb73761ed1c8f3edc99488410d50f1919e969909d6281935076c9b206fd22f",
+      "b12_patch_sha256": "aa2bcfaca5d849f1f86e07129a3dd68c4b42ed618f5b94a087da7ed3e2a6da43",
+      "b13_patch_sha256": "6fdb73761ed1c8f3edc99488410d50f1919e969909d6281935076c9b206fd22f"
+    },
+    {
+      "patch": "PSS 26 Horn.repatch",
+      "archive_path": "Public/PSS 26 Horn.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "5c0949a5e18684243eee5a65da59397b2ee16241b0629c94a5f26f096e6da139",
+      "b12_patch_sha256": "65e26a9b60b3132eaa50c67a74a5c5cfb79c11f61f17221a77f822d244add00c",
+      "b13_patch_sha256": "5c0949a5e18684243eee5a65da59397b2ee16241b0629c94a5f26f096e6da139"
+    },
+    {
+      "patch": "PSS 27 Alpenhorn.repatch",
+      "archive_path": "Public/PSS 27 Alpenhorn.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "0895b6d963631fd8b56707fba8b165943e57b2bbd35513f25e2126e7f0ae99f6",
+      "b12_patch_sha256": "315e6aad6d129d6eb97aa9b73ee2de226518697d73333585b2c86e748961756d",
+      "b13_patch_sha256": "0895b6d963631fd8b56707fba8b165943e57b2bbd35513f25e2126e7f0ae99f6"
+    },
+    {
+      "patch": "PSS 28 Trombone.repatch",
+      "archive_path": "Public/PSS 28 Trombone.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "b17f6f6534bdfc7326c05f461ec149a49008f93afe5b8c196045269acfa530e5",
+      "b12_patch_sha256": "01fad5ba78498aa94fc80b52c183f4bb0be2f2c89b8694ba87062e2e851baa9c",
+      "b13_patch_sha256": "b17f6f6534bdfc7326c05f461ec149a49008f93afe5b8c196045269acfa530e5"
+    },
+    {
+      "patch": "PSS 29 Tuba.repatch",
+      "archive_path": "Public/PSS 29 Tuba.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "cfaa5e1fb397bcf4fde4fca50eca359f93c8c52e282b53396b608239cd7ce0e7",
+      "b12_patch_sha256": "c6de4152db785c62fed7b3bf11d092c4dd2c0553d4194315e1b43a42b0774efe",
+      "b13_patch_sha256": "cfaa5e1fb397bcf4fde4fca50eca359f93c8c52e282b53396b608239cd7ce0e7"
+    },
+    {
+      "patch": "PSS 30 Brass Ensemble.repatch",
+      "archive_path": "Public/PSS 30 Brass Ensemble.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "2a7a0f0cbc2a2aab6190528310a0f6e11ad7f493bfeff435582a7e8a28b3a89f",
+      "b12_patch_sha256": "ad897fcb8f6f9dd4e8a697efa5172f73c5a209cbf8770d9ab2530869103f0bcf",
+      "b13_patch_sha256": "2a7a0f0cbc2a2aab6190528310a0f6e11ad7f493bfeff435582a7e8a28b3a89f"
+    },
+    {
+      "patch": "PSS 31 Soprano Sax.repatch",
+      "archive_path": "Public/PSS 31 Soprano Sax.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "b6d57f1f92393842580f688fae51945aafb84b3a53bfee92712285b8b2e52b98",
+      "b12_patch_sha256": "47cf599c088930de185b9ee2212ca51cbffb8fa48f73afce6752736b5ae30f70",
+      "b13_patch_sha256": "b6d57f1f92393842580f688fae51945aafb84b3a53bfee92712285b8b2e52b98"
+    },
+    {
+      "patch": "PSS 32 Alto Sax.repatch",
+      "archive_path": "Public/PSS 32 Alto Sax.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "e9d5a01cb4de051fd534997d76bbb0f48697e3b3e7a9bbba4c8172e23902e127",
+      "b12_patch_sha256": "d75804a03ba7e5840f13a6cb7c67b3f127bea8e210359ba1d2c0fa8c269dcc81",
+      "b13_patch_sha256": "e9d5a01cb4de051fd534997d76bbb0f48697e3b3e7a9bbba4c8172e23902e127"
+    },
+    {
+      "patch": "PSS 33 Tenor Sax.repatch",
+      "archive_path": "Public/PSS 33 Tenor Sax.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "e2fbd3ed2180200d7dfe5b2d77391d5d22c64419bd6237979ec6a1c5cc28d38b",
+      "b12_patch_sha256": "61b8ce188a21461774fffe67d843a5172b6e679eaf62431ef0678b0749556ac4",
+      "b13_patch_sha256": "e2fbd3ed2180200d7dfe5b2d77391d5d22c64419bd6237979ec6a1c5cc28d38b"
+    },
+    {
+      "patch": "PSS 34 Clarinet.repatch",
+      "archive_path": "Public/PSS 34 Clarinet.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "67d200a65aa61c81229d8f3e8b035a1dbed49ff20bc21984e4cf19b38ce732d9",
+      "b12_patch_sha256": "4f56fd4b2f290414b2c350287c8b27569ccf451d7fcc4758fad53fa064be77c9",
+      "b13_patch_sha256": "67d200a65aa61c81229d8f3e8b035a1dbed49ff20bc21984e4cf19b38ce732d9"
+    },
+    {
+      "patch": "PSS 35 Bass Clarinet.repatch",
+      "archive_path": "Public/PSS 35 Bass Clarinet.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "1c3db664a978b44921683037c02fd8c39583bdadee94f63b2538e61ae6a10e7d",
+      "b12_patch_sha256": "38478c3d9a16cdc49c4bfb937cd2edbe5f94cf8536be8a356e5a16be1df49174",
+      "b13_patch_sha256": "1c3db664a978b44921683037c02fd8c39583bdadee94f63b2538e61ae6a10e7d"
+    },
+    {
+      "patch": "PSS 36 Oboe.repatch",
+      "archive_path": "Public/PSS 36 Oboe.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "e9a1b6a47e11fe56c92132bba20d18a9d8eca0b5d0b248c01c85d64190fe030d",
+      "b12_patch_sha256": "22d954e694851173ae8d671879f28c80aeec5ff3995631db98d72d4a9a42d4d4",
+      "b13_patch_sha256": "e9a1b6a47e11fe56c92132bba20d18a9d8eca0b5d0b248c01c85d64190fe030d"
+    },
+    {
+      "patch": "PSS 37 Basson.repatch",
+      "archive_path": "Public/PSS 37 Basson.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "37fbe0a1164101fbb0cb67433948dcb9807b72ea2451a9f4cb3f396d0e37c70d",
+      "b12_patch_sha256": "6377829cd4b45600cf21924c14090a3cc2563466ba59b45851b99f8b10a60876",
+      "b13_patch_sha256": "37fbe0a1164101fbb0cb67433948dcb9807b72ea2451a9f4cb3f396d0e37c70d"
+    },
+    {
+      "patch": "PSS 38 Piccolo.repatch",
+      "archive_path": "Public/PSS 38 Piccolo.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "3454404cadea8a571a19a0bb76c05354d49a325a7cc1d2d3991029ccdc0b0e31",
+      "b12_patch_sha256": "257452dcdbe2d4c255971e210918be04c6910e26410746f2185e7cc28037f224",
+      "b13_patch_sha256": "3454404cadea8a571a19a0bb76c05354d49a325a7cc1d2d3991029ccdc0b0e31"
+    },
+    {
+      "patch": "PSS 39 Flute.repatch",
+      "archive_path": "Public/PSS 39 Flute.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "387131a54d540b7a470ac2784d8cf00ee9a5211a1111fcf34a607a8992f56e37",
+      "b12_patch_sha256": "03e5d6339bae28dd44dd155e53c03bdf97be983daba6e73c93c783d75e8d9079",
+      "b13_patch_sha256": "387131a54d540b7a470ac2784d8cf00ee9a5211a1111fcf34a607a8992f56e37"
+    },
+    {
+      "patch": "PSS 40 Panflute.repatch",
+      "archive_path": "Public/PSS 40 Panflute.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "7d66387bb2e9d4ba076e69680736cd24a4129a3d8cbd893ad600a255abb33f6f",
+      "b12_patch_sha256": "78946113bb41a23cb8324359f54d026208b77ed00c41fbb77b7f580114e4ce87",
+      "b13_patch_sha256": "7d66387bb2e9d4ba076e69680736cd24a4129a3d8cbd893ad600a255abb33f6f"
+    },
+    {
+      "patch": "PSS 41 Recorder.repatch",
+      "archive_path": "Public/PSS 41 Recorder.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "f4d422258d8e98e7a30cacb1ed028c773a98a5d0787c0799fb1de81c66c4e50e",
+      "b12_patch_sha256": "e0da4824ba43398e9d6f66d2d42116d59c9acb7e00e3fb089327cde0ee413ae3",
+      "b13_patch_sha256": "f4d422258d8e98e7a30cacb1ed028c773a98a5d0787c0799fb1de81c66c4e50e"
+    },
+    {
+      "patch": "PSS 42 Ocarina.repatch",
+      "archive_path": "Public/PSS 42 Ocarina.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "2b71d7db272fc81627564b374a1994ee3004d78acaa61a3ffaf8983b042cd484",
+      "b12_patch_sha256": "728f69ebfa8b6d0fecd2ead06767ee546a0c6be2a412045a137dee95bc3b8b2c",
+      "b13_patch_sha256": "2b71d7db272fc81627564b374a1994ee3004d78acaa61a3ffaf8983b042cd484"
+    },
+    {
+      "patch": "PSS 43 Woodwind Ensemble.repatch",
+      "archive_path": "Public/PSS 43 Woodwind Ensemble.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "9e667372561ead4dc8ec91f12bf894cc39e1820c056e31e8fa1f8d64ee034cd1",
+      "b12_patch_sha256": "0a052f8818970087e5d21c57c88c214da1fc69b7d883d3e1ceae3b2d8f1e05b4",
+      "b13_patch_sha256": "9e667372561ead4dc8ec91f12bf894cc39e1820c056e31e8fa1f8d64ee034cd1"
+    },
+    {
+      "patch": "PSS 44 Bagpipe.repatch",
+      "archive_path": "Public/PSS 44 Bagpipe.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "b3fd48e1c89e65e42831e3e831215b6ae3c31f8b777b92645f2eb58e755ca3cc",
+      "b12_patch_sha256": "b734e4eeb0fb4a34245bd07e2b1b99b4ab1722ceb1848325fea5414842b58daa",
+      "b13_patch_sha256": "b3fd48e1c89e65e42831e3e831215b6ae3c31f8b777b92645f2eb58e755ca3cc"
+    },
+    {
+      "patch": "PSS 45 Harmonica.repatch",
+      "archive_path": "Public/PSS 45 Harmonica.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "2fd9e2ddf08cb548378618ae204712ca37193015861f00857617ffa638912054",
+      "b12_patch_sha256": "fed6ed7b677232d06d9a68666c0cf1be626bb7b3abc13c3a951d994a6efe1e19",
+      "b13_patch_sha256": "2fd9e2ddf08cb548378618ae204712ca37193015861f00857617ffa638912054"
+    },
+    {
+      "patch": "PSS 46 Jug.repatch",
+      "archive_path": "Public/PSS 46 Jug.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "e26bd3989ce77be848174faebe7d9b3bf1210f5a6f054df4e129d7925eddfce1",
+      "b12_patch_sha256": "e1a956012b73ae6d9881450d618a75b26698c430b9d4ae43ed087fb3017fdde8",
+      "b13_patch_sha256": "e26bd3989ce77be848174faebe7d9b3bf1210f5a6f054df4e129d7925eddfce1"
+    },
+    {
+      "patch": "PSS 47 Kazoo.repatch",
+      "archive_path": "Public/PSS 47 Kazoo.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "6fbc498d1df1dae1597a5547fb9ed5c77942629fc0e659174fe2d2b99f090aee",
+      "b12_patch_sha256": "f29689e673a623fdbcfb5f3ae22c0a75ac2ea9c9f894a3339b127e0ec5ccd311",
+      "b13_patch_sha256": "6fbc498d1df1dae1597a5547fb9ed5c77942629fc0e659174fe2d2b99f090aee"
+    },
+    {
+      "patch": "PSS 48 Samba Whistle.repatch",
+      "archive_path": "Public/PSS 48 Samba Whistle.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "7249935f530e35861a5428682f7c06d3321d4ef5c700626aeaad699ff7779e0d",
+      "b12_patch_sha256": "833198d0aa5689d2a669fd855b305db2c0b692effaa295dcebd507e7d534f592",
+      "b13_patch_sha256": "7249935f530e35861a5428682f7c06d3321d4ef5c700626aeaad699ff7779e0d"
+    },
+    {
+      "patch": "PSS 49 Acoustic Guitar.repatch",
+      "archive_path": "Public/PSS 49 Acoustic Guitar.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "acdea249f4991de9f4cf42157913d4e6586119856f85f59b72dfa8bc2c68bdbe",
+      "b12_patch_sha256": "b3b55e68859b41ec0e13f4a55643baf1a4acc4b95cf93f457ccdaed3516893a6",
+      "b13_patch_sha256": "acdea249f4991de9f4cf42157913d4e6586119856f85f59b72dfa8bc2c68bdbe"
+    },
+    {
+      "patch": "PSS 50 Classic Guitar.repatch",
+      "archive_path": "Public/PSS 50 Classic Guitar.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "cee00c4469c828c17ee8afd73f9b63709ea39889f647b822a0cde1cc80e99c72",
+      "b12_patch_sha256": "8e20b784f32137a7459e62a4a628386db8aaa7889b173784c1ab6bbc085b945c",
+      "b13_patch_sha256": "cee00c4469c828c17ee8afd73f9b63709ea39889f647b822a0cde1cc80e99c72"
+    },
+    {
+      "patch": "PSS 51 Hawaiian Guitar.repatch",
+      "archive_path": "Public/PSS 51 Hawaiian Guitar.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "7116ee830bbbd4d552574f702ba1a9baba63e2eadaa45e5284477edc5277f2b0",
+      "b12_patch_sha256": "8fdaabfbb565cc422b9b26f7a891b50338516e76b1afba518f045c96b1e95898",
+      "b13_patch_sha256": "7116ee830bbbd4d552574f702ba1a9baba63e2eadaa45e5284477edc5277f2b0"
+    },
+    {
+      "patch": "PSS 52 Jazz Guitar.repatch",
+      "archive_path": "Public/PSS 52 Jazz Guitar.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "4968d11261b693940a97c5a288ddc48c9c00cb45f6c2b4dc9903486d58cd17d5",
+      "b12_patch_sha256": "0bf4b262fa267903e732fb1255e353835fbac447de36c84e4ac33d3e532429da",
+      "b13_patch_sha256": "4968d11261b693940a97c5a288ddc48c9c00cb45f6c2b4dc9903486d58cd17d5"
+    },
+    {
+      "patch": "PSS 53 Rock Guitar 1.repatch",
+      "archive_path": "Public/PSS 53 Rock Guitar 1.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "3ee418782f108adc6965b1475f33c3fac382cb6b5a9d844b96c2aecfe6640ef3",
+      "b12_patch_sha256": "130ef40bbe1630540942ea1c5657e747f54cdfbca97e295b751725bfd21c765e",
+      "b13_patch_sha256": "3ee418782f108adc6965b1475f33c3fac382cb6b5a9d844b96c2aecfe6640ef3"
+    },
+    {
+      "patch": "PSS 54 Rock Guitar 2.repatch",
+      "archive_path": "Public/PSS 54 Rock Guitar 2.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "caadbc1295c49627efa63de47200480119e209da4821e05b622cdd868b643217",
+      "b12_patch_sha256": "29681c7575bf4a53fe48f88cb10a6c9af5e8c04520697601857f969950cabac3",
+      "b13_patch_sha256": "caadbc1295c49627efa63de47200480119e209da4821e05b622cdd868b643217"
+    },
+    {
+      "patch": "PSS 55 Rock Guitar 3.repatch",
+      "archive_path": "Public/PSS 55 Rock Guitar 3.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "0356be64d44897d7ac9d575f8663d46511776de55589e6994ca24be091ddde56",
+      "b12_patch_sha256": "2d1b968042bd6e3ccfb8b6f18d8f7916940211ec5ccc42a34b1294976fa24f87",
+      "b13_patch_sha256": "0356be64d44897d7ac9d575f8663d46511776de55589e6994ca24be091ddde56"
+    },
+    {
+      "patch": "PSS 56 Pedal Steel Guitar.repatch",
+      "archive_path": "Public/PSS 56 Pedal Steel Guitar.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "ffddd692db9b7a6b8a675c10549c340f035f594eb1d0aa0da19fabe7f1403b73",
+      "b12_patch_sha256": "65d3b104672f322c9218251e18c23a07ce1283bf1575a27c63ca06f6df4bedde",
+      "b13_patch_sha256": "ffddd692db9b7a6b8a675c10549c340f035f594eb1d0aa0da19fabe7f1403b73"
+    },
+    {
+      "patch": "PSS 57 Tremolo Guitar.repatch",
+      "archive_path": "Public/PSS 57 Tremolo Guitar.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "d2c60938c4119bcbffb3c354bf60e3760b6bb1cb41319b0edb48736c096ac469",
+      "b12_patch_sha256": "8666812985a63fc807590be982bcb5f9ef06983a58b907ad6ac1d5144f4c2bcb",
+      "b13_patch_sha256": "d2c60938c4119bcbffb3c354bf60e3760b6bb1cb41319b0edb48736c096ac469"
+    },
+    {
+      "patch": "PSS 58 12String Guitar.repatch",
+      "archive_path": "Public/PSS 58 12String Guitar.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "87ca08e05d4c9cad19b3cd2d570994195e7c15dcb28abdbf31d54116580d2bb6",
+      "b12_patch_sha256": "55e6c5e253762f46f22142e0fd4fb0879cf9bb01c4eb93346bd950c2c1659f8c",
+      "b13_patch_sha256": "87ca08e05d4c9cad19b3cd2d570994195e7c15dcb28abdbf31d54116580d2bb6"
+    },
+    {
+      "patch": "PSS 59 Electric Bass.repatch",
+      "archive_path": "Public/PSS 59 Electric Bass.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "45fb410894ac7bf283a2b66438211a1d09666452f2a7a30e388f29fbed8ceb0b",
+      "b12_patch_sha256": "e3a0b66de70e2aaa3164f83c8c3d4a7162bd790e24625b1989a66b1e4efdddea",
+      "b13_patch_sha256": "45fb410894ac7bf283a2b66438211a1d09666452f2a7a30e388f29fbed8ceb0b"
+    },
+    {
+      "patch": "PSS 60 Mute Bass.repatch",
+      "archive_path": "Public/PSS 60 Mute Bass.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "e4c876ca29e1825aa79fb1be0cf7642c728563ddf2519334e8c0e5f0ffa4b114",
+      "b12_patch_sha256": "ae61b61a9a647d63a174d1ce814ed28116af75970a475f26315ca21faee8074f",
+      "b13_patch_sha256": "e4c876ca29e1825aa79fb1be0cf7642c728563ddf2519334e8c0e5f0ffa4b114"
+    },
+    {
+      "patch": "PSS 61 Picked Bass.repatch",
+      "archive_path": "Public/PSS 61 Picked Bass.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "bf6856a2c6dc76c2d7ceedcfdd1c32853ea1323a7e7cd94791c4ea6e36c65e9a",
+      "b12_patch_sha256": "a1c0fd0a5f122a0891f362e2e92de6b06cd17b250c43b23844c79f2cc8536429",
+      "b13_patch_sha256": "bf6856a2c6dc76c2d7ceedcfdd1c32853ea1323a7e7cd94791c4ea6e36c65e9a"
+    },
+    {
+      "patch": "PSS 62 Slap Bass.repatch",
+      "archive_path": "Public/PSS 62 Slap Bass.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "f661c3ed08286ed9d8969462a98c3907dac23aa1161922af9505bbab3eebc04e",
+      "b12_patch_sha256": "7059673a8b5fa8fbd3de9f1b89261a4581e15761e9ee5a14be52bf8dbe930e32",
+      "b13_patch_sha256": "f661c3ed08286ed9d8969462a98c3907dac23aa1161922af9505bbab3eebc04e"
+    },
+    {
+      "patch": "PSS 63 Wood Bass 1.repatch",
+      "archive_path": "Public/PSS 63 Wood Bass 1.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "6a185e377b2788792793eed2134e64cabd1d333ea25e2bfa672c7dd0d5f75bea",
+      "b12_patch_sha256": "701b8b43d6fae688cc960ddc53c32479f57ffce617a4ad70cac0de7df217d0fa",
+      "b13_patch_sha256": "6a185e377b2788792793eed2134e64cabd1d333ea25e2bfa672c7dd0d5f75bea"
+    },
+    {
+      "patch": "PSS 64 Wood Bass 2.repatch",
+      "archive_path": "Public/PSS 64 Wood Bass 2.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "b6084ad6c5d71ca539e1780eff3ddc41156fd8c3fe90147897210930fade7be7",
+      "b12_patch_sha256": "d29e82a3fbba7a5704aaf002f5a2bdabf5bc634eb089d6dc21b7447cc22db436",
+      "b13_patch_sha256": "b6084ad6c5d71ca539e1780eff3ddc41156fd8c3fe90147897210930fade7be7"
+    },
+    {
+      "patch": "PSS 65 Bowed Bass.repatch",
+      "archive_path": "Public/PSS 65 Bowed Bass.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "2913c677a7e922045c5f0ef9f7d136f8f8e41193b5677be0f1e0625401e9dca4",
+      "b12_patch_sha256": "ef3ae39f492be8aaa8663dfd124ee5e10b74ac3b8b423cf503a809edeb280edc",
+      "b13_patch_sha256": "2913c677a7e922045c5f0ef9f7d136f8f8e41193b5677be0f1e0625401e9dca4"
+    },
+    {
+      "patch": "PSS 66 Banjo.repatch",
+      "archive_path": "Public/PSS 66 Banjo.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "199711f432cbb1ab7493d5ee3f1a7d9c94150053d863fedc70d2b9a37c0c8650",
+      "b12_patch_sha256": "700b3fb376f02509195d54a3868a708902a44d30b10ff8fc85b1b31cea2672cf",
+      "b13_patch_sha256": "199711f432cbb1ab7493d5ee3f1a7d9c94150053d863fedc70d2b9a37c0c8650"
+    },
+    {
+      "patch": "PSS 67 Ukulele.repatch",
+      "archive_path": "Public/PSS 67 Ukulele.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "4e8f5d4830c6cee3736a0e37c8449dedecb376ec1acf002f802fb12af1728d95",
+      "b12_patch_sha256": "48dfb9f8f7ea6b143caa36e844fb4a896bf8bc8f68470622191b88b5edd09f1a",
+      "b13_patch_sha256": "4e8f5d4830c6cee3736a0e37c8449dedecb376ec1acf002f802fb12af1728d95"
+    },
+    {
+      "patch": "PSS 68 Mandolin.repatch",
+      "archive_path": "Public/PSS 68 Mandolin.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "d208170d66fb6e7898f061851eaa9021976f91b4e3f43ccaab522f5117c6889a",
+      "b12_patch_sha256": "7fdbbee04fb0677cef3640842199af6c33957cfb57134fe2935b10eafeb87c50",
+      "b13_patch_sha256": "d208170d66fb6e7898f061851eaa9021976f91b4e3f43ccaab522f5117c6889a"
+    },
+    {
+      "patch": "PSS 69 Harp.repatch",
+      "archive_path": "Public/PSS 69 Harp.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "05d053fc03145f07fe93a3ccef3ee39b56a8df1e72183d5bec802f77891415ed",
+      "b12_patch_sha256": "dffeb797cdcee04baf8d9a03ddf19c3ea66ca35a8f31deb11c7bb273f10c0fbf",
+      "b13_patch_sha256": "05d053fc03145f07fe93a3ccef3ee39b56a8df1e72183d5bec802f77891415ed"
+    },
+    {
+      "patch": "PSS 70 Sitar.repatch",
+      "archive_path": "Public/PSS 70 Sitar.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "e8dab63121ac1a47707233990d3eb4e38de2bcd815ca9349fc6d874d8942dd85",
+      "b12_patch_sha256": "3980e38fd9cb8d3ab01b00c1435f697cd31cd84ae37ad381dd90243c63a632c0",
+      "b13_patch_sha256": "e8dab63121ac1a47707233990d3eb4e38de2bcd815ca9349fc6d874d8942dd85"
+    },
+    {
+      "patch": "PSS 71 Shamisen.repatch",
+      "archive_path": "Public/PSS 71 Shamisen.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "a1f1250e8bf5d689f1390258fd210caa40e449148e56d5904c171f725bd0b026",
+      "b12_patch_sha256": "396a51b02fcdaef677399b50455871b058ce23f291368c495d91c231ccc90623",
+      "b13_patch_sha256": "a1f1250e8bf5d689f1390258fd210caa40e449148e56d5904c171f725bd0b026"
+    },
+    {
+      "patch": "PSS 72 Jamisen.repatch",
+      "archive_path": "Public/PSS 72 Jamisen.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "96d336ae10dbc21bb54b6d24f404cf85501a7aa3bc936aa4c7f6be2e5b2d9ca6",
+      "b12_patch_sha256": "4a5be68cd32bde375dbf9ad72236f01ff73b6793d0b075630e3fa2bbdc27e9c4",
+      "b13_patch_sha256": "96d336ae10dbc21bb54b6d24f404cf85501a7aa3bc936aa4c7f6be2e5b2d9ca6"
+    },
+    {
+      "patch": "PSS 73 Koto.repatch",
+      "archive_path": "Public/PSS 73 Koto.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "5888861058630ebf0140a0fa675951eec492bf67d8dbdfb36054978489bc71a5",
+      "b12_patch_sha256": "d2b619a6c43eeca44e58c1964e5065d4356a415c9c689630c24d53679e9a7fd9",
+      "b13_patch_sha256": "5888861058630ebf0140a0fa675951eec492bf67d8dbdfb36054978489bc71a5"
+    },
+    {
+      "patch": "PSS 74 Violin 1.repatch",
+      "archive_path": "Public/PSS 74 Violin 1.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "2573da9978134bd0406591490f5e58bf90062d275e6ffaf7e0db24beb6f435d7",
+      "b12_patch_sha256": "562c90bf52fbad2fea23d3e3b5a9e78b4fc614c674bc617da33495b3347b1bb0",
+      "b13_patch_sha256": "2573da9978134bd0406591490f5e58bf90062d275e6ffaf7e0db24beb6f435d7"
+    },
+    {
+      "patch": "PSS 75 Violin 2.repatch",
+      "archive_path": "Public/PSS 75 Violin 2.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "a9372fbd0c34c790d7ce04b37c28e62726cb4fa7d92e0f275557bffa3123f6ea",
+      "b12_patch_sha256": "9bb9b3cebf33f04441135a03dfaa0933849b95f3c016c39895e059cd9caae956",
+      "b13_patch_sha256": "a9372fbd0c34c790d7ce04b37c28e62726cb4fa7d92e0f275557bffa3123f6ea"
+    },
+    {
+      "patch": "PSS 76 Cello.repatch",
+      "archive_path": "Public/PSS 76 Cello.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "d74c6caf12ec2389e260e33051a353f56cf90e8807cf8e11d209c3b1b0b09a75",
+      "b12_patch_sha256": "1e6eff626ff427d7642150ec1a50d909bca37b023838ce6e7dc7c5dc5c66dda3",
+      "b13_patch_sha256": "d74c6caf12ec2389e260e33051a353f56cf90e8807cf8e11d209c3b1b0b09a75"
+    },
+    {
+      "patch": "PSS 77 Strings.repatch",
+      "archive_path": "Public/PSS 77 Strings.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "2c2796ed35f035061a0604df4ef5f17845727bc40c0a20abf2786d3e47b1b832",
+      "b12_patch_sha256": "7eee6126ded12f3c8dcff13de84170f00e6c422292025f1334e69098a5661e7b",
+      "b13_patch_sha256": "2c2796ed35f035061a0604df4ef5f17845727bc40c0a20abf2786d3e47b1b832"
+    },
+    {
+      "patch": "PSS 78 Synth Brass.repatch",
+      "archive_path": "Public/PSS 78 Synth Brass.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "ed38df7dd61b0d010b517e29c1378f4cf56a1b2e6dff6d940f103b4d2cfc2f59",
+      "b12_patch_sha256": "304ddf1fcd3d550569c66308e1f63d50982e941fc2f39380b383c74bdb2b7499",
+      "b13_patch_sha256": "ed38df7dd61b0d010b517e29c1378f4cf56a1b2e6dff6d940f103b4d2cfc2f59"
+    },
+    {
+      "patch": "PSS 79 Synth Bass.repatch",
+      "archive_path": "Public/PSS 79 Synth Bass.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "ea9ed0185cdf7b260df1b39b9b926de6cb5de0830882faae6ff8500dab42fbd8",
+      "b12_patch_sha256": "4e08d55aac11b6b4cdc5b71d1773c1ae3dd2214c230e539ac5d8f4b67ed1f5bc",
+      "b13_patch_sha256": "ea9ed0185cdf7b260df1b39b9b926de6cb5de0830882faae6ff8500dab42fbd8"
+    },
+    {
+      "patch": "PSS 80 Synth Tom.repatch",
+      "archive_path": "Public/PSS 80 Synth Tom.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "2cc245cdddf83141fc2b39b005bd82205c266e7dc1c453d7c4eac3b7727ecba3",
+      "b12_patch_sha256": "50a720f9e746cd55814fadc72dab877c6565fdd553aeb2caaee2defa3fa7e485",
+      "b13_patch_sha256": "2cc245cdddf83141fc2b39b005bd82205c266e7dc1c453d7c4eac3b7727ecba3"
+    },
+    {
+      "patch": "PSS 81 Carillon.repatch",
+      "archive_path": "Public/PSS 81 Carillon.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "5ee05f8e66a8c054b83fba579404ae469095c50bf62f2ef1b732ff9f84f57735",
+      "b12_patch_sha256": "b666c1845bb928bac3180464f26d2d08ef09fcf94394655e5cf8b7a10d405460",
+      "b13_patch_sha256": "5ee05f8e66a8c054b83fba579404ae469095c50bf62f2ef1b732ff9f84f57735"
+    },
+    {
+      "patch": "PSS 82 Chimes.repatch",
+      "archive_path": "Public/PSS 82 Chimes.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "ec2487429b843f28bd11b829fb373b0a76506b62e24b8741b154ff71d306c46e",
+      "b12_patch_sha256": "1f30601238bebbe3124d9db3d853d7e77d8c85c0ec97d63a48a52408ee54cbe3",
+      "b13_patch_sha256": "ec2487429b843f28bd11b829fb373b0a76506b62e24b8741b154ff71d306c46e"
+    },
+    {
+      "patch": "PSS 83 Hand Bell.repatch",
+      "archive_path": "Public/PSS 83 Hand Bell.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "d374af3d5343352f6c32fa31cb7e25cb7d28c58c8433288090a8740c7942b500",
+      "b12_patch_sha256": "0a3e731f2f00508679dc3ad27b9d3e927191799a0126395cec14e4e579ea65ce",
+      "b13_patch_sha256": "d374af3d5343352f6c32fa31cb7e25cb7d28c58c8433288090a8740c7942b500"
+    },
+    {
+      "patch": "PSS 84 Tubular Bells.repatch",
+      "archive_path": "Public/PSS 84 Tubular Bells.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "aaf7536770f04f3466e945fc9ebbcd253243fea0f3aabafd44952eb5d92a8a41",
+      "b12_patch_sha256": "7411af8d4c5c4402a3b8e595ba6165ea8065184c8a47cdc2f112d140ed6c3b3b",
+      "b13_patch_sha256": "aaf7536770f04f3466e945fc9ebbcd253243fea0f3aabafd44952eb5d92a8a41"
+    },
+    {
+      "patch": "PSS 85 Timpani.repatch",
+      "archive_path": "Public/PSS 85 Timpani.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "01c820af29f25eaa522f93e87057a763c15974b724e0c933a759773be82a9122",
+      "b12_patch_sha256": "80ab5eff6c5e86bac486ab5b107bc615b55e910db1740cc4e8d34ebd32b0fb5f",
+      "b13_patch_sha256": "01c820af29f25eaa522f93e87057a763c15974b724e0c933a759773be82a9122"
+    },
+    {
+      "patch": "PSS 86 Steel Drum 1.repatch",
+      "archive_path": "Public/PSS 86 Steel Drum 1.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "c7624c482e3f4d2961e119f6a4097ac99af9886546faa73c02ac4297ebc16b76",
+      "b12_patch_sha256": "575f1442a1c15f5be442df128ccdc2ba7e3b0decb841e6cb79de382e3fd37411",
+      "b13_patch_sha256": "c7624c482e3f4d2961e119f6a4097ac99af9886546faa73c02ac4297ebc16b76"
+    },
+    {
+      "patch": "PSS 87 Steel Drum 2.repatch",
+      "archive_path": "Public/PSS 87 Steel Drum 2.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "c89db114ba637f5ca884ac3c04501747144e4161b4bf538bb900275a5d63b45b",
+      "b12_patch_sha256": "595f362dedef4bf5f82af607fd45c03892c47ce9b7c06e0902b8ab2e2f8b135e",
+      "b13_patch_sha256": "c89db114ba637f5ca884ac3c04501747144e4161b4bf538bb900275a5d63b45b"
+    },
+    {
+      "patch": "PSS 88 Glockenspiel.repatch",
+      "archive_path": "Public/PSS 88 Glockenspiel.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "534feecd4575590fe7326b3123a98262ae52782ebda1dc28a46297cc6874560a",
+      "b12_patch_sha256": "dd0754e59ee46bba3bdc9cc77ee092c89e5370abdf40df3529a614580c560a9e",
+      "b13_patch_sha256": "534feecd4575590fe7326b3123a98262ae52782ebda1dc28a46297cc6874560a"
+    },
+    {
+      "patch": "PSS 89 Marimba 1.repatch",
+      "archive_path": "Public/PSS 89 Marimba 1.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "b4e7cde8b24b60d93964d944ac018c6e3a36a1a7f722ec20476ec71b66be8049",
+      "b12_patch_sha256": "6b452698339eb4bd10ab71f8356907ee70ca9bb2e6d8dea6ec3f932258718ef4",
+      "b13_patch_sha256": "b4e7cde8b24b60d93964d944ac018c6e3a36a1a7f722ec20476ec71b66be8049"
+    },
+    {
+      "patch": "PSS 90 Marimba 2.repatch",
+      "archive_path": "Public/PSS 90 Marimba 2.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "5c6496cf95001f7475fdb1dd3672e5a12bc26f976a458aa269432c398af80443",
+      "b12_patch_sha256": "e1f39f7fe07e5db963fc51466e5766e2bc7f8d0cd7a2de1515824ca3ff469cbc",
+      "b13_patch_sha256": "5c6496cf95001f7475fdb1dd3672e5a12bc26f976a458aa269432c398af80443"
+    },
+    {
+      "patch": "PSS 91 Vibraphone.repatch",
+      "archive_path": "Public/PSS 91 Vibraphone.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "06b658b106fa61fe8e1e977754d114e360a7b6aeeb34be20ca6640071fce91c0",
+      "b12_patch_sha256": "73736431a12767e82c781105a016163dd41c793351a5705aa24a884637a38337",
+      "b13_patch_sha256": "06b658b106fa61fe8e1e977754d114e360a7b6aeeb34be20ca6640071fce91c0"
+    },
+    {
+      "patch": "PSS 92 Human Chorus.repatch",
+      "archive_path": "Public/PSS 92 Human Chorus.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "55d927a4f5751cb0fb308ca93dbc733fa077134c5b9f164b60ac0dfcb4e7ff2b",
+      "b12_patch_sha256": "c81e7b358a77a715077aea4338caeafdacccd417d8e75aa848f817a301a954a4",
+      "b13_patch_sha256": "55d927a4f5751cb0fb308ca93dbc733fa077134c5b9f164b60ac0dfcb4e7ff2b"
+    },
+    {
+      "patch": "PSS 93 Human Voice 1.repatch",
+      "archive_path": "Public/PSS 93 Human Voice 1.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "47d8edf87e3f4b261d828dad598aaf5fadee6c26cf6fe01debbab586e8eef3c2",
+      "b12_patch_sha256": "ca8ed4b438d5a636b717a2782add614e103452d6767665c5f6aefb1dc1bc8890",
+      "b13_patch_sha256": "47d8edf87e3f4b261d828dad598aaf5fadee6c26cf6fe01debbab586e8eef3c2"
+    },
+    {
+      "patch": "PSS 94 Human Voice 2.repatch",
+      "archive_path": "Public/PSS 94 Human Voice 2.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "f36c1273b259346ac8aaa50e566bfea2555935d70a61b246c17b913664bead7b",
+      "b12_patch_sha256": "9ac12f952db52df34adc6d78f4596c375fe8ef42cb9ab03f1542787a97eb42d2",
+      "b13_patch_sha256": "f36c1273b259346ac8aaa50e566bfea2555935d70a61b246c17b913664bead7b"
+    },
+    {
+      "patch": "PSS 95 Whistle.repatch",
+      "archive_path": "Public/PSS 95 Whistle.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "f7cc8d24038fa3e84798117ab1c1b42974095b32546fa2dc9391db4b918503c4",
+      "b12_patch_sha256": "25d96d3f6e0278fe34c43d24fda2a2a10307825d826603ca5ce7ffa16c5e22de",
+      "b13_patch_sha256": "f7cc8d24038fa3e84798117ab1c1b42974095b32546fa2dc9391db4b918503c4"
+    },
+    {
+      "patch": "PSS 96 Ice Block.repatch",
+      "archive_path": "Public/PSS 96 Ice Block.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "1150e91115518724beaabe7182869af6a5ddd121f176c4e81358ff3169e1703b",
+      "b12_patch_sha256": "b625f1083972f6f261af0e2b701a41a98751b8ea2d2fca650d3037238df2bef0",
+      "b13_patch_sha256": "1150e91115518724beaabe7182869af6a5ddd121f176c4e81358ff3169e1703b"
+    },
+    {
+      "patch": "PSS 97 Musical Saw.repatch",
+      "archive_path": "Public/PSS 97 Musical Saw.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "6a4ce25e8c7f76f7d619a89c4d5025f8702c2e692e8301a00051635aa7d0fe02",
+      "b12_patch_sha256": "759a40fbd38f592f20d0ce8bc4f9e776583f0f324149ba2dc8859f8fb10c16ac",
+      "b13_patch_sha256": "6a4ce25e8c7f76f7d619a89c4d5025f8702c2e692e8301a00051635aa7d0fe02"
+    },
+    {
+      "patch": "PSS 98 Music Box.repatch",
+      "archive_path": "Public/PSS 98 Music Box.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "b1551fb6e1bad1880f4fb15d969bd934dcb1bb26d7f699ed4b7663a0055a0c30",
+      "b12_patch_sha256": "c23d72d95bff0055ce5b371748ed2efe074164415ae096499949d572c7d3c258",
+      "b13_patch_sha256": "b1551fb6e1bad1880f4fb15d969bd934dcb1bb26d7f699ed4b7663a0055a0c30"
+    },
+    {
+      "patch": "PSS 99 Sine Wave.repatch",
+      "archive_path": "Public/PSS 99 Sine Wave.repatch",
+      "unchanged_existing_properties": 66,
+      "source_sha256": "fb4550dfb3e2ba53392367740fc29443c8737ca6b191e35a9b90e8fa8cf863dc",
+      "b12_patch_sha256": "a1d519176ee7fb1140660ef5ec9350b250becd518bb5549aad741f2c50a4ab61",
+      "b13_patch_sha256": "fb4550dfb3e2ba53392367740fc29443c8737ca6b191e35a9b90e8fa8cf863dc"
     }
   ]
 }
