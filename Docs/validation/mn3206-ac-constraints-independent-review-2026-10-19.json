@@ -1,0 +1,484 @@
+{
+  "schema": "press78.mn3206-ac-independent-review.v1",
+  "date": "2026-10-19",
+  "completed_utc": "2026-10-19T18:24:04.459849+00:00",
+  "passed": true,
+  "blocking_findings": [],
+  "scope": "Independent retained-source visual and exact-rational review of the MN3206 AC aggregate-THD graph oracle. No author-file edits, source acquisition, audio/native execution, source decode or host/UI actions.",
+  "subject": {
+    "report": "Docs/research/mn3206-ac-constraints-2026-10-19.md",
+    "publication": "Docs/research/mn3206-ac-constraints-2026-10-19.json",
+    "prototype": "Tools/prototypes/mn3206-ac-constraints-20261019/",
+    "source_url": "https://github.com/fmillion/yamaha-pss270/blob/8943bf963f196f20b4e2fc714f15400db578891b/datasheets/MN3206.pdf"
+  },
+  "source_visual_review": {
+    "retained_only": true,
+    "new_images_pdfs_or_audio_acquired": false,
+    "pdf_rerendered": false,
+    "images_inspected": [
+      "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v4-MN3206-curves-p77.png",
+      "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206-characteristics-p76.png",
+      "build/mn3206-ac-constraints-20261019/frozen-reading-overlay.png"
+    ],
+    "p77_panel": "Upper-right THD-Vi. Readable 5V VDD, VGG14/15VDD,40kHz CP,1kHz input,25°C and20kHz−48dB/oct LPF match the frozen conditions. Axes−20..+4dBm and0..3.2% match the frozen affine maps. All13 centerlines appear consistent with visible ink at the declared coordinate precision.",
+    "p76_table": "0.25Vrms,0.3% typical THD and100kohm table conditions are present. This retained page does not state a0dBm-to-Vrms convention. It does not justify mapping the voltage anchor or imposing the table load on the separate p77 panel.",
+    "source_scope_limits": [
+      "The pixel readings are manual graph-reading approximations, not newly calibrated hardware measurements.",
+      "The x1105 ordinate remains null and x1170-and-beyond near-vertical trace remains excluded.",
+      "Panel input bias,load/output joining and analyzer noise treatment remain unidentified.",
+      "The Gi-Vi panel has incomplete matching labels and is not fused with the THD panel."
+    ]
+  },
+  "independent_numeric_review": {
+    "passed": true,
+    "checks": {
+      "stored_first_run_exact_publication_copy": 1,
+      "stored_first_run_pass_count": 1,
+      "stored_count_sum": 1,
+      "publication_exact_design_copy": 1,
+      "publication_artifact_binding": 9,
+      "stored_first_run_code_binding": 4,
+      "retained_primary_binding": 3,
+      "implementation_binding": 4,
+      "visually_reviewed_pixel_pair_binding": 13,
+      "exact_pixel_pair_count": 1,
+      "grid_confounded_point_remains_null": 1,
+      "steep_endpoint_remains_excluded": 1,
+      "visually_reviewed_axes": 1,
+      "expanded_exact_axis_and_knot_witness": 13,
+      "declared_corner_cardinality": 1,
+      "independent_exact_domain": 1,
+      "model_domain_binding": 1,
+      "independent_nominal_domain": 1,
+      "public_low_is_nearest_inward_float": 1,
+      "public_high_is_nearest_inward_float": 1,
+      "exact_and_float_endpoint_acceptance": 4,
+      "exact_and_float_neighbor_rejection": 4,
+      "segment_exact_rational_interpolation": 22,
+      "raw_only_knots_not_publicly_supported": 2,
+      "public_supported_knots": 11,
+      "vgg_binary64_alias_hex": 1,
+      "exact_vgg_value_alias": 3,
+      "nearby_vgg_float_collapse_witness": 4,
+      "nearby_vgg_exact_rejection": 4,
+      "vgg_binary64_neighbors_reject": 2,
+      "mandatory_named_condition": 10,
+      "condition_nearest_rational_neighbor_reject": 10,
+      "invalid_condition_numeric_domain": 40,
+      "invalid_level_port": 7,
+      "no_reference_load_bias_or_condition_inference": 5,
+      "frozen_example_nominal": 4,
+      "nearest_outward_lower_bound": 4,
+      "nearest_outward_upper_bound": 4,
+      "declared_example_corner_containment": 256,
+      "exact_candidate_classification_boundaries": 20,
+      "minus18_vs_minus12_strict_declared_scenario_gap": 1,
+      "minus2_vs_minus12_strict_declared_scenario_gap": 1,
+      "compressive_cubic_monotonic_identity": 4,
+      "relative_report_link_resolves": 3,
+      "before_after_author_and_production_binding": 29
+    },
+    "total_checks": 515,
+    "author_first_run_checks_verified": 7023,
+    "independent_segment_queries": 22,
+    "support_exact_axis_dbm": [
+      "-1716/89",
+      "-100/89"
+    ],
+    "corners": 64,
+    "examples": {
+      "-18": {
+        "nominal_exact": "1229/3580",
+        "low_exact": "1053/3580",
+        "high_exact": "281/716",
+        "low_percent": 0.2941340782122905,
+        "high_percent": 0.3924581005586592
+      },
+      "-12": {
+        "nominal_exact": "223/895",
+        "low_exact": "951/4475",
+        "high_exact": "1279/4475",
+        "low_percent": 0.21251396648044693,
+        "high_percent": 0.2858100558659218
+      },
+      "-4": {
+        "nominal_exact": "2068/4475",
+        "low_exact": "356/895",
+        "high_exact": "2356/4475",
+        "low_percent": 0.39776536312849164,
+        "high_percent": 0.5264804469273743
+      },
+      "-2": {
+        "nominal_exact": "1207/1790",
+        "low_exact": "1031/1790",
+        "high_exact": "3474/4475",
+        "low_percent": 0.575977653631285,
+        "high_percent": 0.7763128491620112
+      }
+    },
+    "strict_gaps_percentage_points": {
+      "minus18_low_minus_minus12_high_exact": "149/17900",
+      "minus18_low_minus_minus12_high": 0.008324022346368715,
+      "minus2_low_minus_minus12_high_exact": "2597/8950",
+      "minus2_low_minus_minus12_high": 0.2901675977653631
+    },
+    "cubic_monotonic_identity_witnesses": [
+      {
+        "t_low": "0",
+        "t_high": "1/100",
+        "thd_ratio_gap_exact": "1/397"
+      },
+      {
+        "t_low": "1/100",
+        "t_high": "1/3",
+        "thd_ratio_gap_exact": "388/3573"
+      },
+      {
+        "t_low": "1/3",
+        "t_high": "1",
+        "thd_ratio_gap_exact": "8/9"
+      },
+      {
+        "t_low": "1",
+        "t_high": "13/10",
+        "thd_ratio_gap_exact": "12"
+      }
+    ],
+    "rounded_float_bounds_classify_against_exact_scenarios": {
+      "-18": {
+        "rounded_low": "below_declared_reading_scenarios",
+        "rounded_high": "above_declared_reading_scenarios"
+      },
+      "-12": {
+        "rounded_low": "below_declared_reading_scenarios",
+        "rounded_high": "above_declared_reading_scenarios"
+      },
+      "-4": {
+        "rounded_low": "below_declared_reading_scenarios",
+        "rounded_high": "above_declared_reading_scenarios"
+      },
+      "-2": {
+        "rounded_low": "below_declared_reading_scenarios",
+        "rounded_high": "above_declared_reading_scenarios"
+      }
+    },
+    "no_author_checker_rerun": true,
+    "no_audio_or_native_execution": true,
+    "original_and_author_files_unchanged": true,
+    "binding_time": "Original pre-clarification snapshot; the subsequent two intentional document changes are separately bound in documentation_followup."
+  },
+  "interpretation": {
+    "supported_domain": "Exact rational common domain−1716/89..−100/89 manufacturer-axis dBm, with nearest inward binary64 public endpoints. All other queries reject rather than extrapolate.",
+    "reading_scenarios": "64 declared discrete corners: four axis endpoints shift±1px; horizontal/vertical trace positions shift±3px. These are not manufactured-part limits, confidence intervals or bounds on every continuous trace inside boxes.",
+    "vgg": "Exact14/3V and the numeric value of its nearest binary64 alias0x1.2aaaaaaaaaaabp+2 are accepted. Distinct nearby rationals that would collapse to that float are rejected; this is representation policy, not physical voltage tolerance.",
+    "minus18_minus12": "Across the declared scenarios, THD(-18)lower−THD(-12)upper=149/17900 percentage points, approximately0.00832402234637. This is a graph-reading-scenario ordering, not a guarantee over all trace interpretations or parts.",
+    "minus2_minus12": "The corresponding−2versus−12 strict gap is2597/8950 percentage points, approximately0.290167597765.",
+    "compressive_cubic_scope": "For the sole static memoryless lawy=x−a*x^3, a>=0, single-sine input witht=a*A^2 and non-reversing fundamental, THD ratio=t/(4−3t). Its difference between0<=u<v<4/3 equals4*(v−u)/[(4−3u)*(4−3v)]>0. Thus the descending low-input region is inconsistent with that sole monotonic mechanism; the result also applies to its smaller pre-fold-back region. No cubic coefficient or voltage reference is fitted.",
+    "does_not_establish": [
+      "A harmonic decomposition or waveform transfer law",
+      "A noise floor, bias error, memory process or unique distortion cause",
+      "The PSS780 BBD input voltage,bias,clock,load or surrounding AC circuit",
+      "YM3420 DAC resolution,update rate,arithmetic or output distortion",
+      "A component tolerance or target Drive calibration"
+    ]
+  },
+  "precision_semantics_note": {
+    "severity": "informational; no blocking defect",
+    "behavior": "Returned binary64 low/high display bounds round outward. compare_aggregate_thd classifies against exact rational scenario extrema. Re-submitting a rounded returned bound can classify just outside the exact scenario set by less than one binary64 ulp; exact rational endpoints classify within.",
+    "assessment": "Consistent with exact-scenario classification and conservative outward display bounds. Consumers must not treat the rounded display fields as exact threshold coordinates.",
+    "resolution": "Explicitly documented in the root-owned research report after review; no numerical behavior changed."
+  },
+  "verification_method": {
+    "author_checker_rerun": false,
+    "stored_author_receipt_verified": "The stored7023-check receipt exactly equals publication.first_run, its groups sum7023, all cited artifact/code/source hashes and byte counts match.",
+    "additional_checks": 515,
+    "independent_method": "Graph-level affine remapping of every knot, barycentric segment interpolation and exact rational arithmetic, instead of the implementation bisect/requested-pixel evaluator.22 fresh internal segment queries,11 public knots,64corners at each of4 frozen examples, exact candidate thresholds, VGG rational neighbors and port/domain contrasts.",
+    "source_copy_or_fit_performed": false,
+    "historical_provenance_limit": "Hash checks establish retained source/design/implementation/receipt identity. They do not independently prove the authors historical construction/execution chronology beyond the recorded assertions and retained bindings."
+  },
+  "bindings": {
+    "primary": [
+      {
+        "role": "curve_page",
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v4-MN3206-curves-p77.png",
+        "bytes": 120114,
+        "sha256": "34916e399deedf1f7247c5c1e481197854786d1604bb6e292a26b66d1c1dd90f"
+      },
+      {
+        "role": "table_page",
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206-characteristics-p76.png",
+        "bytes": 109552,
+        "sha256": "f343fc8d35eaab1fe4f3c85644d93f6cf424b5437d7caafa5e1c26ac5cf76e9a"
+      },
+      {
+        "role": "manufacturer_pdf",
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206.pdf",
+        "bytes": 188245,
+        "sha256": "045fb6a1c7f5bc1e5cb0cf51497bf64b4bf29bfe7be1b193a16a62e93c795fe2"
+      }
+    ],
+    "review_artifacts": [
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/before.json",
+        "bytes": 5254,
+        "sha256": "8055b53c54b7b87c5001582836c99ad485b6275a46eea7e3240d2f9aa2778fac"
+      },
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/review.py",
+        "bytes": 16207,
+        "sha256": "89341fc1e12eef49d1854ff411f34b1e6ea07525eecf5af3143abeaa99d559a1"
+      },
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/focused-checks.json",
+        "bytes": 4341,
+        "sha256": "097211b65c7c06300bf6787f003ef9544d17f154b074bc52fa987bf98bc251bc"
+      },
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/finalize_document_binding.py",
+        "bytes": 6770,
+        "sha256": "57c87d4e89ea855f6282e4da0e9dc8e932e4cd256fb8587770d845b52a0cc1b8"
+      },
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/report-precision-note.diff",
+        "bytes": 699,
+        "sha256": "422cc045109c7142e601ad20567cba65ef11d96c1cdb4c6cfc1035bfb165e001"
+      }
+    ],
+    "author_and_production_before_after_unchanged": [
+      {
+        "path": "Tools/prototypes/mn3206-ac-constraints-20261019/README.md",
+        "bytes": 1861,
+        "sha256": "7fc2e2ffb789415cfa3e21377bfdcff99ec81bd8142028064293e162d1850c9b"
+      },
+      {
+        "path": "Tools/prototypes/mn3206-ac-constraints-20261019/check.py",
+        "bytes": 8462,
+        "sha256": "2d00af837e667d7b7369bf56c28e22b2a96e7d45d02fb6679b9f1c956888db7d"
+      },
+      {
+        "path": "Tools/prototypes/mn3206-ac-constraints-20261019/design-frozen.json",
+        "bytes": 6642,
+        "sha256": "f1bc043760ef6c45cbf6af129ec90e52755842c1c0b58efba292bc38e2aa1e7f"
+      },
+      {
+        "path": "Tools/prototypes/mn3206-ac-constraints-20261019/implementation-bound.json",
+        "bytes": 707,
+        "sha256": "32fdb977e4e198977a1f7a63a839d54e4583841b7feefb8b89df95fe44d9a661"
+      },
+      {
+        "path": "Tools/prototypes/mn3206-ac-constraints-20261019/mn3206_ac.py",
+        "bytes": 6618,
+        "sha256": "4e6a11ef4e43af9a80b0a3da2bb2e51d045a032601e27d4778cd774a714182ae"
+      },
+      {
+        "path": "build/mn3206-ac-constraints-20261019/validation-first-run.json",
+        "bytes": 4196,
+        "sha256": "a28d6315bb16696616f1f48e687d354210585c6d9b1adba946f28d50497c9e6e"
+      },
+      {
+        "path": "build/mn3206-ac-constraints-20261019/frozen-reading-overlay.png",
+        "bytes": 199552,
+        "sha256": "1728007ee24f96d0c4e3cb76c9ff5ae137397a48c7dce7bb1ac3c18a53eb2928"
+      },
+      {
+        "path": "build/mn3206-ac-constraints-20261019/thd-coordinate-inspection.png",
+        "bytes": 219895,
+        "sha256": "81edd46ee3b5c0df338e5d1ef88e14b069a4a59c2e8c764bf978bc1b7b1026d9"
+      },
+      {
+        "path": "Source/ControlMapping.h",
+        "bytes": 5352,
+        "sha256": "451115f40a900e54b0f4cf2d315c03ed16ce32892d4c4168b8ff332d9e1f7aa5"
+      },
+      {
+        "path": "Source/DSP/AnalogOutput.h",
+        "bytes": 2195,
+        "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+      },
+      {
+        "path": "Source/DSP/CircuitNoise.h",
+        "bytes": 8721,
+        "sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+      },
+      {
+        "path": "Source/DSP/FactoryVoices.h",
+        "bytes": 12722,
+        "sha256": "6f45afd021de03e226ffe7e09f953799b4f72f48cf1f062348b6d6b328eabed3"
+      },
+      {
+        "path": "Source/DSP/FirmwarePitch.h",
+        "bytes": 5430,
+        "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+      },
+      {
+        "path": "Source/DSP/OutputKernelTable.h",
+        "bytes": 1642464,
+        "sha256": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7"
+      },
+      {
+        "path": "Source/DSP/OversampledAnalogOutput.h",
+        "bytes": 6548,
+        "sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1"
+      },
+      {
+        "path": "Source/DSP/Press78Engine.cpp",
+        "bytes": 28519,
+        "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+      },
+      {
+        "path": "Source/DSP/Press78Engine.h",
+        "bytes": 10040,
+        "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+      },
+      {
+        "path": "Source/DSP/Press78OutputBus.h",
+        "bytes": 10270,
+        "sha256": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9"
+      },
+      {
+        "path": "Source/DSP/RecordedChorus.h",
+        "bytes": 3581,
+        "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+      },
+      {
+        "path": "Source/DSP/RecordedChorusProfile.h",
+        "bytes": 1073,
+        "sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+      },
+      {
+        "path": "Source/PluginControls.h",
+        "bytes": 6214,
+        "sha256": "2b9fe500072cbe6141d799f674d4401d148d8671c5321e85321f778221eaa072"
+      },
+      {
+        "path": "Source/PluginEditor.cpp",
+        "bytes": 7239,
+        "sha256": "35bab2e135b629045c18465c889575b0cabef51440d2bcb508b229904f2f2273"
+      },
+      {
+        "path": "Source/PluginEditor.h",
+        "bytes": 1478,
+        "sha256": "678ae6c3d1cd0519bf7cadc7747f7cda804ab87e11c9d23c798f044613f26d33"
+      },
+      {
+        "path": "Source/PluginProcessor.cpp",
+        "bytes": 7461,
+        "sha256": "6bc6239fa022bf5c02ce51c896d6a8e0e422e4eaddbd84f9d05aac4f4bca70e1"
+      },
+      {
+        "path": "Source/PluginProcessor.h",
+        "bytes": 2994,
+        "sha256": "59ae512ec4a1aa3fd1f22cc95233f4f5848307559cb28ecaf8f94f35bfd35e8e"
+      },
+      {
+        "path": "Assets/FactoryBank/press78-factory.json",
+        "bytes": 64721,
+        "sha256": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
+      },
+      {
+        "path": "Assets/controls.json",
+        "bytes": 13055,
+        "sha256": "e8cfec4e0287f7b128ae456e8380596d3fbbc9db4c9a68e884084b32788c9bff"
+      }
+    ],
+    "final_report_and_publication": [
+      {
+        "path": "Docs/research/mn3206-ac-constraints-2026-10-19.md",
+        "bytes": 5400,
+        "sha256": "a67610fc2634819892f487b3af11695e09bf0be390098f7c7a6f71b1da5f0d8b"
+      },
+      {
+        "path": "Docs/research/mn3206-ac-constraints-2026-10-19.json",
+        "bytes": 15146,
+        "sha256": "9bb675c0021978cc660f2d83c55ad9e4d5d1549f9ceb9ae1b9e258a21904ea61"
+      }
+    ],
+    "archived_original_documents": [
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/author-readme-before-precision-note.md",
+        "bytes": 1861,
+        "sha256": "7fc2e2ffb789415cfa3e21377bfdcff99ec81bd8142028064293e162d1850c9b"
+      },
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/author-report-before-precision-note.md",
+        "bytes": 5105,
+        "sha256": "2152f210b5acfd54011552078cb6ac49c6fc3b445e7fd464533f43e3b83f7be4"
+      },
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/author-publication-before-precision-note.json",
+        "bytes": 14172,
+        "sha256": "7c2ddc6be0bdcb83fbac196ff999c4c30df7acd62214ece6fec4a58ebfd6da32"
+      },
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/author-implementation-binding-before-precision-note.json",
+        "bytes": 707,
+        "sha256": "32fdb977e4e198977a1f7a63a839d54e4583841b7feefb8b89df95fe44d9a661"
+      },
+      {
+        "path": "build/mn3206-ac-independent-review-20261019/independent-review-before-precision-note.json",
+        "bytes": 17730,
+        "sha256": "88c88d0f7d97497f74b6949ce520ed24d52aeda2ff3fab8b78c978401c264bba"
+      }
+    ]
+  },
+  "storage": {
+    "new_artifacts_before_this_public_receipt_bytes": 25802,
+    "limit_bytes": 5242880,
+    "audio_or_native_outputs_created": false,
+    "new_artifacts_before_final_receipt_bytes": 72846
+  },
+  "scope_invariants": {
+    "production_source_changed": false,
+    "preset_or_control_schema_changed": false,
+    "artificial_noise_added": false,
+    "original_cpu_processes_touched": false,
+    "git_history_changed_by_reviewer": false,
+    "new_third_party_source_material_in_product": false,
+    "author_files_edited_by_reviewer": false,
+    "root_documentation_only_followup": true
+  },
+  "documentation_followup": {
+    "requested_by": "root",
+    "purpose": "Explicit precision semantics following the independent review.",
+    "result": "Root added the precision note to the research report only, refreshed its publication MD hash/byte count, and appended separately labelled documentation-revision metadata with archived-original bindings. README, implementation-bound metadata, numerical module, checker, design, coordinates, source images and original 7023-check result remain byte-identical.",
+    "reviewed_report_diff": {
+      "path": "build/mn3206-ac-independent-review-20261019/report-precision-note.diff",
+      "bytes": 699,
+      "sha256": "422cc045109c7142e601ad20567cba65ef11d96c1cdb4c6cfc1035bfb165e001"
+    },
+    "intentional_documentation_changes": [
+      {
+        "path": "Docs/research/mn3206-ac-constraints-2026-10-19.md",
+        "before": {
+          "path": "Docs/research/mn3206-ac-constraints-2026-10-19.md",
+          "bytes": 5105,
+          "sha256": "2152f210b5acfd54011552078cb6ac49c6fc3b445e7fd464533f43e3b83f7be4"
+        },
+        "after": {
+          "path": "Docs/research/mn3206-ac-constraints-2026-10-19.md",
+          "bytes": 5400,
+          "sha256": "a67610fc2634819892f487b3af11695e09bf0be390098f7c7a6f71b1da5f0d8b"
+        }
+      },
+      {
+        "path": "Docs/research/mn3206-ac-constraints-2026-10-19.json",
+        "before": {
+          "path": "Docs/research/mn3206-ac-constraints-2026-10-19.json",
+          "bytes": 14172,
+          "sha256": "7c2ddc6be0bdcb83fbac196ff999c4c30df7acd62214ece6fec4a58ebfd6da32"
+        },
+        "after": {
+          "path": "Docs/research/mn3206-ac-constraints-2026-10-19.json",
+          "bytes": 15146,
+          "sha256": "9bb675c0021978cc660f2d83c55ad9e4d5d1549f9ceb9ae1b9e258a21904ea61"
+        }
+      }
+    ],
+    "original_first_pass_count": 515,
+    "numerical_rerun_required": false,
+    "historical_checker_reproducibility_preserved": true,
+    "original_readme_has_report_link": false,
+    "preservation": "Original README, report, publication and implementation-binding metadata are archived in ignored review storage. The original independent receipt is archived too. The original 515-check verifier binds the pre-clarification snapshot; its scope is retained rather than silently rewritten."
+  },
+  "repository_head_at_review": "6834a2fd4c73a89095bd1b03f41aef9c66d1c256"
+}

@@ -1,0 +1,265 @@
+{
+  "date": "2026-10-19",
+  "waveform": {
+    "name": "HALF / Sine Half Wave",
+    "index": 2,
+    "current_formula": "max(sin(phi),0)"
+  },
+  "status": "No production change. Mathematical/current-source DC placement verified; physical OPU mean handling remains unidentifiable from retained carrier-only stable-window metrics.",
+  "revision": "399cbfce19558c4fe53b77f4babed4cbdde7e0a6",
+  "scope": "Research-only source/native invariant probe and reuse of published measurement metadata; no recordings decoded, downloaded, copied, or redistributed; no audio demos rendered.",
+  "sources": [
+    {
+      "id": "yamaha-pss780-owner",
+      "authority": "Yamaha exact-model primary manual",
+      "url": "https://usa.yamaha.com/files/download/other_assets/1/317511/PSS780E.PDF",
+      "printed_page": 41,
+      "pdf_page_1_based": 44,
+      "retained_file": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/fm-fidelity-audit-20261018/PSS780E.PDF",
+        "sha256": "e1382c76aa9f6351fb3de191228b3209def0cf4ceba54ca6a20406c1e2db0adb",
+        "bytes": 3911928
+      },
+      "checked": "Opened primary PDF using web tool; exact named-table constraint and retained file hash rechecked. Existing earlier audit visually checked page.",
+      "supports": "SIN TBL2 is Sine Half Wave",
+      "does_not_identify": [
+        "OPU table coefficients/widths",
+        "internal DC mean compensation",
+        "wave phase reset",
+        "native synthesis update rate"
+      ]
+    },
+    {
+      "id": "kevin-pss680-experiment",
+      "authority": "Original hardware experiment author",
+      "url": "https://diyelectromusic.com/2023/08/02/arduino-pss-680-synth-editor-part-1/",
+      "video_url": "https://www.youtube.com/watch?v=KAHq65dWzG4",
+      "checked": "Browsed author procedure; reused exact previously measured carrier-table2 stable window, not a new audio analysis.",
+      "supports": "Only carrier SIN TBL changes; no modulation/feedback/multiplication, so modulator mean is not isolated.",
+      "does_not_identify": [
+        "internal OPU DC path",
+        "exact capture/electrical response",
+        "DAC distortion/precision"
+      ]
+    },
+    {
+      "id": "kevin-pss680-part2",
+      "authority": "Original hardware experiment author",
+      "url": "https://diyelectromusic.com/2023/08/05/arduino-pss-680-synth-editor-part-2/",
+      "supports": "Several parameters including modulator SIN TBL are changed; not an isolated timed DC-mean fixture."
+    },
+    {
+      "id": "yamaha-us4813326",
+      "authority": "Yamaha original patent, generic design not identified YM3420 implementation",
+      "url": "https://patents.google.com/patent/US4813326A/en",
+      "scope": "Fig9 gate-before-modulation-index pathway, description of gated sine data scaled and added to carrier phase; documents a design option only.",
+      "does_not_identify": [
+        "YM3420 identity",
+        "which embodiment OPU uses",
+        "actual word widths",
+        "DC compensation choice"
+      ]
+    }
+  ],
+  "source_equations": {
+    "half_series": "1/pi + 0.5*sin(phi) - (2/pi)*sum_k>=1 cos(2*k*phi)/(4*k*k-1)",
+    "mean": "1/pi",
+    "odd_harmonics_above_h1": "zero in ideal analytic half sine",
+    "raw_phase": "phi_c + 8*pi*g*h(phi_m)",
+    "hypothetical_centered_phase": "phi_c + 8*pi*g*(h(phi_m)-1/pi)",
+    "raw_minus_centered_phase_radians": "8*g",
+    "phase_delta_derivative_hz": "(4/pi)*dg/dt",
+    "limitations": "Zero feedback and uniform phase for analytic mean; actual feedback can change phase distribution. Factors8*pi and48k are current engine hypotheses, not physical calibrations."
+  },
+  "source_locations": {
+    "file": "Source/DSP/Press78Engine.cpp",
+    "wave_helper": [
+      51
+    ],
+    "modulator_wave_to_phase": [
+      239
+    ],
+    "carrier_lookup": [
+      242
+    ],
+    "explicit_final_dc_block": [
+      572
+    ],
+    "dc_coefficient": [
+      256
+    ]
+  },
+  "native_probe": {
+    "passed": true,
+    "assertions": 1033114,
+    "quadrature_samples": 262144,
+    "half_sine_mean": 0.3183098861685595,
+    "mean_abs_error": 1.5231205185983754e-11,
+    "fourier_coefficient_max_abs_error": 3.0479119228488116e-11,
+    "native_voice_equation_max_abs_error": 1.429412144204889e-15,
+    "native_voice_cases": 36,
+    "native_voice_ticks_per_case": 4800,
+    "output_dc_null_pair_max_abs_error": 2.0524328289976863e-15,
+    "output_dc_null_pair_final_abs_difference": 5.551115123125783e-17,
+    "phase_identity_max_abs_error": 5.595524044110789e-14,
+    "phase_derivative_max_abs_error_hz": 7.870815110777585e-10,
+    "constant_mean_max_steady_delta_hz": 2.1712586625457609e-10,
+    "post_dc_centered_vs_unipolar_relative_rms": 1.9027223463637408,
+    "scope": "mathematical/current-source verification only, not OPU DC-bias identification"
+  },
+  "retained_capture": {
+    "binding": {
+      "path": "Docs/research/recording-holdout-audit-2026-10-18.json",
+      "sha256": "da86e8730c722244cca1c632f66a1292864ba81d2146b403d9f6d100f7f7d7bb",
+      "bytes": 38254
+    },
+    "window": {
+      "table": 2,
+      "start": 39.12,
+      "end": 39.32,
+      "f0_hz": 523.1208910330005,
+      "midi_hypothesis": 72,
+      "cents_relative_c5": -0.43096560592326083,
+      "harmonic_db_relative_fundamental": [
+        0.0,
+        -2.724972989158819,
+        -43.72434565240952,
+        -25.048349313397487,
+        -64.47265415102173,
+        -42.68765735607375,
+        -71.70528851894255,
+        -41.06715808122147,
+        -71.60862448886894,
+        -60.826900127316705,
+        -75.5145867485274,
+        -55.94821269792152
+      ],
+      "harmonic_phases_rad": [
+        -0.37501321175324576,
+        -1.64913003166451,
+        -2.2493703899789805,
+        -1.5947829016283985,
+        -2.630584459029117,
+        2.168641510214693,
+        0.6265612542477521,
+        -1.9523876115102123,
+        1.2043477174622341,
+        -0.06080846117939595,
+        2.661927848925367,
+        -0.6770048753195209
+      ],
+      "harmonic_amplitudes": [
+        0.1165103255275307,
+        0.08513649491228084,
+        0.0007588346143083693,
+        0.0065154880112056,
+        6.961962956128715e-05,
+        0.0008550303839178218,
+        3.02761040928017e-05,
+        0.001030401569687179,
+        3.061492439249857e-05,
+        0.00010593010659526545,
+        1.952697985598417e-05,
+        0.00018576067511876876
+      ],
+      "residual_relative_rms": 0.06592838070169718,
+      "source": "kevin-680",
+      "pitch_confidence": "C5/MIDI72 hypothesis from observed frequency and repeated same starting key; MIDI not captured"
+    },
+    "even_harmonic_constraints": [
+      {
+        "harmonic": 2,
+        "analytic_db_relative_h1": -7.444222721716677,
+        "retained_capture_db_relative_h1": -2.724972989158819,
+        "capture_minus_analytic_db": 4.719249732557858
+      },
+      {
+        "harmonic": 4,
+        "analytic_db_relative_h1": -21.423622808437056,
+        "retained_capture_db_relative_h1": -25.048349313397487,
+        "capture_minus_analytic_db": -3.6247265049604316
+      },
+      {
+        "harmonic": 6,
+        "analytic_db_relative_h1": -28.783158514328942,
+        "retained_capture_db_relative_h1": -42.68765735607375,
+        "capture_minus_analytic_db": -13.904498841744807
+      },
+      {
+        "harmonic": 8,
+        "analytic_db_relative_h1": -33.88860861639506,
+        "retained_capture_db_relative_h1": -41.06715808122147,
+        "capture_minus_analytic_db": -7.1785494648264105
+      },
+      {
+        "harmonic": 10,
+        "analytic_db_relative_h1": -37.81450151927443,
+        "retained_capture_db_relative_h1": -60.826900127316705,
+        "capture_minus_analytic_db": -23.012398608042275
+      },
+      {
+        "harmonic": 12,
+        "analytic_db_relative_h1": -41.008518376624664,
+        "retained_capture_db_relative_h1": -55.94821269792152,
+        "capture_minus_analytic_db": -14.939694321296855
+      }
+    ],
+    "new_audio_measurement": false,
+    "no_refit": true,
+    "interpretation": "Broad half-sine parity only. Partial amplitude deviations are not exact ROM coefficients or fit-able DAC distortion."
+  },
+  "new_constraints": [
+    "Current table2 is mathematically correct half sine, including its nonzero mean.",
+    "Retained stable carrier-only AC measurements do not identify whether OPU subtracts internal modulator mean.",
+    "Current postmix output HPF cannot substitute for a pre-carrier mean-subtraction operation.",
+    "At zero feedback and constant modulator gain, retained mean changes carrier phase, not steady frequency; time-varying gain can alter phase derivative.",
+    "Known envelope/phase/capture conditions would be needed to infer mean from transients; those controls are not documented by the retained public experiment.",
+    "Nonuniform partial deviations preclude calling ideal half-sine partials bit-accurately validated, or treating H2 excess as identified DAC distortion."
+  ],
+  "non_promotion": {
+    "production_dsp_changed": false,
+    "new_noise": false,
+    "invented_word_width_or_physical_constant": false,
+    "hardware_accuracy_score_claimed": false,
+    "current_defaults_preserved": true
+  },
+  "next_separating_evidence": "Documented direct-output sibling modulator SIN TBL0-to2 with carrier sine, feedback/effects off, independently known patch/gates/phase policy and both fixed gain plateaus plus known envelope variation, keeping same capture chain. No user hardware request.",
+  "artifacts": [
+    {
+      "path": "Tools/prototypes/oscillator-half-sine-audit-20261019/design-frozen.json",
+      "sha256": "e5f0abecac69e243a5630d5475f9cc96a95a28c0165fc09888c6b65d4bf19ff6",
+      "bytes": 3572
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-sine-audit-20261019/HalfSineProbe.cpp",
+      "sha256": "18ad48c967641d0e9c073a647b4f1bf321ce7193b3e8f5b4275b505e06413def",
+      "bytes": 7638
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-sine-audit-20261019/native-validation.json",
+      "sha256": "8fb1c5a2971a1c4aa15c841a3f02941deefa7e4ba2e0751cecadc02e12d9415b",
+      "bytes": 767
+    },
+    {
+      "path": "Tools/prototypes/oscillator-half-sine-audit-20261019/README.md",
+      "sha256": "30a478cf3f76889cf0102f866425d6272b1acc416853d78f248cf4619b2bce36",
+      "bytes": 2248
+    },
+    {
+      "path": "Docs/research/oscillator-half-sine-audit-2026-10-19.md",
+      "sha256": "ec7f20439205244f8fb32f3ba5498b71d1ce4983a56a83024b1216937946e11b",
+      "bytes": 8095
+    }
+  ],
+  "compiled_binary_local": {
+    "path": "build/oscillator-half-sine-audit-20261019/probe",
+    "sha256": "7854841285839870779e756fa615c8d1b1fd2e3f0fc39d27834f07ad0ff9352d",
+    "bytes": 58760
+  },
+  "sources_unchanged_after_execution": true,
+  "reproduction": {
+    "compile_command": "clang++ -std=c++17 -O2 -Wall -Wextra -Wpedantic -Werror Tools/prototypes/oscillator-half-sine-audit-20261019/HalfSineProbe.cpp -o build/oscillator-half-sine-audit-20261019/probe",
+    "execute_command": "build/oscillator-half-sine-audit-20261019/probe",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.1.1.101)"
+  }
+}

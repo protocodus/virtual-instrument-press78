@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-19",
+  "scope": "Fixture/interface corrections only; no command-law, design acceptance, audio or production change.",
+  "original_design_sha256": "3f3b5ed1e4dd54a460c0ea1c9d2a076cda27d4dc66f9cab98b3b0c5683bf253f",
+  "old_validation": "build/mode00-complete-command-20261019/validation-v2/validation.json",
+  "observations": "build/mode00-complete-command-20261019/prospective/prospective-observations.jsonl.gz",
+  "findings": [
+    "All10872oldallocationevents and320prospectivecompositioncases matchallcomparednativewords/state.",
+    "The24VDTcases invoked original C6EE/C5E9 without its program input03=FF; observedcachetags5 violate frozen sharedFFscope. OriginalVDTdata remain retained, outofscope for ordinaryconformance. Inputserialization omittedactualcachetags and falsely supplied defaultFF. Fixserialization tocarryall12cachetags and explicitly verifyrejection ofall24unsupportedinputs beforemutation.",
+    "Retainedreleasefixtures were reconstructedfromneutralallocationtemplates plusfxflags only. ActualVibratobutton in existingprospectivecontrolsinitializesdelaycountersforallnormalcaches. Use those actualpost-control RAMsnapshots for same model/panel/effect toconstruct retainedreleaseinitialstate. No response or expectedOPUword is changed.",
+    "LSan detect_leaks is unsupported by thisplatform; both sanitizedprocesses stoppedbeforecomponentexecution. Use supportedASan/UBSan configurationdetect_leaks=0 and make no LSan claim."
+  ],
+  "prospective_correction": {
+    "cases": 24,
+    "same_frozen_VDT_matrix": true,
+    "only_input_correction": "After legalworkingpatchVDTedit, set original zero-page03=255 before invoking original C6EE(PSS780)/C5E9(PSS680) cacheloader. This is its program selector argument, not a new curve/timing/patchparameter. ValidateeveryinitialcachedtagFF before proceeding.",
+    "no_main_matrix_rerun": true,
+    "new_output_directory": "build/mode00-complete-command-20261019/prospective-delay-corrected"
+  },
+  "chronology": "Amendment frozen before correctedcollectorimplementation or correctedoriginalCPUexecution. Originalfaileddata,source,designandnativeoutcomes remainimmutable."
+}

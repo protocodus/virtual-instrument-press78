@@ -1,0 +1,58 @@
+{
+  "schema": "press78.mn3206-dc-digitized.v1",
+  "source_sha256": "34916e399deedf1f7247c5c1e481197854786d1604bb6e292a26b66d1c1dd90f",
+  "design_sha256": "fa0fda39dd32443e5f6aafc6258caab3b1d97e8a7449d22a94e7f192d16c88af",
+  "pixel_x": [
+    171,
+    182,
+    193,
+    205,
+    216,
+    227,
+    238,
+    249,
+    261,
+    272,
+    283,
+    294,
+    306,
+    317,
+    328,
+    339,
+    350,
+    362
+  ],
+  "pixel_y": [
+    434.5,
+    435,
+    434.5,
+    434.5,
+    434,
+    423.5,
+    412,
+    401,
+    388.5,
+    377,
+    366,
+    355,
+    343,
+    331.5,
+    320,
+    309,
+    301.5,
+    301.5
+  ],
+  "extraction": "Manual centerline, source-coordinate pixels. All18 readings reused unchanged from v1; no new selected point or fitted knee.",
+  "unsupported_or_rejected": [
+    {
+      "x_px": 373,
+      "y_px": null,
+      "reason": "No curve ink at frozen endpoint; retained in v1 extraction."
+    },
+    {
+      "x_px": 371,
+      "y_px": null,
+      "reason": "Unexecuted endpoint proposal rejected because grid-line overlap is not independent curve evidence."
+    }
+  ]
+}

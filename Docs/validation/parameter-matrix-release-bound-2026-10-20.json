@@ -1,0 +1,46 @@
+{
+  "schema": "press78.parameter-matrix-release-bound.v1",
+  "date": "2026-10-20",
+  "reason": "Both original failing hosted jobs had117 early-release deadline failures after adopting the selected B release. Other suites passed.",
+  "original_run": 39327089003,
+  "failed_jobs": [
+    118316124165,
+    118316124222
+  ],
+  "fix": "Device-specific observation deadline now integrates18/96 ordinary release plus78/96 at the slower of ordinary/nativeRR4, adds64 reconstruction ticks plus2 endpoint ticks, scales by minimum clock ratio, then retains0.3s effect settling.",
+  "invariants": {
+    "shared_matrix_sha256": "756a89f46bc91a99a56a953a887bb00a01434022d8ec70a82bd12d8377c3147f",
+    "silence_floor_dbfs": -60,
+    "case_count": 13755,
+    "selected_rotation_runs": 284,
+    "six_second_classification_unchanged": true,
+    "dsp_unchanged_from": "ffeeafc919bca781a702b010b3c428f5367f7a9e",
+    "no_product_version_or_patch_change": true
+  },
+  "local": {
+    "plugin_processor": "passed",
+    "editor_render": "passed",
+    "matrix": "passed",
+    "matrix_failed_runs": 0,
+    "matrix_log_sha256": "6c950704cf9703428deae52b2495f3b60b84e49ca81a2adae90cebf4c3d07927",
+    "matrix_ctest_log_sha256": "38b9b6f343652d2daf89023535fdfa1311611b8f9b9d1b3b60889a6775eb45a2",
+    "configuration": "Project-pinned JUCE, native arm64 Release, same rotation/shard1/50 as CI"
+  },
+  "native_bound_probe": {
+    "reported_by_independent_test_agent": true,
+    "cases": 384,
+    "bound_failures": 0,
+    "classification_changes": 0,
+    "source_sha256": "56c3eb719de07ec21ac73cefca40b64370af7ddc3833470e85c7e980a75fe3d8"
+  },
+  "source_sha256": "ef3ef5336c771f12824d45dd4474b608728b564dafd29bc809d7fafe1729dc8b",
+  "independent_math_review": "Two-stage bound conservative for initial EG0; higher starting attenuation shortens the tail. Matrix automation restores endpoint by0.76161s before0.8s noteoff. RKS0 bounds notes60/64/67.",
+  "preserved_failures": {
+    "macos_log_sha256": "916dea08a90444ca435ead3f98b31bc814497766666cc8784f162009bc6720d2",
+    "matrix_sanitizer_log_sha256": "5176d720ee1cf547727edcd353e62fa03a3c41edfbfb1060b18bf7451802051a",
+    "first_local_stale_object_sha256": "aa5929d218327f6da4b1db9867b016f7e3af3bb25db1f5a02b971498aa9f58b3",
+    "first_local_log_sha256": "da2e011d1d140628dbb2b0898226a804a2da8c0f3ef5a2f5c120e6e1d5b8bb78",
+    "scope": "Initial local translation unit compiled before the edit completed, so dependency timestamps retained old deadlines. Forced recompilation after edit; no threshold change. All originals remain in ignored build/merge-20261020."
+  },
+  "hosted_followup": "New hosted checks must pass before merge; not claimed green by this local receipt."
+}

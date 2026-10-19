@@ -1,0 +1,41 @@
+{
+  "scope": "Research-only HALF squared audit; original execution sources, design history, native receipt and derived diagnostics. No production change or audio.",
+  "files": {
+    "Tools/prototypes/oscillator-half-squared-audit-20261019/HalfSquaredProbe.cpp": {
+      "bytes": 3083,
+      "sha256": "4a7b326a7fd298dcc811529534f74908ceeef23535bf6bc251c65c0db742cc03"
+    },
+    "Tools/prototypes/oscillator-half-squared-audit-20261019/README.md": {
+      "bytes": 2615,
+      "sha256": "922e8e94b06a6d2176dd3a2aff1b5a29bff575658cf9c1f7c0caeb50ad502bce"
+    },
+    "Tools/prototypes/oscillator-half-squared-audit-20261019/analyze.py": {
+      "bytes": 8760,
+      "sha256": "26daf3f157a47bc45f17fcff0b11de8ab6263cc1a8356c826955dfac24f7ad79"
+    },
+    "Tools/prototypes/oscillator-half-squared-audit-20261019/design-before-null-scope.json": {
+      "bytes": 5061,
+      "sha256": "a0cdf753b2300569ba6e4e2c87e1008e90ea2997023d05052d3849b93f7da47b"
+    },
+    "Tools/prototypes/oscillator-half-squared-audit-20261019/design-frozen.json": {
+      "bytes": 5834,
+      "sha256": "b8d2fdeb85a9ccd0908651c86796b10db07081e29f840aad73db6f0acbbdea19"
+    },
+    "Tools/prototypes/oscillator-half-squared-audit-20261019/implementation-bound.json": {
+      "bytes": 943,
+      "sha256": "3f7ca894f2b0224eacc6f7294f1c4ad0bad534b49644570e06cad4a551b0ba93"
+    },
+    "Tools/prototypes/oscillator-half-squared-audit-20261019/native-validation.json": {
+      "bytes": 798,
+      "sha256": "6231313ee2e402e29b4810c9f90865b658d3875112ddd8dd0b6b122ba5b0db55"
+    },
+    "Docs/research/oscillator-half-squared-audit-2026-10-19.md": {
+      "bytes": 9324,
+      "sha256": "6320fdd4d387248bb8805e25e595a5d3bbf7b6776056fa19437c47e87b64ef47"
+    },
+    "Docs/research/oscillator-half-squared-audit-2026-10-19.json": {
+      "bytes": 85863,
+      "sha256": "beff3e975f94ebe1276cc734ddf6974684e07d992a3b180270db8be5b85aa723"
+    }
+  }
+}

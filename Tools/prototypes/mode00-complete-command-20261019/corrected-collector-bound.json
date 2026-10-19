@@ -1,0 +1,15 @@
+{
+  "chronology": "Beforecorrected24-onlyCPUexecution; main320notrerun.",
+  "files": {
+    "fixture-amendment.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/fixture-amendment.json",
+      "bytes": 2159,
+      "sha256": "56f818bcab7b3ff29ef6cb156daa784c9dfcaecf8540dbaf0537de16dc9a2084"
+    },
+    "collect_controls.py": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/collect_controls.py",
+      "bytes": 6169,
+      "sha256": "4510edf6835cddaefd157346419beb2837a41101989fa91e77ffb41038312917"
+    }
+  }
+}

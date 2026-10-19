@@ -1,0 +1,348 @@
+{
+  "status": "passed scoped hardware-component integration",
+  "observed_at_utc": "2026-10-19T17:36:29.121349+00:00",
+  "prior_research_commit": "3aaf5fa69a1dfeceebfbe7b87efee15c6310ec49",
+  "origin_main": "727f6e5efb8600aee4ecc945df3c4c03a807877e",
+  "scope": "Research command frontend and fixed-condition DC component only. No production DSP/asset/default/version change, firmware/media redistribution, audio regeneration, original-CPU/native-test rerun or host action by this integration. Prior results remain frozen snapshots.",
+  "files_bound": 59,
+  "total_bytes_bound": 400895,
+  "json_documents_parsed": 37,
+  "python_sources_parsed": 8,
+  "active_local_links_resolved": 114,
+  "historical_context_links": [
+    {
+      "document": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/report.md",
+      "target": "../../Tools/prototypes/mn3206-dc-operating-point-20261019/mn3206_dc.py",
+      "resolution_origin": "Docs/research/mn3206-dc-operating-point-2026-10-19.md"
+    },
+    {
+      "document": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/report.md",
+      "target": "mn3206-dc-operating-point-2026-10-19.json",
+      "resolution_origin": "Docs/research/mn3206-dc-operating-point-2026-10-19.md"
+    },
+    {
+      "document": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/report.md",
+      "target": "target-am-net-trace-2026-10-19.md",
+      "resolution_origin": "Docs/research/mn3206-dc-operating-point-2026-10-19.md"
+    }
+  ],
+  "historical_context_reason": "Exact frozen first report is retained byte-for-byte at its archive path. Its relative links are checked in its original Docs/research context, rather than rewriting historical bytes or claiming archive-relative links work.",
+  "new_missing_local_links": [],
+  "historical_archive_files_hash_verified": 12,
+  "production_dsp_matches_current_origin_main": true,
+  "diff_check": true,
+  "independent_review_copies": [
+    {
+      "path": "Docs/validation/mn3206-dc-independent-review-2026-10-19.json",
+      "bytes": 7371,
+      "sha256": "e953fd8f6da7916c61780f19446d65b704c5999d1903e2ab03190bc89ab4e110"
+    },
+    {
+      "path": "Docs/validation/mn3206-dc-port-correction-review-2026-10-19.json",
+      "bytes": 10597,
+      "sha256": "acc81bf742971358e203ec9d999ec873567fcd216e757cae088ce2851581d232"
+    },
+    {
+      "path": "Docs/validation/mode00-complete-command-independent-review-2026-10-19.json",
+      "bytes": 21698,
+      "sha256": "65af3c922c668b9058c742db885d861fbe1f491d1bbc75378cddb20b97d75faf"
+    }
+  ],
+  "bindings": [
+    {
+      "path": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "bytes": 40191,
+      "sha256": "9f5adaeb751da61784d1a390ecbbc320b029a11cf00020e257e2d336f7228cc8"
+    },
+    {
+      "path": "Docs/research/mn3206-dc-operating-point-2026-10-19.json",
+      "bytes": 8736,
+      "sha256": "d7338218f96f83c011e2ccd9d6093e77cd5d50e8017934380424df000f8ce967"
+    },
+    {
+      "path": "Docs/research/mn3206-dc-operating-point-2026-10-19.md",
+      "bytes": 6640,
+      "sha256": "389f9640c0078674a5bba140541f7fd1b5f2cac9a863d072d7e42aac65323c28"
+    },
+    {
+      "path": "Docs/research/mode00-complete-command-2026-10-19.json",
+      "bytes": 37556,
+      "sha256": "c8f0145d749928cceda928091e124cc27c5192fedc9466360cea8afbaa0fd414"
+    },
+    {
+      "path": "Docs/research/mode00-complete-command-2026-10-19.md",
+      "bytes": 11064,
+      "sha256": "37e3ca019501f0b8d426714de2abb546f8d9c344b4d5188f24fe0eebfbb34583"
+    },
+    {
+      "path": "Docs/research/oscillator-fidelity-audit-2026-10-19.md",
+      "bytes": 11456,
+      "sha256": "ee22e650ef695c8f1442d7fa13a1af45be9b61dd65762ca55a91ce13bdd0cf43"
+    },
+    {
+      "path": "Docs/validation/mn3206-dc-independent-review-2026-10-19.json",
+      "bytes": 7371,
+      "sha256": "e953fd8f6da7916c61780f19446d65b704c5999d1903e2ab03190bc89ab4e110"
+    },
+    {
+      "path": "Docs/validation/mn3206-dc-port-correction-review-2026-10-19.json",
+      "bytes": 10597,
+      "sha256": "acc81bf742971358e203ec9d999ec873567fcd216e757cae088ce2851581d232"
+    },
+    {
+      "path": "Docs/validation/mode00-complete-command-independent-review-2026-10-19.json",
+      "bytes": 21698,
+      "sha256": "65af3c922c668b9058c742db885d861fbe1f491d1bbc75378cddb20b97d75faf"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/README.md",
+      "bytes": 2872,
+      "sha256": "e64b9e586a855852efdd95859564d087671ab3e5a56d2a69f28d21f71ba88fc1"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/check.py",
+      "bytes": 10096,
+      "sha256": "7324756ca16585a62baf5ab13874732811d54388c1481c23da12b3ad6c329ee5"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/design-frozen-v2.json",
+      "bytes": 5413,
+      "sha256": "8152ce8771518a57190a18016fa8ded04f3e4e50e5621e166ef824db7059ef68"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/design-frozen-v3.json",
+      "bytes": 5621,
+      "sha256": "fa0fda39dd32443e5f6aafc6258caab3b1d97e8a7449d22a94e7f192d16c88af"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/design-frozen.json",
+      "bytes": 4851,
+      "sha256": "26f8161c1687244375feb98b09545616757285ba476d05a7eef38f0b43d49b0d"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/digitized-pixels.json",
+      "bytes": 1078,
+      "sha256": "3e8ea1a5b606ef6feecbd2413cd3733fcfbbafe912db47b4efec04eced0f717c"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/extraction-failed-support-v1.json",
+      "bytes": 1080,
+      "sha256": "702b31891cc14acde2bf127d306b63ad70026d4232a3c14e7adc57c35f087712"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/manifest.json",
+      "bytes": 1451,
+      "sha256": "f01ae27709e20a5ef7f1679127d0e875dd551a4205928a43ae647c526d3dafd4"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/public-receipt.json",
+      "bytes": 5983,
+      "sha256": "2cd1c83c61f13275b0268fe4c04a94015e2757c4f8afb96eee6a0ca18590a287"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/report.md",
+      "bytes": 5325,
+      "sha256": "31fa0d71bc31ff7b226511b38284207227cc4a0d06f19cfd7679eb4c9494342f"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/root-port-semantics-v1.json",
+      "bytes": 688,
+      "sha256": "dc4e12e202d5915a23c607c50c45ef512ff46d808494191dc69730f7d8647c81"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/check.py",
+      "bytes": 7906,
+      "sha256": "dde1c223c044081b0ee47f03b36d304211b3d78d9fab62ba37a0ae689a6d8cf6"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/design-frozen-v2.json",
+      "bytes": 5413,
+      "sha256": "8152ce8771518a57190a18016fa8ded04f3e4e50e5621e166ef824db7059ef68"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/design-frozen-v3.json",
+      "bytes": 5621,
+      "sha256": "fa0fda39dd32443e5f6aafc6258caab3b1d97e8a7449d22a94e7f192d16c88af"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/design-frozen.json",
+      "bytes": 4851,
+      "sha256": "26f8161c1687244375feb98b09545616757285ba476d05a7eef38f0b43d49b0d"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/digitized-pixels.json",
+      "bytes": 1078,
+      "sha256": "3e8ea1a5b606ef6feecbd2413cd3733fcfbbafe912db47b4efec04eced0f717c"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/extraction-failed-support-v1.json",
+      "bytes": 1080,
+      "sha256": "702b31891cc14acde2bf127d306b63ad70026d4232a3c14e7adc57c35f087712"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/implementation-bound.json",
+      "bytes": 791,
+      "sha256": "06831765294d57820ca3af74df20fdb5a6f480022ba3adf9d0cc49128ca97ded"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/source/mn3206_dc.py",
+      "bytes": 6272,
+      "sha256": "83c6894e632c98c230ccd8815116d32801aa81e7828668391a624fa8cb0d51fd"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/historical-first-run/validation.json",
+      "bytes": 3955,
+      "sha256": "78a29db78544ffb84a76c9597104f8c2b456d72ea118e6945a7d7696ae3f522f"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/implementation-bound-v2.json",
+      "bytes": 1283,
+      "sha256": "a77194061a5d7b4d6df92c56e02312ef6aebb051b7c458dc2d3fe8281f83a00c"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/implementation-bound.json",
+      "bytes": 791,
+      "sha256": "06831765294d57820ca3af74df20fdb5a6f480022ba3adf9d0cc49128ca97ded"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/mn3206_dc.py",
+      "bytes": 6803,
+      "sha256": "bff78218660e561c000c5390d9aaee3f23b095568bc1056c0490413852ebad9d"
+    },
+    {
+      "path": "Tools/prototypes/mn3206-dc-operating-point-20261019/port-semantics-correction-frozen.json",
+      "bytes": 2009,
+      "sha256": "ce561d54e83b4d66d1f6fa576dcaed885a795688d3862f7bf16b061fdc49f3f2"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/CommandProbe.cpp",
+      "bytes": 6374,
+      "sha256": "ca6e4e851d78945266228177fd82aa4eac801874186e7de419b092c6c57aea8d"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/FirmwareLevel.h",
+      "bytes": 3679,
+      "sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/Mode00CompleteCommands.h",
+      "bytes": 9817,
+      "sha256": "47ef1babcf44c77df8a1e818474d683a364b72e04eff29e31ba9f424572dd6bf"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/README.md",
+      "bytes": 6697,
+      "sha256": "1942c3fd8cecd477dc34a7df758ba5a04ef769864c3e6edeac2fdec141c314b6"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/SyntheticTests.cpp",
+      "bytes": 10495,
+      "sha256": "a06586f1b314946ad13d4c6459cf07641d27db29ed644aa91c8ebe829c1b9326"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/binding-chronology-correction.json",
+      "bytes": 705,
+      "sha256": "8f17153e30020c20460a91edce3c66cd7d917b51af73a3b344428010e157ba16"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/collect_controls.py",
+      "bytes": 6169,
+      "sha256": "4510edf6835cddaefd157346419beb2837a41101989fa91e77ffb41038312917"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/collector-source-bound.json",
+      "bytes": 1535,
+      "sha256": "aefe9a21930910c78f8c507b65fa86cab234091ad8a263024e68e2cf508a7ecc"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/corrected-collector-bound.json",
+      "bytes": 650,
+      "sha256": "735bc2fe29b650d6c57097051cc9f1cc924fe78666cbded95a8d6dbe469782d7"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/corrected-delay-collection-receipt.json",
+      "bytes": 1030,
+      "sha256": "1f570ea34a33e6a227b65d1a8795fccd57dfe0ed4856974f765686ec0faa9bc0"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/design-before-bounded-matrix.json",
+      "bytes": 9560,
+      "sha256": "94286b9121c978a251b799bc855bfd2a111bc23af633c19007a7e5aae72430e6"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/design-frozen.json",
+      "bytes": 10198,
+      "sha256": "3f3b5ed1e4dd54a460c0ea1c9d2a076cda27d4dc66f9cab98b3b0c5683bf253f"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/fixture-amendment.json",
+      "bytes": 2159,
+      "sha256": "56f818bcab7b3ff29ef6cb156daa784c9dfcaecf8540dbaf0537de16dc9a2084"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/manifest.json",
+      "bytes": 5451,
+      "sha256": "64010794ac4ff9daaaf47f13606bc5db657e86685fdfe5091f97a37a777bb095"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/original-collection-receipt.json",
+      "bytes": 1019,
+      "sha256": "106e0829f894b57f2441706c5a27d43ee15636c39df9e2a80ff0b947ae4e443d"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/retained-executions/Mode00CompleteCommands-v3.h",
+      "bytes": 9816,
+      "sha256": "1404780807fe3410c9fd7952902f36d905e87d01fa316280ade90625332b30c5"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/retained-failures/CommandProbe-v2.cpp",
+      "bytes": 6282,
+      "sha256": "e4bdad6e7a58a55e75cf3e79cdbd4592e189141b4940bcaa0f91d9b260778986"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/retained-failures/SyntheticTests-v1.cpp",
+      "bytes": 10494,
+      "sha256": "31167463699b50995ad461c8e4d795b964384d80302030c2fb3c6a8002e3a39b"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/retained-failures/collect_controls-v2.py",
+      "bytes": 5862,
+      "sha256": "7023c427e62e6c0369ae0dfa50625d910281a4c8869702bcabb3d8b01b34d326"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/retained-failures/run-v2.py",
+      "bytes": 11407,
+      "sha256": "84e5636730f68d5b69eb940278042b6bb82df3107b4e096af059c8eb8057463d"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/run.py",
+      "bytes": 13084,
+      "sha256": "3c3b1cceb122cf2d2486c0882d34f99958c3db2a4e4c8b358a36137ff853ca04"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/source-test-bound-v2.json",
+      "bytes": 2318,
+      "sha256": "058b2533782c7a2ca320714d91a1d4aeab652a17cb8113b17ba6e51af2efdbc3"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/source-test-bound-v3.json",
+      "bytes": 2585,
+      "sha256": "a114a432ebd20261ba83c1de7d7f9852b85d508b71e0a108f3e9a0f600808e6e"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/source-test-bound-v4.json",
+      "bytes": 2456,
+      "sha256": "868da07391ed05004ee8298d5fb79460219b44e1a81d5dc447c1e856872d0a24"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/source-test-bound.json",
+      "bytes": 2213,
+      "sha256": "ee3d7b78656fd66f4e638f7b64b263aa4f5c959194d47e426e711aad40fce648"
+    },
+    {
+      "path": "Tools/prototypes/mode00-complete-command-20261019/validation.json",
+      "bytes": 11220,
+      "sha256": "08679febb0485de1748dd6a0472f4b09dbc68b8da775c54c3469182ad8153371"
+    }
+  ]
+}

@@ -1,0 +1,2003 @@
+{
+  "schema": "press78.sine-crossnote-imd.result.v1",
+  "design": {
+    "schema": "press78.sine-crossnote-imd.prospective.v1",
+    "frozen_at_utc": "2026-10-19T17:42:35.404428+00:00",
+    "scope": "Bounded quadratic mixed-note sum/difference witness; qualify before reading retained source PCM. No download/decode, production/UI/host edit, DAC bit inference or universal separation.",
+    "source_status": "Reused exact780 ONfIvtDOog0; not a fresh holdout. Carrier-onlySine99 patch, Reverb/ChorusON, Vibrato/SustainOFF. Gates inferred; no measuredhardwarearrival.",
+    "source_inputs": [
+      {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/codec-tail-audit-20261018/opus251-float48.wav",
+        "sha256": "613084aecf53c3cea83f78e0506eef61dec4c4f21fb938a266d8d4120a60508e",
+        "size_bytes": 71420964,
+        "sample_rate": 48000,
+        "shape": [
+          8927609,
+          2
+        ],
+        "dtype": "float32"
+      },
+      {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/codec-tail-audit-20261018/aac140-float48.wav",
+        "sha256": "8f7e7452003b46c291c7b0b489a56a34026225c6190fe4dbef743a2b098247b2",
+        "size_bytes": 71438796,
+        "sample_rate": 48000,
+        "shape": [
+          8929838,
+          2
+        ],
+        "dtype": "float32"
+      }
+    ],
+    "aac_lag_frames": 627,
+    "sample_rate": 48000,
+    "on_frame": 8723419,
+    "off_frame": 8744591,
+    "supports_relative_to_on_seconds": [
+      [
+        0.1,
+        0.4
+      ],
+      [
+        0.12,
+        0.38
+      ],
+      [
+        0.14,
+        0.36
+      ]
+    ],
+    "channels": [
+      "left",
+      "right",
+      "arithmetic_mid"
+    ],
+    "frequencies": "Fixed equal temperamentA440, no pitch/phase/time search. Local time centered at each support midpoint; phase coefficients reference absolute onset frame.",
+    "primary_notes": {
+      "39": 77.78174593052023,
+      "75": 622.2539674441618,
+      "79": 783.9908719634985,
+      "87": 1244.5079348883237
+    },
+    "witness_frequencies": {
+      "difference": 706.2091260329782,
+      "sum": 861.7726178940188
+    },
+    "nearby_harmonics": {
+      "bass9_hz": 700.035713374682,
+      "bass11_hz": 855.5992052357226,
+      "distance_hz": 6.173412658296229
+    },
+    "nuisance_lines": [
+      {
+        "midi_origin": 39,
+        "harmonic": 1,
+        "hz": 77.78174593052023
+      },
+      {
+        "midi_origin": 46,
+        "harmonic": 1,
+        "hz": 116.54094037952248
+      },
+      {
+        "midi_origin": 47,
+        "harmonic": 1,
+        "hz": 123.47082531403103
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 2,
+        "hz": 155.56349186104046
+      },
+      {
+        "midi_origin": 46,
+        "harmonic": 2,
+        "hz": 233.08188075904496
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 3,
+        "hz": 233.3452377915607
+      },
+      {
+        "midi_origin": 47,
+        "harmonic": 2,
+        "hz": 246.94165062806206
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 4,
+        "hz": 311.1269837220809
+      },
+      {
+        "midi_origin": 46,
+        "harmonic": 3,
+        "hz": 349.6228211385675
+      },
+      {
+        "midi_origin": 47,
+        "harmonic": 3,
+        "hz": 370.4124759420931
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 5,
+        "hz": 388.90872965260115
+      },
+      {
+        "midi_origin": 67,
+        "harmonic": 1,
+        "hz": 391.99543598174927
+      },
+      {
+        "midi_origin": 46,
+        "harmonic": 4,
+        "hz": 466.1637615180899
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 6,
+        "hz": 466.6904755831214
+      },
+      {
+        "midi_origin": 47,
+        "harmonic": 4,
+        "hz": 493.8833012561241
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 7,
+        "hz": 544.4722215136417
+      },
+      {
+        "midi_origin": 46,
+        "harmonic": 5,
+        "hz": 582.7047018976124
+      },
+      {
+        "midi_origin": 47,
+        "harmonic": 5,
+        "hz": 617.3541265701551
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 8,
+        "hz": 622.2539674441618
+      },
+      {
+        "midi_origin": 46,
+        "harmonic": 6,
+        "hz": 699.245642277135
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 9,
+        "hz": 700.035713374682
+      },
+      {
+        "midi_origin": 47,
+        "harmonic": 6,
+        "hz": 740.8249518841862
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 10,
+        "hz": 777.8174593052023
+      },
+      {
+        "midi_origin": 79,
+        "harmonic": 1,
+        "hz": 783.9908719634985
+      },
+      {
+        "midi_origin": 46,
+        "harmonic": 7,
+        "hz": 815.7865826566574
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 11,
+        "hz": 855.5992052357226
+      },
+      {
+        "midi_origin": 47,
+        "harmonic": 7,
+        "hz": 864.2957771982173
+      },
+      {
+        "midi_origin": 46,
+        "harmonic": 8,
+        "hz": 932.3275230361799
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 12,
+        "hz": 933.3809511662428
+      },
+      {
+        "midi_origin": 47,
+        "harmonic": 8,
+        "hz": 987.7666025122483
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 13,
+        "hz": 1011.1626970967629
+      },
+      {
+        "midi_origin": 46,
+        "harmonic": 9,
+        "hz": 1048.8684634157023
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 14,
+        "hz": 1088.9444430272833
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 15,
+        "hz": 1166.7261889578035
+      },
+      {
+        "midi_origin": 67,
+        "harmonic": 3,
+        "hz": 1175.9863079452477
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 16,
+        "hz": 1244.5079348883237
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 17,
+        "hz": 1322.2896808188439
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 18,
+        "hz": 1400.071426749364
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 19,
+        "hz": 1477.8531726798844
+      },
+      {
+        "midi_origin": 39,
+        "harmonic": 20,
+        "hz": 1555.6349186104046
+      },
+      {
+        "midi_origin": 79,
+        "harmonic": 2,
+        "hz": 1567.981743926997
+      },
+      {
+        "midi_origin": 67,
+        "harmonic": 5,
+        "hz": 1959.9771799087464
+      },
+      {
+        "midi_origin": 79,
+        "harmonic": 3,
+        "hz": 2351.9726158904955
+      }
+    ],
+    "nuisance_domain": "Independent current/preceding-note harmonics through2500Hz; exact duplicate ET harmonics deduplicated.75/87 are bass8/16, not separate stems. Unknown native-clock aliases are not enumerated or ruled out.",
+    "estimator": "One joint real least-squares fit: DC/quadratic slow trend and sin/cos at every nuisance and witness frequency, each multiplied by centered normalized time polynomial degrees0,1,2. Hann applied to basis and observations. Use SVD pseudoinverse rcond1e-12. Central complex coefficientcos-i*sin; phase translated back to onset epoch. No ridge/optimizednuisance/order/frequency/window.",
+    "phase_witness": "For quadraticpostmix y=x+alpha*x^2, complex sidebandZsum/(Z79*Z39) and Zdifference/(Z79*conj(Z39)) are alpha before unspecified downstream transfer. Source interpretation tests stability across fixedsupports/encodes, never assumes arbitrary unknownfilterphase is0.",
+    "qualification": {
+      "condition_number_max": 10000000,
+      "negative_witness_relative_to_largest_primary_max_db": -65,
+      "positive_injected_alpha": 0.04,
+      "positive_relative_amplitude_error_max": 0.2,
+      "positive_phase_error_rad_max": 0.2,
+      "positive_same_phase_per_note_independent_nonlinearity_must_not_trigger": true,
+      "must_pass_all_prespecified_cases_and_supports_before_source_pcm": true,
+      "failure_policy": "Preserve complete qualification failure and abstain from source PCM analysis; no order/frequency/window/threshold revision in this run."
+    },
+    "synthetic_cases": {
+      "clean_linear": "Four cosines, primary amplitude.1, phases[.2,1.1,-.7,2.0].",
+      "independent_harmonic": "Same plus pernoteH2=.03,H3=.01 andH4..20=.003*4/h relative amplitudes, deterministic phases. No crossnote products.",
+      "detuned_harmonic": "Independent harmonics with pernote detune[-2,+1,+.5,-1]cents and common500ppm sinusoidal drift.7Hz, no crossnote mixing.",
+      "linear_chorus": "Independent harmonics through a common linear variable delay4ms\u00b1.5ms at.954647Hz, opposite left/rightphase. No nonlinear stage.",
+      "independent_nonlinearity": "Sum of independently squared/cubedcosines (.04quadratic,.03cubic) rather than square of sum.",
+      "quadratic_positive": "Global x+.04*x*x on clean fourcosines; theoretical witness alphaZaZb.",
+      "quadratic_after_chorus_positive": "Global x+.04*x*x separately after linear chorus, central expectedproducts from the known instantaneous component complexvalues.",
+      "native_linear_controls": "Current nativeDSP independent sinepatch AR63/D1L0/D2R0, pitchModel0, noLFO/noise/drive/limiter/DCblock; dry,circuit,Recordedchorus,circuit+Recordedchorus with mastergain.1,4notes. Set capturechorusepoch181.737895833s. Native output only is synthesized; no captured PCM read for qualification."
+    },
+    "source_gate_if_qualified": "Report all amplitudes/phases/supports/formats. Positive conditional crossnote evidence requires both witnesses above-55dBc and at least10\u00d7worst qualifiedcontrol leakage, normalizedphase spread\u2264.3rad across supports and between encodes. A null is not linearity proof; nativealias/sharedmaster/interface nonlinearity cannot be located. No sourcefit or codecdecode.",
+    "no_source_pcm_read_yet": true
+  },
+  "design_sha256": "31dad8c2db647e1567a1ca9af7c0d79ffee77592c8bafa4fe8f12718366cf113",
+  "analysis_sha256": "2040c3293c215a44cf9069ec589380f76ba90c500b74f5d3558e26f46d711808",
+  "native_probe_source_sha256": "8bf4b5136a19406d0b730fe5bca6643f7ed88dd33cd314ded0b93951ae397955",
+  "source_pcm_opened": false,
+  "source_downloaded_or_decoded": false,
+  "matrix_diagnostics": [
+    {
+      "support": [
+        0.1,
+        0.4
+      ],
+      "condition": 325372152.07057405,
+      "rank": 273,
+      "columns": 273
+    },
+    {
+      "support": [
+        0.12,
+        0.38
+      ],
+      "condition": 1012673399.4621992,
+      "rank": 273,
+      "columns": 273
+    },
+    {
+      "support": [
+        0.14,
+        0.36
+      ],
+      "condition": 3929373201.7463555,
+      "rank": 273,
+      "columns": 273
+    }
+  ],
+  "matrix_gate_passed": false,
+  "qualification_cases": [
+    {
+      "case": "clean_linear",
+      "positive": false,
+      "passed": true,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 2.412997406676717e-10,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 2.5656913414592953e-13,
+              "max_db_relative_to_primary": -251.81591182877662,
+              "complex_coefficients": [
+                [
+                  1.2093858720657244e-14,
+                  -2.2627765846603273e-14
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 3.785094491090921e-12,
+              "max_db_relative_to_primary": -228.4384654860409,
+              "complex_coefficients": [
+                [
+                  -3.7163029207553594e-13,
+                  -7.183543051114022e-14
+                ]
+              ],
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 1.428191308246348e-09,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 6.30208794998724e-13,
+              "max_db_relative_to_primary": -244.01031080480936,
+              "complex_coefficients": [
+                [
+                  3.162898084236197e-14,
+                  -5.450907102318813e-14
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 5.323829467665781e-12,
+              "max_db_relative_to_primary": -225.47551728497612,
+              "complex_coefficients": [
+                [
+                  -4.4966629631639144e-13,
+                  2.8501197161692444e-13
+                ]
+              ],
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 3.407170892678232e-09,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 2.3491963278861317e-12,
+              "max_db_relative_to_primary": -232.5816137337997,
+              "complex_coefficients": [
+                [
+                  1.8523993236357725e-13,
+                  -1.4447630022766843e-13
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 1.500299415453875e-11,
+              "max_db_relative_to_primary": -216.47644119884598,
+              "complex_coefficients": [
+                [
+                  -8.817059615585933e-13,
+                  1.2138751720680855e-12
+                ]
+              ],
+              "passed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "independent_harmonic",
+      "positive": false,
+      "passed": true,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.01816003332021201,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 3.974973802280529e-09,
+              "max_db_relative_to_primary": -168.01331458574768,
+              "complex_coefficients": [
+                [
+                  -3.3129607919857505e-10,
+                  -2.37371007705939e-10
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 6.5195573382792835e-09,
+              "max_db_relative_to_primary": -163.71563781563464,
+              "complex_coefficients": [
+                [
+                  5.521601269851745e-10,
+                  -3.7676206074439583e-10
+                ]
+              ],
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.018171276892092914,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 3.532910128914969e-08,
+              "max_db_relative_to_primary": -149.03734820240834,
+              "complex_coefficients": [
+                [
+                  -3.0291181029832515e-09,
+                  -1.9863505049027847e-09
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 6.000557347650793e-08,
+              "max_db_relative_to_primary": -144.43616818643503,
+              "complex_coefficients": [
+                [
+                  1.7025732259708493e-09,
+                  -5.912133518652546e-09
+                ]
+              ],
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.01816499845979392,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 7.40651059865765e-07,
+              "max_db_relative_to_primary": -122.60772702710968,
+              "complex_coefficients": [
+                [
+                  -4.6014901621357195e-08,
+                  -6.041038793203418e-08
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 7.670241497920447e-07,
+              "max_db_relative_to_primary": -122.30381924106437,
+              "complex_coefficients": [
+                [
+                  6.054148009061109e-08,
+                  -5.019476507517028e-08
+                ]
+              ],
+              "passed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "detuned_harmonic",
+      "positive": false,
+      "passed": false,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.019150674695234036,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.0006106133561194477,
+              "max_db_relative_to_primary": -64.28467400973707,
+              "complex_coefficients": [
+                [
+                  2.8084906916750107e-05,
+                  -5.671774821458034e-05
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.004498175453436776,
+              "max_db_relative_to_primary": -46.939272174213485,
+              "complex_coefficients": [
+                [
+                  -0.0004325943547678935,
+                  0.0001738957500869271
+                ]
+              ],
+              "passed": false
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.01807524458923688,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.001999207744728353,
+              "max_db_relative_to_primary": -53.982841489310076,
+              "complex_coefficients": [
+                [
+                  -5.831356104652051e-05,
+                  0.00019942501929175212
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.006466262188353551,
+              "max_db_relative_to_primary": -43.78693379947953,
+              "complex_coefficients": [
+                [
+                  0.0006717690190932759,
+                  1.8827988013975394e-05
+                ]
+              ],
+              "passed": false
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.01789184366610338,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.005984044647777681,
+              "max_db_relative_to_primary": -44.460103496016494,
+              "complex_coefficients": [
+                [
+                  7.932794705918526e-05,
+                  -0.0006183785734486081
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.016312320019695924,
+              "max_db_relative_to_primary": -35.74968534069356,
+              "complex_coefficients": [
+                [
+                  0.0016064987315889327,
+                  -0.0005544760759231548
+                ]
+              ],
+              "passed": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "linear_chorus",
+      "positive": false,
+      "passed": false,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.1734040541970125,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.023815653700700955,
+              "max_db_relative_to_primary": -32.46274986632648,
+              "complex_coefficients": [
+                [
+                  -0.0014207815453323564,
+                  0.0009634488221811286
+                ],
+                [
+                  0.0006961224679448715,
+                  -0.002361824167279932
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.20433150991193824,
+              "max_db_relative_to_primary": -13.793293115155468,
+              "complex_coefficients": [
+                [
+                  -0.021119638644253376,
+                  -0.0005026581676213698
+                ],
+                [
+                  0.0017606470742009576,
+                  -0.012843840282623342
+                ]
+              ],
+              "passed": false
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.11459282285381063,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.07856738194754208,
+              "max_db_relative_to_primary": -22.095154366828332,
+              "complex_coefficients": [
+                [
+                  -0.003965937818152016,
+                  0.004193898306548183
+                ],
+                [
+                  -0.000912535742208557,
+                  -0.008038978477919526
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 1.5861406025570735,
+              "max_db_relative_to_primary": 4.006833649646257,
+              "complex_coefficients": [
+                [
+                  -0.15395990014382244,
+                  0.0545418615950352
+                ],
+                [
+                  0.010789944151454768,
+                  -0.10837040246333693
+                ]
+              ],
+              "passed": false
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.07041298498675984,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.39766486209803203,
+              "max_db_relative_to_primary": -8.00965563671039,
+              "complex_coefficients": [
+                [
+                  -0.015084308101461755,
+                  0.024031422051116146
+                ],
+                [
+                  -0.0212579794555718,
+                  -0.03485963636905908
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 5.242484915838978,
+              "max_db_relative_to_primary": 14.39074379094097,
+              "complex_coefficients": [
+                [
+                  -0.4287741593770318,
+                  0.06554789848430896
+                ],
+                [
+                  0.17348255537819854,
+                  -0.5095473672242538
+                ]
+              ],
+              "passed": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "independent_nonlinearity",
+      "positive": false,
+      "passed": true,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.0009990621763329383,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 2.2743565279677523e-10,
+              "max_db_relative_to_primary": -192.86282908678982,
+              "complex_coefficients": [
+                [
+                  1.2246045979172888e-11,
+                  -1.9224132689118423e-11
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 2.1966855452384147e-10,
+              "max_db_relative_to_primary": -193.16464215464381,
+              "complex_coefficients": [
+                [
+                  1.8271617554735894e-11,
+                  -1.2280144579947179e-11
+                ]
+              ],
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.0009989016544662986,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 2.2810262472251283e-09,
+              "max_db_relative_to_primary": -172.83739434743103,
+              "complex_coefficients": [
+                [
+                  1.4967835626246635e-10,
+                  -1.7278553819171612e-10
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 1.276898351036215e-09,
+              "max_db_relative_to_primary": -177.87687347745913,
+              "complex_coefficients": [
+                [
+                  -1.2779525108831902e-10,
+                  6.663637808129893e-12
+                ]
+              ],
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.0009994726399590592,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 3.611358758463766e-08,
+              "max_db_relative_to_primary": -148.8465873176898,
+              "complex_coefficients": [
+                [
+                  -3.2652590712210676e-09,
+                  -1.5611073764458439e-09
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 1.2956349423007217e-08,
+              "max_db_relative_to_primary": -157.75034695816228,
+              "complex_coefficients": [
+                [
+                  1.0455502209041687e-09,
+                  -7.699604886977206e-10
+                ]
+              ],
+              "passed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "quadratic_positive",
+      "positive": true,
+      "passed": true,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.008372134980259838,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.003984072739568357,
+              "max_db_relative_to_primary": -47.99345482010348,
+              "complex_coefficients": [
+                [
+                  0.00024859124724392005,
+                  -0.0003133333356571514
+                ]
+              ],
+              "expected_complex": [
+                [
+                  0.0002486439873082658,
+                  -0.0003133307638509933
+                ]
+              ],
+              "max_relative_complex_error": 0.0001320068315966159,
+              "max_phase_error_rad": 0.00010728668230234715,
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.0039854804502290194,
+              "max_db_relative_to_primary": -47.99038633702122,
+              "complex_coefficients": [
+                [
+                  0.0003512947629434706,
+                  -0.00019152139988277725
+                ]
+              ],
+              "expected_complex": [
+                [
+                  0.0003510330247561491,
+                  -0.0001917702154416812
+                ]
+              ],
+              "max_relative_complex_error": 0.0009028290987744262,
+              "max_phase_error_rad": 0.0008593630039237511,
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.0073486001160522705,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.003988495608756289,
+              "max_db_relative_to_primary": -47.98381763521837,
+              "complex_coefficients": [
+                [
+                  0.00024935979548131254,
+                  -0.00031328964429364834
+                ]
+              ],
+              "expected_complex": [
+                [
+                  0.0002486439873082658,
+                  -0.0003133307638509933
+                ]
+              ],
+              "max_relative_complex_error": 0.001792470638875246,
+              "max_phase_error_rad": 0.0014641684648461105,
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.003987788004276033,
+              "max_db_relative_to_primary": -47.985358747530114,
+              "complex_coefficients": [
+                [
+                  0.00035161813619483714,
+                  -0.00019141188883438606
+                ]
+              ],
+              "expected_complex": [
+                [
+                  0.0003510330247561491,
+                  -0.0001917702154416812
+                ]
+              ],
+              "max_relative_complex_error": 0.0017152866983015064,
+              "max_phase_error_rad": 0.0014861757381481337,
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.006002141828212537,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.003979114001085564,
+              "max_db_relative_to_primary": -48.00427236392744,
+              "complex_coefficients": [
+                [
+                  0.0002476422083170381,
+                  -0.00031344935457904786
+                ]
+              ],
+              "expected_complex": [
+                [
+                  0.0002486439873082658,
+                  -0.0003133307638509933
+                ]
+              ],
+              "max_relative_complex_error": 0.002521934907027812,
+              "max_phase_error_rad": 0.002148937123917884,
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.00398935939147294,
+              "max_db_relative_to_primary": -47.98193674834408,
+              "complex_coefficients": [
+                [
+                  0.0003500919605477008,
+                  -0.00019451373798947622
+                ]
+              ],
+              "expected_complex": [
+                [
+                  0.0003510330247561491,
+                  -0.0001917702154416812
+                ]
+              ],
+              "max_relative_complex_error": 0.0072510851837337825,
+              "max_phase_error_rad": 0.00713823842549552,
+              "passed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "quadratic_after_chorus_positive",
+      "positive": true,
+      "passed": false,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.1697158754907577,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.022998295724663814,
+              "max_db_relative_to_primary": -32.76608691860287,
+              "complex_coefficients": [
+                [
+                  -0.0014520004378728946,
+                  0.0010911818291169377
+                ],
+                [
+                  0.0003349304919060293,
+                  -0.0023171104095721234
+                ]
+              ],
+              "expected_complex": [
+                [
+                  -0.0002843221668120916,
+                  0.0002813554788151054
+                ],
+                [
+                  -0.0001518804456229174,
+                  -0.0003700436869308597
+                ]
+              ],
+              "max_relative_complex_error": 5.017502934300838,
+              "max_phase_error_rad": 0.5330255483575294,
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.2304203521712167,
+              "max_db_relative_to_primary": -12.749583278822696,
+              "complex_coefficients": [
+                [
+                  -0.023453335983897764,
+                  -0.00038184696632672017
+                ],
+                [
+                  0.0022421040940093606,
+                  -0.014970956458614886
+                ]
+              ],
+              "expected_complex": [
+                [
+                  0.000312955068544242,
+                  -0.00024911668967066174
+                ],
+                [
+                  0.00037747566478815665,
+                  0.00013233337633695904
+                ]
+              ],
+              "max_relative_complex_error": 59.416654215996445,
+              "max_phase_error_rad": 2.4530070869216716,
+              "passed": false
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.11139499823509065,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.07947053715599103,
+              "max_db_relative_to_primary": -21.995877029936594,
+              "complex_coefficients": [
+                [
+                  -0.0038986352128137424,
+                  0.004307540476637524
+                ],
+                [
+                  -0.0012634396391297694,
+                  -0.007896859445145305
+                ]
+              ],
+              "expected_complex": [
+                [
+                  -0.0002843221668120916,
+                  0.0002813554788151054
+                ],
+                [
+                  -0.0001518804456229174,
+                  -0.0003700436869308597
+                ]
+              ],
+              "max_relative_complex_error": 19.021126297286997,
+              "max_phase_error_rad": 0.2308250766437345,
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 1.6417580982836895,
+              "max_db_relative_to_primary": 4.3061833440989234,
+              "complex_coefficients": [
+                [
+                  -0.1565259697758029,
+                  0.05286938851401657
+                ],
+                [
+                  0.012034790942215797,
+                  -0.1109799901045415
+                ]
+              ],
+              "expected_complex": [
+                [
+                  0.000312955068544242,
+                  -0.00024911668967066174
+                ],
+                [
+                  0.00037747566478815665,
+                  0.00013233337633695904
+                ]
+              ],
+              "max_relative_complex_error": 413.9748176324023,
+              "max_phase_error_rad": 2.795022784108711,
+              "passed": false
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.06705389344588492,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.40660914548704574,
+              "max_db_relative_to_primary": -7.816457148003355,
+              "complex_coefficients": [
+                [
+                  -0.014724746917271273,
+                  0.024253628575356272
+                ],
+                [
+                  -0.02168691953208218,
+                  -0.03455648171564872
+                ]
+              ],
+              "expected_complex": [
+                [
+                  -0.0002843221668120916,
+                  0.0002813554788151054
+                ],
+                [
+                  -0.0001518804456229174,
+                  -0.0003700436869308597
+                ]
+              ],
+              "max_relative_complex_error": 101.00960516043429,
+              "max_phase_error_rad": 0.24500774350934237,
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 5.383671405106991,
+              "max_db_relative_to_primary": 14.62157089317495,
+              "complex_coefficients": [
+                [
+                  -0.43139501956428317,
+                  0.06108257004782338
+                ],
+                [
+                  0.1751220183097091,
+                  -0.5110072537488813
+                ]
+              ],
+              "expected_complex": [
+                [
+                  0.000312955068544242,
+                  -0.00024911668967066174
+                ],
+                [
+                  0.00037747566478815665,
+                  0.00013233337633695904
+                ]
+              ],
+              "max_relative_complex_error": 1350.4613394844025,
+              "max_phase_error_rad": 2.6099448861810592,
+              "passed": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "native_dry",
+      "positive": false,
+      "passed": true,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 3.093470124426905e-08,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 2.9386610121054133e-07,
+              "max_db_relative_to_primary": -130.63701017758146,
+              "complex_coefficients": [
+                [
+                  1.1826300520219488e-08,
+                  2.0318101353948982e-08
+                ],
+                [
+                  1.1826300520219488e-08,
+                  2.0318101353948982e-08
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 3.404972766389718e-06,
+              "max_db_relative_to_primary": -109.35772714611917,
+              "complex_coefficients": [
+                [
+                  1.7637314153302182e-07,
+                  2.0758874722505798e-07
+                ],
+                [
+                  1.7637314153302182e-07,
+                  2.0758874722505798e-07
+                ]
+              ],
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 3.186493603048877e-08,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 9.933226622542451e-07,
+              "max_db_relative_to_primary": -120.0581931232505,
+              "complex_coefficients": [
+                [
+                  2.7959579918830883e-08,
+                  7.438465782615985e-08
+                ],
+                [
+                  2.7959579918830883e-08,
+                  7.438465782615985e-08
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 1.0019750368436054e-05,
+              "max_db_relative_to_primary": -99.98286196650366,
+              "complex_coefficients": [
+                [
+                  2.0051674096984455e-07,
+                  7.760950843101101e-07
+                ],
+                [
+                  2.0051674096984455e-07,
+                  7.760950843101101e-07
+                ]
+              ],
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 5.2608102958841266e-08,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 2.1220301690404118e-06,
+              "max_db_relative_to_primary": -113.46496891995994,
+              "complex_coefficients": [
+                [
+                  2.287687356047268e-08,
+                  1.6821392830330384e-07
+                ],
+                [
+                  2.287687356047268e-08,
+                  1.6821392830330384e-07
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 3.058753979889664e-05,
+              "max_db_relative_to_primary": -90.28910905117337,
+              "complex_coefficients": [
+                [
+                  2.267608103867599e-06,
+                  9.196619291483372e-07
+                ],
+                [
+                  2.267608103867599e-06,
+                  9.196619291483372e-07
+                ]
+              ],
+              "passed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "native_circuit",
+      "positive": false,
+      "passed": true,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.00013221488471848632,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 1.1883561887250364e-07,
+              "max_db_relative_to_primary": -138.50106735523508,
+              "complex_coefficients": [
+                [
+                  5.087950904653029e-09,
+                  -7.97454373353861e-09
+                ],
+                [
+                  5.087950904653029e-09,
+                  -7.97454373353861e-09
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 2.4929258788455514e-06,
+              "max_db_relative_to_primary": -112.06581268012042,
+              "complex_coefficients": [
+                [
+                  -1.8827937138020274e-07,
+                  -6.268124418142234e-08
+                ],
+                [
+                  -1.8827937138020274e-07,
+                  -6.268124418142234e-08
+                ]
+              ],
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 5.565773687834519e-05,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 5.094624061025432e-07,
+              "max_db_relative_to_primary": -125.85775715266406,
+              "complex_coefficients": [
+                [
+                  -2.166072995569221e-09,
+                  -4.0495760352209154e-08
+                ],
+                [
+                  -2.166072995569221e-09,
+                  -4.0495760352209154e-08
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 9.070598110850625e-06,
+              "max_db_relative_to_primary": -100.84728149655399,
+              "complex_coefficients": [
+                [
+                  7.190909583188988e-07,
+                  6.505283019457114e-08
+                ],
+                [
+                  7.190909583188988e-07,
+                  6.505283019457114e-08
+                ]
+              ],
+              "passed": true
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 2.245310050041005e-05,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 2.327573319150052e-06,
+              "max_db_relative_to_primary": -112.66193259489576,
+              "complex_coefficients": [
+                [
+                  -1.0157295722326021e-07,
+                  -1.5495305736538454e-07
+                ],
+                [
+                  -1.0157295722326021e-07,
+                  -1.5495305736538454e-07
+                ]
+              ],
+              "passed": true
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.00013464344820974896,
+              "max_db_relative_to_primary": -77.41629549274056,
+              "complex_coefficients": [
+                [
+                  8.882154672841115e-06,
+                  5.998098552226301e-06
+                ],
+                [
+                  8.882154672841115e-06,
+                  5.998098552226301e-06
+                ]
+              ],
+              "passed": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "native_chorus",
+      "positive": false,
+      "passed": false,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.1546466497059766,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.0021547445852095736,
+              "max_db_relative_to_primary": -53.332084039606855,
+              "complex_coefficients": [
+                [
+                  -6.212664637020605e-05,
+                  0.0002664439605871452
+                ],
+                [
+                  6.213660940409923e-05,
+                  -0.00026648485930242185
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.009318115879295237,
+              "max_db_relative_to_primary": -40.613437860100746,
+              "complex_coefficients": [
+                [
+                  -0.0009895259367798215,
+                  -0.000648905001133187
+                ],
+                [
+                  0.0009890258640844224,
+                  0.0006484197278397576
+                ]
+              ],
+              "passed": false
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.10877726044563239,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.0043592124873063215,
+              "max_db_relative_to_primary": -47.211839220630694,
+              "complex_coefficients": [
+                [
+                  0.000272605498468734,
+                  -0.0004818057000671995
+                ],
+                [
+                  -0.00027258227999956303,
+                  0.0004816261749607361
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.19641012641230474,
+              "max_db_relative_to_primary": -14.13672249680495,
+              "complex_coefficients": [
+                [
+                  0.01974967264497658,
+                  -0.015233755990227705
+                ],
+                [
+                  -0.01975048322294564,
+                  0.015231758375660242
+                ]
+              ],
+              "passed": false
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.07033395359322571,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.10604078478989244,
+              "max_db_relative_to_primary": -19.490541335742574,
+              "complex_coefficients": [
+                [
+                  0.009045335053887046,
+                  -0.009975963830298737
+                ],
+                [
+                  -0.009045171518271689,
+                  0.009975175010725415
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 1.3369598436395798,
+              "max_db_relative_to_primary": 2.522367263449908,
+              "complex_coefficients": [
+                [
+                  -0.076372644416259,
+                  -0.15163409156820656
+                ],
+                [
+                  0.07636535602472883,
+                  0.15162346040647437
+                ]
+              ],
+              "passed": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "case": "native_both",
+      "positive": false,
+      "passed": false,
+      "rows": [
+        {
+          "support": [
+            0.1,
+            0.4
+          ],
+          "weighted_design_condition": 325372152.07057405,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.15411653345418308,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.002159540646620155,
+              "max_db_relative_to_primary": -53.312772345997516,
+              "complex_coefficients": [
+                [
+                  2.8198263901382016e-05,
+                  -0.0002661381951331926
+                ],
+                [
+                  -2.817797141421271e-05,
+                  0.0002661246501226643
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.008638996723974337,
+              "max_db_relative_to_primary": -41.27073381371254,
+              "complex_coefficients": [
+                [
+                  0.0009703810943066403,
+                  0.00045127839370879863
+                ],
+                [
+                  -0.0009709944229250716,
+                  -0.00045098343815495304
+                ]
+              ],
+              "passed": false
+            }
+          }
+        },
+        {
+          "support": [
+            0.12,
+            0.38
+          ],
+          "weighted_design_condition": 1012673399.4621992,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.10841594325107141,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.004359317025741988,
+              "max_db_relative_to_primary": -47.21163092648801,
+              "complex_coefficients": [
+                [
+                  -0.0001955261017822656,
+                  0.0005035106557910713
+                ],
+                [
+                  0.000195535182459273,
+                  -0.0005036132277881886
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 0.20627260100129613,
+              "max_db_relative_to_primary": -13.71116910260133,
+              "complex_coefficients": [
+                [
+                  -0.018236290450873605,
+                  0.01791370977588107
+                ],
+                [
+                  0.018234779346016805,
+                  -0.01791249257008235
+                ]
+              ],
+              "passed": false
+            }
+          }
+        },
+        {
+          "support": [
+            0.14,
+            0.36
+          ],
+          "weighted_design_condition": 3929373201.7463555,
+          "rank": 273,
+          "columns": 273,
+          "unweighted_relative_residual": 0.07000959303479816,
+          "witnesses": {
+            "difference": {
+              "max_amplitude_relative_to_primary": 0.10901824543301204,
+              "max_db_relative_to_primary": -19.25001623792811,
+              "complex_coefficients": [
+                [
+                  -0.007732833835686716,
+                  0.011078008806390519
+                ],
+                [
+                  0.007732860851056924,
+                  -0.01107850066004706
+                ]
+              ],
+              "passed": false
+            },
+            "sum": {
+              "max_amplitude_relative_to_primary": 1.3520364499011084,
+              "max_db_relative_to_primary": 2.619768000419043,
+              "complex_coefficients": [
+                [
+                  0.09150842407305307,
+                  0.14035891055132113
+                ],
+                [
+                  -0.09151570133644597,
+                  -0.14035478802319895
+                ]
+              ],
+              "passed": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "all_qualification_passed": false,
+  "native": {
+    "source_sha256": {
+      "AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+      "CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+      "FactoryVoices.h": "6f45afd021de03e226ffe7e09f953799b4f72f48cf1f062348b6d6b328eabed3",
+      "FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+      "OutputKernelTable.h": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7",
+      "OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+      "Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+      "Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+      "Press78OutputBus.h": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9",
+      "RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+      "RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+    },
+    "compile_command": [
+      "c++",
+      "-std=c++17",
+      "-O2",
+      "-I",
+      "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native-source",
+      "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/sine-crossnote-imd-20261019/NativeProbe.cpp",
+      "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native-source/Press78Engine.cpp",
+      "-o",
+      "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native_probe"
+    ],
+    "executable_sha256": "77b4935d5a7f9d71ba77e6bc04c27f50104b3ac36ee10c52d87b96d9f2086b6f",
+    "renders": [
+      {
+        "mode": "dry",
+        "run_command": [
+          "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native_probe",
+          "dry",
+          "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native-dry.f32"
+        ],
+        "render": {
+          "frames": 48000,
+          "latency_samples": 32,
+          "noise": false,
+          "nonlinear_stage": false
+        },
+        "audio_sha256": "2b49a214c5cc7f267cecc0ed21848494ae1e0483c1e632b707255e79cfbc178a"
+      },
+      {
+        "mode": "circuit",
+        "run_command": [
+          "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native_probe",
+          "circuit",
+          "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native-circuit.f32"
+        ],
+        "render": {
+          "frames": 48000,
+          "latency_samples": 32,
+          "noise": false,
+          "nonlinear_stage": false
+        },
+        "audio_sha256": "859977c30346d4a8c6f56ed9c985759e231265b90fa9fa02cce97d447becd582"
+      },
+      {
+        "mode": "chorus",
+        "run_command": [
+          "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native_probe",
+          "chorus",
+          "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native-chorus.f32"
+        ],
+        "render": {
+          "frames": 48000,
+          "latency_samples": 32,
+          "noise": false,
+          "nonlinear_stage": false
+        },
+        "audio_sha256": "8f6df772dc21add9a2659b011dfc7db3e4df641e685bad12d8dbc637217b3c8c"
+      },
+      {
+        "mode": "both",
+        "run_command": [
+          "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native_probe",
+          "both",
+          "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native-both.f32"
+        ],
+        "render": {
+          "frames": 48000,
+          "latency_samples": 32,
+          "noise": false,
+          "nonlinear_stage": false
+        },
+        "audio_sha256": "a06daf0c1c3d7d1c1664718670e47d8051ffcabbcb684f5e16a35ef5c8a21ada"
+      }
+    ]
+  },
+  "production_changed": false,
+  "status": "Qualification failed; source PCM analysis deliberately not performed",
+  "source_result": null,
+  "consequence": "This fixed estimator cannot support a source cross-note IMD claim. Failure is not evidence that the hardware is linear or nonlinear. Preserve it; do not revise this run to rescue source analysis.",
+  "date": "2026-10-19",
+  "conclusion": "Fixed cross-note IMD estimator fails prospective qualification. No retained source PCM was opened or analyzed. False sideband coefficients in known linear chorus/drift controls prohibit attributing such coefficients in this recording to physical cross-note nonlinearity.",
+  "prior_evidence_bindings": {
+    "Docs/research/exact-sine-release-2026-10-18.json": "e71c726a178ef264d84f001a381da084f0f1bd48a4c6ccf1573ff2e7e7cc7016",
+    "Docs/research/codec-tail-audit-2026-10-18.json": "69b10835ef73ddbbf8d36f21562d048e656ac3362d588719dc98e3c5c67e6da1",
+    "Docs/research/envelope-capture-forensics-2026-10-18.json": "066955a81c999ab88824506fe57e38ba63063e1837720fe5a15906c1e0d5d165",
+    "Docs/research/dac-endpoint-evidence-2026-10-19.json": "473347eb29dc50c2f281d8ea8972a89da6962edd0664fb206868e86bf90e01e2"
+  },
+  "primary_source_input_binding_scope": "Input float PCM paths/hashes are retained prior-ledger bindings only. This run never opened those PCM files, downloaded media, decoded a stream or computed source audio measurements.",
+  "native_superposition_posthoc": {
+    "controls": [
+      {
+        "mode": "dry",
+        "relative_rms_error": 3.75228e-08,
+        "max_absolute_error": 2.23517e-08,
+        "passed_1e_minus6": true
+      },
+      {
+        "mode": "circuit",
+        "relative_rms_error": 3.72163e-08,
+        "max_absolute_error": 2.23517e-08,
+        "passed_1e_minus6": true
+      },
+      {
+        "mode": "chorus",
+        "relative_rms_error": 3.46755e-08,
+        "max_absolute_error": 2.6077e-08,
+        "passed_1e_minus6": true
+      },
+      {
+        "mode": "both",
+        "relative_rms_error": 3.45051e-08,
+        "max_absolute_error": 2.6077e-08,
+        "passed_1e_minus6": true
+      }
+    ],
+    "source_pcm_read": false,
+    "scope": "Additional postfailure linearity diagnostic only; frozen estimator and failure remain unchanged. No source analysis or rescue.",
+    "compile_command": [
+      "c++",
+      "-std=c++17",
+      "-O2",
+      "-I",
+      "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native-source",
+      "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/sine-crossnote-imd-20261019/NativeSuperpositionProbe.cpp",
+      "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/native-source/Press78Engine.cpp",
+      "-o",
+      "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/superposition_probe"
+    ],
+    "source_sha256": "1474d13c008f1ecf3139041755aa1c508d837d62b23a70093c4815ae6600ef31",
+    "executable_sha256": "359d60d759663623e1466a8519e6271af1418c48900437aedd05562a11d8b52b"
+  },
+  "supplemental_chronology": {
+    "scope": "Postfailure superposition diagnostic chronology; estimator failure and source abstention unchanged",
+    "initial_posthoc": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/superposition.json",
+      "sha256": "86a2456a7a6775e5536fa72a63dfb8b84da8f05b1ebef4ca887b0512428ec726",
+      "source_sha256": "1474d13c008f1ecf3139041755aa1c508d837d62b23a70093c4815ae6600ef31",
+      "executable_sha256": "359d60d759663623e1466a8519e6271af1418c48900437aedd05562a11d8b52b",
+      "chronology": "The source/settings and numerical result were bound after the initial run. No claim of prospective or independent evidence."
+    },
+    "unnecessary_unchanged_repeat": {
+      "protocol_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/superposition-reproduction-frozen.json",
+      "protocol_sha256": "e4f13a4a6cc167f3fb98a43654f0d91741affdcaa3da7c733a05a44e95f2f825",
+      "result_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/sine-crossnote-imd-20261019/superposition-reproduction.json",
+      "result_sha256": "d283e1b5ddbb7c9685cda35778541cc8357ff3f49d6f3131a3fb8ac3f4914bcd",
+      "chronology": "Occurred after the initial posthoc run; the result was already known. This repeats the same source/binary/settings and supplies no independent or prospective evidence. It does not undo the original chronology.",
+      "numeric_results_same": true
+    }
+  },
+  "artifact_bindings": {
+    "build/sine-crossnote-imd-20261019/result.json": "d91f21038fa7b757bd4cf80f09251e6b604189b81fb3d040f77d1ff3a20a6229",
+    "build/sine-crossnote-imd-20261019/qualification.json": "f18fd55dbc0c9a6eafb2c3fa37b1f3a8788b3582708d270ffd2ac7395ad7b775",
+    "build/sine-crossnote-imd-20261019/execution-start.json": "f69e4ea8353da6e9f970355f648322d8013db4d6a721c0d7d645959d67839fe1",
+    "build/sine-crossnote-imd-20261019/superposition.json": "86a2456a7a6775e5536fa72a63dfb8b84da8f05b1ebef4ca887b0512428ec726",
+    "build/sine-crossnote-imd-20261019/superposition-reproduction.json": "d283e1b5ddbb7c9685cda35778541cc8357ff3f49d6f3131a3fb8ac3f4914bcd",
+    "build/sine-crossnote-imd-20261019/superposition-reproduction-frozen.json": "e4f13a4a6cc167f3fb98a43654f0d91741affdcaa3da7c733a05a44e95f2f825",
+    "build/sine-crossnote-imd-20261019/supplemental-artifact-manifest.json": "b48be45d7cf3adfd76eb47812355e4df015e98e789aae0d1c52e60ce0ccbf7fc"
+  },
+  "prototype_bindings": {
+    "NativeProbe.cpp": "8bf4b5136a19406d0b730fe5bca6643f7ed88dd33cd314ded0b93951ae397955",
+    "design-frozen.json": "31dad8c2db647e1567a1ca9af7c0d79ffee77592c8bafa4fe8f12718366cf113",
+    "NativeSuperpositionProbe.cpp": "1474d13c008f1ecf3139041755aa1c508d837d62b23a70093c4815ae6600ef31",
+    "README.md": "139b8e7c0e5cd4eff5ee2b2270f7bc4d58b841859d18056bd768c724fd680a32",
+    "analyze.py": "2040c3293c215a44cf9069ec589380f76ba90c500b74f5d3558e26f46d711808"
+  },
+  "identification_limits": [
+    "No positive or null physical-source IMD finding follows from a failed estimator. Hardware is neither proven nonlinear nor proven linear.",
+    "Finite short support and nearby independent harmonic lines plus drift/linear time variation produce false fitted sideband coefficients. A small synthetic reconstruction residual or a clean positive control alone is insufficient.",
+    "75/87 coincide with bass39 harmonics8/16; sidebands79\u00b139 lie only6.1734Hz above bass39 harmonics9/11. These are line components, not isolated stems.",
+    "Unknown native-clock aliases can map independent oscillator artifacts into other bands; no nativeupdate/divider is recovered or ruled out.",
+    "Even a later qualified positive result could locate neither keyboard versus interface/master nonlinearity nor recover DACbits. AAC/Opus share an unknown upstream master.",
+    "Known physical Chorus/Reverb state, earlier note tails, source drift/LFO/capture processing remain confounds. The native/synthetic controls test method behavior, not exacthardwareeffects."
+  ],
+  "next_evidence": "Longer unprocessed dry two-note recording with independently recorded single-note controls and known rawpatch/gates, avoiding octave/harmonic overlap; alternatively an independently constrained time-varying output transfer is needed before these short chorused supports could discriminate cross-note products. No follow-up protocol is created in this failed run."
+}

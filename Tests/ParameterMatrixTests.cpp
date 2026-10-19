@@ -11,6 +11,7 @@
 
 #include "PluginProcessor.h"
 #include "ParameterMatrix.h"
+#include "DSP/HardwareCharacter.h"
 
 #include <algorithm>
 #include <cmath>
@@ -93,13 +94,30 @@ private:
         return static_cast<int> (std::lround (value (row, id)));
     }
 
-    // Seconds from note-off until the carrier envelope (which ends the voice)
-    // has covered its range, plus the chorus delay, the 10 Hz DC filter and
-    // the output circuit settling.
+    // The harness restores the case row by the first block at/after 0.75 s
+    // (at most 512/44100 s later), before note-off at 0.8 s. Thus release
+    // uses a restored endpoint, not a mixture of rate/sustain/clock rows.
+    // Start at 0 dB attenuation, the longest possible remaining release.
+    // The selected model uses the ordinary RR/SRR until the 18 dB knee,
+    // then the slower of that rate and native RR4. RKS cannot slow either
+    // segment for this harness's chord (60, 64, 67).
     double releaseSeconds (const std::vector<float>& row) const
     {
         const int code = integer (row, "sustain") != 0 ? integer (row, "car_srr") : integer (row, "car_rr");
-        return fullRangeSeconds (4 * code + 2) + 0.3;
+        const double ordinary = fullRangeSeconds (4 * code + 2);
+        const double rr4 = fullRangeSeconds (4 * 4 + 2);
+        constexpr double kneeFraction = press78::hardware_character::kReleaseKneeDb / 96.0;
+        const double envelope = kneeFraction * ordinary
+            + (1.0 - kneeFraction) * std::max (ordinary, rr4);
+        // Bound the entire reconstruction support (twice its nominal
+        // latency), plus two ticks for envelope/tick endpoint rounding.
+        constexpr double reconstruction = (2.0 * press78::Press78Engine::kResamplerDelay + 2.0)
+            / press78::Press78Engine::kInternalRate;
+        const double slowestClock = 1.0
+            + (value (row, "clockOffsetPpm") - value (row, "clockDriftPpm")) * 1.0e-6;
+        // Keep the existing chorus, 10 Hz DC filter and output-circuit
+        // settling allowance; the absolute silence threshold is unchanged.
+        return (envelope + reconstruction) / slowestClock + 0.3;
     }
 
     bool tremolo (const std::vector<float>& row) const

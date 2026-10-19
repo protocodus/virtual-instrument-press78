@@ -62,6 +62,7 @@ int main(int argc, char** argv) {
                 controls.pitchModel = 1; controls.sustainMode = 1;
                 controls.clockOffsetPpm = 0; controls.clockDriftPpm = 20;
                 controls.clockDriftRateHz = 0.1; controls.outputCircuit = true;
+                controls.envelopeReverb = true;
                 controls.chorusMode = 1; controls.chorusMix = 1;
                 controls.chorusRateHz = press78::RecordedChorusProfile::rateHz;
                 controls.chorusDepthMs = press78::RecordedChorusProfile::depthMs;
@@ -71,6 +72,7 @@ int main(int argc, char** argv) {
             if (arg == "--transparent") {
                 controls.masterGain = 1.0; controls.toneCutoffHz = 0.0;
                 controls.dcBlock = false; controls.outputLimit = false; controls.outputCircuit = false;
+                controls.envelopeReverb = false;
                 continue;
             }
             if (i + 1 >= argc) throw std::runtime_error("Missing value for " + arg);
@@ -105,11 +107,15 @@ int main(int argc, char** argv) {
             else if (arg == "--chorus-rate") controls.chorusRateHz = std::stod(value);
             else if (arg == "--chorus-depth") controls.chorusDepthMs = std::stod(value);
             else if (arg == "--drive") controls.drive = std::stod(value);
+            else if (arg == "--envelope-reverb") {
+                if (value != "0" && value != "1") throw std::runtime_error("--envelope-reverb requires 0|1");
+                controls.envelopeReverb = value == "1";
+            }
             else throw std::runtime_error("Unknown option " + arg);
         }
         if (output.empty() || rate < 8000 || rate > 192000 || !std::isfinite(duration) || duration <= 0 || duration > 120
             || !std::isfinite(gate) || gate < 0 || note < 0 || note > 127 || velocity < 0 || velocity > 127)
-            throw std::runtime_error("Usage: press78_render --output file.wav [--raw 66hex] [--real] [--transparent] [--rate 48000] [--note 60] [--velocity 100] [--seconds 3] [--gate 1.5] [--pitch-model equal|original] [--sustain-mode legacy|original] [--bend semitones] [--midi-bend -1..16383] [--bend-range 0..24] [--fine-cents cents] [--host-tune-cents cents]");
+            throw std::runtime_error("Usage: press78_render --output file.wav [--raw 66hex] [--real] [--transparent] [--rate 48000] [--note 60] [--velocity 100] [--seconds 3] [--gate 1.5] [--pitch-model equal|original] [--sustain-mode legacy|original] [--bend semitones] [--midi-bend -1..16383] [--bend-range 0..24] [--fine-cents cents] [--host-tune-cents cents] [--envelope-reverb 0|1]");
         const auto frames = static_cast<std::size_t>(std::llround(duration * rate));
         if (!frames) throw std::runtime_error("Duration rounds to zero samples");
         const auto gateFrame = gate >= duration ? frames : static_cast<std::size_t>(std::llround(gate * rate));

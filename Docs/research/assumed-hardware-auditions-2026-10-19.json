@@ -1,0 +1,317 @@
+{
+  "schema": "press78.assumed-hardware-result.v1",
+  "status": "passed",
+  "head": "0c3fd0b5a542a05db9ffd837477424a7d3d57bee",
+  "design_sha256": "cbba976439a3cc6787f7701e9978a90546938bcc7ca3927d02519e0e5769f1ae",
+  "production_sources": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "Source/DSP/FactoryVoices.h": "6f45afd021de03e226ffe7e09f953799b4f72f48cf1f062348b6d6b328eabed3",
+    "Source/DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+    "Source/DSP/OutputKernelTable.h": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7",
+    "Source/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+    "Source/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "Source/DSP/Press78OutputBus.h": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+  },
+  "implementation_sha256": {
+    "EnvelopeHypothesis.h": "9d823db0bbe9378689a228675f637b6c0b6a1595121ec8d73ec5a31968207317",
+    "OutputHypothesis.h": "17d2e2863d5a47cfd42ee68bd5273599ed695751593f1bf1822f78e548b8f4d7",
+    "Renderer.cpp": "d979c54e18ab745413f4f2e91082201cac93808e3d90584b3c29199047c4e4dd",
+    "design-frozen.json": "cbba976439a3cc6787f7701e9978a90546938bcc7ca3927d02519e0e5769f1ae",
+    "envelope-notes.md": "9372a8cc756eedfd8008d5ba2906d6f81d4de612270a4018eb7dbbe5fb9e5f0e",
+    "output-notes.md": "f166ae0ad6cc45fb0b9dbbd905a7bb0da9cb69e2ef19dba42e351abfb40b095b",
+    "run.py": "18da84d50cf42a11822338af0e5e2a754eed7f496b67b03417b92b637e707320"
+  },
+  "sample_rate": 48000,
+  "frames": 672000,
+  "hardware_fidelity_score": null,
+  "fidelity_reason": "No new calibrated hardware reference; chosen assumptions are not identified target values.",
+  "models": {
+    "baseline": {
+      "executable": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/baseline",
+      "generated_source_sha256": "6c1100b4e0d2c276c718bb8ea12138f23949c193fca47582699e90cd847b1f0c",
+      "command": [
+        "clang++",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-pedantic",
+        "-I",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/baseline.cpp",
+        "-o",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/baseline"
+      ]
+    },
+    "envelope": {
+      "executable": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/envelope",
+      "generated_source_sha256": "c10152cbb621b82eff684c2c47383b945954f136752dd499f115954993acaca9",
+      "command": [
+        "clang++",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-pedantic",
+        "-I",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/envelope.cpp",
+        "-o",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/envelope"
+      ]
+    },
+    "envelope_off": {
+      "executable": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/envelope_off",
+      "generated_source_sha256": "17116f21a42d6267d52c959c2d568ed6feeb5fa056fbdca71a52065e61cc7fd4",
+      "command": [
+        "clang++",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-pedantic",
+        "-I",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/envelope_off.cpp",
+        "-o",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/envelope_off"
+      ]
+    },
+    "output": {
+      "executable": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/output",
+      "generated_source_sha256": "45fdc7c55d4b8bad03413f5d5bba96871e904032d3a8f0eb3b20a09d25ec5191",
+      "command": [
+        "clang++",
+        "-std=c++17",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-pedantic",
+        "-I",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/output.cpp",
+        "-o",
+        "/Users/vojta/Dev/press78-waveform-audit-20261019/build/assumed-hardware-20261019/run-02/output"
+      ]
+    }
+  },
+  "contracts": {
+    "reverb_off_exact": true,
+    "knee_gate": true,
+    "native_rate_scaling": true,
+    "rate_restored": true,
+    "slower_rate_preserved": true,
+    "output_zero_unity_monotonic_bounded": true,
+    "reverb_off_complete_audio_exact": true,
+    "baseline_block_partition_exact": true,
+    "envelope_block_partition_exact": true,
+    "output_block_partition_exact": true,
+    "output_reset_determinism_exact": true
+  },
+  "silence": {
+    "baseline": "exactly zero",
+    "envelope": "exactly zero",
+    "output": "exactly zero"
+  },
+  "envelope": {
+    "65": {
+      "native_a": {
+        "frames": 672000,
+        "events": 5,
+        "max_active_voices": 1,
+        "peak": 0.149337
+      },
+      "native_b": {
+        "frames": 672000,
+        "events": 5,
+        "max_active_voices": 1,
+        "peak": 0.149337
+      },
+      "held_portion_exact": true,
+      "A": {
+        "hold_reference_rms": 0.04844871762244449,
+        "window_seconds": 0.02,
+        "last_above_minus_20db_seconds": 0.14,
+        "last_above_minus_40db_seconds": 0.3,
+        "last_above_minus_60db_seconds": 0.44
+      },
+      "B": {
+        "hold_reference_rms": 0.04844871762244449,
+        "window_seconds": 0.02,
+        "last_above_minus_20db_seconds": 0.24,
+        "last_above_minus_40db_seconds": 0.8200000000000001,
+        "last_above_minus_60db_seconds": 1.3800000000000001
+      },
+      "listening": {
+        "A": {
+          "raw_rms": 0.020231777335575997,
+          "raw_sha256_float32": "875e0da39e1cb837b43d914e98666b8ce028287e155c7d35b5922fa921bb6b89",
+          "rms_trim_db": 0.0,
+          "common_safety_gain": 1.0,
+          "matched_rms": 0.020231777335575997,
+          "matched_peak": 0.1493365615606308,
+          "wav_sha256": "b72d84333dfc4e972f76d44b3cb13d7e715e1eda4ee05cd8d6b32f155cf6588b",
+          "raw_wav_sha256": "b72d84333dfc4e972f76d44b3cb13d7e715e1eda4ee05cd8d6b32f155cf6588b"
+        },
+        "B": {
+          "raw_rms": 0.020245283936939883,
+          "raw_sha256_float32": "c48dcde24d1b5b806b3132ed4ceb9fa2425d93c630114e610a5609877d8a71c5",
+          "rms_trim_db": -0.005796708036507514,
+          "common_safety_gain": 1.0,
+          "matched_rms": 0.020231777335523383,
+          "matched_peak": 0.14923693239688873,
+          "wav_sha256": "12cac777b549d69e2ae789709f7278dce94f20c8aac781cbd4be50fa9155ace5",
+          "raw_wav_sha256": "7267be9bddaa6bd6bcfdce91748f8e4bd2039a612c53a72874534f6ee0fce889"
+        }
+      }
+    },
+    "93": {
+      "native_a": {
+        "frames": 672000,
+        "events": 5,
+        "max_active_voices": 1,
+        "peak": 0.0811654
+      },
+      "native_b": {
+        "frames": 672000,
+        "events": 5,
+        "max_active_voices": 1,
+        "peak": 0.0811654
+      },
+      "held_portion_exact": true,
+      "A": {
+        "hold_reference_rms": 0.04751157411942164,
+        "window_seconds": 0.02,
+        "last_above_minus_20db_seconds": 0.06,
+        "last_above_minus_40db_seconds": 0.12,
+        "last_above_minus_60db_seconds": 0.18
+      },
+      "B": {
+        "hold_reference_rms": 0.04751157411942164,
+        "window_seconds": 0.02,
+        "last_above_minus_20db_seconds": 0.1,
+        "last_above_minus_40db_seconds": 0.54,
+        "last_above_minus_60db_seconds": 0.98
+      },
+      "listening": {
+        "A": {
+          "raw_rms": 0.021555266199685306,
+          "raw_sha256_float32": "448c65e524138b007ed90aeaf0b8937a8ef879b4b0eafe5a8332e9b1415b666c",
+          "rms_trim_db": 0.0,
+          "common_safety_gain": 1.0,
+          "matched_rms": 0.021555266199685306,
+          "matched_peak": 0.08116541802883148,
+          "wav_sha256": "1fffe06e4defd149e4a4aee88360b36a8f1483509e473c2a65a4ab564f0f9dce",
+          "raw_wav_sha256": "1fffe06e4defd149e4a4aee88360b36a8f1483509e473c2a65a4ab564f0f9dce"
+        },
+        "B": {
+          "raw_rms": 0.021565106935537575,
+          "raw_sha256_float32": "803a272440173049b022f4870d2e9f479b898583ce7da5eca47f6815e241962d",
+          "rms_trim_db": -0.003964508692261525,
+          "common_safety_gain": 1.0,
+          "matched_rms": 0.02155526619920827,
+          "matched_peak": 0.08112838119268417,
+          "wav_sha256": "b413844d41954083e5a5ceacbcff2df68890491e21a68c302d6938fd0ecea0af",
+          "raw_wav_sha256": "262510e2958df9538d48b875bc7c882e55708d2ad8b8c3ad98000c25e8f90c58"
+        }
+      }
+    },
+    "97": {
+      "native_a": {
+        "frames": 672000,
+        "events": 5,
+        "max_active_voices": 1,
+        "peak": 0.0887359
+      },
+      "native_b": {
+        "frames": 672000,
+        "events": 5,
+        "max_active_voices": 1,
+        "peak": 0.0887359
+      },
+      "held_portion_exact": true,
+      "A": {
+        "hold_reference_rms": 0.053103028736168865,
+        "window_seconds": 0.02,
+        "last_above_minus_20db_seconds": 0.12,
+        "last_above_minus_40db_seconds": 0.22,
+        "last_above_minus_60db_seconds": 0.34
+      },
+      "B": {
+        "hold_reference_rms": 0.053103028736168865,
+        "window_seconds": 0.02,
+        "last_above_minus_20db_seconds": 0.14,
+        "last_above_minus_40db_seconds": 0.58,
+        "last_above_minus_60db_seconds": 1.02
+      },
+      "listening": {
+        "A": {
+          "raw_rms": 0.02303653641626168,
+          "raw_sha256_float32": "9f6398e56784d00b1d26dc9665701be8d0512d28dffc911e7a4529bac87d6940",
+          "rms_trim_db": 0.0,
+          "common_safety_gain": 1.0,
+          "matched_rms": 0.02303653641626168,
+          "matched_peak": 0.08873589336872101,
+          "wav_sha256": "41048c344e6ce5dd30f02c594899ea4b9f47070750bbaa0e5c0c338721684f28",
+          "raw_wav_sha256": "41048c344e6ce5dd30f02c594899ea4b9f47070750bbaa0e5c0c338721684f28"
+        },
+        "B": {
+          "raw_rms": 0.023045215645723142,
+          "raw_sha256_float32": "2a95871522afaf615ad5faa5873c20b3fc2d37ac76ce35677d7f306c298696e7",
+          "rms_trim_db": -0.0032718734320563675,
+          "common_safety_gain": 1.0,
+          "matched_rms": 0.023036536416060217,
+          "matched_peak": 0.0887024775147438,
+          "wav_sha256": "bdae9792d6e444cb6ef55689828d354a0d1d7599e7c58bf60007db76fe739c0e",
+          "raw_wav_sha256": "93e8d179c90b62d27ff65fe663d86fcf2bab677ba20aa34ecc94285793e6b54a"
+        }
+      }
+    }
+  },
+  "output": {
+    "native_a": {
+      "frames": 672000,
+      "events": 29,
+      "max_active_voices": 7,
+      "peak": 0.32969
+    },
+    "native_b": {
+      "frames": 672000,
+      "events": 29,
+      "max_active_voices": 7,
+      "peak": 0.30986
+    },
+    "listening": {
+      "A": {
+        "raw_rms": 0.06555594905388411,
+        "raw_sha256_float32": "f401d46585cda0b02cea6eabf0728aa5ba6a26edd603b299ff03519c7080937f",
+        "rms_trim_db": -0.3858987787399317,
+        "common_safety_gain": 1.0,
+        "matched_rms": 0.06270716549212021,
+        "matched_peak": 0.31536346673965454,
+        "wav_sha256": "4b322c13c1d36815907b4c9e51f263cfe9afa4b8844a62f829857037218d094a",
+        "raw_wav_sha256": "baedf8c3f9df1b4bfdd213ddea46ec24af767902f7120055da66b335701f4abb"
+      },
+      "B": {
+        "raw_rms": 0.06270716549310514,
+        "raw_sha256_float32": "749b880b322aed7737f694e5ee4117f9286286376b8accca0da1dbbeb6a79df8",
+        "rms_trim_db": 0.0,
+        "common_safety_gain": 1.0,
+        "matched_rms": 0.06270716549310514,
+        "matched_peak": 0.309859961271286,
+        "wav_sha256": "a51fd9d8bad132085963c5fc15840b5f3769245c24e267ea04e373f7a53dc3af",
+        "raw_wav_sha256": "a51fd9d8bad132085963c5fc15840b5f3769245c24e267ea04e373f7a53dc3af"
+      }
+    },
+    "raw_difference_to_A_rms_db": -24.009264102737294
+  },
+  "production_unchanged": true
+}

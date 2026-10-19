@@ -1,0 +1,6 @@
+{
+  "correction": "The source-test-bound chronology prose incorrectly says three read-only getters were added after the collector binding. Both bindings actually contain byte-identical final header. The getters were added before collector binding and before both originalCPU/native executions. No executed source, design, original observation, test or native outcome changed. Both original binding files remain untouched.",
+  "header_sha256": "1404780807fe3410c9fd7952902f36d905e87d01fa316280ade90625332b30c5",
+  "collector_binding_sha256": "aefe9a21930910c78f8c507b65fa86cab234091ad8a263024e68e2cf508a7ecc",
+  "native_binding_sha256": "ee3d7b78656fd66f4e638f7b64b263aa4f5c959194d47e426e711aad40fce648"
+}

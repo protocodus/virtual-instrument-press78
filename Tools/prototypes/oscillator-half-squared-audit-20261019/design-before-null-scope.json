@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-19",
+  "classification": "Prospectively declared derived diagnostics of already observed capture fits; not an independent capture or holdout; no new audio, download, fit, frequency search or filter design.",
+  "inputs": {
+    "Source/DSP/Press78Engine.cpp": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.cpp",
+      "bytes": 28519,
+      "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+    },
+    "Source/DSP/Press78Engine.h": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.h",
+      "bytes": 10040,
+      "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+    },
+    "build/oscillator-signed-square-audit-20261019/result.json": {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/oscillator-signed-square-audit-20261019/result.json",
+      "bytes": 122766,
+      "sha256": "72c2d5228725816b1119846b8dd2305c2713c0027b5220b4a63b31d0344bfa7a"
+    }
+  },
+  "mathematics": {
+    "four_shapes": [
+      "sin(phi)",
+      "sin(phi)*abs(sin(phi))",
+      "max(sin(phi),0)",
+      "max(sin(phi),0)^2"
+    ],
+    "half_squared_identity": "r=(sin(phi)^2+q)/2, q=sin(phi)*abs(sin(phi)); hence mean r=1/4, cosine H2=-1/4, all even H4+ zero, odd coefficients r=q/2.",
+    "general_gated_identity": "For any q(phi+pi)=-q(phi), r(phi)=q(phi) on 0<=phi<pi and 0 otherwise; Fourier odd coefficients r=q/2 without assuming sine, a squared law, or bit widths.",
+    "common_lti_necessity": "For equal pitch and a shared LTI response, constant positive per-wave gains and arbitrary note-on/capture time shifts, normalized odd magnitudes and phase arg(Zn)-n*arg(Z1) must match between q and r. Phase comparisons use principal wrapped difference.",
+    "unequal_pitch_bound": "Using the measured fixed f0s conditionally as exact, if dB response D(f) has |D_prime|<=L over both fundamental and nth-partial intervals, |normalized_dB_r-normalized_dB_q|<=(n+1)*abs(delta_f0)*L. Report the necessary L; impose no physical smoothness bound. Independent frequency-estimation errors, nonstationarity and nonlinearity remain alternatives."
+  },
+  "native_probe": {
+    "period_points": 65536,
+    "operations": "Include unchanged actual engine implementation. At all points verify table3 nonnegative, table3=table2^2, table3=(sin^2+table1)/2, and pointwise gated identity. Check numerical Fourier means/coefficient predictions harmonics1..12 within1e-9. No Voice/output render.",
+    "tolerances": {
+      "pointwise_absolute": 1e-15,
+      "fourier_absolute": 1e-09
+    }
+  },
+  "derived_capture": {
+    "selection": "All4tables, full and all3equal-third rows, mid channel; this is16 rows from the source-bound already completed audit. Retain all original coefficients, RMS and fit residuals. L/R equality was independently checked by source audit; no stereo replication claim.",
+    "odd_comparisons": "For table1 and3, every4x4 pair of full/third supports and every odd harmonic3,5,7,9,11:80 diagnostics; arbitrary chronology is not treated as replication.",
+    "even_response_comparison": "Tables2 versus3 H2 normalized ideal-corrected response, all4x4 supports:16 diagnostics. Means, phase offsets and response cannot be inferred from carrier AC alone.",
+    "null_diagnostic": "For all16 rows compute Euclidean norm of amplitudes at analytically absent harmonics1..12 divided by norm of all12 amplitudes. This is a partial-coefficient-vector diagnostic, not RMS audio error or a statistical detection threshold.",
+    "nulls": {
+      "0": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "1": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12
+      ],
+      "2": [
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "3": [
+        4,
+        6,
+        8,
+        10,
+        12
+      ]
+    }
+  },
+  "synthetic_probe": {
+    "period_samples": 4096,
+    "positive_half_families": [
+      "sin(phi)",
+      "sin(phi)^2",
+      "sin(phi)^3",
+      "round(7*sin(phi)^2)/7",
+      "floor(31*sin(phi)^2)/31"
+    ],
+    "construction": "Construct exactly antisymmetric q by concatenating positive first half and its negative; r copies positive half and zeros second half. Compare all odd DFT coefficients r=q/2 before and after a common circular4tap filter [1,0.3,-0.2,0.07]. Compare normalized odd magnitude and phase invariant after per-wave gain and distinct circular shifts. Constants are arbitrary separating test fixtures, never hardware estimates.",
+    "filter": [
+      1,
+      0.3,
+      -0.2,
+      0.07
+    ],
+    "gain_q": 0.7,
+    "gain_r": 1.9,
+    "shift_q": 17,
+    "shift_r": 43,
+    "absolute_tolerance": 1e-10,
+    "harmonics": [
+      3,
+      5,
+      7,
+      9,
+      11
+    ]
+  },
+  "no_promotion": "No pass/fail gate for hardware-model adoption. All failures and diagnostics retained. No production DSP/default/preset/output/noise/package change."
+}

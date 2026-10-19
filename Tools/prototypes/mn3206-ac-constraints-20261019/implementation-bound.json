@@ -1,0 +1,26 @@
+{
+  "schema": "press78.mn3206-ac-implementation-binding.v1",
+  "frozen_before_model_execution": true,
+  "files": [
+    {
+      "path": "design-frozen.json",
+      "bytes": 6642,
+      "sha256": "f1bc043760ef6c45cbf6af129ec90e52755842c1c0b58efba292bc38e2aa1e7f"
+    },
+    {
+      "path": "mn3206_ac.py",
+      "bytes": 6618,
+      "sha256": "4e6a11ef4e43af9a80b0a3da2bb2e51d045a032601e27d4778cd774a714182ae"
+    },
+    {
+      "path": "check.py",
+      "bytes": 8462,
+      "sha256": "2d00af837e667d7b7369bf56c28e22b2a96e7d45d02fb6679b9f1c956888db7d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1861,
+      "sha256": "7fc2e2ffb789415cfa3e21377bfdcff99ec81bd8142028064293e162d1850c9b"
+    }
+  ]
+}

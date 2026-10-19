@@ -1,0 +1,88 @@
+{
+  "schema": "press78.assumed-hardware-supplemental-validation.v1",
+  "original_result_unchanged_sha256": "3921241329587b8b4cd3933b571c0ae28a8883ef994a3a7101e0c35d90a94455",
+  "reset": {
+    "scope": "Supplement only: actual reset after stateful excitation. Original audition result remains unchanged. No WAVs or new score grid.",
+    "probe_sha256": "cc16afeb4d84f55756560b4c364d0377b2ceeb80eebaf771c4dd9a97003349ca",
+    "models": {
+      "baseline": {
+        "post_excitation_reset_matches_fresh": true,
+        "reset_silence_frames": 1024,
+        "comparison_frames": 131072
+      },
+      "envelope": {
+        "post_excitation_reset_matches_fresh": true,
+        "reset_silence_frames": 1024,
+        "comparison_frames": 131072
+      },
+      "output": {
+        "post_excitation_reset_matches_fresh": true,
+        "reset_silence_frames": 1024,
+        "comparison_frames": 131072
+      }
+    }
+  },
+  "envelope_optimized": {
+    "command": [
+      "clang++",
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pedantic",
+      "build/assumed-hardware-envelope-20261019/EnvelopeHypothesisTest.cpp",
+      "Source/DSP/Press78Engine.cpp",
+      "-o",
+      "build/assumed-hardware-envelope-20261019/optimized-test"
+    ],
+    "compile_exit": 0,
+    "run_exit": 0,
+    "stdout": "{\"status\":\"pass\",\"assertions\":1644071,\"configurations\":8192,\"off_parity_ticks\":786432,\"capped_ticks\":8192,\"audio_rendered\":false}\n",
+    "stderr": "",
+    "binary_sha256": "73acfe66da2e014aadcf8979157c140771838b8eb615beed9c62e743389034b1"
+  },
+  "envelope_sanitized": {
+    "command": [
+      "clang++",
+      "-std=c++17",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pedantic",
+      "build/assumed-hardware-envelope-20261019/EnvelopeHypothesisTest.cpp",
+      "Source/DSP/Press78Engine.cpp",
+      "-o",
+      "build/assumed-hardware-envelope-20261019/sanitized-test"
+    ],
+    "compile_exit": 0,
+    "run_exit": 0,
+    "stdout": "{\"status\":\"pass\",\"assertions\":1644071,\"configurations\":8192,\"off_parity_ticks\":786432,\"capped_ticks\":8192,\"audio_rendered\":false}\n",
+    "stderr": "",
+    "binary_sha256": "0ae0993a59d6203941fb5074df08ac7b9cdd3e7876760c301a8eb9b5ee706d4b"
+  },
+  "source_snapshot_preservation": {
+    "run-01": {
+      "EnvelopeHypothesis.h": true,
+      "OutputHypothesis.h": true,
+      "Renderer.cpp": true,
+      "design-frozen.json": true,
+      "envelope-notes.md": true,
+      "output-notes.md": true,
+      "run.py": true
+    },
+    "run-02": {
+      "EnvelopeHypothesis.h": true,
+      "OutputHypothesis.h": true,
+      "Renderer.cpp": true,
+      "design-frozen.json": true,
+      "envelope-notes.md": true,
+      "output-notes.md": true,
+      "run.py": true
+    }
+  }
+}

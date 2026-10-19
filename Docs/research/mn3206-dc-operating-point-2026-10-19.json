@@ -1,0 +1,191 @@
+{
+  "schema": "press78.mn3206-dc-validation.v2",
+  "date": "2026-10-19",
+  "passed": true,
+  "assertions": 7002,
+  "digitized_points": 18,
+  "common_support_knots_checked": 16,
+  "interior_queries": 101,
+  "independent_corner_checks": 6464,
+  "conditions": {
+    "mode": "settled_dc_only",
+    "vdd_v": 5.0,
+    "vgg_v": 4.666666666666667,
+    "cp_hz": 10000.0,
+    "temperature_c": 25.0,
+    "vss_v": 0.0
+  },
+  "nominal_digitized_support_exact_v": [
+    "0",
+    "1146/269"
+  ],
+  "common_scenario_support_exact_v": [
+    "24/269",
+    "1122/269"
+  ],
+  "common_scenario_support_v": [
+    0.0892193308550186,
+    4.171003717472119
+  ],
+  "examples": [
+    {
+      "input_v": 0.1,
+      "nominal_output_v": 1.9826180802437785,
+      "graph_scenario_low_v": 1.9125317420010157,
+      "graph_scenario_high_v": 2.0527044184865417
+    },
+    {
+      "input_v": 0.5,
+      "nominal_output_v": 1.9860335195530727,
+      "graph_scenario_low_v": 1.9162646013204672,
+      "graph_scenario_high_v": 2.053072625698324
+    },
+    {
+      "input_v": 1.0,
+      "nominal_output_v": 1.994286439817166,
+      "graph_scenario_low_v": 1.9242001015744032,
+      "graph_scenario_high_v": 2.122778059928898
+    },
+    {
+      "input_v": 2.0,
+      "nominal_output_v": 2.751163873370577,
+      "graph_scenario_low_v": 2.6142923649906886,
+      "graph_scenario_high_v": 2.8882681564245813
+    },
+    {
+      "input_v": 2.5,
+      "nominal_output_v": 3.1354748603351954,
+      "graph_scenario_low_v": 3.0013966480446923,
+      "graph_scenario_high_v": 3.2695530726256985
+    },
+    {
+      "input_v": 3.0,
+      "nominal_output_v": 3.511173184357542,
+      "graph_scenario_low_v": 3.377094972067039,
+      "graph_scenario_high_v": 3.6479177247333676
+    },
+    {
+      "input_v": 4.0,
+      "nominal_output_v": 4.215083798882682,
+      "graph_scenario_low_v": 4.106145251396647,
+      "graph_scenario_high_v": 4.282122905027934
+    },
+    {
+      "input_v": 4.15,
+      "nominal_output_v": 4.215083798882682,
+      "graph_scenario_low_v": 4.14804469273743,
+      "graph_scenario_high_v": 4.282122905027934
+    }
+  ],
+  "files": {
+    "design-frozen.json": "26f8161c1687244375feb98b09545616757285ba476d05a7eef38f0b43d49b0d",
+    "extraction-failed-support-v1.json": "702b31891cc14acde2bf127d306b63ad70026d4232a3c14e7adc57c35f087712",
+    "design-frozen-v2.json": "8152ce8771518a57190a18016fa8ded04f3e4e50e5621e166ef824db7059ef68",
+    "design-frozen-v3.json": "fa0fda39dd32443e5f6aafc6258caab3b1d97e8a7449d22a94e7f192d16c88af",
+    "digitized-pixels.json": "3e8ea1a5b606ef6feecbd2413cd3733fcfbbafe912db47b4efec04eced0f717c",
+    "mn3206_dc.py": "bff78218660e561c000c5390d9aaee3f23b095568bc1056c0490413852ebad9d",
+    "check.py": "7324756ca16585a62baf5ab13874732811d54388c1481c23da12b3ad6c329ee5",
+    "implementation-bound.json": "06831765294d57820ca3af74df20fdb5a6f480022ba3adf9d0cc49128ca97ded",
+    "port-semantics-correction-frozen.json": "ce561d54e83b4d66d1f6fa576dcaed885a795688d3862f7bf16b061fdc49f3f2",
+    "historical-first-run/manifest.json": "f01ae27709e20a5ef7f1679127d0e875dd551a4205928a43ae647c526d3dafd4"
+  },
+  "implementation_binding_sha256": "a77194061a5d7b4d6df92c56e02312ef6aebb051b7c458dc2d3fe8281f83a00c",
+  "condition_representation": {
+    "vgg_exact_v": "14/3",
+    "nearest_binary64_alias_hex": "0x1.2aaaaaaaaaaabp+2",
+    "nearest_binary64_alias_exact_v": "5254199565265579/1125899906842624",
+    "nearby_rationals_or_adjacent_binary64_accepted": false,
+    "physical_tolerance_added": false
+  },
+  "historical_first_run": {
+    "manifest_sha256": "f01ae27709e20a5ef7f1679127d0e875dd551a4205928a43ae647c526d3dafd4",
+    "validation_sha256": "78a29db78544ffb84a76c9597104f8c2b456d72ea118e6945a7d7696ae3f522f",
+    "assertions": 6976,
+    "root_review_sha256": "dc4e12e202d5915a23c607c50c45ef512ff46d808494191dc69730f7d8647c81",
+    "correction_protocol_sha256": "ce561d54e83b4d66d1f6fa576dcaed885a795688d3862f7bf16b061fdc49f3f2",
+    "description": "The first source passed its 6976 checks but rejected exact rational VGG14/3. Historical source, tests, receipt and publication remain unchanged; this run corrects representation semantics only.",
+    "public_receipt_sha256": "2cd1c83c61f13275b0268fe4c04a94015e2757c4f8afb96eee6a0ca18590a287",
+    "report_sha256": "31fa0d71bc31ff7b226511b38284207227cc4a0d06f19cfd7679eb4c9494342f"
+  },
+  "primary_source": {
+    "page_raster": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v4-MN3206-curves-p77.png",
+      "bytes": 120114,
+      "sha256": "34916e399deedf1f7247c5c1e481197854786d1604bb6e292a26b66d1c1dd90f"
+    },
+    "manufacturer_pdf": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206.pdf",
+      "bytes": 188245,
+      "sha256": "045fb6a1c7f5bc1e5cb0cf51497bf64b4bf29bfe7be1b193a16a62e93c795fe2"
+    },
+    "url": "https://github.com/fmillion/yamaha-pss270/blob/8943bf963f196f20b4e2fc714f15400db578891b/datasheets/MN3206.pdf",
+    "author": "Panasonic",
+    "printed_page": 77,
+    "graph": "Upper-left DC output voltage VO versus DC input voltage VI",
+    "dimensions": [
+      1377,
+      1800
+    ]
+  },
+  "scope": "Fixed-condition, settled-DC graph interpolation and 64 declared coordinate-reading corner scenarios only. No audio, noise, dynamic response, device-tolerance estimate, target circuit or Drive calibration.",
+  "production_changes": false,
+  "inspection_artifacts": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/graph-calibration-inspection.png",
+      "bytes": 183954,
+      "sha256": "4ca7f757c42a6c897de39d595963fdd552651dec1cf04fae670316e15f5831a2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/axis-grid.png",
+      "bytes": 172794,
+      "sha256": "2e28f2e0f80b4b4f215483ec7e9f391c477188669883bdedb37fb7acd7089be2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/curve-coordinate-grid.png",
+      "bytes": 171746,
+      "sha256": "eaf143d74e5c17399fa9037a5f0edd34b2f38999a286e6d4e5bdcad50f03e452"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/digitized-graph-overlay.png",
+      "bytes": 186794,
+      "sha256": "74d581b3587c174236daf66efd261ea8ae5581a54fca757d248a7f83c6205d3a"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/validation-first-run.json",
+      "bytes": 3955,
+      "sha256": "78a29db78544ffb84a76c9597104f8c2b456d72ea118e6945a7d7696ae3f522f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mn3206-dc-operating-point-20261019/validation-port-correction-v2.json",
+      "bytes": 5227,
+      "sha256": "f05b93c9404ed37606cf718c89cb5bcfcb8458bdd004d6d8cbc1c56f7c3515cd"
+    }
+  ],
+  "disclosure": {
+    "v1": "Frozen19-point protocol failed at last pixel column373; incomplete extraction retained with null.",
+    "v2": "Unexecuted endpoint proposal371 rejected because grid ink may confound curve extent.",
+    "v3": "Uses only original18 supported points through362. All ordinates unchanged. Frozen before model construction/execution, after original extraction; not a pre-observation data holdout.",
+    "manual_reading": "Small centerline fluctuations along nominal plateau are preserved as raster-reading fluctuations, not claimed device ripple/nonmonotonicity.",
+    "graph_scenarios": "64 declared coordinate-reading corner cases only, not a statistical interval or bound over all possible continuous traces.",
+    "condition_port_correction": "The original source passed 6976 checks but rejected exact rational VGG 14/3 V. Root reproduction exposed the representation defect. The frozen correction accepts exact 14/3 and its sole nearest binary64 alias; adjacent floats and nearby rationals remain rejected, with no physical tolerance. The corrected run passes 7002 checks. All original source, checker, receipts and publication remain frozen under historical-first-run/."
+  },
+  "corrected_vs_original_numeric_comparison": {
+    "fields_checked": [
+      "digitized_points",
+      "common_support_knots_checked",
+      "interior_queries",
+      "independent_corner_checks",
+      "conditions",
+      "nominal_digitized_support_exact_v",
+      "common_scenario_support_exact_v",
+      "common_scenario_support_v",
+      "examples",
+      "primary_source",
+      "scope",
+      "production_changes"
+    ],
+    "all_equal": true,
+    "eight_operating_point_examples_exactly_equal": true,
+    "graph_coordinates_and_frozen_designs_unchanged": true
+  }
+}

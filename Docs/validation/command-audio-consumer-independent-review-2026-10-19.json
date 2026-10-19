@@ -1,0 +1,375 @@
+{
+  "date": "2026-10-19",
+  "passed": true,
+  "scope": "Independent design/source/state/targeted-native/publication/frozen-WAV-byte review only. No author or production edits, original firmware/recording execution, historical rerenders, downloads, host/UI/SDK actions.",
+  "checks": {
+    "bound_sha256": 99,
+    "bound_size": 99,
+    "public_final_json": 1,
+    "public_final_md": 1,
+    "render_final_receipt": 1,
+    "optimized_sanitized_equal": 1,
+    "author_assertion_count": 1,
+    "zero_observed_new_allocations": 1,
+    "four_table_equivalence_and_retrigger_divergence": 1,
+    "empty_native_stderr": 2,
+    "asan_binary_instrumented": 1,
+    "ubsan_binary_instrumented": 1,
+    "runner_valid_nine_inputs": 1,
+    "constructed_wrong_expected_hash": 1,
+    "negative_design_otherwise_identical": 1,
+    "runner_negative_before_compilation": 1,
+    "runner_negative_no_binary_or_compile_log": 1,
+    "guard_precedes_compile": 1,
+    "tracked_production_unchanged": 1,
+    "profile_matches_committed_state": 1,
+    "wav_riff": 10,
+    "wav_float32_stereo48k": 10,
+    "wav_payload": 10,
+    "wav_frames_finite": 10,
+    "wav_rms": 10,
+    "wav_peak": 10,
+    "wav_pair_difference": 5,
+    "wav_pair_protocol": 5,
+    "independent_witness_pass": 1
+  },
+  "total_checks": 288,
+  "bindings": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/command-audio-consumer-20261019/design-frozen.json",
+      "bytes": 11423,
+      "sha256": "8980465c531f64b882ca95bb15444c16d43fdf823418d5d79445e935fdba506b"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run-01/source-bound-before-execution.json",
+      "bytes": 1274,
+      "sha256": "626e8c8b124f43a644b23e5949aeefd25c0a50576081ecd0846a2e9c46997c31"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/command-audio-consumer-20261019/CommandAudioConsumer.h",
+      "bytes": 13971,
+      "sha256": "4b16aecdce0d593a53a1f63604ae5fb949127b9f50731ae60ace56d2469cdaf9"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/command-audio-consumer-20261019/consumer_test.cpp",
+      "bytes": 21678,
+      "sha256": "eab9c5eab7b8a39ef12bfad8606d47317d9f4af5077433c61761159e0d8dde7c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.cpp",
+      "bytes": 28519,
+      "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/Press78Engine.h",
+      "bytes": 10040,
+      "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/Mode00CompleteCommands.h",
+      "bytes": 9817,
+      "sha256": "47ef1babcf44c77df8a1e818474d683a364b72e04eff29e31ba9f424572dd6bf"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run-01/validation.json",
+      "bytes": 2811,
+      "sha256": "135e2618ec7795a78d9838d63139bbe0f769bed02b9b7167d9766ba344813261"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run-01/test-opt.json",
+      "bytes": 276,
+      "sha256": "42c8d45a138566f8a874a997b5eb70b178f6596c45d27cec249168c4f22ee5cc"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run-01/test-san.json",
+      "bytes": 276,
+      "sha256": "42c8d45a138566f8a874a997b5eb70b178f6596c45d27cec249168c4f22ee5cc"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-independent-review-20261019/IndependentWitness.cpp",
+      "bytes": 7075,
+      "sha256": "d6c9f99e41e4450de44caffbb9fb40776c9a4bf14621a77dc9d08e0478919227"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-independent-review-20261019/independent-result.json",
+      "bytes": 201,
+      "sha256": "4c929948a3a85e2fec9413f0ce6cba9e96dd1646d45ab6c48d890564f69d29bc"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-independent-review-20261019/independent-source-bound-before-execution.json",
+      "bytes": 1706,
+      "sha256": "9627ec77868dcee41fca2294db87df52723a5eb27ceb6979e4182a70aaa0bc9b"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/runner-input-check-01/validation.json",
+      "bytes": 2091,
+      "sha256": "47defc6b9b869dbabce2e0a8e5f048075385f37bf33a0fc2bc9a6a93a3f85936"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/runner-negative-test-01/rejected-run/validation.json",
+      "bytes": 520,
+      "sha256": "2d6a6652ddda75730e916285ffb7dcba534dd00e1f3eb685387da2bfc4d2e4c6"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run_validation-before-expected-input-check.py",
+      "bytes": 3904,
+      "sha256": "f8437d86f098a42b99d199a7456c4e812f64b5c10c033b55b7718849c08b85c6"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/01/A.wav",
+      "bytes": 768044,
+      "sha256": "2f861513f7475c726bddc62ff33997c2c024eaf87776eea3f8da21c99b6b1b34"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/01/B.wav",
+      "bytes": 768044,
+      "sha256": "2f861513f7475c726bddc62ff33997c2c024eaf87776eea3f8da21c99b6b1b34"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/02/A.wav",
+      "bytes": 768044,
+      "sha256": "0be693bd5acde99ad8e69fe05c55aeeabdb76f03224a36f6da235e7a16dc7351"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/02/B.wav",
+      "bytes": 768044,
+      "sha256": "0be693bd5acde99ad8e69fe05c55aeeabdb76f03224a36f6da235e7a16dc7351"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/03/A.wav",
+      "bytes": 768044,
+      "sha256": "aed8e2ac673142c89871e71144a48b2e14142587b9fe82c6974645c0bb2ed655"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/03/B.wav",
+      "bytes": 768044,
+      "sha256": "aed8e2ac673142c89871e71144a48b2e14142587b9fe82c6974645c0bb2ed655"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/04/A.wav",
+      "bytes": 768044,
+      "sha256": "962fb1e74cbffb8d733b6cf08a37b6fb3d908ee268a4239ae6545a98df50470d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/04/B.wav",
+      "bytes": 768044,
+      "sha256": "962fb1e74cbffb8d733b6cf08a37b6fb3d908ee268a4239ae6545a98df50470d"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/05/A.wav",
+      "bytes": 768044,
+      "sha256": "3893c28b34c7c85117e5d1918ee628b2975067a048d5ef9e8274950f9323f095"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/05/B.wav",
+      "bytes": 768044,
+      "sha256": "f089fd5424b9fd0947c79333c42fb2a2b64ff23f869979736304f66181d9bc61"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/bound-before-render.json",
+      "bytes": 1455,
+      "sha256": "53e29bdae80dd8c5c51c5f8685b506415143657dfb95940c6ba8d98de9db8238"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/validation.json",
+      "bytes": 4796,
+      "sha256": "b961e853f6cc9b0d5136f6f386eda9bc1d91da4d648fdf5f060117a98ce47cf3"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/command-audio-consumer-20261019/run_validation.py",
+      "bytes": 4665,
+      "sha256": "6ba954590da573c14737bb1f8f6242db7db446124b89942823398e867f507cbe"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/command-audio-consumer-2026-10-19.md",
+      "bytes": 11558,
+      "sha256": "a667ba2aa5d8ac38715c7cdf44f39dc3c52999cedb0d58bb209e03276754537a"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/command-audio-consumer-2026-10-19.json",
+      "bytes": 14494,
+      "sha256": "2df05c11f5cae388a1016d9e4a18b319e3d361417f465cc7e5a9cad528d625d0"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/FirmwarePitch.h",
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/AnalogOutput.h",
+      "bytes": 2195,
+      "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/RecordedChorus.h",
+      "bytes": 3581,
+      "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/FirmwareLevel.h",
+      "bytes": 3679,
+      "sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h",
+      "bytes": 7339,
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-native-command-20261019/FirmwareAllocation.h",
+      "bytes": 4043,
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run-01/compile-opt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run-01/compile-san.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run-01/test-opt",
+      "bytes": 116408,
+      "sha256": "c30d8673895b9bf96b7d6d891b7ff9254a438229403c345e223c704c60b7ea9b"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run-01/test-opt.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run-01/test-san",
+      "bytes": 442024,
+      "sha256": "6a45f46cb2a76bd85975e33075a930c91130bd11f8a96703edfe5e66fc442b77"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/run-01/test-san.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Source/DSP/RecordedChorusProfile.h",
+      "bytes": 1073,
+      "sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/frozen-01/key.md",
+      "bytes": 1020,
+      "sha256": "51b100cd88f4a27bba4b8e06be2771b7c1a4ca37f1aa7386d326e7265c2a6b9b"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-independent-review-20261019/pre-implementation-review.json",
+      "bytes": 6761,
+      "sha256": "90bfdb443c0535b6a0979338b1027780bf66ee76fc74f2d6fd6cc531ee8bb1a5"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/runner-input-check-01/source-bound-before-execution.json",
+      "bytes": 2705,
+      "sha256": "243919da0ea974a09d13bd46ebdc7828776678a92613ae8e46bb7cc3855ded1a"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/runner-negative-test-01/rejected-run/source-bound-before-execution.json",
+      "bytes": 2801,
+      "sha256": "9599fca8d11bc2f4c615e07591965b49411adf94a23b590b9b3afaa312126d13"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-independent-review-20261019/independent-result.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-independent-review-20261019/compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/runner-negative-test-01/witness.json",
+      "bytes": 199,
+      "sha256": "0f9e9f003588bef3cc1fb4a9dae31ede73a989fc2e4d46d02895237a786baae4"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-20261019/runner-negative-test-01/constructed-inputs/design-frozen.json",
+      "bytes": 11423,
+      "sha256": "e149f81d959323a6a03fc893f48821469898dbf458a9ee522c63d46dd083d046"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-independent-review-20261019/review_publication.py",
+      "bytes": 9371,
+      "sha256": "3c317491758d219860547e0f42713ba141f6d271f9e5754b681bd0518ba91831"
+    }
+  ],
+  "findings": {
+    "blocking": [],
+    "resolved": [
+      {
+        "issue": "Reproduction runner originally recorded actual current inputs but did not reject a mismatch with frozen design.",
+        "resolution": "Expected nine size/hash checks now precede compilation; retained valid-input-only and constructed wrong-hash-negative receipts verified without DSP rerun. No consumer/header/test or frozen audio bytes changed."
+      }
+    ],
+    "explicit_boundaries": [
+      "Raw applyRaw trusts range-checked caller mapped-note metadata; normal event methods source metadata from prospective sole frontend. A second advancing frontend is outside design.",
+      "Raw Plan.slot/edge are retained annotations, not audio commands.",
+      "One committed allocator,12 fixed existing Voice slots; only genuine key edge invokes actual configure; no engine note/steal/panic allocation path.",
+      "Voice/Envelope/wave/LFO/resampler/output are unchanged shipping code. The packed-register base-frequency bridge is explicitly inherited empirical law.",
+      "Compiled TL neutralizes native LKS/velocity; actual RR neutralizes native Sustain selection; frontend PMS service neutralizes native VDT.",
+      "Reverb is explicit store-only unsupported audio, not a fitted envelope effect.",
+      "Current ROM/precision/clock/cadence/feedback/envelope/TL/DAC/keycode/live-register-response laws remain hypotheses.",
+      "Four table pairs establish internal bounded equivalence; retrigger pair demonstrates allocator-policy divergence, not hardware improvement.",
+      "Initial test binding was after optimized compile and before execution; transitive chorus profile first explicitly bound before render, not retrospectively as initial bound input."
+    ]
+  },
+  "author_bound_results": {
+    "assertions": 1290419,
+    "allocations_during_measured_operations": 0,
+    "frame_differences": [
+      0,
+      0,
+      0,
+      0,
+      80608
+    ],
+    "overlap_A_rms": 0.017854740811329033,
+    "overlap_A_peak": 0.06406326591968536,
+    "overlap_B_rms": 0.014663732820739987,
+    "overlap_B_peak": 0.03679601103067398,
+    "consumer_bytes": 178856
+  },
+  "independent_witness": {
+    "passed": true,
+    "independent_assertions": 528,
+    "asymmetric_physical_slots": 12,
+    "complete_raw_plan_words": 204,
+    "additional_witnesses": [
+      "paired_missing_pitch_atomicity",
+      "carrier_TL127_continues_actual_DSP"
+    ]
+  },
+  "frozen_audio_byte_checks": [
+    {
+      "id": "01",
+      "different_stereo_frames": 0
+    },
+    {
+      "id": "02",
+      "different_stereo_frames": 0
+    },
+    {
+      "id": "03",
+      "different_stereo_frames": 0
+    },
+    {
+      "id": "04",
+      "different_stereo_frames": 0
+    },
+    {
+      "id": "05",
+      "different_stereo_frames": 80608
+    }
+  ],
+  "historical_execution_reused": true,
+  "independent_execution": "One focused528assertion optimized C++17 strict-warning witness; existing author optimized/sanitized bound results reviewed without rerun.",
+  "reviewer_tool": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-consumer-independent-review-20261019/review_publication.py"
+}

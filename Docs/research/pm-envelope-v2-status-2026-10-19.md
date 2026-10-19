@@ -1,6 +1,16 @@
-# PM envelope v2: frozen qualification still running
+# PM envelope v2: incomplete run; process no longer present
 
-Status on19October2026: the complete93-control and12 nested-grid evaluation is **incomplete**. No recording inference or source PCM decoding has occurred in this attempt. Early passing synthetic controls cannot qualify the full method. This preregistration commit preserves the unchanged protocol and implementations while the original complete run continues. It does not change production synthesis, factory voices, noise behavior or the b14 release.
+## Current process and qualification audit
+
+A read-only audit on 19 October 2026 finds original PID `31589` absent, no matching `measure_pm_envelope_v2.py` command, and the original tool session `75295` missing. The directory contains 73 of 93 completed coarse-control results, no nested-grid result, and no final `result.json`. The exit cause was not captured; this is neither a successful completion nor evidence of an out-of-memory failure. No process was stopped or restarted by this audit.
+
+All eight prospective informative controls completed. None passes the frozen joint late carrier/beta requirement: four have informative late carrier ranges, but all eight fail late beta precision. Their truth-coverage flags remain preserved. This is already a failed necessary gate, while the full 93-control/12-grid evaluation remains incomplete. Missing cases and all 73 result hashes are retained in the [state-audit receipt](pm-envelope-v2-state-2026-10-19.json). No new Bass inference is permitted from this attempt.
+
+The original run was invoked without `--source`; its source-request flag is false and there are no source-result artifacts. The design, execution binding and original tool hashes still match their frozen identities. The audit performs no extraction, recording decode, numerical rerun, threshold change or production change.
+
+## Earlier preregistration status
+
+At the earlier preregistration, status on19October2026: the complete93-control and12 nested-grid evaluation is **incomplete**. No recording inference or source PCM decoding has occurred in this attempt. Early passing synthetic controls cannot qualify the full method. This preregistration commit preserves the unchanged protocol and implementations while the original complete run continues. It does not change production synthesis, factory voices, noise behavior or the b14 release.
 
 The [protocol](pm-envelope-v2-protocol-2026-10-19.json) was frozen before implementation/evaluation. The [original tool](../../Tools/measure_pm_envelope_v2.py) must finish every numerical gate before its explicit source option can decode the fixed recording. All56 reused control-waveform identities were checked before new extraction. Independent high-precision finite-cell enclosure checks passed; these are finite numerical tests, not certified error bounds or demonstrated envelope recovery.
 

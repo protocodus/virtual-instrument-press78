@@ -39,7 +39,7 @@ template<class F> void test(const char* name, F body) {
 }
 press78::Controls clean(int model = 1) {
     press78::Controls c;
-    c.pitchModel = model; c.masterGain = 1; c.outputCircuit = false;
+    c.pitchModel = model; c.masterGain = 1; c.outputCircuit = false; c.envelopeReverb = false;
     c.toneCutoffHz = 0; c.dcBlock = false; c.outputLimit = false;
     return c;
 }

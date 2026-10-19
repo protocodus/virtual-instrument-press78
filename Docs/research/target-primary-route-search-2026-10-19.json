@@ -1,0 +1,145 @@
+{
+  "schema": "press78.target-primary-route.negative-receipt.v1",
+  "created_utc": "2026-10-19T16:52:15.168312+00:00",
+  "purpose": "Short targeted primary-source pass for identified YM3420 numerical operator/DAC/envelope architecture; inspect retained ledgers first; no production edits or audio work.",
+  "result": "No newly identified target document, target die image, arithmetic width, ROM table or update-rate specification recovered.",
+  "new_public_document_created": false,
+  "runtime_change_justified": false,
+  "retained_source_ledgers_read_first": [
+    {
+      "path": "Docs/research/oscillator-fidelity-audit-2026-10-19.md",
+      "sha256": "f4a89a462a92bcd54df009ecb7794bd2a21b0da9d23f0946e4fb52382a4b4530"
+    },
+    {
+      "path": "Docs/research/oscillator-sine-audit-2026-10-19.json",
+      "sha256": "c3b3ae40da80d8eb054e3be711b4e378e8733f3755b26d8587e9653940c1c2be"
+    },
+    {
+      "path": "Docs/research/opu-envelope-evidence-2026-10-18.json",
+      "sha256": "e99ed88eaea5f316c2588c6acdbc481e1fb7618024e6f6e6a8edc91b4ffe795a"
+    },
+    {
+      "path": "Docs/research/dac-endpoint-evidence-2026-10-19.json",
+      "sha256": "473347eb29dc50c2f281d8ea8972a89da6962edd0664fb206868e86bf90e01e2"
+    },
+    {
+      "path": "Docs/research/exact-circuit-source-search-2026-10-19.md",
+      "sha256": "21022544ed66703b975cb791f6e848274d0ac897be4bca809446fd91bc2232d6"
+    },
+    {
+      "path": "Docs/research/exact-circuit-source-search-2026-10-19.json",
+      "sha256": "8f16928420088da9dfa12a9f43706bb265b3199d1fb4e4769c8c1776c5250999"
+    },
+    {
+      "path": "Docs/research/opu-sibling-clock-circuit-2026-10-19.md",
+      "sha256": "9b0dd01598d46091bb494fdc5d6d09d653746222925a6d9273d7e8c4a8a00407"
+    },
+    {
+      "path": "Docs/research/opu-digital-primary-leads-2026-10-19.md",
+      "sha256": "e853b02df1be8f582ab73062b5c52b09416941f0b360c00e2b4513849a236b6b"
+    }
+  ],
+  "queries": [
+    "\"Yamaha\" patent \"sine-squared\" \"half\"",
+    "\"Yamaha\" patent \"twelve\" \"two operators\"",
+    "\"YM3420\" die photo datasheet",
+    "\"YM3420\" \"LSI\"",
+    "site:patents.google.com Yamaha \"half sine\"",
+    "site:patents.google.com Yamaha \"sine squared\" \"waveforms\"",
+    "site:patents.google.com Yamaha \"12 channels\" \"frequency modulation\"",
+    "site:patents.google.com \"YM3420\"",
+    "\"YM3420BF\" 資料",
+    "\"YM3420\" データブック",
+    "\"YM3420\" チップ 解析",
+    "\"Yamaha\" \"1987\" \"LSI\" \"FM\" databook",
+    "\"YM3420\" filetype:pdf -site:patents.google.com -site:api.motion.ac.in",
+    "\"OPU\" \"Yamaha\" \"12\" \"DAC\"",
+    "\"YM3420\" decap die -site:dtech.lv -site:wikipedia.org",
+    "\"YM3420\" \"patent\" -site:patents.google.com"
+  ],
+  "routes": [
+    {
+      "url": "https://patents.google.com/patent/US4813326A/en",
+      "kind": "Already retained original Yamaha patent; inspected family/citation links",
+      "outcome": "No YM3420 attribution recovered; generic operator-unit OPU wording remains insufficient."
+    },
+    {
+      "url": "https://patents.google.com/patent/JPH0652474B2/en",
+      "kind": "Original Yamaha priority-family route from US4813326A",
+      "outcome": "Opened source; no independently established target-chip identification or numerical target architecture."
+    },
+    {
+      "url": "https://patents.google.com/patent/JPH0644193B2/en",
+      "kind": "Original Yamaha priority-family route from US4813326A",
+      "outcome": "Opened source; no independently established target-chip identification or numerical target architecture."
+    },
+    {
+      "url": "https://patents.google.com/patent/JPS6145294A/en",
+      "kind": "Original Yamaha priority-family route from US4813326A",
+      "outcome": "Opened source; no independently established target-chip identification or numerical target architecture."
+    },
+    {
+      "url": "https://patents.google.com/patent/US4766795A/en",
+      "kind": "Newly inspected original Yamaha architectural patent lead",
+      "observed_scope": "Quarter-cycle logarithmic sine table, phase-bit XOR mirroring, log-domain shift and linear-output sign processing. Text describes one’s complement sign conversion.",
+      "outcome": "No target-chip identification or target word widths recovered; cannot import this embodiment into YM3420 or claim it locates the target recording asymmetry."
+    },
+    {
+      "url": "https://patents.google.com/patent/US5025702A/en",
+      "kind": "Search-index lead only",
+      "observed_scope": "12-stage time-shared phase example, priority1975.",
+      "outcome": "A12-channel count alone does not identify the later target; not pursued into a generic patent catalogue."
+    },
+    {
+      "url": "https://patents.google.com/patent/WO1996015584A1/en",
+      "kind": "Original patent inspected to reject misleading keyword match",
+      "observed_scope": "Media Vision assignee,1994priority,eight waveform choices and36virtual generators.",
+      "outcome": "Not an identified Yamaha YM3420 implementation."
+    },
+    {
+      "url": "https://patents.google.com/patent/JP2504173B2/en",
+      "kind": "Search-index lead only",
+      "observed_scope": "1989-priority formant-window synthesis.",
+      "outcome": "No target-chip link supplied; sine-squared keyword alone rejected."
+    },
+    {
+      "url": "https://www.bitsavers.org/components/yamaha/1987_Yamaha_LSI.pdf",
+      "kind": "Newly accessible original Yamaha32-page LSI catalogue via indexed public PDF",
+      "observed_scope": "Table of contents and extracted Standard LSI List cover other named chips; extracted-text searches3420/OPU have no match.",
+      "outcome": "No target numerical architecture established. Absence limited to accessed extracted text, not a claim all Yamaha catalogues were searched or every raster was visually inspected."
+    },
+    {
+      "url": "https://www.bitsavers.org/components/yamaha/1989_Yamaha_LSI_Condensed_Catalog.pdf",
+      "kind": "Indexed original Yamaha catalogue route",
+      "outcome": "Direct web open failed; no content verification or acquired target evidence."
+    },
+    {
+      "url": "https://www.bitsavers.org/components/yamaha/1990_Yamaha_LSI_Condensed_Catalog.pdf",
+      "kind": "Indexed original Yamaha catalogue route",
+      "outcome": "Direct web open failed; no content verification or acquired target evidence."
+    },
+    {
+      "url": "https://siliconpr0n.org/archive/doku.php?id=vendor%3Ayamaha",
+      "kind": "Previously surveyed die-index lead",
+      "outcome": "Public web open again returned internal error; no die image acquired; no access workaround attempted."
+    }
+  ],
+  "repeated_results_not_promoted": [
+    "d-tech chip table and pinout",
+    "MAME skeleton/forks",
+    "Alldatasheet exact-part search with no datasheet",
+    "Owner/editor descriptions of four waveforms",
+    "Unrelated optical-pickup OPU manuals",
+    "Other Yamaha sound-chip DACs"
+  ],
+  "source_boundaries": [
+    "No manufacturer model number, official document cross-reference or die marking links the inspected patent embodiments to YM3420.",
+    "Two operators, twelve notes and four waveform names are discovery clues rather than proof of a silicon implementation.",
+    "No generic YM2413/OPL/OPZ arithmetic or constants imported.",
+    "No oscillator/DAC/EG rate inferred from a catalogue or patent example.",
+    "No new media decoded, downloaded or fitted.",
+    "No existing evidence downloads or source recordings rerun.",
+    "No accounts,purchases,outreach,host/UI actions,access-control or certificate workaround."
+  ],
+  "bounded_negative": "No target-specific architecture recovered in this short query/source pass; this is not proof that such a document or die photograph does not exist."
+}

@@ -1,0 +1,6 @@
+{
+  "status": "TypeError before any analysis JSON written",
+  "cause": "Implementation broadcasting defect: N-vector y multiplied by N-by-1 weights created N-by-N observations; coefficient serialization rejected vector entries.",
+  "correction": "Use y*w, matching frozen Hann-weighted scalar least-squares protocol.",
+  "effects": "No observations, model parameters, windows, frequencies or protocol changed. The already rendered two native controls were reused; no second audio render."
+}

@@ -1,0 +1,7 @@
+{
+  "status": "validation assertion failure retained",
+  "cause": "Verifier asserted entire-source L/R byte identity although the measurement only covered four fixed windows.",
+  "observed_scope": "All four analyzed windows have exactly equal channel samples. Entire source has 1568 unequal samples outside them; first at 1.0535s, last at 60.847875s, maximum channel difference 0.00023423525.",
+  "correction": "Assert exact L/R equality only for the four prospectively frozen analyzed windows. Do not claim whole-file mono.",
+  "effects": "No audio, estimator, windows, results, candidate or protocol changed. No re-render or capture re-fit."
+}

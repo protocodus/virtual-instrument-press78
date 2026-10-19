@@ -1,0 +1,30 @@
+{
+  "schema": "press78.mn3206-dc-port-correction.v1",
+  "date": "2026-10-19",
+  "frozen_before_corrected_model_execution": true,
+  "issue": "Original validator compared all Real inputs to the exact rational value of a rounded JSON float, rejecting the mathematically exact VGG=14/3V graph condition. Root reproduction and first successful source/receipt remain frozen.",
+  "history_manifest_sha256": "f01ae27709e20a5ef7f1679127d0e875dd551a4205928a43ae647c526d3dafd4",
+  "root_reproduction_sha256": "dc4e12e202d5915a23c607c50c45ef512ff46d808494191dc69730f7d8647c81",
+  "physical_change": false,
+  "graph_or_coordinate_change": false,
+  "new_physical_tolerance": false,
+  "canonical_condition": {
+    "vgg_exact_rational_v": "14/3",
+    "binary64_alias_hex": "0x1.2aaaaaaaaaaabp+2",
+    "binary64_alias_exact_rational_v": "5254199565265579/1125899906842624",
+    "binary64_alias_rule": "Correctly rounded nearest IEEE754 binary64 representation of14/3; this single representation alias is accepted alongside the exact rational. No tolerance interval and no coercion of arbitrary rationals to float.",
+    "reject_adjacent_aliases": [
+      "0x1.2aaaaaaaaaaaap+2",
+      "0x1.2aaaaaaaaaaacp+2"
+    ]
+  },
+  "implementation": "Compare exact Fraction(normalized Real) to the exact mathematical condition or its single canonical binary64 alias. The other fixed integer-valued conditions remain exactly equal.",
+  "focused_checks": [
+    "Exact Fraction14/3 and canonical float produce identical operating-point outputs",
+    "Canonical binary64 represented as its exact Fraction also matches",
+    "The two adjacent nextafter floats are rejected",
+    "Nearby rational values on both sides, including values that round to the same binary64 alias, are rejected",
+    "All existing graph, domain, coordinate-corner, invalid-input and source-binding checks remain unchanged"
+  ],
+  "unchanged_scope": "SettledDC only, no audio/Drive/production/noise change. Fixed5V/10kHz/25C and graph-reading scenarios unchanged."
+}

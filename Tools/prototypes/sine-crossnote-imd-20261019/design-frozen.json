@@ -1,0 +1,311 @@
+{
+  "schema": "press78.sine-crossnote-imd.prospective.v1",
+  "frozen_at_utc": "2026-10-19T17:42:35.404428+00:00",
+  "scope": "Bounded quadratic mixed-note sum/difference witness; qualify before reading retained source PCM. No download/decode, production/UI/host edit, DAC bit inference or universal separation.",
+  "source_status": "Reused exact780 ONfIvtDOog0; not a fresh holdout. Carrier-onlySine99 patch, Reverb/ChorusON, Vibrato/SustainOFF. Gates inferred; no measuredhardwarearrival.",
+  "source_inputs": [
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/codec-tail-audit-20261018/opus251-float48.wav",
+      "sha256": "613084aecf53c3cea83f78e0506eef61dec4c4f21fb938a266d8d4120a60508e",
+      "size_bytes": 71420964,
+      "sample_rate": 48000,
+      "shape": [
+        8927609,
+        2
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/codec-tail-audit-20261018/aac140-float48.wav",
+      "sha256": "8f7e7452003b46c291c7b0b489a56a34026225c6190fe4dbef743a2b098247b2",
+      "size_bytes": 71438796,
+      "sample_rate": 48000,
+      "shape": [
+        8929838,
+        2
+      ],
+      "dtype": "float32"
+    }
+  ],
+  "aac_lag_frames": 627,
+  "sample_rate": 48000,
+  "on_frame": 8723419,
+  "off_frame": 8744591,
+  "supports_relative_to_on_seconds": [
+    [
+      0.1,
+      0.4
+    ],
+    [
+      0.12,
+      0.38
+    ],
+    [
+      0.14,
+      0.36
+    ]
+  ],
+  "channels": [
+    "left",
+    "right",
+    "arithmetic_mid"
+  ],
+  "frequencies": "Fixed equal temperamentA440, no pitch/phase/time search. Local time centered at each support midpoint; phase coefficients reference absolute onset frame.",
+  "primary_notes": {
+    "39": 77.78174593052023,
+    "75": 622.2539674441618,
+    "79": 783.9908719634985,
+    "87": 1244.5079348883237
+  },
+  "witness_frequencies": {
+    "difference": 706.2091260329782,
+    "sum": 861.7726178940188
+  },
+  "nearby_harmonics": {
+    "bass9_hz": 700.035713374682,
+    "bass11_hz": 855.5992052357226,
+    "distance_hz": 6.173412658296229
+  },
+  "nuisance_lines": [
+    {
+      "midi_origin": 39,
+      "harmonic": 1,
+      "hz": 77.78174593052023
+    },
+    {
+      "midi_origin": 46,
+      "harmonic": 1,
+      "hz": 116.54094037952248
+    },
+    {
+      "midi_origin": 47,
+      "harmonic": 1,
+      "hz": 123.47082531403103
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 2,
+      "hz": 155.56349186104046
+    },
+    {
+      "midi_origin": 46,
+      "harmonic": 2,
+      "hz": 233.08188075904496
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 3,
+      "hz": 233.3452377915607
+    },
+    {
+      "midi_origin": 47,
+      "harmonic": 2,
+      "hz": 246.94165062806206
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 4,
+      "hz": 311.1269837220809
+    },
+    {
+      "midi_origin": 46,
+      "harmonic": 3,
+      "hz": 349.6228211385675
+    },
+    {
+      "midi_origin": 47,
+      "harmonic": 3,
+      "hz": 370.4124759420931
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 5,
+      "hz": 388.90872965260115
+    },
+    {
+      "midi_origin": 67,
+      "harmonic": 1,
+      "hz": 391.99543598174927
+    },
+    {
+      "midi_origin": 46,
+      "harmonic": 4,
+      "hz": 466.1637615180899
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 6,
+      "hz": 466.6904755831214
+    },
+    {
+      "midi_origin": 47,
+      "harmonic": 4,
+      "hz": 493.8833012561241
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 7,
+      "hz": 544.4722215136417
+    },
+    {
+      "midi_origin": 46,
+      "harmonic": 5,
+      "hz": 582.7047018976124
+    },
+    {
+      "midi_origin": 47,
+      "harmonic": 5,
+      "hz": 617.3541265701551
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 8,
+      "hz": 622.2539674441618
+    },
+    {
+      "midi_origin": 46,
+      "harmonic": 6,
+      "hz": 699.245642277135
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 9,
+      "hz": 700.035713374682
+    },
+    {
+      "midi_origin": 47,
+      "harmonic": 6,
+      "hz": 740.8249518841862
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 10,
+      "hz": 777.8174593052023
+    },
+    {
+      "midi_origin": 79,
+      "harmonic": 1,
+      "hz": 783.9908719634985
+    },
+    {
+      "midi_origin": 46,
+      "harmonic": 7,
+      "hz": 815.7865826566574
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 11,
+      "hz": 855.5992052357226
+    },
+    {
+      "midi_origin": 47,
+      "harmonic": 7,
+      "hz": 864.2957771982173
+    },
+    {
+      "midi_origin": 46,
+      "harmonic": 8,
+      "hz": 932.3275230361799
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 12,
+      "hz": 933.3809511662428
+    },
+    {
+      "midi_origin": 47,
+      "harmonic": 8,
+      "hz": 987.7666025122483
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 13,
+      "hz": 1011.1626970967629
+    },
+    {
+      "midi_origin": 46,
+      "harmonic": 9,
+      "hz": 1048.8684634157023
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 14,
+      "hz": 1088.9444430272833
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 15,
+      "hz": 1166.7261889578035
+    },
+    {
+      "midi_origin": 67,
+      "harmonic": 3,
+      "hz": 1175.9863079452477
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 16,
+      "hz": 1244.5079348883237
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 17,
+      "hz": 1322.2896808188439
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 18,
+      "hz": 1400.071426749364
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 19,
+      "hz": 1477.8531726798844
+    },
+    {
+      "midi_origin": 39,
+      "harmonic": 20,
+      "hz": 1555.6349186104046
+    },
+    {
+      "midi_origin": 79,
+      "harmonic": 2,
+      "hz": 1567.981743926997
+    },
+    {
+      "midi_origin": 67,
+      "harmonic": 5,
+      "hz": 1959.9771799087464
+    },
+    {
+      "midi_origin": 79,
+      "harmonic": 3,
+      "hz": 2351.9726158904955
+    }
+  ],
+  "nuisance_domain": "Independent current/preceding-note harmonics through2500Hz; exact duplicate ET harmonics deduplicated.75/87 are bass8/16, not separate stems. Unknown native-clock aliases are not enumerated or ruled out.",
+  "estimator": "One joint real least-squares fit: DC/quadratic slow trend and sin/cos at every nuisance and witness frequency, each multiplied by centered normalized time polynomial degrees0,1,2. Hann applied to basis and observations. Use SVD pseudoinverse rcond1e-12. Central complex coefficientcos-i*sin; phase translated back to onset epoch. No ridge/optimizednuisance/order/frequency/window.",
+  "phase_witness": "For quadraticpostmix y=x+alpha*x^2, complex sidebandZsum/(Z79*Z39) and Zdifference/(Z79*conj(Z39)) are alpha before unspecified downstream transfer. Source interpretation tests stability across fixedsupports/encodes, never assumes arbitrary unknownfilterphase is0.",
+  "qualification": {
+    "condition_number_max": 10000000,
+    "negative_witness_relative_to_largest_primary_max_db": -65,
+    "positive_injected_alpha": 0.04,
+    "positive_relative_amplitude_error_max": 0.2,
+    "positive_phase_error_rad_max": 0.2,
+    "positive_same_phase_per_note_independent_nonlinearity_must_not_trigger": true,
+    "must_pass_all_prespecified_cases_and_supports_before_source_pcm": true,
+    "failure_policy": "Preserve complete qualification failure and abstain from source PCM analysis; no order/frequency/window/threshold revision in this run."
+  },
+  "synthetic_cases": {
+    "clean_linear": "Four cosines, primary amplitude.1, phases[.2,1.1,-.7,2.0].",
+    "independent_harmonic": "Same plus pernoteH2=.03,H3=.01 andH4..20=.003*4/h relative amplitudes, deterministic phases. No crossnote products.",
+    "detuned_harmonic": "Independent harmonics with pernote detune[-2,+1,+.5,-1]cents and common500ppm sinusoidal drift.7Hz, no crossnote mixing.",
+    "linear_chorus": "Independent harmonics through a common linear variable delay4ms\u00b1.5ms at.954647Hz, opposite left/rightphase. No nonlinear stage.",
+    "independent_nonlinearity": "Sum of independently squared/cubedcosines (.04quadratic,.03cubic) rather than square of sum.",
+    "quadratic_positive": "Global x+.04*x*x on clean fourcosines; theoretical witness alphaZaZb.",
+    "quadratic_after_chorus_positive": "Global x+.04*x*x separately after linear chorus, central expectedproducts from the known instantaneous component complexvalues.",
+    "native_linear_controls": "Current nativeDSP independent sinepatch AR63/D1L0/D2R0, pitchModel0, noLFO/noise/drive/limiter/DCblock; dry,circuit,Recordedchorus,circuit+Recordedchorus with mastergain.1,4notes. Set capturechorusepoch181.737895833s. Native output only is synthesized; no captured PCM read for qualification."
+  },
+  "source_gate_if_qualified": "Report all amplitudes/phases/supports/formats. Positive conditional crossnote evidence requires both witnesses above-55dBc and at least10\u00d7worst qualifiedcontrol leakage, normalizedphase spread\u2264.3rad across supports and between encodes. A null is not linearity proof; nativealias/sharedmaster/interface nonlinearity cannot be located. No sourcefit or codecdecode.",
+  "no_source_pcm_read_yet": true
+}

@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "cases": 24,
+  "prospective_composition_cases": 0,
+  "prospective_delay_cases": 24,
+  "design": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/design-frozen.json",
+    "bytes": 10198,
+    "sha256": "3f3b5ed1e4dd54a460c0ea1c9d2a076cda27d4dc66f9cab98b3b0c5683bf253f"
+  },
+  "collector": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/mode00-complete-command-20261019/collect_controls.py",
+    "bytes": 6169,
+    "sha256": "4510edf6835cddaefd157346419beb2837a41101989fa91e77ffb41038312917"
+  },
+  "observations": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/mode00-complete-command-20261019/prospective-delay-corrected/prospective-observations.jsonl.gz",
+    "bytes": 3698,
+    "sha256": "9d974f047d6b9ebe696e205ad94dce84a07e1cf8761dc87f209eca75212b0645"
+  },
+  "scope": "New bounded original-program command/state observations only; no hardware, boot, elapsed-time or audio claim."
+}

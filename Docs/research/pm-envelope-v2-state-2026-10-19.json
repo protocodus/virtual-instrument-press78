@@ -1,0 +1,768 @@
+{
+  "schema": "press78.pm-envelope-v2-state-audit.v1",
+  "observed_at_utc": "2026-10-19T16:27:45.735884+00:00",
+  "process_observation": {
+    "pid": 31589,
+    "ps_returncode": 1,
+    "ps_stdout": "  PID ELAPSED      TIME  %CPU    RSS COMMAND\n",
+    "matching_command_returncode": 1,
+    "matching_command_stdout": "",
+    "old_tool_handle": "75295 missing (Unknown process id)",
+    "exit_reason": "unobserved; neither normal completion nor cause established"
+  },
+  "run_started": {
+    "design": {
+      "path": "Reference/Research/pm-envelope-v2-protocol-20261019.json",
+      "bytes": 95277,
+      "sha256": "7f36c537159b609f4b620d8c9b24271bbf83c0fceb7a49ee6e8d1e78f3d37e25"
+    },
+    "binding": {
+      "path": "build/pm-envelope-v2-20261019/execution-binding-v1.json",
+      "bytes": 5163,
+      "sha256": "4f8781d50a8f82fa8d5673c7fb225e72c0950c50707889f44aa50a00a42409b7"
+    },
+    "source_requested": false,
+    "source_PCM_decoded": false
+  },
+  "run_artifact": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/run-started.json",
+    "bytes": 446,
+    "sha256": "e9c914bed12439a8e8a570826b734e5a8bf1eae6b84d4c04eb39e2d512ebd51e"
+  },
+  "design": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/pm-envelope-v2-protocol-20261019.json",
+    "bytes": 95277,
+    "sha256": "7f36c537159b609f4b620d8c9b24271bbf83c0fceb7a49ee6e8d1e78f3d37e25"
+  },
+  "binding": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-20261019/execution-binding-v1.json",
+    "bytes": 5163,
+    "sha256": "4f8781d50a8f82fa8d5673c7fb225e72c0950c50707889f44aa50a00a42409b7"
+  },
+  "frozen_original_tool": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/measure_pm_envelope_v2.py",
+    "bytes": 52541,
+    "sha256": "a07e815c6f4307988e7a536826040be95b1c85a7fe009fe0dc2cd354a5c68367"
+  },
+  "expected_coarse_count": 93,
+  "completed_coarse_count": 73,
+  "expected_nested_count": 12,
+  "completed_nested_artifact_count": 0,
+  "final_result_present": false,
+  "completed_results": [
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/H1-null-result.json",
+      "bytes": 2194,
+      "sha256": "73a3d1e049ebad53c0d8cd928bcd6f890566d062331ef8ab6cf2503330ec8214"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-00-result.json",
+      "bytes": 10287,
+      "sha256": "665fae4a2b3f3f833d6fd84d42423def4b84f79ee9038d04fbca16040d8ee19b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-01-result.json",
+      "bytes": 10299,
+      "sha256": "216c17ffec096eabb068595ebe0578f941905872103b495808795979f5f6340d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-02-result.json",
+      "bytes": 10317,
+      "sha256": "98bfc42eb7980595cfa49d672e68e3a4e6ed870fb25b896b0650f10b8a3f3248"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-03-result.json",
+      "bytes": 10297,
+      "sha256": "27c9c2a5165990eb60e0f31e17181ee119c25f65e6d29287f326cb2f3c6bd7e5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-04-result.json",
+      "bytes": 10282,
+      "sha256": "1fddfc928cafaf5147abe6807e7580474d809f469dc5ed3cad8dd6c0c0093a3e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-05-result.json",
+      "bytes": 10313,
+      "sha256": "e1fcf4cd54daa0c6f358b3147c046863c7c024b90527b2ce9cfae0cb781fe2be"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-06-result.json",
+      "bytes": 10207,
+      "sha256": "a2f181c01b9a1a4190e790a0486cc6eca67d7a916a8c1f9c1bcf0351eddeac84"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-07-result.json",
+      "bytes": 10312,
+      "sha256": "8fd105b3cbfa63761acdc33612e49b5030ee742d9862bb191ff5c5ea3710f5ce"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-08-result.json",
+      "bytes": 10289,
+      "sha256": "eee10495e61f410ae2991dcad1ecb8b5b0e8a336ea45e19c9f80532a697d48cb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-09-result.json",
+      "bytes": 10292,
+      "sha256": "8d2827b33cb3362a3ff034d8d4a2ada16ab838021864abeb6cba99cd8b9e71d0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-10-result.json",
+      "bytes": 10301,
+      "sha256": "a4deb60081b30256fd59e8bb92346c04a1a74dee12313f96138f862e79a8bc0c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-11-result.json",
+      "bytes": 10304,
+      "sha256": "bb4e971b7d8e4c00fcd0a36d8395292e9f4a612ce09d50ec0ba9063960cc46d3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-12-result.json",
+      "bytes": 10290,
+      "sha256": "00ea5df26d2d18c6b074bf5830a9ca4440feaacab55630be8fe81afcc358bf0d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-13-result.json",
+      "bytes": 10302,
+      "sha256": "f88cc721e86193d5b387e93f4ad22a201b2b7f3d1b82222ca542aaabc6b49be0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-14-result.json",
+      "bytes": 10305,
+      "sha256": "c9c49476acbe0138f04605048e290a55af175e1adb161b28d3363f781ea29f75"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-15-result.json",
+      "bytes": 10307,
+      "sha256": "f3f64561b35a6b6135a8241df8fefc5b6bf839adb4c699b95c5703b6fbcc2cb3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-16-result.json",
+      "bytes": 10290,
+      "sha256": "d54198ae99fa7844a1131f11b8b85faf5c77e2450b49be39522748a24670bbaa"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-17-result.json",
+      "bytes": 10313,
+      "sha256": "64c265bdc0e530cc265d9c44bfd2032a577f907eec43a82a46c14a020ff05d4c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-18-result.json",
+      "bytes": 10212,
+      "sha256": "a5389199bc16f649b2dab59cc3c191a227bfc0d962825c5e265e28d32ae3eb29"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-19-result.json",
+      "bytes": 10309,
+      "sha256": "b69ae3aaa2e51c20975336837937baef16107428b437ea58504ba1afc23254c8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-20-result.json",
+      "bytes": 10302,
+      "sha256": "3973062f469609f3c7dddd132e6f23ef0488f4906f766d1d3f8bf79678ad220d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-21-result.json",
+      "bytes": 10303,
+      "sha256": "c0c593d200716c6638c3dff8a4755d31c55dc317a6eb657a0d1f883d65999f0b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-22-result.json",
+      "bytes": 10303,
+      "sha256": "d0628fa0c82afef623ef4a04f8c458a53a59d8b7cbf9ff55f55cf5c84b87cff6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-23-result.json",
+      "bytes": 10309,
+      "sha256": "0c46498abfa35809ace48fe8f292e93f486b31c3fae14f31987c55fbce7fd87b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-24-result.json",
+      "bytes": 10294,
+      "sha256": "6ae07d6dd18d36148c3fa7fa8b59ff58471018558fc5da3482e64393b7e7a4a3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-25-result.json",
+      "bytes": 10300,
+      "sha256": "223bd7569fcb75d9d6e8c68c4e5a0c4e50014729c18c52d0861bfdfaec764783"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-26-result.json",
+      "bytes": 10289,
+      "sha256": "24d8337f1b075f8a63d95edeac1e6520ae68ae4a7ff78928f8ff9b9508309186"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-27-result.json",
+      "bytes": 10304,
+      "sha256": "81cca82c74654ce28488a163b689d9f33b5b040c06a60c7ecc6ae3e56dae16f4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-28-result.json",
+      "bytes": 10308,
+      "sha256": "b60fb447fa280979a603e302cb29cd5cb13fc90663dcecbda8c801f20bb7a111"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-29-result.json",
+      "bytes": 10303,
+      "sha256": "a2b5e8e24d4e6c5283e6ead1ba2caf8721c72eb9870ec55fc9b8f49b53561e70"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-30-result.json",
+      "bytes": 10213,
+      "sha256": "2b2c3b683175917ea6b578b341c08ae67e0c30993fc977cfc9f359c99612d9ac"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-31-result.json",
+      "bytes": 10302,
+      "sha256": "4e4f5b09b5c861b1cf1637f8398516ba7a0d2f2fcd32c868135fa5b0cf869093"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-32-result.json",
+      "bytes": 10306,
+      "sha256": "f386bdb17e50677fd2633f1668e111838614a09abd7482a6c8e718619a52a687"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-33-result.json",
+      "bytes": 10296,
+      "sha256": "0d63cf9f8475c6d18aa04bd41e09002535a1cc2fbef41460d0689446fb34824d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-34-result.json",
+      "bytes": 10296,
+      "sha256": "bf50448fc3c666f012539059fb0eb5924afd52d5473f9188ef924ccea1702581"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/analytic-35-result.json",
+      "bytes": 10295,
+      "sha256": "4fa14e2c15dfc8193e6bf2079d3daeb58ed1f2993e743ec9feb8333de4f27d5f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/compressor-result.json",
+      "bytes": 10382,
+      "sha256": "62c4b216951b0a929388bb36fdce53f9654c34aa9cd8453c5dbbb866bf138fb0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/constant-beta-result.json",
+      "bytes": 9157,
+      "sha256": "eb56c4d9cd52b2252f8519dfb770af563616898d936f6d439c0dc006a6b8f375"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/delayedcopy-result.json",
+      "bytes": 2938,
+      "sha256": "d2a9a1c9642be9be105ddb13af8c39c223070145a6f2d2aca3905e86201434fb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/dynamic-gain-nonidentifiability-result.json",
+      "bytes": 10418,
+      "sha256": "d97c3b95fbd5c858b47c4c51dac834a337bffbcfe1f7c2f5d56f67f1eaee2516"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/fractionaldelay-result.json",
+      "bytes": 10348,
+      "sha256": "d31d70b02de79117d807066cdc2e4ed278c5f0aac5b5967af98ae9e9795e0880"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/highpass-result.json",
+      "bytes": 10319,
+      "sha256": "9aba4f9db615c597dd38f4a52961a4d18b284eeb32e146c9c945f29f6060777b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/lowpass-result.json",
+      "bytes": 10317,
+      "sha256": "f1bd3282b99456f9b71a1a1384fc895345e15e2324ae6c621382d3bd5ceae488"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-left-result.json",
+      "bytes": 9915,
+      "sha256": "dc9effe6a75af2e829319c056d3fbc730e6e1e93848e4a5e18e25190031495b7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-Real-mid-result.json",
+      "bytes": 10070,
+      "sha256": "81a3eb5ae135c46d41cc2c2c2850c00d41185d9cd83ef2c372fae0d2122031ad"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-0-result.json",
+      "bytes": 10168,
+      "sha256": "48d3432cb782e5296949feae9c306b39c2089962ff6eefe0d6f1b184c9f30e0f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-36-20-result.json",
+      "bytes": 10167,
+      "sha256": "df5a35a6ccf6537600256208bcb0d5fa892654ced3520750a04016fcc0cb344a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-0-result.json",
+      "bytes": 10160,
+      "sha256": "ca41f1586fbc045e5db6a42c0f3775f5280f3483cb34ecdb8cbcccfe4890a39a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-60-20-result.json",
+      "bytes": 10166,
+      "sha256": "0de12d6b105fd9be61659658834101cc3b55dbfbe5fe2fe02edf106014b9685e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-0-result.json",
+      "bytes": 10169,
+      "sha256": "5e7cef1b2c9a4edd35c7264147564e40def26a3f39fe79bafe9128f27f162750"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-dry-82-20-result.json",
+      "bytes": 10170,
+      "sha256": "fd0ac489c83a217c04717693c0011310b52743fb0e750cc34b3c9eafa8042dea"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-36-result.json",
+      "bytes": 9120,
+      "sha256": "dedd6101a86f5289610ba5d72f2b9bd5cbfbfb328c9ac2383b252f7ccef062b4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/native-recipe-60-result.json",
+      "bytes": 9137,
+      "sha256": "206e51b8c6c38dbba0b4385c9231f4afb21026eddf779055e67067d668f199c9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-00-result.json",
+      "bytes": 10300,
+      "sha256": "80dd4bb7ea7e16cb4035f6ceee8908e6727d2d5af6dbb36b8896e36994d47a84"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-01-result.json",
+      "bytes": 10331,
+      "sha256": "598292d5a64a6dea226d154ea30b3ffaccf22aeebab6cc4ede6d5b26091ed762"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-02-result.json",
+      "bytes": 10409,
+      "sha256": "437ab84fbf9f3072ecb8e84a8e466fdcfab8785b76ffa63df4588f68d42ff6b8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-03-result.json",
+      "bytes": 10406,
+      "sha256": "8210a7bd0161b8903b0beff2b3da28aff34c349061919f8f797ab06de9e8151c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-04-result.json",
+      "bytes": 10291,
+      "sha256": "c6fa52167c1b6612713364a1c75a4eae246794c62b3af92be0ad57b27ac02bde"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-05-result.json",
+      "bytes": 10322,
+      "sha256": "f04c8ee1d5e675aa99d72f1e6069b8542b2cbdc219b02dc37a3e32baf320a978"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-06-result.json",
+      "bytes": 10399,
+      "sha256": "48f101c353ef6c5be8489171f3aba5a1d62ebeb03b257b28f5e86c86add1e92a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-07-result.json",
+      "bytes": 10425,
+      "sha256": "2bace8685064401e1c90844b16aa5ba9f25e910d9bc000d67362a668c2be0d91"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-curvature-08-result.json",
+      "bytes": 10327,
+      "sha256": "45227f737ff0c1524f5c2dc914252bea15ad4448f41df7a096e5e52450eaa82c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-00-result.json",
+      "bytes": 10338,
+      "sha256": "f69334bdfbc27886c1994ef6b17ae9db48554c2839d79e28a33448bedf5f71f7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-01-result.json",
+      "bytes": 10438,
+      "sha256": "a28edffef1021f65b90968fd125f4354f872bb636ff436816cc6b458c74deb71"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-02-result.json",
+      "bytes": 10340,
+      "sha256": "117f05e8af7ba56fbadb73d87ad40d3e56f099b70de1078b1b1987032d60ccd9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-03-result.json",
+      "bytes": 10454,
+      "sha256": "82c42789f8fc9bd619ee40d56156c3ae4f018c4ba9dcb80f00e5478dd134e162"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-04-result.json",
+      "bytes": 10339,
+      "sha256": "2c1a78a1a111458428cca4ad724bb3686a84ca3ec012129ab52142a6ebc83e27"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-05-result.json",
+      "bytes": 10447,
+      "sha256": "0fb20fb9aecfdedf7ddf9703e15b0276f0df33dbd38244849afd65ae68a21c9b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-06-result.json",
+      "bytes": 10339,
+      "sha256": "5f70fcf3f6da16b9abce169484edfebda3ee54ddcd20bac1d044e75d62d5f147"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/new-informative-07-result.json",
+      "bytes": 10452,
+      "sha256": "5689ae2597f8dc191ea9a0cc6a62cbf4b4db433a970fcfd7382628109f63fa06"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/sine-no-beta-result.json",
+      "bytes": 9159,
+      "sha256": "db2885ba71ef27ea93f7e03110f97bfaad684c7dacb434105063b6e282dfefd4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pm-envelope-v2-controls-001/two-tone-result.json",
+      "bytes": 2959,
+      "sha256": "f0395f72562d44edb6d232504c4b646165d0a2190a39a2917a459364467c2285"
+    }
+  ],
+  "expected_missing_ids": [
+    "new-curvature-09",
+    "new-curvature-10",
+    "new-curvature-11",
+    "new-curvature-12",
+    "new-curvature-13",
+    "new-curvature-14",
+    "new-curvature-15",
+    "new-nullcross-00",
+    "new-nullcross-01",
+    "new-nullcross-02",
+    "new-nullcross-03",
+    "new-null-pure-sine",
+    "new-null-constant-beta",
+    "new-null-anchor-H1",
+    "new-nearby07-inphase",
+    "new-nearby07-quadrature",
+    "new-independent-H2-phase",
+    "new-delayedcopy25",
+    "new-chorus20-4",
+    "new-dynamicgain-pair"
+  ],
+  "informative_checks": [
+    {
+      "id": "new-informative-00",
+      "passed": false,
+      "quantity_passes": {
+        "A": false,
+        "beta": false
+      },
+      "late_qualification": {
+        "A": {
+          "truth_db_per_second": 16.99948424648521,
+          "range": {
+            "status": "finite_outer_set",
+            "low": -38.55942238434715,
+            "high": 29.918812158649583,
+            "finite": true,
+            "width": 68.47823454299673
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": false
+        },
+        "beta": {
+          "truth_db_per_second": 22.999302215832934,
+          "range": {
+            "status": "finite_outer_set",
+            "low": -7.5670200483103045,
+            "high": 25.867537560848515,
+            "finite": true,
+            "width": 33.434557609158816
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": false
+        }
+      }
+    },
+    {
+      "id": "new-informative-01",
+      "passed": false,
+      "quantity_passes": {
+        "A": true,
+        "beta": false
+      },
+      "late_qualification": {
+        "A": {
+          "truth_db_per_second": 17.000300235600857,
+          "range": {
+            "status": "finite_outer_set",
+            "low": 16.437552302785512,
+            "high": 17.921542989683857,
+            "finite": true,
+            "width": 1.4839906868983448
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": true,
+          "zero_decay_excluded": true
+        },
+        "beta": {
+          "truth_db_per_second": 23.00040620110704,
+          "range": {
+            "status": "finite_outer_set",
+            "low": 20.567753607923184,
+            "high": 25.299931337250012,
+            "finite": true,
+            "width": 4.732177729326828
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": true
+        }
+      }
+    },
+    {
+      "id": "new-informative-02",
+      "passed": false,
+      "quantity_passes": {
+        "A": false,
+        "beta": false
+      },
+      "late_qualification": {
+        "A": {
+          "truth_db_per_second": 16.99948424648521,
+          "range": {
+            "status": "finite_outer_set",
+            "low": -38.883859158631914,
+            "high": 31.02011558874906,
+            "finite": true,
+            "width": 69.90397474738097
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": false
+        },
+        "beta": {
+          "truth_db_per_second": 22.999302215832934,
+          "range": {
+            "status": "finite_outer_set",
+            "low": -7.6052856364180705,
+            "high": 25.908991947965255,
+            "finite": true,
+            "width": 33.51427758438332
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": false
+        }
+      }
+    },
+    {
+      "id": "new-informative-03",
+      "passed": false,
+      "quantity_passes": {
+        "A": true,
+        "beta": false
+      },
+      "late_qualification": {
+        "A": {
+          "truth_db_per_second": 17.000300235600857,
+          "range": {
+            "status": "finite_outer_set",
+            "low": 16.430640582290575,
+            "high": 17.993601134850927,
+            "finite": true,
+            "width": 1.5629605525603516
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": true,
+          "zero_decay_excluded": true
+        },
+        "beta": {
+          "truth_db_per_second": 23.00040620110704,
+          "range": {
+            "status": "finite_outer_set",
+            "low": 20.49441123071663,
+            "high": 25.398784106528403,
+            "finite": true,
+            "width": 4.904372875811774
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": true
+        }
+      }
+    },
+    {
+      "id": "new-informative-04",
+      "passed": false,
+      "quantity_passes": {
+        "A": false,
+        "beta": false
+      },
+      "late_qualification": {
+        "A": {
+          "truth_db_per_second": 16.99948424648521,
+          "range": {
+            "status": "finite_outer_set",
+            "low": -39.09985695111585,
+            "high": 29.788057172174433,
+            "finite": true,
+            "width": 68.88791412329027
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": false
+        },
+        "beta": {
+          "truth_db_per_second": 22.999302215832934,
+          "range": {
+            "status": "finite_outer_set",
+            "low": -7.6052856364180705,
+            "high": 25.864348761839533,
+            "finite": true,
+            "width": 33.469634398257604
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": false
+        }
+      }
+    },
+    {
+      "id": "new-informative-05",
+      "passed": false,
+      "quantity_passes": {
+        "A": true,
+        "beta": false
+      },
+      "late_qualification": {
+        "A": {
+          "truth_db_per_second": 17.000300235600857,
+          "range": {
+            "status": "finite_outer_set",
+            "low": 16.43631335644686,
+            "high": 17.922447568041104,
+            "finite": true,
+            "width": 1.4861342115942442
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": true,
+          "zero_decay_excluded": true
+        },
+        "beta": {
+          "truth_db_per_second": 23.00040620110704,
+          "range": {
+            "status": "finite_outer_set",
+            "low": 20.54543201486032,
+            "high": 25.290364940223068,
+            "finite": true,
+            "width": 4.744932925362747
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": true
+        }
+      }
+    },
+    {
+      "id": "new-informative-06",
+      "passed": false,
+      "quantity_passes": {
+        "A": false,
+        "beta": false
+      },
+      "late_qualification": {
+        "A": {
+          "truth_db_per_second": 16.99948424648521,
+          "range": {
+            "status": "finite_outer_set",
+            "low": -39.11768700458526,
+            "high": 31.025474358674085,
+            "finite": true,
+            "width": 70.14316136325934
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": false
+        },
+        "beta": {
+          "truth_db_per_second": 22.999302215832934,
+          "range": {
+            "status": "finite_outer_set",
+            "low": -7.6850056116425876,
+            "high": 25.915369545983218,
+            "finite": true,
+            "width": 33.600375157625805
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": false
+        }
+      }
+    },
+    {
+      "id": "new-informative-07",
+      "passed": false,
+      "quantity_passes": {
+        "A": true,
+        "beta": false
+      },
+      "late_qualification": {
+        "A": {
+          "truth_db_per_second": 17.000300235600857,
+          "range": {
+            "status": "finite_outer_set",
+            "low": 16.428085160087686,
+            "high": 17.995745905845713,
+            "finite": true,
+            "width": 1.567660745758026
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": true,
+          "zero_decay_excluded": true
+        },
+        "beta": {
+          "truth_db_per_second": 23.00040620110704,
+          "range": {
+            "status": "finite_outer_set",
+            "low": 20.481656034680714,
+            "high": 25.398784106528403,
+            "finite": true,
+            "width": 4.917128071847689
+          },
+          "unexpanded_truth_coverage": true,
+          "explicitly_unknown": false,
+          "coverage_gate": true,
+          "informative": false,
+          "zero_decay_excluded": true
+        }
+      }
+    }
+  ],
+  "informative_group_complete": true,
+  "informative_gate_passed": false,
+  "source_requested": false,
+  "source_artifacts": [],
+  "scope": "Read-only state/retained-result audit. No extraction, rerun, source decode, threshold change or production change."
+}

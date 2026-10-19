@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-19",
+  "classification": "Posthoc new analysis of 16 previously inspected and accepted Synth Bass 1 H1 curves; not an independent recording/holdout, a PM method or a production DSP correction.",
+  "chronology": "Source hash, all 16 pitch labels, their level ranges and prior whole-window slope grouping were inspected before this design. This protocol is frozen before new crossing or local slope extraction. No PCM is read, decoded, resampled, downloaded or rendered.",
+  "source_json": "Docs/research/opu-envelope-independent-2026-10-19.json",
+  "expected_source_bytes": 771818,
+  "expected_source_sha256": "cfe77490c69bb317d5a4b0c9054d0d7ff4c505508bac3824e2ee730a58b36412",
+  "source_rows": "posthoc_harmonic_result.rows; all 16, preserve original source absolute times and h1_dbfs. No new note/pitch/window selection or frequency fit.",
+  "expected_notes": [36, 39, 43, 46, 48, 51, 55, 58, 60, 63, 67, 70, 72, 75, 79, 82],
+  "grouping": "Already observed grouping: low pitches36..58 (8 rows) and high pitches60..82 (8 rows), not a newly optimized threshold or hardware rate-key-scaling claim.",
+  "levels_dbfs": [-26, -25, -24, -23, -22],
+  "curve_validation": "Every row must contain 81 finite time/level pairs with strictly increasing 5ms times (maximum step deviation1e-10seconds). Do not repair, smooth, sort or truncate malformed curves.",
+  "crossing_rule": "Find every segment that strictly straddles the target in either direction and every exact-equality sample. Strict straddles exclude equality at endpoints. More than one event is ambiguous and fails. Two or more adjacent equality samples are a plateau and fail. Exactly one event must be downward; an equality event must have neighbors strictly above/below. Never select first/best crossing or monotonize a curve.",
+  "crossing_interpolation": "For one strict downward straddle, linear interpolation between that original pair gives crossing time. For one qualifying exact-equality sample use its original time. No extrapolation or local time fit.",
+  "slope_neighborhood_seconds": [-0.025, 0.025],
+  "slope_offsets_seconds": [-0.025, -0.02, -0.015, -0.01, -0.005, 0.0, 0.005, 0.01, 0.015, 0.02, 0.025],
+  "slope_estimator": "Require the entire fixed crossing-relative neighborhood inside original curve support, else fail. Linearly interpolate the original saved levels at all11 offsets; ordinary least-squares level versus offset gives signed dB/s, intercept, R-squared, max residual and endpoint drop. No adaptive neighborhood or model fit. These are overlapping, filtered capture estimates, not independent samples or a silicon counter.",
+  "actual_case_count": 80,
+  "comparison": "For each fixed level preserve all16 results and qualification failures; summarize each group's slope range/median, all64 high-minus-low signed slope differences and high/low decay-speed ratios when all qualified. Do not replace missing rows or pool levels as independent observations. No p-value, confidence interval, new adoption gate or fitted RKS/envelope law.",
+  "null": "Each intrinsic H1 log amplitude is x_i(t)=a_i-r*t with the SAME constant positive decay rate r; observed H1 level is y_i(t)=G(x_i(t)), with the SAME strictly increasing differentiable time-invariant scalar G across notes. At y=L, x=G^-1(L), so dy/dt=-r*G'(G^-1(L)); each crossing-relative trajectory, and any common finite-window slope functional, is independent of a_i. This is a scalar-H1 null, not all forms of memoryless audio distortion.",
+  "null_exclusions": ["Per-note normalization or level changes after the common mapping", "Unknown frequency-dependent downstream gain or filtering", "Dynamic compression, gating, hysteresis, effects or changing system state", "Different actual patches, rates, gates or effect history", "Timbre/FM evolution that prevents H1 amplitude being described by one scalar map of intrinsic H1", "Unknown true carrier-envelope versus H1-amplitude relation"],
+  "synthetic_controls": {
+    "purpose": "Test crossing/interpolation/local-slope behavior on sampled scalar curves only; all numbers are arbitrary fixtures, not hardware parameters.",
+    "times_seconds": "81 points0..0.4 at5ms",
+    "intrinsic_rate_db_per_second": 32.0,
+    "maps": ["G(x)=x", "G(x)=0.5*(x+24)-24", "G(x)=x+0.75*tanh((x+24)/3)"],
+    "starting_coordinates": "For each map, use a_i=inverseG(-20.5)+0.02*i, i=0..15. InverseG uses80 bisections in fixed[-100,100]. No fit to actual source.",
+    "expected_slope": "At each target L, evaluate analytic G(inverseG(L)-32*offset) at the SAME11 slope offsets. This crossing-relative finite-window slope is independent of note offset. Compare against all16 sampled/interpolated control estimates.",
+    "qualification": "All240 map/start/level controls must qualify; maximum absolute sampled-versus-analytic finite-window slope discrepancy and within-level between-start slope range each <=0.1dB/s. Failures remain, no gate loosening.",
+    "separating_control": "Identity map with intrinsic rates24.33 for first8 curves and28.46 for last8; same starting-coordinate rule, all5 levels. Each extracted signed slope must match its exact known rate within1e-8dB/s. Not a hardware estimate."
+  },
+  "no_adoption": "Even a large matched-level discrepancy rejects only the narrow conditional null; no original raw-RKS law, global timing multiplier, threshold or physical DSP constant is adopted. Production, UI, presets, hosts and source media remain unchanged."
+}

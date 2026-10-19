@@ -1,0 +1,80 @@
+{
+  "frozen_at_utc": "2026-10-19T17:52:32.620478+00:00",
+  "scope": "Minimal high-bit meta-type rejection; original run-01 not regenerated. Preserve first source/publication bytes. Recheck synthetic suite and focused valid opaque payload/invalid type cases, compare current source parse and all eight in-memory compiled fixtures to run-01 without rewriting fixtures.",
+  "reason": "Independent review found invalid meta type128 accepted. Specification says meta type is less than128; data payload bytes remain unrestricted.",
+  "sources": [
+    {
+      "url": "https://midimusic.github.io/tech/midispec.html",
+      "access": "Read accessible IMA-spec transcription, section2.3; acknowledgement says text originally distributed by International MIDI Association, updated by David Back1999. Not an official-certified copy."
+    },
+    {
+      "url": "https://midi.org/standard-midi-files",
+      "access": "Read official index, RP001 PDF link. Its GoogleDrive reader returnedLoading/sign-in; PDF contents not inspected through that route."
+    },
+    {
+      "url": "https://www.music.mcgill.ca/~ich/classes/mumt306/midiformat.pdf",
+      "access": "Direct open404"
+    },
+    {
+      "url": "https://people.carleton.edu/~jellinge/cs312_w2020/pdf/_complete_midiSpec1_0.pdf",
+      "access": "Tool inaccessible"
+    }
+  ],
+  "original_files": [
+    {
+      "original": {
+        "path": "Tools/prototypes/source-ordered-midi-20261019/compiler.py",
+        "bytes": 11983,
+        "sha256": "50620a40cc03774e2447673070c10c738cda2658c91f4cb110e7a8c78c66cd49"
+      },
+      "archive": {
+        "path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/compiler.py",
+        "bytes": 11983,
+        "sha256": "50620a40cc03774e2447673070c10c738cda2658c91f4cb110e7a8c78c66cd49"
+      }
+    },
+    {
+      "original": {
+        "path": "Tools/prototypes/source-ordered-midi-20261019/test_compiler.py",
+        "bytes": 8360,
+        "sha256": "c5b395b448ea7c651834b11ee7a2ce5fcfd29d6ae9168c41cada44aecc96e783"
+      },
+      "archive": {
+        "path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/test_compiler.py",
+        "bytes": 8360,
+        "sha256": "c5b395b448ea7c651834b11ee7a2ce5fcfd29d6ae9168c41cada44aecc96e783"
+      }
+    },
+    {
+      "original": {
+        "path": "Docs/research/source-ordered-midi-2026-10-19.md",
+        "bytes": 7553,
+        "sha256": "188b05f63daa975e282ffca08748a96ede9172f15ef970a83d8e8312852ee1a8"
+      },
+      "archive": {
+        "path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.md",
+        "bytes": 7553,
+        "sha256": "188b05f63daa975e282ffca08748a96ede9172f15ef970a83d8e8312852ee1a8"
+      }
+    },
+    {
+      "original": {
+        "path": "Docs/research/source-ordered-midi-2026-10-19.json",
+        "bytes": 17652,
+        "sha256": "9f614895328e692181b6b7e4f44155b6e3395ca9edbbe8163156dcae3b09bf5f"
+      },
+      "archive": {
+        "path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.json",
+        "bytes": 17652,
+        "sha256": "9f614895328e692181b6b7e4f44155b6e3395ca9edbbe8163156dcae3b09bf5f"
+      }
+    }
+  ],
+  "pre_fix_witness": {
+    "path": "build/source-ordered-midi-20261019/meta-type-correction/before-fix-witness.json",
+    "bytes": 448,
+    "sha256": "6b20da67ad628113bfa9f0163550d049ac305e028c587004fd6fa8d02291d0aa"
+  },
+  "no_fixture_regeneration": true,
+  "audio_or_production_changes": false
+}

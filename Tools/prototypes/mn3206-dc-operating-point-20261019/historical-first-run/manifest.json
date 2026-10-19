@@ -1,0 +1,18 @@
+{
+  "schema": "press78.mn3206-dc-first-run-archive.v1",
+  "files": {
+    "public-receipt.json": "2cd1c83c61f13275b0268fe4c04a94015e2757c4f8afb96eee6a0ca18590a287",
+    "report.md": "31fa0d71bc31ff7b226511b38284207227cc4a0d06f19cfd7679eb4c9494342f",
+    "root-port-semantics-v1.json": "dc4e12e202d5915a23c607c50c45ef512ff46d808494191dc69730f7d8647c81",
+    "source/check.py": "dde1c223c044081b0ee47f03b36d304211b3d78d9fab62ba37a0ae689a6d8cf6",
+    "source/design-frozen-v2.json": "8152ce8771518a57190a18016fa8ded04f3e4e50e5621e166ef824db7059ef68",
+    "source/design-frozen-v3.json": "fa0fda39dd32443e5f6aafc6258caab3b1d97e8a7449d22a94e7f192d16c88af",
+    "source/design-frozen.json": "26f8161c1687244375feb98b09545616757285ba476d05a7eef38f0b43d49b0d",
+    "source/digitized-pixels.json": "3e8ea1a5b606ef6feecbd2413cd3733fcfbbafe912db47b4efec04eced0f717c",
+    "source/extraction-failed-support-v1.json": "702b31891cc14acde2bf127d306b63ad70026d4232a3c14e7adc57c35f087712",
+    "source/implementation-bound.json": "06831765294d57820ca3af74df20fdb5a6f480022ba3adf9d0cc49128ca97ded",
+    "source/mn3206_dc.py": "83c6894e632c98c230ccd8815116d32801aa81e7828668391a624fa8cb0d51fd",
+    "validation.json": "78a29db78544ffb84a76c9597104f8c2b456d72ea118e6945a7d7696ae3f522f"
+  },
+  "scope": "Exact historical first successful source, design, receipt and publication before the root-found VGG representation correction. No historical bytes repaired or rerun."
+}

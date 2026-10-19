@@ -1,0 +1,172 @@
+{
+  "schema": "press78.hardware-followup.integration.v1",
+  "created_at_utc": "2026-10-19T18:00:59.884668+00:00",
+  "passed": true,
+  "scope": "Publication syntax, active/history-context links, current MIDI correction and original-fixture/source bindings, unchanged production DSP. No audio rendering, downloads, host execution or source rebenchmark.",
+  "files": [
+    {
+      "path": "Docs/research/command-audio-consumer-2026-10-19.json",
+      "bytes": 14494,
+      "sha256": "2df05c11f5cae388a1016d9e4a18b319e3d361417f465cc7e5a9cad528d625d0"
+    },
+    {
+      "path": "Docs/research/command-audio-consumer-2026-10-19.md",
+      "bytes": 11558,
+      "sha256": "a667ba2aa5d8ac38715c7cdf44f39dc3c52999cedb0d58bb209e03276754537a"
+    },
+    {
+      "path": "Docs/research/fidelity-roadmap-2026-10-18.md",
+      "bytes": 41765,
+      "sha256": "2724e0844072c796cd0314749f2a48652c6d5e440840f481beeff263877c8569"
+    },
+    {
+      "path": "Docs/research/oscillator-fidelity-audit-2026-10-19.md",
+      "bytes": 14081,
+      "sha256": "35394401fa31247923988203f8d340c9c6e19d4feb520d9631c692c4e42aad9c"
+    },
+    {
+      "path": "Docs/research/sine-crossnote-imd-2026-10-19.json",
+      "bytes": 67147,
+      "sha256": "d2bd5e0fbb14d4449711cfe67027c7f3c7ed734dd33754d69e7cbd9fd8831c0b"
+    },
+    {
+      "path": "Docs/research/sine-crossnote-imd-2026-10-19.md",
+      "bytes": 6581,
+      "sha256": "0a22595ddf179e24b123b1a8de22bd5188148d2d70149696c512e4b0989f04e1"
+    },
+    {
+      "path": "Docs/research/source-ordered-midi-2026-10-19.json",
+      "bytes": 20751,
+      "sha256": "f5931ced3e750e3903f3b33abe4e4a037f32c2fa683c30e8b9baaa9a6ebff334"
+    },
+    {
+      "path": "Docs/research/source-ordered-midi-2026-10-19.md",
+      "bytes": 9103,
+      "sha256": "62f1227d4613d04111345de32ef88e2cb0aea1d387aa5c44167a6dde076bb3c6"
+    },
+    {
+      "path": "Docs/validation/command-audio-consumer-independent-review-2026-10-19.json",
+      "bytes": 17585,
+      "sha256": "06fd8b19d8bdf7af36cb12e22b6715a96298ea00274f5c0a70a69896760a654a"
+    },
+    {
+      "path": "Docs/validation/sine-crossnote-imd-independent-review-2026-10-19.json",
+      "bytes": 10030,
+      "sha256": "f4d6f6f683f6e9c857182520cc81bce02fe539228689e0b59a70242a09bcf59b"
+    },
+    {
+      "path": "Docs/validation/source-ordered-midi-independent-review-2026-10-19.json",
+      "bytes": 52395,
+      "sha256": "1aa2329c07325cded4f08664ad8e10bbf22d0ac3613c483246c98081b2cd9e3b"
+    },
+    {
+      "path": "Tools/prototypes/command-audio-consumer-20261019/CommandAudioConsumer.h",
+      "bytes": 13971,
+      "sha256": "4b16aecdce0d593a53a1f63604ae5fb949127b9f50731ae60ace56d2469cdaf9"
+    },
+    {
+      "path": "Tools/prototypes/command-audio-consumer-20261019/consumer_test.cpp",
+      "bytes": 21678,
+      "sha256": "eab9c5eab7b8a39ef12bfad8606d47317d9f4af5077433c61761159e0d8dde7c"
+    },
+    {
+      "path": "Tools/prototypes/command-audio-consumer-20261019/design-frozen.json",
+      "bytes": 11423,
+      "sha256": "8980465c531f64b882ca95bb15444c16d43fdf823418d5d79445e935fdba506b"
+    },
+    {
+      "path": "Tools/prototypes/command-audio-consumer-20261019/run_validation.py",
+      "bytes": 4665,
+      "sha256": "6ba954590da573c14737bb1f8f6242db7db446124b89942823398e867f507cbe"
+    },
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/NativeProbe.cpp",
+      "bytes": 1759,
+      "sha256": "8bf4b5136a19406d0b730fe5bca6643f7ed88dd33cd314ded0b93951ae397955"
+    },
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/NativeSuperpositionProbe.cpp",
+      "bytes": 2025,
+      "sha256": "1474d13c008f1ecf3139041755aa1c508d837d62b23a70093c4815ae6600ef31"
+    },
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/README.md",
+      "bytes": 1540,
+      "sha256": "139b8e7c0e5cd4eff5ee2b2270f7bc4d58b841859d18056bd768c724fd680a32"
+    },
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/analyze.py",
+      "bytes": 8814,
+      "sha256": "2040c3293c215a44cf9069ec589380f76ba90c500b74f5d3558e26f46d711808"
+    },
+    {
+      "path": "Tools/prototypes/sine-crossnote-imd-20261019/design-frozen.json",
+      "bytes": 9166,
+      "sha256": "31dad8c2db647e1567a1ca9af7c0d79ffee77592c8bafa4fe8f12718366cf113"
+    },
+    {
+      "path": "Tools/prototypes/source-ordered-midi-20261019/README.md",
+      "bytes": 6071,
+      "sha256": "fd9b61816020251d6ae5530f9776200e08681a12bec07e1a39ffb20e3a035766"
+    },
+    {
+      "path": "Tools/prototypes/source-ordered-midi-20261019/compiler.py",
+      "bytes": 12258,
+      "sha256": "3edf5dff0169b8352e0d40c5e67075c73502c94bd9c594494ea5117d8ceb97c9"
+    },
+    {
+      "path": "Tools/prototypes/source-ordered-midi-20261019/freeze.json",
+      "bytes": 10934,
+      "sha256": "9fc2d7ba82b09f1d259c91c76a204355f9be3499cb14502471a57f5793f8ee42"
+    },
+    {
+      "path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/compiler.py",
+      "bytes": 11983,
+      "sha256": "50620a40cc03774e2447673070c10c738cda2658c91f4cb110e7a8c78c66cd49"
+    },
+    {
+      "path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.json",
+      "bytes": 17652,
+      "sha256": "9f614895328e692181b6b7e4f44155b6e3395ca9edbbe8163156dcae3b09bf5f"
+    },
+    {
+      "path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.md",
+      "bytes": 7553,
+      "sha256": "188b05f63daa975e282ffca08748a96ede9172f15ef970a83d8e8312852ee1a8"
+    },
+    {
+      "path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/test_compiler.py",
+      "bytes": 8360,
+      "sha256": "c5b395b448ea7c651834b11ee7a2ce5fcfd29d6ae9168c41cada44aecc96e783"
+    },
+    {
+      "path": "Tools/prototypes/source-ordered-midi-20261019/meta-type-correction-frozen.json",
+      "bytes": 3527,
+      "sha256": "5c5f758444963fbb026273b48f29fc9beb6066e9d8f71193614bf99634d1d426"
+    },
+    {
+      "path": "Tools/prototypes/source-ordered-midi-20261019/test_compiler.py",
+      "bytes": 9145,
+      "sha256": "16fe76931ee0cd85f393adc62d0df921e8f7a958821a8277c6a588f86188a10f"
+    },
+    {
+      "path": "Tools/prototypes/source-ordered-midi-20261019/verify_independent.py",
+      "bytes": 12367,
+      "sha256": "e41b4993f976640e3c5e26facaca7852770f4e0c1eff4ad8705c561c1fd2efec"
+    }
+  ],
+  "json_parsed": 11,
+  "python_ast_parsed": 7,
+  "local_links_checked": 126,
+  "preserved_historical_link_contexts": [
+    {
+      "archive": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.md",
+      "original_link_context": "Docs/research"
+    }
+  ],
+  "source_order_historical_inputs_unchanged": 27,
+  "original_run01_files_unchanged": 19,
+  "first_run_archives_unchanged": 4,
+  "production_dsp_equal_to_origin_main": true,
+  "origin_main": "727f6e5efb8600aee4ecc945df3c4c03a807877e"
+}

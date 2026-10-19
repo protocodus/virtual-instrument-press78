@@ -1,0 +1,912 @@
+{
+  "schema": "press78.source-ordered-midi-independent-review.v1",
+  "date": "2026-10-19",
+  "passed": true,
+  "scope": "Independent raw SMF reconstruction plus read-only correction/publication binding review; no compiler import, audio, fixture regeneration or production change.",
+  "raw_reconstruction": {
+    "path": "build/command-audio-independent-review-20261019/source-order-raw-review.json",
+    "sha256": "dd26ed17cd08896df28a672788fc9a1a91fa901c91f176ce50887f9b1b8bd30b",
+    "receipt": {
+      "date": "2026-10-19",
+      "passed": true,
+      "scope": "Direct independent raw-SMF decoder and rational timeline/event/text reconstruction; no compiler/old-auditor imports, regenerated fixtures, audio/PCM/media download, host/UI/production action. Only reviewed existingrun-01.",
+      "checks": {
+        "all27_frozen_inputs": 27,
+        "raw_source_length": 1,
+        "raw_header": 1,
+        "raw_format_tracks_ppq": 1,
+        "raw_track_chunk": 3,
+        "raw_chunk_bounds": 3,
+        "raw_vlq_bounds": 4088,
+        "raw_running_status_exists": 3576,
+        "raw_meta_type_range": 18,
+        "raw_length_vlq_bounds": 18,
+        "raw_meta_sysex_payload_bounds": 18,
+        "raw_final_eot": 3,
+        "raw_track_has_eot": 3,
+        "raw_channel_payload": 3558,
+        "raw_tempo_size": 2,
+        "raw_all3576_messages": 1,
+        "source_ledger_header": 1,
+        "all_message_bytes_status_payload_span_identity": 3576,
+        "source_ledger_count": 1,
+        "raw_positive_tempo": 2,
+        "raw_identical_tempo_ties": 2,
+        "raw_two_initial_tempos": 1,
+        "raw_exact_duration": 1,
+        "raw_only_note_channel_messages": 3558,
+        "raw_no_same_channel_overlap": 1779,
+        "raw_paired_noteoff": 1779,
+        "all1779_raw_notes_paired": 1,
+        "all18_exclusions_two_endpoints": 1,
+        "all1761_retained_notes": 1,
+        "all193_raw_contiguous_retriggers": 1,
+        "midi62_only_genuine_global_overlap": 1,
+        "inferred100_patches": 1,
+        "exact_existing_binary64_coefficients": 4,
+        "one_exact_frame_per_raw_tick": 8,
+        "every_tick_exact_rational_time": 8,
+        "both_excluded_note_edges_filtered": 8,
+        "all3622_events_per_fixture": 8,
+        "every_fixture_event_order_identity_and_endpoint": 28976,
+        "all193_sameframe_off_before_on": 1544,
+        "original_within_track_order": 24,
+        "all_eight_exact_channel_aware_text_exports": 8,
+        "per_channel_edges_close_cleanly": 8,
+        "declared_global_pitch_scenario_diagnostics": 8,
+        "midi51_track_order_scenario": 8,
+        "all27_inputs_rechecked_unchanged": 27
+      },
+      "total_scoped_checks": 52666,
+      "bindings": [
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/freeze.json",
+          "bytes": 10934,
+          "sha256": "9fc2d7ba82b09f1d259c91c76a204355f9be3499cb14502471a57f5793f8ee42"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/source-ordered-midi-2026-10-19.json",
+          "bytes": 17652,
+          "sha256": "9f614895328e692181b6b7e4f44155b6e3395ca9edbbe8163156dcae3b09bf5f"
+        },
+        {
+          "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia.mid",
+          "bytes": 15128,
+          "sha256": "7ab6f4551b8116590d52dd0566c3f5a7fad89097eb1b64ddf97b60fba47167cf"
+        },
+        {
+          "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/parse_midi.py",
+          "bytes": 5120,
+          "sha256": "2453c473351f7f5e215bff872e07e56ff71c303ee8dfb2e9de825aaeead6ae3f"
+        },
+        {
+          "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia-events.json",
+          "bytes": 379472,
+          "sha256": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4"
+        },
+        {
+          "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/alignment.json",
+          "bytes": 2355,
+          "sha256": "97f0072ef21b48fe9b80b43fd42a1217160208997103dacda4d2b74b7b2f2947"
+        },
+        {
+          "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v3_program_timeline.json",
+          "bytes": 22348,
+          "sha256": "1978645805679691f0b39269c5ac1db762d59a9f6c65cd399cbafffe555650eb"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/envelope_timing_sensitivity.py",
+          "bytes": 19927,
+          "sha256": "e3d020b60fe889404cc92f59867dab083ef367d829212dc531fd7de6cc84df97"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/snapshots/historical_tool.py",
+          "bytes": 19927,
+          "sha256": "e3d020b60fe889404cc92f59867dab083ef367d829212dc531fd7de6cc84df97"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/snapshots/HardwareSequencePressure.cpp",
+          "bytes": 6000,
+          "sha256": "2e52c4a5f7da4f06ea74cd22b4489cac66ba73d525e66a4bf92b73e4d1425a0f"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/protocol-frozen.json",
+          "bytes": 115908,
+          "sha256": "8a97f902c9ab96e41da2ff0cd0761209f15b591163cc246d0a9b184cdd15edf9"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-v3-20261019/design-frozen.json",
+          "bytes": 26153,
+          "sha256": "e332f2229bd41a897fb64af801f47b162e68840bc37b42a63401c642948c8ef1"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/recording-mode-effects-audit-20261019.md",
+          "bytes": 6797,
+          "sha256": "892004f1e360aab8a1eedec5b9b4729264a4423a290abf4d106dc922d06143de"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/recording-mode-effects-audit-20261019.json",
+          "bytes": 353648,
+          "sha256": "71f778c48324d7a0c430101b6118efc372f077ea5c642afa22a6dd62d1981225"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/opu-mode00-midi-ownership-20261019.md",
+          "bytes": 3475,
+          "sha256": "f76738efb736d6e0ee2e1a80f461244f56863923c388d65bfa08ed57f41b14bf"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/press78-factory.json",
+          "bytes": 64721,
+          "sha256": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/unchanged/events.txt",
+          "bytes": 73548,
+          "sha256": "d11b10ce696eda8b3ffadbaf6818497688bbcdf3c9ac99235233070cb6a3def2"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/unchanged/events.txt",
+          "bytes": 72886,
+          "sha256": "4d91a9c507156f858bec46792d42b3d169d3ce100c987a5f0523932913d642c4"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/old_scale_median_offset/events.txt",
+          "bytes": 73548,
+          "sha256": "397fe4fec10545cd17ff054cca0283d4627e33be6fd2b8d243ba4ca01c150990"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/old_scale_median_offset/events.txt",
+          "bytes": 72886,
+          "sha256": "4a12d62062edd7b1362039c54ab13b7ef89bb1fc1058fa97defb73cf2c52a1ef"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/nominal_scale_median_intercept/events.txt",
+          "bytes": 73548,
+          "sha256": "587b71f984a915b7d64cff3cbd61bb835514ef0987692a278155216a65fbef1d"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/nominal_scale_median_intercept/events.txt",
+          "bytes": 72886,
+          "sha256": "7f59667ccafe3c821af9df2d93a75424b520edda1f0335fbce7b339c702e927b"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/equal_patch_robust_affine/events.txt",
+          "bytes": 73548,
+          "sha256": "000b80f0ea98e99b886dec92b83adc8cfdee5f36d58cbfe28d6d22dfad8d9500"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/equal_patch_robust_affine/events.txt",
+          "bytes": 72886,
+          "sha256": "49b537e34bbc5facee2dfb1c38f3626e1ad2af20008c2508483e783f07bea1a9"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/midi-event-order-audit-2026-10-19.json",
+          "bytes": 257648,
+          "sha256": "dcdc48366abd4092cafcf16152cac13fb5f0414ae229cfad63c775c5122cecd7"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/midi-event-order-validation-2026-10-19.json",
+          "bytes": 1447,
+          "sha256": "5984452c3c59fda4f0ff850728af925d3beaf5771926f267540b5700e305983e"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/audit.py",
+          "bytes": 12043,
+          "sha256": "479851b87aa47571496be525989e5b2502a25fe1bbc83e7af91ed5891a73209b"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/decoded-events.json",
+          "bytes": 1646429,
+          "sha256": "5bb4d652fad05971df535449f36b0791bee63cc0d763c9d4cdda994541a28c39"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/decoded-notes.json",
+          "bytes": 707843,
+          "sha256": "50bd790787a905404cca6d70c063d3c7346a9fbdc41ccaba17faae6ec54b1bac"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/source-events.json",
+          "bytes": 1377258,
+          "sha256": "1223c07f0dee257174e73c4444aed987d1ec92a371cc00cd8801d5990764cca9"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/unchanged/ascending_track/events.json",
+          "bytes": 1013159,
+          "sha256": "da31bfc9dd88ac10e6145edd997a24c9cb18fe5ab5582c76d1eda0a0b9a30e71"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/unchanged/ascending_track/events.txt",
+          "bytes": 72886,
+          "sha256": "5a33e32df38c17e70cf78049d6e8facfaee09823cf671c0febfc253f01f26a04"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/unchanged/descending_track/events.json",
+          "bytes": 1013160,
+          "sha256": "bf371b198a66e85e5993a3a7e628d04dfe3e318086de0a9e9fb49350ce07874f"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/unchanged/descending_track/events.txt",
+          "bytes": 72886,
+          "sha256": "109a169289c7b4636d9b27028c51ca3c52a3c2d1c55e2484bd2b506eedd35cf1"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/old_scale_median_offset/ascending_track/events.json",
+          "bytes": 1013173,
+          "sha256": "f8e9bc9a84eae030cd5d95a767c429a7d123614f276c92a31632f0f05a3f69a8"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/old_scale_median_offset/ascending_track/events.txt",
+          "bytes": 72886,
+          "sha256": "2a9538fdf14f39fc8b57d97a132a2195b670151903d2fe26c25b6c03a99be087"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/old_scale_median_offset/descending_track/events.json",
+          "bytes": 1013174,
+          "sha256": "69f99176e83451bc5c136e7995c4a54eb85589f847e9142a61677ac55d15e45e"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/old_scale_median_offset/descending_track/events.txt",
+          "bytes": 72886,
+          "sha256": "f1b906ee622dd9646389f24116dcc6b3344752f3d4cae9bf3b96e8cc7d31f836"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/nominal_scale_median_intercept/ascending_track/events.json",
+          "bytes": 1013180,
+          "sha256": "5d1c8a561d9d051e359e75beb3ca3a4a5dc75e027f3a8b06f1d258c4b10563df"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/nominal_scale_median_intercept/ascending_track/events.txt",
+          "bytes": 72886,
+          "sha256": "677e0215cabb117d778dc5f580da5f399facd040c3a8741c4b48083941d6da40"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/nominal_scale_median_intercept/descending_track/events.json",
+          "bytes": 1013181,
+          "sha256": "436a6963ad7bba9f6eb5b8309e63b717b63528aa203080563f0d72fc4f554752"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/nominal_scale_median_intercept/descending_track/events.txt",
+          "bytes": 72886,
+          "sha256": "eed093c591d05877acc26ee6e1290bac1ee60f2fb643a57bc89a15f03fdae567"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/equal_patch_robust_affine/ascending_track/events.json",
+          "bytes": 1013175,
+          "sha256": "cebadbc4dd2ca49a764f32189e5e07096ceb53555ec368b075a89507e7152e9d"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/equal_patch_robust_affine/ascending_track/events.txt",
+          "bytes": 72886,
+          "sha256": "9dc6d5c73aef10e0d99298118d8f52971a2d6ac62f04886c1183ecc5891db7d3"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/equal_patch_robust_affine/descending_track/events.json",
+          "bytes": 1013176,
+          "sha256": "20738851a0e802361b3aeb58ab70d43c0d9be2d9b0ea3a91e555de94bdd84bb2"
+        },
+        {
+          "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/equal_patch_robust_affine/descending_track/events.txt",
+          "bytes": 72886,
+          "sha256": "cf541280f2b38b384ff3fa152125437faee845513723b9a3fb4e945b2c70236e"
+        }
+      ],
+      "reviewer_tool": {
+        "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/command-audio-independent-review-20261019/review_source_order.py",
+        "bytes": 11416,
+        "sha256": "db6264f1d20067efd8a87fc7f5de8349661ab80b1be6a3640e5f3438dcc99894"
+      },
+      "source_messages": 3576,
+      "source_notes": 1779,
+      "duration_exact_seconds": "22665417/125000",
+      "all18_excluded_notes_both_endpoints": true,
+      "all193_samechannel_retriggers_preserved_in8fixtures": true,
+      "all8_fixture_summaries": [
+        {
+          "map": "unchanged",
+          "scenario": "ascending_track",
+          "events": 3622,
+          "contiguous_retriggers": 193,
+          "global_duplicate_on": 1,
+          "global_unheld_off": 1
+        },
+        {
+          "map": "unchanged",
+          "scenario": "descending_track",
+          "events": 3622,
+          "contiguous_retriggers": 193,
+          "global_duplicate_on": 2,
+          "global_unheld_off": 2
+        },
+        {
+          "map": "old_scale_median_offset",
+          "scenario": "ascending_track",
+          "events": 3622,
+          "contiguous_retriggers": 193,
+          "global_duplicate_on": 1,
+          "global_unheld_off": 1
+        },
+        {
+          "map": "old_scale_median_offset",
+          "scenario": "descending_track",
+          "events": 3622,
+          "contiguous_retriggers": 193,
+          "global_duplicate_on": 2,
+          "global_unheld_off": 2
+        },
+        {
+          "map": "nominal_scale_median_intercept",
+          "scenario": "ascending_track",
+          "events": 3622,
+          "contiguous_retriggers": 193,
+          "global_duplicate_on": 1,
+          "global_unheld_off": 1
+        },
+        {
+          "map": "nominal_scale_median_intercept",
+          "scenario": "descending_track",
+          "events": 3622,
+          "contiguous_retriggers": 193,
+          "global_duplicate_on": 2,
+          "global_unheld_off": 2
+        },
+        {
+          "map": "equal_patch_robust_affine",
+          "scenario": "ascending_track",
+          "events": 3622,
+          "contiguous_retriggers": 193,
+          "global_duplicate_on": 1,
+          "global_unheld_off": 1
+        },
+        {
+          "map": "equal_patch_robust_affine",
+          "scenario": "descending_track",
+          "events": 3622,
+          "contiguous_retriggers": 193,
+          "global_duplicate_on": 2,
+          "global_unheld_off": 2
+        }
+      ],
+      "genuine_overlap": {
+        "midi": 62,
+        "source_endpoints": [
+          {
+            "channel": 1,
+            "on_tick": 40704,
+            "off_tick": 40896
+          },
+          {
+            "channel": 0,
+            "on_tick": 40704,
+            "off_tick": 41184
+          }
+        ]
+      },
+      "findings": {
+        "retained_run_order_or_timing_defects": [],
+        "general_parser_issue_pending_root_correction": "Original parser does not reject high-bit meta-event type. Standard MIDI Files1.0 printedp7 requires type<128. This does not occur in retained source and does not invalidate run-01.",
+        "scope_limits": [
+          "Both intertrack orders are explicit hypotheses; neither reconstructs actual wire order/serial timing.",
+          "Program timeline is inferred separately, patch-first equalframe is a convention.",
+          "Sourcechannel identity and global bitmap diagnostics do not prove receiver routing/allocator/audio behavior.",
+          "Earlier negative audio gates remain unchanged."
+        ]
+      }
+    }
+  },
+  "publication_checks": 240,
+  "bindings": [
+    {
+      "context": "public.freeze",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/freeze.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/freeze.json",
+      "sha256": "9fc2d7ba82b09f1d259c91c76a204355f9be3499cb14502471a57f5793f8ee42",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.raw_source",
+      "recorded_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia.mid",
+      "verified_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia.mid",
+      "sha256": "7ab6f4551b8116590d52dd0566c3f5a7fad89097eb1b64ddf97b60fba47167cf",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.raw_midi",
+      "recorded_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia.mid",
+      "verified_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia.mid",
+      "sha256": "7ab6f4551b8116590d52dd0566c3f5a7fad89097eb1b64ddf97b60fba47167cf",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.original_parser",
+      "recorded_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/parse_midi.py",
+      "verified_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/parse_midi.py",
+      "sha256": "2453c473351f7f5e215bff872e07e56ff71c303ee8dfb2e9de825aaeead6ae3f",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.notes",
+      "recorded_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia-events.json",
+      "verified_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia-events.json",
+      "sha256": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.alignment",
+      "recorded_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/alignment.json",
+      "verified_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/alignment.json",
+      "sha256": "97f0072ef21b48fe9b80b43fd42a1217160208997103dacda4d2b74b7b2f2947",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.timeline",
+      "recorded_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v3_program_timeline.json",
+      "verified_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v3_program_timeline.json",
+      "sha256": "1978645805679691f0b39269c5ac1db762d59a9f6c65cd399cbafffe555650eb",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.historical_exporter",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/envelope_timing_sensitivity.py",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/envelope_timing_sensitivity.py",
+      "sha256": "e3d020b60fe889404cc92f59867dab083ef367d829212dc531fd7de6cc84df97",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.historical_snapshot",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/snapshots/historical_tool.py",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/snapshots/historical_tool.py",
+      "sha256": "e3d020b60fe889404cc92f59867dab083ef367d829212dc531fd7de6cc84df97",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.sequence_fixture",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/snapshots/HardwareSequencePressure.cpp",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/snapshots/HardwareSequencePressure.cpp",
+      "sha256": "2e52c4a5f7da4f06ea74cd22b4489cac66ba73d525e66a4bf92b73e4d1425a0f",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.mode00_protocol",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/protocol-frozen.json",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/protocol-frozen.json",
+      "sha256": "8a97f902c9ab96e41da2ff0cd0761209f15b591163cc246d0a9b184cdd15edf9",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.allocator_design",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-v3-20261019/design-frozen.json",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-v3-20261019/design-frozen.json",
+      "sha256": "e332f2229bd41a897fb64af801f47b162e68840bc37b42a63401c642948c8ef1",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.mode_effects_note",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/recording-mode-effects-audit-20261019.md",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/recording-mode-effects-audit-20261019.md",
+      "sha256": "892004f1e360aab8a1eedec5b9b4729264a4423a290abf4d106dc922d06143de",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.mode_effects_ledger",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/recording-mode-effects-audit-20261019.json",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/recording-mode-effects-audit-20261019.json",
+      "sha256": "71f778c48324d7a0c430101b6118efc372f077ea5c642afa22a6dd62d1981225",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.ownership_note",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/opu-mode00-midi-ownership-20261019.md",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/opu-mode00-midi-ownership-20261019.md",
+      "sha256": "f76738efb736d6e0ee2e1a80f461244f56863923c388d65bfa08ed57f41b14bf",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.bank",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/press78-factory.json",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/press78-factory.json",
+      "sha256": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.unchanged_historical_events",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/unchanged/events.txt",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/unchanged/events.txt",
+      "sha256": "d11b10ce696eda8b3ffadbaf6818497688bbcdf3c9ac99235233070cb6a3def2",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.unchanged_filtered_events",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/unchanged/events.txt",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/unchanged/events.txt",
+      "sha256": "4d91a9c507156f858bec46792d42b3d169d3ce100c987a5f0523932913d642c4",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.old_scale_median_offset_historical_events",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/old_scale_median_offset/events.txt",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/old_scale_median_offset/events.txt",
+      "sha256": "397fe4fec10545cd17ff054cca0283d4627e33be6fd2b8d243ba4ca01c150990",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.old_scale_median_offset_filtered_events",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/old_scale_median_offset/events.txt",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/old_scale_median_offset/events.txt",
+      "sha256": "4a12d62062edd7b1362039c54ab13b7ef89bb1fc1058fa97defb73cf2c52a1ef",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.nominal_scale_median_intercept_historical_events",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/nominal_scale_median_intercept/events.txt",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/nominal_scale_median_intercept/events.txt",
+      "sha256": "587b71f984a915b7d64cff3cbd61bb835514ef0987692a278155216a65fbef1d",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.nominal_scale_median_intercept_filtered_events",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/nominal_scale_median_intercept/events.txt",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/nominal_scale_median_intercept/events.txt",
+      "sha256": "7f59667ccafe3c821af9df2d93a75424b520edda1f0335fbce7b339c702e927b",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.equal_patch_robust_affine_historical_events",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/equal_patch_robust_affine/events.txt",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/timing-sensitivity-20261019/maps/equal_patch_robust_affine/events.txt",
+      "sha256": "000b80f0ea98e99b886dec92b83adc8cfdee5f36d58cbfe28d6d22dfad8d9500",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.equal_patch_robust_affine_filtered_events",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/equal_patch_robust_affine/events.txt",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/equal_patch_robust_affine/events.txt",
+      "sha256": "49b537e34bbc5facee2dfb1c38f3626e1ad2af20008c2508483e783f07bea1a9",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.published_audit",
+      "recorded_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/midi-event-order-audit-2026-10-19.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/midi-event-order-audit-2026-10-19.json",
+      "sha256": "dcdc48366abd4092cafcf16152cac13fb5f0414ae229cfad63c775c5122cecd7",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.published_validation",
+      "recorded_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/midi-event-order-validation-2026-10-19.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/midi-event-order-validation-2026-10-19.json",
+      "sha256": "5984452c3c59fda4f0ff850728af925d3beaf5771926f267540b5700e305983e",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.old_auditor",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/audit.py",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/audit.py",
+      "sha256": "479851b87aa47571496be525989e5b2502a25fe1bbc83e7af91ed5891a73209b",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.old_decoded_events",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/decoded-events.json",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/decoded-events.json",
+      "sha256": "5bb4d652fad05971df535449f36b0791bee63cc0d763c9d4cdda994541a28c39",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.input_bindings.old_decoded_notes",
+      "recorded_path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/decoded-notes.json",
+      "verified_path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/decoded-notes.json",
+      "sha256": "50bd790787a905404cca6d70c063d3c7346a9fbdc41ccaba17faae6ec54b1bac",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.implementation_before_export",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/implementation-before-export.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/implementation-before-export.json",
+      "sha256": "80b10a161c8d3db5e04793958ba3a599bcfb9c93c1f6f0d6336ad116bc80828f",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.implementation[0]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/compiler.py",
+      "sha256": "3edf5dff0169b8352e0d40c5e67075c73502c94bd9c594494ea5117d8ceb97c9",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.implementation[1]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/test_compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/test_compiler.py",
+      "sha256": "16fe76931ee0cd85f393adc62d0df921e8f7a958821a8277c6a588f86188a10f",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.implementation[2]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/verify_independent.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/verify_independent.py",
+      "sha256": "e41b4993f976640e3c5e26facaca7852770f4e0c1eff4ad8705c561c1fd2efec",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.export_receipt",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/export-receipt.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/export-receipt.json",
+      "sha256": "dedac1e45b4cce204df8f3dd01fc9d28d887d65ff30893118bb80a97c7bcf775",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.ignored_source_ledger",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/source-events.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/source-events.json",
+      "sha256": "1223c07f0dee257174e73c4444aed987d1ec92a371cc00cd8801d5990764cca9",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.synthetic_tests.log",
+      "recorded_path": "build/source-ordered-midi-20261019/synthetic-attempt1.log",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/synthetic-attempt1.log",
+      "sha256": "497a41e01ee49d3e67a6f467b5fb1ff523dbbc3b16dce741ce2d69ccdcf0ef6c",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.independent_validation.receipt",
+      "recorded_path": "build/source-ordered-midi-20261019/validation-attempt1.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/validation-attempt1.json",
+      "sha256": "fdf9c89daeb1a885b285df632bd574c421791faf9325a3c337ea8a0fc6e67243",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.failure_preservation.observed_review_defects[0].witness",
+      "recorded_path": "build/source-ordered-midi-20261019/meta-type-correction/before-fix-witness.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/meta-type-correction/before-fix-witness.json",
+      "sha256": "6b20da67ad628113bfa9f0163550d049ac305e028c587004fd6fa8d02291d0aa",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.report",
+      "recorded_path": "Docs/research/source-ordered-midi-2026-10-19.md",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/source-ordered-midi-2026-10-19.md",
+      "sha256": "62f1227d4613d04111345de32ef88e2cb0aea1d387aa5c44167a6dde076bb3c6",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.first_run_implementation[0]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/compiler.py",
+      "sha256": "50620a40cc03774e2447673070c10c738cda2658c91f4cb110e7a8c78c66cd49",
+      "historical_archive_resolution": true
+    },
+    {
+      "context": "public.first_run_implementation[1]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/test_compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/test_compiler.py",
+      "sha256": "c5b395b448ea7c651834b11ee7a2ce5fcfd29d6ae9168c41cada44aecc96e783",
+      "historical_archive_resolution": true
+    },
+    {
+      "context": "public.first_run_implementation[2]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/verify_independent.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/verify_independent.py",
+      "sha256": "e41b4993f976640e3c5e26facaca7852770f4e0c1eff4ad8705c561c1fd2efec",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.parser_correction.plan",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/meta-type-correction-frozen.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/meta-type-correction-frozen.json",
+      "sha256": "5c5f758444963fbb026273b48f29fc9beb6066e9d8f71193614bf99634d1d426",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.parser_correction.result",
+      "recorded_path": "build/source-ordered-midi-20261019/meta-type-correction/result.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/meta-type-correction/result.json",
+      "sha256": "72666797473817c5b1f9dfeca3383678eef1855106f1040e99315fd40666d939",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.parser_correction.first_run_archives[0]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/compiler.py",
+      "sha256": "50620a40cc03774e2447673070c10c738cda2658c91f4cb110e7a8c78c66cd49",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.parser_correction.first_run_archives[1]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.json",
+      "sha256": "9f614895328e692181b6b7e4f44155b6e3395ca9edbbe8163156dcae3b09bf5f",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.parser_correction.first_run_archives[2]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.md",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.md",
+      "sha256": "188b05f63daa975e282ffca08748a96ede9172f15ef970a83d8e8312852ee1a8",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "public.parser_correction.first_run_archives[3]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/test_compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/test_compiler.py",
+      "sha256": "c5b395b448ea7c651834b11ee7a2ce5fcfd29d6ae9168c41cada44aecc96e783",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_plan.original_files[0].original",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/compiler.py",
+      "sha256": "50620a40cc03774e2447673070c10c738cda2658c91f4cb110e7a8c78c66cd49",
+      "historical_archive_resolution": true
+    },
+    {
+      "context": "correction_plan.original_files[0].archive",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/compiler.py",
+      "sha256": "50620a40cc03774e2447673070c10c738cda2658c91f4cb110e7a8c78c66cd49",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_plan.original_files[1].original",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/test_compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/test_compiler.py",
+      "sha256": "c5b395b448ea7c651834b11ee7a2ce5fcfd29d6ae9168c41cada44aecc96e783",
+      "historical_archive_resolution": true
+    },
+    {
+      "context": "correction_plan.original_files[1].archive",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/test_compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/test_compiler.py",
+      "sha256": "c5b395b448ea7c651834b11ee7a2ce5fcfd29d6ae9168c41cada44aecc96e783",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_plan.original_files[2].original",
+      "recorded_path": "Docs/research/source-ordered-midi-2026-10-19.md",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.md",
+      "sha256": "188b05f63daa975e282ffca08748a96ede9172f15ef970a83d8e8312852ee1a8",
+      "historical_archive_resolution": true
+    },
+    {
+      "context": "correction_plan.original_files[2].archive",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.md",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.md",
+      "sha256": "188b05f63daa975e282ffca08748a96ede9172f15ef970a83d8e8312852ee1a8",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_plan.original_files[3].original",
+      "recorded_path": "Docs/research/source-ordered-midi-2026-10-19.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.json",
+      "sha256": "9f614895328e692181b6b7e4f44155b6e3395ca9edbbe8163156dcae3b09bf5f",
+      "historical_archive_resolution": true
+    },
+    {
+      "context": "correction_plan.original_files[3].archive",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/historical-first-run/source-ordered-midi-2026-10-19.json",
+      "sha256": "9f614895328e692181b6b7e4f44155b6e3395ca9edbbe8163156dcae3b09bf5f",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_plan.pre_fix_witness",
+      "recorded_path": "build/source-ordered-midi-20261019/meta-type-correction/before-fix-witness.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/meta-type-correction/before-fix-witness.json",
+      "sha256": "6b20da67ad628113bfa9f0163550d049ac305e028c587004fd6fa8d02291d0aa",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.bound_before_check[0]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/compiler.py",
+      "sha256": "3edf5dff0169b8352e0d40c5e67075c73502c94bd9c594494ea5117d8ceb97c9",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.bound_before_check[1]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/test_compiler.py",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/test_compiler.py",
+      "sha256": "16fe76931ee0cd85f393adc62d0df921e8f7a958821a8277c6a588f86188a10f",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.bound_before_check[2]",
+      "recorded_path": "Tools/prototypes/source-ordered-midi-20261019/meta-type-correction-frozen.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/source-ordered-midi-20261019/meta-type-correction-frozen.json",
+      "sha256": "5c5f758444963fbb026273b48f29fc9beb6066e9d8f71193614bf99634d1d426",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.synthetic_log",
+      "recorded_path": "build/source-ordered-midi-20261019/meta-type-correction/synthetic.log",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/meta-type-correction/synthetic.log",
+      "sha256": "83807d030e4279193ec68ddcc719ecd783f303898cd2eeb065db39fa3d40d148",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.fixtures[0].original",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/unchanged/ascending_track/events.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/unchanged/ascending_track/events.json",
+      "sha256": "da31bfc9dd88ac10e6145edd997a24c9cb18fe5ab5582c76d1eda0a0b9a30e71",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.fixtures[1].original",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/unchanged/descending_track/events.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/unchanged/descending_track/events.json",
+      "sha256": "bf371b198a66e85e5993a3a7e628d04dfe3e318086de0a9e9fb49350ce07874f",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.fixtures[2].original",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/old_scale_median_offset/ascending_track/events.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/old_scale_median_offset/ascending_track/events.json",
+      "sha256": "f8e9bc9a84eae030cd5d95a767c429a7d123614f276c92a31632f0f05a3f69a8",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.fixtures[3].original",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/old_scale_median_offset/descending_track/events.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/old_scale_median_offset/descending_track/events.json",
+      "sha256": "69f99176e83451bc5c136e7995c4a54eb85589f847e9142a61677ac55d15e45e",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.fixtures[4].original",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/nominal_scale_median_intercept/ascending_track/events.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/nominal_scale_median_intercept/ascending_track/events.json",
+      "sha256": "5d1c8a561d9d051e359e75beb3ca3a4a5dc75e027f3a8b06f1d258c4b10563df",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.fixtures[5].original",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/nominal_scale_median_intercept/descending_track/events.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/nominal_scale_median_intercept/descending_track/events.json",
+      "sha256": "436a6963ad7bba9f6eb5b8309e63b717b63528aa203080563f0d72fc4f554752",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.fixtures[6].original",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/equal_patch_robust_affine/ascending_track/events.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/equal_patch_robust_affine/ascending_track/events.json",
+      "sha256": "cebadbc4dd2ca49a764f32189e5e07096ceb53555ec368b075a89507e7152e9d",
+      "historical_archive_resolution": false
+    },
+    {
+      "context": "correction_result.fixtures[7].original",
+      "recorded_path": "build/source-ordered-midi-20261019/run-01/equal_patch_robust_affine/descending_track/events.json",
+      "verified_path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/source-ordered-midi-20261019/run-01/equal_patch_robust_affine/descending_track/events.json",
+      "sha256": "20738851a0e802361b3aeb58ab70d43c0d9be2d9b0ea3a91e555de94bdd84bb2",
+      "historical_archive_resolution": false
+    }
+  ],
+  "reviewed_publication": [
+    {
+      "path": "Docs/research/source-ordered-midi-2026-10-19.json",
+      "sha256": "f5931ced3e750e3903f3b33abe4e4a037f32c2fa683c30e8b9baaa9a6ebff334"
+    },
+    {
+      "path": "Docs/research/source-ordered-midi-2026-10-19.md",
+      "sha256": "62f1227d4613d04111345de32ef88e2cb0aea1d387aa5c44167a6dde076bb3c6"
+    }
+  ],
+  "finding_and_resolution": {
+    "original": "High-bit meta-event types were accepted despite the SMF seven-bit type rule.",
+    "resolution": "The original source/reports and invalid-acceptance witness are preserved. The sole compiler change rejects meta>=128 before reading its payload. Added tests enumerate all 128 invalid values and retain eight-bit opaque payloads.",
+    "scope": "No claim that 19 tests prove conformance for every possible SMF; existing fail-closed restrictions remain."
+  },
+  "conclusions": [
+    "All eight raw-derived event streams/text files agree exactly with retained run-01.",
+    "The four timing maps and two track merge assumptions remain conditional, with 18 excluded notes, 193 contiguous retriggers, MIDI62 genuine overlap and MIDI51 order-dependent boundary preserved.",
+    "Original code paths in first-run receipts resolve by exact SHA to preserved historical source, not to corrected current files.",
+    "Stored 19-test and in-memory equivalence receipts are bound; those checks were not rerun by this reviewer."
+  ],
+  "limitations": [
+    "No audio or hardware comparison follows from this event-order review.",
+    "No sender wire order or channel reception policy is recovered.",
+    "No source audio was opened, decoded, rendered, hashed or analyzed."
+  ],
+  "reviewer_runner": {
+    "path": "build/command-audio-independent-review-20261019/review_public_source_midi.py",
+    "sha256": "989547a54bf3a1eeaf9815c6b44297b78a4862f6be0bed870fe4a5bb74bc1166"
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "schema": "press78.target-am-net-trace-result.v1",
+  "date": "2026-10-19",
+  "status": "BOUNDED_ATTEMPT_NO_ACCEPTED_NAMED_NET",
+  "accepted_numbered_target_nets": 0,
+  "accepted_component_value_to_pin_associations": 0,
+  "new_independent_distant_landmarks": 0,
+  "newly_acquired_photos_or_datasheets": 0,
+  "prior_correspondences_reused": 26,
+  "minimum_proposed_near_row_pitch_px": 18.0,
+  "near_row_pitches_px": [
+    20.0,
+    18.0,
+    19.0,
+    20.0,
+    18.0,
+    19.0
+  ],
+  "input": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/target-am-net-trace-20261019/input.json",
+    "sha256": "8bb8ebc5414f1988d63205fe7b8cb7f3d7dc9bc8374ec353755954a8a29eccad"
+  },
+  "checker": {
+    "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Tools/prototypes/target-am-net-trace-20261019/check.py",
+    "sha256": "40e57e1b2f97db7d928fa0d67ad127ba013a1eeaf10598e61311977cf1760d42"
+  },
+  "checked_inputs": [
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/target-am-board-20261019/commons-06.jpg",
+      "bytes": 810212,
+      "sha256": "8a4c7fce6231d73a523ea28b949079501d14793500fcb4ac717ff808dd13fe55"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/target-am-board-20261019/commons-03.jpg",
+      "bytes": 1003639,
+      "sha256": "6ec2ff036d79f24c0034226760bbb4aa419bc3ffe03d304fb885eb85ef991799"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/target-am-board-2026-10-19.json",
+      "bytes": 23206,
+      "sha256": "d27fe5289de9fed7e623bbff9d74712c09d92296ae149a9969be6bf1f0fee06e"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/target-am-registration-v2-2026-10-19.json",
+      "bytes": 27005,
+      "sha256": "d525b2f267d60b0b67418f6a26f4b310586945bb4b6059b524e91162fc38db3c"
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/Docs/research/target-am-clock-trace-2026-10-19.json",
+      "bytes": 9032,
+      "sha256": "67129591b268f2d0a8149523e65409515437c9c8a7ae197c5c1507a2447e850a"
+    },
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206-characteristics-p76.png",
+      "bytes": 109552,
+      "sha256": "f343fc8d35eaab1fe4f3c85644d93f6cf424b5437d7caafa5e1c26ac5cf76e9a"
+    },
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3102-oscillator-p107.png",
+      "bytes": 238796,
+      "sha256": "957e327d6d207dad66e8e8f6050c943d3b3a4bfe4647c871a8f64b76f3eb09db"
+    }
+  ],
+  "grouped_exclusion_checks": [
+    {
+      "id": "paired-near-rows",
+      "accepted": false,
+      "independent_holdout": false,
+      "H": [
+        [
+          0.6765192661067356,
+          1.1749723510069612,
+          0.7826928215365939
+        ],
+        [
+          0.8047325653348547,
+          -1.3091726404110828,
+          1085.7986695193617
+        ],
+        [
+          -5.018583650874119e-06,
+          0.00019825757756664918,
+          1.0
+        ]
+      ],
+      "excluded_indices": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "training_max_error_px": 5.973957161403378,
+      "excluded_errors_px": [
+        1.413699021024741,
+        2.722641833010144,
+        3.0544460095231165,
+        2.702091849273573,
+        4.749547597833725,
+        5.725662160868032,
+        6.537872592972385,
+        7.120596821046385
+      ],
+      "excluded_max_error_px": 7.120596821046385,
+      "local_maximum_jacobian_singular_values": [
+        1.371840937286083,
+        1.3676954533728285,
+        1.3642894657448323,
+        1.360977638260258,
+        1.397099395133837,
+        1.3937112742997497,
+        1.390639533556945,
+        1.3872984566574025
+      ],
+      "manual_sensitivity_sums_px": [
+        12.644744644741237,
+        13.928814553247115,
+        14.240182803992111,
+        13.867957678835122,
+        16.132143968636747,
+        17.08792980666653,
+        17.881709794314055,
+        18.444387560990798
+      ],
+      "maximum_manual_sensitivity_sum_px": 18.444387560990798,
+      "sum_exceeds_half_minimum_pitch": true,
+      "sum_exceeds_minimum_pitch": true,
+      "qualification": "Sensitivity scenario, not an empirical confidence or error bound."
+    },
+    {
+      "id": "paired-region-including-jumpers",
+      "accepted": false,
+      "independent_holdout": false,
+      "H": [
+        [
+          0.6899499499029428,
+          1.1120501573336425,
+          24.88331652750772
+        ],
+        [
+          0.7970546061703867,
+          -1.2889179444819394,
+          1066.5087562819174
+        ],
+        [
+          1.0097921590646606e-05,
+          0.00016680961276345014,
+          1.0
+        ]
+      ],
+      "excluded_indices": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        22,
+        23,
+        24,
+        25
+      ],
+      "training_max_error_px": 6.271608974653796,
+      "excluded_errors_px": [
+        1.7759330907853865,
+        1.448071835308942,
+        1.2673732997842038,
+        0.49047391930261486,
+        6.496466580122608,
+        7.493538971091808,
+        8.320404240553176,
+        9.007217290408468,
+        6.177865733712231,
+        6.14757947189671,
+        6.124281631562793,
+        3.4020583132749267
+      ],
+      "excluded_max_error_px": 9.007217290408468,
+      "local_maximum_jacobian_singular_values": [
+        1.3670831740580613,
+        1.3632503263246063,
+        1.3600741991671408,
+        1.3569601927518984,
+        1.3873185645919894,
+        1.3841273787303376,
+        1.381236559174228,
+        1.3780848771836411,
+        1.347979873465502,
+        1.3620431034642602,
+        1.344243249577753,
+        1.3573349120807285
+      ],
+      "manual_sensitivity_sums_px": [
+        12.978432135133755,
+        12.62757379325658,
+        12.427818494787049,
+        11.632235075814004,
+        17.820377967674546,
+        18.798303243473836,
+        19.607823595598543,
+        20.275726553510317,
+        17.265744974505242,
+        17.31983809268227,
+        17.18974112902931,
+        14.546067785759297
+      ],
+      "maximum_manual_sensitivity_sum_px": 20.275726553510317,
+      "sum_exceeds_half_minimum_pitch": true,
+      "sum_exceeds_minimum_pitch": true,
+      "qualification": "Sensitivity scenario, not an empirical confidence or error bound."
+    }
+  ],
+  "manufacturer_pinouts_from_bound_primary_scans": {
+    "MN3206": {
+      "1": "GND",
+      "2": "CP1",
+      "3": "IN",
+      "4": "VGG",
+      "5": "VDD",
+      "6": "CP2",
+      "7": "OUT1",
+      "8": "OUT2"
+    },
+    "MN3102": {
+      "1": "VDD",
+      "2": "CP1",
+      "3": "GND",
+      "4": "CP2",
+      "5": "OX3",
+      "6": "OX2",
+      "7": "OX1",
+      "8": "VGG(out)"
+    }
+  },
+  "conditional_hypotheses": [
+    {
+      "id": "H1",
+      "status": "NOT_ACCEPTED_NAMED_NET",
+      "if": "IC2/MN3206 has near row at copper y=340 and far row at y=391, x increasing left to right",
+      "visible_group": "group01",
+      "conditional_pins": [
+        {
+          "part": "MN3206",
+          "pin": 8,
+          "name": "OUT2",
+          "xy": [
+            1625,
+            391
+          ]
+        },
+        {
+          "part": "MN3206",
+          "pin": 7,
+          "name": "OUT1",
+          "xy": [
+            1645,
+            392
+          ]
+        }
+      ],
+      "claim": "Existing broad copper bridge would join the two BBD output pins if the footprint mapping is true; a familiar output-summing topology is not mapping proof."
+    },
+    {
+      "id": "H2",
+      "status": "NOT_ACCEPTED_NAMED_NET",
+      "if": "H1 footprint identity plus neighboring package is MN3102, with near row y=428 and far row y=483, x increasing left to right",
+      "visible_group": "group02",
+      "conditional_pins": [
+        {
+          "part": "MN3206",
+          "pin": 6,
+          "name": "CP2",
+          "xy": [
+            1665,
+            391
+          ]
+        },
+        {
+          "part": "MN3102",
+          "pin": 4,
+          "name": "CP2",
+          "xy": [
+            1685,
+            428
+          ]
+        }
+      ],
+      "claim": "Existing diagonal copper would join like-named CP2 pins; this consistency cannot independently verify the selected footprints."
+    }
+  ],
+  "inspection_artifacts": [
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/target-am-net-trace-20261019/component-local.png",
+      "bytes": 1210708,
+      "sha256": "a4425a4245882d04f0946538daa4bd67cc90ea3828415146d7bc1bdf66c4c532",
+      "source_crop": {
+        "output": "component-local.png",
+        "source_index": 0,
+        "crop": [
+          920,
+          950,
+          1350,
+          1250
+        ],
+        "enlarge": 3
+      }
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/target-am-net-trace-20261019/copper-local.png",
+      "bytes": 1614338,
+      "sha256": "e147b73532ed441b9330c4100b9a676ca6d170871ad37015cb9878235cae5e2b",
+      "source_crop": {
+        "output": "copper-local.png",
+        "source_index": 1,
+        "crop": [
+          1550,
+          290,
+          1860,
+          710
+        ],
+        "enlarge": 3
+      }
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/target-am-net-trace-20261019/component-whole.png",
+      "bytes": 2745518,
+      "sha256": "b6b19a8810a9defa1f283a3ca47221d8c1c1996e109c5236e3d2b21ad96d6290",
+      "source_crop": {
+        "output": "component-whole.png",
+        "source_index": 0,
+        "crop": [
+          250,
+          300,
+          1750,
+          1379
+        ],
+        "enlarge": 1
+      }
+    },
+    {
+      "path": "/Users/vojta/Dev/press78-waveform-audit-20261019/build/target-am-net-trace-20261019/copper-whole.png",
+      "bytes": 2281590,
+      "sha256": "ee078744c2e3c1076cbc5f0a7d43ae5a5eac44a6d82d8253f2e509d2749e2fd9",
+      "source_crop": {
+        "output": "copper-whole.png",
+        "source_index": 1,
+        "crop": [
+          900,
+          250,
+          1970,
+          1290
+        ],
+        "enlarge": 1
+      }
+    }
+  ],
+  "outcome": "No fresh independently identifiable distant board-plane landmark was recovered. Exclusion fits are exploratory and cannot satisfy the requested independent error bound. Conditional pin/topology consistency does not validate package-to-pad assignment.",
+  "model_changes_justified": false,
+  "production_changes": false,
+  "software": {
+    "opencv": "4.10.0",
+    "numpy": "1.26.4"
+  }
+}
