@@ -27046,10 +27046,11 @@
     }
   ],
   "open_requirements": [
-    "Raw MIDI tick/order provenance and actual sender delivery",
+    "Fresh audio-comparison protocol using the independently verified raw-SMF-order fixtures; actual sender delivery and receive filtering remain unverified",
     "Same-note physical envelope/retrigger/phase behavior with known gates",
     "Interaction with verified key-level commands and still-unidentified amplitude/envelope laws",
-    "Separate native/SDK/host validation before any production change"
+    "Separate native/SDK/host validation before any production change",
+    "Target-specific original program-load command policy and separately justified live chip response; ordinary plugin patch editing is a distinct contract"
   ],
   "known_recording_state": {
     "audit": "Reference/Research/recording-mode-effects-audit-20261019.md",
@@ -27058,5 +27059,79 @@
     "chorus": "ON atall100sampledpresets+6lateSineframes",
     "unverified": "Continuousstate,receive masks,senderdeliveryandexactarrivalorder",
     "current_model_gap": "The engine has no calibrated chip-Reverb envelope law; operatorcontrolcommands alone do not identify its physical transfer."
+  },
+  "posthoc_input_provenance_audit": {
+    "scope": "After completed audio comparison; no rerender, event repair, timing fit or gate change.",
+    "source_same_channel_contiguous_retriggers": 193,
+    "source_same_channel_overlaps": 0,
+    "manufactured_same_channel_one_frame_overlaps_by_map": [
+      16,
+      16,
+      10,
+      35
+    ],
+    "within_track_chord_on_pair_inversions_each_map": 492,
+    "independent_checks": 75839,
+    "evidence": [
+      {
+        "path": "Reference/Research/midi-event-order-audit-20261019.md",
+        "sha256": "82746d0a8abc537e577f89576529976aa452a0d7890032d5b26bd801f57c4cea"
+      },
+      {
+        "path": "Reference/Research/midi-event-order-audit-20261019.json",
+        "sha256": "dcdc48366abd4092cafcf16152cac13fb5f0414ae229cfad63c775c5122cecd7"
+      },
+      {
+        "path": "Reference/Research/midi-event-order-validation-20261019.json",
+        "sha256": "5984452c3c59fda4f0ff850728af925d3beaf5771926f267540b5700e305983e"
+      }
+    ]
+  },
+  "subsequent_metadata_export": {
+    "scope": "Four new metadata fixtures only; no new audio comparison and no change to the completed experiment or promotion decision.",
+    "independent_checks": 41553,
+    "all193_contiguous_boundaries_preserved": true,
+    "raw_note_order_preserved": true,
+    "manufactured_same_channel_overlaps": 0,
+    "old_onset_times_and_100_program_rows_unchanged": true,
+    "audio_rendered": false,
+    "evidence": [
+      {
+        "path": "Tools/export_midi_reference_events.py",
+        "sha256": "20f14f7f5608930f7175036f3588c8ccafbd901efdb61313293e93bcf74dede1"
+      },
+      {
+        "path": "Reference/Research/midi-reference-export-20261019.md",
+        "sha256": "882e73c5ef5509e1fd43e32093c451c7d9f14b6e449fd374a4e57f24c8ef1fcd"
+      },
+      {
+        "path": "Reference/Research/midi-reference-export-20261019.json",
+        "sha256": "ad950e29e568581f5f7470112fe510fc65754e7e6ef0a744396250e692beaaaf"
+      }
+    ]
+  },
+  "posthoc_program_loader_evidence": {
+    "scope": "Forty factory plus eight actual serial-caller CPU witnesses, independently reviewed after the frozen audio comparison. Command facts only, no audible response recovered.",
+    "independent_checks": 179404,
+    "both_models_rewrite_all12_normal_slots": true,
+    "PSS780_clears_held_pending_serial_input": true,
+    "PSS680_preserves_held_pending_serial_input": true,
+    "cached_pitches_preserved_both": true,
+    "current_future_only_snapshot_loader_omits_original_behavior": true,
+    "past_scores_events_gates_unchanged": true,
+    "evidence": [
+      {
+        "path": "Reference/Research/opu-mode00-program-load-20261019.md",
+        "sha256": "524238c2f5d713334f9fb44b071dc81649b7f389454e7b80640f18b1af55e360"
+      },
+      {
+        "path": "Reference/Research/opu-mode00-program-load-20261019.json",
+        "sha256": "baa68dd05043d68ac4325b3c9a2126441b0a9190c64e80f140dc5adf3ace0c7a"
+      },
+      {
+        "path": "Reference/Research/opu-mode00-program-load-validation-20261019.json",
+        "sha256": "e6adf79b9e31d17c997f637e3f7fc9936c993aa790de613b17e7d8b77a015066"
+      }
+    ]
   }
 }

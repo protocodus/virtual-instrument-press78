@@ -1,0 +1,388 @@
+{
+  "schema": "midi-reference-event-export-ledger-v1",
+  "date": "2026-10-19",
+  "status": "Four metadata fixtures exported and independently checked; no audio benchmark or production change.",
+  "protocol": {
+    "schema": "raw-midi-reference-event-export-v1",
+    "status": "Frozen before new event exports",
+    "frozen_at_utc": "2026-10-19T12:09:55.450706+00:00",
+    "tool": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/export_midi_reference_events.py",
+      "bytes": 18045,
+      "sha256": "20f14f7f5608930f7175036f3588c8ccafbd901efdb61313293e93bcf74dede1"
+    },
+    "snapshots": [
+      {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/snapshots/decoder.py",
+        "bytes": 12043,
+        "sha256": "479851b87aa47571496be525989e5b2502a25fe1bbc83e7af91ed5891a73209b"
+      },
+      {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/snapshots/exporter.py",
+        "bytes": 18045,
+        "sha256": "20f14f7f5608930f7175036f3588c8ccafbd901efdb61313293e93bcf74dede1"
+      }
+    ],
+    "inputs": {
+      "source_ledger": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/midi-event-order-audit-20261019.json",
+        "bytes": 257648,
+        "sha256": "dcdc48366abd4092cafcf16152cac13fb5f0414ae229cfad63c775c5122cecd7"
+      },
+      "decoded_events": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/decoded-events.json",
+        "bytes": 1646429,
+        "sha256": "5bb4d652fad05971df535449f36b0791bee63cc0d763c9d4cdda994541a28c39"
+      },
+      "decoder": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-event-order-audit-20261019/audit.py",
+        "bytes": 12043,
+        "sha256": "479851b87aa47571496be525989e5b2502a25fe1bbc83e7af91ed5891a73209b"
+      },
+      "old_events_unchanged": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/unchanged/events.txt",
+        "bytes": 72886,
+        "sha256": "4d91a9c507156f858bec46792d42b3d169d3ce100c987a5f0523932913d642c4"
+      },
+      "old_events_old_scale_median_offset": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/old_scale_median_offset/events.txt",
+        "bytes": 72886,
+        "sha256": "4a12d62062edd7b1362039c54ab13b7ef89bb1fc1058fa97defb73cf2c52a1ef"
+      },
+      "old_events_nominal_scale_median_intercept": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/nominal_scale_median_intercept/events.txt",
+        "bytes": 72886,
+        "sha256": "7f59667ccafe3c821af9df2d93a75424b520edda1f0335fbce7b339c702e927b"
+      },
+      "old_events_equal_patch_robust_affine": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/equal_patch_robust_affine/events.txt",
+        "bytes": 72886,
+        "sha256": "49b537e34bbc5facee2dfb1c38f3626e1ad2af20008c2508483e783f07bea1a9"
+      }
+    },
+    "raw_midi_ancestry": {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia.mid",
+      "bytes": 15128,
+      "sha256": "7ab6f4551b8116590d52dd0566c3f5a7fad89097eb1b64ddf97b60fba47167cf"
+    },
+    "ppq": 384,
+    "sample_rate": 48000,
+    "maps": [
+      {
+        "id": "unchanged",
+        "offset_seconds": 0.8906462238832541,
+        "scale": 0.9998070138348876
+      },
+      {
+        "id": "old_scale_median_offset",
+        "offset_seconds": 0.9327535031570672,
+        "scale": 0.9998070138348876
+      },
+      {
+        "id": "nominal_scale_median_intercept",
+        "offset_seconds": 0.9129181334157996,
+        "scale": 1.0
+      },
+      {
+        "id": "equal_patch_robust_affine",
+        "offset_seconds": 0.9158456466155656,
+        "scale": 0.9999670078976708
+      }
+    ],
+    "rules": {
+      "authority": "Audited raw decoded SMF events, not paired start-plus-gate notes.",
+      "canonical_merge": "tick, track index, within-track ordinal; intertrack wire order unmeasured.",
+      "time": "Reintegrate exact Fraction tempo times; one frame per tick: round(48000*(offset+scale*float(exact_seconds))). Python nearest/ties-to-even rounding.",
+      "filter": "Retain both on/off only for inclusive36..96, exactly existing Mode00 research source policy.",
+      "within_frame": "All inferred patch rows first, old patch order retained; then all note messages in raw canonical order, including mixed OFF/ON. No off-first category.",
+      "programs": "Copy100 inferred patch payloads and frame positions exactly from each old filtered fixture; program-first is an explicit unmeasured convention.",
+      "channel_field": "Raw MIDI channel ID, not a MIDI/CV ownership claim.",
+      "required": "1761on/1761off, identical old onset multiset+frames,193contiguous same-channel OFF-before-ON at one frame, no manufactured same-channel duplicate, raw canonical note order, genuine cross-channel62 overlap retained.",
+      "scope": "Metadata-only new research fixtures. No audio, fitting, runtime/default changes, original MIDI redistribution or proof of actual2017sender timing."
+    }
+  },
+  "result": {
+    "schema": "raw-midi-reference-event-export-v1",
+    "status": "Metadata export invariants passed; no audio benchmark",
+    "protocol": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/protocol-frozen.json",
+      "bytes": 4857,
+      "sha256": "6ceecb6cdf99019fac145998d68e520c494785031cae47387edf6f0714dee653"
+    },
+    "maps": [
+      {
+        "id": "unchanged",
+        "events": {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/unchanged/events.txt",
+          "bytes": 72886,
+          "sha256": "5a33e32df38c17e70cf78049d6e8facfaee09823cf671c0febfc253f01f26a04"
+        },
+        "event_index": {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/unchanged/event-index.json",
+          "bytes": 917392,
+          "sha256": "a3fc5ca52555a156bda2149168713d72e06c892ed85bdaad5d357fed8a93d593"
+        },
+        "event_count": 3622,
+        "note_ons": 1761,
+        "note_offs": 1761,
+        "patch_rows": 100,
+        "tick_frame_count": 714,
+        "old_onset_multiset_and_times_identical": true,
+        "all193_contiguous_off_before_on_preserved": true,
+        "raw_note_order_preserved": true,
+        "inferred_patch_frames_and_payloads_identical": true,
+        "per_channel_state": {
+          "duplicate_on_ids": [],
+          "unheld_off_ids": [],
+          "held_at_end": []
+        },
+        "global_midi_state": {
+          "duplicate_on_ids": [
+            "t2e1029"
+          ],
+          "unheld_off_ids": [
+            "t1e887"
+          ],
+          "held_at_end": []
+        }
+      },
+      {
+        "id": "old_scale_median_offset",
+        "events": {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/old_scale_median_offset/events.txt",
+          "bytes": 72886,
+          "sha256": "2a9538fdf14f39fc8b57d97a132a2195b670151903d2fe26c25b6c03a99be087"
+        },
+        "event_index": {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/old_scale_median_offset/event-index.json",
+          "bytes": 917392,
+          "sha256": "9d0e1ac8445e56067e5845dd3356f6b7be0498f4a71cee3481ac1415f62f6e30"
+        },
+        "event_count": 3622,
+        "note_ons": 1761,
+        "note_offs": 1761,
+        "patch_rows": 100,
+        "tick_frame_count": 714,
+        "old_onset_multiset_and_times_identical": true,
+        "all193_contiguous_off_before_on_preserved": true,
+        "raw_note_order_preserved": true,
+        "inferred_patch_frames_and_payloads_identical": true,
+        "per_channel_state": {
+          "duplicate_on_ids": [],
+          "unheld_off_ids": [],
+          "held_at_end": []
+        },
+        "global_midi_state": {
+          "duplicate_on_ids": [
+            "t2e1029"
+          ],
+          "unheld_off_ids": [
+            "t1e887"
+          ],
+          "held_at_end": []
+        }
+      },
+      {
+        "id": "nominal_scale_median_intercept",
+        "events": {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/nominal_scale_median_intercept/events.txt",
+          "bytes": 72886,
+          "sha256": "677e0215cabb117d778dc5f580da5f399facd040c3a8741c4b48083941d6da40"
+        },
+        "event_index": {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/nominal_scale_median_intercept/event-index.json",
+          "bytes": 917392,
+          "sha256": "ed028066949cf2c8e83d3329c04c681362bb196963c4eb9ccdb23f86af01bc23"
+        },
+        "event_count": 3622,
+        "note_ons": 1761,
+        "note_offs": 1761,
+        "patch_rows": 100,
+        "tick_frame_count": 714,
+        "old_onset_multiset_and_times_identical": true,
+        "all193_contiguous_off_before_on_preserved": true,
+        "raw_note_order_preserved": true,
+        "inferred_patch_frames_and_payloads_identical": true,
+        "per_channel_state": {
+          "duplicate_on_ids": [],
+          "unheld_off_ids": [],
+          "held_at_end": []
+        },
+        "global_midi_state": {
+          "duplicate_on_ids": [
+            "t2e1029"
+          ],
+          "unheld_off_ids": [
+            "t1e887"
+          ],
+          "held_at_end": []
+        }
+      },
+      {
+        "id": "equal_patch_robust_affine",
+        "events": {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/equal_patch_robust_affine/events.txt",
+          "bytes": 72886,
+          "sha256": "9dc6d5c73aef10e0d99298118d8f52971a2d6ac62f04886c1183ecc5891db7d3"
+        },
+        "event_index": {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/equal_patch_robust_affine/event-index.json",
+          "bytes": 917392,
+          "sha256": "50040b065adad603c20f3f940f7b38437d6c9f97877aa6122e4b3471cac506fb"
+        },
+        "event_count": 3622,
+        "note_ons": 1761,
+        "note_offs": 1761,
+        "patch_rows": 100,
+        "tick_frame_count": 714,
+        "old_onset_multiset_and_times_identical": true,
+        "all193_contiguous_off_before_on_preserved": true,
+        "raw_note_order_preserved": true,
+        "inferred_patch_frames_and_payloads_identical": true,
+        "per_channel_state": {
+          "duplicate_on_ids": [],
+          "unheld_off_ids": [],
+          "held_at_end": []
+        },
+        "global_midi_state": {
+          "duplicate_on_ids": [
+            "t2e1029"
+          ],
+          "unheld_off_ids": [
+            "t1e887"
+          ],
+          "held_at_end": []
+        }
+      }
+    ],
+    "source_counts": {
+      "accepted_notes": 1761,
+      "accepted_messages": 3522,
+      "excluded_messages": 36,
+      "same_channel_contiguous": 193
+    },
+    "all_existing_inputs_unchanged": true,
+    "audio_rendered": false,
+    "benchmark_started": false,
+    "production_changed": false
+  },
+  "independent_review": {
+    "receipt": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-independent-20261019/receipt.json",
+      "bytes": 5540,
+      "sha256": "2d3c1978f95daf163c83a0f1128c3fd39c6a45687ab63ad772dd3e26965d1c08"
+    },
+    "checks": 41553,
+    "additional_guard_cases": 6,
+    "scope": "Independent binary-SMF read and in-memory reconstruction of all four outputs/indexes. Not a hardware or audio test."
+  },
+  "synthetic_validation": {
+    "schema": "midi-reference-export-synthetic-check-v1",
+    "tool": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/export_midi_reference_events.py",
+      "bytes": 18045,
+      "sha256": "20f14f7f5608930f7175036f3588c8ccafbd901efdb61313293e93bcf74dede1"
+    },
+    "implementation": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-export-review-20261019/test_exporter.py",
+      "bytes": 3732,
+      "sha256": "f914223d24e2de07ec1ec3c82811edd9c0d70eed808a21a988d09027f81fa96f"
+    },
+    "assertions_passed": 20,
+    "actual_source_events_exported": false,
+    "audio_rendered": false,
+    "scope": "Small adversarial synthetic checks for original mixed-message order, one-tick mapping, no manufactured held duplicate, raw cross-channel overlap, bounds filter, provenance/time rejection, output no-overwrite and directory restriction. Not a hardware/audio test."
+  },
+  "retained_failure": "First synthetic test harness had a Python syntax error before assertions; exact source/error receipt retained. Exporter source passed compilation and was not changed. Actual frozen export completed without failures.",
+  "limits": [
+    "Canonical intertrack merge is a declared research convention, not observed serial order.",
+    "Original 2017 sender file identity, receiver masks, note arrival times and program timing remain conditional.",
+    "Program-first rows are the 100 existing inferred patch commands at unchanged frames; their physical ordering is not recovered.",
+    "Source channel columns retain raw MIDI channel IDs, not MIDI/CV ownership. Any future renderer must separately declare a shared Mode00 MIDI policy.",
+    "These exports correct metadata rounding/order artifacts relative to the retained source; no improved hardware audio fidelity or allocator promotion is claimed.",
+    "No original MIDI/video/audio/ROM is copied or redistributed by this exporter. Hash-bound local decoded research input is required.",
+    "All prior failed benchmarks and original event files remain unchanged; a new audio comparison requires its own prospective protocol."
+  ],
+  "artifacts": [
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/export_midi_reference_events.py",
+      "bytes": 18045,
+      "sha256": "20f14f7f5608930f7175036f3588c8ccafbd901efdb61313293e93bcf74dede1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/protocol-frozen.json",
+      "bytes": 4857,
+      "sha256": "6ceecb6cdf99019fac145998d68e520c494785031cae47387edf6f0714dee653"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/result.json",
+      "bytes": 5707,
+      "sha256": "e2eb5c967446b546c3b4b74efaeb4b8df7a43888b9c549d2b75892561ca5ea87"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-export-review-20261019/test_exporter.py",
+      "bytes": 3732,
+      "sha256": "f914223d24e2de07ec1ec3c82811edd9c0d70eed808a21a988d09027f81fa96f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-export-review-20261019/synthetic-validation.json",
+      "bytes": 893,
+      "sha256": "c5f07a8576c48d15afbe9f66221c9c8d3f969d1072eff66730b2e7a3cced1fae"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-export-review-20261019/test-exporter-first-syntax-failure.py.txt",
+      "bytes": 3728,
+      "sha256": "a55f80ce7b253f3538cdd743ce61cbb6e8a5f0b256fb1f6b538d7935160b7a78"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-export-review-20261019/first-test-failure.json",
+      "bytes": 371,
+      "sha256": "9b3d305933aa04921fbf19e27a4d2bff8f9704b823e3e587f7f8e381f58dfb1f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-independent-20261019/receipt.json",
+      "bytes": 5540,
+      "sha256": "2d3c1978f95daf163c83a0f1128c3fd39c6a45687ab63ad772dd3e26965d1c08"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/unchanged/events.txt",
+      "bytes": 72886,
+      "sha256": "5a33e32df38c17e70cf78049d6e8facfaee09823cf671c0febfc253f01f26a04"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/unchanged/event-index.json",
+      "bytes": 917392,
+      "sha256": "a3fc5ca52555a156bda2149168713d72e06c892ed85bdaad5d357fed8a93d593"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/old_scale_median_offset/events.txt",
+      "bytes": 72886,
+      "sha256": "2a9538fdf14f39fc8b57d97a132a2195b670151903d2fe26c25b6c03a99be087"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/old_scale_median_offset/event-index.json",
+      "bytes": 917392,
+      "sha256": "9d0e1ac8445e56067e5845dd3356f6b7be0498f4a71cee3481ac1415f62f6e30"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/nominal_scale_median_intercept/events.txt",
+      "bytes": 72886,
+      "sha256": "677e0215cabb117d778dc5f580da5f399facd040c3a8741c4b48083941d6da40"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/nominal_scale_median_intercept/event-index.json",
+      "bytes": 917392,
+      "sha256": "ed028066949cf2c8e83d3329c04c681362bb196963c4eb9ccdb23f86af01bc23"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/equal_patch_robust_affine/events.txt",
+      "bytes": 72886,
+      "sha256": "9dc6d5c73aef10e0d99298118d8f52971a2d6ac62f04886c1183ecc5891db7d3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/midi-reference-events-20261019/maps/equal_patch_robust_affine/event-index.json",
+      "bytes": 917392,
+      "sha256": "50040b065adad603c20f3f940f7b38437d6c9f97877aa6122e4b3471cac506fb"
+    }
+  ]
+}
