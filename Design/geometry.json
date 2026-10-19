@@ -1,5 +1,5 @@
 {
-  "version": "Press78 layout study 10",
+  "version": "Press78 layout study 11",
   "logical_size": {
     "width": 754,
     "height": 552,
@@ -2464,7 +2464,7 @@
       "section": "advanced",
       "panel": "rear",
       "kind": "knob",
-      "x": 196.583,
+      "x": 169.5,
       "y": 332,
       "width": 90,
       "height": 52,
@@ -2477,25 +2477,25 @@
       "integer": false,
       "tooltip": "Additional pitch modulation depth from the modulation wheel.",
       "widget_bounds": {
-        "x": 221.583,
+        "x": 194.5,
         "y": 329,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 216.583,
+        "x": 189.5,
         "y": 324,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 217.13299999999998,
+        "x": 190.05,
         "y": 324.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 241.583,
+        "x": 214.5,
         "baseline_y": 380,
         "font_size": 11,
         "anchor": "middle"
@@ -2510,7 +2510,7 @@
       "section": "advanced",
       "panel": "rear",
       "kind": "knob",
-      "x": 332.0,
+      "x": 277.833,
       "y": 332,
       "width": 90,
       "height": 52,
@@ -2523,25 +2523,64 @@
       "integer": true,
       "tooltip": "Maximum simultaneous voices.",
       "widget_bounds": {
-        "x": 357.0,
+        "x": 302.833,
         "y": 329,
         "width": 40,
         "height": 40
       },
       "sprite_bounds": {
-        "x": 352.0,
+        "x": 297.833,
         "y": 324,
         "width": 50,
         "height": 50
       },
       "visual_bounds": {
-        "x": 352.55,
+        "x": 298.38300000000004,
         "y": 324.55,
         "width": 48.900000000000006,
         "height": 44.45
       },
       "caption": {
-        "x": 377.0,
+        "x": 322.833,
+        "baseline_y": 380,
+        "font_size": 11,
+        "anchor": "middle"
+      }
+    },
+    {
+      "id": "controls_pitchModel",
+      "label": "Pitch model",
+      "binding": "controls.pitchModel",
+      "property_id": "pitchModel",
+      "property_path": "/custom_properties/pitchModel",
+      "section": "advanced",
+      "panel": "rear",
+      "kind": "toggle",
+      "x": 386.167,
+      "y": 332,
+      "width": 90,
+      "height": 52,
+      "min": 0,
+      "max": 1,
+      "default": 1,
+      "step": 1,
+      "unit": "",
+      "accent": "coral",
+      "document_default": 0,
+      "options": [
+        "Equal",
+        "Original"
+      ],
+      "integer": true,
+      "tooltip": "Original uses the recovered pitch table, fine-tune steps and coarse MIDI bend. Equal preserves earlier patches. Changes apply when voices are idle.",
+      "widget_bounds": {
+        "x": 389.167,
+        "y": 338,
+        "width": 84,
+        "height": 23
+      },
+      "caption": {
+        "x": 431.167,
         "baseline_y": 380,
         "font_size": 11,
         "anchor": "middle"
@@ -2556,7 +2595,7 @@
       "section": "advanced",
       "panel": "rear",
       "kind": "toggle",
-      "x": 467.417,
+      "x": 494.5,
       "y": 332,
       "width": 90,
       "height": 52,
@@ -2573,13 +2612,13 @@
       "integer": true,
       "tooltip": "Recorded follows the recording-derived stereo transfer; Studio is a creative chorus.",
       "widget_bounds": {
-        "x": 470.417,
+        "x": 497.5,
         "y": 338,
         "width": 84,
         "height": 23
       },
       "caption": {
-        "x": 512.4169999999999,
+        "x": 539.5,
         "baseline_y": 380,
         "font_size": 11,
         "anchor": "middle"
@@ -2777,7 +2816,7 @@
       "unit": "\u00a2",
       "accent": "coral",
       "integer": false,
-      "tooltip": "Overall tuning offset in cents.",
+      "tooltip": "Fine tuning in cents. Original uses 3.125-cent steps; Equal preserves continuous tuning.",
       "widget_bounds": {
         "x": 411.167,
         "y": 395,
@@ -2995,7 +3034,7 @@
     "caption_offset": 48
   },
   "notes": [
-    "34 main sound/performance controls on the front; 29 advanced options and calibration controls on the rear.",
+    "34 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.",
     "Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.",
     "Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.",
     "Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator."
@@ -3436,6 +3475,7 @@
     "rack.bendRange": 2,
     "rack.modWheelDepth": 1,
     "controls.polyphony": 12,
+    "controls.pitchModel": 1,
     "controls.chorusMode": 1,
     "controls.outputCircuit": 1,
     "controls.clockOffsetPpm": 0,
@@ -3451,8 +3491,8 @@
     "target": "5.0"
   },
   "source_sha256": {
-    "Source/DSP/Press78Engine.h": "ddab76c7e5f548c15bee1cfa115f903fdcd49e71611a302e29bad52dc4d1b6c7",
-    "Resources/controls.json": "0b627e60f366fd47a8bf1cb836c5d7d59fa238175d67a659c64e5b5866135753",
+    "Source/DSP/Press78Engine.h": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0",
+    "Resources/controls.json": "97ceb238116aa810735f869a03091a38c18da08bc3f69c3d2940104d70daaa9e",
     "Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
   }
 }

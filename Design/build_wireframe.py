@@ -83,10 +83,11 @@ HELP={
  'polyphony':'Maximum simultaneous voices.',
  'chorusMode':'Recorded follows the recording-derived stereo transfer; Studio is a creative chorus.',
  'outputCircuit':'Enable the modeled sibling analog output transfer.',
+ 'pitchModel':'Original uses the recovered pitch table, fine-tune steps and coarse MIDI bend. Equal preserves earlier patches. Changes apply when voices are idle.',
  'clockOffsetPpm':'Fixed synthesis-clock offset in parts per million. Zero is nominal tuning.',
  'clockDriftPpm':'Peak modeled clock excursion in parts per million.',
  'clockDriftRateHz':'Speed of modeled clock drift in hertz.',
- 'masterTuneCents':'Overall tuning offset in cents.',
+ 'masterTuneCents':'Fine tuning in cents. Original uses 3.125-cent steps; Equal preserves continuous tuning.',
  'dcBlock':'Remove DC from the output.',
  'outputLimit':'Enable output-level protection.'}
 def add(prop,label,sec,y,col=0,cols=4,kind=None,accent=None):
@@ -106,6 +107,8 @@ def add(prop,label,sec,y,col=0,cols=4,kind=None,accent=None):
   first=sec['x']+sec['padding']+25;last=sec['x']+sec['width']-sec['padding']-25
   pitch=(last-first)/(cols-1);cx=first+col*pitch;w=min(68,pitch-8)
  d={'id':(binding[6:] if prop.startswith(('mod_','car_')) else binding).replace('.','_'),'label':label,'binding':binding,'property_id':prop,'property_path':'/custom_properties/'+prop,'section':sec['id'],'panel':sec['panel'],'kind':kind,'x':round(cx-w/2,3),'y':y,'width':round(w,3),'height':52,'min':p['min'],'max':p['max'],'default':p['default'],'step':1 if p['integer'] else steps.get(prop,.01),'unit':units.get(prop,''),'accent':sec['accent']}
+ if 'startup_default' in p:
+  d['default']=p['startup_default'];d['document_default']=p['default']
  if 'options' in p:d['options']=p['options']
  if accent:d['accent']=accent
  d['integer']=p['integer']
@@ -134,11 +137,11 @@ for row,(prefix,number,accent) in enumerate([('mod','01','cyan'),('car','02','la
  for col,(field,label) in enumerate([('lksLo','LKS low'),('lksHi','LKS high'),('rks','RKS'),('srr','Sustain RR'),('amEnable','AM enable'),('dt2','DT2 +600¢')]):add(prefix+'_'+field,number+' '+label,advanced,134+row*66,col,6,accent=accent)
 for row,(entries,accent) in enumerate([
  ([('pms','PM range'),('ams','AM range'),('lfoDelayScale','Delay scale'),('triangleLfo','LFO shape'),('globalLfo','Global LFO'),('velocityToModulation','Vel → FM')],'cyan'),
- ([('bendRange','Bend range'),('modWheelDepth','Wheel → PM'),('polyphony','Polyphony'),('chorusMode','Chorus type'),('outputCircuit','Circuit')],'coral'),
+ ([('bendRange','Bend range'),('modWheelDepth','Wheel → PM'),('polyphony','Polyphony'),('pitchModel','Pitch model'),('chorusMode','Chorus type'),('outputCircuit','Circuit')],'coral'),
  ([('clockOffsetPpm','Clock offset'),('clockDriftPpm','Drift peak'),('clockDriftRateHz','Drift rate'),('masterTuneCents','Master tune'),('dcBlock','DC block'),('outputLimit','Limiter')],'coral')]):
  for col,(prop,label) in enumerate(entries):add(prop,label,advanced,266+row*66,col,len(entries),accent=accent)
 assert {c['property_id'] for c in controls}==set(by_id)
-assert len(controls)==len(by_id)==63
+assert len(controls)==len(by_id)==64
 annotations=[]
 bank=json.loads((ROOT/'Resources/FactoryBank/press78-factory.json').read_text())
 def decode(v):
@@ -148,11 +151,11 @@ def decode(v):
   fields={'mul':r[1+k]&15,'dt1':-(dt&7) if dt&8 else dt&7,'tl':r[3+k]&127,'lksHi':r[5+k]>>4,'lksLo':r[5+k]&15,'rks':r[7+k]>>6,'ar':r[7+k]&63,'amEnable':r[9+k]>>7,'dt2':(r[9+k]>>6)&1,'d1r':r[9+k]&63,'wave':r[11+k]>>6,'d2r':r[11+k]&63,'d1l':r[13+k]>>4,'rr':r[13+k]&15,'srr':r[20+k]&15}
   p.update({'patch.'+op+'.'+f:x for f,x in fields.items()})
  p.update({'patch.feedback':(r[15]>>3)&7,'patch.pms':(r[16]>>4)&7,'patch.ams':r[16]&3,'patch.vibratoDelay':r[22]&127,'patch.vibrato':int(bool(r[24]&128)),'patch.sustain':int(bool(r[24]&64))})
- p.update({'controls.chorusMode':1,'controls.chorusRateHz':0.9546467517767424,'controls.chorusDepthMs':math.hypot(0.0495126833338911,0.4943632948117077)})
+ p.update({'controls.pitchModel':1,'controls.chorusMode':1,'controls.chorusRateHz':0.9546467517767424,'controls.chorusDepthMs':math.hypot(0.0495126833338911,0.4943632948117077)})
  return {'number':v['number'],'name':v['name'],'values':p}
 presets=[decode(v) for v in bank['voices']]
 preview={d['binding']:d['default'] for d in controls};preview.update(presets[0]['values'])
-geom={'version':'Press78 layout study 06','logical_size':{'width':W,'height':H,'rack_units':8},'folded_size':{'width':W,'height':30},'status':'Shared geometry for interactive design preview and native prototype widgets','palette':C,'appearance':APPEARANCE,'native_patch_selector':{'x':247,'y':11,'width':315,'height':28,'kind':'host_native_placeholder'},'controls':controls,'sections':sections,'annotations':annotations,'spacing':{'section_gap':16,'section_padding':20,'operator_knob_row_pitch':64,'global_row_pitch':66,'rear_row_pitch':66,'caption_offset':48},'notes':['34 main sound/performance controls on the front; 29 advanced options and calibration controls on the rear.','Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.','Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.','Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator.']}
+geom={'version':'Press78 layout study 06','logical_size':{'width':W,'height':H,'rack_units':8},'folded_size':{'width':W,'height':30},'status':'Shared geometry for interactive design preview and native prototype widgets','palette':C,'appearance':APPEARANCE,'native_patch_selector':{'x':247,'y':11,'width':315,'height':28,'kind':'host_native_placeholder'},'controls':controls,'sections':sections,'annotations':annotations,'spacing':{'section_gap':16,'section_padding':20,'operator_knob_row_pitch':64,'global_row_pitch':66,'rear_row_pitch':66,'caption_offset':48},'notes':['34 main sound/performance controls on the front; 30 advanced options and calibration controls on the rear.','Reason standard patch-name and patch-browse widgets are represented by browser selection for review only; all 100 factory patches use the PSS prefix.','Patch level stores raw TL attenuation; readout displays OFF at TL>=99 and 99-TL otherwise.','Envelope rates are raw rate codes; cyan and lavender envelope faces identify their operator.']}
 geom['sockets']=[{'id':key,'property_path':path,'label':label,'panel':'rear','section':'connections','x':x,'y':506,'width':24,'height':24,'widget_bounds':{'x':x-12,'y':494,'width':24,'height':24},'caption':{'x':x+20,'baseline_y':510,'font_size':11,'anchor':'start'}} for key,path,label,x in [('gate_cv','/cv_inputs/gate_cv','GATE CV',68),('note_cv','/cv_inputs/note_cv','NOTE CV',177),('fm_cv','/cv_inputs/fm_cv','FM CV',286),('level_cv','/cv_inputs/level_cv','LEVEL CV',395),('left','/audio_outputs/left','LEFT',550),('right','/audio_outputs/right','RIGHT',659)]]
 geom['routing_icons']=[{'x':525,'y':498,'asset':'Routing_Icon_White_01_1frames'},{'x':634,'y':498,'asset':'Routing_Icon_White_02_1frames'}]
 geom['device_name_positions']={'front':{'x':586,'y':13},'back':{'x':586,'y':13},'folded_front':{'x':610,'y':9},'folded_back':{'x':610,'y':9}}
@@ -164,7 +167,7 @@ geom['header_groups']={
  'note':{'panels':['front'],'visible_bounds':{'x':696.9,'y':13.5,'width':26.2,'height':23.5},'caption':{'x':710,'baseline_y':37,'font_size':11,'text':'NOTE'}},
  'rear_title':{'panels':['rear'],'visible_bounds':{'x':233,'y':11.6,'width':154,'height':26.4},'lines':[{'x':233,'baseline_y':23,'font_size':16,'text':'CONFIGURATION / CALIBRATION','color':'cyan','display':True},{'x':233,'baseline_y':38,'font_size':9,'text':'DIGITAL SYNTHESIZER','color':'muted','display':False}]}}
 geom['rack_hardware']={'top_screws':[{'x':17,'y':38,'radius':8},{'x':737,'y':38,'radius':8}],'panels':['front','rear'],'host_fold_reserved_bounds':{'x':0,'y':0,'width':27,'height':30},'fold_arrow_position':'host-owned; no SDK5 panel-position API','photo_position_tolerance_px':1,'photo_screw_note':'Generated material centers are approximate; source positions define the procedural rear and original front.'}
-geom['version']='Press78 layout study 10'
+geom['version']='Press78 layout study 11'
 geom['branding']=BRANDING
 geom['material_bounds']={'photo_asset':PHOTO_ASSET,'photo_source_sha256':hashlib.sha256((OUT/PHOTO_ASSET).read_bytes()).hexdigest(),'front_header_seam_y':49,'front_section_inset':20,'photo_pockets':{s['id']:{k:s[k] for k in ('x','y','width','height')} for s in sections['front']}}
 geom['group_markers']=[{'panel':'rear','type':'bar','x':39,'y':134,'width':3,'height':44,'color':'cyan'},{'panel':'rear','type':'bar','x':39,'y':200,'width':3,'height':44,'color':'lavender'}]

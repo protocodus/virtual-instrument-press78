@@ -36,6 +36,14 @@ struct Controls {
     double masterGain = 0.25;          // 0..2, applied after synthesis/effects.
     double pitchBendSemitones = 0.0;   // -48..48.
     double masterTuneCents = 0.0;      // -1200..1200.
+    // Equal0 preserves the legacy continuous pitch law. Original1 uses the
+    // verified firmware command table plus an empirical downstream grid law.
+    int pitchModel = 0;
+    int midiPitchBend = -1;            // -1: standalone semitones; else14-bit raw.
+    int midiBendRange = 2;             // 0..24; original positive spans1..12.
+    // Original: masterTune rounds to3.125c before lookup (hardware +/-50c;
+    // larger plugin spans are creative). Host calibration remains continuous.
+    double hostTuneCents = 0.0;        // Nonpersisted host master tuning.
     double velocitySensitivity = 1.0; // carrier velocity exponent, 0..2.
     double velocityToModulation = 0.0;// modulator velocity exponent, 0..2.
     double modulationAmount = 1.0;    // 0..2 times the baseline FM index (8*pi).
@@ -100,6 +108,8 @@ public:
     int latencySamples() const noexcept;
     const Patch& patch() const noexcept { return patch_; }
     const Controls& controls() const noexcept { return controls_; }
+    // A requested law change waits until voices and steal tails are idle.
+    int effectivePitchModel() const noexcept { return effectivePitchModel_; }
 
 private:
     struct Envelope {
@@ -123,6 +133,7 @@ private:
         bool active = false, held = false, released = false;
         void configure(const Patch&, int midi, int vel, std::uint64_t serial) noexcept;
         void updatePatch(const Patch&) noexcept;
+        void updateOriginalPitch(int steps) noexcept;
         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
     };
     struct Tail { Voice voice{}; int remaining = 0; };
@@ -153,6 +164,10 @@ private:
     std::uint64_t serial_ = 0;
     std::size_t delayWrite_ = 0;
     bool pedal_ = false, hasProcessed_ = false;
+    int effectivePitchModel_ = 0, pitchSteps_ = 0;
+    bool pitchIdle() const noexcept;
+    void applyPendingPitchModel() noexcept;
+    void updatePitchControls() noexcept;
     void buildResampler() noexcept;
     double synthesizeTick() noexcept;
     double resampled(double position) const noexcept;

@@ -1,5 +1,6 @@
 #include "Press78Engine.h"
 #include "RecordedChorus.h"
+#include "FirmwarePitch.h"
 
 #include <algorithm>
 #include <cmath>
@@ -37,6 +38,12 @@ double level(const Operator& op, int midi) noexcept {
 }
 double step(const Operator& op, int note) noexcept {
     const double base = 440.0 * std::pow(2.0, (note - 69) / 12.0);
+    const double ratio = op.mul == 0 ? 0.5 : static_cast<double>(op.mul);
+    const double cents = (op.dt2 ? 600.0 : 0.0) + op.dt1 * 1.5;
+    return tau * base * ratio * std::pow(2.0, cents / 1200.0) / Press78Engine::kInternalRate;
+}
+double originalStep(const Operator& op, int note, int steps) noexcept {
+    const double base = firmware_pitch::frequency(note, steps);
     const double ratio = op.mul == 0 ? 0.5 : static_cast<double>(op.mul);
     const double cents = (op.dt2 ? 600.0 : 0.0) + op.dt1 * 1.5;
     return tau * base * ratio * std::pow(2.0, cents / 1200.0) / Press78Engine::kInternalRate;
@@ -110,6 +117,10 @@ Controls sanitizeControls(Controls c) noexcept {
     c.masterGain = bounded(c.masterGain, 0, 2, 0.25);
     c.pitchBendSemitones = bounded(c.pitchBendSemitones, -48, 48, 0);
     c.masterTuneCents = bounded(c.masterTuneCents, -1200, 1200, 0);
+    c.hostTuneCents = bounded(c.hostTuneCents, -1200, 1200, 0);
+    c.pitchModel = std::clamp(c.pitchModel, 0, 1);
+    c.midiPitchBend = std::clamp(c.midiPitchBend, -1, 16383);
+    c.midiBendRange = std::clamp(c.midiBendRange, 0, 24);
     c.velocitySensitivity = bounded(c.velocitySensitivity, 0, 2, 1);
     c.velocityToModulation = bounded(c.velocityToModulation, 0, 2, 0);
     c.modulationAmount = bounded(c.modulationAmount, 0, 2, 1);
@@ -189,6 +200,13 @@ void Press78Engine::Voice::updatePatch(const Patch& p) noexcept {
     feedback = p.feedback == 0 ? 0.0 : 4.0 * pi * std::pow(2.0, p.feedback - 7);
 }
 
+void Press78Engine::Voice::updateOriginalPitch(int steps) noexcept {
+    // Only coefficients change: oscillator phase, feedback, envelope and age
+    // survive bends/fine edits, including voices in the steal fade.
+    modStep = originalStep(patch.modulator, note, steps);
+    carrierStep = originalStep(patch.carrier, note, steps);
+}
+
 double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo) noexcept {
     if (!active) return 0.0;
     const double em = modEnvelope.next(released), ec = carrierEnvelope.next(released);
@@ -236,6 +254,8 @@ void Press78Engine::reset() noexcept {
     analog_.reset();
     position_ = 0.0; nextTick_ = 0; hostTime_ = 0.0;
     globalLfoPhase_ = 0.0; chorusPhase_ = 0.0;
+    effectivePitchModel_ = controls_.pitchModel;
+    updatePitchControls();
     gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_;
     voiceControls_ = controls_;
     currentToneCoefficient_ = toneCoefficient_;
@@ -252,7 +272,10 @@ void Press78Engine::reset() noexcept {
 
 void Press78Engine::setPatch(const Patch& patch, bool updateActive) noexcept {
     patch_ = sanitizePatch(patch);
-    if (updateActive) for (auto& voice : voices_) if (voice.active) voice.updatePatch(patch_);
+    if (updateActive) for (auto& voice : voices_) if (voice.active) {
+        voice.updatePatch(patch_);
+        if (effectivePitchModel_ == 1) voice.updateOriginalPitch(pitchSteps_);
+    }
 }
 
 void Press78Engine::setChorusTime(double seconds) noexcept {
@@ -263,7 +286,8 @@ void Press78Engine::setChorusTime(double seconds) noexcept {
 
 void Press78Engine::setControls(const Controls& controls) noexcept {
     controls_ = sanitizeControls(controls);
-    targetPitch_ = std::pow(2.0, (controls_.pitchBendSemitones * 100.0 + controls_.masterTuneCents) / 1200.0);
+    applyPendingPitchModel();
+    updatePitchControls();
     toneCoefficient_ = controls_.toneCutoffHz == 0.0 ? 0.0
         : 1.0 - std::exp(-tau * std::min(controls_.toneCutoffHz, sampleRate_ * 0.45) / sampleRate_);
     if (!hasProcessed_) {
@@ -290,6 +314,7 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
     if (velocity <= 0) { noteOff(note, source); return; }
     velocity = std::min(velocity, 127);
     if (patch_.carrier.tl >= 99 || patch_.carrier.ar == 0) return;
+    applyPendingPitchModel();
     Voice* target = nullptr;
     if (activeVoices() < static_cast<std::size_t>(controls_.polyphony)) {
         for (auto& v : voices_) if (!v.active) { target = &v; break; }
@@ -302,6 +327,7 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
         tail->voice = *target; tail->remaining = 48;
     }
     target->configure(patch_, note, velocity, ++serial_);
+    if (effectivePitchModel_ == 1) target->updateOriginalPitch(pitchSteps_);
     target->source = source;
 }
 
@@ -329,6 +355,41 @@ void Press78Engine::allSoundOff() noexcept {
     tone1_ = tone2_ = 0.0;
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
     pedal_ = false;
+    applyPendingPitchModel();
+}
+
+bool Press78Engine::pitchIdle() const noexcept {
+    for (const auto& voice : voices_) if (voice.active) return false;
+    for (const auto& tail : tails_) if (tail.remaining > 0) return false;
+    return true;
+}
+
+void Press78Engine::applyPendingPitchModel() noexcept {
+    if (effectivePitchModel_ == controls_.pitchModel || !pitchIdle()) return;
+    effectivePitchModel_ = controls_.pitchModel;
+    updatePitchControls();
+    // There are no oscillators to glide between laws. Starting the next voice
+    // with the previous law's bend multiplier would otherwise double bend it.
+    pitchMultiplier_ = targetPitch_;
+}
+
+void Press78Engine::updatePitchControls() noexcept {
+    if (effectivePitchModel_ == 0) {
+        const double tune = controls_.masterTuneCents + controls_.hostTuneCents;
+        // Preserve the legacy addition order and5ms continuous smoothing.
+        targetPitch_ = std::pow(2.0, (controls_.pitchBendSemitones * 100.0 + tune) / 1200.0);
+        return;
+    }
+    const int bend = controls_.midiPitchBend < 0
+        ? static_cast<int>(std::lround(controls_.pitchBendSemitones * 32.0))
+        : firmware_pitch::bendSteps(controls_.midiPitchBend >> 7, controls_.midiBendRange);
+    const int steps = bend + static_cast<int>(std::lround(controls_.masterTuneCents / 3.125));
+    if (steps != pitchSteps_) {
+        pitchSteps_ = steps;
+        for (auto& voice : voices_) if (voice.active) voice.updateOriginalPitch(steps);
+        for (auto& tail : tails_) if (tail.remaining > 0) tail.voice.updateOriginalPitch(steps);
+    }
+    targetPitch_ = std::pow(2.0, controls_.hostTuneCents / 1200.0);
 }
 
 std::size_t Press78Engine::activeVoices() const noexcept {
@@ -362,6 +423,7 @@ void Press78Engine::buildResampler() noexcept {
 }
 
 double Press78Engine::synthesizeTick() noexcept {
+    applyPendingPitchModel();
     // Tune smoothing is clocked with the envelopes/operators. Clock offset
     // changes the arrival of these ticks, including feedback and the LFO.
     constexpr double smooth = 0.00415800184511004; // 1-exp(-1/(48000*.005)).

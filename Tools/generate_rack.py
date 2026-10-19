@@ -6,7 +6,7 @@ import math
 import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0b11'
+VERSION='0.1.0b12'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -17,7 +17,7 @@ REAL_DEFAULTS={'outputCircuit':1,'noiseModel':0,'noiseRms':0,
                'chorusDepthMs':math.hypot(0.0495126833338911,0.4943632948117077),
                'clockOffsetPpm':0,'clockDriftPpm':20,'clockDriftRateHz':.1,
                'lfoRateHz':5.24,'triangleLfo':1,'globalLfo':1,
-               'drive':0,'dcBlock':1,'outputLimit':1}
+               'drive':0,'dcBlock':1,'outputLimit':1,'pitchModel':1}
 FACTORY_CHARACTER=REAL_DEFAULTS
 
 
@@ -76,8 +76,13 @@ def specs():
         add(name,label,lo,hi,default,integer)
         if name=='chorusMode': rows[-1]['options']=['Studio','Recorded']
         if name=='noiseModel': rows[-1]['options']=['White','Circuit']
+    # Missing properties in pre-b12 songs retain equal-tempered playback.
+    # New Init/factory files explicitly select the Original pitch model.
+    add('pitchModel','Pitch model',0,1,0,True)
+    rows[-1]['options']=['Equal','Original']
+    rows[-1]['startup_default']=1
     for row in rows:
-        if row['id'] in REAL_DEFAULTS: row['default']=REAL_DEFAULTS[row['id']]
+        if row['id'] in REAL_DEFAULTS and row['id']!='pitchModel': row['default']=REAL_DEFAULTS[row['id']]
         if row['id'] in LEGACY_NOISE:
             row.update(hidden=True,deprecated='Inert compatibility property; additive noise has been removed.')
     return rows
@@ -177,7 +182,7 @@ def main():
     locale=device/'Resources/English';locale.mkdir(parents=True,exist_ok=True)
     (locale/'texts.lua').write_text('format_version = "1.0"\ntexts = {\n'+''.join(f' [{json.dumps(k)}] = {json.dumps(v)},\n' for k,v in texts.items())+'}\n')
     public=device/'Resources/Public';public.mkdir(parents=True,exist_ok=True)
-    write_patch(public/'Init.repatch',rows,{})
+    write_patch(public/'Init.repatch',rows,FACTORY_CHARACTER)
     bank=json.loads((ROOT/'Resources/FactoryBank/press78-factory.json').read_text())
     for voice in bank['voices']:
         write_patch(public/(voice['name'].replace('/','-')+'.repatch'),rows,{**decode(voice['raw_data']),**FACTORY_CHARACTER})
@@ -198,7 +203,7 @@ def main():
          if row['id'].startswith(('mod_','car_')) else
          f'patch.{row["id"]} = static_cast<{"bool" if row["id"] in ("vibrato","sustain") else "int"}>(physical(k_{row["id"]}));'
          if row['target']=='patch' else
-         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel") else "double"}>(physical(k_{row["id"]}));'
+         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel") else "double"}>(physical(k_{row["id"]}));'
          for row in rows if row['id'] not in ('bendRange','modWheelDepth')])+'\n')
     print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS patches at {device}')
 

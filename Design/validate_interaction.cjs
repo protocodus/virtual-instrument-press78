@@ -5,11 +5,11 @@ const dom=new JSDOM(fs.readFileSync(path.join(__dirname,'index.html'),'utf8'),{r
 const assert=(ok,reason)=>{if(!ok)throw Error(reason);};
 assert(d.querySelector('#preset').options.length===100,'100 presets');
 assert(Array.from(d.querySelector('#preset').options).every(o=>/^PSS \d{2} /.test(o.textContent)),'all factory names have PSS prefix');
-assert(d.querySelectorAll('[data-range-id],[data-toggle-id]').length===61,'61 nonwave controls');
+assert(d.querySelectorAll('[data-range-id],[data-toggle-id]').length===62,'62 nonwave controls');
 assert(d.querySelectorAll('[data-wave-id]').length===8,'two four-way waves');
 assert(d.querySelectorAll('[data-socket-path]').length===6,'four CV and two audio sockets');
 assert(d.querySelectorAll('#front-panel [data-range-id],#front-panel [data-toggle-id]').length+2===34,'34 front main sound and performance controls');
-assert(d.querySelectorAll('#rear-panel [data-range-id],#rear-panel [data-toggle-id]').length===29,'29 rear advanced/calibration controls');
+assert(d.querySelectorAll('#rear-panel [data-range-id],#rear-panel [data-toggle-id]').length===30,'30 rear advanced/calibration controls');
 const geometry=w.eval('geometry');
 const near=(a,b)=>Math.abs(a-b)<1e-6;
 for(const c of geometry.controls){
@@ -49,9 +49,12 @@ for(const op of ['modulator','carrier'])for(let selected=0;selected<4;selected++
 d.querySelector('[data-view="rear"]').click();assert(!d.querySelector('#rear-panel').hidden&&d.querySelector('#front-panel').hidden,'rear view');
 const model=d.querySelector('[data-toggle-id="controls_chorusMode"]');assert(model.getAttribute('aria-pressed')==='true','factory chorus model Recorded');assert(d.querySelector('#controls_chorusMode-value').textContent==='Recorded','model label');model.click();assert(d.querySelector('#controls_chorusMode-value').textContent==='Studio','model changes');
 assert(!d.querySelector('[data-toggle-id="controls_noiseModel"]')&&!d.querySelector('[data-range-id="controls_noiseRms"]'),'removed noise controls absent');
+const pitch=d.querySelector('[data-toggle-id="controls_pitchModel"]');
+assert(pitch.getAttribute('aria-pressed')==='true'&&d.querySelector('#controls_pitchModel-value').textContent==='Original','new factory patch explicitly uses Original pitch');
+pitch.click();assert(pitch.getAttribute('aria-pressed')==='false'&&d.querySelector('#controls_pitchModel-value').textContent==='Equal','rear selector offers legacy Equal pitch');
 const circuit=d.querySelector('[data-toggle-id="controls_outputCircuit"]');assert(circuit.getAttribute('aria-pressed')==='true','circuit defaults on');assert(d.querySelector('#controls_outputCircuit-button').getAttribute('fill')==='#ffffff','active toggles are white');circuit.click();assert(circuit.getAttribute('aria-pressed')==='false','circuit toggle');
 d.querySelector('[data-view="folded"]').click();assert(!d.querySelector('#folded-view').hidden,'folded view');assert(d.querySelector('#folded-view').textContent.includes('PSS 99'),'folded patch follows preset');
-d.querySelector('#restore').click();assert(d.querySelector('#carrier_ar-value').textContent==='63','restore resets patch edits');assert(circuit.getAttribute('aria-pressed')==='true','restore baseline globals');
+d.querySelector('#restore').click();assert(d.querySelector('#carrier_ar-value').textContent==='63','restore resets patch edits');assert(circuit.getAttribute('aria-pressed')==='true','restore baseline globals');assert(pitch.getAttribute('aria-pressed')==='true','restore factory Original pitch');
 // Level presentation must reverse the raw attenuation property without changing
 // raw factory bytes on load, click, cancel, or movement against the mute limit.
 const level=d.querySelector('[data-range-id="modulator_tl"]');
@@ -91,5 +94,5 @@ for(const [id,value,expected] of [
  assert(control.getAttribute('aria-valuetext')===expected,`accessible unit/value: ${id}`);
 }
 d.querySelector('#restore').click();
-const report={passed:true,kind:'Synthetic DOM interaction checks, not browser/native-host testing',preset_options:100,canonical_controls:63,sockets:6,checks:['100 PSS-prefixed presets; preset99 name, Level values and folded name','attack edit updates readout','all eight waveform selections: aria, whole white cap and glow','fixed FM badge matches native header','DEVICE/NOTE captions included in centering; both full panels clear fixed host fold area','all69 browser hit regions match drawn geometry; mixed row and header visual centers','rear/folded visibility','chorus model choices; removed noise controls absent','output circuit default and toggle','preset reload restores fields and global defaults','four CV and two audio socket placeholders','34 front controls and 29 rear advanced/configuration controls','Level inverse drag, fine adjustment, reset, cancel, keyboard and numeric entry preserve raw patch semantics','musical help, unit/rate captions and 49 position arcs','10 accessible value cases retain physical units without duplicated multiplier suffixes'],runtime:'Node.js with jsdom 30.1.3'};
+const report={passed:true,kind:'Synthetic DOM interaction checks, not browser/native-host testing',preset_options:100,canonical_controls:64,sockets:6,checks:['100 PSS-prefixed presets; preset99 name, Level values and folded name','attack edit updates readout','all eight waveform selections: aria, whole white cap and glow','fixed FM badge matches native header','DEVICE/NOTE captions included in centering; both full panels clear fixed host fold area','all70 browser hit regions match drawn geometry; mixed row and header visual centers','rear/folded visibility','chorus model choices; removed noise controls absent; Original/Equal pitch selection and factory restore','output circuit default and toggle','preset reload restores fields and global defaults','four CV and two audio socket placeholders','34 front controls and 30 rear advanced/configuration controls','Level inverse drag, fine adjustment, reset, cancel, keyboard and numeric entry preserve raw patch semantics','musical help, unit/rate captions and 49 position arcs','10 accessible value cases retain physical units without duplicated multiplier suffixes'],runtime:'Node.js with jsdom 30.1.3'};
 fs.writeFileSync(path.join(__dirname,'interaction-validation.json'),JSON.stringify(report,null,2)+'\n');console.log(report);

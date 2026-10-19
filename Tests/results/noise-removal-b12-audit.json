@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "version": "0.1.0b12",
+  "source_hashes": {
+    "/Users/vojta/Dev/virtual-instrument-press78/Source/DSP/Press78Engine.cpp": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f",
+    "/Users/vojta/Dev/virtual-instrument-press78/Source/DSP/Press78Engine.h": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Press78.cpp": "093fd757ebc49c8cfcc92cc227f40084004641edc3f2c3c4d4db8b35517db7f8",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/ApplyParameters.inc": "e4b24402f64e140152a9586b4481f0a1b41911a571e071ebbc280267fc8db1ff"
+  },
+  "additive_runtime_paths_absent": true,
+  "legacy_noise_properties_forced_zero": true,
+  "runtime_gui_noise_bindings": 0,
+  "hidden_compatibility_properties": 2,
+  "archive_patches_noise_zero": 101,
+  "archive_sha256": "11ce1b17c1b1d9eaaf5cfde9f104bba719777882add6cc7b345e448e04e40e57",
+  "native_wrapper_contracts": {
+    "normal": 23,
+    "asan_ubsan": 23,
+    "includes_legacy_noise_automation_and_reset": true
+  },
+  "core_noise_evidence": {
+    "new_noise_sources": false,
+    "legacy_fields_forced_zero": true,
+    "Original_idle_exact_zero": true,
+    "old_b11_nonzero_noise_request_remains_sample_identical": true
+  },
+  "audit_harness_correction": "Initial overly specific source assertion expected literal0.0 in generated ApplyParameters, which uses literal0. Corrected to accept either exact numeric zero; no production source changed.",
+  "scope": "Current b12 source, compiled-source-bound native/mock tests and source-aligned installed/universal payload. No claim of actual host audio playback or measured hardware noise."
+}

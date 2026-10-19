@@ -66,6 +66,7 @@
     "dcBlock": 315,
     "outputLimit": 316,
     "bendRange": 317,
-    "modWheelDepth": 318
+    "modWheelDepth": 318,
+    "pitchModel": 319
   }
 }
