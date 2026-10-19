@@ -136,7 +136,7 @@
     }
   ],
   "scope": "Software/component equivalence and bounded memory/Legacy compatibility. No target chip, physical timing, audio fidelity, host performance, market ranking or production adoption is established.",
-  "recording_report_sha256": "62744ac8147c4bbc5ce78f0cc945fd2b7a6aa05b7d2d794abdb03d7475fab331",
+  "recording_report_sha256": "aed38863c7e8a2b990b822e3c9135cef2d7fe5edfbf2cf880a75b165746eaac0",
   "recording_audio_gates": {
     "historical_legacy_all4_retained_WAVs_identical": true,
     "merged_legacy_all4_independent_baselines_identical": true,

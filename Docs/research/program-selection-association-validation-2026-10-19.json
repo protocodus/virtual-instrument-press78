@@ -1,0 +1,40 @@
+{
+  "schema": "press78.program-selection-association-validation.v1",
+  "passed": true,
+  "scope": "Independent post-observation review of software command paths, fixed source-frame association and MIDI metadata, not a new CPU execution, controlled capture, audio/phase/timing or physical-key proof.",
+  "report": {
+    "path": "Reference/Research/program-selection-association-20261019.md",
+    "sha256": "345adb95ec9873b31d83e244c19463744ad229b6d17e22def1491206ad3ec2e6"
+  },
+  "data": {
+    "path": "Reference/Research/program-selection-association-20261019.json",
+    "sha256": "ac1e439536f0d78d5ef437dca1f20d56e17507c8311f07597e1c0c6a27d78704"
+  },
+  "independent_review": {
+    "receipt": {
+      "path": "build/program-selection-association-independent-20261019/receipt.json",
+      "sha256": "3294c25e07902c95401bc9475413a70873a6dac049b3bd93ea73c9a1b67f1381"
+    },
+    "checks": 40786,
+    "published_artifact_bindings": 324,
+    "metadata_rows_recomputed": 400,
+    "actual_panel_caller_cases": 12,
+    "complete_caller_OPU_words": 2040,
+    "fixed_ROM_transfer_instruction_checks": 9776,
+    "contact_sheets_inspected": 11,
+    "fixed_source_frames": 297,
+    "fresh_in_memory_pixel_matches": 6
+  },
+  "retained_review_correction": "The first reviewer assumption used nearest rounding of t\u00b10.10s. Both frozen protocols actually use floor(30t)-3 / round(30t) / ceil(30t)+3; the failed reviewer check was retained and corrected without changing observations or frames.",
+  "limits": [
+    "Original CPU was not re-executed; raw caller traces, frozen direct-loader traces and logged direct-control instructions independently verified.",
+    "Decoded panel inputs and received-note states do not establish physical matrix scanning or physically held-key behavior.",
+    "No visible hand contact in297 sparse frames is not evidence of selection transport, exact command timing, sender identity, unedited continuity, or behavior between frames.",
+    "The raw SMF has no Program Change messages; all100 program rows and program-first order remain inferred conventions.",
+    "Gate metadata is conditional source-file timing, not audible held/release-tail state.",
+    "No audio, parameter fit, event change, production change or new image files."
+  ],
+  "audio_rendered": false,
+  "production_changed": false,
+  "native_adoption": false
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "press78.mode00-program-command-independent-validation.v1",
+  "passed": true,
+  "scope": "Post-observation independent review from raw preselection state and serial/key input reconstruction, after owner results known. Tests complete loader IO and state, not an independent CPU execution, fresh holdout, physical hardware, audio or service cadence. Producer comparer is not imported.",
+  "report": {
+    "path": "Reference/Research/mode00-program-command-adapter-20261019.md",
+    "sha256": "93a7e6179171761e7c2fbe01744440476a5b1d0e01d536909c67a7a9fb18ad07"
+  },
+  "data": {
+    "path": "Reference/Research/mode00-program-command-adapter-20261019.json",
+    "sha256": "3b90af9a1300d12fbebcf8689539ff94648a49f314e8a52f976ab9304f06cf7f"
+  },
+  "export_manifest": {
+    "path": "Reference/Prototypes/mode00-program-load-20261019/manifest.json",
+    "sha256": "86ed16bd80d6299e8388cd64548922a71277328dd7efcd9098546fd6e961b772"
+  },
+  "independent_review": {
+    "receipt": {
+      "path": "build/program-command-root-review-20261019/result.json",
+      "sha256": "5d397de5b5ccf88855196e4dbde01ab9f3b269b6b7f6bc63e201d87f15362f99"
+    },
+    "binding": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/program-command-root-review-20261019/binding.json",
+      "sha256": "f17a34f6b1aad66497fe42cf181cdd2169d7ddfad558845d4bf68037f01d090c"
+    },
+    "source": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/program-command-root-review-20261019/review.py",
+      "sha256": "39865ae40708625042e46e196b67a598638be7d1e509a46ced7f0ae04a308d06"
+    },
+    "checks": 12497,
+    "cases": 60,
+    "complete_ordered_original_selection_writes": 10422,
+    "comparison": "Initialize from raw original preselection snapshots; independently decode input held keys and paired key writes; compare complete program-load writes and resulting state. Does not import producer comparer or reexecute CPU."
+  },
+  "root_export_verification": {
+    "all7_manifest_file_hashes_verified": true,
+    "bound_report_artifacts_verified": 15,
+    "synthetic_assertions_passed": 12332,
+    "retained_state_assertions_passed": 132,
+    "retained_state_cases": 12,
+    "source_snapshot_vs_export_implementation_equal": true
+  },
+  "retained_publication_reader_failure": {
+    "path": "build/program-command-root-review-20261019/provenance-reader-first-failure.json",
+    "sha256": "cc229df12806719ce11b8d67b77da533e41322293356e167e41d48c5abe7b6c2"
+  },
+  "production_changed": false,
+  "audio_rendered": false,
+  "native_adoption": false,
+  "notes": [
+    "This companion completes the independent review that was pending when the owner ledger was frozen.",
+    "Descending musical-pitch order is verified in the new original permutations; a general descending-slot rule is falsified.",
+    "Original effects/nonzero RR arithmetic beyond the60case fixtures remains separately labeled synthetic, not a new hardware/CPU sweep."
+  ]
+}

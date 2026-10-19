@@ -1,0 +1,21 @@
+{
+  "schema": "press78.program-command-export-validation.v1",
+  "passed": true,
+  "manifest_sha256": "86ed16bd80d6299e8388cd64548922a71277328dd7efcd9098546fd6e961b772",
+  "binding_sha256": "41e1626dc1ea1f1791061af16212f2462eff4bc6bd6917822008ad72aaf33342",
+  "commands": [
+    {
+      "command": "python3 Reference/Prototypes/mode00-program-load-20261019/check.py",
+      "returncode": 0,
+      "assertions": 12332
+    },
+    {
+      "command": "python3 Reference/Prototypes/mode00-program-load-20261019/check_retained_state.py",
+      "returncode": 0,
+      "cases": 12,
+      "assertions": 132
+    }
+  ],
+  "all_export_source_hashes_match": true,
+  "no_original_program_or_audio_executed": true
+}
