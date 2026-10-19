@@ -27049,7 +27049,8 @@
     "Fresh audio-comparison protocol using the independently verified raw-SMF-order fixtures; actual sender delivery and receive filtering remain unverified",
     "Same-note physical envelope/retrigger/phase behavior with known gates",
     "Interaction with verified key-level commands and still-unidentified amplitude/envelope laws",
-    "Separate native/SDK/host validation before any production change"
+    "Separate native/SDK/host validation before any production change",
+    "Target-specific original program-load command policy and separately justified live chip response; ordinary plugin patch editing is a distinct contract"
   ],
   "known_recording_state": {
     "audit": "Reference/Research/recording-mode-effects-audit-20261019.md",
@@ -27106,6 +27107,30 @@
       {
         "path": "Reference/Research/midi-reference-export-20261019.json",
         "sha256": "ad950e29e568581f5f7470112fe510fc65754e7e6ef0a744396250e692beaaaf"
+      }
+    ]
+  },
+  "posthoc_program_loader_evidence": {
+    "scope": "Forty factory plus eight actual serial-caller CPU witnesses, independently reviewed after the frozen audio comparison. Command facts only, no audible response recovered.",
+    "independent_checks": 179404,
+    "both_models_rewrite_all12_normal_slots": true,
+    "PSS780_clears_held_pending_serial_input": true,
+    "PSS680_preserves_held_pending_serial_input": true,
+    "cached_pitches_preserved_both": true,
+    "current_future_only_snapshot_loader_omits_original_behavior": true,
+    "past_scores_events_gates_unchanged": true,
+    "evidence": [
+      {
+        "path": "Reference/Research/opu-mode00-program-load-20261019.md",
+        "sha256": "524238c2f5d713334f9fb44b071dc81649b7f389454e7b80640f18b1af55e360"
+      },
+      {
+        "path": "Reference/Research/opu-mode00-program-load-20261019.json",
+        "sha256": "baa68dd05043d68ac4325b3c9a2126441b0a9190c64e80f140dc5adf3ace0c7a"
+      },
+      {
+        "path": "Reference/Research/opu-mode00-program-load-validation-20261019.json",
+        "sha256": "e6adf79b9e31d17c997f637e3f7fc9936c993aa790de613b17e7d8b77a015066"
       }
     ]
   }

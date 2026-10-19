@@ -49,6 +49,8 @@ That [subsequent MIDI audit](midi-event-order-audit-20261019.md) now establishes
 
 Four new metadata fixtures from the [reference-event exporter](midi-reference-export-20261019.md) have since passed 41,553 independent checks. They preserve source order and all contiguous boundaries while retaining the old onset times and inferred program rows. They have not been rendered in an audio comparison. The results and promotion failure in this report still refer exclusively to the original frozen fixtures.
 
+The later [original program-load study](opu-mode00-program-load-20261019.md), independently checked against all 48 retained CPU witnesses, also confirms a target-specific command omission. Both models rewrite all 12 normal slots on selection; the tested PSS-780 path clears held/pending serial input state, whereas PSS-680 preserves it. The comparison here keeps existing plugin voice snapshots on program change and therefore models neither complete loader. The audible response to those original writes remains unresolved. No past event, score or gate has been changed to accommodate this finding.
+
 ## Reproducibility and decision
 
 An independent audit passes 34,341 checks: all source/fixture and eight complete identity targets; 1,224 score objects, 3,264 deltas and 144 aggregate values; every gate/regression list; 30 fresh metric computations with zero difference; and 20 exact float32 four-part audition reconstructions. The reconstructed auditions are finite and stay at or below 0.900001 peak. New WAV storage peaks at 652,449,832 bytes, below the prospective 800 MB limit.

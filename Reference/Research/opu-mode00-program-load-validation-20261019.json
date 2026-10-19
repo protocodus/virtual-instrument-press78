@@ -1,0 +1,55 @@
+{
+  "schema": "press78.mode00-program-load-validation.v1",
+  "passed": true,
+  "scope": "Independent post-observation RAM/IO reconstruction, not separate CPU execution, hardware, audio, service timing, phase, envelope or silence verification.",
+  "report": {
+    "path": "Reference/Research/opu-mode00-program-load-20261019.md",
+    "bytes": 7565,
+    "sha256": "524238c2f5d713334f9fb44b071dc81649b7f389454e7b80640f18b1af55e360"
+  },
+  "data": {
+    "path": "Reference/Research/opu-mode00-program-load-20261019.json",
+    "bytes": 124601,
+    "sha256": "baa68dd05043d68ac4325b3c9a2126441b0a9190c64e80f140dc5adf3ace0c7a"
+  },
+  "producer_verification": {
+    "factory_cases": 40,
+    "serial_caller_cases": 8,
+    "checks": 1436,
+    "factory_ram_change_checks": 30647
+  },
+  "independent_review": {
+    "receipt": {
+      "path": "build/opu-mode00-program-load-review-20261019/result.json",
+      "bytes": 19593,
+      "sha256": "7d2f6147c287425fb5e4926c7751e9afe4e38f90c587b15c79363a1b4be0498b"
+    },
+    "coverage_split": {
+      "path": "build/opu-mode00-program-load-review-20261019/coverage-supplement.json",
+      "bytes": 329,
+      "sha256": "688e9f8e2b6af91c8a35db7f46d2341de97192046ddf9b7039d99725c8051b07"
+    },
+    "checks": 179404,
+    "factory_cases": 40,
+    "serial_caller_cases": 8,
+    "factory_ram_change_checks": 30647,
+    "caller_ram_change_checks": 3938,
+    "total_ram_change_checks": 34585,
+    "high_ram_write_checks": 38768,
+    "compact_snapshot_fields": 22880,
+    "all_bound_inputs_and_implementation_verified": true
+  },
+  "root_review": {
+    "report_and_protocol_read": true,
+    "independent_reconstruction_source_read": true,
+    "artifact_source_binding_occurrences_verified": 24,
+    "unique_program_study_source_artifacts": 16,
+    "independent_input_and_implementation_bindings_verified": 19,
+    "prior_console_count_correction": "One preliminary console message hardcoded26 binding occurrences; actual13+4+7=24. All artifact/hash assertions passed. No scientific observations or summaries changed."
+  },
+  "outcome": "CPU command evidence supports all-slot parameter rewrites in both models; tested PSS-780 path clears held/pending input state while PSS-680 preserves it. Full audible response is not recovered.",
+  "production_changed": false,
+  "candidate_changed": false,
+  "completed_benchmark_changed": false,
+  "retained_initial_failed_cross_model_assumption": true
+}
