@@ -1,0 +1,1565 @@
+{
+  "date": "2026-10-18",
+  "status": "Exploratory quantitative audit, no DSP change",
+  "input_sha256": {
+    "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/user-ONfIvtDOog0.wav": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba",
+    "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/alignment.json": "97f0072ef21b48fe9b80b43fd42a1217160208997103dacda4d2b74b7b2f2947",
+    "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/eugenia-events.json": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4",
+    "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v3_program_timeline.json": "1978645805679691f0b39269c5ac1db762d59a9f6c65cd399cbafffe555650eb",
+    "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/press78-factory.json": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
+  },
+  "native_source_sha256": {
+    "AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+    "FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "Press78Engine.h": "a11cc9536a4137ea5b380f992fb8d24fe23dda0b5ea58c63bb43b32af5c1d6bb",
+    "Press78Engine.cpp": "1d44d28a0794003e908dfee9f265f8b182fa90436b49bbcd94abc665a847bcfd",
+    "RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+  },
+  "protocol": {
+    "training": {
+      "patch": 93,
+      "midi": 82,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "age_start": 0.38,
+      "age_end": 0.98
+    },
+    "evaluation": [
+      {
+        "patch": 97,
+        "midi": 72,
+        "partial": 3,
+        "cutoff_hz": 130,
+        "age_start": 0.4,
+        "age_end": 1.6,
+        "status": "primary, independent preset; polyphonic contamination remains"
+      },
+      {
+        "patch": 97,
+        "midi": 72,
+        "partial": 1,
+        "cutoff_hz": 130,
+        "age_start": 0.4,
+        "age_end": 1.6,
+        "status": "corroborating partial, heavily contaminated; no separate fit"
+      },
+      {
+        "patch": 65,
+        "midi": 72,
+        "partial": 4,
+        "cutoff_hz": 40,
+        "age_start": 0.65,
+        "age_end": 1.6,
+        "status": "low confidence, overlapping harmonics; no separate fit"
+      },
+      {
+        "patch": 95,
+        "midi": 77,
+        "partial": 2,
+        "cutoff_hz": 40,
+        "age_start": 0.43,
+        "age_end": 0.56,
+        "status": "short post-delay interval, less than one cycle; phase diagnostic only"
+      },
+      {
+        "patch": 94,
+        "midi": 79,
+        "partial": 2,
+        "cutoff_hz": 40,
+        "age_start": 0.31,
+        "age_end": 0.56,
+        "status": "short contaminated post-delay interval; phase diagnostic only"
+      }
+    ],
+    "analysis": "Arithmetic stereo mid; complex heterodyne at equal-tempered note partial; 6-pole zero-phase Butterworth baseband low-pass; complex downsample to500Hz; unwrapped phase derivative; cents relative to nominal frequency.",
+    "calibration": "One rate, initial phase, tuning constant and PMS3 peak depth per waveform fitted to Human Voice1 only; no harmonic or evaluation-note refit. Phase convention anchored to Human Voice1 onset. No extra timing shift or pitch transform.",
+    "parameters_search": {
+      "rate_hz": [
+        4.0,
+        7.0
+      ],
+      "phase_rad": [
+        -3.141592653589793,
+        3.141592653589793
+      ],
+      "peak_cents": [
+        0,
+        30
+      ],
+      "tuning_cents": [
+        -15,
+        15
+      ]
+    },
+    "data_status": "Exploratory reused recording, with protocol frozen after initial inspection. Different-preset evaluation is not a fresh or blinded holdout.",
+    "no_audio_fit": "No gain matching, harmonic normalization or audio waveform fitting. Partial3 and partial1 are separate evaluation rows, not independent recordings.",
+    "delay": "Scored intervals start after the apparent vibrato onset; delay not fitted into these primary scores. Existing10ms/VDT and apparent onset examined separately.",
+    "limits": "No MIDI note events captured from the instrument. Global affine arrangement alignment has local residuals up to tens of milliseconds. Reverb, chorus, prior notes, capture/codec remain."
+  },
+  "partials": [
+    {
+      "patch": 93,
+      "midi": 82,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "age_start": 0.38,
+      "age_end": 0.98,
+      "on": 164.97644582233505,
+      "gate": 1.1027271478390406,
+      "f0_hz": 1864.6550460723597,
+      "pms": 3,
+      "vdt": 24,
+      "vibrato": true
+    },
+    {
+      "patch": 97,
+      "midi": 72,
+      "partial": 3,
+      "cutoff_hz": 130,
+      "age_start": 0.4,
+      "age_end": 1.6,
+      "status": "primary, independent preset; polyphonic contamination remains",
+      "on": 172.03389956850492,
+      "gate": 1.7643634365424476,
+      "f0_hz": 1569.7533918035917,
+      "pms": 6,
+      "vdt": 21,
+      "vibrato": true
+    },
+    {
+      "patch": 97,
+      "midi": 72,
+      "partial": 1,
+      "cutoff_hz": 130,
+      "age_start": 0.4,
+      "age_end": 1.6,
+      "status": "corroborating partial, heavily contaminated; no separate fit",
+      "on": 172.03389956850492,
+      "gate": 1.7643634365424476,
+      "f0_hz": 523.2511306011972,
+      "pms": 6,
+      "vdt": 21,
+      "vibrato": true
+    },
+    {
+      "patch": 65,
+      "midi": 72,
+      "partial": 4,
+      "cutoff_hz": 40,
+      "age_start": 0.65,
+      "age_end": 1.6,
+      "status": "low confidence, overlapping harmonics; no separate fit",
+      "on": 115.57426959914557,
+      "gate": 1.7643634365425187,
+      "f0_hz": 2093.004522404789,
+      "pms": 3,
+      "vdt": 39,
+      "vibrato": true
+    },
+    {
+      "patch": 95,
+      "midi": 77,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "age_start": 0.43,
+      "age_end": 0.56,
+      "status": "short post-delay interval, less than one cycle; phase diagnostic only",
+      "on": 168.50517269542,
+      "gate": 0.6616362887034357,
+      "f0_hz": 1396.9129257320155,
+      "pms": 3,
+      "vdt": 31,
+      "vibrato": true
+    },
+    {
+      "patch": 94,
+      "midi": 79,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "age_start": 0.31,
+      "age_end": 0.56,
+      "status": "short contaminated post-delay interval; phase diagnostic only",
+      "on": 166.7408092588775,
+      "gate": 0.6616362887034357,
+      "f0_hz": 1567.981743926997,
+      "pms": 3,
+      "vdt": 21,
+      "vibrato": true
+    }
+  ],
+  "single_training_calibrations": {
+    "sine": {
+      "rate_hz": 5.231057681479472,
+      "phase_rad": 0.5251124202416937,
+      "pms3_peak_cents": 10.093543195481017,
+      "tuning_cents": -1.9853655496230984,
+      "training_rmse_cents": 0.9354567317685
+    },
+    "triangle": {
+      "rate_hz": 5.233704754579911,
+      "phase_rad": 0.5176157032146252,
+      "pms3_peak_cents": 12.465965944145733,
+      "tuning_cents": -1.9687510967894513,
+      "training_rmse_cents": 0.5108499460503507
+    }
+  },
+  "frozen_evaluation_scores": [
+    {
+      "patch": 93,
+      "partial": 2,
+      "midi": 82,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 0.9354567317685,
+      "mae_cents": 0.7578784278385758,
+      "bias_cents": -7.283770475652318e-10,
+      "correlation": 0.991584265141863,
+      "samples": 300
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "midi": 82,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 0.9354567317685,
+      "mae_cents": 0.7578784278385758,
+      "bias_cents": -7.283770475652318e-10,
+      "correlation": 0.991584265141863,
+      "samples": 300
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "midi": 82,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 0.9354567317685,
+      "mae_cents": 0.7578784278385758,
+      "bias_cents": -7.283770475652318e-10,
+      "correlation": 0.991584265141863,
+      "samples": 300
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "midi": 82,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 0.9354567317685,
+      "mae_cents": 0.7578784278385758,
+      "bias_cents": -7.283770475652318e-10,
+      "correlation": 0.991584265141863,
+      "samples": 300
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "midi": 82,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 0.5108499460503507,
+      "mae_cents": 0.4162197705278948,
+      "bias_cents": -2.1686514214043957e-10,
+      "correlation": 0.9974976748391013,
+      "samples": 300
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "midi": 82,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 0.5108499460503507,
+      "mae_cents": 0.4162197705278948,
+      "bias_cents": -2.1686514214043957e-10,
+      "correlation": 0.9974976748391013,
+      "samples": 300
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "midi": 82,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 0.5108499460503507,
+      "mae_cents": 0.4162197705278948,
+      "bias_cents": -2.1686514214043957e-10,
+      "correlation": 0.9974976748391013,
+      "samples": 300
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "midi": 82,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 0.5108499460503507,
+      "mae_cents": 0.4162197705278948,
+      "bias_cents": -2.1686514214043957e-10,
+      "correlation": 0.9974976748391013,
+      "samples": 300
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "midi": 82,
+      "shape": "current-default-sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current",
+      "rmse_cents": 12.8053540591265,
+      "mae_cents": 11.285658379349691,
+      "bias_cents": 1.0146761986904969,
+      "correlation": -0.61110637239421,
+      "samples": 300
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 37.14781573656261,
+      "mae_cents": 30.766173218943162,
+      "bias_cents": 0.12884153874916005,
+      "correlation": 0.9824757390060705,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 13.777103358681597,
+      "mae_cents": 10.770083677221855,
+      "bias_cents": 1.5469137873873733,
+      "correlation": 0.9824757390060705,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 40.794340822387326,
+      "mae_cents": 34.670590725727315,
+      "bias_cents": 0.2726682266224582,
+      "correlation": 0.9045537938273298,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 27.793531662419586,
+      "mae_cents": 25.815427266097068,
+      "bias_cents": 1.8345671631339704,
+      "correlation": 0.9045537938273298,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 36.60448593709355,
+      "mae_cents": 31.329369652741626,
+      "bias_cents": 0.16800294426371104,
+      "correlation": 0.9876397986438036,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 11.994114408514598,
+      "mae_cents": 9.62510279518685,
+      "bias_cents": 1.6086221455828322,
+      "correlation": 0.9876397986438036,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 38.53237517551281,
+      "mae_cents": 32.473725848481266,
+      "bias_cents": 0.32709212070199006,
+      "correlation": 0.9473599374952099,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 21.15498918988607,
+      "mae_cents": 19.034221086228523,
+      "bias_cents": 1.9268004984593912,
+      "correlation": 0.9473599374952099,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "midi": 72,
+      "shape": "current-default-sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current",
+      "rmse_cents": 71.53213893375877,
+      "mae_cents": 60.57477806345082,
+      "bias_cents": -0.21205019040035494,
+      "correlation": -0.0263956876870961,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 1,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 49.97321938796453,
+      "mae_cents": 40.60242151364034,
+      "bias_cents": 0.23220555192955697,
+      "correlation": 0.8727249714442368,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 1,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 36.24555675186875,
+      "mae_cents": 29.33356580142141,
+      "bias_cents": 1.6502778005677698,
+      "correlation": 0.8727249714442368,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 1,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 52.66387035593478,
+      "mae_cents": 42.991045138911396,
+      "bias_cents": 0.3760322398028556,
+      "correlation": 0.805313345308214,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 1,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 43.362395240971544,
+      "mae_cents": 34.94186328944792,
+      "bias_cents": 1.9379311763143672,
+      "correlation": 0.805313345308214,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 1,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 49.59693781686106,
+      "mae_cents": 40.41941130563852,
+      "bias_cents": 0.27136695744410855,
+      "correlation": 0.8767228633370105,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 1,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 35.679097091294146,
+      "mae_cents": 28.945282925011384,
+      "bias_cents": 1.7119861587632288,
+      "correlation": 0.8767228633370105,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 1,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 50.9885420959926,
+      "mae_cents": 41.481578805191276,
+      "bias_cents": 0.43045613388238724,
+      "correlation": 0.8420431874250742,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 1,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 39.584239705530706,
+      "mae_cents": 31.860435838630394,
+      "bias_cents": 2.0301645116397875,
+      "correlation": 0.8420431874250742,
+      "samples": 600
+    },
+    {
+      "patch": 97,
+      "partial": 1,
+      "midi": 72,
+      "shape": "current-default-sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current",
+      "rmse_cents": 78.9017525344964,
+      "mae_cents": 65.69245314702695,
+      "bias_cents": -0.10868617721995937,
+      "correlation": -0.022910549107890574,
+      "samples": 600
+    },
+    {
+      "patch": 65,
+      "partial": 4,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 8.608316920655954,
+      "mae_cents": 6.986740341735862,
+      "bias_cents": 0.6498381042603804,
+      "correlation": 0.234803993646282,
+      "samples": 475
+    },
+    {
+      "patch": 65,
+      "partial": 4,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 8.608316920655954,
+      "mae_cents": 6.986740341735862,
+      "bias_cents": 0.6498381042603804,
+      "correlation": 0.234803993646282,
+      "samples": 475
+    },
+    {
+      "patch": 65,
+      "partial": 4,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 11.574797175897181,
+      "mae_cents": 9.304066511527987,
+      "bias_cents": 0.6494805687276212,
+      "correlation": -0.388716428427434,
+      "samples": 475
+    },
+    {
+      "patch": 65,
+      "partial": 4,
+      "midi": 72,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 11.574797175897181,
+      "mae_cents": 9.304066511527987,
+      "bias_cents": 0.6494805687276212,
+      "correlation": -0.388716428427434,
+      "samples": 475
+    },
+    {
+      "patch": 65,
+      "partial": 4,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 8.736525094121966,
+      "mae_cents": 7.009908038822372,
+      "bias_cents": 0.6706982064934256,
+      "correlation": 0.21900843026809277,
+      "samples": 475
+    },
+    {
+      "patch": 65,
+      "partial": 4,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 8.736525094121966,
+      "mae_cents": 7.009908038822372,
+      "bias_cents": 0.6706982064934256,
+      "correlation": 0.21900843026809277,
+      "samples": 475
+    },
+    {
+      "patch": 65,
+      "partial": 4,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 10.279664703062139,
+      "mae_cents": 8.380597811009226,
+      "bias_cents": 0.706288108192241,
+      "correlation": -0.0846713747624231,
+      "samples": 475
+    },
+    {
+      "patch": 65,
+      "partial": 4,
+      "midi": 72,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 10.279664703062139,
+      "mae_cents": 8.380597811009226,
+      "bias_cents": 0.706288108192241,
+      "correlation": -0.0846713747624231,
+      "samples": 475
+    },
+    {
+      "patch": 65,
+      "partial": 4,
+      "midi": 72,
+      "shape": "current-default-sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current",
+      "rmse_cents": 11.426421645376186,
+      "mae_cents": 8.899052006783363,
+      "bias_cents": 2.908204382991957,
+      "correlation": -0.2905828097325334,
+      "samples": 475
+    },
+    {
+      "patch": 95,
+      "partial": 2,
+      "midi": 77,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 13.319051698395626,
+      "mae_cents": 11.621847229145658,
+      "bias_cents": -6.958351621783501,
+      "correlation": -0.9912172014271349,
+      "samples": 65
+    },
+    {
+      "patch": 95,
+      "partial": 2,
+      "midi": 77,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 13.319051698395626,
+      "mae_cents": 11.621847229145658,
+      "bias_cents": -6.958351621783501,
+      "correlation": -0.9912172014271349,
+      "samples": 65
+    },
+    {
+      "patch": 95,
+      "partial": 2,
+      "midi": 77,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 1.5707903269690158,
+      "mae_cents": 1.4686510651025961,
+      "bias_cents": -0.3411090716085387,
+      "correlation": 0.9720957326390818,
+      "samples": 65
+    },
+    {
+      "patch": 95,
+      "partial": 2,
+      "midi": 77,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 1.5707903269690158,
+      "mae_cents": 1.4686510651025961,
+      "bias_cents": -0.3411090716085387,
+      "correlation": 0.9720957326390818,
+      "samples": 65
+    },
+    {
+      "patch": 95,
+      "partial": 2,
+      "midi": 77,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 13.238033746584605,
+      "mae_cents": 11.309105188018265,
+      "bias_cents": -6.9601935324455715,
+      "correlation": -0.99335224476085,
+      "samples": 65
+    },
+    {
+      "patch": 95,
+      "partial": 2,
+      "midi": 77,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 13.238033746584605,
+      "mae_cents": 11.309105188018265,
+      "bias_cents": -6.9601935324455715,
+      "correlation": -0.99335224476085,
+      "samples": 65
+    },
+    {
+      "patch": 95,
+      "partial": 2,
+      "midi": 77,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 1.057280524162025,
+      "mae_cents": 0.9565753723202772,
+      "bias_cents": -0.1502824872799775,
+      "correlation": 0.9854238157413907,
+      "samples": 65
+    },
+    {
+      "patch": 95,
+      "partial": 2,
+      "midi": 77,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 1.057280524162025,
+      "mae_cents": 0.9565753723202772,
+      "bias_cents": -0.1502824872799775,
+      "correlation": 0.9854238157413907,
+      "samples": 65
+    },
+    {
+      "patch": 95,
+      "partial": 2,
+      "midi": 77,
+      "shape": "current-default-sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current",
+      "rmse_cents": 5.186942977015813,
+      "mae_cents": 4.747652003332146,
+      "bias_cents": -0.9944470092987024,
+      "correlation": 0.7490130507928169,
+      "samples": 65
+    },
+    {
+      "patch": 94,
+      "partial": 2,
+      "midi": 79,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 12.4778417591471,
+      "mae_cents": 10.640651086280165,
+      "bias_cents": -2.872054849697696,
+      "correlation": -0.03927536806068251,
+      "samples": 125
+    },
+    {
+      "patch": 94,
+      "partial": 2,
+      "midi": 79,
+      "shape": "sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 12.4778417591471,
+      "mae_cents": 10.640651086280165,
+      "bias_cents": -2.872054849697696,
+      "correlation": -0.03927536806068251,
+      "samples": 125
+    },
+    {
+      "patch": 94,
+      "partial": 2,
+      "midi": 79,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 6.844336932018046,
+      "mae_cents": 5.304261878648135,
+      "bias_cents": -0.2536161085991032,
+      "correlation": 0.7021244065254215,
+      "samples": 125
+    },
+    {
+      "patch": 94,
+      "partial": 2,
+      "midi": 79,
+      "shape": "sine",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 6.844336932018046,
+      "mae_cents": 5.304261878648135,
+      "bias_cents": -0.2536161085991032,
+      "correlation": 0.7021244065254215,
+      "samples": 125
+    },
+    {
+      "patch": 94,
+      "partial": 2,
+      "midi": 79,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 12.50464142670715,
+      "mae_cents": 10.721045368213556,
+      "bias_cents": -2.8698460804657637,
+      "correlation": -0.030111921672401305,
+      "samples": 125
+    },
+    {
+      "patch": 94,
+      "partial": 2,
+      "midi": 79,
+      "shape": "triangle",
+      "phase_law": "note-reset",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 12.50464142670715,
+      "mae_cents": 10.721045368213556,
+      "bias_cents": -2.8698460804657637,
+      "correlation": -0.030111921672401305,
+      "samples": 125
+    },
+    {
+      "patch": 94,
+      "partial": 2,
+      "midi": 79,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "current-ratio",
+      "rmse_cents": 6.538685644697859,
+      "mae_cents": 5.075908278248677,
+      "bias_cents": -0.21420015111288612,
+      "correlation": 0.7329250742195383,
+      "samples": 125
+    },
+    {
+      "patch": 94,
+      "partial": 2,
+      "midi": 79,
+      "shape": "triangle",
+      "phase_law": "global",
+      "pms_depth_law": "doubling-hypothesis",
+      "rmse_cents": 6.538685644697859,
+      "mae_cents": 5.075908278248677,
+      "bias_cents": -0.21420015111288612,
+      "correlation": 0.7329250742195383,
+      "samples": 125
+    },
+    {
+      "patch": 94,
+      "partial": 2,
+      "midi": 79,
+      "shape": "current-default-sine",
+      "phase_law": "note-reset",
+      "pms_depth_law": "current",
+      "rmse_cents": 7.496609253420628,
+      "mae_cents": 6.337127471661914,
+      "bias_cents": 2.3840029003727388,
+      "correlation": 0.6737607088587482,
+      "samples": 125
+    }
+  ],
+  "synthetic_estimator_validation": [
+    {
+      "patch": 93,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "shape": "sine",
+      "peak_cents": 10.0,
+      "rmse_cents": 0.006448215035778747,
+      "max_abs_cents": 0.015115171913050673,
+      "bias_cents": -8.579850677043865e-05
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "shape": "sine",
+      "peak_cents": 13.5,
+      "rmse_cents": 0.018360374507360028,
+      "max_abs_cents": 0.047497047844574425,
+      "bias_cents": 4.319091727343664e-05
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "shape": "sine",
+      "peak_cents": 40.0,
+      "rmse_cents": 2.4293206840106207,
+      "max_abs_cents": 5.370760972810763,
+      "bias_cents": 0.013085208246453395
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "shape": "sine",
+      "peak_cents": 108.0,
+      "rmse_cents": 48.13415012463901,
+      "max_abs_cents": 80.68333304160078,
+      "bias_cents": -0.6001508476635854
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "shape": "triangle",
+      "peak_cents": 10.0,
+      "rmse_cents": 0.10887229783299522,
+      "max_abs_cents": 0.5713321209169138,
+      "bias_cents": 0.0006115605364894585
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "shape": "triangle",
+      "peak_cents": 13.5,
+      "rmse_cents": 0.16389214954749973,
+      "max_abs_cents": 0.8190318558909109,
+      "bias_cents": 0.0012559533450118543
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "shape": "triangle",
+      "peak_cents": 40.0,
+      "rmse_cents": 1.7413645663959048,
+      "max_abs_cents": 4.802325718446951,
+      "bias_cents": 0.05003489820647033
+    },
+    {
+      "patch": 93,
+      "partial": 2,
+      "cutoff_hz": 40,
+      "shape": "triangle",
+      "peak_cents": 108.0,
+      "rmse_cents": 41.978788002726404,
+      "max_abs_cents": 114.65127036475795,
+      "bias_cents": -0.27668007869150263
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "cutoff_hz": 130,
+      "shape": "sine",
+      "peak_cents": 10.0,
+      "rmse_cents": 0.005722496586226001,
+      "max_abs_cents": 0.008004654013275214,
+      "bias_cents": -0.00029703650240222543
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "cutoff_hz": 130,
+      "shape": "sine",
+      "peak_cents": 13.5,
+      "rmse_cents": 0.0077251114179373625,
+      "max_abs_cents": 0.010810006393761284,
+      "bias_cents": -0.0003913226106134628
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "cutoff_hz": 130,
+      "shape": "sine",
+      "peak_cents": 40.0,
+      "rmse_cents": 0.022886024385737943,
+      "max_abs_cents": 0.032074851630738976,
+      "bias_cents": -0.0009424531032694813
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "cutoff_hz": 130,
+      "shape": "sine",
+      "peak_cents": 108.0,
+      "rmse_cents": 0.26167361333337075,
+      "max_abs_cents": 0.6588836926726742,
+      "bias_cents": -0.0028333089304003124
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "cutoff_hz": 130,
+      "shape": "triangle",
+      "peak_cents": 10.0,
+      "rmse_cents": 0.023851222026030457,
+      "max_abs_cents": 0.23182460490653334,
+      "bias_cents": -0.0002964457116867553
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "cutoff_hz": 130,
+      "shape": "triangle",
+      "peak_cents": 13.5,
+      "rmse_cents": 0.03232709390214066,
+      "max_abs_cents": 0.31406902866572395,
+      "bias_cents": -0.0003917142094098779
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "cutoff_hz": 130,
+      "shape": "triangle",
+      "peak_cents": 40.0,
+      "rmse_cents": 0.10459980489055902,
+      "max_abs_cents": 0.9872916850345845,
+      "bias_cents": -0.0009667495837877854
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "cutoff_hz": 130,
+      "shape": "triangle",
+      "peak_cents": 108.0,
+      "rmse_cents": 0.7587880604990762,
+      "max_abs_cents": 4.6255678807336125,
+      "bias_cents": 0.0003316049445152706
+    }
+  ],
+  "delay_excursion_observations": [
+    {
+      "patch": 93,
+      "partial": 2,
+      "vdt": 24,
+      "pre_vibrato_median_cents": -1.8030844758438278,
+      "pre_vibrato_rms_residual_cents": 0.25955240613034425,
+      "excursion_threshold_cents": 3.0,
+      "first_12ms_excursion_age_seconds": 0.3239916776649636,
+      "nominal_delay_seconds": 0.24,
+      "seconds_per_vdt_if_onset_equals_delay": 0.013499653236040151
+    },
+    {
+      "patch": 97,
+      "partial": 3,
+      "vdt": 21,
+      "pre_vibrato_median_cents": -1.935531606735382,
+      "pre_vibrato_rms_residual_cents": 1.9211644485310517,
+      "excursion_threshold_cents": 10.0,
+      "first_12ms_excursion_age_seconds": 0.2979962648284129,
+      "nominal_delay_seconds": 0.21,
+      "seconds_per_vdt_if_onset_equals_delay": 0.014190298325162519
+    },
+    {
+      "patch": 95,
+      "partial": 2,
+      "vdt": 31,
+      "pre_vibrato_median_cents": -1.818464499117631,
+      "pre_vibrato_rms_residual_cents": 0.3879185307270697,
+      "excursion_threshold_cents": 3.0,
+      "first_12ms_excursion_age_seconds": 0.41599397124667803,
+      "nominal_delay_seconds": 0.31,
+      "seconds_per_vdt_if_onset_equals_delay": 0.013419160362796065
+    }
+  ],
+  "cross_partial_agreement": {
+    "patch": 97,
+    "partials": [
+      1,
+      3
+    ],
+    "median_difference_cents": 1.5367127438301367,
+    "rms_difference_cents": 34.77343944496987,
+    "abs_difference_percentiles_cents": {
+      "10": 3.9654789851063064,
+      "50": 25.894642770945246,
+      "90": 55.550665393473686,
+      "95": 64.05191512660674
+    },
+    "warning": "Do not interpret these partials as fully isolated or residual differences as silicon noise."
+  },
+  "bar_phase_degeneracy": {
+    "train_patch": 93,
+    "evaluation_patch": 97,
+    "onset_separation_seconds": 7.05745374616987,
+    "cycles_at_triangle_fit": 36.93662922655705,
+    "cycles_mod1": 0.9366292265570522
+  },
+  "artifacts": {
+    "directory": "/Users/vojta/Dev/virtual-instrument-press78/build/lfo-audit-20261018",
+    "script_sha256": "d02344bf25045984ab94121fb7c8ea90bb3e2df84b1a72a719efe121fd3a6eec",
+    "protocol_sha256": "15d9a39b52532ab03ef534825dcaa5617b27e8ab65176a73b49abd6d8a700934",
+    "curves_sha256": "9aebfb0374dc9b6cce3df0d562e955d0b6b71e6d7d5460a50dfb4d0fb80aff53",
+    "comparison_sha256": "0d442a230162865b740bd467dfc909b3fe557d389861b35837e1502b92227a2c",
+    "sensitivity_script_sha256": "0ff620bb9b14a2d02a0d8ef0f0d0cc8f204e50f8446d55c40faad41d3fb673c4",
+    "sensitivity_json_sha256": "4d2c4e3ec0d2e3b4957b156ba540d78db2578f263c2c753fcbe010f67d73dab9",
+    "original_report_sha256": "cd0598a549c2a2f198208ceb5b1c9526ea8b8cf29e47e30682d2b58c0f7ebfca",
+    "finish_script_sha256": "3a49609346ddcab7bb69eeac4d60a9b22a3b0e2de7df15e82261ba143abe1701"
+  },
+  "frequency_and_phase_sensitivity": {
+    "rate_sensitivity": [
+      {
+        "rate_hz": 5.22,
+        "phase_rad": 0.5763731743022037,
+        "pms3_peak_cents": 12.469359012530704,
+        "tuning_cents": -1.950538591399674,
+        "train_rmse_cents": 0.5215424897286928,
+        "evaluation": [
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "note-reset",
+            "rmse_cents": 11.333370201550089
+          },
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "global",
+            "rmse_cents": 56.227226942818724
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 13.20658811137562
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 3.0962845728760313
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 12.421674688198237
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 6.764039598249359
+          }
+        ]
+      },
+      {
+        "rate_hz": 5.23,
+        "phase_rad": 0.5328738173810204,
+        "pms3_peak_cents": 12.466587751191023,
+        "tuning_cents": -1.9636437296061404,
+        "train_rmse_cents": 0.5118148073280726,
+        "evaluation": [
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "note-reset",
+            "rmse_cents": 11.739839213011098
+          },
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "global",
+            "rmse_cents": 30.9613850998698
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 13.230180408124209
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 1.6019868836627036
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 12.484840028896494
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 6.585117650623279
+          }
+        ]
+      },
+      {
+        "rate_hz": 5.233704754579911,
+        "phase_rad": 0.5176157028248286,
+        "pms3_peak_cents": 12.465965943798533,
+        "tuning_cents": -1.9687510954977048,
+        "train_rmse_cents": 0.5108499460503507,
+        "evaluation": [
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "note-reset",
+            "rmse_cents": 11.994114394743198
+          },
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "global",
+            "rmse_cents": 21.154989212013938
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 13.23803374635614
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 1.0572805266045875
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 12.504641427628536
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 6.538685645129802
+          }
+        ]
+      },
+      {
+        "rate_hz": 5.24,
+        "phase_rad": 0.4907402877461559,
+        "pms3_peak_cents": 12.464489364433403,
+        "tuning_cents": -1.9770577340033462,
+        "train_rmse_cents": 0.5136667909128126,
+        "evaluation": [
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "note-reset",
+            "rmse_cents": 12.474594135105985
+          },
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "global",
+            "rmse_cents": 9.75415164866634
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 13.252660699186242
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 0.48517694958822793
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 12.541580259879773
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 6.487582567909726
+          }
+        ]
+      },
+      {
+        "rate_hz": 5.245208740234375,
+        "phase_rad": 0.4679239354016933,
+        "pms3_peak_cents": 12.46310793594736,
+        "tuning_cents": -1.9838507557976248,
+        "train_rmse_cents": 0.5199885718692245,
+        "evaluation": [
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "note-reset",
+            "rmse_cents": 12.924227788197697
+          },
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "global",
+            "rmse_cents": 18.482209213695377
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 13.264394294743049
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 1.0141182759324459
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 12.573935739485364
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 6.46904142571905
+          }
+        ]
+      },
+      {
+        "rate_hz": 5.25,
+        "phase_rad": 0.44807596441148434,
+        "pms3_peak_cents": 12.460883762794076,
+        "tuning_cents": -1.9905442794188055,
+        "train_rmse_cents": 0.5287710399882568,
+        "evaluation": [
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "note-reset",
+            "rmse_cents": 13.438812053364222
+          },
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "global",
+            "rmse_cents": 31.059631692401798
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 13.272433335652488
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 1.7352549256982128
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 12.599345710220993
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 6.470649892456769
+          }
+        ]
+      },
+      {
+        "rate_hz": 6.1,
+        "phase_rad": 3.1415926475843285,
+        "pms3_peak_cents": 7.659016075212011,
+        "tuning_cents": -2.0351457437936205,
+        "train_rmse_cents": 5.76277015092946,
+        "evaluation": [
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "note-reset",
+            "rmse_cents": 73.20135775330768
+          },
+          {
+            "patch": 97,
+            "partial": 3,
+            "phase_law": "global",
+            "rmse_cents": 72.95194821296688
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 10.578249343426453
+          },
+          {
+            "patch": 95,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 4.439538546147894
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "note-reset",
+            "rmse_cents": 13.054466289118892
+          },
+          {
+            "patch": 94,
+            "partial": 2,
+            "phase_law": "global",
+            "rmse_cents": 11.19261768154797
+          }
+        ]
+      }
+    ],
+    "simultaneous_whistle_note_frozen_evaluation": [
+      {
+        "patch": 95,
+        "midi": 74,
+        "partial": 2,
+        "shape": "sine",
+        "phase_law": "note-reset",
+        "samples": 65,
+        "rmse_cents": 13.3361372725781,
+        "correlation": -0.9897032671949657
+      },
+      {
+        "patch": 95,
+        "midi": 74,
+        "partial": 2,
+        "shape": "sine",
+        "phase_law": "global",
+        "samples": 65,
+        "rmse_cents": 1.7889451370205176,
+        "correlation": 0.9670020520579402
+      },
+      {
+        "patch": 95,
+        "midi": 74,
+        "partial": 2,
+        "shape": "triangle",
+        "phase_law": "note-reset",
+        "samples": 65,
+        "rmse_cents": 13.257738349241402,
+        "correlation": -0.9924665423721327
+      },
+      {
+        "patch": 95,
+        "midi": 74,
+        "partial": 2,
+        "shape": "triangle",
+        "phase_law": "global",
+        "samples": 65,
+        "rmse_cents": 1.1533183109495693,
+        "correlation": 0.9854823660161518
+      }
+    ],
+    "whistle_cross_note_agreement": {
+      "simultaneous_notes": [
+        74,
+        77
+      ],
+      "partial": 2,
+      "rmse_difference_cents": 0.5228920722489191,
+      "median_difference_cents": 0.3560263845053254,
+      "samples": 65
+    }
+  },
+  "same_calibration_budget_6p1hz_sine": {
+    "rate_hz": 6.1,
+    "phase_rad": -3.119737476004183,
+    "pms3_peak_cents": 6.318434325540395,
+    "tuning_cents": -2.045218081756133,
+    "training_rmse_cents": 5.718631059497507,
+    "notes": "Three nuisance parameters fitted to Human Voice1 only, exactly as fixed5.24Hz sensitivity; makes the old-rate comparison less dependent on its uncalibrated phase."
+  },
+  "sources": [
+    {
+      "id": "yamaha_pss780_manual",
+      "url": "https://usa.yamaha.com/files/download/other_assets/1/317511/PSS780E.PDF",
+      "authority": "Yamaha exact-model owner manual",
+      "sha256": "e1382c76aa9f6351fb3de191228b3209def0cf4ceba54ca6a20406c1e2db0adb",
+      "pages": "printed9 (PDF12) Vibrato description; printed41 (PDF44) voice format",
+      "supports": "Delayed vibrato and separate PMS/VDT/enable fields",
+      "does_not_establish": "LFO rate, shape, phase policy, numeric depth or delay-step duration"
+    },
+    {
+      "id": "pss580_owner_investigation",
+      "url": "https://stereoninjamusic.weebly.com/yamaha-pss-580-specifications.html",
+      "authority": "Original sibling owner investigation, updated2023-07-21; browsed2026-10-18",
+      "supports": "Owner reports fixed triangle LFO and editable modulation depth/delay",
+      "does_not_establish": "Exact PSS780 frequency/phase or arithmetic; no calibrated measurement protocol on the page"
+    },
+    {
+      "id": "pss780_recording",
+      "url": "https://www.youtube.com/watch?v=ONfIvtDOog0",
+      "authority": "Actual PSS780 preset-tour recording supplied by user",
+      "supports": "Observed pitch trajectories under the visible performance/effect states",
+      "does_not_establish": "Dry isolated OPU output, MIDI timestamps, analog circuit identity or bit widths"
+    }
+  ],
+  "conclusions": {
+    "supported": [
+      "Current6.1Hz sine is an audible modulation mismatch in the inspected sustained notes.",
+      "HumanVoice1 strongly favors a roughly5.23\u20135.24Hz triangle over a sine with the same calibration budget.",
+      "A PMS6/PMS3 doubling ratio8 predicts MusicalSaw substantially better than the current ratio4, without fitting Saw depth.",
+      "A global triangle phase remains supported by the clean simultaneous Whistle notes, but requires frequency stability sensitivity; the Voice93-only numerical optimum does not establish millihertz accuracy.",
+      "Apparent vibrato excursions occur later than rawVDT*10ms in all three inspected voices."
+    ],
+    "not_identified": [
+      "Exact PMS values0,1,2,4,5,7",
+      "Native synthesis or LFO divider",
+      "Power-on/reset phase and note-trigger reset logic",
+      "Exact delay units/ramp law (onset depends on phase, filtering and alignment)",
+      "BowedBass pitch law from its contaminated partials",
+      "Digital quantization or noise floor"
+    ],
+    "recommended_next": "Use a documented experimental roughly5.24Hz triangle and binary-depth candidate with full-performance benchmarks. Preserve separate phase/reset and delay uncertainty. Acquire independent dry held notes with captured MIDI times for all PMS levels and staggered note-ons before claiming complete hardware identification."
+  }
+}

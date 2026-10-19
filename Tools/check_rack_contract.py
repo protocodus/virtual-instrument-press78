@@ -22,7 +22,14 @@ def main():
     device = args.device.resolve()
     schema = json.loads((ROOT/'Assets/controls.json').read_text())
     rows = {row['id']: row for row in schema['controls']}
-    assert len(rows) == len(schema['controls']) == 65
+    assert len(rows) == len(schema['controls']) == 66
+    hidden={name for name,row in rows.items() if row.get('hidden')}
+    assert hidden == {'noiseRms','noiseModel'}
+    visible=set(rows)-hidden
+    assert all(rows[name]['default']==0 for name in hidden)
+    # Old songs lack this property and must keep their original tuning.
+    assert rows['pitchModel']['default']==0
+    assert schema['startup_profile']['values']['pitchModel']==1
     info = (device/'info.lua').read_text()
     for field, expected in [('product_id', schema['product']), ('version_number', schema['version'])]:
         assert re.search(rf'{field}\s*=\s*"([^"]+)"', info)[1] == expected
@@ -33,10 +40,15 @@ def main():
     for key in rows:
         assert re.search(rf'\b{key}\s*=\s*jbox.number', mother), key
         assert f'k_{key}' in cpp, key
-        assert f'physical(k_{key})' in apply or key in ('bendRange', 'modWheelDepth'), key
+        if key in hidden:
+            assert f'controls.{key} = 0;' in apply, key
+        else:
+            assert f'physical(k_{key})' in apply or key in ('bendRange', 'modWheelDepth'), key
     groups=mother.split('ui_groups = {',1)[1]
     grouped=re.findall(r'"/custom_properties/([^"]+)"',groups)
-    assert len(grouped) == len(rows) and set(grouped) == set(rows)
+    assert len(grouped) == len(visible) and set(grouped) == visible
+    remote=mother.split('remote_implementation_chart = {',1)[1].split('midi_implementation_chart =',1)[0]
+    assert set(re.findall(r'\["/custom_properties/([^"]+)"\]',remote)) == visible
     # All panel parameters need explicit, stable host automation mappings.
     registry = json.loads((ROOT/'Assets/rack-automation.json').read_text())
     assert registry['product'] == schema['product']
@@ -64,7 +76,7 @@ def main():
     namespace = {}
     exec(compile(ast.Module(body=[decoder], type_ignores=[]), str(source), 'exec'), namespace)
     bank = json.loads((ROOT/'Assets/FactoryBank/press78-factory.json').read_text())
-    expected = {'Init': {}}
+    expected = {'Init': {'pitchModel': 1}}
     aliases = {'lks_hi': 'lksHi', 'lks_lo': 'lksLo', 'am_enable': 'amEnable'}
     for voice in bank['voices']:
         patch = namespace['read_sysex'](bytes.fromhex(voice['sysex_hex']))
@@ -73,7 +85,7 @@ def main():
             values.update({prefix+'_'+aliases.get(key, key): value for key, value in patch[op].items()})
         for key in ('feedback', 'pms', 'ams', 'vibrato_delay', 'vibrato', 'sustain'):
             values['vibratoDelay' if key == 'vibrato_delay' else key] = int(patch[key])
-        values.update(chorusMode=1,chorusRateHz=0.9546467517767424,
+        values.update(pitchModel=1,chorusMode=1,chorusRateHz=0.9546467517767424,
                       chorusDepthMs=math.hypot(0.0495126833338911,0.4943632948117077))
         assert voice['name'].startswith('PSS ')
         expected[voice['name'].replace('/', '-')] = values
@@ -101,7 +113,7 @@ def main():
                 physical = row['min']+value*(row['max']-row['min'])
             target = expected[path.stem].get(key, row['default'])
             assert abs(physical-target) < 1e-9, (path.name, key, physical, target)
-    result = dict(passed=True, controls=len(rows), performance_inputs=3, patches=len(paths),
+    result = dict(passed=True, controls=len(rows), visible_controls=len(visible), hidden_compatibility_properties=sorted(hidden), performance_inputs=3, patches=len(paths),
                   automation_mappings=len(ids),
                   localization_references=len(used), scope='Generated source contracts; no host execution',
                   sha256={str(p.relative_to(device)): hashlib.sha256(p.read_bytes()).hexdigest()

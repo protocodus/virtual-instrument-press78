@@ -1,0 +1,109 @@
+{
+  "schema": "press78.pitch-model-core-validation.v1",
+  "passed": true,
+  "scope": "Native DSP and command-software semantics only; no SDK target/Reason or silicon arithmetic claim.",
+  "sources": {
+    "Source/DSP/FirmwarePitch.h": {
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    "Source/DSP/Press78Engine.h": {
+      "bytes": 9170,
+      "sha256": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0"
+    },
+    "Source/DSP/Press78Engine.cpp": {
+      "bytes": 26257,
+      "sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f"
+    },
+    "Tools/generate_firmware_pitch.py": {
+      "bytes": 5605,
+      "sha256": "c99776f1d97d8cdf86c0dde314d44adfaa3047d6d193ac558f3127dc76a01653"
+    },
+    "Tools/NativeRender.cpp": {
+      "bytes": 7035,
+      "sha256": "9fe359b87353b52e04fa5694d02fa207b5ea95347d53b05a5b60139d26729221"
+    },
+    "Tools/PerformanceProbe.cpp": {
+      "bytes": 4866,
+      "sha256": "f2c0280c0aafddec4f42bb2a9b9803c9be6e604518fbe81fb8ff3367d6bd9f28"
+    },
+    "Tests/test_pitch.cpp": {
+      "bytes": 11913,
+      "sha256": "41747d1f9d809a7a4a1312ac162991f79ec192ffbe012f819c0c7b1892a4d5d2"
+    },
+    "CMakeLists.txt": {
+      "bytes": 2972,
+      "sha256": "88112639f5e1b531c9a5d80c4d1d458a74f3db11de22f3dba6d2f279e89a0894"
+    }
+  },
+  "legacy_equal": {
+    "passed": true,
+    "cases": "100factory patches at44100/48000/96000,128blocks64frames perpatch; continuous engine with livepatch/control/velocity/polyphony/bend/tune/effects/sustain/noteoff/soundoff events",
+    "frames": 2457600,
+    "channels": 2,
+    "pcm_float_bytes": 19660800,
+    "b11_pcm": {
+      "bytes": 19660800,
+      "sha256": "0fa33f0d730d09b0aecbb23d698fbc89a3f81157ec1a1594269a49c12b499368"
+    },
+    "candidate_pcm": {
+      "bytes": 19660800,
+      "sha256": "0fa33f0d730d09b0aecbb23d698fbc89a3f81157ec1a1594269a49c12b499368"
+    },
+    "probe": {
+      "bytes": 1277,
+      "sha256": "7467178a89f0d7333f72d61881ffe2e064890057d0c55f0d84fcf7055c167809"
+    },
+    "comparison": "all bytes identical"
+  },
+  "release": {
+    "ctest_targets_passed": 6,
+    "log": {
+      "bytes": 776,
+      "sha256": "5b6fb85e1237edc4a7ad2a48b993ce2b2ee61ac30741e1e8bdad08f5e1edb34e"
+    }
+  },
+  "asan_ubsan": {
+    "ctest_targets_passed": 6,
+    "log": {
+      "bytes": 780,
+      "sha256": "140f3b868c1b88d97d0a00ee4321ca78f716536ddd2afc40a67d2ebc406f45b4"
+    }
+  },
+  "pitch_contract_groups": 12,
+  "command_helper": {
+    "receipt": "build/pitch-model-b12-20261019/command-helper-validation.json",
+    "bytes": 1299,
+    "sha256": "83cbd6b238e82dca2e4f1db477c9349a93c9b68c667d185bc2ca06c950437985",
+    "converter_cases": 49152,
+    "writes_compared": 147456,
+    "passed": true
+  },
+  "generator": {
+    "pitch_words": 384,
+    "bend_words": 1536,
+    "hash_matches": true,
+    "locally_hashverified_roms_compared": 3
+  },
+  "performance": {
+    "receipt": "build/pitch-model-b12-20261019/performance-original.json",
+    "bytes": 2016,
+    "sha256": "4842200245445b217a710082ceb3f39eae6a28da56178c89fe8e9998b1c72ab0",
+    "all_deadline_misses": 0,
+    "max_native_wall_fraction_of_realtime": 0.065563875,
+    "limits": "Native3second wall-time workloads only; excludes Reason wrapper,target translation and scheduling; not hard realtime guarantee."
+  },
+  "noise": {
+    "new_noise_sources": false,
+    "legacy_fields_forced_zero": true,
+    "Original_idle_exact_zero": true,
+    "old_b11_nonzero_noise_request_remains_sample_identical": true
+  },
+  "limits": [
+    "Firmware command words and bend mapping are verified. Downstream floor/grid at5.5MHz is behavioral, not a measured phase/cadence implementation.",
+    "Equal constructordefault remains0; explicit newpatch defaults owned separately.",
+    "Original fine/bend steps update phase-preserving coefficients immediately; only continuous host tune retains5ms smoothing.",
+    "Pitch law changes wait for all voices and steal fades to become idle. No oscillator/envelope/LFO/analog/noise law changed.",
+    "Extended playable0..127 and tune/bend spans beyond physical boundaries are documented plugin extrapolations."
+  ]
+}

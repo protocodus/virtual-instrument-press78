@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "converter_cases": 49152,
+  "writes_compared": 147456,
+  "scope": "Fresh compiled C++ helper compared exhaustively with independent frozen functional model. That frozen model was previously checked by original execution on all three hash-verified ROMs; this run does not reexecute firmware.",
+  "output_bytes": 589824,
+  "output_sha256": "28138af6fba5ef13f42771b6ba668c604098286adc0c42ba5effef9c5849ae27",
+  "bindings": {
+    "Source/DSP/FirmwarePitch.h": {
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    "Tools/generate_firmware_pitch.py": {
+      "bytes": 5605,
+      "sha256": "c99776f1d97d8cdf86c0dde314d44adfaa3047d6d193ac558f3127dc76a01653"
+    },
+    "build/opu-pitch-command-path-20261019/verify_functional_pitch.py": {
+      "bytes": 3996,
+      "sha256": "ea2b5f1184c6feebb07e0d97252eb95361dcfe39a2fc129211db33262bae3cb8"
+    },
+    "build/opu-pitch-command-path-20261019/functional-pitch-validation.json": {
+      "bytes": 1900,
+      "sha256": "6b3bb817eaa356afeb3f0bdd86d580ffbb1890c436d69ca0739724a9d1e86948"
+    },
+    "build/pitch-model-b12-20261019/command-helper-dump.cpp": {
+      "bytes": 323,
+      "sha256": "aba932438fe4d2ebbfce5deb5bd86dbc7e982c36c6a3ebb4eeee84c73d9b11af"
+    }
+  }
+}

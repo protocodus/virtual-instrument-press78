@@ -1,0 +1,2329 @@
+{
+  "schema": "press78.front-panel-envelope-map-research.v1",
+  "date": "2026-10-19",
+  "status": "ready_for_independent_review",
+  "finding": "Panel Decay2/3 changes only modulator/carrier D2R lower6bits; D1R,D1L,RR,SRR remain unchanged",
+  "sources": {
+    "rom_identity_authority": "https://github.com/mamedev/mame/blob/983e76f8cd84f8da8d14241c9f07a5ee138cc3eb/src/mame/yamaha/ympsr16.cpp",
+    "official_manual": "https://usa.yamaha.com/files/download/other_assets/1/317511/PSS780E.PDF",
+    "manual_pages_printed": [
+      27,
+      28,
+      41
+    ],
+    "provenance_ledger": "Reference/Research/opu-pitch-command-path-20261019.json",
+    "roms": [
+      {
+        "model": "PSS780",
+        "sha1": "33cc3f4ab27cf6e5068627625f6ab236209ad776"
+      },
+      {
+        "model": "PSS680",
+        "sha1": "d578324cfae73cd5f6c628eb3044be07684bc5d0"
+      }
+    ],
+    "roms_and_full_disassembly_not_distributed": true
+  },
+  "mapping": {
+    "parameter2": "modulator D2R, internalpayload10 /SysExpayload11",
+    "parameter3": "carrier D2R, internalpayload11 /SysExpayload12",
+    "value_range_inclusive": [
+      0,
+      63
+    ],
+    "edit": "increments/decrements6bit D2R only; preserves waveform high2bits",
+    "reset": "restores selectedfactory D2R lower6bits, preserves workingwaveform",
+    "unchanged": "all31otherpayloadbytes: D1R,D1L,RR,SRR,AR,RKS,operatorlevel,feedback,etc.",
+    "writes": "For each12cachedworkingvoice slots, refreshmodD2R/wave at$02c0+pair+odd16 andcarrierD2R/wave at$02c8+pair+odd16. No D1R,D1L,RR hardwareportswritten intheseeditcalls."
+  },
+  "pss780_entry_points": {
+    "factory_select": "0xd936",
+    "decay_key_edge": "0xdcdd",
+    "value_keys": "0xdd2c",
+    "parameter_dispatch": "0x72f9",
+    "modulator_decay": "0x6fba",
+    "carrier_decay": "0x702b",
+    "D2R_hardware_writer": "0xc64b"
+  },
+  "pss680_entry_points": {
+    "factory_select": "0xd831",
+    "decay_button": "0xdb7b",
+    "value_keys": "0xdbca",
+    "parameter_dispatch": "0x72f9"
+  },
+  "fixture_state": {
+    "factory_program_map": "bank3$776b",
+    "working_payload32": "$2659..$2678",
+    "selected_parameter": "$2587",
+    "decay_button_edge": "$2016 bit1 withprevious$2017=0",
+    "value_up": "$2070bit6",
+    "value_down": "$2070bit7",
+    "value_reset": "bothbits6and7,currentedge",
+    "editor_voice_cache": "$24a6..$24b1=$ff fromactualfactoryload"
+  },
+  "software_verification": {
+    "pss780_cases_passed": 1901,
+    "pss680_cases_passed": 1602,
+    "total_cases_passed": 3503,
+    "pss780_case_groups": {
+      "factory_payload_matches": 100,
+      "wave_value_direction_operator_cases": 1536,
+      "factory_reset_cases": 200,
+      "sequential_panel_values": 64,
+      "bass_recipe_decay_pair": 1
+    },
+    "pss680_case_groups": {
+      "factory99_payload_identity": 1,
+      "wave_value_direction_operator_cases": 1536,
+      "sequential_values": 64,
+      "bass_decay_pair": 1
+    },
+    "bank2_identical_680_780": true,
+    "bank2_sha256": "66a5857e82da1b194c971b76559a06b44f41b4a480038505828b6eb7f0d8672b",
+    "mirrored_zero_page_stack": true,
+    "read_only_rom_enforced": true,
+    "hardwarebusy": "alwaysready",
+    "full_machine_boot": false,
+    "physical_hardware_execution": false,
+    "audio_fitting": false
+  },
+  "selected_differences": [
+    {
+      "parameter": 2,
+      "display": "2.00",
+      "changed_payload_offsets": [],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289"
+    },
+    {
+      "parameter": 2,
+      "display": "2.21",
+      "changed_payload_offsets": [
+        10
+      ],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 21,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [
+        [
+          704,
+          21
+        ],
+        [
+          712,
+          0
+        ],
+        [
+          720,
+          21
+        ],
+        [
+          728,
+          0
+        ],
+        [
+          705,
+          21
+        ],
+        [
+          713,
+          0
+        ],
+        [
+          721,
+          21
+        ],
+        [
+          729,
+          0
+        ],
+        [
+          706,
+          21
+        ],
+        [
+          714,
+          0
+        ],
+        [
+          722,
+          21
+        ],
+        [
+          730,
+          0
+        ],
+        [
+          707,
+          21
+        ],
+        [
+          715,
+          0
+        ],
+        [
+          723,
+          21
+        ],
+        [
+          731,
+          0
+        ],
+        [
+          708,
+          21
+        ],
+        [
+          716,
+          0
+        ],
+        [
+          724,
+          21
+        ],
+        [
+          732,
+          0
+        ],
+        [
+          709,
+          21
+        ],
+        [
+          717,
+          0
+        ],
+        [
+          725,
+          21
+        ],
+        [
+          733,
+          0
+        ]
+      ],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "5ce8be5986336ef54e1da4080eaa1d78cb088ee8c778cd7529f10bf6afa99955"
+    },
+    {
+      "parameter": 2,
+      "display": "2.22",
+      "changed_payload_offsets": [
+        10
+      ],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 22,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [
+        [
+          704,
+          22
+        ],
+        [
+          712,
+          0
+        ],
+        [
+          720,
+          22
+        ],
+        [
+          728,
+          0
+        ],
+        [
+          705,
+          22
+        ],
+        [
+          713,
+          0
+        ],
+        [
+          721,
+          22
+        ],
+        [
+          729,
+          0
+        ],
+        [
+          706,
+          22
+        ],
+        [
+          714,
+          0
+        ],
+        [
+          722,
+          22
+        ],
+        [
+          730,
+          0
+        ],
+        [
+          707,
+          22
+        ],
+        [
+          715,
+          0
+        ],
+        [
+          723,
+          22
+        ],
+        [
+          731,
+          0
+        ],
+        [
+          708,
+          22
+        ],
+        [
+          716,
+          0
+        ],
+        [
+          724,
+          22
+        ],
+        [
+          732,
+          0
+        ],
+        [
+          709,
+          22
+        ],
+        [
+          717,
+          0
+        ],
+        [
+          725,
+          22
+        ],
+        [
+          733,
+          0
+        ]
+      ],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "84465f2645d74f6ced8b7b9ddf579cac7148b83df362f62139d69ed3a2ff8708"
+    },
+    {
+      "parameter": 2,
+      "display": "2.24",
+      "changed_payload_offsets": [
+        10
+      ],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 24,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [
+        [
+          704,
+          24
+        ],
+        [
+          712,
+          0
+        ],
+        [
+          720,
+          24
+        ],
+        [
+          728,
+          0
+        ],
+        [
+          705,
+          24
+        ],
+        [
+          713,
+          0
+        ],
+        [
+          721,
+          24
+        ],
+        [
+          729,
+          0
+        ],
+        [
+          706,
+          24
+        ],
+        [
+          714,
+          0
+        ],
+        [
+          722,
+          24
+        ],
+        [
+          730,
+          0
+        ],
+        [
+          707,
+          24
+        ],
+        [
+          715,
+          0
+        ],
+        [
+          723,
+          24
+        ],
+        [
+          731,
+          0
+        ],
+        [
+          708,
+          24
+        ],
+        [
+          716,
+          0
+        ],
+        [
+          724,
+          24
+        ],
+        [
+          732,
+          0
+        ],
+        [
+          709,
+          24
+        ],
+        [
+          717,
+          0
+        ],
+        [
+          725,
+          24
+        ],
+        [
+          733,
+          0
+        ]
+      ],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "1f07fa9b680c1036ad1c82cb69826fc23439b00a2e588fa87ced0e843ed4fe14"
+    },
+    {
+      "parameter": 2,
+      "display": "2.25",
+      "changed_payload_offsets": [
+        10
+      ],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 25,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [
+        [
+          704,
+          25
+        ],
+        [
+          712,
+          0
+        ],
+        [
+          720,
+          25
+        ],
+        [
+          728,
+          0
+        ],
+        [
+          705,
+          25
+        ],
+        [
+          713,
+          0
+        ],
+        [
+          721,
+          25
+        ],
+        [
+          729,
+          0
+        ],
+        [
+          706,
+          25
+        ],
+        [
+          714,
+          0
+        ],
+        [
+          722,
+          25
+        ],
+        [
+          730,
+          0
+        ],
+        [
+          707,
+          25
+        ],
+        [
+          715,
+          0
+        ],
+        [
+          723,
+          25
+        ],
+        [
+          731,
+          0
+        ],
+        [
+          708,
+          25
+        ],
+        [
+          716,
+          0
+        ],
+        [
+          724,
+          25
+        ],
+        [
+          732,
+          0
+        ],
+        [
+          709,
+          25
+        ],
+        [
+          717,
+          0
+        ],
+        [
+          725,
+          25
+        ],
+        [
+          733,
+          0
+        ]
+      ],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "dd5e4bb141459ea88faba90166f480c39a5db897a1149dfcc9dfdfba4c75664a"
+    },
+    {
+      "parameter": 2,
+      "display": "2.31",
+      "changed_payload_offsets": [
+        10
+      ],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 31,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [
+        [
+          704,
+          31
+        ],
+        [
+          712,
+          0
+        ],
+        [
+          720,
+          31
+        ],
+        [
+          728,
+          0
+        ],
+        [
+          705,
+          31
+        ],
+        [
+          713,
+          0
+        ],
+        [
+          721,
+          31
+        ],
+        [
+          729,
+          0
+        ],
+        [
+          706,
+          31
+        ],
+        [
+          714,
+          0
+        ],
+        [
+          722,
+          31
+        ],
+        [
+          730,
+          0
+        ],
+        [
+          707,
+          31
+        ],
+        [
+          715,
+          0
+        ],
+        [
+          723,
+          31
+        ],
+        [
+          731,
+          0
+        ],
+        [
+          708,
+          31
+        ],
+        [
+          716,
+          0
+        ],
+        [
+          724,
+          31
+        ],
+        [
+          732,
+          0
+        ],
+        [
+          709,
+          31
+        ],
+        [
+          717,
+          0
+        ],
+        [
+          725,
+          31
+        ],
+        [
+          733,
+          0
+        ]
+      ],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "aea35bbb0ca7cf4631ae968e1934b142adb3c3e30ecfb108a4d5992eb04970d5"
+    },
+    {
+      "parameter": 3,
+      "display": "3.00",
+      "changed_payload_offsets": [],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289"
+    },
+    {
+      "parameter": 3,
+      "display": "3.21",
+      "changed_payload_offsets": [
+        11
+      ],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 21,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [
+        [
+          704,
+          0
+        ],
+        [
+          712,
+          21
+        ],
+        [
+          720,
+          0
+        ],
+        [
+          728,
+          21
+        ],
+        [
+          705,
+          0
+        ],
+        [
+          713,
+          21
+        ],
+        [
+          721,
+          0
+        ],
+        [
+          729,
+          21
+        ],
+        [
+          706,
+          0
+        ],
+        [
+          714,
+          21
+        ],
+        [
+          722,
+          0
+        ],
+        [
+          730,
+          21
+        ],
+        [
+          707,
+          0
+        ],
+        [
+          715,
+          21
+        ],
+        [
+          723,
+          0
+        ],
+        [
+          731,
+          21
+        ],
+        [
+          708,
+          0
+        ],
+        [
+          716,
+          21
+        ],
+        [
+          724,
+          0
+        ],
+        [
+          732,
+          21
+        ],
+        [
+          709,
+          0
+        ],
+        [
+          717,
+          21
+        ],
+        [
+          725,
+          0
+        ],
+        [
+          733,
+          21
+        ]
+      ],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "8f7e03727b369330b1f1d880caa72872334ba7953990a33befe286b16e348f60"
+    },
+    {
+      "parameter": 3,
+      "display": "3.22",
+      "changed_payload_offsets": [
+        11
+      ],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 22,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [
+        [
+          704,
+          0
+        ],
+        [
+          712,
+          22
+        ],
+        [
+          720,
+          0
+        ],
+        [
+          728,
+          22
+        ],
+        [
+          705,
+          0
+        ],
+        [
+          713,
+          22
+        ],
+        [
+          721,
+          0
+        ],
+        [
+          729,
+          22
+        ],
+        [
+          706,
+          0
+        ],
+        [
+          714,
+          22
+        ],
+        [
+          722,
+          0
+        ],
+        [
+          730,
+          22
+        ],
+        [
+          707,
+          0
+        ],
+        [
+          715,
+          22
+        ],
+        [
+          723,
+          0
+        ],
+        [
+          731,
+          22
+        ],
+        [
+          708,
+          0
+        ],
+        [
+          716,
+          22
+        ],
+        [
+          724,
+          0
+        ],
+        [
+          732,
+          22
+        ],
+        [
+          709,
+          0
+        ],
+        [
+          717,
+          22
+        ],
+        [
+          725,
+          0
+        ],
+        [
+          733,
+          22
+        ]
+      ],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "40cf83a4f9d1da5558cb13bf7ca43971b0e8f87ff7cad8c0489def4165db2c2a"
+    },
+    {
+      "parameter": 3,
+      "display": "3.24",
+      "changed_payload_offsets": [
+        11
+      ],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 24,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [
+        [
+          704,
+          0
+        ],
+        [
+          712,
+          24
+        ],
+        [
+          720,
+          0
+        ],
+        [
+          728,
+          24
+        ],
+        [
+          705,
+          0
+        ],
+        [
+          713,
+          24
+        ],
+        [
+          721,
+          0
+        ],
+        [
+          729,
+          24
+        ],
+        [
+          706,
+          0
+        ],
+        [
+          714,
+          24
+        ],
+        [
+          722,
+          0
+        ],
+        [
+          730,
+          24
+        ],
+        [
+          707,
+          0
+        ],
+        [
+          715,
+          24
+        ],
+        [
+          723,
+          0
+        ],
+        [
+          731,
+          24
+        ],
+        [
+          708,
+          0
+        ],
+        [
+          716,
+          24
+        ],
+        [
+          724,
+          0
+        ],
+        [
+          732,
+          24
+        ],
+        [
+          709,
+          0
+        ],
+        [
+          717,
+          24
+        ],
+        [
+          725,
+          0
+        ],
+        [
+          733,
+          24
+        ]
+      ],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "d0aa613ba4fedc2b9153dd79428275237ed8bf5e776eaad71551a406dec270be"
+    },
+    {
+      "parameter": 3,
+      "display": "3.25",
+      "changed_payload_offsets": [
+        11
+      ],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 25,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [
+        [
+          704,
+          0
+        ],
+        [
+          712,
+          25
+        ],
+        [
+          720,
+          0
+        ],
+        [
+          728,
+          25
+        ],
+        [
+          705,
+          0
+        ],
+        [
+          713,
+          25
+        ],
+        [
+          721,
+          0
+        ],
+        [
+          729,
+          25
+        ],
+        [
+          706,
+          0
+        ],
+        [
+          714,
+          25
+        ],
+        [
+          722,
+          0
+        ],
+        [
+          730,
+          25
+        ],
+        [
+          707,
+          0
+        ],
+        [
+          715,
+          25
+        ],
+        [
+          723,
+          0
+        ],
+        [
+          731,
+          25
+        ],
+        [
+          708,
+          0
+        ],
+        [
+          716,
+          25
+        ],
+        [
+          724,
+          0
+        ],
+        [
+          732,
+          25
+        ],
+        [
+          709,
+          0
+        ],
+        [
+          717,
+          25
+        ],
+        [
+          725,
+          0
+        ],
+        [
+          733,
+          25
+        ]
+      ],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "a5d1c8569eb600df3843308115509285cc2bbc8dd0919bb4535c550a8a689c5f"
+    },
+    {
+      "parameter": 3,
+      "display": "3.31",
+      "changed_payload_offsets": [
+        11
+      ],
+      "fields_before": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "fields_after": {
+        "modulator": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 0,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        },
+        "carrier": {
+          "AR": 63,
+          "D1R": 1,
+          "D2R": 31,
+          "wave": 0,
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "RKS": 0
+        }
+      },
+      "hardware_writes": [
+        [
+          704,
+          0
+        ],
+        [
+          712,
+          31
+        ],
+        [
+          720,
+          0
+        ],
+        [
+          728,
+          31
+        ],
+        [
+          705,
+          0
+        ],
+        [
+          713,
+          31
+        ],
+        [
+          721,
+          0
+        ],
+        [
+          729,
+          31
+        ],
+        [
+          706,
+          0
+        ],
+        [
+          714,
+          31
+        ],
+        [
+          722,
+          0
+        ],
+        [
+          730,
+          31
+        ],
+        [
+          707,
+          0
+        ],
+        [
+          715,
+          31
+        ],
+        [
+          723,
+          0
+        ],
+        [
+          731,
+          31
+        ],
+        [
+          708,
+          0
+        ],
+        [
+          716,
+          31
+        ],
+        [
+          724,
+          0
+        ],
+        [
+          732,
+          31
+        ],
+        [
+          709,
+          0
+        ],
+        [
+          717,
+          31
+        ],
+        [
+          725,
+          0
+        ],
+        [
+          733,
+          31
+        ]
+      ],
+      "before_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "after_payload_sha256": "400240af0cf734e49c7b1275f866990d9d27d39177662130f0abbbd9aee6d313"
+    }
+  ],
+  "recipe_decay_fields": {
+    "modulator": {
+      "AR": 63,
+      "D1R": 1,
+      "D2R": 24,
+      "wave": 0,
+      "D1L": 0,
+      "RR": 8,
+      "SRR": 5,
+      "RKS": 0
+    },
+    "carrier": {
+      "AR": 63,
+      "D1R": 1,
+      "D2R": 22,
+      "wave": 0,
+      "D1L": 0,
+      "RR": 8,
+      "SRR": 5,
+      "RKS": 0
+    }
+  },
+  "published_factory_bank_identity": {
+    "all100_match_original_firmware_selected_payloads": true,
+    "factory_bank_sha256": "571d88bac22ac47eb281684d8edcece94b4319ef1b305cc99748fe70151d5168",
+    "per_payload_hashes": [
+      {
+        "program": 0,
+        "internal_program": 3,
+        "payload_sha256": "271e40588023152cd9c0e3397b53b8de47c5dfe0b765ddca0ca478c96aaff108"
+      },
+      {
+        "program": 1,
+        "internal_program": 52,
+        "payload_sha256": "5e2734d9d283c1ecd89c0724aff906c59bf1f77fc749f6af59fe1736664b6ad1"
+      },
+      {
+        "program": 2,
+        "internal_program": 5,
+        "payload_sha256": "a2159919ad10fb62c361070b4596cbdbe8a53979cc487873721ff5e76851e7a0"
+      },
+      {
+        "program": 3,
+        "internal_program": 54,
+        "payload_sha256": "0e32dea0dcc8cd8f739d5d3b41836bcabc7d441502e6c676618b4111e98aeb38"
+      },
+      {
+        "program": 4,
+        "internal_program": 25,
+        "payload_sha256": "3b701ae230e82227ab0977e04a9cf60c214b8b1e8ed789a5cb51743576164fcc"
+      },
+      {
+        "program": 5,
+        "internal_program": 26,
+        "payload_sha256": "88ef95d132bdcfdffaac46cbfba03fbe990d10219ee4895f6ee5474131b4c131"
+      },
+      {
+        "program": 6,
+        "internal_program": 49,
+        "payload_sha256": "75f4f579c267a0b2989eb248cf62d286af63ba40b86358593e0f4f35330ebe88"
+      },
+      {
+        "program": 7,
+        "internal_program": 2,
+        "payload_sha256": "1ee8b8ab6b06550e388fc8d561d90ae8042cda20642a82307f6b3ebb2f148727"
+      },
+      {
+        "program": 8,
+        "internal_program": 51,
+        "payload_sha256": "86e40aa21cc1b59766e6dc4ec9356822ad13b2eab4e6addae4154f61b2e619f7"
+      },
+      {
+        "program": 9,
+        "internal_program": 29,
+        "payload_sha256": "f16a71b633f7c0578cb1924c48dad37ca488f691c73caf2a69f4c75d1e176bb7"
+      },
+      {
+        "program": 10,
+        "internal_program": 50,
+        "payload_sha256": "892c10a0f132e2c4d3b19cf8e736ba8884844c62a3e4f167b3300aaf0813d3a5"
+      },
+      {
+        "program": 11,
+        "internal_program": 27,
+        "payload_sha256": "4b98c3da58790171ed4ea53bc79e9568e2524db2c6b5f9effc7e6d2b72b10e7c"
+      },
+      {
+        "program": 12,
+        "internal_program": 28,
+        "payload_sha256": "bed6184cc6599e734148df52ff53d8993301d8c3d0161b1947a45e4b41a371d4"
+      },
+      {
+        "program": 13,
+        "internal_program": 1,
+        "payload_sha256": "342599601b75dc4fb4392dcdccc982e5a0fa84a854a38ca833c022a663a0a71a"
+      },
+      {
+        "program": 14,
+        "internal_program": 57,
+        "payload_sha256": "a4ba4a4cacd73c3be34c43dc1029efef157fea9a14fecc71f70ccee2b6f755fc"
+      },
+      {
+        "program": 15,
+        "internal_program": 4,
+        "payload_sha256": "c153ceb5ddd465b9f44f05c22a3af197132fc14035677cf344f826b867f90ac8"
+      },
+      {
+        "program": 16,
+        "internal_program": 53,
+        "payload_sha256": "6e99b818a2de3cf518319a9a64c32d895eb28f4e2f6b8dd43d58ec1e88559a1f"
+      },
+      {
+        "program": 17,
+        "internal_program": 30,
+        "payload_sha256": "b9d5e5969249e01bce7486ba06aadc6e65a5d65f4cb2a23fc00f0a9542cf498a"
+      },
+      {
+        "program": 18,
+        "internal_program": 6,
+        "payload_sha256": "1ff9a837bcd98d3b9c74493088a30e7f13c35c4d1f1a4a4a81c6ad511d76c4a8"
+      },
+      {
+        "program": 19,
+        "internal_program": 55,
+        "payload_sha256": "200735c6e2d09890c1b8389909501262344b0f553d3cc5c3e98b89257ecc47cd"
+      },
+      {
+        "program": 20,
+        "internal_program": 31,
+        "payload_sha256": "94e4dd70f3808a7454e2719d2a55d42a03eb5ed1b2a88fc007ad267c9e26b1cb"
+      },
+      {
+        "program": 21,
+        "internal_program": 56,
+        "payload_sha256": "5e264704192e4e85e4da9d41c05392f9166aa9127009fecb8362d77e16e97645"
+      },
+      {
+        "program": 22,
+        "internal_program": 15,
+        "payload_sha256": "c44b98d5b5bfb51e3d177b3ac533f06b0e36ec93a0e24e09d62fd8380eb6e018"
+      },
+      {
+        "program": 23,
+        "internal_program": 44,
+        "payload_sha256": "cab1fd4fde75844bbb3199b3573c21992146ed2df91fe526ea22f162dabb4876"
+      },
+      {
+        "program": 24,
+        "internal_program": 83,
+        "payload_sha256": "b34d215469d075e340c52706a8d05cab348631fed38c93b2863753d87c2e97f9"
+      },
+      {
+        "program": 25,
+        "internal_program": 82,
+        "payload_sha256": "d8975aebdada3a51d3a876e14ca99582120df5e1bece556385d3cfb2657d20f3"
+      },
+      {
+        "program": 26,
+        "internal_program": 17,
+        "payload_sha256": "b1691014d3939d769d42db29d1ba714d9470b87824b29855e9015f55817aea88"
+      },
+      {
+        "program": 27,
+        "internal_program": 42,
+        "payload_sha256": "25adc170b3b441c64e945ff16768f6ac149fd109eb31c3671ee48031d78c282d"
+      },
+      {
+        "program": 28,
+        "internal_program": 16,
+        "payload_sha256": "3c0f237eb9afc56696fb7ec5ee1fcbc28bcaa26f9d0eb79a3a8dc6d377752ff8"
+      },
+      {
+        "program": 29,
+        "internal_program": 84,
+        "payload_sha256": "9a60209d1217e75b18dbfa6bd89724ba403ede04e5365a1052dd4bfe5421dd56"
+      },
+      {
+        "program": 30,
+        "internal_program": 92,
+        "payload_sha256": "6180d52be29d1ba362dabe0bf9eca65a47a318685113645ffeb75b60a1a89842"
+      },
+      {
+        "program": 31,
+        "internal_program": 18,
+        "payload_sha256": "daf4d8291bf4afe8e0ec0e79db4b3e40b0dfe3493e259be1b81138d58b87ba61"
+      },
+      {
+        "program": 32,
+        "internal_program": 85,
+        "payload_sha256": "5bd36e7c4e47b0032f5835ee83fdd587a01609ed51e7f390b6470c994e8a21a4"
+      },
+      {
+        "program": 33,
+        "internal_program": 45,
+        "payload_sha256": "f915d5baca8abb9a182251ccca19811fe17f21bc4e510e6b22ffab68f18bc573"
+      },
+      {
+        "program": 34,
+        "internal_program": 19,
+        "payload_sha256": "dce9070b5ae580ac395ae11a5a242366deed088e9da1803d011d30520769e5bd"
+      },
+      {
+        "program": 35,
+        "internal_program": 86,
+        "payload_sha256": "4e866c984b8944bec48d42d036cf71d701373d2ec6db0f3e9f17e46b55a71c5c"
+      },
+      {
+        "program": 36,
+        "internal_program": 21,
+        "payload_sha256": "1430f7434a65acb40f0e96ff3f6f411e8c5ae43638804c91e3f70bd6dee4db11"
+      },
+      {
+        "program": 37,
+        "internal_program": 87,
+        "payload_sha256": "f8925ff8e571829797a1e90f2a1ffd19d4e2677d37908c843e4ffab0ab1a866a"
+      },
+      {
+        "program": 38,
+        "internal_program": 90,
+        "payload_sha256": "8d6b714d48b87c13fe0fa89593e0e4d22635edd451d74eb31dadd2783055b22f"
+      },
+      {
+        "program": 39,
+        "internal_program": 20,
+        "payload_sha256": "f13ea7749cbbb3de4169328cc08ac708c6dc7c9937253e3e586ddc42406234fa"
+      },
+      {
+        "program": 40,
+        "internal_program": 47,
+        "payload_sha256": "b371112f628db3421e211aeefec98272dd0ffcda390ee3421467114b14fdaa43"
+      },
+      {
+        "program": 41,
+        "internal_program": 88,
+        "payload_sha256": "82500238430f38e43080a168bb271587f1c8cd3a6b78c7b4b921687a0d80d2f4"
+      },
+      {
+        "program": 42,
+        "internal_program": 89,
+        "payload_sha256": "94ee39fa7ee0b2079b7b430e45acfc0f1d0a7d4bb717eb57529e9c4ee1ea1ad6"
+      },
+      {
+        "program": 43,
+        "internal_program": 93,
+        "payload_sha256": "91e83ee486439597040f51bac8a2ec766cecdb831476e210f06a5263e35825bd"
+      },
+      {
+        "program": 44,
+        "internal_program": 43,
+        "payload_sha256": "97761e3fe2c03b0d6c70f1cfc46e4ac7fde3852a65bd1fb31794dd1de2b5be4e"
+      },
+      {
+        "program": 45,
+        "internal_program": 22,
+        "payload_sha256": "87e0dfcd67d758aee790bdf59a191a67e17c59f8ce12d021a89c3c7814d0ed38"
+      },
+      {
+        "program": 46,
+        "internal_program": 46,
+        "payload_sha256": "cd610e1b94e360b8d19f225241256265ae6631ec50f501b0309ef7a87f9b744c"
+      },
+      {
+        "program": 47,
+        "internal_program": 97,
+        "payload_sha256": "acb73f911d4025ad38d99486c3cab213217463a5143d351bf5f037278858ced7"
+      },
+      {
+        "program": 48,
+        "internal_program": 91,
+        "payload_sha256": "11ec7750cb00a0c42b24772d1a8912ef88f23730067a6f5946b9de7dd8afab0f"
+      },
+      {
+        "program": 49,
+        "internal_program": 36,
+        "payload_sha256": "4d229f09e4146cee4deb99de76586dad7c6fcd2dc739eace1cee01b6ad5a3eb5"
+      },
+      {
+        "program": 50,
+        "internal_program": 73,
+        "payload_sha256": "bd41ee4e76f0f370bd00b8631b0fc2b567e76bd51081101481c4eee52ad41819"
+      },
+      {
+        "program": 51,
+        "internal_program": 33,
+        "payload_sha256": "4cbaa597956a12857c222d8e1be7fec7c28a7fc8e3b076acfe3ee65272ad6ecb"
+      },
+      {
+        "program": 52,
+        "internal_program": 12,
+        "payload_sha256": "299cd3fe2b41f0b5be2ea55707ae32cd59014caec869a4e41a2deb55e8e4637e"
+      },
+      {
+        "program": 53,
+        "internal_program": 13,
+        "payload_sha256": "7eff0b82e3b5160aad544f154ebe6b694ef76f29b96c4326115ea7aafffe5840"
+      },
+      {
+        "program": 54,
+        "internal_program": 68,
+        "payload_sha256": "f56bb52f59fce5f6b256ee68b4585cd89a5813ef099b277c09ecbc95a38c93b0"
+      },
+      {
+        "program": 55,
+        "internal_program": 70,
+        "payload_sha256": "019f811c90c09f5f2da29e330412c06e9aa99f1fc01032392d3bc209e173f31a"
+      },
+      {
+        "program": 56,
+        "internal_program": 71,
+        "payload_sha256": "6888f12ab8ffa4130d1eb4f5ed48dae1d2fddc20851b4d7242986108a41c9821"
+      },
+      {
+        "program": 57,
+        "internal_program": 69,
+        "payload_sha256": "c54e13bcd271c12628cb58eb402be6733c89b3370519d7c089c259062814a192"
+      },
+      {
+        "program": 58,
+        "internal_program": 72,
+        "payload_sha256": "5e7d624ce36d725976c2980df85f33854f8fff9ca5493d10896cb5e53e6b0016"
+      },
+      {
+        "program": 59,
+        "internal_program": 80,
+        "payload_sha256": "686ae83825d9f74ac7878857b2bdf705c710cf29ea8f61d49d35cd3c580875e1"
+      },
+      {
+        "program": 60,
+        "internal_program": 79,
+        "payload_sha256": "080e34d386ab97155d04adc580d841c91f51b5b76bed1cf11aa254e9b3217ba2"
+      },
+      {
+        "program": 61,
+        "internal_program": 38,
+        "payload_sha256": "5576299235ccdc78dadd4e293fb8196e8c4fe16c7b68ee218a36f17e212e1e89"
+      },
+      {
+        "program": 62,
+        "internal_program": 39,
+        "payload_sha256": "5803e454e986b731fa29aaac724952b16a5d17234f30c8905ac3e207e3cf4bfb"
+      },
+      {
+        "program": 63,
+        "internal_program": 14,
+        "payload_sha256": "5de84501d66dac765bff9c6880c102d7f206941b49d665acba032cca9eaea353"
+      },
+      {
+        "program": 64,
+        "internal_program": 81,
+        "payload_sha256": "91fd915251d9717bfb812a1345a0aa47bfde084c5dd3093ff081f02ec8ed6c57"
+      },
+      {
+        "program": 65,
+        "internal_program": 35,
+        "payload_sha256": "ff9358eac9be59f3dad69531ebbd9f17250538432df069125fa57675b0bcda1c"
+      },
+      {
+        "program": 66,
+        "internal_program": 34,
+        "payload_sha256": "2b141721b1de4f3600e23507340440aa4786bf07eccb86c60d20f0ce8ea616fb"
+      },
+      {
+        "program": 67,
+        "internal_program": 40,
+        "payload_sha256": "b3c29cb7690a85b45a867e428c629f24138478b8d6ce5374b295ee8bfc0ef512"
+      },
+      {
+        "program": 68,
+        "internal_program": 74,
+        "payload_sha256": "70ad0369b9dc55535dab747291fa64e7b6c6189888ac15474c625f3506d9203c"
+      },
+      {
+        "program": 69,
+        "internal_program": 37,
+        "payload_sha256": "0a44a06b42577b915793bf57c3df3c0d1f701d1f286fa711b4871521a7f4daf0"
+      },
+      {
+        "program": 70,
+        "internal_program": 75,
+        "payload_sha256": "86d638ca195398aa7af900a33c90ce844ac89b224e90f838737e7e05653ece25"
+      },
+      {
+        "program": 71,
+        "internal_program": 77,
+        "payload_sha256": "3690b823ebf43d67c3b1508058335c1414b25e55712258fd6d8c604ba882cccb"
+      },
+      {
+        "program": 72,
+        "internal_program": 78,
+        "payload_sha256": "92608d3967bf276b23ceef29c0013083c1bd5f45190a061f42fdb8d7b3cec1bd"
+      },
+      {
+        "program": 73,
+        "internal_program": 76,
+        "payload_sha256": "feff15ce4ae9e460ba9cb29a3997047825a337ec1a8c87e01cbc7812d0ea6188"
+      },
+      {
+        "program": 74,
+        "internal_program": 10,
+        "payload_sha256": "0edc6c69a5a5b2bf4c3137af1c8d35b67e73bb842b371b0bb5e4a6bed3c9c2b9"
+      },
+      {
+        "program": 75,
+        "internal_program": 67,
+        "payload_sha256": "b2b519523567b1665455588d11dcddea70c1ff6e8dd8c957bffce0be08fca712"
+      },
+      {
+        "program": 76,
+        "internal_program": 11,
+        "payload_sha256": "78115345f2444a7b68b6a3354685efecc36a2b96e47a892ba63470b2939edd24"
+      },
+      {
+        "program": 77,
+        "internal_program": 41,
+        "payload_sha256": "bef3f18eb24c68c0bbd1de8752f0cfc1f2da11313d519e277494c97184f142cd"
+      },
+      {
+        "program": 78,
+        "internal_program": 0,
+        "payload_sha256": "1465a5810f0d2bcb605d6608d99d25895d16cc239cf97b101306df0a70982c72"
+      },
+      {
+        "program": 79,
+        "internal_program": 58,
+        "payload_sha256": "a849985c0dde6f411e39798f2a2957bd970bdd97149c32e95f21911b023507d7"
+      },
+      {
+        "program": 80,
+        "internal_program": 65,
+        "payload_sha256": "9c47ef837fa8cb82238fc78b9b7661e56ebd2edbc364f206fb93131c840ec4bf"
+      },
+      {
+        "program": 81,
+        "internal_program": 64,
+        "payload_sha256": "5a182f538322fa0af4d5caf25ec0e41b732f43fc77543d550e768394ab416bad"
+      },
+      {
+        "program": 82,
+        "internal_program": 61,
+        "payload_sha256": "82980fd8aa731d68b11286548630dcd4c2b830600ef3d7749a54b81880359b7d"
+      },
+      {
+        "program": 83,
+        "internal_program": 63,
+        "payload_sha256": "a2a5b0f691015d7daa3c23a98a1492b0c0154f20b7e1b469334e243ec069ed09"
+      },
+      {
+        "program": 84,
+        "internal_program": 62,
+        "payload_sha256": "938a50c2e42310db91e1e1a4f84941d414296453018ffec7b6ffe146b9b6a579"
+      },
+      {
+        "program": 85,
+        "internal_program": 66,
+        "payload_sha256": "244104528621a46ea1d658658a7bc8e72a9ab14448b1b72639859ac85e983dea"
+      },
+      {
+        "program": 86,
+        "internal_program": 9,
+        "payload_sha256": "937adba6477918c559d4e0ca0577e658938fa782b4184ad7e5eab5b18e19686a"
+      },
+      {
+        "program": 87,
+        "internal_program": 60,
+        "payload_sha256": "5a4b6de941f11b95ae259d6ad4ce4a9896562044962be66fe9658e3d8e02993e"
+      },
+      {
+        "program": 88,
+        "internal_program": 32,
+        "payload_sha256": "1afb45964798de4ea1bbe4fdc8f965ba2940f127c6eb25a51b7e90eac35976c6"
+      },
+      {
+        "program": 89,
+        "internal_program": 8,
+        "payload_sha256": "29914bda5c3ff900476e167d7d9ddcba0225e983be9939e4d9cf54ee967bef7a"
+      },
+      {
+        "program": 90,
+        "internal_program": 59,
+        "payload_sha256": "f709105c54b0b585c591b5982991fd8738a20231dfa3f32fb64b1d4342375a99"
+      },
+      {
+        "program": 91,
+        "internal_program": 7,
+        "payload_sha256": "fcbc5afc5decdf77a8df204a55d747ce4c9984c87908bf57bf178bacb39e2128"
+      },
+      {
+        "program": 92,
+        "internal_program": 96,
+        "payload_sha256": "499323837e3f7efc442f1dbb0b9ee8032eec9b9a2a8ce151b95d321f9489ba88"
+      },
+      {
+        "program": 93,
+        "internal_program": 94,
+        "payload_sha256": "acb5b15a3b9a08c00b7a7af52b8735763f927a8f1ee7666bd4147c42c2fe438c"
+      },
+      {
+        "program": 94,
+        "internal_program": 95,
+        "payload_sha256": "a976b8d964b17d2cd704f33f0740f614693d7a7d4d8efaee7cb15001afc883ce"
+      },
+      {
+        "program": 95,
+        "internal_program": 23,
+        "payload_sha256": "108f40432c65ec6e355f30671c70c29f206d5a4c1c8bfc0c6c2ec29f0d95c1dc"
+      },
+      {
+        "program": 96,
+        "internal_program": 48,
+        "payload_sha256": "728de91b65479a3e821ed8ef423b97a0e52edfd414f578f5503e2d6985d695bd"
+      },
+      {
+        "program": 97,
+        "internal_program": 98,
+        "payload_sha256": "36f197e799be1e461525c36ad465e26f4df680aae2b983429d7bbe536fc2b09b"
+      },
+      {
+        "program": 98,
+        "internal_program": 24,
+        "payload_sha256": "ba2f6f0e06c55c6ffd1b2a5271af89a9ebffcd180bc2aca275d6d7acb54f352d"
+      },
+      {
+        "program": 99,
+        "internal_program": 99,
+        "payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289"
+      }
+    ],
+    "does_not_establish_redistribution_license": true
+  },
+  "native_prediction": {
+    "scope": "Frozenb11 arithmetic with modeled RKS0; not measured hardware law",
+    "engine_path": "Source/DSP/Press78Engine.cpp",
+    "engine_sha256_at_analysis": "76c9f2bff45743c1c26ba7cf30efd208814290a6ad8292b203e17bd442cd23e4",
+    "formula_db_per_second": "2*2^(D2R/4)",
+    "rows": [
+      {
+        "D2R": 21,
+        "RKS": 0,
+        "native_b11_db_per_second": 76.10925536017415,
+        "native_b11_t60_seconds": 0.7883403893003574
+      },
+      {
+        "D2R": 22,
+        "RKS": 0,
+        "native_b11_db_per_second": 90.50966799187809,
+        "native_b11_t60_seconds": 0.6629126073623882
+      },
+      {
+        "D2R": 24,
+        "RKS": 0,
+        "native_b11_db_per_second": 128.0,
+        "native_b11_t60_seconds": 0.46875
+      },
+      {
+        "D2R": 25,
+        "RKS": 0,
+        "native_b11_db_per_second": 152.2185107203483,
+        "native_b11_t60_seconds": 0.3941701946501787
+      },
+      {
+        "D2R": 31,
+        "RKS": 0,
+        "native_b11_db_per_second": 430.5389646099018,
+        "native_b11_t60_seconds": 0.13936020878938138
+      }
+    ],
+    "no_parameters_changed": true
+  },
+  "evidence_limits": [
+    "No fullboot, UARTtiming, buttoncadence or analoghardware emulation",
+    "Literal paneldisplay edits proven asrawD2R, but chipEGstepclock and rate law remainunknown",
+    "No extraqualified fit added to authorvideo; gate/floor exclusions unchanged",
+    "OnecapturedD2R22 slope cannot establish entire ratecurve or transfer automatically toAR/D1R/RR",
+    "Recipeothercontrols/effects and carrierharmonic isolation belong to separate recordingforensics"
+  ],
+  "artifacts": [
+    {
+      "path": "build/front-panel-envelope-map-20261019/probe_panel.py",
+      "sha256": "1d8cff8503e00829cd4d4357a292c905d62637f5fd79d42a3839c7bddc0ecafe",
+      "size_bytes": 1241,
+      "ignored": true
+    },
+    {
+      "path": "build/front-panel-envelope-map-20261019/verify_panel.py",
+      "sha256": "82a568cfa8ec72c67f3c92686b05fcf8024c606a9d11f72b6b45290345427bc0",
+      "size_bytes": 5926,
+      "ignored": true
+    },
+    {
+      "path": "build/front-panel-envelope-map-20261019/verify_panel680.py",
+      "sha256": "97916dfb4b710274cf83866f2037900ab3f2c88458ef5390117f54afe2f02c6f",
+      "size_bytes": 2307,
+      "ignored": true
+    },
+    {
+      "path": "build/front-panel-envelope-map-20261019/panel-validation.json",
+      "sha256": "918980204cf0d669b32584550fb970954474a6015d71a15bb10071b5c789f500",
+      "size_bytes": 52209,
+      "ignored": true
+    },
+    {
+      "path": "build/front-panel-envelope-map-20261019/panel680-validation.json",
+      "sha256": "dac6a8d75b0e932227be24b156e59464b21fa0e469d6a8af40762e179f274591",
+      "size_bytes": 19110,
+      "ignored": true
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "build/opu-pitch-command-path-20261019/probe_midi.py",
+      "sha256": "41ae883eabd3e212cdb3755185c46c549252b37c96dd4147330058a6521368ca"
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/verify_pitch_path.py",
+      "sha256": "414c8646b61365b95afdff1fbe5805f4970e8dd9b25d165d010873c205550a0e"
+    }
+  ],
+  "scope_invariants": {
+    "pitch_report_unmodified": true,
+    "production_Source_UI_native_presets_unmodified": true,
+    "no_additive_noise": true,
+    "no_audio_fit_or_new_rate_law": true
+  }
+}

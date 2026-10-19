@@ -1,0 +1,2807 @@
+{
+  "date": "2026-10-18",
+  "scope": "Fixed audible-event timing observation; no model-template matching or alignment/score replacement.",
+  "conclusion": "All18 primary audible onset estimates occur22-63ms after frozen MIDI mapping. Final release1dB departures are ~43-48ms after frozenoff. Actual MIDIedge and exactglobalcorrection remain unidentified.",
+  "protocol": {
+    "version": 1,
+    "status": "frozen before audio analysis",
+    "recording": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/user-ONfIvtDOog0.wav",
+    "recording_sha256": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba",
+    "alignment": {
+      "source": "user-ONfIvtDOog0.wav",
+      "midi": "eugenia.mid",
+      "formula": "video_audio_seconds = offset_seconds + scale * midi_seconds",
+      "offset_seconds": 0.8906462238832541,
+      "scale": 0.9998070138348876,
+      "chroma_similarity": 0.6572448881699976,
+      "local_checks": [
+        {
+          "midi_start_seconds": 0.0,
+          "residual_seconds": 0.0020000000000002793,
+          "score": 0.7715056431862928
+        },
+        {
+          "midi_start_seconds": 15.0,
+          "residual_seconds": 0.004000000000000281,
+          "score": 0.7856406934385606
+        },
+        {
+          "midi_start_seconds": 30.0,
+          "residual_seconds": 0.006000000000000283,
+          "score": 0.6122840996056358
+        },
+        {
+          "midi_start_seconds": 45.0,
+          "residual_seconds": 0.018000000000000294,
+          "score": 0.7042602477281003
+        },
+        {
+          "midi_start_seconds": 60.0,
+          "residual_seconds": 0.022000000000000297,
+          "score": 0.69028904083396
+        },
+        {
+          "midi_start_seconds": 75.0,
+          "residual_seconds": -0.05599999999999977,
+          "score": 0.5589677567257958
+        },
+        {
+          "midi_start_seconds": 90.0,
+          "residual_seconds": -0.05199999999999977,
+          "score": 0.6937594054786976
+        },
+        {
+          "midi_start_seconds": 105.0,
+          "residual_seconds": -0.01999999999999974,
+          "score": 0.6918974445213947
+        },
+        {
+          "midi_start_seconds": 120.0,
+          "residual_seconds": 0.004000000000000281,
+          "score": 0.5606446589395567
+        },
+        {
+          "midi_start_seconds": 135.0,
+          "residual_seconds": 0.016000000000000292,
+          "score": 0.4852341609598673
+        },
+        {
+          "midi_start_seconds": 150.0,
+          "residual_seconds": -0.0019999999999997242,
+          "score": 0.6265665959062042
+        },
+        {
+          "midi_start_seconds": 165.0,
+          "residual_seconds": 0.032000000000000306,
+          "score": 0.7656833953311408
+        }
+      ],
+      "median_abs_local_residual_ms": 17.00000000000029,
+      "method": "Globally whitened 12-bin STFT chroma; fixed harmonic MIDI chroma; global affine grid/differential evolution, no local warping.",
+      "caveats": [
+        "Approximate chroma onset alignment depends on patch attack.",
+        "MIDI file identity is supported by description and global pitch progression; sender settings and channel routing remain unknown.",
+        "All source MIDI velocities are127; this does not independently verify hardware velocity processing."
+      ]
+    },
+    "notes_sha256": "70df9b1435ceece7d1d770793527958beb8b33b2f57c6396e6e962b5b3b821a4",
+    "bank_sha256": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2",
+    "timeline_sha256": "1978645805679691f0b39269c5ac1db762d59a9f6c65cd399cbafffe555650eb",
+    "onset_rows": [
+      {
+        "start": 9.264696,
+        "midi": 72,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 4032,
+        "gate": 0.22058799999999934,
+        "end": 9.485284,
+        "id": 79,
+        "audio_on": 10.153554265731282,
+        "audio_off": 10.37409969529909,
+        "patch": 5,
+        "carrier_multiple": 2,
+        "frequency_nominal_hz": 1046.5022612023945,
+        "previous_same_note_gap_seconds": 1.764363436542478
+      },
+      {
+        "start": 9.485284,
+        "midi": 74,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 4128,
+        "gate": 0.4411759999999987,
+        "end": 9.926459999999999,
+        "id": 83,
+        "audio_on": 10.37409969529909,
+        "audio_off": 10.815190554434711,
+        "patch": 5,
+        "carrier_multiple": 2,
+        "frequency_nominal_hz": 1174.6590716696303,
+        "previous_same_note_gap_seconds": 1.3232725774068559
+      },
+      {
+        "start": 9.926459999999999,
+        "midi": 77,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 4320,
+        "gate": 0.22058799999999934,
+        "end": 10.147047999999998,
+        "id": 86,
+        "audio_on": 10.815190554434711,
+        "audio_off": 11.03573598400252,
+        "patch": 5,
+        "carrier_multiple": 2,
+        "frequency_nominal_hz": 1396.9129257320155,
+        "previous_same_note_gap_seconds": 1000000010.8151906
+      },
+      {
+        "start": 32.20584799999993,
+        "midi": 77,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 14016,
+        "gate": 0.22058799999999934,
+        "end": 32.42643599999993,
+        "id": 314,
+        "audio_on": 33.09027894078347,
+        "audio_off": 33.31082437035128,
+        "patch": 18,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 698.4564628660078,
+        "previous_same_note_gap_seconds": 1.5438180069746643
+      },
+      {
+        "start": 32.42643599999993,
+        "midi": 74,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 14112,
+        "gate": 0.22058799999999934,
+        "end": 32.64702399999993,
+        "id": 318,
+        "audio_on": 33.31082437035128,
+        "audio_off": 33.53136979991909,
+        "patch": 18,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 587.3295358348151,
+        "previous_same_note_gap_seconds": 0.4410908591356133
+      },
+      {
+        "start": 155.95571600000116,
+        "midi": 74,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 67872,
+        "gate": 0.22058799999999223,
+        "end": 156.17630400000115,
+        "id": 1522,
+        "audio_on": 156.81626492832623,
+        "audio_off": 157.036810357894,
+        "patch": 88,
+        "carrier_multiple": 2,
+        "frequency_nominal_hz": 1174.6590716696303,
+        "previous_same_note_gap_seconds": 0.6616362887034484
+      },
+      {
+        "start": 155.95571600000116,
+        "midi": 77,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 67872,
+        "gate": 0.22058799999999223,
+        "end": 156.17630400000115,
+        "id": 1523,
+        "audio_on": 156.81626492832623,
+        "audio_off": 157.036810357894,
+        "patch": 88,
+        "carrier_multiple": 2,
+        "frequency_nominal_hz": 1396.9129257320155,
+        "previous_same_note_gap_seconds": 0.6616362887034484
+      },
+      {
+        "start": 156.17630400000115,
+        "midi": 79,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 67968,
+        "gate": 0.22058799999999223,
+        "end": 156.39689200000115,
+        "id": 1525,
+        "audio_on": 157.036810357894,
+        "audio_off": 157.25735578746182,
+        "patch": 88,
+        "carrier_multiple": 2,
+        "frequency_nominal_hz": 1567.981743926997,
+        "previous_same_note_gap_seconds": 1.3232725774068683
+      },
+      {
+        "start": 156.61748000000114,
+        "midi": 72,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 68160,
+        "gate": 0.4411760000000129,
+        "end": 157.05865600000115,
+        "id": 1530,
+        "audio_on": 157.47790121702963,
+        "audio_off": 157.91899207616527,
+        "patch": 88,
+        "carrier_multiple": 2,
+        "frequency_nominal_hz": 1046.5022612023945,
+        "previous_same_note_gap_seconds": 0.6616362887033915
+      },
+      {
+        "start": 174.9262840000009,
+        "midi": 77,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 76128,
+        "gate": 0.22058799999999223,
+        "end": 175.14687200000088,
+        "id": 1728,
+        "audio_on": 175.78317187115763,
+        "audio_off": 176.00371730072544,
+        "patch": 99,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 698.4564628660078,
+        "previous_same_note_gap_seconds": 3.0876360139492647
+      },
+      {
+        "start": 175.80863600000086,
+        "midi": 72,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 76512,
+        "gate": 0.22058799999999223,
+        "end": 176.02922400000085,
+        "id": 1736,
+        "audio_on": 176.66535358942883,
+        "audio_off": 176.88589901899664,
+        "patch": 99,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 523.2511306011972,
+        "previous_same_note_gap_seconds": 2.867090584381458
+      },
+      {
+        "start": 176.69098800000086,
+        "midi": 72,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 76896,
+        "gate": 0.22058799999999223,
+        "end": 176.91157600000085,
+        "id": 1745,
+        "audio_on": 177.5475353077001,
+        "audio_off": 177.76808073726787,
+        "patch": 99,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 523.2511306011972,
+        "previous_same_note_gap_seconds": 0.6616362887034484
+      },
+      {
+        "start": 176.91157600000085,
+        "midi": 77,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 76992,
+        "gate": 0.22058799999999223,
+        "end": 177.13216400000084,
+        "id": 1746,
+        "audio_on": 177.76808073726787,
+        "audio_off": 177.98862616683567,
+        "patch": 99,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 698.4564628660078,
+        "previous_same_note_gap_seconds": 1.7643634365424248
+      },
+      {
+        "start": 177.57334000000083,
+        "midi": 72,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 77280,
+        "gate": 0.22058799999999223,
+        "end": 177.79392800000082,
+        "id": 1754,
+        "audio_on": 178.42971702597129,
+        "audio_off": 178.6502624555391,
+        "patch": 99,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 523.2511306011972,
+        "previous_same_note_gap_seconds": 0.66163628870342
+      },
+      {
+        "start": 178.23510400000083,
+        "midi": 75,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 77568,
+        "gate": 1.3235280000000387,
+        "end": 179.55863200000087,
+        "id": 1761,
+        "audio_on": 179.09135331467473,
+        "audio_off": 180.41462589208163,
+        "patch": 99,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 622.2539674441618,
+        "previous_same_note_gap_seconds": 2.8670905843814865
+      },
+      {
+        "start": 179.99980800000085,
+        "midi": 75,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 78336,
+        "gate": 0.8823520000000258,
+        "end": 180.88216000000088,
+        "id": 1771,
+        "audio_on": 180.85571675121722,
+        "audio_off": 181.7378984694885,
+        "patch": 99,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 622.2539674441618,
+        "previous_same_note_gap_seconds": 0.4410908591355849
+      },
+      {
+        "start": 180.88216000000088,
+        "midi": 79,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 78720,
+        "gate": 0.4411760000000129,
+        "end": 181.3233360000009,
+        "id": 1776,
+        "audio_on": 181.7378984694885,
+        "audio_off": 182.1789893286241,
+        "patch": 99,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 783.9908719634985,
+        "previous_same_note_gap_seconds": 5.954726598330865
+      },
+      {
+        "start": 180.88216000000088,
+        "midi": 87,
+        "velocity": 127,
+        "channel": 0,
+        "track": 1,
+        "tick": 78720,
+        "gate": 0.4411760000000129,
+        "end": 181.3233360000009,
+        "id": 1777,
+        "audio_on": 181.7378984694885,
+        "audio_off": 182.1789893286241,
+        "patch": 99,
+        "carrier_multiple": 1,
+        "frequency_nominal_hz": 1244.5079348883237,
+        "previous_same_note_gap_seconds": 1000000181.7378985
+      }
+    ],
+    "selection": "Fixed patches5,18,88,99; MIDI>=72; onset>=.10s past inferred program boundary; previous same-note MIDI off>=.25s before onset. All rows retained; no audio-based replacement.",
+    "analysis": "Arithmetic stereo mid; centered Hann tone demodulation at nominal carrier frequency; windows12/24/48ms. Median before[-.12,-.07]s and after[+.07,+.11]s define amplitude step; crossings10/50/90percent searched[-.08,+.14]s. Primary24ms50percent. No DSP/model render used. No captured/synth correlation or timing-score search.",
+    "failure_rule": "Nonpositive step; crossing absent; after/before amplitude contrast<2; nonpersistent crossing. All failures retained.",
+    "release": "Final Sine79,87: independent continuous two-slope log-amplitude segmented least squares at possible breakpoints frozenoff\u00b1.12s. Fit sample interval frozenoff[-.12,+.15]s. Before and after independent slopes with continuity; only slope change<0 and after slope<0 acceptable. Repeat all three Hann lengths.",
+    "no_alignment_or_runtime_change": true
+  },
+  "result": {
+    "protocol_sha256": "142b48eb45ffa13a227635bbcf70bf150df9be8dcfa46ae9a98ac3facc4825bf",
+    "script_sha256": "ce5a2af90b54be1828594758d7541981027a205151738df48ce651da3e789e6d",
+    "summary": [
+      {
+        "patch": 5,
+        "valid_primary_count": 3,
+        "median_residual_seconds": 0.023222409228787596,
+        "minimum_residual_seconds": 0.022205224068271166,
+        "maximum_residual_seconds": 0.025161265790797454,
+        "mad_seconds": 0.0010171851605164303
+      },
+      {
+        "patch": 18,
+        "valid_primary_count": 2,
+        "median_residual_seconds": 0.033762495153332114,
+        "minimum_residual_seconds": 0.02742423248738419,
+        "maximum_residual_seconds": 0.04010075781928005,
+        "mad_seconds": 0.0063382626659479295
+      },
+      {
+        "patch": 88,
+        "valid_primary_count": 4,
+        "median_residual_seconds": 0.045707740322350025,
+        "minimum_residual_seconds": 0.03732263315048231,
+        "maximum_residual_seconds": 0.05572681524333184,
+        "mad_seconds": 0.00798458563019299
+      },
+      {
+        "patch": 99,
+        "valid_primary_count": 9,
+        "median_residual_seconds": 0.053955030283726786,
+        "minimum_residual_seconds": 0.039834456283196186,
+        "maximum_residual_seconds": 0.06338518329985997,
+        "mad_seconds": 0.00848100256672634
+      }
+    ],
+    "onsets": [
+      {
+        "note": {
+          "start": 9.264696,
+          "midi": 72,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 4032,
+          "gate": 0.22058799999999934,
+          "end": 9.485284,
+          "id": 79,
+          "audio_on": 10.153554265731282,
+          "audio_off": 10.37409969529909,
+          "patch": 5,
+          "carrier_multiple": 2,
+          "frequency_nominal_hz": 1046.5022612023945,
+          "previous_same_note_gap_seconds": 1.764363436542478
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.007826796303687177,
+            "after_amplitude": 0.03990587260868446,
+            "contrast": 5.098621589255484,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.02482165272076966,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.02669340981329587,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.02798178844508616,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.00041915295719044794,
+            "after_amplitude": 0.04036829019954462,
+            "contrast": 96.30921005575233,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.02045351615414174,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.025161265790797454,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.028843119570533773,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0001808609511109518,
+            "after_amplitude": 0.040180791946420935,
+            "contrast": 222.16399780940796,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.013958992889078543,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.023751176716808046,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.0315532612128993,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 9.485284,
+          "midi": 74,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 4128,
+          "gate": 0.4411759999999987,
+          "end": 9.926459999999999,
+          "id": 83,
+          "audio_on": 10.37409969529909,
+          "audio_off": 10.815190554434711,
+          "patch": 5,
+          "carrier_multiple": 2,
+          "frequency_nominal_hz": 1174.6590716696303,
+          "previous_same_note_gap_seconds": 1.3232725774068559
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.005123189891454536,
+            "after_amplitude": 0.040881424901938496,
+            "contrast": 7.97968175455073,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.022455019876254565,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.024155456347776594,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.025514368788862173,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0008383904177094229,
+            "after_amplitude": 0.04253373351399452,
+            "contrast": 50.73260931369119,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.018309948024354823,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.023222409228787596,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.02703150287293037,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.00045490246054946405,
+            "after_amplitude": 0.04144506453773724,
+            "contrast": 91.1075848824315,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.012167191876412579,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.0217733513713174,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.02959266171634407,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 9.926459999999999,
+          "midi": 77,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 4320,
+          "gate": 0.22058799999999934,
+          "end": 10.147047999999998,
+          "id": 86,
+          "audio_on": 10.815190554434711,
+          "audio_off": 11.03573598400252,
+          "patch": 5,
+          "carrier_multiple": 2,
+          "frequency_nominal_hz": 1396.9129257320155,
+          "previous_same_note_gap_seconds": 1000000010.8151906
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.001002871322708865,
+            "after_amplitude": 0.038428402056220806,
+            "contrast": 38.3183776283696,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.0207619401443757,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.023070896668211553,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.02475710431480725,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0009077212052426445,
+            "after_amplitude": 0.0384344598206093,
+            "contrast": 42.34170095248058,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.017523914643310774,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.022205224068271166,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.025726925672904993,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0008581417897099081,
+            "after_amplitude": 0.03781500605146147,
+            "contrast": 44.06615142731215,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.011106536202539343,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.020486017215103316,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.027720402204004534,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 32.20584799999993,
+          "midi": 77,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 14016,
+          "gate": 0.22058799999999934,
+          "end": 32.42643599999993,
+          "id": 314,
+          "audio_on": 33.09027894078347,
+          "audio_off": 33.31082437035128,
+          "patch": 18,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 698.4564628660078,
+          "previous_same_note_gap_seconds": 1.5438180069746643
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.009280607467269853,
+            "after_amplitude": 0.14383135509359835,
+            "contrast": 15.498053936754888,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.03820566684527528,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.04034121948183351,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.0425213154972049,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0010255661388435633,
+            "after_amplitude": 0.14477573022289547,
+            "contrast": 141.16664419726823,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.03483800627800824,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.04010075781928005,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.045098457132032164,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0003751426490268662,
+            "after_amplitude": 0.1444018558573148,
+            "contrast": 384.92519107571087,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.028766573624190033,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.03980896525919031,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.050138893840252295,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 32.42643599999993,
+          "midi": 74,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 14112,
+          "gate": 0.22058799999999934,
+          "end": 32.64702399999993,
+          "id": 318,
+          "audio_on": 33.31082437035128,
+          "audio_off": 33.53136979991909,
+          "patch": 18,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 587.3295358348151,
+          "previous_same_note_gap_seconds": 0.4410908591356133
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.04063598501743729,
+            "after_amplitude": 0.13743122285290577,
+            "contrast": 3.3820079122957822,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.026372167533258203,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.027293509972541475,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.028476999133919205,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.013222885508888064,
+            "after_amplitude": 0.13635902687829637,
+            "contrast": 10.312350264746643,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.022338619867105305,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.02742423248738419,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.03222186015010268,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.012826823230373333,
+            "after_amplitude": 0.1363813769189622,
+            "contrast": 10.632513949051495,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.017732119429541005,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.027431363170901675,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.03746400387145901,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 155.95571600000116,
+          "midi": 74,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 67872,
+          "gate": 0.22058799999999223,
+          "end": 156.17630400000115,
+          "id": 1522,
+          "audio_on": 156.81626492832623,
+          "audio_off": 157.036810357894,
+          "patch": 88,
+          "carrier_multiple": 2,
+          "frequency_nominal_hz": 1174.6590716696303,
+          "previous_same_note_gap_seconds": 0.6616362887034484
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.006239494954487364,
+            "after_amplitude": 0.0402034592817868,
+            "contrast": 6.443383571113074,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.03649011122717395,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.0378536679143381,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.03943961488398199,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0010246088136090761,
+            "after_amplitude": 0.04014450502269496,
+            "contrast": 39.18032373866685,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.03255196362708065,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.03732263315048231,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.041322056789676015,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.00011591216914947543,
+            "after_amplitude": 0.04030370159584558,
+            "contrast": 347.70897561128055,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.025753057427814422,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.036470544908791716,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.045653569140064826,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 155.95571600000116,
+          "midi": 77,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 67872,
+          "gate": 0.22058799999999223,
+          "end": 156.17630400000115,
+          "id": 1523,
+          "audio_on": 156.81626492832623,
+          "audio_off": 157.036810357894,
+          "patch": 88,
+          "carrier_multiple": 2,
+          "frequency_nominal_hz": 1396.9129257320155,
+          "previous_same_note_gap_seconds": 0.6616362887034484
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.00040039616824607703,
+            "after_amplitude": 0.04340628933823193,
+            "contrast": 108.40835347743669,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.0358896855810008,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.03830879498380369,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.04052568310782177,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.00018131372601027285,
+            "after_amplitude": 0.04363977094827583,
+            "contrast": 240.6865266549279,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.03279564369233153,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.03812367623383176,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.04280021082770056,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.00010268169127105114,
+            "after_amplitude": 0.04332652261033433,
+            "contrast": 421.94983423056743,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.02677391513592784,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.03753415517809975,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.04686921434660072,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 156.17630400000115,
+          "midi": 79,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 67968,
+          "gate": 0.22058799999999223,
+          "end": 156.39689200000115,
+          "id": 1525,
+          "audio_on": 157.036810357894,
+          "audio_off": 157.25735578746182,
+          "patch": 88,
+          "carrier_multiple": 2,
+          "frequency_nominal_hz": 1567.981743926997,
+          "previous_same_note_gap_seconds": 1.3232725774068683
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.0008064617014204877,
+            "after_amplitude": 0.03606307825766199,
+            "contrast": 44.7176576322733,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.05362368170755157,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.0557285809716633,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.05790182648904424,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0007774893490954089,
+            "after_amplitude": 0.03568167363039754,
+            "contrast": 45.893456510899284,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.050865215705837706,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.05572681524333184,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.06032619835090308,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0007269373749546064,
+            "after_amplitude": 0.0357256232507441,
+            "contrast": 49.14539337446363,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.045168475864693906,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.055569366597182916,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.06551208102254101,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 156.61748000000114,
+          "midi": 72,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 68160,
+          "gate": 0.4411760000000129,
+          "end": 157.05865600000115,
+          "id": 1530,
+          "audio_on": 157.47790121702963,
+          "audio_off": 157.91899207616527,
+          "patch": 88,
+          "carrier_multiple": 2,
+          "frequency_nominal_hz": 1046.5022612023945,
+          "previous_same_note_gap_seconds": 0.6616362887033915
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.006394515086877979,
+            "after_amplitude": 0.04504502125476442,
+            "contrast": 7.044321679246666,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.04941358055658649,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.0538275098166172,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.05528710230661605,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0032539178930009434,
+            "after_amplitude": 0.04556451211105049,
+            "contrast": 14.00296922336549,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.04773614023992922,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.05329180441086829,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.05816976200691091,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0032595399151221444,
+            "after_amplitude": 0.045346777008398675,
+            "contrast": 13.912017704713213,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.04291180700593227,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.05322475905123201,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.06334085869404425,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 174.9262840000009,
+          "midi": 77,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76128,
+          "gate": 0.22058799999999223,
+          "end": 175.14687200000088,
+          "id": 1728,
+          "audio_on": 175.78317187115763,
+          "audio_off": 176.00371730072544,
+          "patch": 99,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 698.4564628660078,
+          "previous_same_note_gap_seconds": 3.0876360139492647
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.06905195410705108,
+            "after_amplitude": 0.11356407236998534,
+            "contrast": 1.6446177930595163,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.07419863408365403,
+                "valid": false
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.03761234789686698,
+                "valid": false
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.04889209210734423,
+                "valid": false
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0034371787019476276,
+            "after_amplitude": 0.0999084958529921,
+            "contrast": 29.0670065528977,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.03566702765554578,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.039834456283196186,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.046987583921732384,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0008446128549848237,
+            "after_amplitude": 0.09903411196594504,
+            "contrast": 117.25385350395185,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.028812305519269582,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.04004518349132765,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.051223536493029194,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 175.80863600000086,
+          "midi": 72,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76512,
+          "gate": 0.22058799999999223,
+          "end": 176.02922400000085,
+          "id": 1736,
+          "audio_on": 176.66535358942883,
+          "audio_off": 176.88589901899664,
+          "patch": 99,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 523.2511306011972,
+          "previous_same_note_gap_seconds": 2.867090584381458
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.07298080534346724,
+            "after_amplitude": 0.09393937893880162,
+            "contrast": 1.287179258939357,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.06983758721415219,
+                "valid": false
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.06828605354735946,
+                "valid": false
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.04082043646546125,
+                "valid": false
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0229051736188064,
+            "after_amplitude": 0.09589732209354004,
+            "contrast": 4.186710115779393,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.039273462566800435,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.041340259112588526,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.04373996931892426,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0014411290195608054,
+            "after_amplitude": 0.09656592447134751,
+            "contrast": 67.00713340765054,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.028999617926937435,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.03972492104456619,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.05189864677591645,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 176.69098800000086,
+          "midi": 72,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76896,
+          "gate": 0.22058799999999223,
+          "end": 176.91157600000085,
+          "id": 1745,
+          "audio_on": 177.5475353077001,
+          "audio_off": 177.76808073726787,
+          "patch": 99,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 523.2511306011972,
+          "previous_same_note_gap_seconds": 0.6616362887034484
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.07134866513488904,
+            "after_amplitude": 0.09719021356489586,
+            "contrast": 1.362186852145752,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.0750837428469822,
+                "valid": false
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.07399748927664765,
+                "valid": false
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.07208624638519201,
+                "valid": false
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.023267542733821277,
+            "after_amplitude": 0.09469684104214836,
+            "contrast": 4.0699115555721646,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.0411045720161595,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.043110529153998524,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.045833907743334464,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.005536560478354763,
+            "after_amplitude": 0.0960226034889364,
+            "contrast": 17.343367577097315,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.03259586638672932,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.04346084739443096,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.0551843280064184,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 176.91157600000085,
+          "midi": 77,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 76992,
+          "gate": 0.22058799999999223,
+          "end": 177.13216400000084,
+          "id": 1746,
+          "audio_on": 177.76808073726787,
+          "audio_off": 177.98862616683567,
+          "patch": 99,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 698.4564628660078,
+          "previous_same_note_gap_seconds": 1.7643634365424248
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.0016185620468324377,
+            "after_amplitude": 0.09740179978717746,
+            "contrast": 60.17798327706681,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.05110251324818089,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.05389092632409577,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.05678885892336649,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0003580994225010111,
+            "after_amplitude": 0.09742617819252952,
+            "contrast": 272.06460572344105,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.04850602900354277,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.053955030283726786,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.05984191872394637,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0002029343789391977,
+            "after_amplitude": 0.09678057047083999,
+            "contrast": 476.9057415344936,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.042885478489302235,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.05402064166136532,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.06502200930702884,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 177.57334000000083,
+          "midi": 72,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 77280,
+          "gate": 0.22058799999999223,
+          "end": 177.79392800000082,
+          "id": 1754,
+          "audio_on": 178.42971702597129,
+          "audio_off": 178.6502624555391,
+          "patch": 99,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 523.2511306011972,
+          "previous_same_note_gap_seconds": 0.66163628870342
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.07494616856824673,
+            "after_amplitude": 0.10022456482796982,
+            "contrast": 1.3372873722918113,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": -0.06316271296133646,
+                "valid": false
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": -0.062073330865073405,
+                "valid": false
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": -0.06042767437813376,
+                "valid": false
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.022870421174873302,
+            "after_amplitude": 0.09224901845298139,
+            "contrast": 4.0335513608438145,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.04509134976326293,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.046949096504861156,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.04890846749841263,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.005771625680441388,
+            "after_amplitude": 0.09223102629217851,
+            "contrast": 15.980077607029619,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.037166116001921344,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.046135619952772204,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.05652467131101096,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 178.23510400000083,
+          "midi": 75,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 77568,
+          "gate": 1.3235280000000387,
+          "end": 179.55863200000087,
+          "id": 1761,
+          "audio_on": 179.09135331467473,
+          "audio_off": 180.41462589208163,
+          "patch": 99,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 622.2539674441618,
+          "previous_same_note_gap_seconds": 2.8670905843814865
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.004746487773434557,
+            "after_amplitude": 0.09571118102973938,
+            "contrast": 20.164632376263935,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.06080540661809251,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.06344982701815703,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.0662096865756822,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0010085635655291718,
+            "after_amplitude": 0.09578694422373488,
+            "contrast": 94.9736313084813,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.05755774729917508,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.06338518329985997,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.06890549206424595,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.0007270099895962407,
+            "after_amplitude": 0.09526721874543073,
+            "contrast": 131.03976576489583,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.05145811415749502,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.06310390171672854,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.07463865573579054,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 179.99980800000085,
+          "midi": 75,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 78336,
+          "gate": 0.8823520000000258,
+          "end": 180.88216000000088,
+          "id": 1771,
+          "audio_on": 180.85571675121722,
+          "audio_off": 181.7378984694885,
+          "patch": 99,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 622.2539674441618,
+          "previous_same_note_gap_seconds": 0.4410908591355849
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.007506257690990914,
+            "after_amplitude": 0.09955041205582814,
+            "contrast": 13.262322738441226,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.057654509009002944,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.060845714785660344,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.06427261103194286,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.007432997217057183,
+            "after_amplitude": 0.09895394772202375,
+            "contrast": 13.312792246840212,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.05535862261124847,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.06099135900902537,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.0670277107051124,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.007463641658851916,
+            "after_amplitude": 0.09844947089414255,
+            "contrast": 13.190540944229415,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.05015252831037244,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.061158256302172975,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.07220379500531215,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 180.88216000000088,
+          "midi": 79,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 78720,
+          "gate": 0.4411760000000129,
+          "end": 181.3233360000009,
+          "id": 1776,
+          "audio_on": 181.7378984694885,
+          "audio_off": 182.1789893286241,
+          "patch": 99,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 783.9908719634985,
+          "previous_same_note_gap_seconds": 5.954726598330865
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.0010892541513353206,
+            "after_amplitude": 0.08899343399477623,
+            "contrast": 81.7012575859168,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.05923920464824528,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.06237325767501824,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.06486307609664664,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.0005872612840980558,
+            "after_amplitude": 0.08897950981315125,
+            "contrast": 151.51604953800125,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.056986574079316045,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.06243603285045313,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.0677506212936993,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.00037911652977618167,
+            "after_amplitude": 0.08871807281627053,
+            "contrast": 234.01267380413842,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.05122851355689969,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.062277144445494426,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.0731500191120748,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "note": {
+          "start": 180.88216000000088,
+          "midi": 87,
+          "velocity": 127,
+          "channel": 0,
+          "track": 1,
+          "tick": 78720,
+          "gate": 0.4411760000000129,
+          "end": 181.3233360000009,
+          "id": 1777,
+          "audio_on": 181.7378984694885,
+          "audio_off": 182.1789893286241,
+          "patch": 99,
+          "carrier_multiple": 1,
+          "frequency_nominal_hz": 1244.5079348883237,
+          "previous_same_note_gap_seconds": 1000000181.7378985
+        },
+        "observations": [
+          {
+            "window_ms": 12,
+            "before_amplitude": 0.00021717262568618514,
+            "after_amplitude": 0.08108690953423336,
+            "contrast": 373.3753702982995,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.057799245618162895,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.0605472035854073,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.06331956482519514,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 24,
+            "before_amplitude": 0.00016415137701999774,
+            "after_amplitude": 0.08075528962830875,
+            "contrast": 491.95621196933814,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.05491285695797927,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.06056798419056138,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.06620611565903083,
+                "valid": true
+              }
+            ]
+          },
+          {
+            "window_ms": 48,
+            "before_amplitude": 0.00016521084531075054,
+            "after_amplitude": 0.08036561860101922,
+            "contrast": 486.44275410525785,
+            "thresholds": [
+              {
+                "fraction": 0.1,
+                "residual_seconds": 0.04908320976292177,
+                "valid": true
+              },
+              {
+                "fraction": 0.5,
+                "residual_seconds": 0.0605133448807154,
+                "valid": true
+              },
+              {
+                "fraction": 0.9,
+                "residual_seconds": 0.07182928289137204,
+                "valid": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "final_release": [
+      {
+        "midi": 79,
+        "frozen_off_seconds": 182.1789893286241,
+        "observations": [
+          {
+            "window_ms": 12,
+            "change_residual_seconds": 0.04000000000000012,
+            "rmse_db": 0.5871583205659722,
+            "before_slope_db_per_s": -1.4332378715140521,
+            "after_slope_db_per_s": -201.60393901374346
+          },
+          {
+            "window_ms": 24,
+            "change_residual_seconds": 0.04000000000000012,
+            "rmse_db": 0.5595634018040105,
+            "before_slope_db_per_s": -1.5643019202167636,
+            "after_slope_db_per_s": -200.78631680124923
+          },
+          {
+            "window_ms": 48,
+            "change_residual_seconds": 0.03950000000000012,
+            "rmse_db": 0.5218070110401394,
+            "before_slope_db_per_s": -1.6302634203569255,
+            "after_slope_db_per_s": -196.87098615262346
+          }
+        ]
+      },
+      {
+        "midi": 87,
+        "frozen_off_seconds": 182.1789893286241,
+        "observations": [
+          {
+            "window_ms": 12,
+            "change_residual_seconds": 0.03200000000000011,
+            "rmse_db": 1.320669664596038,
+            "before_slope_db_per_s": 1.2178951265168507,
+            "after_slope_db_per_s": -203.2098287849813
+          },
+          {
+            "window_ms": 24,
+            "change_residual_seconds": 0.03200000000000011,
+            "rmse_db": 1.2757273995999627,
+            "before_slope_db_per_s": 1.2459304925205288,
+            "after_slope_db_per_s": -202.8348931165337
+          },
+          {
+            "window_ms": 48,
+            "change_residual_seconds": 0.03200000000000011,
+            "rmse_db": 1.1468979929536003,
+            "before_slope_db_per_s": 1.3324709371084111,
+            "after_slope_db_per_s": -200.81938953338465
+          }
+        ]
+      }
+    ],
+    "alignment_modified": false,
+    "dsp_model_used_for_timing_estimation": false,
+    "production_changed": false
+  },
+  "posthoc_summary": {
+    "onset_rows": [
+      {
+        "patch": 5,
+        "midi": 72,
+        "midi_on": 9.264696,
+        "frozen_on": 10.153554265731282,
+        "residual": 0.025161265790797454,
+        "contrast": 96.30921005575233,
+        "window_primary_variation_ms": 2.942233096487824,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 5,
+        "midi": 74,
+        "midi_on": 9.485284,
+        "frozen_on": 10.37409969529909,
+        "residual": 0.023222409228787596,
+        "contrast": 50.73260931369119,
+        "window_primary_variation_ms": 2.3821049764591944,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 5,
+        "midi": 77,
+        "midi_on": 9.926459999999999,
+        "frozen_on": 10.815190554434711,
+        "residual": 0.022205224068271166,
+        "contrast": 42.34170095248058,
+        "window_primary_variation_ms": 2.5848794531082366,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 18,
+        "midi": 77,
+        "midi_on": 32.20584799999993,
+        "frozen_on": 33.09027894078347,
+        "residual": 0.04010075781928005,
+        "contrast": 141.16664419726823,
+        "window_primary_variation_ms": 0.5322542226431983,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 18,
+        "midi": 74,
+        "midi_on": 32.42643599999993,
+        "frozen_on": 33.31082437035128,
+        "residual": 0.02742423248738419,
+        "contrast": 10.312350264746643,
+        "window_primary_variation_ms": 0.13785319836020007,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 88,
+        "midi": 74,
+        "midi_on": 155.95571600000116,
+        "frozen_on": 156.81626492832623,
+        "residual": 0.03732263315048231,
+        "contrast": 39.18032373866685,
+        "window_primary_variation_ms": 1.3831230055463828,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 88,
+        "midi": 77,
+        "midi_on": 155.95571600000116,
+        "frozen_on": 156.81626492832623,
+        "residual": 0.03812367623383176,
+        "contrast": 240.6865266549279,
+        "window_primary_variation_ms": 0.7746398057039416,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 88,
+        "midi": 79,
+        "midi_on": 156.17630400000115,
+        "frozen_on": 157.036810357894,
+        "residual": 0.05572681524333184,
+        "contrast": 45.893456510899284,
+        "window_primary_variation_ms": 0.159214374480382,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 88,
+        "midi": 72,
+        "midi_on": 156.61748000000114,
+        "frozen_on": 157.47790121702963,
+        "residual": 0.05329180441086829,
+        "contrast": 14.00296922336549,
+        "window_primary_variation_ms": 0.6027507653851918,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 99,
+        "midi": 77,
+        "midi_on": 174.9262840000009,
+        "frozen_on": 175.78317187115763,
+        "residual": 0.039834456283196186,
+        "contrast": 29.0670065528977,
+        "window_primary_variation_ms": 0.21072720813146428,
+        "invalid_window_count": 1
+      },
+      {
+        "patch": 99,
+        "midi": 72,
+        "midi_on": 175.80863600000086,
+        "frozen_on": 176.66535358942883,
+        "residual": 0.041340259112588526,
+        "contrast": 4.186710115779393,
+        "window_primary_variation_ms": 1.6153380680223386,
+        "invalid_window_count": 1
+      },
+      {
+        "patch": 99,
+        "midi": 72,
+        "midi_on": 176.69098800000086,
+        "frozen_on": 177.5475353077001,
+        "residual": 0.043110529153998524,
+        "contrast": 4.0699115555721646,
+        "window_primary_variation_ms": 0.35031824043243315,
+        "invalid_window_count": 1
+      },
+      {
+        "patch": 99,
+        "midi": 77,
+        "midi_on": 176.91157600000085,
+        "frozen_on": 177.76808073726787,
+        "residual": 0.053955030283726786,
+        "contrast": 272.06460572344105,
+        "window_primary_variation_ms": 0.1297153372695481,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 99,
+        "midi": 72,
+        "midi_on": 177.57334000000083,
+        "frozen_on": 178.42971702597129,
+        "residual": 0.046949096504861156,
+        "contrast": 4.0335513608438145,
+        "window_primary_variation_ms": 0.8134765520889514,
+        "invalid_window_count": 1
+      },
+      {
+        "patch": 99,
+        "midi": 75,
+        "midi_on": 178.23510400000083,
+        "frozen_on": 179.09135331467473,
+        "residual": 0.06338518329985997,
+        "contrast": 94.9736313084813,
+        "window_primary_variation_ms": 0.3459253014284902,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 99,
+        "midi": 75,
+        "midi_on": 179.99980800000085,
+        "frozen_on": 180.85571675121722,
+        "residual": 0.06099135900902537,
+        "contrast": 13.312792246840212,
+        "window_primary_variation_ms": 0.3125415165126308,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 99,
+        "midi": 79,
+        "midi_on": 180.88216000000088,
+        "frozen_on": 181.7378984694885,
+        "residual": 0.06243603285045313,
+        "contrast": 151.51604953800125,
+        "window_primary_variation_ms": 0.15888840495870138,
+        "invalid_window_count": 0
+      },
+      {
+        "patch": 99,
+        "midi": 87,
+        "midi_on": 180.88216000000088,
+        "frozen_on": 181.7378984694885,
+        "residual": 0.06056798419056138,
+        "contrast": 491.95621196933814,
+        "window_primary_variation_ms": 0.054639309845977424,
+        "invalid_window_count": 0
+      }
+    ],
+    "onset_groups": [
+      {
+        "midi_on": 9.264696,
+        "frozen_on": 10.153554265731282,
+        "patch": 5,
+        "residual": 0.025161265790797454,
+        "midi": [
+          72
+        ]
+      },
+      {
+        "midi_on": 9.485284,
+        "frozen_on": 10.37409969529909,
+        "patch": 5,
+        "residual": 0.023222409228787596,
+        "midi": [
+          74
+        ]
+      },
+      {
+        "midi_on": 9.926459999999999,
+        "frozen_on": 10.815190554434711,
+        "patch": 5,
+        "residual": 0.022205224068271166,
+        "midi": [
+          77
+        ]
+      },
+      {
+        "midi_on": 32.20584799999993,
+        "frozen_on": 33.09027894078347,
+        "patch": 18,
+        "residual": 0.04010075781928005,
+        "midi": [
+          77
+        ]
+      },
+      {
+        "midi_on": 32.42643599999993,
+        "frozen_on": 33.31082437035128,
+        "patch": 18,
+        "residual": 0.02742423248738419,
+        "midi": [
+          74
+        ]
+      },
+      {
+        "midi_on": 155.95571600000116,
+        "frozen_on": 156.81626492832623,
+        "patch": 88,
+        "residual": 0.037723154692157035,
+        "midi": [
+          74,
+          77
+        ]
+      },
+      {
+        "midi_on": 156.17630400000115,
+        "frozen_on": 157.036810357894,
+        "patch": 88,
+        "residual": 0.05572681524333184,
+        "midi": [
+          79
+        ]
+      },
+      {
+        "midi_on": 156.61748000000114,
+        "frozen_on": 157.47790121702963,
+        "patch": 88,
+        "residual": 0.05329180441086829,
+        "midi": [
+          72
+        ]
+      },
+      {
+        "midi_on": 174.9262840000009,
+        "frozen_on": 175.78317187115763,
+        "patch": 99,
+        "residual": 0.039834456283196186,
+        "midi": [
+          77
+        ]
+      },
+      {
+        "midi_on": 175.80863600000086,
+        "frozen_on": 176.66535358942883,
+        "patch": 99,
+        "residual": 0.041340259112588526,
+        "midi": [
+          72
+        ]
+      },
+      {
+        "midi_on": 176.69098800000086,
+        "frozen_on": 177.5475353077001,
+        "patch": 99,
+        "residual": 0.043110529153998524,
+        "midi": [
+          72
+        ]
+      },
+      {
+        "midi_on": 176.91157600000085,
+        "frozen_on": 177.76808073726787,
+        "patch": 99,
+        "residual": 0.053955030283726786,
+        "midi": [
+          77
+        ]
+      },
+      {
+        "midi_on": 177.57334000000083,
+        "frozen_on": 178.42971702597129,
+        "patch": 99,
+        "residual": 0.046949096504861156,
+        "midi": [
+          72
+        ]
+      },
+      {
+        "midi_on": 178.23510400000083,
+        "frozen_on": 179.09135331467473,
+        "patch": 99,
+        "residual": 0.06338518329985997,
+        "midi": [
+          75
+        ]
+      },
+      {
+        "midi_on": 179.99980800000085,
+        "frozen_on": 180.85571675121722,
+        "patch": 99,
+        "residual": 0.06099135900902537,
+        "midi": [
+          75
+        ]
+      },
+      {
+        "midi_on": 180.88216000000088,
+        "frozen_on": 181.7378984694885,
+        "patch": 99,
+        "residual": 0.06150200852050725,
+        "midi": [
+          79,
+          87
+        ]
+      }
+    ],
+    "descriptive_global_trend": {
+      "type": "Post-observation descriptive Theil-Sen regression of unique audible-onset-group residuals against source MIDI time; no benchmark alignment replacement",
+      "groups": 16,
+      "offset_delta_seconds": 0.00771644947418889,
+      "scale_delta": 0.00020817127876429867,
+      "scale_delta_ppm": 208.17127876429868,
+      "conditional_slope_95_interval_ppm": [
+        108.73285536293237,
+        338.36028786034063
+      ],
+      "residuals_seconds": [
+        0.015516172702926082,
+        0.013531396054876164,
+        0.012422370722279617,
+        0.02567997578324254,
+        0.012957530365306624,
+        -0.0024587956123538895,
+        0.015498944852780853,
+        0.012972093848237193,
+        -0.004296621420759768,
+        -0.0029744989355276544,
+        -0.001387909238277897,
+        0.00941067180541031,
+        0.002266977768424508,
+        0.01856530430530314,
+        0.015804119326148065,
+        0.016131088493469704
+      ],
+      "residual_mad_seconds": 0.012964812106771908,
+      "caveat": "Formal interval assumes independent exchangeable group errors; patch-dependent output attack and local timing invalidate treating it as physical clock confidence."
+    },
+    "method_sanity_check_posthoc": [
+      {
+        "frequency": 523.2511306,
+        "window_ms": 12,
+        "max_abs_step_error_seconds": 0.007181527668776452,
+        "minimum": -0.0015928414276658392,
+        "maximum": 0.007181527668776452,
+        "conditions": "8 carrier phases; unmodulated ongoing -2semitone interferer amplitudes0,.25,1; stationary unit-amplitude sine starts at0. No engine, effect or capture dynamics."
+      },
+      {
+        "frequency": 523.2511306,
+        "window_ms": 24,
+        "max_abs_step_error_seconds": 0.004851529843350363,
+        "minimum": -0.001158911463371915,
+        "maximum": 0.004851529843350363,
+        "conditions": "8 carrier phases; unmodulated ongoing -2semitone interferer amplitudes0,.25,1; stationary unit-amplitude sine starts at0. No engine, effect or capture dynamics."
+      },
+      {
+        "frequency": 523.2511306,
+        "window_ms": 48,
+        "max_abs_step_error_seconds": 0.000386683059371363,
+        "minimum": -0.00027720847079328135,
+        "maximum": 0.000386683059371363,
+        "conditions": "8 carrier phases; unmodulated ongoing -2semitone interferer amplitudes0,.25,1; stationary unit-amplitude sine starts at0. No engine, effect or capture dynamics."
+      },
+      {
+        "frequency": 698.4564629,
+        "window_ms": 12,
+        "max_abs_step_error_seconds": 0.005228687543514302,
+        "minimum": -0.001301000119795465,
+        "maximum": 0.005228687543514302,
+        "conditions": "8 carrier phases; unmodulated ongoing -2semitone interferer amplitudes0,.25,1; stationary unit-amplitude sine starts at0. No engine, effect or capture dynamics."
+      },
+      {
+        "frequency": 698.4564629,
+        "window_ms": 24,
+        "max_abs_step_error_seconds": 0.0006558127634004505,
+        "minimum": -0.00033146223884058677,
+        "maximum": 0.0006558127634004505,
+        "conditions": "8 carrier phases; unmodulated ongoing -2semitone interferer amplitudes0,.25,1; stationary unit-amplitude sine starts at0. No engine, effect or capture dynamics."
+      },
+      {
+        "frequency": 698.4564629,
+        "window_ms": 48,
+        "max_abs_step_error_seconds": 0.00022429080043924736,
+        "minimum": -0.0001790198718063244,
+        "maximum": 0.00022429080043924736,
+        "conditions": "8 carrier phases; unmodulated ongoing -2semitone interferer amplitudes0,.25,1; stationary unit-amplitude sine starts at0. No engine, effect or capture dynamics."
+      },
+      {
+        "frequency": 1244.507935,
+        "window_ms": 12,
+        "max_abs_step_error_seconds": 0.0010285476585939943,
+        "minimum": -0.0003519732278124622,
+        "maximum": 0.0010285476585939943,
+        "conditions": "8 carrier phases; unmodulated ongoing -2semitone interferer amplitudes0,.25,1; stationary unit-amplitude sine starts at0. No engine, effect or capture dynamics."
+      },
+      {
+        "frequency": 1244.507935,
+        "window_ms": 24,
+        "max_abs_step_error_seconds": 0.00014166537579101774,
+        "minimum": -9.749660059941106e-05,
+        "maximum": 0.00014166537579101774,
+        "conditions": "8 carrier phases; unmodulated ongoing -2semitone interferer amplitudes0,.25,1; stationary unit-amplitude sine starts at0. No engine, effect or capture dynamics."
+      },
+      {
+        "frequency": 1244.507935,
+        "window_ms": 48,
+        "max_abs_step_error_seconds": 9.44252888451658e-05,
+        "minimum": -6.719314001533206e-05,
+        "maximum": 9.44252888451658e-05,
+        "conditions": "8 carrier phases; unmodulated ongoing -2semitone interferer amplitudes0,.25,1; stationary unit-amplitude sine starts at0. No engine, effect or capture dynamics."
+      }
+    ],
+    "max_valid_window_halfcross_variation_ms": 2.942233096487824,
+    "all_primary_positive": true,
+    "final_sine_first_to_last_onset_residual_difference_seconds": 0.021667552237311066
+  },
+  "posthoc_release_departure_protocol": {
+    "status": "Posthoc sensitivity diagnostic, frozen after reviewing the original one-break traces",
+    "reason": "The original one-break release model spans a steep decay and a flattening tail. Its change point is biased by the later bend and cannot identify note-off.",
+    "selection": "Same final Sine99 MIDI79 and87, no added/removed notes",
+    "method": "Same nominal-tone Hann demodulation and12/24/48ms windows. Fit held-level linear dB trend over frozenoff[-.12,0]s. Find first persistent3ms departure by0.5,1,3,6dB below projected held trend over frozenoff[-.05,+.15]s. These are observed amplitude-departure times, not MIDIoff times, envelope-law fits or alignment changes."
+  },
+  "posthoc_release_departures": {
+    "protocol_sha256": "503e927b11d3db66e11a6bc31341683a6020241d6df35e65d733211837912463",
+    "results": [
+      {
+        "midi": 79,
+        "window_ms": 12,
+        "projected_held_slope_db_s": -0.30374414330472926,
+        "departures": [
+          {
+            "departure_db": 0.5,
+            "residual_seconds": 0.04634587652883183
+          },
+          {
+            "departure_db": 1,
+            "residual_seconds": 0.04769319850459326
+          },
+          {
+            "departure_db": 3,
+            "residual_seconds": 0.05779782631908513
+          },
+          {
+            "departure_db": 6,
+            "residual_seconds": 0.07085853934407091
+          }
+        ]
+      },
+      {
+        "midi": 79,
+        "window_ms": 24,
+        "projected_held_slope_db_s": -0.44989021217127434,
+        "departures": [
+          {
+            "departure_db": 0.5,
+            "residual_seconds": 0.0449894727633912
+          },
+          {
+            "departure_db": 1,
+            "residual_seconds": 0.04779018586595271
+          },
+          {
+            "departure_db": 3,
+            "residual_seconds": 0.05726496393385004
+          },
+          {
+            "departure_db": 6,
+            "residual_seconds": 0.07044884231973979
+          }
+        ]
+      },
+      {
+        "midi": 79,
+        "window_ms": 48,
+        "projected_held_slope_db_s": -0.6261033323346208,
+        "departures": [
+          {
+            "departure_db": 0.5,
+            "residual_seconds": 0.040674820759455034
+          },
+          {
+            "departure_db": 1,
+            "residual_seconds": 0.04597202364016776
+          },
+          {
+            "departure_db": 3,
+            "residual_seconds": 0.05780183504402975
+          },
+          {
+            "departure_db": 6,
+            "residual_seconds": 0.07101482224264397
+          }
+        ]
+      },
+      {
+        "midi": 87,
+        "window_ms": 12,
+        "projected_held_slope_db_s": 2.3511901275571447,
+        "departures": [
+          {
+            "departure_db": 0.5,
+            "residual_seconds": 0.043408332426581375
+          },
+          {
+            "departure_db": 1,
+            "residual_seconds": 0.045491249922231226
+          },
+          {
+            "departure_db": 3,
+            "residual_seconds": 0.053144247390039874
+          },
+          {
+            "departure_db": 6,
+            "residual_seconds": 0.06313720077769039
+          }
+        ]
+      },
+      {
+        "midi": 87,
+        "window_ms": 24,
+        "projected_held_slope_db_s": 2.303634238220031,
+        "departures": [
+          {
+            "departure_db": 0.5,
+            "residual_seconds": 0.04221445017161322
+          },
+          {
+            "departure_db": 1,
+            "residual_seconds": 0.045208778511361805
+          },
+          {
+            "departure_db": 3,
+            "residual_seconds": 0.05331619214234213
+          },
+          {
+            "departure_db": 6,
+            "residual_seconds": 0.06352871781173966
+          }
+        ]
+      },
+      {
+        "midi": 87,
+        "window_ms": 48,
+        "projected_held_slope_db_s": 2.305077180995396,
+        "departures": [
+          {
+            "departure_db": 0.5,
+            "residual_seconds": 0.03790298813025619
+          },
+          {
+            "departure_db": 1,
+            "residual_seconds": 0.042863814391377236
+          },
+          {
+            "departure_db": 3,
+            "residual_seconds": 0.05350444797733672
+          },
+          {
+            "departure_db": 6,
+            "residual_seconds": 0.06444464830058722
+          }
+        ]
+      }
+    ],
+    "not_a_midi_timestamp": true
+  },
+  "artifacts": [
+    {
+      "path": "build/midi-alignment-audit-20261018/analysis-summary.json",
+      "sha256": "34f186e4f03b28bc8bc95455d66fd6ef0be86608d4d51417c641cf402d4c6a5f",
+      "bytes": 13086
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/analyze_alignment.py",
+      "sha256": "ce5a2af90b54be1828594758d7541981027a205151738df48ce651da3e789e6d",
+      "bytes": 7748
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/onset-residuals.png",
+      "sha256": "1cc0c58be9e5ad1fbbfc2a97b1f8f32a3f284407c63d8f985406ed63d15c8360",
+      "bytes": 47619
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/onset-traces.png",
+      "sha256": "b1213ec8a384e1e1c3f1da75f7344f9a5b0d84c18ebcaad5cbbe0eae29c7f46f",
+      "bytes": 370193
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/protocol-frozen.json",
+      "sha256": "142b48eb45ffa13a227635bbcf70bf150df9be8dcfa46ae9a98ac3facc4825bf",
+      "bytes": 12446
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/release-79-12ms.png",
+      "sha256": "5bc096960212d90cf00aac8eb8875bca7644698500293b784cf69b8c757f75ea",
+      "bytes": 30939
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/release-79-24ms.png",
+      "sha256": "ec97606fe07f0c188e015785808215b8207ff8bd77a338c31e22ee96cc1648f0",
+      "bytes": 29140
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/release-79-48ms.png",
+      "sha256": "2537761060f431b340ae1dc18e07658974aeec9bdebe3e3798ca40877ba3fb41",
+      "bytes": 28496
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/release-87-12ms.png",
+      "sha256": "6b3d694e3d87dc41aa803dd9c20ee677e266b9ea8c6ded511793847772825b7c",
+      "bytes": 30148
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/release-87-24ms.png",
+      "sha256": "32ae3c2c8bbca16fca15b2b0acb33e9aabd8e398ab8b7401ea5ac6c31725c9a8",
+      "bytes": 28527
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/release-87-48ms.png",
+      "sha256": "152491945f9a5d2bd91dc4bf9e78db28fa9477b0ae644e5c21e01964bf0cc03c",
+      "bytes": 27969
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/release-departure-protocol.json",
+      "sha256": "503e927b11d3db66e11a6bc31341683a6020241d6df35e65d733211837912463",
+      "bytes": 685
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/release-departure.json",
+      "sha256": "43c80e87ed8ab86efdb0219a1b4f3d9d198d057d1498e55bb49e5ae9f46ccaf4",
+      "bytes": 3391
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/release_departure.py",
+      "sha256": "7ffeb0759c44200248984e97d72b5b858406217cadb57e3ba5580080bb99b464",
+      "bytes": 1510
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/result.json",
+      "sha256": "b8bc47ec06fbc00baaa93be3a819fdc1900392e9737dc79272e0b708569fc4bb",
+      "bytes": 48660
+    },
+    {
+      "path": "build/midi-alignment-audit-20261018/summarize.py",
+      "sha256": "44d431a6e4087e1556cbd10873d73e06ddac8d0db2fb4d44000533db34be2c40",
+      "bytes": 4386
+    }
+  ],
+  "production_changed": false,
+  "alignment_changed": false,
+  "old_scores_modified": false,
+  "limitations": [
+    "Existing tour is reused material, not an independent holdout.",
+    "Observed tone transitions include sender/interface/output/capture latency and processing.",
+    "Raw AR63 constrains attack intent, not every detail of RKS or voice dispatch.",
+    "Onset groups clustered in only four short preset intervals; affine slope not independently identified.",
+    "Original one-break final release fit is biased by a later flattening tail; it is not MIDIoff detection.",
+    "Short Hann windows fail when neighboring pitches leak; those failures remain recorded.",
+    "Method checks use abstract steps, not a measured hardware or capture simulator."
+  ]
+}

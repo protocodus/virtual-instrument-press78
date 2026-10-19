@@ -103,13 +103,13 @@ bool Press78AudioProcessor::handleMidi (const juce::MidiMessage& m) noexcept
     else if (m.isController() && m.getControllerNumber() == 121) // Reset All Controllers
     {
         engine->sustainPedal (false);
-        bend = 0.0;
+        bend = press78::kBendCentre;
         wheel = 0.0;
         return true;
     }
     else if (m.isPitchWheel())
     {
-        bend = std::clamp ((m.getPitchWheelValue() - 8192) / 8192.0, -1.0, 1.0);
+        bend = m.getPitchWheelValue();
         return true;
     }
     else if (m.isController() && m.getControllerNumber() == 1)

@@ -1,0 +1,545 @@
+{
+  "schema": 1,
+  "date": "2026-10-19",
+  "scope": "Bounded new primary OPU interface evidence, without a Yamaha arithmetic-core specification or runtime change.",
+  "new_source": {
+    "author": "jbevren",
+    "post_date": "2024-10-27",
+    "post_url": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017#p2852",
+    "later_limit_post_date": "2024-11-01",
+    "later_limit_post_url": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017#p2862",
+    "evidence_class": "Firsthand investigator disassembly screenshot; author labels hardware identification provisional. No raw bus trace or original firmware blob used in this pass."
+  },
+  "visible_software_semantics": {
+    "status_read_address": "0x0200",
+    "wait_mask": "0x80",
+    "busy_condition": "Loop while status bit7 is set",
+    "target_address": "0x0200 + eight-bit X from zero-page$03",
+    "data_source": "zero-page$04",
+    "initial_nops": 6,
+    "visible_instruction_byte_count": 21,
+    "decoder_limit": "Software addressing arithmetic does not prove all256 target addresses decode independently in the chip.",
+    "initialization": "Y wraps after256 address/data-table entries; values not present in screenshot cannot be recovered.",
+    "visible_following_initialization_writes": [
+      {
+        "register_address": "0x01",
+        "data": "0x00"
+      },
+      {
+        "register_address": "0x17",
+        "data": "0x0b"
+      },
+      {
+        "register_address": "0x17",
+        "data": "0x9f"
+      },
+      {
+        "register_address": "0x16",
+        "data": "0x2e"
+      }
+    ],
+    "comment_disagreement": "The third visible literal is opcode A9 9F; the adjacent analyst comment says8f. No register meaning is assigned to either comment."
+  },
+  "conditional_cpu_analysis": {
+    "assumption": "Standard65C02 instruction timings without interrupts, stalls or other waits, not a measured OPU CPU implementation.",
+    "bne_instruction_address": "0x4300",
+    "bne_next_pc": "0x4302",
+    "branch_displacement_signed": -5,
+    "branch_target": "0x42fd",
+    "taken_branch_crosses_256_byte_page": true,
+    "cycles_additional_busy_poll": 8,
+    "cycles_entry_through_rts": "37 + 8*n initial busy reads",
+    "cycles_entry_through_completed_write": "31 + 8*n initial busy reads",
+    "cases_passed": 8196,
+    "mask_negative_controls": "ready bits0..6 alone do not retain the busy loop",
+    "author_cpu_annotation": "12 cycles =4.8 microseconds implies2.5MHz if literal; not an acquired measured clock trace.",
+    "comparison": "Previously audited skeleton5.5MHz/4=1.375MHz is explicitly guessed. Neither determines FM sample/EG/LFO clock."
+  },
+  "source_search": {
+    "github_code_query": "YM3420 -repo:mamedev/mame -repo:protocodus/virtual-instrument-press78",
+    "github_count": 48,
+    "incomplete_results": false,
+    "driver_filename_hits": 26,
+    "limit": "Result filenames were triaged; the26 driver hits were not independently audited as26 implementations.",
+    "other_inspected_catalog": "nanase/opxdata comparison table has OPU numerical cells unknown; no clock/table supplied.",
+    "web_queries": [
+      "YM3420 reverse engineering registers frequency",
+      "YM3420 firmware disassembly65C02 OPU",
+      "YM3420 FM tone generator patent frequency key code",
+      "PSS480 ROM disassembly FM registers",
+      "YM3420 register",
+      "YM3420 frequency",
+      "YM3420 \u30c7\u30c1\u30e5\u30fc\u30f3",
+      "YM3420 \u89e3\u6790",
+      "OPU65C02 Yamaha",
+      "PSS680 disassembly",
+      "PSS480 firmware reverse"
+    ],
+    "limits": "No retrieved document tied a patent to this OPU implementation. No actual note-frequency table, DT1 numerical transfer, RKS counter or DSP-wordlength recovered."
+  },
+  "artifacts": [
+    {
+      "path": "build/opu-digital-primary-leads-20261019/forum-page1.html",
+      "sha256": "2f19385ef2b81150a76335c70ceec44a96a94c4baa48bf0dc1f57b6aa3ef5fda",
+      "size_bytes": 45353,
+      "url": "https://forum.mamedev.org/viewtopic.php?t=1017",
+      "role": "Original investigation page1"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/forum-page2.html",
+      "sha256": "da8f8e59a1a81536a8c59cdd820910586b2ba26e5bfe1af2a7a3afbfd9dacde5",
+      "size_bytes": 35214,
+      "url": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017",
+      "role": "Original investigation page2"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/fm_write.png",
+      "sha256": "536d84ab278a66dadf023d3f0536adea2ee3b84ce981947338ac050fb6c25c2f",
+      "size_bytes": 70992,
+      "url": "https://forum.mamedev.org/download/file.php?id=322",
+      "role": "Posted complete write-routine screenshot"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/pss480-fm-init.png",
+      "sha256": "3425ee338a5ef125e2392b1f91eae33911eab1e60a8268e23454a102a6bc027f",
+      "size_bytes": 107632,
+      "url": "https://forum.mamedev.org/download/file.php?id=321",
+      "role": "Posted initialization screenshot"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/fm-write-opcodes-crop.png",
+      "sha256": "8d8c4645de48e732610bd482905703c59fe74d8809e4d40bfd8d57080fa308d3",
+      "size_bytes": 32957,
+      "url": null,
+      "role": "Lossless local crop of source opcode rows"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/fm-init-opcodes-crop.png",
+      "sha256": "f59c065f7524edfeb76ff90890b826258d17cbe44914b1030eba15877b83e800",
+      "size_bytes": 83553,
+      "url": null,
+      "role": "Lossless local crop of source initialization rows"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/w65c02s.pdf",
+      "sha256": "4fb4a2c1055e319c6d8df5a6f7b348d9cffa958fdabc982a494bda54e5e17195",
+      "size_bytes": 392075,
+      "url": "https://www.westerndesigncenter.com/documentation/w65c02s.pdf",
+      "role": "Manufacturer CPU timing reference; not a Yamaha OPU identification"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/wdc-page-20.png",
+      "sha256": "a2bfc1c47747e0fbfa3410a9609d727043325a5863e161f20eab056d461288d4",
+      "size_bytes": 282436,
+      "url": null,
+      "role": "Visually inspected CPU timing table"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/verify_write_routine.py",
+      "sha256": "a786a1dc179813a72c8e25fe9f7c6aa31f4c1f1485b8b30d6162241656d54f2b",
+      "size_bytes": 4155,
+      "url": null,
+      "role": "Research-only transcription verifier"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/write-routine-validation.json",
+      "sha256": "b2cb536f7ae6bdac7ffe8ae38aab53a4490197ce449f902d6dcf2532947a6ef7",
+      "size_bytes": 7010,
+      "url": null,
+      "role": "8196 independent-emulator checks"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/github-code-search.json",
+      "sha256": "93d7fb850afc20cb43e292659adf093262a4dbb04b1d5fdab4dabdbcf6fbe364",
+      "size_bytes": 234723,
+      "url": "https://api.github.com/search/code",
+      "role": "Complete public code-search response"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/github-repository-search.json",
+      "sha256": "4af480b8ee5b87b369a76c49bd22c9a783908272ebffbe97898f8ab0f0772a5f",
+      "size_bytes": 55,
+      "url": "https://api.github.com/search/repositories?q=YM3420",
+      "role": "Repository search response"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/github-repository-pss780.json",
+      "sha256": "08f336c7065565708345a65918d1158e9fc02d2432e78bfcd6b6d4d5ce7291b8",
+      "size_bytes": 317303,
+      "url": "https://api.github.com/search/repositories?q=PSS-780",
+      "role": "Repository search response"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/github-repository-pss680.json",
+      "sha256": "9ebc840cc456a11aa9bd371976f81e5cf50c240928e2534e06c1d2325f6e9950",
+      "size_bytes": 10574,
+      "url": "https://api.github.com/search/repositories?q=PSS-680",
+      "role": "Repository search response"
+    },
+    {
+      "path": "build/opu-digital-primary-leads-20261019/nanase-comparison.html",
+      "sha256": "b6403dd1509fa28f71f11b41b2555d57725999466d04bb2386302d77dbab2af0",
+      "size_bytes": 25821,
+      "url": "https://raw.githubusercontent.com/nanase/opxdata/4d689797febff1c921907b4567002d4dffc2e6f9/comparison.html",
+      "role": "Original author chip-comparison table with unknown OPU numeric values"
+    }
+  ],
+  "verification": {
+    "transcription_source": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-digital-primary-leads-20261019/fm_write.png",
+      "sha256": "536d84ab278a66dadf023d3f0536adea2ee3b84ce981947338ac050fb6c25c2f",
+      "source_author": "jbevren",
+      "source_post_date": "2024-10-27",
+      "source_url": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017",
+      "source_literal_program_bytes_hex": "ea ea ea ea ea ea a6 03 a9 80 2c 00 02 d0 fb a5 04 9d 00 02 60",
+      "source_start_address": "0x42f3"
+    },
+    "emulator": {
+      "project": "https://github.com/mnaberez/py65",
+      "version": "1.2.0",
+      "files": [
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-digital-primary-leads-20261019/venv/lib/python3.11/site-packages/py65/devices/mpu65c02.py",
+          "sha256": "dfc5adcd63b82aaa95e5a4ae2a000af1c19fe7188575f41d70212542ec7694fb"
+        },
+        {
+          "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-digital-primary-leads-20261019/venv/lib/python3.11/site-packages/py65/devices/mpu6502.py",
+          "sha256": "15d93835b4f279b702270d9a0b417938291347ec57cc12d9e0307cd344d381fe"
+        }
+      ]
+    },
+    "cases_passed": 8196,
+    "address_values": 256,
+    "data_values": [
+      0,
+      1,
+      11,
+      46,
+      127,
+      128,
+      159,
+      255
+    ],
+    "busy_cases": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "conditional_cpu_cycle_law": "37 + 8*n initial busy reads, entry through RTS; no interrupts/stalls, standard65C02 timing",
+    "cycle_summaries": [
+      {
+        "initial_busy_reads": 0,
+        "total_cycles_entry_to_rts": 37,
+        "cycles_entry_through_store": 31,
+        "trace": [
+          {
+            "pc": "0x42f3",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f4",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f5",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f6",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f7",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f8",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f9",
+            "cycles": 3
+          },
+          {
+            "pc": "0x42fb",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42fd",
+            "cycles": 4
+          },
+          {
+            "pc": "0x4300",
+            "cycles": 2
+          },
+          {
+            "pc": "0x4302",
+            "cycles": 3
+          },
+          {
+            "pc": "0x4304",
+            "cycles": 5
+          },
+          {
+            "pc": "0x4307",
+            "cycles": 6
+          }
+        ]
+      },
+      {
+        "initial_busy_reads": 1,
+        "total_cycles_entry_to_rts": 45,
+        "cycles_entry_through_store": 39,
+        "trace": [
+          {
+            "pc": "0x42f3",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f4",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f5",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f6",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f7",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f8",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f9",
+            "cycles": 3
+          },
+          {
+            "pc": "0x42fb",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42fd",
+            "cycles": 4
+          },
+          {
+            "pc": "0x4300",
+            "cycles": 4
+          },
+          {
+            "pc": "0x42fd",
+            "cycles": 4
+          },
+          {
+            "pc": "0x4300",
+            "cycles": 2
+          },
+          {
+            "pc": "0x4302",
+            "cycles": 3
+          },
+          {
+            "pc": "0x4304",
+            "cycles": 5
+          },
+          {
+            "pc": "0x4307",
+            "cycles": 6
+          }
+        ]
+      },
+      {
+        "initial_busy_reads": 2,
+        "total_cycles_entry_to_rts": 53,
+        "cycles_entry_through_store": 47,
+        "trace": [
+          {
+            "pc": "0x42f3",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f4",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f5",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f6",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f7",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f8",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f9",
+            "cycles": 3
+          },
+          {
+            "pc": "0x42fb",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42fd",
+            "cycles": 4
+          },
+          {
+            "pc": "0x4300",
+            "cycles": 4
+          },
+          {
+            "pc": "0x42fd",
+            "cycles": 4
+          },
+          {
+            "pc": "0x4300",
+            "cycles": 4
+          },
+          {
+            "pc": "0x42fd",
+            "cycles": 4
+          },
+          {
+            "pc": "0x4300",
+            "cycles": 2
+          },
+          {
+            "pc": "0x4302",
+            "cycles": 3
+          },
+          {
+            "pc": "0x4304",
+            "cycles": 5
+          },
+          {
+            "pc": "0x4307",
+            "cycles": 6
+          }
+        ]
+      },
+      {
+        "initial_busy_reads": 3,
+        "total_cycles_entry_to_rts": 61,
+        "cycles_entry_through_store": 55,
+        "trace": [
+          {
+            "pc": "0x42f3",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f4",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f5",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f6",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f7",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f8",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42f9",
+            "cycles": 3
+          },
+          {
+            "pc": "0x42fb",
+            "cycles": 2
+          },
+          {
+            "pc": "0x42fd",
+            "cycles": 4
+          },
+          {
+            "pc": "0x4300",
+            "cycles": 4
+          },
+          {
+            "pc": "0x42fd",
+            "cycles": 4
+          },
+          {
+            "pc": "0x4300",
+            "cycles": 4
+          },
+          {
+            "pc": "0x42fd",
+            "cycles": 4
+          },
+          {
+            "pc": "0x4300",
+            "cycles": 4
+          },
+          {
+            "pc": "0x42fd",
+            "cycles": 4
+          },
+          {
+            "pc": "0x4300",
+            "cycles": 2
+          },
+          {
+            "pc": "0x4302",
+            "cycles": 3
+          },
+          {
+            "pc": "0x4304",
+            "cycles": 5
+          },
+          {
+            "pc": "0x4307",
+            "cycles": 6
+          }
+        ]
+      }
+    ],
+    "cpu_clock_annotations_are_not_measurements": [
+      {
+        "conditional_cpu_hz": 1375000,
+        "six_nops_seconds": 8.727272727272728e-06
+      },
+      {
+        "conditional_cpu_hz": 2500000,
+        "six_nops_seconds": 4.8e-06
+      }
+    ],
+    "interpretation": "The visible software waits on bit7 of status$0200 and writes one byte to$0200+X. This does not prove that all256 addresses decode separately or recover Yamaha FM sample cadence/register semantics.",
+    "no_hardware_midi_audio_execution": true
+  },
+  "not_established": [
+    "Any internal FM/EG/LFO sample divider",
+    "Register meanings of the posted initialization values",
+    "DT1 cents or frequency-step transfer",
+    "RKS or release-counter law",
+    "12voice scheduling/phase reset/lookup arithmetic precision",
+    "PSS780 matching firmware and busy behavior"
+  ],
+  "scope_invariants": {
+    "no_production_or_factory_edits": true,
+    "no_added_noise": true,
+    "no_midi_hardware_host_execution": true,
+    "no_git_mutation": true,
+    "no_outreach": true,
+    "no_firmware_blob_in_product": true
+  }
+}

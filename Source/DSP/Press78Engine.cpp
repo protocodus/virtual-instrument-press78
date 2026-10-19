@@ -1,5 +1,6 @@
 #include "Press78Engine.h"
 #include "RecordedChorus.h"
+#include "FirmwarePitch.h"
 
 #include <algorithm>
 #include <cmath>
@@ -9,7 +10,9 @@ namespace press78 {
 namespace {
 constexpr double pi = 3.14159265358979323846264338327950288;
 constexpr double tau = 2.0 * pi;
-constexpr double pmDepth[8] = {0.0, 3.4, 6.7, 10.0, 14.0, 20.0, 40.0, 80.0};
+// Recording-calibrated OPU hypothesis: PMS3 is about12.5 cents, with
+// doubling depth per sensitivity step. Unobserved levels remain hypotheses.
+constexpr double pmDepth[8] = {0.0, 3.125, 6.25, 12.5, 25.0, 50.0, 100.0, 200.0};
 constexpr double amDepth[4] = {0.0, 1.4, 5.9, 11.8};
 constexpr double rateScaling[4] = {0.0, 0.0625, 0.125, 0.25};
 
@@ -35,6 +38,12 @@ double level(const Operator& op, int midi) noexcept {
 }
 double step(const Operator& op, int note) noexcept {
     const double base = 440.0 * std::pow(2.0, (note - 69) / 12.0);
+    const double ratio = op.mul == 0 ? 0.5 : static_cast<double>(op.mul);
+    const double cents = (op.dt2 ? 600.0 : 0.0) + op.dt1 * 1.5;
+    return tau * base * ratio * std::pow(2.0, cents / 1200.0) / Press78Engine::kInternalRate;
+}
+double originalStep(const Operator& op, int note, int steps) noexcept {
+    const double base = firmware_pitch::frequency(note, steps);
     const double ratio = op.mul == 0 ? 0.5 : static_cast<double>(op.mul);
     const double cents = (op.dt2 ? 600.0 : 0.0) + op.dt1 * 1.5;
     return tau * base * ratio * std::pow(2.0, cents / 1200.0) / Press78Engine::kInternalRate;
@@ -108,11 +117,15 @@ Controls sanitizeControls(Controls c) noexcept {
     c.masterGain = bounded(c.masterGain, 0, 2, 0.25);
     c.pitchBendSemitones = bounded(c.pitchBendSemitones, -48, 48, 0);
     c.masterTuneCents = bounded(c.masterTuneCents, -1200, 1200, 0);
+    c.hostTuneCents = bounded(c.hostTuneCents, -1200, 1200, 0);
+    c.pitchModel = std::clamp(c.pitchModel, 0, 1);
+    c.midiPitchBend = std::clamp(c.midiPitchBend, -1, 16383);
+    c.midiBendRange = std::clamp(c.midiBendRange, 0, 24);
     c.velocitySensitivity = bounded(c.velocitySensitivity, 0, 2, 1);
     c.velocityToModulation = bounded(c.velocityToModulation, 0, 2, 0);
     c.modulationAmount = bounded(c.modulationAmount, 0, 2, 1);
     c.polyphony = std::clamp(c.polyphony, 1, 12);
-    c.lfoRateHz = bounded(c.lfoRateHz, 0, 30, 6.1);
+    c.lfoRateHz = bounded(c.lfoRateHz, 0, 30, 5.24);
     c.vibratoDepth = bounded(c.vibratoDepth, 0, 4, 1);
     c.tremoloDepth = bounded(c.tremoloDepth, 0, 4, 1);
     c.lfoDelayScale = bounded(c.lfoDelayScale, 0, 4, 1);
@@ -127,8 +140,10 @@ Controls sanitizeControls(Controls c) noexcept {
     c.chorusRateHz = bounded(c.chorusRateHz, 0.05, 8, 0.65);
     c.chorusDepthMs = bounded(c.chorusDepthMs, 0, 8, 2);
     c.stereoWidth = bounded(c.stereoWidth, 0, 2, 1);
-    c.noiseRms = bounded(c.noiseRms, 0, 0.02, 0);
-    c.noiseModel = std::clamp(c.noiseModel, 0, 1);
+    // Retained only for source/patch compatibility. No artificial-noise path
+    // exists, including when an older caller requests nonzero or invalid values.
+    c.noiseRms = 0.0;
+    c.noiseModel = 0;
     return c;
 }
 
@@ -151,12 +166,17 @@ double Press78Engine::Envelope::next(bool released) noexcept {
     if (stage == 0) {
         attenuation = instantAttack ? 0.0 : attenuation * attackMul;
         if (attenuation <= 0.096) { attenuation = 0.0; stage = 1; }
-    } else if (stage == 1) {
-        // Preserve the frozen model's one D1 step even when target is zero.
-        attenuation += decay1;
-        if (attenuation >= target) stage = 2;
-    } else if (stage == 2) attenuation += decay2;
-    else attenuation += release;
+    } else {
+        // An already reached D1L has no D1 interval. Test it before stepping,
+        // so a zero-height D1 neither adds attenuation nor delays D2. This is
+        // a behavioral endpoint correction, not a recovered OPU tick law.
+        if (stage == 1 && attenuation >= target) stage = 2;
+        if (stage == 1) {
+            attenuation += decay1;
+            if (attenuation >= target) stage = 2;
+        } else if (stage == 2) attenuation += decay2;
+        else attenuation += release;
+    }
     if (attenuation >= 96.0) {
         if (stage != 0) finished = true;
         return 0.0;
@@ -178,6 +198,13 @@ void Press78Engine::Voice::updatePatch(const Patch& p) noexcept {
     modStep = step(p.modulator, note); carrierStep = step(p.carrier, note);
     modGain = level(p.modulator, note); carrierGain = level(p.carrier, note) * 0.8;
     feedback = p.feedback == 0 ? 0.0 : 4.0 * pi * std::pow(2.0, p.feedback - 7);
+}
+
+void Press78Engine::Voice::updateOriginalPitch(int steps) noexcept {
+    // Only coefficients change: oscillator phase, feedback, envelope and age
+    // survive bends/fine edits, including voices in the steal fade.
+    modStep = originalStep(patch.modulator, note, steps);
+    carrierStep = originalStep(patch.carrier, note, steps);
 }
 
 double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo) noexcept {
@@ -214,7 +241,6 @@ void Press78Engine::prepare(double sampleRate) noexcept {
     sampleRate_ = bounded(sampleRate, 8000.0, 192000.0, 48000.0);
     buildResampler();
     analog_.prepare(sampleRate_);
-    circuitNoise_.prepare(sampleRate_);
     gainSmoothing_ = 1.0 - std::exp(-1.0 / (sampleRate_ * 0.005));
     dcCoefficient_ = std::exp(-tau * 10.0 / sampleRate_);
     setControls(controls_);
@@ -226,27 +252,30 @@ void Press78Engine::reset() noexcept {
     for (auto& t : tails_) t = Tail{};
     history_.fill(0.0); delay_.fill(0.0);
     analog_.reset();
-    circuitNoise_.reset();
     position_ = 0.0; nextTick_ = 0; hostTime_ = 0.0;
     globalLfoPhase_ = 0.0; chorusPhase_ = 0.0;
+    effectivePitchModel_ = controls_.pitchModel;
+    updatePitchControls();
     gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_;
     voiceControls_ = controls_;
     currentToneCoefficient_ = toneCoefficient_;
     circuitMix_ = controls_.outputCircuit ? 1.0 : 0.0;
     recordedChorusMix_ = static_cast<double>(controls_.chorusMode);
-    circuitNoiseMix_ = static_cast<double>(controls_.noiseModel);
     drive_ = controls_.drive; chorusMix_ = controls_.chorusMix;
     chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
-    width_ = controls_.stereoWidth; noise_ = controls_.noiseRms;
+    width_ = controls_.stereoWidth;
     tone1_ = tone2_ = 0.0;
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
-    delayWrite_ = 0; serial_ = 0; random_ = 0x7803420U;
+    delayWrite_ = 0; serial_ = 0;
     pedal_ = false; hasProcessed_ = false;
 }
 
 void Press78Engine::setPatch(const Patch& patch, bool updateActive) noexcept {
     patch_ = sanitizePatch(patch);
-    if (updateActive) for (auto& voice : voices_) if (voice.active) voice.updatePatch(patch_);
+    if (updateActive) for (auto& voice : voices_) if (voice.active) {
+        voice.updatePatch(patch_);
+        if (effectivePitchModel_ == 1) voice.updateOriginalPitch(pitchSteps_);
+    }
 }
 
 void Press78Engine::setChorusTime(double seconds) noexcept {
@@ -257,7 +286,8 @@ void Press78Engine::setChorusTime(double seconds) noexcept {
 
 void Press78Engine::setControls(const Controls& controls) noexcept {
     controls_ = sanitizeControls(controls);
-    targetPitch_ = std::pow(2.0, (controls_.pitchBendSemitones * 100.0 + controls_.masterTuneCents) / 1200.0);
+    applyPendingPitchModel();
+    updatePitchControls();
     toneCoefficient_ = controls_.toneCutoffHz == 0.0 ? 0.0
         : 1.0 - std::exp(-tau * std::min(controls_.toneCutoffHz, sampleRate_ * 0.45) / sampleRate_);
     if (!hasProcessed_) {
@@ -265,10 +295,9 @@ void Press78Engine::setControls(const Controls& controls) noexcept {
         currentToneCoefficient_ = toneCoefficient_;
         circuitMix_ = controls_.outputCircuit ? 1.0 : 0.0;
         recordedChorusMix_ = static_cast<double>(controls_.chorusMode);
-        circuitNoiseMix_ = static_cast<double>(controls_.noiseModel);
         drive_ = controls_.drive; chorusMix_ = controls_.chorusMix;
         chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
-        width_ = controls_.stereoWidth; noise_ = controls_.noiseRms;
+        width_ = controls_.stereoWidth;
     }
     while (activeVoices() > static_cast<std::size_t>(controls_.polyphony)) {
         Voice* victim = nullptr;
@@ -285,6 +314,7 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
     if (velocity <= 0) { noteOff(note, source); return; }
     velocity = std::min(velocity, 127);
     if (patch_.carrier.tl >= 99 || patch_.carrier.ar == 0) return;
+    applyPendingPitchModel();
     Voice* target = nullptr;
     if (activeVoices() < static_cast<std::size_t>(controls_.polyphony)) {
         for (auto& v : voices_) if (!v.active) { target = &v; break; }
@@ -297,6 +327,7 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
         tail->voice = *target; tail->remaining = 48;
     }
     target->configure(patch_, note, velocity, ++serial_);
+    if (effectivePitchModel_ == 1) target->updateOriginalPitch(pitchSteps_);
     target->source = source;
 }
 
@@ -321,10 +352,44 @@ void Press78Engine::allSoundOff() noexcept {
     for (auto& t : tails_) t.remaining = 0;
     history_.fill(0.0); delay_.fill(0.0);
     analog_.reset();
-    circuitNoise_.reset();
     tone1_ = tone2_ = 0.0;
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
     pedal_ = false;
+    applyPendingPitchModel();
+}
+
+bool Press78Engine::pitchIdle() const noexcept {
+    for (const auto& voice : voices_) if (voice.active) return false;
+    for (const auto& tail : tails_) if (tail.remaining > 0) return false;
+    return true;
+}
+
+void Press78Engine::applyPendingPitchModel() noexcept {
+    if (effectivePitchModel_ == controls_.pitchModel || !pitchIdle()) return;
+    effectivePitchModel_ = controls_.pitchModel;
+    updatePitchControls();
+    // There are no oscillators to glide between laws. Starting the next voice
+    // with the previous law's bend multiplier would otherwise double bend it.
+    pitchMultiplier_ = targetPitch_;
+}
+
+void Press78Engine::updatePitchControls() noexcept {
+    if (effectivePitchModel_ == 0) {
+        const double tune = controls_.masterTuneCents + controls_.hostTuneCents;
+        // Preserve the legacy addition order and5ms continuous smoothing.
+        targetPitch_ = std::pow(2.0, (controls_.pitchBendSemitones * 100.0 + tune) / 1200.0);
+        return;
+    }
+    const int bend = controls_.midiPitchBend < 0
+        ? static_cast<int>(std::lround(controls_.pitchBendSemitones * 32.0))
+        : firmware_pitch::bendSteps(controls_.midiPitchBend >> 7, controls_.midiBendRange);
+    const int steps = bend + static_cast<int>(std::lround(controls_.masterTuneCents / 3.125));
+    if (steps != pitchSteps_) {
+        pitchSteps_ = steps;
+        for (auto& voice : voices_) if (voice.active) voice.updateOriginalPitch(steps);
+        for (auto& tail : tails_) if (tail.remaining > 0) tail.voice.updateOriginalPitch(steps);
+    }
+    targetPitch_ = std::pow(2.0, controls_.hostTuneCents / 1200.0);
 }
 
 std::size_t Press78Engine::activeVoices() const noexcept {
@@ -358,6 +423,7 @@ void Press78Engine::buildResampler() noexcept {
 }
 
 double Press78Engine::synthesizeTick() noexcept {
+    applyPendingPitchModel();
     // Tune smoothing is clocked with the envelopes/operators. Clock offset
     // changes the arrival of these ticks, including feedback and the LFO.
     constexpr double smooth = 0.00415800184511004; // 1-exp(-1/(48000*.005)).
@@ -412,11 +478,6 @@ double Press78Engine::readDelay(double samples) const noexcept {
     return delay_[a] + fraction * (delay_[b] - delay_[a]);
 }
 
-double Press78Engine::randomNoise() noexcept {
-    random_ ^= random_ << 13; random_ ^= random_ >> 17; random_ ^= random_ << 5;
-    return (static_cast<double>(random_) / 4294967296.0 * 2.0 - 1.0) * std::sqrt(3.0);
-}
-
 void Press78Engine::output(double mono, double& left, double& right) noexcept {
     // Always advance the related-hardware small-signal circuit, including
     // during bypass, so re-enabling it does not expose stale filter memory.
@@ -430,9 +491,6 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     chorusDepth_ += (controls_.chorusDepthMs - chorusDepth_) * gainSmoothing_;
     recordedChorusMix_ += (static_cast<double>(controls_.chorusMode) - recordedChorusMix_) * gainSmoothing_;
     width_ += (controls_.stereoWidth - width_) * gainSmoothing_;
-    noise_ += (controls_.noiseRms - noise_) * gainSmoothing_;
-    circuitNoiseMix_ += (static_cast<double>(controls_.noiseModel) - circuitNoiseMix_) * gainSmoothing_;
-    if (controls_.noiseModel == 0 && circuitNoiseMix_ < 1e-12) circuitNoiseMix_ = 0.0;
     if (controls_.toneCutoffHz != 0.0) {
         tone1_ += currentToneCoefficient_ * (mono - tone1_);
         tone2_ += currentToneCoefficient_ * (tone1_ - tone2_);
@@ -443,12 +501,6 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
         // approach the dry signal continuously instead of a hard tanh switch.
         const double amount = 1.0 + 15.0 * drive_;
         mono += drive_ * (std::tanh(mono * amount) / amount - mono);
-    }
-    if (noise_ > 0.0) {
-        // Keep the legacy White arithmetic and generator sequence unchanged.
-        double white = noise_ * randomNoise();
-        if (circuitNoiseMix_ > 0.0) white *= 1.0 - circuitNoiseMix_;
-        mono += white;
     }
     delay_[delayWrite_] = mono;
     const double depth = chorusDepth_ * 0.001 * sampleRate_;
@@ -466,13 +518,6 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     left = mono + side; right = mono - side;
     delayWrite_ = (delayWrite_ + 1) % kDelaySize;
     chorusPhase_ = std::fmod(chorusPhase_ + tau * chorusRate_ / sampleRate_, tau);
-    if (noise_ > 0.0 && circuitNoiseMix_ > 0.0) {
-        // The MNA sources are already propagated to the stereo output node.
-        // Do not feed them through the chorus or normalize each rate/clip.
-        const auto volts = circuitNoise_.process();
-        const double level = noise_ * circuitNoiseMix_ / CircuitNoise::kReferenceRmsVolts;
-        left += level * volts[0]; right += level * volts[1];
-    }
     if (controls_.dcBlock) {
         const double l = left - dcInputL_ + dcCoefficient_ * dcOutputL_;
         const double r = right - dcInputR_ + dcCoefficient_ * dcOutputR_;

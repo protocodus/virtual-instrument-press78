@@ -1,0 +1,2960 @@
+{
+  "date": "2026-10-19",
+  "status": "bounded source audit complete; no law calibrated, production changes, artificial noise, MIDI transmission, playback, outreach, purchase, host or git actions",
+  "source": {
+    "url": "https://www.youtube.com/watch?v=eiIw-ffhzXM",
+    "title": "Yamaha PSS-680 synthesizer tutorial, sound demo and review + hidden / advanced features #synth",
+    "uploader": "ako",
+    "channel_id": "UC28-rz0VLwyvHsIMFGxFu1A",
+    "channel_url": "https://www.youtube.com/channel/UC28-rz0VLwyvHsIMFGxFu1A",
+    "upload_date": "20260313",
+    "duration_seconds": 1765,
+    "author_post": "https://www.reddit.com/r/MusicGear/comments/1rsl961/",
+    "author_post_user": "simeonsoden",
+    "attribution": "Tutorial shared by its author; not a2019 owner anecdote. Public March13,2026 source.",
+    "chapters_seconds": {
+      "front_panel_start": 205,
+      "advanced_start": 916,
+      "advanced_end": 1274,
+      "lead_demo_start": 1274,
+      "PSS480_music_start": 1364,
+      "factory_demo_start": 1425,
+      "conclusion_start": 1565
+    }
+  },
+  "acquisition": {
+    "method": "Ordinary public yt-dlp2026.8.19, no cookies/accounts/authentication or bypass; format137 video and251 audio, info JSON and English VTT; browser fetch of YouTube throttled but ordinary downloader succeeded. Panel downloaded using systemcurl with standard TLS after Python local CA verification failed.",
+    "video_format": {
+      "id": "137",
+      "height": 1080,
+      "width": 1920,
+      "fps": 30,
+      "codec": "avc1.640028"
+    },
+    "audio_format": {
+      "id": "251",
+      "codec": "Opus"
+    },
+    "analysis_pcm": "advanced-exact916.wav: float32 stereo48k, exact requested original916..1274 decode; no streamcopy-preroll origin assumption.",
+    "frame_coverage": "All358 one-second samples916..1273 generated from30fps source using every30th decodedframe; full chapter contact sheets reviewed, readable overlays inspected at native resolution. These sample times are nominal within a source frame; no hardware gate timestamps recovered.",
+    "sanitization": "Only selected title/uploader/date/duration/chapter facts copied here. Raw yt-dlp info with signed URLs remains ignored; no signed URL fields or cookies embedded in tracked JSON."
+  },
+  "coverage": [
+    {
+      "seconds": [
+        916,
+        994
+      ],
+      "content": "Camera view of laptop, USB-MIDI hookup and narration; editor small; hardware keys/gates and parameters not jointly readable."
+    },
+    {
+      "seconds": [
+        994,
+        1039
+      ],
+      "content": "Readable editor overlay begins; routing menus and Ableton settings obscure fields for much of this interval."
+    },
+    {
+      "seconds": [
+        1039,
+        1088
+      ],
+      "content": "Readable initial editor patch, waveform/AM explanation; Ableton overlay interrupts1078..1081; nonzero modulator."
+    },
+    {
+      "seconds": [
+        1088,
+        1123
+      ],
+      "content": "Preset edits and Accordion selection, waveform change, Vibrato enable and delay changes25/55/45; modulator remains nonzero."
+    },
+    {
+      "seconds": [
+        1123,
+        1152
+      ],
+      "content": "Modulator multiplier8, coarse0 to+600ct, fine to-7; carrier multiplier1 then9 then7, subsequent carrier waveform changes. Recorded pitches/gates and exact parameter delivery are not controlled."
+    },
+    {
+      "seconds": [
+        1152,
+        1183
+      ],
+      "content": "ModulatorAR47 through5/3 then31, D1R18 to36, feedback0 to3, waveform/AM changes; many parameters evolve."
+    },
+    {
+      "seconds": [
+        1183,
+        1231
+      ],
+      "content": "Overlay removed, camera view of laptop; additional live editing is not numerically legible at every instant."
+    },
+    {
+      "seconds": [
+        1231,
+        1240
+      ],
+      "content": "Readable overlay returns: snapshot1235 has modulatorD2R30 andLevel70 while carrierD2R0/Level87; feedback3 and half-sine tables remain."
+    },
+    {
+      "seconds": [
+        1240,
+        1274
+      ],
+      "content": "Camera view and wrap-up, no isolated calibrated sequence with known physical note gates."
+    }
+  ],
+  "visible_editor_snapshots": [
+    {
+      "source_seconds": 1040,
+      "file": "advanced-1040.jpg",
+      "common": {
+        "feedback": 0,
+        "pms": 3,
+        "ams": 0,
+        "vibrato_delay": 0,
+        "vibrato_enabled": false,
+        "sustain_enabled": false
+      },
+      "modulator": {
+        "multiplier_display": 1,
+        "coarse_display": "0",
+        "fine_display": 5,
+        "ar": 60,
+        "d1r": 31,
+        "d2r": 0,
+        "d1l_display": 13,
+        "rr": 8,
+        "srr": 2,
+        "rks": 1,
+        "lks_lo": 5,
+        "lks_hi": 7,
+        "level_display": 75,
+        "wave_display": "SQUARE SINE",
+        "am_enabled": false
+      },
+      "carrier": {
+        "multiplier_display": 1,
+        "coarse_display": "0",
+        "fine_display": -3,
+        "ar": 60,
+        "d1r": 1,
+        "d2r": 0,
+        "d1l_display": 15,
+        "rr": 11,
+        "srr": 5,
+        "rks": 0,
+        "lks_lo": 9,
+        "lks_hi": 5,
+        "level_display": 83,
+        "wave_display": "SINE",
+        "am_enabled": false
+      },
+      "preset_list_highlight": "28 TREMOLO ORGAN",
+      "classification": "Visible editor values, not captured hardware SysEx or proof of current voice state; highlight is a starting preset label and does not mean unedited factory patch.",
+      "derived_raw_under_downloaded_panel": {
+        "modulator": {
+          "frequency_byte": 81,
+          "total_level": 24,
+          "level_key_scaling": 117,
+          "rks_ar": 124,
+          "ame_dt2_d1r": 31,
+          "wave_d2r": 64,
+          "d1l_rr": 40,
+          "srr": 2
+        },
+        "carrier": {
+          "frequency_byte": 177,
+          "total_level": 16,
+          "level_key_scaling": 89,
+          "rks_ar": 60,
+          "ame_dt2_d1r": 1,
+          "wave_d2r": 0,
+          "d1l_rr": 11,
+          "srr": 5
+        },
+        "feedback_byte": 64,
+        "pms_ams_byte": 48,
+        "vibrato_sustain_byte": 0
+      }
+    },
+    {
+      "source_seconds": 1120,
+      "file": "advanced-1120.jpg",
+      "common": {
+        "feedback": 0,
+        "pms": 2,
+        "ams": 0,
+        "vibrato_delay": 45,
+        "vibrato_enabled": true,
+        "sustain_enabled": false
+      },
+      "modulator": {
+        "multiplier_display": 2,
+        "coarse_display": "0",
+        "fine_display": 0,
+        "ar": 47,
+        "d1r": 18,
+        "d2r": 0,
+        "d1l_display": 15,
+        "rr": 5,
+        "srr": 2,
+        "rks": 1,
+        "lks_lo": 1,
+        "lks_hi": 4,
+        "level_display": 64,
+        "wave_display": "SINE",
+        "am_enabled": false
+      },
+      "carrier": {
+        "multiplier_display": 1,
+        "coarse_display": "0",
+        "fine_display": 0,
+        "ar": 37,
+        "d1r": 16,
+        "d2r": 0,
+        "d1l_display": 15,
+        "rr": 8,
+        "srr": 5,
+        "rks": 0,
+        "lks_lo": 9,
+        "lks_hi": 11,
+        "level_display": 87,
+        "wave_display": "SINE",
+        "am_enabled": false
+      },
+      "preset_list_highlight": "31 ACCORDION",
+      "classification": "Visible editor values, not captured hardware SysEx or proof of current voice state; highlight is a starting preset label and does not mean unedited factory patch.",
+      "derived_raw_under_downloaded_panel": {
+        "modulator": {
+          "frequency_byte": 2,
+          "total_level": 35,
+          "level_key_scaling": 65,
+          "rks_ar": 111,
+          "ame_dt2_d1r": 18,
+          "wave_d2r": 0,
+          "d1l_rr": 5,
+          "srr": 2
+        },
+        "carrier": {
+          "frequency_byte": 1,
+          "total_level": 12,
+          "level_key_scaling": 185,
+          "rks_ar": 37,
+          "ame_dt2_d1r": 16,
+          "wave_d2r": 0,
+          "d1l_rr": 8,
+          "srr": 5
+        },
+        "feedback_byte": 64,
+        "pms_ams_byte": 32,
+        "vibrato_sustain_byte": 128
+      }
+    },
+    {
+      "source_seconds": 1180,
+      "file": "advanced-1180.jpg",
+      "common": {
+        "feedback": 3,
+        "pms": 2,
+        "ams": 0,
+        "vibrato_delay": 45,
+        "vibrato_enabled": true,
+        "sustain_enabled": false
+      },
+      "modulator": {
+        "multiplier_display": 8,
+        "coarse_display": "+600ct",
+        "fine_display": -7,
+        "ar": 31,
+        "d1r": 36,
+        "d2r": 0,
+        "d1l_display": 15,
+        "rr": 5,
+        "srr": 2,
+        "rks": 1,
+        "lks_lo": 1,
+        "lks_hi": 4,
+        "level_display": 64,
+        "wave_display": "HALF SINE",
+        "am_enabled": true
+      },
+      "carrier": {
+        "multiplier_display": 7,
+        "coarse_display": "0",
+        "fine_display": 0,
+        "ar": 37,
+        "d1r": 16,
+        "d2r": 0,
+        "d1l_display": 15,
+        "rr": 8,
+        "srr": 5,
+        "rks": 0,
+        "lks_lo": 9,
+        "lks_hi": 11,
+        "level_display": 87,
+        "wave_display": "HALF SINE",
+        "am_enabled": true
+      },
+      "preset_list_highlight": "31 ACCORDION",
+      "classification": "Visible editor values, not captured hardware SysEx or proof of current voice state; highlight is a starting preset label and does not mean unedited factory patch.",
+      "derived_raw_under_downloaded_panel": {
+        "modulator": {
+          "frequency_byte": 248,
+          "total_level": 35,
+          "level_key_scaling": 65,
+          "rks_ar": 95,
+          "ame_dt2_d1r": 228,
+          "wave_d2r": 128,
+          "d1l_rr": 5,
+          "srr": 2
+        },
+        "carrier": {
+          "frequency_byte": 7,
+          "total_level": 12,
+          "level_key_scaling": 185,
+          "rks_ar": 37,
+          "ame_dt2_d1r": 144,
+          "wave_d2r": 128,
+          "d1l_rr": 8,
+          "srr": 5
+        },
+        "feedback_byte": 88,
+        "pms_ams_byte": 32,
+        "vibrato_sustain_byte": 128
+      }
+    },
+    {
+      "source_seconds": 1235,
+      "file": "advanced-frames/frame-0320.jpg",
+      "common": {
+        "feedback": 3,
+        "pms": 2,
+        "ams": 0,
+        "vibrato_delay": 45,
+        "vibrato_enabled": true,
+        "sustain_enabled": false
+      },
+      "modulator": {
+        "multiplier_display": 8,
+        "coarse_display": "+600ct",
+        "fine_display": -7,
+        "ar": 31,
+        "d1r": 36,
+        "d2r": 30,
+        "d1l_display": 15,
+        "rr": 5,
+        "srr": 2,
+        "rks": 1,
+        "lks_lo": 1,
+        "lks_hi": 4,
+        "level_display": 70,
+        "wave_display": "HALF SINE",
+        "am_enabled": true
+      },
+      "carrier": {
+        "multiplier_display": 7,
+        "coarse_display": "0",
+        "fine_display": 0,
+        "ar": 37,
+        "d1r": 16,
+        "d2r": 0,
+        "d1l_display": 15,
+        "rr": 8,
+        "srr": 5,
+        "rks": 0,
+        "lks_lo": 9,
+        "lks_hi": 11,
+        "level_display": 87,
+        "wave_display": "HALF SINE",
+        "am_enabled": true
+      },
+      "preset_list_highlight": "31 ACCORDION",
+      "classification": "Visible editor values, not captured hardware SysEx or proof of current voice state; highlight is a starting preset label and does not mean unedited factory patch.",
+      "derived_raw_under_downloaded_panel": {
+        "modulator": {
+          "frequency_byte": 248,
+          "total_level": 29,
+          "level_key_scaling": 65,
+          "rks_ar": 95,
+          "ame_dt2_d1r": 228,
+          "wave_d2r": 158,
+          "d1l_rr": 5,
+          "srr": 2
+        },
+        "carrier": {
+          "frequency_byte": 7,
+          "total_level": 12,
+          "level_key_scaling": 185,
+          "rks_ar": 37,
+          "ame_dt2_d1r": 144,
+          "wave_d2r": 128,
+          "d1l_rr": 8,
+          "srr": 5
+        },
+        "feedback_byte": 88,
+        "pms_ams_byte": 32,
+        "vibrato_sustain_byte": 128
+      }
+    }
+  ],
+  "raw_mapping_basis": {
+    "url": "https://ctrlr.martintarenskeen.nl/yamaha-pss680-20220225.bpanelz",
+    "author_index": "https://ctrlr.martintarenskeen.nl/",
+    "file_version": "20220225",
+    "identity_limit": "Downloaded author panel closely matches video interface but actual video executable/binary not recovered. Derived raw values are conditional on this source, not observed transmitted bytes.",
+    "mappings": {
+      "rates": "AR,D1R,D2R,RR,RKS andSRR are encoded directly in their documented bit fields",
+      "d1l": "raw attenuation code15 minusdisplay",
+      "level": "rawTL=max(99-display,0)",
+      "lks": "raw16*high+low",
+      "fine": "signed fine magnitude uses uppernibble; negativecodes add8 before packing; it is not documented here as linear cents or hertz",
+      "coarse": "+600ct display corresponds dt2 bit in source; measured frequency ratio not recovered",
+      "wave": "SINE0,SQUARE SINE1,HALF SINE2,SQUARE HALF SINE3 in source"
+    }
+  },
+  "transport": {
+    "terminology": "Video/chapter calls it MIDI CC, but downloaded PSS680 panel source transmits voice SysEx, with Program Changes, rather than directly assigning these operators via ordinary CC messages. No actual MIDI wire capture from video exists.",
+    "packet_prefix_hex": "F0 43 76 00",
+    "packet_bytes": 72,
+    "voice_data_bytes": 33,
+    "data_encoding": "two4bit nibbles pervoicebyte;7bit negative-sum checksum;F7 terminator",
+    "program_changes": "pssPut sends two Program Changes100+rawbank after the voice dump. BANK1 is rawbank0.",
+    "auto_put": "Downloaded source has pssAutoPut/timerCallback1000ms timers, then pssPut and timerstop; duplicate method definitions exist. Timer behavior is a source-code limitation, not measured video delivery latency or proof which callback/version ran.",
+    "implication": "Visible knob change is not an event timestamp. A complete single-voice dump and its Program Changes could affect sounding voices, but this was not measured for the video. An audio interruption during editing cannot automatically be labeled hardware note-off release or envelope freeze.",
+    "source_functions": [
+      "data2midi",
+      "panel2data",
+      "pssPut",
+      "pssAutoPut",
+      "timerCallback"
+    ]
+  },
+  "physical_effect_evidence": {
+    "prior_source915_frame": "physical-effects-915.jpg",
+    "observation": "Vibrato,Sustain,Reverb,Portamento,StereoChorus/Duet indicator positions appear unlit on the preceding physical panel; camera/setup changes at advanced chapter. This is not continuous proof of advanced-chapter states.",
+    "advanced_editor_flags": "At1120/1180/1235 editorVibrato ON,Sustain OFF; Reverb,Portamento,Chorus/Duet physicalstates not jointly visible with readable editor during the tested windows.",
+    "recording_chain": "Ableton and studio equipment visible; no unprocessed-line/no-compressor/no-gate promise established from metadata.",
+    "confidence": "physical915 medium visual; editorflags high at readable snapshots; statebridge to advanced unknown"
+  },
+  "exploratory_audio_inventory": {
+    "protocol": {
+      "classification": "Exploratory fixed-window spectral inventory to decide whether any controlled pitch fixture exists; no production fit or changed constants.",
+      "windows_source_seconds": [
+        [
+          1130.9,
+          1131.35
+        ],
+        [
+          1132.2,
+          1132.55
+        ],
+        [
+          1133.7,
+          1134.0
+        ],
+        [
+          1135.0,
+          1135.4
+        ]
+      ],
+      "method": "Arithmeticmid; Hann periodogram;nfft262144; retain20largest peaks above80Hz below8kHz with minimum20Hz separation; report candidates without presuming played key or delivered parameter."
+    },
+    "rows": [
+      {
+        "source_seconds": [
+          1130.9,
+          1131.35
+        ],
+        "peaks": [
+          {
+            "frequency_hz": 3736.4501953125,
+            "psd_dbfs_per_hz": -42.44190216064453
+          },
+          {
+            "frequency_hz": 3425.35400390625,
+            "psd_dbfs_per_hz": -42.74853229522705
+          },
+          {
+            "frequency_hz": 2302.734375,
+            "psd_dbfs_per_hz": -43.60842227935791
+          },
+          {
+            "frequency_hz": 4419.7998046875,
+            "psd_dbfs_per_hz": -44.18396472930908
+          },
+          {
+            "frequency_hz": 1929.931640625,
+            "psd_dbfs_per_hz": -44.85190391540527
+          },
+          {
+            "frequency_hz": 4049.9267578125,
+            "psd_dbfs_per_hz": -45.05119800567627
+          },
+          {
+            "frequency_hz": 1634.3994140625,
+            "psd_dbfs_per_hz": -47.22738265991211
+          },
+          {
+            "frequency_hz": 5526.67236328125,
+            "psd_dbfs_per_hz": -47.44428634643555
+          },
+          {
+            "frequency_hz": 5215.75927734375,
+            "psd_dbfs_per_hz": -47.53446102142334
+          },
+          {
+            "frequency_hz": 6536.865234375,
+            "psd_dbfs_per_hz": -52.546095848083496
+          },
+          {
+            "frequency_hz": 6167.724609375,
+            "psd_dbfs_per_hz": -52.62561798095703
+          },
+          {
+            "frequency_hz": 7317.2607421875,
+            "psd_dbfs_per_hz": -56.38500690460205
+          },
+          {
+            "frequency_hz": 7006.16455078125,
+            "psd_dbfs_per_hz": -56.61241054534912
+          },
+          {
+            "frequency_hz": 1960.51025390625,
+            "psd_dbfs_per_hz": -62.54148483276367
+          },
+          {
+            "frequency_hz": 3383.056640625,
+            "psd_dbfs_per_hz": -62.63026714324951
+          },
+          {
+            "frequency_hz": 3695.068359375,
+            "psd_dbfs_per_hz": -62.98297882080078
+          },
+          {
+            "frequency_hz": 1904.296875,
+            "psd_dbfs_per_hz": -63.335347175598145
+          },
+          {
+            "frequency_hz": 2271.42333984375,
+            "psd_dbfs_per_hz": -64.29565906524658
+          },
+          {
+            "frequency_hz": 4019.71435546875,
+            "psd_dbfs_per_hz": -64.7019910812378
+          },
+          {
+            "frequency_hz": 4078.4912109375,
+            "psd_dbfs_per_hz": -65.36386966705322
+          }
+        ]
+      },
+      {
+        "source_seconds": [
+          1132.2,
+          1132.55
+        ],
+        "peaks": [
+          {
+            "frequency_hz": 3953.79638671875,
+            "psd_dbfs_per_hz": -34.38704252243042
+          },
+          {
+            "frequency_hz": 2674.8046875,
+            "psd_dbfs_per_hz": -34.541685581207275
+          },
+          {
+            "frequency_hz": 3720.88623046875,
+            "psd_dbfs_per_hz": -34.606568813323975
+          },
+          {
+            "frequency_hz": 2441.71142578125,
+            "psd_dbfs_per_hz": -35.13963222503662
+          },
+          {
+            "frequency_hz": 5232.97119140625,
+            "psd_dbfs_per_hz": -39.54005479812622
+          },
+          {
+            "frequency_hz": 4999.8779296875,
+            "psd_dbfs_per_hz": -39.67536449432373
+          },
+          {
+            "frequency_hz": 2282.04345703125,
+            "psd_dbfs_per_hz": -40.71323871612549
+          },
+          {
+            "frequency_hz": 1911.9873046875,
+            "psd_dbfs_per_hz": -41.191415786743164
+          },
+          {
+            "frequency_hz": 4373.291015625,
+            "psd_dbfs_per_hz": -43.73809814453125
+          },
+          {
+            "frequency_hz": 4003.60107421875,
+            "psd_dbfs_per_hz": -43.9641809463501
+          },
+          {
+            "frequency_hz": 6279.052734375,
+            "psd_dbfs_per_hz": -47.88520336151123
+          },
+          {
+            "frequency_hz": 1395.6298828125,
+            "psd_dbfs_per_hz": -47.93168544769287
+          },
+          {
+            "frequency_hz": 6512.14599609375,
+            "psd_dbfs_per_hz": -48.036837577819824
+          },
+          {
+            "frequency_hz": 1162.53662109375,
+            "psd_dbfs_per_hz": -49.3866491317749
+          },
+          {
+            "frequency_hz": 6099.42626953125,
+            "psd_dbfs_per_hz": -53.06468486785889
+          },
+          {
+            "frequency_hz": 6468.017578125,
+            "psd_dbfs_per_hz": -53.69257926940918
+          },
+          {
+            "frequency_hz": 116.455078125,
+            "psd_dbfs_per_hz": -55.83721160888672
+          },
+          {
+            "frequency_hz": 7791.32080078125,
+            "psd_dbfs_per_hz": -58.319950103759766
+          },
+          {
+            "frequency_hz": 7558.2275390625,
+            "psd_dbfs_per_hz": -58.462300300598145
+          },
+          {
+            "frequency_hz": 185.11962890625,
+            "psd_dbfs_per_hz": -62.82125473022461
+          }
+        ]
+      },
+      {
+        "source_seconds": [
+          1133.7,
+          1134.0
+        ],
+        "peaks": [
+          {
+            "frequency_hz": 7159.97314453125,
+            "psd_dbfs_per_hz": -93.22783470153809
+          },
+          {
+            "frequency_hz": 7999.8779296875,
+            "psd_dbfs_per_hz": -103.83065223693848
+          },
+          {
+            "frequency_hz": 7399.10888671875,
+            "psd_dbfs_per_hz": -107.5257682800293
+          },
+          {
+            "frequency_hz": 6543.8232421875,
+            "psd_dbfs_per_hz": -108.41259956359863
+          },
+          {
+            "frequency_hz": 6658.63037109375,
+            "psd_dbfs_per_hz": -108.54134559631348
+          },
+          {
+            "frequency_hz": 7909.423828125,
+            "psd_dbfs_per_hz": -109.47588920593262
+          },
+          {
+            "frequency_hz": 2075.68359375,
+            "psd_dbfs_per_hz": -109.6448802947998
+          },
+          {
+            "frequency_hz": 7870.05615234375,
+            "psd_dbfs_per_hz": -110.03846168518066
+          },
+          {
+            "frequency_hz": 1815.673828125,
+            "psd_dbfs_per_hz": -110.1164436340332
+          },
+          {
+            "frequency_hz": 6083.8623046875,
+            "psd_dbfs_per_hz": -110.62346458435059
+          },
+          {
+            "frequency_hz": 5742.5537109375,
+            "psd_dbfs_per_hz": -110.68306922912598
+          },
+          {
+            "frequency_hz": 6592.34619140625,
+            "psd_dbfs_per_hz": -110.8066177368164
+          },
+          {
+            "frequency_hz": 7806.15234375,
+            "psd_dbfs_per_hz": -110.81552505493164
+          },
+          {
+            "frequency_hz": 7282.28759765625,
+            "psd_dbfs_per_hz": -110.83227157592773
+          },
+          {
+            "frequency_hz": 3161.68212890625,
+            "psd_dbfs_per_hz": -110.89264869689941
+          },
+          {
+            "frequency_hz": 6007.6904296875,
+            "psd_dbfs_per_hz": -110.91032981872559
+          },
+          {
+            "frequency_hz": 6401.18408203125,
+            "psd_dbfs_per_hz": -111.01940155029297
+          },
+          {
+            "frequency_hz": 7213.9892578125,
+            "psd_dbfs_per_hz": -111.26051902770996
+          },
+          {
+            "frequency_hz": 7344.90966796875,
+            "psd_dbfs_per_hz": -111.29971504211426
+          },
+          {
+            "frequency_hz": 5691.10107421875,
+            "psd_dbfs_per_hz": -111.30849838256836
+          }
+        ]
+      },
+      {
+        "source_seconds": [
+          1135.0,
+          1135.4
+        ],
+        "peaks": [
+          {
+            "frequency_hz": 2281.67724609375,
+            "psd_dbfs_per_hz": -53.77467155456543
+          },
+          {
+            "frequency_hz": 1911.80419921875,
+            "psd_dbfs_per_hz": -55.04185199737549
+          },
+          {
+            "frequency_hz": 4378.41796875,
+            "psd_dbfs_per_hz": -55.59924602508545
+          },
+          {
+            "frequency_hz": 4008.544921875,
+            "psd_dbfs_per_hz": -55.8471155166626
+          },
+          {
+            "frequency_hz": 6105.46875,
+            "psd_dbfs_per_hz": -64.44787979125977
+          },
+          {
+            "frequency_hz": 6475.15869140625,
+            "psd_dbfs_per_hz": -64.63244438171387
+          },
+          {
+            "frequency_hz": 184.9365234375,
+            "psd_dbfs_per_hz": -76.46727561950684
+          },
+          {
+            "frequency_hz": 2250.54931640625,
+            "psd_dbfs_per_hz": -80.24120330810547
+          },
+          {
+            "frequency_hz": 2312.98828125,
+            "psd_dbfs_per_hz": -80.30017852783203
+          },
+          {
+            "frequency_hz": 1942.7490234375,
+            "psd_dbfs_per_hz": -81.24285697937012
+          },
+          {
+            "frequency_hz": 1880.67626953125,
+            "psd_dbfs_per_hz": -81.54524803161621
+          },
+          {
+            "frequency_hz": 4410.82763671875,
+            "psd_dbfs_per_hz": -82.78329849243164
+          },
+          {
+            "frequency_hz": 4347.10693359375,
+            "psd_dbfs_per_hz": -83.55422019958496
+          },
+          {
+            "frequency_hz": 3976.318359375,
+            "psd_dbfs_per_hz": -83.83063316345215
+          },
+          {
+            "frequency_hz": 4040.22216796875,
+            "psd_dbfs_per_hz": -84.04786109924316
+          },
+          {
+            "frequency_hz": 2220.88623046875,
+            "psd_dbfs_per_hz": -85.95787048339844
+          },
+          {
+            "frequency_hz": 2343.017578125,
+            "psd_dbfs_per_hz": -87.34025955200195
+          },
+          {
+            "frequency_hz": 1852.294921875,
+            "psd_dbfs_per_hz": -87.67122268676758
+          },
+          {
+            "frequency_hz": 4070.80078125,
+            "psd_dbfs_per_hz": -88.91364097595215
+          },
+          {
+            "frequency_hz": 3948.1201171875,
+            "psd_dbfs_per_hz": -89.31597709655762
+          }
+        ]
+      }
+    ]
+  },
+  "audio_inventory_interpretation": "Fixed exploratory windows were used only to reject a simple same-note fixture. Several windows contain complex sideband/pitch groups and one is essentially silent. No physical key, carrier/modulator pair or detune response was recovered from these spectra; no model constants tuned.",
+  "rejected_and_conditional_opportunities": [
+    {
+      "candidate": "Pure-carrier AR/D2R/RR calibration",
+      "times": [
+        1039,
+        1274
+      ],
+      "decision": "not recovered",
+      "reason": "Readable examples retain modulatorLevel75,64 or70; different operator rate/scaling values and waveform changes. No known pure-carrier event/gate/effect fixture established."
+    },
+    {
+      "candidate": "CarrierRR11 versusRR8",
+      "times": [
+        1040,
+        1120
+      ],
+      "decision": "rejected as numeric law comparison",
+      "reason": "Different patches, nonzero modulation, different AR/LKS/levels and unknown gates; physical effects not continuously verified."
+    },
+    {
+      "candidate": "DT2 coarse0 to+600ct / fine0 to-7",
+      "times": [
+        1129,
+        1133
+      ],
+      "decision": "rejected as controlled detune fixture",
+      "reason": "Edits overlap; same played pitch is not documented and spectra contain multiple component groups. Source auto-put can defer complete single-voice delivery and add Program Changes."
+    },
+    {
+      "candidate": "Carrier multiplier1 to9 to7",
+      "times": [
+        1133,
+        1136
+      ],
+      "decision": "rejected as controlled relative-frequency fixture",
+      "reason": "Rapid UI changes and key gaps/new pitches; actual hardware parameter/gate arrival unknown; nominal sample1133.7..1134.0 is effectively silent."
+    },
+    {
+      "candidate": "Vibrato delay25 to55 to45",
+      "times": [
+        1113,
+        1118
+      ],
+      "decision": "qualitative behavior only",
+      "reason": "No captured key-on timestamp, pulse length or settled single-note reference; source auto-put itself has a1000ms callback."
+    },
+    {
+      "candidate": "Feedback0 to3",
+      "times": [
+        1172,
+        1180
+      ],
+      "decision": "qualitative behavior only",
+      "reason": "Nearby modulatorAR, AM and waveform changes; no before/after same-note equal-level capture or isolated index sweep."
+    },
+    {
+      "candidate": "TL transfer or compression response",
+      "times": [
+        1040,
+        1235
+      ],
+      "decision": "not recovered",
+      "reason": "Level75 to64 to70 belongs to differing edited modulation/patch states; not a static carrierTL step sequence. Recording gain and processing undocumented."
+    },
+    {
+      "candidate": "ModulatorD2R30",
+      "times": [
+        1231,
+        1240
+      ],
+      "decision": "conditional known-setting example, not rate calibration",
+      "reason": "Modulator only; twohalf-sine operators, feedback3, evolving timbre, unknown notes/gates/delivery. No attenuation slope can be assigned to this raw rate from one mixed-output trace."
+    },
+    {
+      "candidate": "Early note-off envelope freeze",
+      "times": [
+        916,
+        1274
+      ],
+      "decision": "not established",
+      "reason": "No documented same-pitch long/short gate comparison at fixed patch and effects with actual note-off. Do not conflate unrelated2019 owner anecdote."
+    }
+  ],
+  "conclusion": "Useful independent primary demonstration of exposed editing and a source for clearly visible patch settings/transport caveats. It does not provide a defensible new numeric envelope/detune/TL/feedback law fixture in this bounded pass. Keep as qualitative/conditional evidence; no claimed early-noteoff freeze or hardware rate correction.",
+  "provenance": [
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1000.jpg",
+      "bytes": 352809,
+      "sha256": "809332baf2c68e3cb9a9a196aab7a5183ba897c9b614719faf1c20db32eb7f19"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1020.jpg",
+      "bytes": 338883,
+      "sha256": "8d4b6a09c42fe6d2489dd1d08160d08ae85aed83ecb50746a78195cd10ec6a07"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1040.jpg",
+      "bytes": 355912,
+      "sha256": "162c4418a8863fe29a7042bc18ee8c6d175803ee9a18ad14fd8d69c65bd98d63"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1060.jpg",
+      "bytes": 348874,
+      "sha256": "766e4d8be695a25a1cbdf4875d4fe9796134ebc7286c9d3ce4582b1eb7f7377f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1080.jpg",
+      "bytes": 341682,
+      "sha256": "a8dc0b8e3fd7fd1a9184c01a60328a20b29ee8b56d2a8c347dabd32ce400887c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1100.jpg",
+      "bytes": 352349,
+      "sha256": "2b4f383fa1a71b89a06d2b68661d4c19034872306418e9e993deaadaef747fd6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1120.jpg",
+      "bytes": 352210,
+      "sha256": "1dde99a7a0cc208e0821c1044366fcf08d699d23e247ef469126c9e5c8c7d047"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1140.jpg",
+      "bytes": 350857,
+      "sha256": "cfe0c08dc65b8935b9d8e82206263bef5c434743426ed2aec4ead38e797b79d3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1160.jpg",
+      "bytes": 357467,
+      "sha256": "c2f0fa1b7e237de2e785000bc2702e1ecda928b984473cc343ffd66283cdf36d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1180.jpg",
+      "bytes": 356502,
+      "sha256": "38f8b869c0baa1bb2fe9f00fafcdda68889d7b78c720d1f2f1a174fe875a4fe6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1200.jpg",
+      "bytes": 466589,
+      "sha256": "8d18dd3682efe3bd4423f5a7eead3accc39e1562487f329f8b1315f322898760"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1220.jpg",
+      "bytes": 455615,
+      "sha256": "adbfd20c5e617280b283eeeb2d78037584f1714a3a5f987b971a1d1f0c625da4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1240.jpg",
+      "bytes": 450007,
+      "sha256": "b346a41593c687b3c89f8a9188784359e8d1e75c8145be99fdcc17102367aa26"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-1260.jpg",
+      "bytes": 543728,
+      "sha256": "d7fa651b3035945e48055fe2782521bb6104f370382a515a51f3a78ea75e1a6f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-920.jpg",
+      "bytes": 441681,
+      "sha256": "a6d741adfaedc20486a6d7bf074dace8927f741e6a7bd5ffdcc08d9c997e7dee"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-940.jpg",
+      "bytes": 460832,
+      "sha256": "af8374375d6ce4bd722ccd6e65f68ca75f183e9344d2c71a0404b1b1301afaa3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-960.jpg",
+      "bytes": 458092,
+      "sha256": "9fa444208ecdbc12ba64f9fb9bd11f111abfb7d08b1c61b19e2c0c33a88d1a09"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-980.jpg",
+      "bytes": 475324,
+      "sha256": "b48a007308e897f34ac9b71a67c940e3cdf25cfc6c361702329dbf0ca341fb9b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-contact.jpg",
+      "bytes": 902919,
+      "sha256": "2c06e2a067e7896668f798bf1c5e70e915bbc3f625da4801b178cf56620f34f4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-exact916.wav",
+      "bytes": 137472092,
+      "sha256": "0e43b8fed935d00465b183c9faabd7e0756ae8704f5fc9ecb4e4ba601c26c8da"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0001.jpg",
+      "bytes": 350733,
+      "sha256": "426961dd4e2af3634f748a45afd5491db4629593bb41c5970cb518545eef33d4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0002.jpg",
+      "bytes": 355012,
+      "sha256": "27f11e09782a913a4af7714303d250bc497cedbbabf0355d0ba1311ef3e96c2b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0003.jpg",
+      "bytes": 354228,
+      "sha256": "c6cbc84c41bd1e5f8797b00e81a54f9cbb9677417af099fc6d54d1cc09da941d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0004.jpg",
+      "bytes": 354659,
+      "sha256": "5f7ea9ea593564ebb2f4a2d109077af03a6767d12ac8aba776fab0f3acae2a2e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0005.jpg",
+      "bytes": 345107,
+      "sha256": "816ec8f3fa15c0066f7222ddc430b9dc78d7b9f18a6ae8b728a97700568ba3d9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0006.jpg",
+      "bytes": 192406,
+      "sha256": "4a2dc5255e830316ca2839505f8a3c74a7c3fde54ee1bd44dac02b7a5a66f80c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0007.jpg",
+      "bytes": 174321,
+      "sha256": "3c6fec86fa86ff76d5b083c125382bdccfd69db0a7ab504234fc30ce8bfea67e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0008.jpg",
+      "bytes": 231188,
+      "sha256": "1473a9d95d1f5d12fc49f4e02662f1734619f4f62bf8801a9374e72f4a3ccae7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0009.jpg",
+      "bytes": 168100,
+      "sha256": "5b6ba22a99450cc90bbb490d0715db426581055665c9cbc33153e23be13e60f7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0010.jpg",
+      "bytes": 230642,
+      "sha256": "eb3b8397e763407e6bdba26441cd0561e34e847fd8f625ecfe66fb6f5ba85ee3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0011.jpg",
+      "bytes": 305444,
+      "sha256": "455b2a2ea5e92e3ebe40eed2b3906411dbe17fb7ad777a29317f7db75b182c14"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0012.jpg",
+      "bytes": 311845,
+      "sha256": "bf1fccb7f8e71a4ccb1e9c5216599c1d551520dabdef55d68ee06ae176f0da56"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0013.jpg",
+      "bytes": 330831,
+      "sha256": "9beaeae78ad243a689c713f46c048cfcc0b18c4ad78f379bb2fab4c6c92164d3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0014.jpg",
+      "bytes": 355777,
+      "sha256": "df549154cfdf82b29a3594eb9f5ec8c0eb0da6915a4bb7d26a17ce399786b58b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0015.jpg",
+      "bytes": 358896,
+      "sha256": "0bac60d8f346328c1876f21299ac04d438af7ef411100dcc46ead9fbfa361bd6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0016.jpg",
+      "bytes": 358471,
+      "sha256": "f1f632eb11bad2b6653790ae866a4d2ed6fe35107f10ebf5fc92c420f6cc6630"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0017.jpg",
+      "bytes": 360755,
+      "sha256": "1ab6a1ab5d5a0fdc28b96973df199fe823972af0499bdb359d3e5ca4f3fdb5a1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0018.jpg",
+      "bytes": 360185,
+      "sha256": "c416c41792790fe0d211b72247128d99ede9d57205ce880a229f9fd40c889157"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0019.jpg",
+      "bytes": 358936,
+      "sha256": "8ea2bec0e4710d78eef72697b5061a8976c0212e8839130faefe0e973c7602f5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0020.jpg",
+      "bytes": 360954,
+      "sha256": "7af81269a374dbc93870843fd2bcbbd667b7e1d8943924589f19fe2ee506f86d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0021.jpg",
+      "bytes": 359193,
+      "sha256": "67decf663b0ce9ad60f4ca53f17816c638ae1e22ead90331cd8bcaf42ee8d046"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0022.jpg",
+      "bytes": 359578,
+      "sha256": "b9486f524fe04e1c318f0e6a4d2b5834a30b254156e6748b6ec0c45a62fbca9c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0023.jpg",
+      "bytes": 359600,
+      "sha256": "1535190726b872f18803dd0d824f5a499eaf243132af8d38e7f951426ebf80a3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0024.jpg",
+      "bytes": 358708,
+      "sha256": "c8529c7c9523a4b0d7a03c7a9234cdeb2bdf810a6556f151a3c1810a6e8e4ffa"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0025.jpg",
+      "bytes": 359623,
+      "sha256": "421ec3908bfb2e761a537889db16b61db5da2dc1a1b04316653e4526d71c79d6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0026.jpg",
+      "bytes": 359986,
+      "sha256": "263f174f59de46fe48ca90ea36c305d6ef1b8cbe8e20e806ae47d062caf07b54"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0027.jpg",
+      "bytes": 358395,
+      "sha256": "0fcf7bc2a3918a02e76e31af39f6d51b898586d517198ab602d4d03dd241aba6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0028.jpg",
+      "bytes": 357320,
+      "sha256": "1b0971a53e4b5ce2d0ec893ea73d605c842be80394f65cd1a491241cc374156d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0029.jpg",
+      "bytes": 358120,
+      "sha256": "0d69287b8c93160620c9db95d4d7040c1b574c2b2b4f56f8a3640754626d0348"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0030.jpg",
+      "bytes": 356066,
+      "sha256": "106611ca220f0494d0581059fa7a16407cdeb82d4f79a9650f100b23e3112070"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0031.jpg",
+      "bytes": 365125,
+      "sha256": "d3fb55ce8017703363b91ced39fce0e3b5460b157b927a2338a811e85689dbd4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0032.jpg",
+      "bytes": 376036,
+      "sha256": "a5ab4f3d35e521d2cc16647016d22bf8e9dad0880d07a66380b65dc7be858df9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0033.jpg",
+      "bytes": 378280,
+      "sha256": "1c2a58fa5ae57fe81aa40191c498e5dcfec026bdb4aec887645ddb6922399af6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0034.jpg",
+      "bytes": 378762,
+      "sha256": "9d4dd3106c112a9235503e3cacce9d8751e13b051aaa06eea223f05ec4d7719f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0035.jpg",
+      "bytes": 378169,
+      "sha256": "26d0f9d62a9151eb6b20b70b75298c0de877284d043e415f4041fec33edbdc25"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0036.jpg",
+      "bytes": 377693,
+      "sha256": "32d096c568db7ac5b984e92eb3a1e34d421edf8932317222edcc15983a3be17f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0037.jpg",
+      "bytes": 377352,
+      "sha256": "653bc4137a332cc050bd408a6ea0420999dc1bf982a3b5dbea7b611842c4886c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0038.jpg",
+      "bytes": 372294,
+      "sha256": "fc0481942da91ab351c20c7c16b960d7d085afdf031e7ef3fcfac5dd970f7e95"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0039.jpg",
+      "bytes": 373143,
+      "sha256": "238af16851bf8c858391c024d48e053455d1735bbb15f3e3312e0d174e4ada7b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0040.jpg",
+      "bytes": 372002,
+      "sha256": "73956fdc226d4a9e28393b306ad158625e8b58ab537211644e38417fedaa4613"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0041.jpg",
+      "bytes": 337666,
+      "sha256": "458ec1f19633615e2e1a29d58c8fde31c1d51644ce6709c6e4ae02175e380007"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0042.jpg",
+      "bytes": 334478,
+      "sha256": "eb89571d43cef4f318b54b668c3cef74b198c83d3c663606e319f28252a2b929"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0043.jpg",
+      "bytes": 324428,
+      "sha256": "150ac1c8f08af65f2524065f7f2380be6eafc77467e084c39ec9ac04a14f9730"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0044.jpg",
+      "bytes": 353187,
+      "sha256": "1fbd4c8a4316f84bdca0580700add8bcad252d39107a694e4f4c0e9bb9b5e8f4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0045.jpg",
+      "bytes": 361765,
+      "sha256": "391323fc46fd183db83d70918c0663ee509ea8d2f5274f2ea1a5129a2f370968"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0046.jpg",
+      "bytes": 336660,
+      "sha256": "b10f82e756a5b320c6155343285a1ae31ce38e15427d43bdc197057334cfe082"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0047.jpg",
+      "bytes": 333542,
+      "sha256": "40542b833bf94d056ccaf2a225ae5a0e754acafb50aa0466091e1fb16d972730"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0048.jpg",
+      "bytes": 336777,
+      "sha256": "7818d94c66137c46b1f8c0a1d84a5051814a3254c1f4fb92142379511c4fdbd7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0049.jpg",
+      "bytes": 335715,
+      "sha256": "a1a3656d690da2f16f26c518bdf2a5848518d4a6dd9719cb536410fce8a5ecd3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0050.jpg",
+      "bytes": 347598,
+      "sha256": "7d50bdbd7351af8c06448f149ba6e765df3ba51ad2994963be78af2923850622"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0051.jpg",
+      "bytes": 337330,
+      "sha256": "25ae05ad9f4c45bd05f442e875119bd59415f6d1ba2a45b41e3dc2a23709d7d1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0052.jpg",
+      "bytes": 337999,
+      "sha256": "9ecff5687fe9f5173833f7199b777e9a3d310890033b19b309460a7c9229edeb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0053.jpg",
+      "bytes": 340920,
+      "sha256": "2efb7408add58d7cf98d6c83be8214ddb5b5fc67348fa304ec54be708a7878d5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0054.jpg",
+      "bytes": 342635,
+      "sha256": "576d6064586cc982a62ec924ede96b0f7096951f6e9b5d3868cab4da42f83954"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0055.jpg",
+      "bytes": 326321,
+      "sha256": "df6501d25f445487e968b37af712e4126b62792e8e45e4db20cb460a55b7418b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0056.jpg",
+      "bytes": 348703,
+      "sha256": "2fc6ae3fa27f748ca48d858a29e291d1d385a1bde0a21687c85c711fc3f5ba27"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0057.jpg",
+      "bytes": 359323,
+      "sha256": "c3ac27ed87ecc2771f3236ea879fb01d035399b9534ca7ef44fbdc22154e249f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0058.jpg",
+      "bytes": 365721,
+      "sha256": "73657339c6621aadddd60fddb0ce46851fc4e9cb3fa361b6d366ef536bae18b2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0059.jpg",
+      "bytes": 353910,
+      "sha256": "ec1adbb690953f04cf1c853338fa8b28c65bcd22e77bc1ed381d4af49eabf9c8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0060.jpg",
+      "bytes": 330097,
+      "sha256": "5af8bee125c6356116489ffa3c3107edf83d83b0f087a493e67be829a24b40da"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0061.jpg",
+      "bytes": 350479,
+      "sha256": "22490c68e42f4699244999d465f8a5d1d59a82fc407416d81ce0a7601df12749"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0062.jpg",
+      "bytes": 367869,
+      "sha256": "3dbe0a400670c01e6acfe6d9d4ed4576b09e6629f5a59f0d1cb8736cf461e07b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0063.jpg",
+      "bytes": 369448,
+      "sha256": "4c62671059cac4dda63dd34a3b863534b3db4b48304346c42401e50345eee5ce"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0064.jpg",
+      "bytes": 370561,
+      "sha256": "1ea25e8b27028a09f27fe1283842a676edb3ab65ff91ad3f88589bc718326212"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0065.jpg",
+      "bytes": 370796,
+      "sha256": "16e34157832f5eb1016f4e9d353d117d13ccd6a70a661c28f95f2d9b3b941b53"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0066.jpg",
+      "bytes": 371329,
+      "sha256": "7711284a94497f15b69445c697dc36ad5fff83bb6911ae11dc2c40022f2ee8bc"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0067.jpg",
+      "bytes": 372334,
+      "sha256": "fbf91dc805ba55dd0c848fb782d8321bd4fe3f2cc70294326c380784cf4defd4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0068.jpg",
+      "bytes": 370323,
+      "sha256": "086180466ca166e439d7513cd42ad247ca57d24e9dd6760d6b13d6f6660d2ebd"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0069.jpg",
+      "bytes": 371599,
+      "sha256": "b81d10e1b764aa5f2674e0cf0ac598b9ef4bb1f06d9c7d9194b08d4c8dd5c5f7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0070.jpg",
+      "bytes": 371939,
+      "sha256": "7926ae62c9ebe4559818282b23b280f461e0879e7398ff3815c8fd58072fce61"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0071.jpg",
+      "bytes": 371392,
+      "sha256": "c7687affeaf2a76a4aeea761c0da892b852af249dee5bc892b727f77089357ff"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0072.jpg",
+      "bytes": 372111,
+      "sha256": "bf719a698388fcab412b59d2339813de156bb740e916ca4477ea809a5963f318"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0073.jpg",
+      "bytes": 372820,
+      "sha256": "a988b1a17f0f10cc53739bf35f840b2cc5d1ef3e7519a10e3e138e26dffcd1ad"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0074.jpg",
+      "bytes": 368738,
+      "sha256": "8288093c5db5ff17ec50616cc15658bd5af34967d00467520bae0a9b8fe10823"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0075.jpg",
+      "bytes": 368596,
+      "sha256": "1a974871bb282673b20c7eda7de8c7e54a0db55632254125ddd3fa81310aee73"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0076.jpg",
+      "bytes": 368907,
+      "sha256": "fc5d4b6257d3f1f95be4cf2a64c8d730d51bc794936a39a2c1c2367da26da8fa"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0077.jpg",
+      "bytes": 369846,
+      "sha256": "ea18b59e432fc85f7fbcb93df2e16219a7e2aae6266dbb8df447db90e0f62f21"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0078.jpg",
+      "bytes": 368884,
+      "sha256": "ab3908b3ed5c2bf38aa7660ff2f8079e9806f2b2adc90cbd8a1433baf0ec7b71"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0079.jpg",
+      "bytes": 281428,
+      "sha256": "5ce870e5e099e595072c8e4329ee00542a7a72be28950d206a03bf61278d9e85"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0080.jpg",
+      "bytes": 282676,
+      "sha256": "79eeef8e80ab8ca2a1f699e8cb3623194cca0fbd6c93103364a34472748e368b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0081.jpg",
+      "bytes": 283196,
+      "sha256": "6ba53cd94a6d6dd7d5ee5a3c32889548c85ea06b7301b107c4746492411808bc"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0082.jpg",
+      "bytes": 283612,
+      "sha256": "f8123eea1a37eec4200397af4cda6c45ed8cfb9058fd65f4a2dc7388efb04bf2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0083.jpg",
+      "bytes": 282842,
+      "sha256": "43217a05221ed87c8a3e86e9007279853d000f53f88aadd8a38a81c022ee36c8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0084.jpg",
+      "bytes": 284407,
+      "sha256": "78f9262973ebd90bb338f8e76c56ff7479255bf45c908654756907df400c5582"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0085.jpg",
+      "bytes": 284162,
+      "sha256": "270c4e234a5948e9cf1b33e5d957dcdac2e67d57e8c042ac1535581c81d523fc"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0086.jpg",
+      "bytes": 284180,
+      "sha256": "cce839a56fb8ca722ad94c68d01404d6d859dd2f3d85f51afca29de03d491454"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0087.jpg",
+      "bytes": 284983,
+      "sha256": "e0c0f2f62bb07c4f96560c3b393d0d19e8b2d54cb26c52e2325edb0a6f68bbc3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0088.jpg",
+      "bytes": 284210,
+      "sha256": "d5cfd1d4d1864f1c8e3818fcea2e2e35c117eda380361a3c86df2cb1a9ad1eba"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0089.jpg",
+      "bytes": 283982,
+      "sha256": "aa65cf16dad4ecb2562b032bc7a2305696a420b13b740cdd51340d6d597a0164"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0090.jpg",
+      "bytes": 283797,
+      "sha256": "7f7744c72be83463d4feeac97f5d3dbda6ebfc3a730a627304b8e731c5182afc"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0091.jpg",
+      "bytes": 280998,
+      "sha256": "57cfd8b575dba0a0e311a82a95675d66cb6602061b0c4b28b0d15b818c681379"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0092.jpg",
+      "bytes": 290103,
+      "sha256": "5d9e402f5bbfceb6988619a30738003a136f152530535c2e9bc8b49143939747"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0093.jpg",
+      "bytes": 291305,
+      "sha256": "ecfb862a9083f40f185a0d8679dd85f3cfa1700bc6d20398cd9a87633fda08d7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0094.jpg",
+      "bytes": 289312,
+      "sha256": "260d492f9717bfe0c265fa046aa83904255c80c9db7577109815b60706b693c7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0095.jpg",
+      "bytes": 288606,
+      "sha256": "46c7f67185e50b620c7a389599c6fb78a80bc1f7d936a1c0aeea702b8c5a7601"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0096.jpg",
+      "bytes": 288580,
+      "sha256": "ff8e1f2e01c2c2ac90a8bed78809a9f62d8e5615d8fdd0f0bb4197bf3fe1fcd7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0097.jpg",
+      "bytes": 285526,
+      "sha256": "0cee9d3fff96edb4775a06fd9978493ddc865b500a6559e312a8ccda2739fbe6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0098.jpg",
+      "bytes": 287225,
+      "sha256": "9733e3887256ad76e918c876361fe03ef47d8293c41453a0eac6ab867c5ae21f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0099.jpg",
+      "bytes": 288494,
+      "sha256": "4bd9362e41d165a981d3fbc09d458fd58032f8d55465864c310d49c410dd5db4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0100.jpg",
+      "bytes": 289782,
+      "sha256": "64e1529ebd14a575e620279ce362972bf0395952d1decf61aa34daba33df1426"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0101.jpg",
+      "bytes": 286359,
+      "sha256": "5d4b214848025453a7ca7c0b95ccae0369b45ad826336ffb34116d39386fee23"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0102.jpg",
+      "bytes": 287248,
+      "sha256": "38748b43fadccaca0388cd5901174a22db950da5c409e08d047f5e65b81aab1a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0103.jpg",
+      "bytes": 289360,
+      "sha256": "4947454bc9ae277f3e7a4b7d351283062dae9e33be93844873e2b6268e94c60e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0104.jpg",
+      "bytes": 290880,
+      "sha256": "70c3205ac6a76b3bccba21d338a17c019a2aabbb64ef54deffc1440b25f2d81f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0105.jpg",
+      "bytes": 275431,
+      "sha256": "feab1b3def51bdfa9f75575179c5a274f759dfa0b20ad098a296f967c7751e87"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0106.jpg",
+      "bytes": 275601,
+      "sha256": "bac4d17b5999cf98458b4bee9904625946806aed2953643a1bf6fbefaf6dc167"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0107.jpg",
+      "bytes": 283791,
+      "sha256": "1eb3b84bef84c06a36471c1c3485f5d8cd698397da71043aad201498c106f247"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0108.jpg",
+      "bytes": 270965,
+      "sha256": "7533827575ce1bf7f9d3010f218fc4366a3037476ef71575baac98e34e5ec6b0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0109.jpg",
+      "bytes": 269019,
+      "sha256": "8992afd71ccab8f593b62a255ca459d037997ac6630e9e349947a305bbb85842"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0110.jpg",
+      "bytes": 268383,
+      "sha256": "a0986f5e07955137b51404b2cdb28712ab9a02bfafbb7a5b1f182d3e9b87cba4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0111.jpg",
+      "bytes": 269046,
+      "sha256": "810435aaae6e02a9cf8c08531358d2bc4dbf830af699419a13cc77a008030e13"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0112.jpg",
+      "bytes": 269898,
+      "sha256": "b25ae5dfcc791b0cd2eb1de9852438c8931e91a3cb7c7a068c2de4b47375a0ba"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0113.jpg",
+      "bytes": 270160,
+      "sha256": "e3eaee7d23a4b08c0ec3931b45dd68dd0d318d6aeb8b7341ab0e694d89826774"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0114.jpg",
+      "bytes": 270462,
+      "sha256": "c33a5899ceaff02854f5e1ac97f2ec31162d0b68427360a269f562b2db8af6c1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0115.jpg",
+      "bytes": 271024,
+      "sha256": "ca15abfd13284e16a09fbd4f1c56d5df93930c701082fd7e1726603b8ad7aac4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0116.jpg",
+      "bytes": 273341,
+      "sha256": "0f3c2b519b268770921bd2f8bfd8769c4c53c9eb98e6a8c41230383b2c9246ef"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0117.jpg",
+      "bytes": 271200,
+      "sha256": "6c6acf397323d668efcebc7137f26985699354324ba20b29818a8cf4dddb3792"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0118.jpg",
+      "bytes": 268204,
+      "sha256": "bb3e5aee9fd3189281b3df9bdd12955a563bdeff0ddffc7364ff21ed6a0858ae"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0119.jpg",
+      "bytes": 268057,
+      "sha256": "9cd4d5a1436b2596362a516108d91eb171af22f67de88e74a44447c0e6c832e0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0120.jpg",
+      "bytes": 267936,
+      "sha256": "34765842034bfcbb0685941cdb39516de50eb80b88d97767ad8db2b3a60bf212"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0121.jpg",
+      "bytes": 274723,
+      "sha256": "c7b0aa86c96b0f5c7c60c334f36f3825ba20159c2d4b42fdde8ca80d58ca19e0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0122.jpg",
+      "bytes": 280843,
+      "sha256": "ff5305cae755869d6f8a3ac729651e1007bbf2cd878b387c38743054fcf44bb9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0123.jpg",
+      "bytes": 279391,
+      "sha256": "0773c0cc486ab2fe03d37b5eaa8744970b65653b744df2bfa11f6cfe065e393f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0124.jpg",
+      "bytes": 285164,
+      "sha256": "b5c25b2d800cb0b03bf65d7f9daf4affc7d739d702ccf20a3a747cedfc87b310"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0125.jpg",
+      "bytes": 285239,
+      "sha256": "464a1dfbb38a6e724fee5452fd9ffb884d0ed3628ee70262e5e93d3092ce6fb5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0126.jpg",
+      "bytes": 275350,
+      "sha256": "13fd5d4914971960671caf7928bf86a8a11f83607a0291ea78060877b84c8c4c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0127.jpg",
+      "bytes": 282255,
+      "sha256": "a4694f8cd6b578416c16dac9457b5e2c9456b326a2ad53d19648482a34736faa"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0128.jpg",
+      "bytes": 285922,
+      "sha256": "142d9def94b7aaddbdf97161bd06a020cbf4d295b01c79c54121d0f85f5575a0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0129.jpg",
+      "bytes": 281626,
+      "sha256": "9afd10e0b13ba66c5f79f472aebd4ae03bb516f84aaed48a885f2eb9d334a6cf"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0130.jpg",
+      "bytes": 282561,
+      "sha256": "481a89a35c6216ee85b0a468b5742a775b0c9b30643a761eb7049ee5c6defac9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0131.jpg",
+      "bytes": 283046,
+      "sha256": "474f78088c5461d4deb6287f9e48e717f415d5d3be1bbea9b4327c6f66d142c9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0132.jpg",
+      "bytes": 282939,
+      "sha256": "3cebea6f973baefaf0a11bce1a713eb74fb40b26f11a5558c93111f2f59c44ea"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0133.jpg",
+      "bytes": 285379,
+      "sha256": "63603b7d54e56b4e631d011555d735c01b39d559b28e469de73c3719ae86d3ca"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0134.jpg",
+      "bytes": 285938,
+      "sha256": "c85dd175bccb4a45b885558c048ba254b18edbf7f57b1d65131bd49572c623a7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0135.jpg",
+      "bytes": 284233,
+      "sha256": "0dea6bda260110a3223ef1bbf4a3b8fc0ecf6436a1391b7f2221116f7b35835c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0136.jpg",
+      "bytes": 284355,
+      "sha256": "30c63f52d5ffc31da5b329cd21942b6670366fa9cd593c27e6117c4d75c1ba03"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0137.jpg",
+      "bytes": 282741,
+      "sha256": "97b100ca8384a4785c4cc14f0c45e10a65d4a9e192a44d662138a5de66ea3af2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0138.jpg",
+      "bytes": 282365,
+      "sha256": "b47ee04c6dcf02375cfe0a1c646d8d37ea7f08c277ba0b6bc482e1f0b7b3e8cc"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0139.jpg",
+      "bytes": 281391,
+      "sha256": "78632ca365bef75e1b78422eb7f89d85227a10f70e7c42ce5f1e18da6cd9ee33"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0140.jpg",
+      "bytes": 282737,
+      "sha256": "2ee3d0a509ac4398c0b64c33def8fd7a13e364408101f11e44ba64f957c4f312"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0141.jpg",
+      "bytes": 277755,
+      "sha256": "f8794216968a2b9948314216d011af1224bd973b43fdbe86a6fb155450e8beb2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0142.jpg",
+      "bytes": 281641,
+      "sha256": "b51bf29692649b24b4afa093c133eac917b701cfda3dc21d2ab8928e80fb926e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0143.jpg",
+      "bytes": 282688,
+      "sha256": "dacf581234f4d1b58bd26641909800fb4484ee65388423fe0471dc6080793617"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0144.jpg",
+      "bytes": 281459,
+      "sha256": "03fc54648fa0e9c187de721f0af23f32c4832e12b6c2cd69d18231e1d9b2c313"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0145.jpg",
+      "bytes": 280297,
+      "sha256": "58c7e95222554c548695fbdf49ad6877a64cce90419a00a3ee47833f0b99c688"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0146.jpg",
+      "bytes": 283970,
+      "sha256": "9c765e592dae5a821d02f48cbabead0ba0eca9417172c8a6bd07ea7c67b9e44b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0147.jpg",
+      "bytes": 284071,
+      "sha256": "feda810b5540b0fe0925427c13dc9b891dd28d61b2cc8644163a5885342b7810"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0148.jpg",
+      "bytes": 283856,
+      "sha256": "bf0be91744db590e2a11cb545683b98677ef49a8ad09c1515dae8e512d2fac08"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0149.jpg",
+      "bytes": 284187,
+      "sha256": "c5414a03b9f48a33a1a49ab8f4c248503a1dd75a45a12e3f6472db9cb2c5a2d7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0150.jpg",
+      "bytes": 283499,
+      "sha256": "494b09289a5bffc544f4dda87450a59ae31d3f26551d7d5a2d4a33b7215a2c1a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0151.jpg",
+      "bytes": 278887,
+      "sha256": "1e78edffc00f2f99c54a1d9bf993bd38e25fb97fb3c4e6068e786054a8ef6f39"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0152.jpg",
+      "bytes": 285549,
+      "sha256": "dc1a57e2ef6a6aafd533e2f21c0afd54966e037fb9917a141a6f2323ac4bd734"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0153.jpg",
+      "bytes": 285468,
+      "sha256": "cd6af358adb18e266dbddeeb34c898f3022e2c182534963371c0cd75fb978cf1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0154.jpg",
+      "bytes": 284414,
+      "sha256": "15c620cf7830e50873df651cfb615f2f944da2693504cee547e56cb21dbf8d6e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0155.jpg",
+      "bytes": 284291,
+      "sha256": "4176efdde36b8e56bdaf6d5cdf032a6ad80f2bf072ea93ff3fe948df2fcc1cb1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0156.jpg",
+      "bytes": 282604,
+      "sha256": "410cea253b89b475dab186ef42b45554e12af4c25e26a479c49056f5997c0dca"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0157.jpg",
+      "bytes": 283275,
+      "sha256": "c6e09d017c213aac21550dda27436f34e2a1eb63b806281d062c0d9afa2d001c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0158.jpg",
+      "bytes": 283981,
+      "sha256": "365af4b33cc05d62248f34ab2059ff6b251d6d59b203c530381b8cfbe66e86a7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0159.jpg",
+      "bytes": 282325,
+      "sha256": "34057c13c10585c4fb8914e52711b54825553ea0ac5d4aa9c2ceb920692deb97"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0160.jpg",
+      "bytes": 280693,
+      "sha256": "af447718811ce5ceb7c15b8dfcd490f7be0d5eb47b0458de194f12890f0a42ca"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0161.jpg",
+      "bytes": 283091,
+      "sha256": "dae50008731a0387ba72ec01634d55e2df21a161ccba6feef808888e13dc91e8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0162.jpg",
+      "bytes": 283293,
+      "sha256": "078c459fdf80e3ca1de7e401a9543a2f7db1632327bdbc5c2355b0242860ef06"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0163.jpg",
+      "bytes": 268507,
+      "sha256": "444a51a851a7dee133273368d458ed4426b6b4d00605c144eb62552a63a6fb9f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0164.jpg",
+      "bytes": 267815,
+      "sha256": "5a0216d7252b20d115435c8910cc426ce963d0a6a52b7937bd555a1ff94b3a9e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0165.jpg",
+      "bytes": 277046,
+      "sha256": "9e6ccd7d010d2f90f936b405e368ce2e47929441d53711f7a539bcb08971899c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0166.jpg",
+      "bytes": 275590,
+      "sha256": "79ae2443f36e029dc56d50c9523483b074e28ccf9b31fd5cfc73ab6c3f963cec"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0167.jpg",
+      "bytes": 280802,
+      "sha256": "3e299b246ee7ba1df4dca94ab900ee252f791aeddad29e1ab2da54ea957714c8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0168.jpg",
+      "bytes": 260601,
+      "sha256": "d0d4f689ae5bbbbb5c0773e2eae0dc29b491ecee79adc02b1f292caf723146d0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0169.jpg",
+      "bytes": 281468,
+      "sha256": "07d6121bcc50582cf60569b4f2afa341e93200a7b726f907fc25b2d32f2bf438"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0170.jpg",
+      "bytes": 285406,
+      "sha256": "e8dc71e8a782b694a1e319098daf6a04a369ef0df9fdd8235eafcbb607b6460f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0171.jpg",
+      "bytes": 280823,
+      "sha256": "0a547e29b324492a37eeb9c50c5c074678992c11b9ec8b550b8ccc48c4dd9333"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0172.jpg",
+      "bytes": 281360,
+      "sha256": "9c6a0de501ba47cdec56fd94c21b4236c8686d78c377fdbab0dcd412262428ec"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0173.jpg",
+      "bytes": 280881,
+      "sha256": "7e58ffb6f61c06d9e5e139d8d7918640bc396aa7eff4cc15b7b9cd1a2725ba9d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0174.jpg",
+      "bytes": 282121,
+      "sha256": "b74d8157f120f1312952521431a1d3d08b933cc01b004b7b4bbd06bbb3cb7cbb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0175.jpg",
+      "bytes": 285597,
+      "sha256": "452acd3460bd3d2aa901d6bc957097cc3fcb4240397de29a027ed7a34ed7a9c6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0176.jpg",
+      "bytes": 285580,
+      "sha256": "11436149dadde7b52aced00d49f96568a1d128ee0d7bb6120d14a0771cc963a1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0177.jpg",
+      "bytes": 282872,
+      "sha256": "04559a5e69602fc6c2a7180337ddb34c0ab933f9e72c9bf2ae34a0f2fc103148"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0178.jpg",
+      "bytes": 282005,
+      "sha256": "4028a64144a17ae46ed009de0e56fab1f2b53d61265e05caa721808191f26738"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0179.jpg",
+      "bytes": 280820,
+      "sha256": "0b2f0f59b6861fa5f9a93e38bf17889953aacb9a2037fc66a008b2f9af6993ba"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0180.jpg",
+      "bytes": 282543,
+      "sha256": "9c0f811e1a0cda46ae1470fd8e6437dd6e8e316da8eb6abfeb7c66cec9e97c36"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0181.jpg",
+      "bytes": 282920,
+      "sha256": "99c9c8b88804e57436669144139deda84c52ee21c6c453230945d748bb0561a8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0182.jpg",
+      "bytes": 286993,
+      "sha256": "6bfeda7425c49c9cba20eed24fbdc810c7e1fa9916a2481f93f6668b350e3d5c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0183.jpg",
+      "bytes": 286032,
+      "sha256": "6869b982332dc4d68ad7ba1062800d9b28dc5562980fd9ed59c5bfc5aaf0da33"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0184.jpg",
+      "bytes": 284517,
+      "sha256": "4e51799c054af482c9224b7fbcaa3b17755f4c6587abc026a943a4f9d0a180e1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0185.jpg",
+      "bytes": 282230,
+      "sha256": "fb64afeb38d8a24d91ff565bfc97f6b4d4dc1decb2cf0826604a976f9c9f8f1d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0186.jpg",
+      "bytes": 283213,
+      "sha256": "fb0f3a1a152299b565fbca7c253f2fb214d9ac27613dc191b9413addfb94cf02"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0187.jpg",
+      "bytes": 284894,
+      "sha256": "c0baf4622b8e5bebea471c73bf68db4ba3c236c6ee48c94ce9c65e1b1ce94bea"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0188.jpg",
+      "bytes": 286009,
+      "sha256": "e96d6f311ff52bb1bb87c870be3eadbd4e78df373fa3f34f0677464d52b293d3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0189.jpg",
+      "bytes": 286040,
+      "sha256": "57a63e616f2282ca537c43eae114674c06e74be8b942ae594034f708e3e33342"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0190.jpg",
+      "bytes": 282263,
+      "sha256": "08b921caf21b235d70a5174d0efe428d5066c08f5b758327ad4867d1b626aed5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0191.jpg",
+      "bytes": 284217,
+      "sha256": "13e55a6ee7150506e8523afd0b27ed0001b717d2d0b5ef87187d55c9334946b2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0192.jpg",
+      "bytes": 283262,
+      "sha256": "4481002d8fcc0c94f86108b19651756e31249c155fa996b0b0666c5f0a1071b4"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0193.jpg",
+      "bytes": 282658,
+      "sha256": "c1384d24878549274e6ff8dd4e67541559b2029fefbe542e172fd19da5fb2e66"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0194.jpg",
+      "bytes": 283051,
+      "sha256": "bb974aaedbe3b61efb4010e57db6e2d2bfd1ec488d45bfd2bf4382dec35c01f1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0195.jpg",
+      "bytes": 282564,
+      "sha256": "f3b28dc940becbda49537ee9fa258e0f9b5f3d732aea440726f4da172b43849d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0196.jpg",
+      "bytes": 283702,
+      "sha256": "e07051ebe09bf8bec8756432265eafdb0056e9072c4c220b7ae8e65348b68f73"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0197.jpg",
+      "bytes": 281957,
+      "sha256": "3408b5e743c0faed0cb8d6962a7b4e80ea47d9b9d6645646846076fc0ea82ef3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0198.jpg",
+      "bytes": 279824,
+      "sha256": "677df66a4bc612228e855d7f170e61332412acb5b7b86c23da8424cd312856ff"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0199.jpg",
+      "bytes": 282401,
+      "sha256": "678b6e71ad566011b0979e57097016010dddd2c2d875ed0316fce3dadb1f61d2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0200.jpg",
+      "bytes": 282806,
+      "sha256": "481882b277dcf87470be11ca21038682878aa5bf592d1c7f81dd119cd9f1ff2a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0201.jpg",
+      "bytes": 283125,
+      "sha256": "34cf63b2894b17bd0a7fc49c0c9c1aa8b0e5867a4336629c8b43ce95f2d0e746"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0202.jpg",
+      "bytes": 282668,
+      "sha256": "c02ec28510a9de3d7b1972d6c3f29d00a18e932291df3d425df4b39e9d6064be"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0203.jpg",
+      "bytes": 282264,
+      "sha256": "ea09ce0048ebb71e4b374375ffe59471df088b351c8b861ae11ba875c5622813"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0204.jpg",
+      "bytes": 281089,
+      "sha256": "0d01ef2b405a320bec87c85ad718c49a0d36925ab7b70bc930f3a1f6d44235e2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0205.jpg",
+      "bytes": 283432,
+      "sha256": "a96bd9476cb27e50b2f7ee562d6371d6a68ef81a5510909d909ca188d9b29210"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0206.jpg",
+      "bytes": 284310,
+      "sha256": "c510914a535900fd606e2312c9bb4fd125cb83b7d71b9538fa27e5d481246718"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0207.jpg",
+      "bytes": 283023,
+      "sha256": "df843241d2d89d11ac27e056421f7a16de1a37e751169d6fe47b231a64aadcad"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0208.jpg",
+      "bytes": 283333,
+      "sha256": "0975d078c70c23c6906da7203d7c3bb98a251d40263db220131dd02d790c177a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0209.jpg",
+      "bytes": 282848,
+      "sha256": "c0cb8ae79d9f02aea6af8d08a65b8dd87fd1b24fe4bb4933040bc62d1c6223f5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0210.jpg",
+      "bytes": 282746,
+      "sha256": "bd85a32624e3ccdd9e09e554b18e9b682fc4016a603c056f538c770bea1fbdd8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0211.jpg",
+      "bytes": 282870,
+      "sha256": "d6871083228d2e7fd4508c25bd7bebd6bcc70e9811b6f2f83935bfc92e64169c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0212.jpg",
+      "bytes": 288268,
+      "sha256": "13390bcc03759a4db29fa68db7447f142640a2c3b676332ee5d41900163bdd1c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0213.jpg",
+      "bytes": 287028,
+      "sha256": "880ec47b9512b394d56889adc7d14957d61f35bc526aec907057eb45bda989ef"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0214.jpg",
+      "bytes": 285799,
+      "sha256": "6bf4bd065ab9da04395ca15eee6f86032dc674c98550bd2356feb513e25a8b58"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0215.jpg",
+      "bytes": 286226,
+      "sha256": "2a8d4fc66b76f84f6c18fa6e3c9d6760a5ee7c6083bb11e70a4c7955a881e02d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0216.jpg",
+      "bytes": 284996,
+      "sha256": "94da18581d73748db2592e0f730699a4590b2714d2fced1507ac64ada7bcbea9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0217.jpg",
+      "bytes": 286372,
+      "sha256": "864419d0ec3b017665da575b9ded4469ff07f5bf29e58a5156f8b74322ad4b1b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0218.jpg",
+      "bytes": 286340,
+      "sha256": "7b479f4c62315f24ebf2d26d99e73314764fdb0b4ec3792edf9f86c3323b82dd"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0219.jpg",
+      "bytes": 285756,
+      "sha256": "69da909a3e6c02d43f55c570619f5b031a7d51b8182868d0352400bc91f6ed42"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0220.jpg",
+      "bytes": 285102,
+      "sha256": "6012f4a296ac885974c4ba5d9a2a72735a0bc11d9544fb2c6053ab898b728cb7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0221.jpg",
+      "bytes": 284834,
+      "sha256": "e4f4961b99689c24750e584313fcc160fc6dcfb74f0d044eb683b50ff53d2b5c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0222.jpg",
+      "bytes": 284669,
+      "sha256": "a9045d8ae684e57f4ec7203d90b4492dc66f7d731b231162f1df6da5356631bb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0223.jpg",
+      "bytes": 285035,
+      "sha256": "95492e3aeddd5b03057087be2360d9bfb9fae6a0980189f3cf002328ba04de6f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0224.jpg",
+      "bytes": 283342,
+      "sha256": "6915d5e918ae088e32a806cb3e0570482606500e3f5990af87ef11ab3e0f404e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0225.jpg",
+      "bytes": 282441,
+      "sha256": "292eaa8701d5ba2d5b9701404dd8f2f2aacb1d607f66cd4075cdaf31f6ab9256"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0226.jpg",
+      "bytes": 281970,
+      "sha256": "bdbde1f72d5320ab43d08000a0516f9cb35abe2853a754697bd6f85faeb49990"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0227.jpg",
+      "bytes": 281703,
+      "sha256": "a8d6ae50400ce4dc9f931f3d4d6435baefc16a205109cb766268f1d5358b15aa"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0228.jpg",
+      "bytes": 281190,
+      "sha256": "dee0bdc407fc9269c386b40b72892c1cb414da22a22d8ae0d8a6b89cf09a8e72"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0229.jpg",
+      "bytes": 283738,
+      "sha256": "d36205daa2e85f95badc7b6ea5227834adf6ef69bbe64f116fa365de2dcc73be"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0230.jpg",
+      "bytes": 284667,
+      "sha256": "d7c9ac01c58c144eedfc9608227715b05fb6fa6d2552b8fa836b5f2dc6fe6e62"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0231.jpg",
+      "bytes": 283909,
+      "sha256": "c17f2eab56fcedc0b1ef6d69e7e0f8bb982dbe60691c0f3b2909493f7e0e540f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0232.jpg",
+      "bytes": 282541,
+      "sha256": "f800c79a67d498e11b682c13c7f4e22d51d2db8c2f1cdaf2f36cdfdff7185478"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0233.jpg",
+      "bytes": 282239,
+      "sha256": "f88a7ba0a3379881ed00b25e356c5f94e0d5357ee0fe29dd8d658c1f9aa86406"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0234.jpg",
+      "bytes": 282785,
+      "sha256": "3ab9c1e23e8f3917271e963a98b8dc3f15496c123a4daf657caf45925fe07512"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0235.jpg",
+      "bytes": 282759,
+      "sha256": "8ca5ee7c8ba1e077d7928f1b6304dec7e40e9d0466a69f4ebe6bf1e5671f5b4d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0236.jpg",
+      "bytes": 282461,
+      "sha256": "58a89dbce67303c583348defc420123ad41c9a97aca7ff003e8fa1f54685e476"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0237.jpg",
+      "bytes": 284974,
+      "sha256": "0a7b08a2566482b9a452fd7aac86b2afe7f7da0bf2257e6d5f6d39bce9394f0e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0238.jpg",
+      "bytes": 284069,
+      "sha256": "9d128ed738316a4301e5157993dd97dbc257c887a4d14ae2af157366c20256e7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0239.jpg",
+      "bytes": 285370,
+      "sha256": "2a8537bd35c5159ed72b13b85d860267badc2f0183e32288e8be69152a1f2f96"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0240.jpg",
+      "bytes": 286425,
+      "sha256": "f61999a9976628033f1e9cab01954c91582e34967c4f5bba5f34808c6c2ec4b7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0241.jpg",
+      "bytes": 284738,
+      "sha256": "f0d50a80fd02ab6a6d8699b36c7fd2f408f7590d76c2c8e5a596230ebb5a82a9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0242.jpg",
+      "bytes": 286410,
+      "sha256": "fec809cf9f7aa6dddea817a024c15e8b611dbca86d044c05068e72359c8d03a5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0243.jpg",
+      "bytes": 286917,
+      "sha256": "65b2012657e3c401cd59eeab8b5bb862c084bc2c14f0a54699e7dfc623e1e529"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0244.jpg",
+      "bytes": 287274,
+      "sha256": "f8b48fa65275913b8af41999d61e434e0f3918caf35564af24f9ce97a43add4e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0245.jpg",
+      "bytes": 286590,
+      "sha256": "3ff67f2dd808460cf3b8f9ea7ee6d6be6312a8e18763af8eeeeb9ed3867ddd0e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0246.jpg",
+      "bytes": 286660,
+      "sha256": "98dcf3ffaac6cc6b6811a32a55bf53968f9bcffc75feb2b9b5c5ff940fa4298a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0247.jpg",
+      "bytes": 288932,
+      "sha256": "8b2ebd14ac32e1fa16058a766d1394da9101465f47fa26387d2547195aad9fcf"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0248.jpg",
+      "bytes": 289740,
+      "sha256": "7919cb049fc602c9c9dd22d1276ca953d897d8bde0f1a9ad99491db4b588196e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0249.jpg",
+      "bytes": 288988,
+      "sha256": "c3db2fd73df0656fb03a218b97deb71d71a51987fc2af15d3731ded7b6a0c3ba"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0250.jpg",
+      "bytes": 287514,
+      "sha256": "5565301571e5bb15fc4f343ce3e05bcf7a7478a179f390c20956407b04eb1def"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0251.jpg",
+      "bytes": 282329,
+      "sha256": "e0056b9b20d1b0343be265d5beb889b56f04aaa0187d113201d44721ac851782"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0252.jpg",
+      "bytes": 283974,
+      "sha256": "7c791145de79f3352b3a6482101a6f5868ae839d450d37d579d11b0de9fbe35d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0253.jpg",
+      "bytes": 285672,
+      "sha256": "90836682359fd769dcfa309e5467c70a3c032227b043438a02ab38e66aa7782a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0254.jpg",
+      "bytes": 285219,
+      "sha256": "a00cb072c56b108efab42004ec51a224f13f4212e572034b8b4554504628eff2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0255.jpg",
+      "bytes": 285045,
+      "sha256": "389a36c4b69075968621f6441a5fc135c28c7ecfaa2146f53b11e6bd04e17f26"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0256.jpg",
+      "bytes": 284918,
+      "sha256": "33e89e47e21dc6dbbfc97f13f2e02e44d2376b3c203b6c6bc806c531414a3148"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0257.jpg",
+      "bytes": 284379,
+      "sha256": "e118b77aceb6ef69cd2082d8d8dc95c1fc756512ebd9942bf5e028e6b0f750e7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0258.jpg",
+      "bytes": 284250,
+      "sha256": "6f843570cb8acf318fe6bfb024fc0de9bb531ab3e2b71b786f1feac22dace4ed"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0259.jpg",
+      "bytes": 285544,
+      "sha256": "86ec4eaef80bb39cd17788a05ee35b348e83f4a17fa4f8b63ff7f4260e040462"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0260.jpg",
+      "bytes": 286424,
+      "sha256": "842b362c43a2cf15acc4d25f803a35d07d66355bb19a0f1c6199d7ad80338d73"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0261.jpg",
+      "bytes": 284401,
+      "sha256": "3c5ba6a83146e521034b50dfc0d7a5bb37d5db08b8c25acf90e73451a4f1db7c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0262.jpg",
+      "bytes": 284026,
+      "sha256": "71225a11dc4ae5d8d92ae26641a454057aff00d2e4268e80d2fae7efc6ff75ea"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0263.jpg",
+      "bytes": 280844,
+      "sha256": "e31541cd17c0bdaa6e41f20f7d49c7d6c2a033addd6c448f146ee1e6d842f4ab"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0264.jpg",
+      "bytes": 283080,
+      "sha256": "9fa1e0a957d1b69ae31fe71d876a4960173f2f58f4d9767421cc3b578fafec49"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0265.jpg",
+      "bytes": 286974,
+      "sha256": "c3985de5ff3a5e63ae94f1454fc4ff4adc716e616103071dc4ed68a36dfca368"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0266.jpg",
+      "bytes": 288054,
+      "sha256": "8ccbdc9e6457511f3bd9bcdd425418e7d2bc4c0a10f148af6ec8b4286d790152"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0267.jpg",
+      "bytes": 285851,
+      "sha256": "d910e439b43360d47126edec7f603b97da0e0aac1ab73270358962742c28742b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0268.jpg",
+      "bytes": 350634,
+      "sha256": "d5149830c9682d60656508c33db27304e46abca0bd06d275f95138644cf63a0b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0269.jpg",
+      "bytes": 366800,
+      "sha256": "b5bee45a53a833502a2f2d3b37f305b203d48d2f77066cc35f637027902ff08f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0270.jpg",
+      "bytes": 368913,
+      "sha256": "788dfd83dd33fbd0fe3d2f2131a243b18cc8ef1919ae0e72c8deeb557600b4da"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0271.jpg",
+      "bytes": 356981,
+      "sha256": "e56a6b8a1f039fe7ebf9460e061e931ba24ebf77e872f4af3c7ed4ee75d4c89b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0272.jpg",
+      "bytes": 372467,
+      "sha256": "c3eb784ae35d5d54e646d56e3aed06a6742cd1b0e8d980735907924bc942a56f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0273.jpg",
+      "bytes": 372648,
+      "sha256": "58cfdfd027fb87af09e3e00741353254f924bac78318e5240bed7b0d593918cb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0274.jpg",
+      "bytes": 372807,
+      "sha256": "eb8393a8fff5537e865f737285389f4e8849eb63bcb9ed5f73dbe42c17b095d2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0275.jpg",
+      "bytes": 373822,
+      "sha256": "57cfa9c23e81accc0068d14ea44518e3ec0c00f29882a59b4bc821c1de44c88a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0276.jpg",
+      "bytes": 373781,
+      "sha256": "3211247c036349f37e302802eca2306d059baa8eb56d04df3ded01cb9a1fdf2b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0277.jpg",
+      "bytes": 372487,
+      "sha256": "bfbaa31f0043f8e0f1dd1bbb85d7251d4e0cde4e52931dae8692125de9132206"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0278.jpg",
+      "bytes": 369889,
+      "sha256": "f1d56fe342ae481f7be3db09383f6431e5e72a9a91bedac34c5c1e38815ca358"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0279.jpg",
+      "bytes": 370768,
+      "sha256": "fa0b344d1f042dec2a2c0b34b1e72b610248d28a3c42804d80197e02498ed833"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0280.jpg",
+      "bytes": 371912,
+      "sha256": "e26e098021d86c730b8503ac5149d89abc8f09095beb62e055361f28e2045c78"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0281.jpg",
+      "bytes": 369856,
+      "sha256": "4ff3eb818ba8410e3221d36e587b20a339388a61c8fb42d0528508359b75e18f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0282.jpg",
+      "bytes": 370030,
+      "sha256": "84feeff6b28595818c3f758f0745375d2a0110a5f3bdcb5b6feb0b9cade5dfe9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0283.jpg",
+      "bytes": 367716,
+      "sha256": "457a86cb69f097b14078e7fba8ec9741b5ca8e4f5931723a3d34fac1fa97cdf0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0284.jpg",
+      "bytes": 369194,
+      "sha256": "e3120e827e45322b2ec511e4dbfe958132610b154f202d141925b8e4f4ec8206"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0285.jpg",
+      "bytes": 366583,
+      "sha256": "a3310d0fed5b4cd23ba59b7189f365e996992b8bf3919b341dbbdeb8795c61bb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0286.jpg",
+      "bytes": 357710,
+      "sha256": "7e1e84304a4fdb60cf2773307a1a807b9f73fc9dad28979343509059888d970b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0287.jpg",
+      "bytes": 364241,
+      "sha256": "40a4d774986965430c1eb0db64a28a72d1abf1e10de849d5e075489ad7f1562d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0288.jpg",
+      "bytes": 363655,
+      "sha256": "7f89925cf20cb7faa07523dd8ce4f27f8a716ff8e88690124b0103521e96e131"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0289.jpg",
+      "bytes": 364975,
+      "sha256": "bfc495c5bded7a9b79b514e2da8ba3724fa01d6a783cf4bb82c7487e05c8b452"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0290.jpg",
+      "bytes": 369964,
+      "sha256": "25f803d9a23e7424bbe937d356e67f8a184018c4fc47fe45b65f29d76f3de112"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0291.jpg",
+      "bytes": 369735,
+      "sha256": "cf56655bffde23e2191c1acdaada8def15b4994d87005d0f03bfc56f32e080dc"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0292.jpg",
+      "bytes": 370289,
+      "sha256": "2dd7776ae74e064d34a3d7ab4a8b2e4f182a73e95e3d862b41202554562fe39e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0293.jpg",
+      "bytes": 367841,
+      "sha256": "1e23b07f8a5bf09021389235c062acb441fbd2f10354dd46214ec83c9a42d357"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0294.jpg",
+      "bytes": 368025,
+      "sha256": "b1eaa8b519110c0e0c460991d665ccdd04f80e5e6e63bbf68f79f0fbdcd24267"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0295.jpg",
+      "bytes": 368862,
+      "sha256": "b0aecc5d56cf57364f3936310cbb4463b1925f3ecd6b560dbeb3fd0fcf872598"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0296.jpg",
+      "bytes": 369076,
+      "sha256": "a33b077e1e4a92cd43cd9d6bcbd80a0cc00064a01f0d52e068df8a967c49312e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0297.jpg",
+      "bytes": 369971,
+      "sha256": "24e013298f7a5e942571c48c423eab1fb8818bd34c20822512f8f5050870754e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0298.jpg",
+      "bytes": 370523,
+      "sha256": "954171c80e9f6c810be93c3d1881cc67ed5851919aceb43f9c73242de8518170"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0299.jpg",
+      "bytes": 371284,
+      "sha256": "77bdbee99b7c3570033f2ad7a1e8fb6a8dc73c007623c1cd7712d8ca9a3274da"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0300.jpg",
+      "bytes": 372283,
+      "sha256": "38ac16e219a767515b31fa80ecdc9c1b5187cfc518297fd5d4747aedbc00c6fe"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0301.jpg",
+      "bytes": 369585,
+      "sha256": "d27fc0caecab8c421e68adad2e6c08f501ef231b3342974de24642f3d9d8eea9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0302.jpg",
+      "bytes": 374127,
+      "sha256": "5caed2270bde5980e575bc29b0035d725908e5215e20dd44b9dcf188f811189a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0303.jpg",
+      "bytes": 302090,
+      "sha256": "bac47d0773241e7a3f328cbe868de8536ee089fdd581b8643a71116f1b50c641"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0304.jpg",
+      "bytes": 348116,
+      "sha256": "6d24f5a8dbed7f39026c86f999b9d8c18a6d1611b425ec5a7a0010f7dbd62889"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0305.jpg",
+      "bytes": 355454,
+      "sha256": "f03ef0c2d150ec005b47d7d838394bb411d0b68fc493869bc6ea6fac9a78c008"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0306.jpg",
+      "bytes": 358568,
+      "sha256": "81b9b873b1f3e4da73892e4e2e20686b34be494bee1519c6448965f68b185a19"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0307.jpg",
+      "bytes": 359624,
+      "sha256": "527b9ac9a03e87a12beb1217b30d7fa7af3f12a677c7928bfa2ea3f3c4ed0abb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0308.jpg",
+      "bytes": 371392,
+      "sha256": "df7862d7e5a28edc259e9d8bcd7e73ef7814d14dff15f6cae934b8ab25c5294a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0309.jpg",
+      "bytes": 371510,
+      "sha256": "08d09e94c391b441cd40fe29e02dbd20fc04319ac2d66ddb87ab869f564e42ca"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0310.jpg",
+      "bytes": 371749,
+      "sha256": "41da4f372079b2f9ff5281f1676b44fdc7365c31ca3b956175ac44347d609caa"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0311.jpg",
+      "bytes": 370048,
+      "sha256": "b0c32bde9919856eb9586bce9ebbe7eb1c5316a7f6273ebb1826c7d1e35bd5c5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0312.jpg",
+      "bytes": 372135,
+      "sha256": "03c929632d7201313fa49f96be2d590320b2dcbe9695ecd0ad62eef7f718c48e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0313.jpg",
+      "bytes": 368859,
+      "sha256": "4a13a5b8439750863e845041cdd223452442d2a18d17b8959d2dedb7ddd83979"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0314.jpg",
+      "bytes": 359723,
+      "sha256": "3d6e999a49d58724d80084c1696bca3ef5a4a6ca5a55b636b43dc294d1c1dbbc"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0315.jpg",
+      "bytes": 359627,
+      "sha256": "ce8112a6e2dd605b6de3e7fc9f360db522ebc2765a509c5f40272f35e6dcc75b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0316.jpg",
+      "bytes": 282125,
+      "sha256": "fc596056f27189a480b4104d64378ba7e1f8e0e991494bd295d21de1e080cbc3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0317.jpg",
+      "bytes": 281951,
+      "sha256": "a7a7279f15f362c745d083b46d335c3954aa28104bb6f6796386218094f9df22"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0318.jpg",
+      "bytes": 282388,
+      "sha256": "1bd0ec1a15cd69fa01fea02908e41a19791c2148cf8aaadcb11ae0d58b26d81a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0319.jpg",
+      "bytes": 283766,
+      "sha256": "a58b596147d93eac96223fb26d5599355f94946d368594704be5d5fcd0cf9aa8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0320.jpg",
+      "bytes": 286794,
+      "sha256": "e816875c99f4a02cf1755ffd310e77fbe573cc38535912f97f7fe51d2d0ceb1c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0321.jpg",
+      "bytes": 286050,
+      "sha256": "d483e4094ce8d6f627998da0507937648fce4c30a7641203f25e9bb344248dc7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0322.jpg",
+      "bytes": 285228,
+      "sha256": "bd2647c76131d7a61ae9bede6834e127bf0ca2cc81e12c7f663824942f9a8a4c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0323.jpg",
+      "bytes": 284207,
+      "sha256": "4a587b737597ec64b62fcb04d759fbf7bf6a7007076e88c765f647bfc8dfb60e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0324.jpg",
+      "bytes": 283816,
+      "sha256": "4e2600618980ad8b562f135632d8e201f0e86a07d45ef1125725a7d9728a95b1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0325.jpg",
+      "bytes": 354159,
+      "sha256": "bc385e2f587a0b93a6ace50a8010c0ecda3044e6202c475aeb511a07cad24471"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0326.jpg",
+      "bytes": 370418,
+      "sha256": "cc259f88b7faf3e7cf1d45af03283732667f815d076157795ff22c4af36f62b6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0327.jpg",
+      "bytes": 369486,
+      "sha256": "e10bc5a8bba973643f66c43432b30265dd0c960684a84f2525ea580822e7533b"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0328.jpg",
+      "bytes": 375744,
+      "sha256": "2942d6b678366e1f35d6d71133f2ccbeafe18e149d9ee3eb68c21c9fc1bd8495"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0329.jpg",
+      "bytes": 373945,
+      "sha256": "e198e19257f4e0a939d552a41bd40fe1b4b34e712ac074943954263c76e5ffdb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0330.jpg",
+      "bytes": 374435,
+      "sha256": "8ed7e87013d18d44790b01aaaae3df1b0528de11dad6f1f8d24f6e324dbec1e6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0331.jpg",
+      "bytes": 374376,
+      "sha256": "adfa8d6a075c37f0c4f709e09cb548caf00fe689b3fb23d96c093fd13bd138b1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0332.jpg",
+      "bytes": 375224,
+      "sha256": "cd580b1c3fdc3cefd0269a5e896f64e0b320e954176703023a0fb04da36740ff"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0333.jpg",
+      "bytes": 374973,
+      "sha256": "ef60d6c22c16dfd49e119c7b8325ac99c7958f32b7ced36f660fde9713d4c937"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0334.jpg",
+      "bytes": 375947,
+      "sha256": "12767378636ba3a9ddda8d77c67695053bac8001db5ad2558f957f1d7b4c2645"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0335.jpg",
+      "bytes": 430028,
+      "sha256": "3efaca1deaa9fb592ad966150b6e99b4be80bc89046de547a10d18abfc23023a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0336.jpg",
+      "bytes": 428659,
+      "sha256": "44248bb36f6563c606da202b94835530efdea472ae1f9173fa93b795da4b0af0"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0337.jpg",
+      "bytes": 421196,
+      "sha256": "51dcf8c870e5c1970fc562f5580ac815a2cace91fb9c0e35de9d6f534b91eb9d"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0338.jpg",
+      "bytes": 424101,
+      "sha256": "834c2e5e5ec13271452ace33cfc380f7e5cffbe50a62c4404f0a3dbeb1251c24"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0339.jpg",
+      "bytes": 422601,
+      "sha256": "8ef33a444b6084f5919c1d350098496b4835e91a1192c45025912c8467b1edee"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0340.jpg",
+      "bytes": 425001,
+      "sha256": "cbbf92d65657db232a7ee68be49ac49182e81770ccaf7a6c788c16c9478311ca"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0341.jpg",
+      "bytes": 430866,
+      "sha256": "de93fda34b0fb91f8502da60287686cb347b07cef4defd18689842e297f697e6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0342.jpg",
+      "bytes": 426102,
+      "sha256": "aace20a61b9fd0badd9b4b08f5a80f25c37f93b9943244795c56df9d64a8ba59"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0343.jpg",
+      "bytes": 433105,
+      "sha256": "bab06042a28a51e2db5295e723279877c6da8b11ea41d9151863dfc8c01b0b47"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0344.jpg",
+      "bytes": 432349,
+      "sha256": "86985da3a11e19f755011c7d04749ab952b819c296aed1cac024f9c1d0008a02"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0345.jpg",
+      "bytes": 430512,
+      "sha256": "44ef17d0ce4c15a74caf4217da2278687dfd752e7fe4713a5d9b5bfd97629b2c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0346.jpg",
+      "bytes": 432084,
+      "sha256": "3ad7900c82f57749eaab1683f076cad6232e1a0bb74115a2151a688345ee75eb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0347.jpg",
+      "bytes": 433581,
+      "sha256": "84595a2d5cc5b8bee23de1d18eab4ad547930dc3295d6c784d00ad0cb7d392a7"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0348.jpg",
+      "bytes": 432809,
+      "sha256": "b9503530150c13b9b7d4274aa52973e0ee39e037ef2ce76a8d741ba72ab64ac1"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0349.jpg",
+      "bytes": 420080,
+      "sha256": "68bb7fdd1277edac20995e1075b48cf9665f7f8261685008fd9128ed20160fe5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0350.jpg",
+      "bytes": 418156,
+      "sha256": "5cdbcf088ba94f70c669fa9d4ad77150b4bf65e57c7e9e50c8a6c5a2bc017f40"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0351.jpg",
+      "bytes": 418935,
+      "sha256": "591850dae8535a9ba521a05059bc4716d59e7d8054344f33a41a1223a2d0d542"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0352.jpg",
+      "bytes": 418383,
+      "sha256": "a6979d112d47053819bdc9eff496fdb9cea6fc2f1f6c6573e88e60d1638cb443"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0353.jpg",
+      "bytes": 421047,
+      "sha256": "a152aa9466c935b318d6721cb15866acf6292ad909d6e264f340aa948e1ba563"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0354.jpg",
+      "bytes": 418762,
+      "sha256": "3eacb52b353ffafdfe0908a7390febb27e2de7ae69abcaa326ee1fdbf9387a84"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0355.jpg",
+      "bytes": 419959,
+      "sha256": "6f1536fb2f709d471a6a6142c1f214a829d56e43dd0a89db7ba474be9070039a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0356.jpg",
+      "bytes": 421502,
+      "sha256": "3054241e4747229a1547fa4fca5b39d338ebee00d85227136400c5370937f061"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0357.jpg",
+      "bytes": 426968,
+      "sha256": "0192da6aa8cc4e58b2fe954144582c25a86661861fcd2f00b02a273415317542"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced-frames/frame-0358.jpg",
+      "bytes": 421507,
+      "sha256": "5df00bf18cb77d898d48e8ab2e22d2067fc02e79cac7a9d2b46888ac719b4828"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/advanced1090-1157-overview.png",
+      "bytes": 519068,
+      "sha256": "ba3020b8dbdbd111d284aae13d3d229bb9cdb30a5d8ca2ff64b225038a321a25"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/captions-dedup.json",
+      "bytes": 109565,
+      "sha256": "cd8bc4c623dd71d516477fb787bab7722c59e98117fa2d3662bc0621d6624000"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/coverage-page-1.jpg",
+      "bytes": 928062,
+      "sha256": "9f9711f201b46c071799f37ce347b2a3a9b7dc94dd0e4f82392a42ef5835b9ce"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/coverage-page-2.jpg",
+      "bytes": 853880,
+      "sha256": "f5b8a589e45ab2efa6fffda4b75d507ee4fc35bc8beb2172e2734abbc907312c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/coverage-page-3.jpg",
+      "bytes": 834318,
+      "sha256": "0d0b6fc918115dad495e1277f43dc6b72871bee3915198a574cd4a942c5daf93"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/coverage-page-4.jpg",
+      "bytes": 851326,
+      "sha256": "391ef0781fde28dda2dd6a7d1d07a039d7d905293208940b9b94854a90ecec89"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/coverage-page-5.jpg",
+      "bytes": 907382,
+      "sha256": "531e52226f9d2756a00d7f3f6016ddf2150bb033ea74c134bc95baa1fb66a56e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/coverage-page-6.jpg",
+      "bytes": 912961,
+      "sha256": "8727f22ed0142b42e22cba972added01372dab1d5d17068c330710ec87048cd8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/parameter-strips-1038-1089.png",
+      "bytes": 1203899,
+      "sha256": "59ef3309f81009ad3bba81d758f2e1f5e829d4a6c10bc1fd19a174a4886821b5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/parameter-strips-1090-1122.png",
+      "bytes": 786307,
+      "sha256": "1827b4c9b89e0a10317542844375ac41e4bdd79d5fff42cfeafe5fcdb72dec96"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/parameter-strips-1123-1157.png",
+      "bytes": 868940,
+      "sha256": "0162b97d69f2b2aa7269999252601154b2d6199a70723c2f67cb4d5aaad82a74"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/parameter-strips-1158-1195.png",
+      "bytes": 1453371,
+      "sha256": "a44ecf3b2a1ba57df4e2a557c6e23173bb3aec5765cae1be9083286200a294ae"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-825.jpg",
+      "bytes": 337413,
+      "sha256": "5c543331e958b0763afbf11b7f03c7f4d01d766fdedbbfbafbb7f918ec4dd544"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-838.jpg",
+      "bytes": 369106,
+      "sha256": "da88ae352c1a83244b3487e836e26168798ae13b46daf2d490f9b187289f5aec"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-843.jpg",
+      "bytes": 403724,
+      "sha256": "1e8ae74b3996dd6ad194415800617a4b67020b3f5016650a2b60ddac36a7cea2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-848.jpg",
+      "bytes": 499413,
+      "sha256": "aebbcdd1aa98683235a266679f6f70eba60b1d6cf363aeb0905a226d13c990bb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-855.jpg",
+      "bytes": 246915,
+      "sha256": "a2ca2c1987f6b16df300a7c205766381b8614d328863522c48fd4dd81dd6cb33"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-865.jpg",
+      "bytes": 185417,
+      "sha256": "447cff48c2ba9dd04074a448ce9616833a464f36764c330deb3eae615e748d26"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-877.jpg",
+      "bytes": 451400,
+      "sha256": "c3c13ddc9dc438fee3fceae0044547883577c4c33547c992181f9eec55dd36c9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-891.jpg",
+      "bytes": 308574,
+      "sha256": "1abbee262f0b7c7005e2c4b28074815df5b2ed2165826eabb78e988bace9c4bb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-906.jpg",
+      "bytes": 275563,
+      "sha256": "e0fd377e74a2dfff0300f66f039825f386a48944e95029539ea6674321551bb6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-915.jpg",
+      "bytes": 418658,
+      "sha256": "6d96f65111a4a1218d445d060eba179f8c09488654945166c5723bf21bd33bf9"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/physical-effects-contact.jpg",
+      "bytes": 405418,
+      "sha256": "c78d846affcfa9e3254cee9adce05dfd74181f62a99bc180cd08402ec4e060a5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/pitch-inventory-protocol.json",
+      "bytes": 562,
+      "sha256": "e07d310041dab915d6000c7fbb38ed326c9444b177e9c006d9ab4092a00d8e12"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/pitch-inventory.json",
+      "bytes": 10024,
+      "sha256": "f94ce5b6ff0a04d7bcf5eabe7dc0de602cd91f23dfaae313dd2b2d080ee952e6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/pss680-panel-decoded.bin",
+      "bytes": 642529,
+      "sha256": "fe412e6f68b36e8dc2246a0382fe49a77c9276f2125fd7e8956f7c6070578ab8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/pss680-panel-strings.txt",
+      "bytes": 616504,
+      "sha256": "ea0097d77f2722b4a2ce656a3c75fa8df9a5bd79e598200564b88f1dfc7da37a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/soden-eiIw-ffhzXM-audio.webm",
+      "bytes": 31327626,
+      "sha256": "a6a1b7435cabd8afa753c967363d8df2b7e8ad161b1baa6ac4d96bcdd4854091"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/soden-eiIw-ffhzXM-video.mp4",
+      "bytes": 469724786,
+      "sha256": "ff0af3c4a032bbc82724d06a808803edf6c69ac3e7a12552b41dcd227330ed5a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/soden-eiIw-ffhzXM.en-orig.vtt",
+      "bytes": 236509,
+      "sha256": "d6ce55c2f95f86efdebf9d184d0427e5b80edef5af49157738a197b52c06584e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/soden-eiIw-ffhzXM.en.vtt",
+      "bytes": 236509,
+      "sha256": "d6ce55c2f95f86efdebf9d184d0427e5b80edef5af49157738a197b52c06584e"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/soden-eiIw-ffhzXM.info.json",
+      "bytes": 574239,
+      "sha256": "75a278160621cebfa6c63d3357b1100a647942f7aa3143843f22a88fd543268c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/soden-pss680-20261019/yamaha-pss680-20220225.bpanelz",
+      "bytes": 270072,
+      "sha256": "7805e96e9117d0bc87bf5a834b56b750ab1c354c83a46f47582123ca1219d37c"
+    }
+  ]
+}

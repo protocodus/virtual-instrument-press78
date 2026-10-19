@@ -1,0 +1,196 @@
+{
+  "schema": 1,
+  "date": "2026-10-19",
+  "question": "Does raw OPU RKS0 prove zero overall pitch dependence of envelope rates?",
+  "answer": "Not established. Manufacturer pages define encoding and name, not the zero law. Captioned firsthand tutorial narration calls0 off; this supports intended off semantics for the adjustable RKS contribution but is not a controlled proof that the complete OPU EG has no residual pitch dependence.",
+  "source_evidence": [
+    {
+      "path": "build/fm-fidelity-audit-20261018/PSS780E.PDF",
+      "sha256": "e1382c76aa9f6351fb3de191228b3209def0cf4ceba54ca6a20406c1e2db0adb",
+      "size_bytes": 3911928,
+      "url": "https://usa.yamaha.com/files/download/other_assets/1/317511/PSS780E.PDF",
+      "role": "Manufacturer original manual, scanned",
+      "pdf_page_one_based": 44,
+      "printed_page": "41",
+      "visually_reviewed": true,
+      "evidence": "RKS occupies bits7..6 in raw bytes7/8 beside six-bit AR and is named Rate Key Scaling. The adjacent keyboard curve is explicitly LKS. No zero-off statement or numerical RKS law is on this page."
+    },
+    {
+      "path": "build/opu-rks-evidence-20261019/PSS680-author-scan.pdf",
+      "sha256": "1193d23416c061e08c94ce38d9382036bce6c471ba67868dbe734b99226f169b",
+      "size_bytes": 2881546,
+      "url": "https://raw.githubusercontent.com/artaslove/PSS-680/master/pss680.pdf",
+      "role": "Manufacturer original manual, mirrored by editor author",
+      "pdf_page_one_based": 45,
+      "printed_page": "41",
+      "visually_reviewed": true,
+      "evidence": "Same field/name and LKS graph; no RKS0 semantics or timing equation."
+    },
+    {
+      "path": "build/opu-rks-evidence-20261019/PSS480S.pdf",
+      "sha256": "e5b98a1f914cc84da7366cc62aaa2ea9bf832b34537f7559d6873359da524538",
+      "size_bytes": 3284238,
+      "url": "https://usa.yamaha.com/files/download/other_assets/1/317521/PSS480S.pdf",
+      "role": "Manufacturer original Spanish manual with English MIDI appendix",
+      "pdf_page_one_based": 45,
+      "printed_page": "Add-1",
+      "visually_reviewed": true,
+      "evidence": "Same two-bit field/name and LKS graph. Rendered scan, rather than the inaccurate automatic table extraction, verifies field width."
+    },
+    {
+      "path": "build/opu-envelope-research-20261018/PSS-Revive/units/untPSSx80Voice.pas",
+      "sha256": "0d4d5cdd25d49c620feb7214508415ca00df91e95061455b56be1e74019ff3c4",
+      "size_bytes": 16067,
+      "url": "https://github.com/BobanSpasic/PSS-Revive/blob/bc0406b10e01be7fde72b8681d963a17c06a5006/units/untPSSx80Voice.pas",
+      "role": "Original editor implementation",
+      "repository_commit": "bc0406b10e01be7fde72b8681d963a17c06a5006",
+      "line_witnesses": [
+        43,
+        194,
+        206,
+        245,
+        262
+      ],
+      "evidence": "Direct 0..3 mask/shift serialization; no OPU rate or time model."
+    },
+    {
+      "path": "build/opu-rks-evidence-20261019/portasound-js/src/portasound.js",
+      "sha256": "a44b485ae0638bdd8649704c9aaab888367376717798b9d6d1d9a30c8e3b99ee",
+      "size_bytes": 16667,
+      "url": "https://github.com/mmontag/portasound-js/blob/a9e312623191db1922583f31981f824bec081f36/src/portasound.js",
+      "role": "Original editor implementation",
+      "repository_commit": "a9e312623191db1922583f31981f824bec081f36",
+      "line_witnesses": [
+        97,
+        105
+      ],
+      "evidence": "Four values, raw bytes7/8 bit6, default0; parameter transport rather than a measured OPU key-rate function."
+    },
+    {
+      "path": "build/recording-audit-20261018/pss480-panel-strings.txt",
+      "sha256": "652d54cda052f7752090a572857768a4f2cd1abfe664788e992ce7039fd0de44",
+      "size_bytes": 612834,
+      "url": "https://ctrlr.martintarenskeen.nl/yamaha-pss480-20220225.bpanelz",
+      "role": "Strings/Lua from original author panel",
+      "line_witnesses": [
+        2334,
+        2335,
+        2384,
+        2401
+      ],
+      "evidence": "Panel value is packed by64*RKS+AR and decoded by right shift6, unlike the explicitly inverted D1L field; no timing equation. This 2022 panel version is later than the 2021 recording."
+    },
+    {
+      "path": "build/recording-audit-20261018/keen-part3-2TfpcAmaPGg.en-orig.vtt",
+      "sha256": "953e83bd220a7a37749717eb3b964f1049d2ecdefa07249bbc50f40e8fca88e1",
+      "size_bytes": 130753,
+      "url": "https://www.youtube.com/watch?v=2TfpcAmaPGg&t=610",
+      "role": "Automatic captions on firsthand instrument demonstration",
+      "caption_time_seconds": [
+        610.399,
+        616.79
+      ],
+      "short_caption_quote": "0 is off",
+      "evidence": "Captioned tutorial narration describes four settings, raw0 off, raw1 faster and raw3 maximum. This is not author-supplied text or a numerical timing measurement."
+    },
+    {
+      "path": "build/recording-audit-20261018/keen-part3-2TfpcAmaPGg.info.json",
+      "sha256": "cc0d32cbe0577d1dfaf3158f4103dd5de962dce2f4360991e7d1b49fa3948687",
+      "size_bytes": 9658981,
+      "url": "https://www.youtube.com/watch?v=2TfpcAmaPGg",
+      "role": "Existing public acquisition metadata",
+      "evidence": "Identifies Keen On Keys, upload20210520, automatic en-orig captions, no supplied subtitle track."
+    },
+    {
+      "path": "build/recording-audit-20261018/keen-part3-2TfpcAmaPGg-video.mp4",
+      "sha256": "b6ccdf47b015b0378c36cb62db81cb06284b97208377fb08fe2303197d073bf7",
+      "size_bytes": 63567216,
+      "url": "https://www.youtube.com/watch?v=2TfpcAmaPGg",
+      "role": "Retained video used for visual settings check",
+      "source_times_seconds": [
+        610,
+        650
+      ],
+      "evidence": "Displayed modulator RKS changes0 to3; carrier remains0. Carrier/modulator are both audible through FM, so this is not an isolated carrier-RKS0 rate sweep."
+    },
+    {
+      "path": "Source/DSP/Press78Engine.cpp",
+      "sha256": "76c9f2bff45743c1c26ba7cf30efd208814290a6ad8292b203e17bd442cd23e4",
+      "size_bytes": 23385,
+      "url": null,
+      "role": "Current implementation hypothesis, not hardware evidence",
+      "line_witnesses": [
+        16,
+        21,
+        23
+      ],
+      "evidence": "RKS0 has coefficient0 in rateScaling[4]; current CPP assumes no pitch-rate correction at raw0."
+    }
+  ],
+  "visual_artifacts": [
+    {
+      "path": "build/opu-rks-evidence-20261019/pss780-page-44.png",
+      "sha256": "1bea0d1da357a4cc7cd9a21388f8823e8ebb5cb81904c2416f6f53b0fb171d73",
+      "size_bytes": 131154,
+      "url": null,
+      "role": "Local visual-review artifact"
+    },
+    {
+      "path": "build/opu-rks-evidence-20261019/pss680-page-45.png",
+      "sha256": "56ecf76f8b99c5d430b415b8f616b46a5d6182a8eeb2b526645f2845c9caa23e",
+      "size_bytes": 158431,
+      "url": null,
+      "role": "Local visual-review artifact"
+    },
+    {
+      "path": "build/opu-rks-evidence-20261019/pss480-page-45.png",
+      "sha256": "2a72be418eb391e2184d9fa8dcb03437a3639ad92be1292f3c89cc688e9fd4a6",
+      "size_bytes": 108420,
+      "url": null,
+      "role": "Local visual-review artifact"
+    },
+    {
+      "path": "build/opu-rks-evidence-20261019/keen-rks-610.png",
+      "sha256": "d691845669bf5787a705bba4a0f5a011496bd4972d54d5e0067c2729ac21b72c",
+      "size_bytes": 595629,
+      "url": null,
+      "role": "Local visual-review artifact"
+    },
+    {
+      "path": "build/opu-rks-evidence-20261019/keen-rks-650.png",
+      "sha256": "b67a03f0ed0ef2a493bab8069236fb9fa2d44db9fa52a699e03aeb280d5c57d9",
+      "size_bytes": 577952,
+      "url": null,
+      "role": "Local visual-review artifact"
+    }
+  ],
+  "classification": {
+    "two_bit_raw_encoding": "Established by original manufacturer scans and independently matching editor serializers.",
+    "display0_is_raw0": "Supported by independent original editor serializers; no inversion identified.",
+    "rks0_adjustable_contribution_off": "Supported by captioned OPU-owner tutorial; no manufacturer statement or numerical check recovered.",
+    "rks0_entire_eg_pitch_flat": "Unverified.",
+    "rks0_minimum_nonzero_baseline": "Unverified; do not adopt from another Yamaha family.",
+    "current_cpp_zero_coefficient": "Implementation hypothesis, not a recovered chip law."
+  },
+  "bounded_search_queries": [
+    "Yamaha PSS680 manual rate key scaling",
+    "Yamaha PSS480 RKS zero",
+    "YM3420 RKS",
+    "PSS780 rate key scaling",
+    "PSS Edit scaling",
+    "PSSED RKS"
+  ],
+  "recommended_discriminator": {
+    "patch": "Independently authored pure carrier, muted modulator, flat LKS, fixed TL/velocity, no chorus/vibrato/sustain/reverb for dry test.",
+    "matrix": "Same patch at MIDI36/48/60/72/84 (or adequate unclipped usable subset), rawRKS0 first, then rawRKS1..3, with repeated dry D2 and key-off segments at unchanged gain.",
+    "measurement": "Compare slopes, not threshold crossing times alone. Keep actual gates separate from audible arrival; simultaneous held control can check common gain changes.",
+    "limits": "Recover full rates/pitch law before attributing endpoint differences entirely to a fixed attenuation cutoff. No other chip family formula is imported."
+  },
+  "scope_invariants": {
+    "no_production_edit": true,
+    "no_native_ui_version_host_edit": true,
+    "no_noise_addition": true,
+    "no_cross_note_audio_measurement_in_this_ledger": true,
+    "finalized_dac_ledger_untouched": true
+  }
+}

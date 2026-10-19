@@ -1,12 +1,12 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.0b9",
+  "version": "0.1.0b12",
   "startup_profile": {
     "name": "Real",
     "values": {
       "outputCircuit": 1,
-      "noiseModel": 1,
-      "noiseRms": 0.002,
+      "noiseModel": 0,
+      "noiseRms": 0,
       "chorusMode": 1,
       "chorusMix": 1,
       "chorusRateHz": 0.9546467517767424,
@@ -14,9 +14,13 @@
       "clockOffsetPpm": 0,
       "clockDriftPpm": 20,
       "clockDriftRateHz": 0.1,
+      "lfoRateHz": 5.24,
+      "triangleLfo": 1,
+      "globalLfo": 1,
       "drive": 0,
       "dcBlock": 1,
-      "outputLimit": 1
+      "outputLimit": 1,
+      "pitchModel": 1
     }
   },
   "controls": [
@@ -403,7 +407,7 @@
       "label": "LFO rate",
       "min": 0.05,
       "max": 30,
-      "default": 6.1,
+      "default": 5.24,
       "integer": false,
       "target": "controls"
     },
@@ -439,7 +443,7 @@
       "label": "Triangle LFO",
       "min": 0,
       "max": 1,
-      "default": 0,
+      "default": 1,
       "integer": true,
       "target": "controls"
     },
@@ -448,7 +452,7 @@
       "label": "Global LFO phase",
       "min": 0,
       "max": 1,
-      "default": 0,
+      "default": 1,
       "integer": true,
       "target": "controls"
     },
@@ -551,22 +555,26 @@
       "label": "Noise level",
       "min": 0,
       "max": 0.02,
-      "default": 0.002,
+      "default": 0,
       "integer": false,
-      "target": "controls"
+      "target": "controls",
+      "hidden": true,
+      "deprecated": "Inert compatibility property; additive noise has been removed."
     },
     {
       "id": "noiseModel",
       "label": "Noise model",
       "min": 0,
       "max": 1,
-      "default": 1,
+      "default": 0,
       "integer": true,
       "target": "controls",
       "options": [
         "White",
         "Circuit"
-      ]
+      ],
+      "hidden": true,
+      "deprecated": "Inert compatibility property; additive noise has been removed."
     },
     {
       "id": "outputCircuit",
@@ -612,6 +620,20 @@
       "default": 1,
       "integer": false,
       "target": "controls"
+    },
+    {
+      "id": "pitchModel",
+      "label": "Pitch model",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "controls",
+      "options": [
+        "Equal",
+        "Original"
+      ],
+      "startup_default": 1
     }
   ]
 }

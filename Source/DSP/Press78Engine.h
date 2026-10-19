@@ -4,7 +4,6 @@
 #include <cstddef>
 #include <cstdint>
 #include "AnalogOutput.h"
-#include "CircuitNoise.h"
 
 // Independently written port of the documented PSS-780 behavioral experiment.
 // This is not a bit-exact YM3420/OPU emulator. No Yamaha firmware is included.
@@ -37,16 +36,24 @@ struct Controls {
     double masterGain = 0.25;          // 0..2, applied after synthesis/effects.
     double pitchBendSemitones = 0.0;   // -48..48.
     double masterTuneCents = 0.0;      // -1200..1200.
+    // Equal0 preserves the legacy continuous pitch law. Original1 uses the
+    // verified firmware command table plus an empirical downstream grid law.
+    int pitchModel = 0;
+    int midiPitchBend = -1;            // -1: standalone semitones; else14-bit raw.
+    int midiBendRange = 2;             // 0..24; original positive spans1..12.
+    // Original: masterTune rounds to3.125c before lookup (hardware +/-50c;
+    // larger plugin spans are creative). Host calibration remains continuous.
+    double hostTuneCents = 0.0;        // Nonpersisted host master tuning.
     double velocitySensitivity = 1.0; // carrier velocity exponent, 0..2.
     double velocityToModulation = 0.0;// modulator velocity exponent, 0..2.
     double modulationAmount = 1.0;    // 0..2 times the baseline FM index (8*pi).
     int polyphony = 12;               // 1..12. Reductions fade the oldest voices.
-    double lfoRateHz = 6.1;            // 0..30, shared by AM and PM.
+    double lfoRateHz = 5.24;            // 0..30, shared by AM and PM.
     double vibratoDepth = 1.0;         // 0..4 multiplier of the patch PMS law.
     double tremoloDepth = 1.0;         // 0..4 multiplier of the patch AMS law.
     double lfoDelayScale = 1.0;        // 0..4 times the patch delay.
-    bool triangleLfo = false;
-    bool globalLfo = false;            // false preserves per-note Python phase.
+    bool triangleLfo = true;
+    bool globalLfo = true;            // false preserves per-note Python phase.
     double clockOffsetPpm = 0.0;       // -20000..20000, explicitly hypothetical.
     // Clock modulation retains the nominal reconstruction cutoff. Upward
     // shifts can alias near-Nyquist energy; this is not an alias-free warper.
@@ -60,10 +67,10 @@ struct Controls {
     double chorusRateHz = 0.65;       // 0.05..8.
     double chorusDepthMs = 2.0;       // 0..8. Studio12ms; recorded measured harmonic law.
     double stereoWidth = 1.0;         // 0..2; dry mono midpoint is preserved.
-    int noiseModel = 0;              // 0 legacy White;1 related-circuit stereo noise.
-    // White: full-band RMS. Circuit: level relative to a FIXED continuous
-    //20-20kHz reference; numerical rate warping is retained, not normalized.
-    double noiseRms = 0.0;            // 0..0.02 pre-master; user level, no unit calibration.
+    // Deprecated compatibility fields for old patches/callers. Sanitization
+    // always sets both to zero; the instrument generates no additive noise.
+    int noiseModel = 0;
+    double noiseRms = 0.0;
     bool dcBlock = true;              // 10Hz output DC removal.
     bool outputLimit = true;          // transparent below .9, smooth bound +/-1.
 };
@@ -101,6 +108,8 @@ public:
     int latencySamples() const noexcept;
     const Patch& patch() const noexcept { return patch_; }
     const Controls& controls() const noexcept { return controls_; }
+    // A requested law change waits until voices and steal tails are idle.
+    int effectivePitchModel() const noexcept { return effectivePitchModel_; }
 
 private:
     struct Envelope {
@@ -124,6 +133,7 @@ private:
         bool active = false, held = false, released = false;
         void configure(const Patch&, int midi, int vel, std::uint64_t serial) noexcept;
         void updatePatch(const Patch&) noexcept;
+        void updateOriginalPitch(int steps) noexcept;
         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
     };
     struct Tail { Voice voice{}; int remaining = 0; };
@@ -140,7 +150,6 @@ private:
     Controls controls_{};
     Controls voiceControls_{};
     AnalogOutput analog_{};
-    CircuitNoise circuitNoise_{};
     double sampleRate_ = 48000.0, position_ = 0.0, hostTime_ = 0.0;
     double globalLfoPhase_ = 0.0, chorusPhase_ = 0.0;
     double gain_ = 0.25, pitchMultiplier_ = 1.0, targetPitch_ = 1.0;
@@ -148,21 +157,22 @@ private:
     double currentToneCoefficient_ = 0.0, drive_ = 0.0, chorusMix_ = 0.0;
     double circuitMix_ = 1.0;
     double recordedChorusMix_ = 0.0;  // Smoothed mode blend; no history reset.
-    double circuitNoiseMix_ = 0.0;
-    double chorusRate_ = 0.65, chorusDepth_ = 2.0, width_ = 1.0, noise_ = 0.0;
+    double chorusRate_ = 0.65, chorusDepth_ = 2.0, width_ = 1.0;
     double dcInputL_ = 0.0, dcInputR_ = 0.0, dcOutputL_ = 0.0, dcOutputR_ = 0.0;
     double dcCoefficient_ = 0.0, gainSmoothing_ = 0.0;
     std::int64_t nextTick_ = 0;
     std::uint64_t serial_ = 0;
-    std::uint32_t random_ = 0x7803420U;
     std::size_t delayWrite_ = 0;
     bool pedal_ = false, hasProcessed_ = false;
+    int effectivePitchModel_ = 0, pitchSteps_ = 0;
+    bool pitchIdle() const noexcept;
+    void applyPendingPitchModel() noexcept;
+    void updatePitchControls() noexcept;
     void buildResampler() noexcept;
     double synthesizeTick() noexcept;
     double resampled(double position) const noexcept;
     double historyAt(std::int64_t tick) const noexcept;
     double readDelay(double samples) const noexcept;
-    double randomNoise() noexcept;
     void output(double mono, double& left, double& right) noexcept;
 };
 } // namespace press78

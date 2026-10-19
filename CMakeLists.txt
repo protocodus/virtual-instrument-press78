@@ -200,6 +200,8 @@ if(PRESS78_BUILD_TOOLS)
     target_link_libraries(press78_render PRIVATE Press78DSP)
     add_executable(press78_analog_probe Tools/AnalogProbe.cpp)
     target_link_libraries(press78_analog_probe PRIVATE Press78DSP)
+    add_executable(press78_analog_oversampled_probe Tools/OversampledAnalogProbe.cpp)
+    target_include_directories(press78_analog_oversampled_probe PRIVATE Source/DSP)
     add_executable(press78_chorus_probe Tools/ChorusProbe.cpp)
     target_link_libraries(press78_chorus_probe PRIVATE Press78DSP)
     add_executable(press78_circuit_noise_probe Tools/CircuitNoiseProbe.cpp)
@@ -223,6 +225,12 @@ if(BUILD_TESTING)
     add_executable(Press78DSPTests Tests/test_dsp.cpp)
     target_link_libraries(Press78DSPTests PRIVATE Press78DSP)
     add_test(NAME Press78.DSP COMMAND Press78DSPTests)
+    add_executable(Press78ModulationTests Tests/test_modulation.cpp)
+    target_link_libraries(Press78ModulationTests PRIVATE Press78DSP)
+    add_test(NAME Press78.Modulation COMMAND Press78ModulationTests)
+    add_executable(Press78PitchTests Tests/test_pitch.cpp)
+    target_link_libraries(Press78PitchTests PRIVATE Press78DSP)
+    add_test(NAME Press78.Pitch COMMAND Press78PitchTests)
 
     # U4 input fuzzing. With PRESS78_BUILD_LIBFUZZER (Clang) it is a libFuzzer
     # target over coverage-instrumented DSP; otherwise FuzzHarness.h supplies
@@ -262,6 +270,8 @@ if(BUILD_TESTING)
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_factory.py --check)
         add_test(NAME Press78.ChorusProfile COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_chorus_profile.py --check)
+        add_test(NAME Press78.FirmwarePitch COMMAND ${Python3_EXECUTABLE}
+            ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_firmware_pitch.py --check)
         add_test(NAME Press78.PluginControls COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_plugin_controls.py --check)
         add_test(NAME Press78.DemoMidiSources COMMAND ${Python3_EXECUTABLE}

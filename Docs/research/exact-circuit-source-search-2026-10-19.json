@@ -1,0 +1,387 @@
+{
+  "schema": "press78.exact-circuit-source-search.v1",
+  "date": "2026-10-19",
+  "scope": "Bounded normal public-source acquisition and visual circuit comparison; no production changes",
+  "status": "ready_for_review",
+  "principal_result": {
+    "new_readable_drawing": "PSS-560, final page of 13-page service scan",
+    "exact_pss680_780_full_drawing_acquired": false,
+    "ym3420_internal_arithmetic_document_acquired": false,
+    "target_board_equivalence_established": false,
+    "model_change_justified": false
+  },
+  "sources": [
+    {
+      "id": "wiki_index",
+      "url": "https://circuitbending.miraheze.org/wiki/List_of_Yamaha_Keyboards_and_Drum_Machines",
+      "purpose": "Discovery of actual publicly linked PDFs; index chip labels not treated as component evidence"
+    },
+    {
+      "id": "pss560_service",
+      "url": "https://static.wikitide.net/circuitbendingwiki/4/41/Yamaha_PSS-560_Service_Manual.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "pages": 13,
+      "sha256": "3c84feaf4ed2acf8f62f33ef39196f8994bb7f7b1fe7b9fddc88046b64173b1f",
+      "size_bytes": 2223965,
+      "inspected_pdf_pages": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "key_evidence_pdf_pages": [
+        9,
+        13
+      ]
+    },
+    {
+      "id": "pss780_service",
+      "url": "https://static.wikitide.net/circuitbendingwiki/6/6b/Yamaha_PSS-780_Service_Manual.pdf",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "pages": 12,
+      "sha256": "0c826d1a0cdb98103bb9632ca1cafba786e4d88ad4e294d2b279eb3d1ad331b1",
+      "size_bytes": 808983,
+      "inspected_pdf_pages": [
+        1,
+        12
+      ],
+      "full_overall_drawing_present": false
+    },
+    {
+      "id": "owner_listing",
+      "url": "https://www.owner-manuals.com/PSS780-service-manual-YAMAHA.html",
+      "advertised_pages": 54,
+      "advertised_size": "5.4 MB",
+      "advertised_claim_verified": false,
+      "ordinary_link_result": {
+        "http_status": 404,
+        "content_type": "text/html",
+        "bytes": 329,
+        "sha256": "605cfd4644137e530fc3d0eaf4ad73427c43ff2122bc7a8857c0ac1ced780b5b",
+        "query_string_omitted": true
+      }
+    },
+    {
+      "id": "tnt23_index",
+      "url": "https://www.sensi.org/~tnt23/pss680/",
+      "http_status": 200,
+      "result": "Only operating-manual link present in inspected directory index"
+    },
+    {
+      "id": "archive_query",
+      "url": "https://archive.org/advancedsearch.php",
+      "query": "(pss680 OR \"PSS-680\" OR pss780 OR \"PSS-780\") AND mediatype:texts",
+      "http_status": 200,
+      "matching_items": [
+        "manualzz-id-819658",
+        "manual_PSS780_OM",
+        "manualzz-id-838715"
+      ],
+      "result": "Three owner-manual items; bounded query, not an exhaustive archive absence claim"
+    },
+    {
+      "id": "pdfmanuals",
+      "url": "https://pdf-manuals.ru/yamaha/pss680_manuals.html",
+      "http_status": 403,
+      "continued_after_denial": false
+    }
+  ],
+  "observations": {
+    "pss560": {
+      "board": {
+        "part": "VB183800",
+        "name": "M"
+      },
+      "fm": "YM3812",
+      "fm_dac": "YM3012",
+      "bbd": "MN3209",
+      "driver": "MN3102",
+      "oscillator": {
+        "type": "quartz crystal",
+        "nominal_MHz": 3.579
+      },
+      "wet_inverter": {
+        "input_ohms": 47000,
+        "feedback_ohms": 47000,
+        "parallel_feedback_pF": 220
+      },
+      "drawing_features": [
+        "Single mono BBD path",
+        "Input bias and filtering",
+        "BBD outputs joined",
+        "Subsequent low-pass filter",
+        "FET gate",
+        "Wet inversion in stereo mix"
+      ]
+    },
+    "pss780": {
+      "analog_board": {
+        "part": "VF108000",
+        "name": "AM"
+      },
+      "opu": [
+        "YM3420BF",
+        "YM3420C"
+      ],
+      "bbd": "MN3206",
+      "driver": "MN3102",
+      "opamps": [
+        "NJM4558DV",
+        "NJM4558NK"
+      ],
+      "power_amp": "AN7148",
+      "oscillator": {
+        "part": "VH766700",
+        "type": "ceramic resonator",
+        "nominal_MHz": 5.5
+      }
+    }
+  },
+  "rejected_inferences": [
+    "PSS-560 board is the same as target AM board",
+    "Shared MN3102 implies identical clock/delay/modulation",
+    "PSS-560 YM3012 architecture identifies target OPU DAC",
+    "Advertised54-page listing proves acquired full target schematic",
+    "Incomplete supplement proves no complete manual exists",
+    "New component-derived target distortion, noise, jitter or aging law"
+  ],
+  "transport_notes": [
+    "Initial Python urllib calls failed environment CA verification; not reported as remote HTTP denials",
+    "System curl used normal public links with TLS verification enabled",
+    "No paywall, login, download-token guessing, CAPTCHA workaround or contact used"
+  ],
+  "production_source_sha256": {
+    "Source/DSP/Press78Engine.cpp": "76c9f2bff45743c1c26ba7cf30efd208814290a6ad8292b203e17bd442cd23e4",
+    "Source/DSP/Press78Engine.h": "ddab76c7e5f548c15bee1cfa115f903fdcd49e71611a302e29bad52dc4d1b6c7"
+  },
+  "scope_invariants": {
+    "runtime_edits": false,
+    "ui_edits": false,
+    "native_edits": false,
+    "no_artificial_noise_added": true,
+    "media_firmware_or_service_scan_in_product": false,
+    "redistribution_licence_claimed": false
+  },
+  "artifacts": [
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-chorus-detail.png",
+      "bytes": 78460,
+      "sha256": "ed2213c8acdf7ec3b3364a2b159f9c3688fe571987a9b4f234161565f5e74a10",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-circuit-lower.png",
+      "bytes": 472615,
+      "sha256": "1f66d361df106efd62a6829be6aca11b85e6232eb8e3af88ba4948370efb89b9",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-contact.png",
+      "bytes": 999943,
+      "sha256": "a0ddfdcf78bf0ce8e8f403bcbdf5d585b88040f34c3902cec76635ff2bb579f0",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-output-detail.png",
+      "bytes": 67346,
+      "sha256": "61026a2619c425918ba9a169ae870f85714522ea9e0779e90ffb67db8316d272",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p1.png",
+      "bytes": 113665,
+      "sha256": "e6ace4e0858773efc67112d811abaccd5cd93aff810e7a974354fecf4fa321ee",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p10.png",
+      "bytes": 169424,
+      "sha256": "a57d4ef359f1c10bcf5fe6b30c96c31b4004a2eac8860d6c6a0ea651a08aca1c",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p11.png",
+      "bytes": 121337,
+      "sha256": "445e3114486d05596667232924bfcd710ff9f47f33b35e27c28cd2edda02b896",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p12.png",
+      "bytes": 153986,
+      "sha256": "cdf43fde678dc33a4e7e646b726a3ff5761d7d6bb2fdf64e0077b9cb950b708b",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p13-large.png",
+      "bytes": 633517,
+      "sha256": "177433bcebc5d2049e8af351a4a4b836f765a8bbe970d31ee136915e48a9db2a",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p13.png",
+      "bytes": 388211,
+      "sha256": "e865de8f4503559ad505111c923ce0ab450874a40d8c1be34a7d690d68f88629",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p3.png",
+      "bytes": 170311,
+      "sha256": "a5cdda92f3302bba78175b86cf6aa0a6cefa45f8b64355654f33bbd5c0794b2c",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p4.png",
+      "bytes": 129966,
+      "sha256": "7cc9aba52708060ec9e29e5f077cb401d6c69a2f0ccb2ddb62787027fa6c9f69",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p5.png",
+      "bytes": 156290,
+      "sha256": "c943578c11b569a13a87d026d26c1a339648a28e3026b6ac3eda6912ea030d0d",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p6.png",
+      "bytes": 151502,
+      "sha256": "6a11944ecbbaa9ebb33d66e0e559652dc9b7b7ababaa4139489a5bb5ea4ac220",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p7.png",
+      "bytes": 478409,
+      "sha256": "9a2e9931bd3ea832d2267e185003369b098815d0d71907df72de2cc4f2e27031",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p8.png",
+      "bytes": 403903,
+      "sha256": "219592d33b7c17a83f6b0f3d77080dde347ee4fb914e3fe5e86331b00dc4b039",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p9-large.png",
+      "bytes": 147922,
+      "sha256": "63a57ac5de06765a0d9e1414bc5eb08af305470737833428115209620e1cfd6d",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/560-p9.png",
+      "bytes": 133823,
+      "sha256": "e06be08afbf701a205d1c02d8fc7639ef16805c7ccfd76a836efb0d5ff472a7c",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/780-p1.png",
+      "bytes": 99032,
+      "sha256": "378fea20202970623cc176ef01d621d9bb071e0da6d9e5926410552d15dbd419",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/780-p12-large.png",
+      "bytes": 217242,
+      "sha256": "32ac78a23226ffc3a7a10b1a0dfc64e49e37486b23606e695c3478f3493661fd",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/780-p12.png",
+      "bytes": 198417,
+      "sha256": "ce7a12ce0e84cb8bd3f0db066d6bff415ddd00d3dcb36f7771368b3d15d0f4a3",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/acquisitions.json",
+      "bytes": 1005,
+      "sha256": "abf208b14d966a61a862b69f189e8b5aaa91968c47b8c3ccdcb364bee0aa97fe",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/archive-search.json",
+      "bytes": 2961,
+      "sha256": "96cfa061ba55ae8fd4a8bc6a694083f60c4db8948027402868c03fe24935111c",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/circuitbending-yamaha.html",
+      "bytes": 134357,
+      "sha256": "ad40a80a242cc317471c06e6627572356d00572653aea556303d2cbc9a963b42",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/curl-acquisitions.json",
+      "bytes": 2093,
+      "sha256": "5e92c0d2e3a7d16fb0bcb357cb68bfd82e9eb31165f246e9badfa232a6ee44fe",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/owner-linked-download",
+      "bytes": 329,
+      "sha256": "605cfd4644137e530fc3d0eaf4ad73427c43ff2122bc7a8857c0ac1ced780b5b",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/owner-manuals-pss780.html",
+      "bytes": 34602,
+      "sha256": "dc1d78453846ad9d392b93cdefa932788655f71bd8e8bdd545e313146827f3b4",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/pdf-manuals-pss680.html",
+      "bytes": 8912,
+      "sha256": "5a401934b7e5c290d02d44857417a35a12b17b2c1de428927b41944744c1138e",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/sensi-pss680-index.html",
+      "bytes": 653,
+      "sha256": "74df6abdddbc32aebdf895d8e9ab562a2cb1e65f6c7ac95457d22e80d16fe717",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/wiki-PSS-560-Service-Manual.pdf",
+      "bytes": 2223965,
+      "sha256": "3c84feaf4ed2acf8f62f33ef39196f8994bb7f7b1fe7b9fddc88046b64173b1f",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/wiki-PSS-560-Service-Manual.pdf.txt",
+      "bytes": 13,
+      "sha256": "859aa658314fcc519a9b7aa9096bc94316446ca5d26eb9f1a5e9369030b02c86",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/wiki-PSS-780-Service-Manual.pdf",
+      "bytes": 808983,
+      "sha256": "0c826d1a0cdb98103bb9632ca1cafba786e4d88ad4e294d2b279eb3d1ad331b1",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/wiki-PSS-780-Service-Manual.pdf.txt",
+      "bytes": 117588,
+      "sha256": "bd01d1974968797471dd7aead00e2938301ba9205f85f35d501882becc3d062e",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/wiki-acquisition.json",
+      "bytes": 443,
+      "sha256": "128802a06c5a4823446433e6208e9e08a48471ea57eed1f8b94b86e396f16b87",
+      "ignored": true
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/wiki-pdf-acquisitions.json",
+      "bytes": 928,
+      "sha256": "97b1923c846aa90805ad7b36734c94ba86c2475228045f830d61540844d07720",
+      "ignored": true
+    }
+  ]
+}

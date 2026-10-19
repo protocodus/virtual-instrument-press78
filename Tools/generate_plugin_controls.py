@@ -4,6 +4,10 @@
   python3 Tools/generate_plugin_controls.py           # rewrite the header
   python3 Tools/generate_plugin_controls.py --check   # fail if it is stale
 
+A control's startup_default, where it has one, is the plug-in default: it is
+what the Rack's Init and factory patches store, while `default` is what the
+Rack assumes for an old patch that lacks the property.
+
 The control ids are the plug-in parameter IDs and the Rack property names, so
 hosts and Reason recall the same names. Never rename or reuse one.
 """
@@ -36,7 +40,7 @@ def render() -> str:
         "struct PluginControl {",
         "    std::string_view id, label;",
         "    double minimum, maximum, defaultValue;",
-        "    bool integer, patch;",
+        "    bool integer, patch, hidden; // hidden: inert compatibility id, kept for recall",
         "    std::string_view options; // '|'-separated choice names, empty for numbers",
         "};",
         "",
@@ -46,8 +50,8 @@ def render() -> str:
         options = "|".join(c.get("options", []))
         lines.append(
             f'    {{"{c["id"]}", "{c["label"]}", {number(c["min"])}, {number(c["max"])}, '
-            f'{number(c["default"])}, {str(bool(c["integer"])).lower()}, '
-            f'{str(c["target"] == "patch").lower()}, "{options}"}},')
+            f'{number(c.get("startup_default", c["default"]))}, {str(bool(c["integer"])).lower()}, '
+            f'{str(c["target"] == "patch").lower()}, {str(bool(c.get("hidden", False))).lower()}, "{options}"}},')
     lines += [
         "}};",
         "",

@@ -1,7 +1,7 @@
 {
   "passed": true,
-  "controls": 65,
-  "canonical_properties": 65,
+  "controls": 64,
+  "canonical_properties": 64,
   "unmapped_properties": [],
   "overlapping_widget_bounds": 0,
   "captions_fit_at_11px": true,
@@ -25,17 +25,18 @@
     ]
   },
   "svg_rasterizer": "@resvg/resvg-js 2.6.2, DIN Alternate / DIN Condensed system fonts",
-  "browser_visual_review": "Layout study09: header group bounds, fold clearance and four deterministic local panels checked; synthetic DOM interaction separate; no new live-browser interaction claim.",
+  "browser_visual_review": "Layout study11: deterministic panel geometry and render checks; synthetic DOM interaction separate; no live-browser interaction claim.",
   "native_host_tested": false,
   "scope": "Wireframe geometry, property contract and SVG raster checks; no DSP/audio or native host claims.",
   "source_sha256": {
-    "Design/geometry.json": "f8f735c46e3f053f04b2396c470fcfdd6b9e6efca2f668bb1cd502dafd213255",
-    "Design/build_wireframe.py": "72681bf1a40352e9da97488caa6417f2ab1369ffb8caa32e12c8e7c2eaa83e1b",
-    "Design/preview_template.html": "72ce23b38b5a8536d155f25b036db25f4c6a4aae40be999e3897ffbf4323c998",
-    "Design/index.html": "d0fa005c512c8ca7a637c97a465280dce884b5515f67cf8b8f47d1342be58285",
+    "Design/geometry.json": "e5a80c5aeb06c4edf6fcead07ba9aedebc7651e79e11a9f128585312d02b8110",
+    "Design/build_wireframe.py": "6a28e235c5e916fbbce0a69ca5e32dbede53af88cc73f5697076cbaa648aab82",
+    "Design/preview_template.html": "db5add4edaa5505e3de37f1f61511ef4ff88edfe476a939d723e5ab2f3cd5634",
+    "Design/index.html": "8b42316555757a4fde3e86b28fe456920a22fa48a5490badfd6fdb2b460d690b",
     "Design/render_preview.cjs": "fa345aea4e6fcb20b8cdd7c665b75ac203e901d292ee1e4faf073ceeebbba217",
-    "Resources/controls.json": "79dd7ed1b4e35e3e7b93ac9899d5fe2248cbad25a89774929833f1c8b6684108"
+    "Resources/controls.json": "97ceb238116aa810735f869a03091a38c18da08bc3f69c3d2940104d70daaa9e"
   },
+  "branding_fold_clearance_min_px": 15,
   "header_group_center_tolerance_px": 0.5,
   "fold_reserved_nominal_clearance_px": 0,
   "photo_screw_position_tolerance_px": 1,
@@ -43,7 +44,7 @@
   "sockets": 6,
   "cv_inputs": 4,
   "audio_outputs": 2,
-  "front_controls": 35,
+  "front_controls": 34,
   "rear_controls": 30,
   "rack_units": 8,
   "section_side_padding_min_px": 14,

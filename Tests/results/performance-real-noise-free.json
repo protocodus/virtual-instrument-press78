@@ -1,0 +1,102 @@
+{
+  "scope": "native engine wall time; excludes Reason host and target translation",
+  "block_frames": 64,
+  "rows": [
+    {
+      "workload": "real_12voice_fm",
+      "sample_rate": 48000,
+      "voices": 12,
+      "blocks": 2250,
+      "audio_seconds": 3,
+      "wall_seconds": 0.168473416,
+      "wall_fraction_of_realtime": 0.05615780533,
+      "block_median_us": 74.875,
+      "block_p99_us": 85.667,
+      "block_max_us": 109.417,
+      "block_deadline_us": 1333.333333,
+      "deadline_misses": 0,
+      "output_peak": 0.9999999404
+    },
+    {
+      "workload": "real_single",
+      "sample_rate": 48000,
+      "voices": 1,
+      "blocks": 2250,
+      "audio_seconds": 3,
+      "wall_seconds": 0.027429959,
+      "wall_fraction_of_realtime": 0.009143319667,
+      "block_median_us": 12.083,
+      "block_p99_us": 13.292,
+      "block_max_us": 59.333,
+      "block_deadline_us": 1333.333333,
+      "deadline_misses": 0,
+      "output_peak": 0.2487213612
+    },
+    {
+      "workload": "real_idle",
+      "sample_rate": 48000,
+      "voices": 0,
+      "blocks": 2250,
+      "audio_seconds": 3,
+      "wall_seconds": 0.019139208,
+      "wall_fraction_of_realtime": 0.006379736,
+      "block_median_us": 8.459,
+      "block_p99_us": 9.209,
+      "block_max_us": 11.041,
+      "block_deadline_us": 1333.333333,
+      "deadline_misses": 0,
+      "output_peak": 0
+    },
+    {
+      "workload": "real_12voice_fm",
+      "sample_rate": 96000,
+      "voices": 12,
+      "blocks": 4500,
+      "audio_seconds": 3,
+      "wall_seconds": 0.188834084,
+      "wall_fraction_of_realtime": 0.06294469467,
+      "block_median_us": 41.875,
+      "block_p99_us": 47.042,
+      "block_max_us": 107.917,
+      "block_deadline_us": 666.6666667,
+      "deadline_misses": 0,
+      "output_peak": 0.9999999404
+    },
+    {
+      "workload": "real_single",
+      "sample_rate": 96000,
+      "voices": 1,
+      "blocks": 4500,
+      "audio_seconds": 3,
+      "wall_seconds": 0.048318834,
+      "wall_fraction_of_realtime": 0.016106278,
+      "block_median_us": 10.667,
+      "block_p99_us": 11.708,
+      "block_max_us": 65.75,
+      "block_deadline_us": 666.6666667,
+      "deadline_misses": 0,
+      "output_peak": 0.2486392409
+    },
+    {
+      "workload": "real_idle",
+      "sample_rate": 96000,
+      "voices": 0,
+      "blocks": 4500,
+      "audio_seconds": 3,
+      "wall_seconds": 0.0406025,
+      "wall_fraction_of_realtime": 0.01353416667,
+      "block_median_us": 8.792,
+      "block_p99_us": 9.375,
+      "block_max_us": 85,
+      "block_deadline_us": 666.6666667,
+      "deadline_misses": 0,
+      "output_peak": 0
+    }
+  ],
+  "profile": "Rack0.1.0b10 Real, without additive noise",
+  "source_sha256": {
+    "Source/DSP/Press78Engine.h": "a11cc9536a4137ea5b380f992fb8d24fe23dda0b5ea58c63bb43b32af5c1d6bb",
+    "Source/DSP/Press78Engine.cpp": "dee61309fc179ac4924612976b94f74ce2554935d10b68429b17b176883009e7",
+    "Tools/PerformanceProbe.cpp": "4cbeee0e529838459b4a47aef575742502bf4a49e1edc41d188362f2e3c14cf2"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "product_id": "cz.protocodus.Press78",
-  "version": "0.1.0b9",
+  "version": "0.1.0b12",
   "schema": [
     "Tagline",
     "Top features",
@@ -9,7 +9,7 @@
     "Images"
   ],
   "source": "SHOP.md",
-  "source_sha256": "4683ff289faf19b6beb7d00b67d00bf675cfdadcb63893375231bda67d10c85c",
+  "source_sha256": "f11d08a4a08c144344b687dbd9083a7f587b20954d07a96fe37318b3a3b3ebc2",
   "preview_state": "canonical Init defaults",
   "tagline_characters": 16,
   "feature_characters": [
@@ -17,28 +17,28 @@
     44,
     48
   ],
-  "intro_characters": 207,
+  "intro_characters": 200,
   "image_sources": {
     "Press78_Front.png": "GUI2D/Preview_front@1x.png",
     "Press78_Back.png": "GUI2D/Preview_back@1x.png"
   },
   "images": {
     "Press78_Front.png": {
-      "sha256": "2edd9303960a831e66d1f1315c3a42925f345420f18f446229b41d9e8e95d684",
+      "sha256": "29abe1f957f3c733567187b8f00bc38c38c24ef2d85a65f5844103e12f8cec2d",
       "dimensions": [
         754,
         552
       ]
     },
     "Press78_Back.png": {
-      "sha256": "6f22a648eea6c20a5fb8200abe2bf541f35f0282a3a43276213e5e5b23a8349a",
+      "sha256": "f474d48799a3bc17a5685983f877e9d76a06a9dc52263c083e6b7071f371f7cc",
       "dimensions": [
         754,
         552
       ]
     },
     "Press78_Thumbnail_800.png": {
-      "sha256": "4bca63de939f908c2622689a41c1e901f5fbc7a115bdf8c0abc549aeddb49466",
+      "sha256": "759689bc4993d54b87ae792a40b1fa6358b9cf4f13d9b74aac81ea3f408837e5",
       "dimensions": [
         800,
         800

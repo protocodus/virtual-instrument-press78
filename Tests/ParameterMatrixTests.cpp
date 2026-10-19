@@ -43,7 +43,7 @@ public:
     Limits LimitsFor (const Case& c) const override
     {
         Limits limits;
-        double release = 0.0, gain = 0.0, noise = 0.0;
+        double release = 0.0, gain = 0.0;
         bool limited = true, dcBlocked = true, louderRelease = false;
         // Automation ramps between the case and its base, so each limit takes
         // whichever of the two asks more of it.
@@ -51,7 +51,6 @@ public:
         {
             release = std::max (release, releaseSeconds (*row));
             gain = std::max (gain, value (*row, "masterGain"));
-            noise = std::max (noise, value (*row, "noiseRms"));
             limited = limited && value (*row, "outputLimit") >= 0.5;
             dcBlocked = dcBlocked && value (*row, "dcBlock") >= 0.5;
             louderRelease = louderRelease || tremolo (*row);
@@ -65,11 +64,6 @@ public:
         // Half-sine and squared waves carry DC that only the DC filter removes.
         if (! dcBlocked)
             limits.dcLimit = limits.ceiling;
-        // Added noise never decays, so a case with noise cannot fall silent;
-        // its floor is the noise peak after master gain (about 5x RMS, times 2
-        // for full stereo width).
-        if (noise > 0.0)
-            limits.silenceFloor = std::max (limits.silenceFloor, static_cast<float> (10.0 * noise * gain));
         for (const auto* row : { &c.values, &c.base })
             if (silentWhileHeld (*row, limits.silenceFloor))
                 limits.soundsWhileHeld = false;

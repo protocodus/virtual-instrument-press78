@@ -1,0 +1,1244 @@
+{
+  "schema": "press78.opu-pitch-command-path.v1",
+  "date": "2026-10-19",
+  "scope": "Original firmware software command-path evidence; no production or hardware arithmetic implementation",
+  "status": "ready_for_independent_audit",
+  "source_provenance": {
+    "identity_authority": "https://github.com/mamedev/mame/blob/983e76f8cd84f8da8d14241c9f07a5ee138cc3eb/src/mame/yamaha/ympsr16.cpp",
+    "driver_commit": "983e76f8cd84f8da8d14241c9f07a5ee138cc3eb",
+    "original_research": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017",
+    "original_author_public_repositories": "https://api.github.com/users/jbevren/repos?per_page=100",
+    "acquisition": [
+      {
+        "model": "pss480",
+        "public_page": "https://mdk.cab/game/pss480",
+        "ordinary_linked_download": "https://mdk.cab/download/split/pss480.zip",
+        "rom_file": "xe418c0-077.ic4",
+        "rom_sha1": "c0015cbb34f50ac5687db9def679117e4b2bad32",
+        "rom_sha256": "d9fe2ca2ea71eb890b5e77272b414dfad44b9aa5ea5128106fe72f71cafda145",
+        "rom_size_bytes": 262144,
+        "rom_crc32": "1e9a1933"
+      },
+      {
+        "model": "pss680",
+        "public_page": "https://mdk.cab/game/pss680",
+        "ordinary_linked_download": "https://mdk.cab/download/split/pss680.zip",
+        "rom_file": "xe416d0-093.ic4",
+        "rom_sha1": "d578324cfae73cd5f6c628eb3044be07684bc5d0",
+        "rom_sha256": "52f19aa8eae1730a8f00b43672b911cf5cfa7e5a2af324b9dd377249e2a995f1",
+        "rom_size_bytes": 262144,
+        "rom_crc32": "150d1392"
+      },
+      {
+        "model": "pss780",
+        "public_page": "https://mdk.cab/game/pss780",
+        "ordinary_linked_download": "https://mdk.cab/download/split/pss780.zip",
+        "rom_file": "xg503b0-132.ic4",
+        "rom_sha1": "33cc3f4ab27cf6e5068627625f6ab236209ad776",
+        "rom_sha256": "ce0a69d143deacdb52eb28a1f5de80584ce7576ba94488fa4b035dfc6f0a76a7",
+        "rom_size_bytes": 262144,
+        "rom_crc32": "0c055206"
+      }
+    ],
+    "download_conditions": "Ordinary public linked downloads, HTTP200; no login, quota bypass, alternate credentials or payment. Program bytes and disassemblies remain ignored, never redistributed."
+  },
+  "recovered_commands": {
+    "bank_mapping": "file bank2 (offset0x8000) mapped CPU$4000..$7fff; fixed file0..$7fff mapped CPU$8000..$ffff",
+    "routine_cpu_start": "0x4256",
+    "routine_cpu_end_inclusive": "0x435a",
+    "routine_sha256": "247bd38a76fc94f82aee0f39a2bf73fce3bc9a732345509fb7fe88772473bec2",
+    "same_conversion_bytes_all3": true,
+    "table_pointer_cpu": "0x607b",
+    "table_cpu": "0x5d7b",
+    "table_file_offset": "0x9d7b",
+    "table_bytes": 768,
+    "table_sha256": "44463488472438e85333630f9149e08b34baff846dd305398ed0273204cc8bdc",
+    "same_table_bytes_all3": true,
+    "table_dimensions": [
+      12,
+      32
+    ],
+    "index_expression": "pitch_class*64 + fraction*2 bytes, little-endian word",
+    "whole_semitone_entries": [
+      {
+        "pitch_class": 0,
+        "name": "C",
+        "firmware_fnum": 2394,
+        "earlier_hypothesis_3_times_seed": 2394,
+        "relative_frequency_difference_cents_if_same_scaling": 0.0
+      },
+      {
+        "pitch_class": 1,
+        "name": "C#",
+        "firmware_fnum": 2537,
+        "earlier_hypothesis_3_times_seed": 2538,
+        "relative_frequency_difference_cents_if_same_scaling": -0.6822597325999674
+      },
+      {
+        "pitch_class": 2,
+        "name": "D",
+        "firmware_fnum": 2688,
+        "earlier_hypothesis_3_times_seed": 2688,
+        "relative_frequency_difference_cents_if_same_scaling": 0.0
+      },
+      {
+        "pitch_class": 3,
+        "name": "Eb",
+        "firmware_fnum": 2847,
+        "earlier_hypothesis_3_times_seed": 2847,
+        "relative_frequency_difference_cents_if_same_scaling": 0.0
+      },
+      {
+        "pitch_class": 4,
+        "name": "E",
+        "firmware_fnum": 3017,
+        "earlier_hypothesis_3_times_seed": 3015,
+        "relative_frequency_difference_cents_if_same_scaling": 1.148033231105961
+      },
+      {
+        "pitch_class": 5,
+        "name": "F",
+        "firmware_fnum": 3196,
+        "earlier_hypothesis_3_times_seed": 3195,
+        "relative_frequency_difference_cents_if_same_scaling": 0.5417725123440945
+      },
+      {
+        "pitch_class": 6,
+        "name": "F#",
+        "firmware_fnum": 3386,
+        "earlier_hypothesis_3_times_seed": 3387,
+        "relative_frequency_difference_cents_if_same_scaling": -0.511216318218301
+      },
+      {
+        "pitch_class": 7,
+        "name": "G",
+        "firmware_fnum": 3588,
+        "earlier_hypothesis_3_times_seed": 3588,
+        "relative_frequency_difference_cents_if_same_scaling": 0.0
+      },
+      {
+        "pitch_class": 8,
+        "name": "Ab",
+        "firmware_fnum": 3801,
+        "earlier_hypothesis_3_times_seed": 3801,
+        "relative_frequency_difference_cents_if_same_scaling": 0.0
+      },
+      {
+        "pitch_class": 9,
+        "name": "A",
+        "firmware_fnum": 4027,
+        "earlier_hypothesis_3_times_seed": 4026,
+        "relative_frequency_difference_cents_if_same_scaling": 0.42996002929731963
+      },
+      {
+        "pitch_class": 10,
+        "name": "Bb",
+        "firmware_fnum": 4266,
+        "earlier_hypothesis_3_times_seed": 4266,
+        "relative_frequency_difference_cents_if_same_scaling": 0.0
+      },
+      {
+        "pitch_class": 11,
+        "name": "B",
+        "firmware_fnum": 4520,
+        "earlier_hypothesis_3_times_seed": 4521,
+        "relative_frequency_difference_cents_if_same_scaling": -0.3829740197160813
+      }
+    ],
+    "input_semantics": "$03=voice0..11; $04=whole note; $05 low5bits=fraction1/32 semitone. Converter callers construct signed fixed-point semitone coordinate before splitting.",
+    "software_frequency_fields": "13bits distributed over three writes plus3bitblock; this is software packing, not recovered hardware accumulator width",
+    "port_packing": {
+      "selector": "(voice&1)<<7",
+      "pair": "voice>>1",
+      "writes": [
+        "[$0228+pair] = selector | ((fnum>>6)&31)",
+        "[$0230+pair] = selector | (fnum&63)",
+        "[$0238+pair] = selector | ((fnum>>6)&96) | (block<<2)"
+      ]
+    },
+    "sample_commands": [
+      {
+        "note_input": 24,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            5
+          ],
+          [
+            560,
+            26
+          ],
+          [
+            568,
+            36
+          ]
+        ],
+        "fnum": 2394,
+        "block": 1,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 36,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            5
+          ],
+          [
+            560,
+            26
+          ],
+          [
+            568,
+            40
+          ]
+        ],
+        "fnum": 2394,
+        "block": 2,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 39,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            12
+          ],
+          [
+            560,
+            31
+          ],
+          [
+            568,
+            40
+          ]
+        ],
+        "fnum": 2847,
+        "block": 2,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 51,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            12
+          ],
+          [
+            560,
+            31
+          ],
+          [
+            568,
+            44
+          ]
+        ],
+        "fnum": 2847,
+        "block": 3,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 60,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            5
+          ],
+          [
+            560,
+            26
+          ],
+          [
+            568,
+            48
+          ]
+        ],
+        "fnum": 2394,
+        "block": 4,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 62,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            10
+          ],
+          [
+            560,
+            0
+          ],
+          [
+            568,
+            48
+          ]
+        ],
+        "fnum": 2688,
+        "block": 4,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 67,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            24
+          ],
+          [
+            560,
+            4
+          ],
+          [
+            568,
+            48
+          ]
+        ],
+        "fnum": 3588,
+        "block": 4,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 68,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            27
+          ],
+          [
+            560,
+            25
+          ],
+          [
+            568,
+            48
+          ]
+        ],
+        "fnum": 3801,
+        "block": 4,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 75,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            12
+          ],
+          [
+            560,
+            31
+          ],
+          [
+            568,
+            52
+          ]
+        ],
+        "fnum": 2847,
+        "block": 5,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 77,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            17
+          ],
+          [
+            560,
+            60
+          ],
+          [
+            568,
+            52
+          ]
+        ],
+        "fnum": 3196,
+        "block": 5,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 79,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            24
+          ],
+          [
+            560,
+            4
+          ],
+          [
+            568,
+            52
+          ]
+        ],
+        "fnum": 3588,
+        "block": 5,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 87,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            12
+          ],
+          [
+            560,
+            31
+          ],
+          [
+            568,
+            56
+          ]
+        ],
+        "fnum": 2847,
+        "block": 6,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 96,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            5
+          ],
+          [
+            560,
+            26
+          ],
+          [
+            568,
+            60
+          ]
+        ],
+        "fnum": 2394,
+        "block": 7,
+        "channel_pair": 0,
+        "odd_voice": false
+      },
+      {
+        "note_input": 108,
+        "fraction_input": 0,
+        "writes": [
+          [
+            552,
+            10
+          ],
+          [
+            560,
+            52
+          ],
+          [
+            568,
+            92
+          ]
+        ],
+        "fnum": 4788,
+        "block": 7,
+        "channel_pair": 0,
+        "odd_voice": false
+      }
+    ],
+    "fractional_anomaly": {
+      "class": "Ab",
+      "table_indices": [
+        256,
+        257,
+        258
+      ],
+      "file_offset": "0x9f7b",
+      "raw_six_bytes_hex": "d9 0e fe 0e e7 0e",
+      "values": [
+        3801,
+        3838,
+        3815
+      ],
+      "firmware_execution_reachable": [
+        {
+          "fine_offset_ram": 0,
+          "conversion_args": [
+            {
+              "voice": 0,
+              "note": 68,
+              "fraction": 0
+            }
+          ],
+          "writes": [
+            [
+              552,
+              27
+            ],
+            [
+              560,
+              25
+            ],
+            [
+              568,
+              48
+            ]
+          ],
+          "fnum": 3801,
+          "block": 4,
+          "channel_pair": 0,
+          "odd_voice": false
+        },
+        {
+          "fine_offset_ram": 1,
+          "conversion_args": [
+            {
+              "voice": 0,
+              "note": 68,
+              "fraction": 1
+            }
+          ],
+          "writes": [
+            [
+              552,
+              27
+            ],
+            [
+              560,
+              62
+            ],
+            [
+              568,
+              48
+            ]
+          ],
+          "fnum": 3838,
+          "block": 4,
+          "channel_pair": 0,
+          "odd_voice": false
+        },
+        {
+          "fine_offset_ram": 2,
+          "conversion_args": [
+            {
+              "voice": 0,
+              "note": 68,
+              "fraction": 2
+            }
+          ],
+          "writes": [
+            [
+              552,
+              27
+            ],
+            [
+              560,
+              39
+            ],
+            [
+              568,
+              48
+            ]
+          ],
+          "fnum": 3815,
+          "block": 4,
+          "channel_pair": 0,
+          "odd_voice": false
+        }
+      ],
+      "interpretation": "Nonmonotonic software commands established. Audible size depends on chip transfer; direct fine-offset RAM fixture does not establish front-panel tuning-unit mapping."
+    },
+    "functional_reconstruction": {
+      "formula": "F(k)=3838 for k=257, otherwise floor(2394.41*2^(k/384)+0.5), k0..383",
+      "normal_scale_interval": {
+        "lower_inclusive": 2394.4088868426566,
+        "upper_exclusive": 2394.4143279919235,
+        "binding_indices": [
+          169,
+          368
+        ]
+      },
+      "scope": "Exact independent functional reconstruction of software outputs. Nonunique scale is not original Yamaha generation formula, master-clock calibration or new audio fit.",
+      "tested_against_each_original_table": true,
+      "tested_against_all_original_converter_inputs": true
+    }
+  },
+  "mode_paths": {
+    "flag_ram": "0x3f80",
+    "mode_names_basis": "zero/nonzero executable behavior corresponds to Yamaha manual Keyboard Assign vs Sound Source descriptions; UI transition itself not executed",
+    "serial_parser": "0xb334",
+    "keyboard_assign_zero": {
+      "dispatch": "0xb460",
+      "range_check": "0xb4d7",
+      "accepted_notes_inclusive": [
+        36,
+        96
+      ],
+      "virtual_keyboard_bits": "0x24bf..0x24c9",
+      "key_scan": "0xa01c",
+      "sound_source_input_transpose_called": false,
+      "inverse_transpose_only_on_MIDI_output": true
+    },
+    "sound_source_nonzero": {
+      "dispatch": "0x8e05",
+      "note_map": "0x8f6a",
+      "program_offset_table_file": "0xf83d",
+      "factory_program_offset_nonzero": [
+        {
+          "program": 11,
+          "semitones": 12
+        },
+        {
+          "program": 13,
+          "semitones": 12
+        },
+        {
+          "program": 16,
+          "semitones": 12
+        },
+        {
+          "program": 20,
+          "semitones": -12
+        },
+        {
+          "program": 23,
+          "semitones": -12
+        },
+        {
+          "program": 24,
+          "semitones": -24
+        },
+        {
+          "program": 26,
+          "semitones": -12
+        },
+        {
+          "program": 32,
+          "semitones": -12
+        },
+        {
+          "program": 45,
+          "semitones": 12
+        },
+        {
+          "program": 46,
+          "semitones": 12
+        },
+        {
+          "program": 48,
+          "semitones": -12
+        },
+        {
+          "program": 61,
+          "semitones": 12
+        },
+        {
+          "program": 63,
+          "semitones": -24
+        },
+        {
+          "program": 65,
+          "semitones": -12
+        },
+        {
+          "program": 66,
+          "semitones": 12
+        },
+        {
+          "program": 77,
+          "semitones": 12
+        },
+        {
+          "program": 78,
+          "semitones": 12
+        },
+        {
+          "program": 79,
+          "semitones": 12
+        },
+        {
+          "program": 84,
+          "semitones": 12
+        },
+        {
+          "program": 85,
+          "semitones": 12
+        },
+        {
+          "program": 86,
+          "semitones": 12
+        },
+        {
+          "program": 87,
+          "semitones": 12
+        },
+        {
+          "program": 88,
+          "semitones": -12
+        },
+        {
+          "program": 89,
+          "semitones": -12
+        },
+        {
+          "program": 90,
+          "semitones": -24
+        },
+        {
+          "program": 91,
+          "semitones": -12
+        },
+        {
+          "program": 95,
+          "semitones": 12
+        },
+        {
+          "program": 96,
+          "semitones": 12
+        }
+      ],
+      "user_programs_100_to_104_offset": 0,
+      "mapping": "apply signed program offset; shifted values<0 clamp0, shifted values>=128 clamp127; otherwise fold by octaves into24..108. With zero offset, original0..127 folds into24..108."
+    },
+    "both_modes": {
+      "pitch_bend_low7bits": "ignored for command pitch in tested paths",
+      "bend_tests": [
+        {
+          "mode_flag": 0,
+          "high_byte": 0,
+          "all128_low_bytes_identical": true,
+          "conversion_args": {
+            "voice": 0,
+            "note": 66,
+            "fraction": 0
+          },
+          "writes": [
+            [
+              552,
+              20
+            ],
+            [
+              560,
+              58
+            ],
+            [
+              568,
+              48
+            ]
+          ],
+          "fnum": 3386,
+          "block": 4,
+          "channel_pair": 0,
+          "odd_voice": false
+        },
+        {
+          "mode_flag": 0,
+          "high_byte": 64,
+          "all128_low_bytes_identical": true,
+          "conversion_args": {
+            "voice": 0,
+            "note": 68,
+            "fraction": 0
+          },
+          "writes": [
+            [
+              552,
+              27
+            ],
+            [
+              560,
+              25
+            ],
+            [
+              568,
+              48
+            ]
+          ],
+          "fnum": 3801,
+          "block": 4,
+          "channel_pair": 0,
+          "odd_voice": false
+        },
+        {
+          "mode_flag": 0,
+          "high_byte": 65,
+          "all128_low_bytes_identical": true,
+          "conversion_args": {
+            "voice": 0,
+            "note": 68,
+            "fraction": 1
+          },
+          "writes": [
+            [
+              552,
+              27
+            ],
+            [
+              560,
+              62
+            ],
+            [
+              568,
+              48
+            ]
+          ],
+          "fnum": 3838,
+          "block": 4,
+          "channel_pair": 0,
+          "odd_voice": false
+        },
+        {
+          "mode_flag": 0,
+          "high_byte": 127,
+          "all128_low_bytes_identical": true,
+          "conversion_args": {
+            "voice": 0,
+            "note": 70,
+            "fraction": 0
+          },
+          "writes": [
+            [
+              552,
+              2
+            ],
+            [
+              560,
+              42
+            ],
+            [
+              568,
+              80
+            ]
+          ],
+          "fnum": 4266,
+          "block": 4,
+          "channel_pair": 0,
+          "odd_voice": false
+        },
+        {
+          "mode_flag": 1,
+          "high_byte": 0,
+          "all128_low_bytes_identical": true,
+          "conversion_args": {
+            "voice": 0,
+            "note": 56,
+            "fraction": 0
+          },
+          "writes": [
+            [
+              552,
+              27
+            ],
+            [
+              560,
+              25
+            ],
+            [
+              568,
+              44
+            ]
+          ],
+          "fnum": 3801,
+          "block": 3,
+          "channel_pair": 0,
+          "odd_voice": false
+        },
+        {
+          "mode_flag": 1,
+          "high_byte": 64,
+          "all128_low_bytes_identical": true,
+          "conversion_args": {
+            "voice": 0,
+            "note": 68,
+            "fraction": 0
+          },
+          "writes": [
+            [
+              552,
+              27
+            ],
+            [
+              560,
+              25
+            ],
+            [
+              568,
+              48
+            ]
+          ],
+          "fnum": 3801,
+          "block": 4,
+          "channel_pair": 0,
+          "odd_voice": false
+        },
+        {
+          "mode_flag": 1,
+          "high_byte": 65,
+          "all128_low_bytes_identical": true,
+          "conversion_args": {
+            "voice": 0,
+            "note": 68,
+            "fraction": 6
+          },
+          "writes": [
+            [
+              552,
+              28
+            ],
+            [
+              560,
+              2
+            ],
+            [
+              568,
+              48
+            ]
+          ],
+          "fnum": 3842,
+          "block": 4,
+          "channel_pair": 0,
+          "odd_voice": false
+        },
+        {
+          "mode_flag": 1,
+          "high_byte": 127,
+          "all128_low_bytes_identical": true,
+          "conversion_args": {
+            "voice": 0,
+            "note": 80,
+            "fraction": 0
+          },
+          "writes": [
+            [
+              552,
+              27
+            ],
+            [
+              560,
+              25
+            ],
+            [
+              568,
+              52
+            ]
+          ],
+          "fnum": 3801,
+          "block": 5,
+          "channel_pair": 0,
+          "odd_voice": false
+        }
+      ],
+      "bend_functional_reconstruction": {
+        "table_file_offset": "0x9179",
+        "table_size_bytes": 3072,
+        "table_sha256": "5b6a19b2d2cb8b613ed2b1f015c67fe98b97299c26bb2e3caf2fc63089de33dc",
+        "all3tables_identical": true,
+        "units": "1/32 semitone",
+        "formula": "j=MSB except62->61 and127->128; trunc_toward_zero(span*(j-64)/2)",
+        "reverse_pre_mapping": "MSB0->127,127->0,otherwise128-MSB",
+        "scope": "External firmware controllers, not internal LFO/detune",
+        "source_mode_range": 12,
+        "keyboard_assign_range": "configured per-part RAM"
+      }
+    },
+    "mode00_velocity_tests": [
+      {
+        "program": 65,
+        "velocities": [
+          1,
+          32,
+          64,
+          100,
+          127
+        ],
+        "all_register_writes_equal": true
+      },
+      {
+        "program": 93,
+        "velocities": [
+          1,
+          32,
+          64,
+          100,
+          127
+        ],
+        "all_register_writes_equal": true
+      },
+      {
+        "program": 97,
+        "velocities": [
+          1,
+          32,
+          64,
+          100,
+          127
+        ],
+        "all_register_writes_equal": true
+      },
+      {
+        "program": 99,
+        "velocities": [
+          1,
+          32,
+          64,
+          100,
+          127
+        ],
+        "all_register_writes_equal": true
+      }
+    ],
+    "complete_factory_note_matrix": [
+      {
+        "mode_flag": 0,
+        "cases_passed": 12800,
+        "accepted_note_cases": 6100,
+        "conversion_calls": 6100,
+        "cases_entering_program_input_translation": 0,
+        "cases_entering_inverse_output_translation": 6100
+      },
+      {
+        "mode_flag": 1,
+        "cases_passed": 12800,
+        "accepted_note_cases": 12800,
+        "conversion_calls": 12800,
+        "cases_entering_program_input_translation": 12800,
+        "cases_entering_inverse_output_translation": 0
+      }
+    ]
+  },
+  "validation": {
+    "conversion_cases": 24878,
+    "serial_and_mode_cases": 40087,
+    "total_cases_passed": 221637,
+    "execution": "py65 standard65C02, constructed explicit RAM, hardwarebusy read alwaysready; no interrupts",
+    "complete_boot_or_hardware_emulation": false,
+    "separate_semantic_model_matches_original_instructions": true,
+    "serial_note_matrix": {
+      "programs": 100,
+      "notes": 128,
+      "modes": 2
+    },
+    "direct_note_mapper": {
+      "factory_and_user_programs": 105,
+      "notes": 128
+    },
+    "test_results_paths": [
+      "build/opu-pitch-command-path-20261019/pitch-path-validation.json",
+      "build/opu-pitch-command-path-20261019/midi-pitch-validation.json",
+      "build/opu-pitch-command-path-20261019/functional-pitch-validation.json"
+    ],
+    "functional_reconstruction_cases": 156672,
+    "functional_checks": {
+      "schema": "press78.functional-firmware-pitch.v1",
+      "scope": "Research-only functional command reconstruction; no hardware phase/cadence claim",
+      "formula": "F(index)=3838 if index==257 else floor(2394.41*2^(index/384)+0.5)",
+      "constant_provenance": "A nonunique reconstruction constant in the intersection of all383 normal rounding intervals; no audio data or estimated reference clock used",
+      "bend_formula": "j=MSB except62->61 and127->128; trunc_toward_zero(span*(j-64)/2)",
+      "negative_range_pre_mapping": "MSB0->127,127->0,otherwise128-MSB",
+      "models": [
+        {
+          "model": "pss480",
+          "pitch_words": 384,
+          "bend_words": 1536,
+          "inverse_bend_values": 128,
+          "executed_converter_cases": 49152,
+          "fnum_exponential_scale_interval": {
+            "lower_inclusive": 2394.4088868426566,
+            "upper_exclusive": 2394.4143279919235,
+            "binding_indices": [
+              169,
+              368
+            ]
+          }
+        },
+        {
+          "model": "pss680",
+          "pitch_words": 384,
+          "bend_words": 1536,
+          "inverse_bend_values": 128,
+          "executed_converter_cases": 49152,
+          "fnum_exponential_scale_interval": {
+            "lower_inclusive": 2394.4088868426566,
+            "upper_exclusive": 2394.4143279919235,
+            "binding_indices": [
+              169,
+              368
+            ]
+          }
+        },
+        {
+          "model": "pss780",
+          "pitch_words": 384,
+          "bend_words": 1536,
+          "inverse_bend_values": 128,
+          "executed_converter_cases": 49152,
+          "fnum_exponential_scale_interval": {
+            "lower_inclusive": 2394.4088868426566,
+            "upper_exclusive": 2394.4143279919235,
+            "binding_indices": [
+              169,
+              368
+            ]
+          }
+        }
+      ],
+      "executed_pitch_state_range_cases": 3072,
+      "total_cases_passed": 156672,
+      "all_checks_passed": true,
+      "source_sha256": "ea2b5f1184c6feebb07e0d97252eb95361dcfe39a2fc129211db33262bae3cb8"
+    }
+  },
+  "relationship_to_pitch_hypothesis": {
+    "earlier_note": "opu-frequency-hypothesis-20261019.md",
+    "C_Eb_G_Bb_match": true,
+    "F_correction_cents": 0.5417725123440945,
+    "does_not_refit_new_frequency_table": true,
+    "frequency_scaling_and_low_block_truncation": "Not recovered: sameFNUM2847 withblock2vs3 is emitted forEb39vs51. Recorded octave excess still requires a hardware/capture explanation. The prior floor(FNUM*2^(block-3)) law remains behavioral, not proved by these firmware writes.",
+    "conditional_followup": "Evaluate these independently recovered commands against frozen source measurements without tuning table entries. Any render law must separately state clock/divider/block arithmetic assumptions."
+  },
+  "remaining_unknowns": [
+    "Chip frequency increment relationship to13bitsoftwarefield/block",
+    "Native FM/operator/mixer cadence, accumulator width, log-sine precision",
+    "Chip-side block shifting/truncation and operator multiplier/detune interaction",
+    "Internal LFO pitch modulation path vs external firmware command tables",
+    "Busy acceptance, interrupt scheduling and audible parameter latency",
+    "Fine-tuning front-panel display-to-RAM conversion",
+    "Factory-panel Decay22 to raw envelope command translation not recovered in this pass",
+    "Original hardware behavior at out-of-range/overflow corner cases not measured"
+  ],
+  "scope_invariants": {
+    "production_b11_equal_temperament_unchanged": true,
+    "no_Source_UI_native_presets_README_edits": true,
+    "no_artificial_noise_added": true,
+    "no_ROM_or_full_disassembly_shipped": true,
+    "no_new_audio_scores_or_source_fits": true
+  },
+  "artifacts": [
+    {
+      "path": "build/opu-pitch-command-path-20261019/pss480.zip",
+      "sha256": "64379d6fd0d652929ef4c19bf2bfdf8bce39dc0f471db0cfc72275bd1803acc4",
+      "size_bytes": 166559,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/pss680.zip",
+      "sha256": "1e43d6ec3e6a565a1aafc4559ac184df46545203c79ff2e646444b26268c7678",
+      "size_bytes": 268496,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/pss780.zip",
+      "sha256": "c8cebe39454731657f65255f87468dc385fd411e44d71bca26c0925c298fe7c5",
+      "size_bytes": 78110,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/xe418c0-077.ic4",
+      "sha256": "d9fe2ca2ea71eb890b5e77272b414dfad44b9aa5ea5128106fe72f71cafda145",
+      "size_bytes": 262144,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/xe416d0-093.ic4",
+      "sha256": "52f19aa8eae1730a8f00b43672b911cf5cfa7e5a2af324b9dd377249e2a995f1",
+      "size_bytes": 262144,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/xg503b0-132.ic4",
+      "sha256": "ce0a69d143deacdb52eb28a1f5de80584ce7576ba94488fa4b035dfc6f0a76a7",
+      "size_bytes": 262144,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/mame-ympsr16.cpp",
+      "sha256": "62f85855a15dab3706f028dd6500103ed23742e0d73f755904b4d38e09c2205b",
+      "size_bytes": 6623,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/mame-driver-commit.json",
+      "sha256": "867b06a2e9cc42ff506e6d713b1fdfdaf6993b21b77167c2cc4b38b1ab5eae34",
+      "size_bytes": 4995,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/jbevren-repositories.json",
+      "sha256": "49279a73305b996423c882f4f39b603e56be4a8a08a70c6c64484f79c4aac6ed",
+      "size_bytes": 24529,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/verify_pitch_path.py",
+      "sha256": "414c8646b61365b95afdff1fbe5805f4970e8dd9b25d165d010873c205550a0e",
+      "size_bytes": 4244,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/probe_midi.py",
+      "sha256": "41ae883eabd3e212cdb3755185c46c549252b37c96dd4147330058a6521368ca",
+      "size_bytes": 1373,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/verify_midi_path.py",
+      "sha256": "e3ebde3cfb27f4f1b8f89bf076e6e850b0b317d656caf5f54952a7ea707c43c4",
+      "size_bytes": 5983,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/pitch-path-validation.json",
+      "sha256": "acedc11488294eed8830bfc918eccff7de9e16c42a9f0ecdc183fb968fc3b0d4",
+      "size_bytes": 161957,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/midi-pitch-validation.json",
+      "sha256": "b7dbddd91d6b88cc1bf0607960353563ea317f4925af421f30dc41857796373c",
+      "size_bytes": 54081,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/verify_functional_pitch.py",
+      "sha256": "ea2b5f1184c6feebb07e0d97252eb95361dcfe39a2fc129211db33262bae3cb8",
+      "size_bytes": 3996,
+      "ignored": true
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/functional-pitch-validation.json",
+      "sha256": "6b3bb817eaa356afeb3f0bdd86d580ffbb1890c436d69ca0739724a9d1e86948",
+      "size_bytes": 1900,
+      "ignored": true
+    }
+  ],
+  "proposed_helper_design": {
+    "production_edit_status": "not authorized or made",
+    "pure_command_helper": "note and fraction -> documented software FNUM/block, with exact packing, boundary rules and fractional anomaly; no ROM payload or bytecode needed",
+    "compatibility": "Keep old ET behavior explicit; no silent default or saved-patch change",
+    "downstream_candidate": "If separately validated: floor(FNUM*2^(block-3))*5500000/(6*2^24). This is not proved by software writes.",
+    "external_controller_helper": "Separate high7bit MIDI bend / mode policy from oscillator law, including signed range and duplicated step",
+    "internal_LFO": "No recovered connection to firmware pitch table; do not quantize internal pitch modulation using it",
+    "note_program_offsets": "Apply only in verified sound-source input branch; c.00 keyboard path remains untransposed",
+    "native_timebase": "Do not infer sample rate or pipeline width from software FNUM field"
+  }
+}

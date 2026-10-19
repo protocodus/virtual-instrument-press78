@@ -78,8 +78,10 @@ inline void writePatchValues(const Patch& p, ControlValues& v) noexcept {
     v[controlIndex("sustain")] = p.sustain ? 1.0 : 0.0;
 }
 
-// bend is the pitch wheel (-1..1) and wheel the mod wheel (0..1).
-inline Controls controlsFromValues(const ControlValues& v, double bend, double wheel) noexcept {
+inline constexpr int kBendCentre = 8192;
+
+// bend is the raw 14-bit pitch wheel (0..16383) and wheel the mod wheel (0..1).
+inline Controls controlsFromValues(const ControlValues& v, int bend, double wheel) noexcept {
     const auto value = [&v](std::string_view id) { return v[controlIndex(id)]; };
     const auto integer = [&value](std::string_view id) { return static_cast<int>(std::lround(value(id))); };
     Controls c;
@@ -106,12 +108,15 @@ inline Controls controlsFromValues(const ControlValues& v, double bend, double w
     c.chorusRateHz = value("chorusRateHz");
     c.chorusDepthMs = value("chorusDepthMs");
     c.stereoWidth = value("stereoWidth");
-    c.noiseRms = value("noiseRms");
-    c.noiseModel = integer("noiseModel");
     c.outputCircuit = integer("outputCircuit") != 0;
     c.dcBlock = integer("dcBlock") != 0;
     c.outputLimit = integer("outputLimit") != 0;
-    c.pitchBendSemitones = bend * integer("bendRange");
+    c.pitchModel = integer("pitchModel");
+    // Equal bends continuously; Original quantises the raw wheel as the
+    // firmware does, so it gets the 14-bit value and range too.
+    c.pitchBendSemitones = (bend - kBendCentre) / double(kBendCentre) * integer("bendRange");
+    c.midiPitchBend = bend;
+    c.midiBendRange = integer("bendRange");
     return c;
 }
 

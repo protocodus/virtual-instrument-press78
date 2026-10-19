@@ -1,10 +1,14 @@
-engine_bytes=180344
+engine_bytes=177296
 PASS engine instance fits192KiB Rack budget
 PASS documented33-byte voice fields decode independently
 PASS nominal sine has explicit32-frame latency and correct amplitude
 PASS render block boundaries are bit invariant
 PASS output-rate conversion preserves440Hz and passband level
 PASS zero attack and TL99 suppress allocation
+PASS zero-height D1 plateau is independent of its unused rate
+PASS zero-height D1 enters D2 immediately even with zero D1 rate
+PASS positive D1 target with zero D1 rate holds before D2
+PASS release interrupts attack D1 and D2 after endpoint correction
 PASS velocity-zero note-on releases rather than allocates
 PASS MIDI and CV identical pitches release independently
 PASS overlapping same-note releases are FIFO
@@ -22,7 +26,6 @@ PASS clock change advances envelope as well as oscillator
 PASS allSoundOff clears synthesis and causal effect history
 PASS chorus changes stereo side while preserving raw midpoint
 PASS zero stereo width collapses creative chorus
-PASS noise is deterministic and absent by default
 PASS filter and drive controls alter sound with bounded output
 PASS drive approaches its exact dry bypass continuously
 PASS circuit runtime is deterministic across reset at all supported rates
@@ -37,8 +40,7 @@ PASS recorded effect is causal preserves mid and deterministically resets
 PASS native recorded chorus matches the standalone effect and keeps midpoint
 PASS recorded chorus mode transitions are smoothed and block invariant
 PASS recorded mode nonfinite controls and inputs are bounded without allocations
-PASS circuit noise uses fixed physical reference without rate normalization
-PASS zero circuit noise level leaves musical output exactly unchanged
-PASS circuit noise is deterministic across block sizes and reset
-PASS circuit noise switching and realtime paths remain finite and allocation free
-42 passed, 0 failed
+PASS legacy noise requests preserve exact silence and both musical channels
+PASS legacy noise automation is inaudible and allocation free
+PASS legacy noise requests preserve split blocks reset and sound-off silence
+44 passed, 0 failed

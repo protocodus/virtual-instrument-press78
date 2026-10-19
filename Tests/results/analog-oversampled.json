@@ -1,0 +1,1664 @@
+{
+  "passed": true,
+  "scope": "Complete causal 4x integration of documented PSS480 volume-pot-top surrogate; not identified PSS780 AUX circuit or YM3420 converter.",
+  "policy": {
+    "factor": 4,
+    "outer_taps": 129,
+    "inner_taps": 65,
+    "window": "Kaiser beta10, exact halfband zeros, odd sum0.5, center0.5",
+    "decimation_phase": 0,
+    "fixed_fir_delay_host_frames": 80,
+    "normalization": "fixed FIR unity DC only; no signal/voice/rate fit or makeup gain",
+    "maximum_db_error_through_10khz": 0.15,
+    "maximum_db_error_through_12khz": 0.3,
+    "dc_final_second_after_5s_step_peak_limit": 1e-07
+  },
+  "instance": {
+    "latency_frames": 80,
+    "instance_bytes": 5088,
+    "baseline_bytes": 384
+  },
+  "sanitization": {
+    "passed": true,
+    "nan_inf_fallback_hz": 48000,
+    "minimum_hz": 8000,
+    "maximum_hz": 192000
+  },
+  "rows": [
+    {
+      "sample_rate": 8000,
+      "integration_rate": 32000,
+      "latency_frames": 80,
+      "latency_ms": 10.0,
+      "frequency_rows": [
+        {
+          "frequency_hz": 20,
+          "continuous_db": -2.602485092455969,
+          "baseline_db_error": 8.761543946895174e-05,
+          "oversampled_db_error": 8.99449533007693e-06,
+          "baseline_phase_error_degrees": -0.0009367583484269138,
+          "oversampled_raw_phase_error_degrees": -72.00005854105422,
+          "oversampled_latency_removed_phase_error_degrees": -5.8541054196406464e-05,
+          "resampler_db": 3.5185231362213313e-06,
+          "resampler_latency_removed_phase_degrees": -3.1805533930689562e-15
+        },
+        {
+          "frequency_hz": 50,
+          "continuous_db": -0.49885625891815993,
+          "baseline_db_error": 0.00012272931096311552,
+          "oversampled_db_error": 2.7413587584760734e-05,
+          "baseline_phase_error_degrees": -0.003183444044586575,
+          "oversampled_raw_phase_error_degrees": 179.99980104380973,
+          "oversampled_latency_removed_phase_error_degrees": -0.0001989561902731842,
+          "resampler_db": 1.9742772266487285e-05,
+          "resampler_latency_removed_phase_degrees": 2.5744532348151086e-14
+        },
+        {
+          "frequency_hz": 100,
+          "continuous_db": -0.13005268446307147,
+          "baseline_db_error": 0.00012961202521960468,
+          "oversampled_db_error": 6.103409287765255e-05,
+          "baseline_phase_error_degrees": -0.007165205978281951,
+          "oversampled_raw_phase_error_degrees": -0.00044775922135756503,
+          "oversampled_latency_removed_phase_error_degrees": -0.0004477592213212133,
+          "resampler_db": 5.293220741814769e-05,
+          "resampler_latency_removed_phase_degrees": 5.2295743893714004e-14
+        },
+        {
+          "frequency_hz": 1000,
+          "continuous_db": -0.10340396276303841,
+          "baseline_db_error": -0.011202124246220718,
+          "oversampled_db_error": -0.0006410601383207853,
+          "baseline_phase_error_degrees": -0.7048981262270905,
+          "oversampled_raw_phase_error_degrees": -0.04172825527138321,
+          "oversampled_latency_removed_phase_error_degrees": -0.04172825527192924,
+          "resampler_db": 1.6045762021257754e-06,
+          "resampler_latency_removed_phase_degrees": -4.106233398972571e-13
+        },
+        {
+          "frequency_hz": 2000,
+          "continuous_db": -0.3977244468161844,
+          "baseline_db_error": -0.2344700683954448,
+          "oversampled_db_error": -0.010080779684754605,
+          "baseline_phase_error_degrees": -6.155184942939913,
+          "oversampled_raw_phase_error_degrees": -0.30000021248612607,
+          "oversampled_latency_removed_phase_error_degrees": -0.30000021248722214,
+          "resampler_db": 1.1042717314590232e-05,
+          "resampler_latency_removed_phase_degrees": -8.175136095290625e-13
+        },
+        {
+          "frequency_hz": 3000,
+          "continuous_db": -0.8612352780683419,
+          "baseline_db_error": -2.1784477917410876,
+          "oversampled_db_error": -0.04868750937926886,
+          "baseline_phase_error_degrees": -29.24094703429597,
+          "oversampled_raw_phase_error_degrees": -0.9529611042772255,
+          "oversampled_latency_removed_phase_error_degrees": -0.952961104276831,
+          "resampler_db": 8.990812606892085e-05,
+          "resampler_latency_removed_phase_degrees": 1.6128138563405337e-12
+        },
+        {
+          "frequency_hz": 3600,
+          "continuous_db": -1.206235285151575,
+          "baseline_db_error": -9.86886249289856,
+          "oversampled_db_error": -0.0978918173301093,
+          "baseline_phase_error_degrees": -73.8486970405272,
+          "oversampled_raw_phase_error_degrees": -1.5871044017761984,
+          "oversampled_latency_removed_phase_error_degrees": -1.5871044017783331,
+          "resampler_db": -9.696549840469729e-05,
+          "resampler_latency_removed_phase_degrees": -1.6345070073794248e-12
+        }
+      ],
+      "dense_comparison": [
+        {
+          "band_hz": [
+            20,
+            3600.0
+          ],
+          "dense_points": 3991,
+          "baseline_max_absolute_db_error": 9.732149493634171,
+          "oversampled_max_absolute_db_error": 0.09725830821137268,
+          "baseline_max_absolute_phase_error_degrees": 73.29370678513318,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.5814082194847587,
+          "resampler_only_max_absolute_db_error": 0.00019772005551509228,
+          "resampler_latency_removed_max_phase_error_degrees": 2.142731339219749e-12
+        },
+        {
+          "band_hz": [
+            20,
+            3600.0
+          ],
+          "dense_points": 3991,
+          "baseline_max_absolute_db_error": 9.732149493634171,
+          "oversampled_max_absolute_db_error": 0.09725830821137268,
+          "baseline_max_absolute_phase_error_degrees": 73.29370678513318,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.5814082194847587,
+          "resampler_only_max_absolute_db_error": 0.00019772005551509228,
+          "resampler_latency_removed_max_phase_error_degrees": 2.142731339219749e-12
+        },
+        {
+          "band_hz": [
+            20,
+            3600.0
+          ],
+          "dense_points": 3991,
+          "baseline_max_absolute_db_error": 9.732149493634171,
+          "oversampled_max_absolute_db_error": 0.09725830821137268,
+          "baseline_max_absolute_phase_error_degrees": 73.29370678513318,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.5814082194847587,
+          "resampler_only_max_absolute_db_error": 0.00019772005551509228,
+          "resampler_latency_removed_max_phase_error_degrees": 2.142731339219749e-12
+        },
+        {
+          "band_hz": [
+            20,
+            3600.0
+          ],
+          "dense_points": 3991,
+          "baseline_max_absolute_db_error": 9.732149493634171,
+          "oversampled_max_absolute_db_error": 0.09725830821137268,
+          "baseline_max_absolute_phase_error_degrees": 73.29370678513318,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.5814082194847587,
+          "resampler_only_max_absolute_db_error": 0.00019772005551509228,
+          "resampler_latency_removed_max_phase_error_degrees": 2.142731339219749e-12
+        },
+        {
+          "band_hz": [
+            20,
+            3600.0
+          ],
+          "dense_points": 3991,
+          "baseline_max_absolute_db_error": 9.732149493634171,
+          "oversampled_max_absolute_db_error": 0.09725830821137268,
+          "baseline_max_absolute_phase_error_degrees": 73.29370678513318,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.5814082194847587,
+          "resampler_only_max_absolute_db_error": 0.00019772005551509228,
+          "resampler_latency_removed_max_phase_error_degrees": 2.142731339219749e-12
+        }
+      ],
+      "independent_checks": {
+        "native_vs_full_descriptor_upfirdn_max_abs": 1.554700812533838e-12,
+        "native_vs_full_descriptor_upfirdn_relative_l2": 8.894359513217007e-12,
+        "native_vs_separate_mna_sos_upfirdn_max_abs": 2.1802004646076512e-13,
+        "resampler_vs_independent_upfirdn_max_abs": 3.3306690738754696e-16,
+        "native_vs_exact_alias_sum_max_complex": 1.2566391313753234e-11,
+        "impulse_final_second_peak": 1.52e-321
+      },
+      "outer_halfband_stopband_db_max_0_6_to_1_host_rate": -104.5817533074692,
+      "inner_halfband_stopband_db_max_1_2_to_2_host_rate": -98.7498626298862,
+      "interpolation_image_levels": [
+        {
+          "image_index": 1,
+          "maximum_relative_db": -118.3249885977433
+        },
+        {
+          "image_index": 2,
+          "maximum_relative_db": -107.95789246805816
+        },
+        {
+          "image_index": 3,
+          "maximum_relative_db": -98.36754208311838
+        }
+      ],
+      "alias_sum_relative_to_fundamental_db_max": -197.39636660678653,
+      "native_runtime": {
+        "sample_rate": 8000,
+        "frames": 16000,
+        "block_max_error": 0,
+        "reset_max_error": 0,
+        "zero_input_peak": 0,
+        "reset_after_step_zero_peak": 0,
+        "step_peak": 1.0567250146393228,
+        "step_final_second_peak": 3.87042796500028e-12,
+        "multitone_peak": 0.2908656780528534,
+        "process_heap_allocations": 0,
+        "passed": true
+      },
+      "cpu_benchmark": {
+        "sample_rate": 8000,
+        "frames_per_repetition": 1048576,
+        "median_repetitions": 3,
+        "baseline_seconds": 0.005309708,
+        "candidate_seconds": 0.142704667,
+        "candidate_realtime_single_thread_percent": 0.10887502059936524,
+        "candidate_to_baseline_cpu_ratio": 26.876179820057903
+      }
+    },
+    {
+      "sample_rate": 44100,
+      "integration_rate": 176400,
+      "latency_frames": 80,
+      "latency_ms": 1.8140589569160999,
+      "frequency_rows": [
+        {
+          "frequency_hz": 20,
+          "continuous_db": -2.602485092455969,
+          "baseline_db_error": 2.8833799562688854e-06,
+          "oversampled_db_error": 2.974702081208206e-07,
+          "baseline_phase_error_degrees": -3.08209879177119e-05,
+          "oversampled_raw_phase_error_degrees": -13.061226434267486,
+          "oversampled_latency_removed_phase_error_degrees": -1.944471558778803e-06,
+          "resampler_db": 1.1808814246139565e-07,
+          "resampler_latency_removed_phase_degrees": 1.5902773191113026e-15
+        },
+        {
+          "frequency_hz": 50,
+          "continuous_db": -0.49885625891815993,
+          "baseline_db_error": 4.038945315069018e-06,
+          "oversampled_db_error": 9.871989744322004e-07,
+          "baseline_phase_error_degrees": -0.00010475520046007001,
+          "oversampled_raw_phase_error_degrees": -32.65306777289057,
+          "oversampled_latency_removed_phase_error_degrees": -6.5484007754424585e-06,
+          "resampler_db": 7.354650230549766e-07,
+          "resampler_latency_removed_phase_degrees": 3.1805544121547053e-15
+        },
+        {
+          "frequency_hz": 100,
+          "continuous_db": -0.13005268446307147,
+          "baseline_db_error": 4.2659290704387e-06,
+          "oversampled_db_error": 3.171584343996212e-06,
+          "baseline_phase_error_degrees": -0.00023575691636628564,
+          "oversampled_raw_phase_error_degrees": -65.30613718316866,
+          "oversampled_latency_removed_phase_error_degrees": -1.4734189067795814e-05,
+          "resampler_db": 2.9051687294638375e-06,
+          "resampler_latency_removed_phase_degrees": 9.541660852991566e-15
+        },
+        {
+          "frequency_hz": 1000,
+          "continuous_db": -0.10340396276303841,
+          "baseline_db_error": -0.00033750001578253816,
+          "oversampled_db_error": 2.399308695016362e-05,
+          "baseline_phase_error_degrees": -0.0219347471432338,
+          "oversampled_raw_phase_error_degrees": 66.93740695261994,
+          "oversampled_latency_removed_phase_error_degrees": -0.0013685575841844123,
+          "resampler_db": 4.502965991373927e-05,
+          "resampler_latency_removed_phase_degrees": 1.1449937493991791e-13
+        },
+        {
+          "frequency_hz": 2000,
+          "continuous_db": -0.3977244468161844,
+          "baseline_db_error": -0.005260136190945987,
+          "oversampled_db_error": -0.0002289048802896884,
+          "baseline_phase_error_degrees": -0.15687323994028998,
+          "oversampled_raw_phase_error_degrees": 133.86781618387914,
+          "oversampled_latency_removed_phase_error_degrees": -0.009734836529112199,
+          "resampler_db": 9.643209213345997e-05,
+          "resampler_latency_removed_phase_degrees": 2.1627531720411943e-13
+        },
+        {
+          "frequency_hz": 3000,
+          "continuous_db": -0.8612352780683419,
+          "baseline_db_error": -0.02511865527137746,
+          "oversampled_db_error": -0.0014691965959386687,
+          "baseline_phase_error_degrees": -0.4942206922411469,
+          "oversampled_raw_phase_error_degrees": -159.21408569233188,
+          "oversampled_latency_removed_phase_error_degrees": -0.030412222944332913,
+          "resampler_db": 6.543182325856951e-05,
+          "resampler_latency_removed_phase_degrees": -9.541592166189264e-15
+        },
+        {
+          "frequency_hz": 3600,
+          "continuous_db": -1.206235285151575,
+          "baseline_db_error": -0.04989716203066383,
+          "oversampled_db_error": -0.0029466901278568914,
+          "baseline_phase_error_degrees": -0.8180322410063313,
+          "oversampled_raw_phase_error_degrees": 168.92956537737462,
+          "oversampled_latency_removed_phase_error_degrees": -0.05002645936051351,
+          "resampler_db": 7.376368886239018e-05,
+          "resampler_latency_removed_phase_degrees": -1.908316602700538e-14
+        },
+        {
+          "frequency_hz": 4000,
+          "continuous_db": -1.459313507772151,
+          "baseline_db_error": -0.07372927216706043,
+          "oversampled_db_error": -0.004412695546932152,
+          "baseline_phase_error_degrees": -1.0888971043387163,
+          "oversampled_raw_phase_error_degrees": -92.31118681980666,
+          "oversampled_latency_removed_phase_error_degrees": -0.06628886062317724,
+          "resampler_db": 1.9915772016531525e-05,
+          "resampler_latency_removed_phase_degrees": 3.995562657200418e-13
+        },
+        {
+          "frequency_hz": 5000,
+          "continuous_db": -2.156783939534834,
+          "baseline_db_error": -0.1656428156022016,
+          "oversampled_db_error": -0.009730661684377941,
+          "baseline_phase_error_degrees": -1.964885610426879,
+          "oversampled_raw_phase_error_degrees": -25.424242510226673,
+          "oversampled_latency_removed_phase_error_degrees": -0.11812006124678591,
+          "resampler_db": 3.673026057638143e-05,
+          "resampler_latency_removed_phase_degrees": 4.134703601330684e-13
+        },
+        {
+          "frequency_hz": 8000,
+          "continuous_db": -4.563083665023167,
+          "baseline_db_error": -0.8381309221220299,
+          "oversampled_db_error": -0.0457468982511913,
+          "baseline_phase_error_degrees": -6.274895396059538,
+          "oversampled_raw_phase_error_degrees": 175.14994099539038,
+          "oversampled_latency_removed_phase_error_degrees": -0.36026308624264125,
+          "resampler_db": 5.214632696286453e-05,
+          "resampler_latency_removed_phase_degrees": 8.078560390587069e-13
+        },
+        {
+          "frequency_hz": 10000,
+          "continuous_db": -6.246257135775698,
+          "baseline_db_error": -1.7564582371420256,
+          "oversampled_db_error": -0.08971515672840649,
+          "baseline_phase_error_degrees": -10.464023364573096,
+          "oversampled_raw_phase_error_degrees": -51.19163754686989,
+          "oversampled_latency_removed_phase_error_degrees": -0.5793926489101204,
+          "resampler_db": 4.6088546346560735e-05,
+          "resampler_latency_removed_phase_degrees": 8.173982158952566e-13
+        },
+        {
+          "frequency_hz": 12000,
+          "continuous_db": -7.9020049198093965,
+          "baseline_db_error": -3.2165192579462447,
+          "oversampled_db_error": -0.1512538044432022,
+          "baseline_phase_error_degrees": -15.632662833863353,
+          "oversampled_raw_phase_error_degrees": 82.43349983039487,
+          "oversampled_latency_removed_phase_error_degrees": -0.8318062920550473,
+          "resampler_db": 4.4500539637178934e-05,
+          "resampler_latency_removed_phase_degrees": -1.1927018949468972e-14
+        },
+        {
+          "frequency_hz": 16000,
+          "continuous_db": -11.017515797888354,
+          "baseline_db_error": -8.8613562351325,
+          "oversampled_db_error": -0.3295126346337699,
+          "baseline_phase_error_degrees": -28.83041653008123,
+          "oversampled_raw_phase_error_degrees": -10.38307840020053,
+          "oversampled_latency_removed_phase_error_degrees": -1.4034865634665248,
+          "resampler_db": -2.997096231622196e-05,
+          "resampler_latency_removed_phase_degrees": 1.6077759391566674e-12
+        },
+        {
+          "frequency_hz": 18000,
+          "continuous_db": -12.458999905921655,
+          "baseline_db_error": -14.369987041577408,
+          "oversampled_db_error": -0.4465574161325892,
+          "baseline_phase_error_degrees": -37.08381887138771,
+          "oversampled_raw_phase_error_degrees": 123.18663870446501,
+          "oversampled_latency_removed_phase_error_degrees": -1.7113204792082173,
+          "resampler_db": 0.00019488071107610648,
+          "resampler_latency_removed_phase_degrees": 0.0
+        }
+      ],
+      "dense_comparison": [
+        {
+          "band_hz": [
+            20,
+            4000
+          ],
+          "dense_points": 2614,
+          "baseline_max_absolute_db_error": 0.07349850985064532,
+          "oversampled_max_absolute_db_error": 0.004398829157538631,
+          "baseline_max_absolute_phase_error_degrees": 1.0864023151043627,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.06613962901816754,
+          "resampler_only_max_absolute_db_error": 9.791945643400861e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 5.360543829205284e-13
+        },
+        {
+          "band_hz": [
+            20,
+            10000
+          ],
+          "dense_points": 3145,
+          "baseline_max_absolute_db_error": 1.7496294393372192,
+          "oversampled_max_absolute_db_error": 0.08940666127232058,
+          "baseline_max_absolute_phase_error_degrees": 10.436410174096363,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.5779936419853744,
+          "resampler_only_max_absolute_db_error": 0.00010844306086548596,
+          "resampler_latency_removed_max_phase_error_degrees": 1.4194224472736012e-12
+        },
+        {
+          "band_hz": [
+            20,
+            12000
+          ],
+          "dense_points": 3251,
+          "baseline_max_absolute_db_error": 3.2094670051997607,
+          "oversampled_max_absolute_db_error": 0.1509758038050541,
+          "baseline_max_absolute_phase_error_degrees": 15.61049781436337,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.8307617872941802,
+          "resampler_only_max_absolute_db_error": 0.00010844306086548596,
+          "resampler_latency_removed_max_phase_error_degrees": 1.889612076407387e-12
+        },
+        {
+          "band_hz": [
+            20,
+            16000
+          ],
+          "dense_points": 3418,
+          "baseline_max_absolute_db_error": 8.852475343807848,
+          "oversampled_max_absolute_db_error": 0.32928598188468217,
+          "baseline_max_absolute_phase_error_degrees": 28.814470670712566,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.4028533041036924,
+          "resampler_only_max_absolute_db_error": 0.00012811994625838352,
+          "resampler_latency_removed_max_phase_error_degrees": 1.9389929409179233e-12
+        },
+        {
+          "band_hz": [
+            20,
+            19845.0
+          ],
+          "dense_points": 3542,
+          "baseline_max_absolute_db_error": 23.418539665194178,
+          "oversampled_max_absolute_db_error": 0.5693035026609318,
+          "baseline_max_absolute_phase_error_degrees": 46.52900203021164,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.9985897627019809,
+          "resampler_only_max_absolute_db_error": 0.00019771610069566826,
+          "resampler_latency_removed_max_phase_error_degrees": 2.161846696766454e-12
+        }
+      ],
+      "independent_checks": {
+        "native_vs_full_descriptor_upfirdn_max_abs": 3.6983111885435793e-13,
+        "native_vs_full_descriptor_upfirdn_relative_l2": 1.579631426026406e-11,
+        "native_vs_separate_mna_sos_upfirdn_max_abs": 5.79777762257927e-13,
+        "resampler_vs_independent_upfirdn_max_abs": 3.3306690738754696e-16,
+        "native_vs_exact_alias_sum_max_complex": 3.429662852212925e-10,
+        "impulse_final_second_peak": 3.27426371196807e-95
+      },
+      "outer_halfband_stopband_db_max_0_6_to_1_host_rate": -104.5817533074692,
+      "inner_halfband_stopband_db_max_1_2_to_2_host_rate": -98.7498626298862,
+      "interpolation_image_levels": [
+        {
+          "image_index": 1,
+          "maximum_relative_db": -118.3249885975912
+        },
+        {
+          "image_index": 2,
+          "maximum_relative_db": -107.95757495960726
+        },
+        {
+          "image_index": 3,
+          "maximum_relative_db": -98.36252764353661
+        }
+      ],
+      "alias_sum_relative_to_fundamental_db_max": -199.99691354757798,
+      "native_runtime": {
+        "sample_rate": 44100,
+        "frames": 88200,
+        "block_max_error": 0,
+        "reset_max_error": 0,
+        "zero_input_peak": 0,
+        "reset_after_step_zero_peak": 0,
+        "step_peak": 0.9824898681734383,
+        "step_final_second_peak": 2.8738002699217836e-11,
+        "multitone_peak": 0.25894059845582834,
+        "process_heap_allocations": 0,
+        "passed": true
+      },
+      "cpu_benchmark": {
+        "sample_rate": 44100,
+        "frames_per_repetition": 1048576,
+        "median_repetitions": 3,
+        "baseline_seconds": 0.005319917,
+        "candidate_seconds": 0.143617292,
+        "candidate_realtime_single_thread_percent": 0.6040117814254761,
+        "candidate_to_baseline_cpu_ratio": 26.996152759526137
+      }
+    },
+    {
+      "sample_rate": 44117,
+      "integration_rate": 176468,
+      "latency_frames": 80,
+      "latency_ms": 1.8133599292789628,
+      "frequency_rows": [
+        {
+          "frequency_hz": 20,
+          "continuous_db": -2.602485092455969,
+          "baseline_db_error": 2.8810179680718665e-06,
+          "oversampled_db_error": 2.973255011461443e-07,
+          "baseline_phase_error_degrees": -3.079754466029643e-05,
+          "oversampled_raw_phase_error_degrees": -13.056193430664047,
+          "oversampled_latency_removed_phase_error_degrees": -1.9398555086642663e-06,
+          "resampler_db": 1.1799721602581004e-07,
+          "resampler_latency_removed_phase_degrees": 1.5902773191279497e-15
+        },
+        {
+          "frequency_hz": 50,
+          "continuous_db": -0.49885625891815993,
+          "baseline_db_error": 4.035801483626798e-06,
+          "oversampled_db_error": 9.865317814064108e-07,
+          "baseline_phase_error_degrees": -0.00010467451622826773,
+          "oversampled_raw_phase_error_degrees": -32.64048527011504,
+          "oversampled_latency_removed_phase_error_degrees": -6.5430937041791e-06,
+          "resampler_db": 7.349006909546956e-07,
+          "resampler_latency_removed_phase_degrees": 3.180554412361348e-15
+        },
+        {
+          "frequency_hz": 100,
+          "continuous_db": -0.13005268446307147,
+          "baseline_db_error": 4.262632960274472e-06,
+          "oversampled_db_error": 3.1691998523400168e-06,
+          "baseline_phase_error_degrees": -0.00023557526315098,
+          "oversampled_raw_phase_error_degrees": -65.2809721767562,
+          "oversampled_latency_removed_phase_error_degrees": -1.4722713526277731e-05,
+          "resampler_db": 2.9029676778298504e-06,
+          "resampler_latency_removed_phase_degrees": 3.180553618469825e-15
+        },
+        {
+          "frequency_hz": 1000,
+          "continuous_db": -0.10340396276303841,
+          "baseline_db_error": -0.00033723920871178226,
+          "oversampled_db_error": 2.4044068794613227e-05,
+          "baseline_phase_error_degrees": -0.021917814650832503,
+          "oversampled_raw_phase_error_degrees": 67.18905795662565,
+          "oversampled_latency_removed_phase_error_degrees": -0.0013675029478132357,
+          "resampler_db": 4.5064430301793465e-05,
+          "resampler_latency_removed_phase_degrees": 0.0
+        },
+        {
+          "frequency_hz": 2000,
+          "continuous_db": -0.3977244468161844,
+          "baseline_db_error": -0.005256037708768263,
+          "oversampled_db_error": -0.00022868637670085898,
+          "baseline_phase_error_degrees": -0.15675144137483213,
+          "oversampled_raw_phase_error_degrees": 134.37112358714313,
+          "oversampled_latency_removed_phase_error_degrees": -0.009727332003804044,
+          "resampler_db": 9.639973964552446e-05,
+          "resampler_latency_removed_phase_degrees": 2.544415505996282e-14
+        },
+        {
+          "frequency_hz": 3000,
+          "continuous_db": -0.8612352780683419,
+          "baseline_db_error": -0.0250988272596458,
+          "oversampled_db_error": -0.001468129614793365,
+          "baseline_phase_error_degrees": -0.4938335204225451,
+          "oversampled_raw_phase_error_degrees": -158.4591123866311,
+          "oversampled_latency_removed_phase_error_degrees": -0.030388765351257008,
+          "resampler_db": 6.531455376497142e-05,
+          "resampler_latency_removed_phase_degrees": 4.039274071554963e-13
+        },
+        {
+          "frequency_hz": 3600,
+          "continuous_db": -1.206235285151575,
+          "baseline_db_error": -0.04985738769065111,
+          "oversampled_db_error": -0.002944178322070377,
+          "baseline_phase_error_degrees": -0.8173871469901912,
+          "oversampled_raw_phase_error_degrees": 169.8355437972532,
+          "oversampled_latency_removed_phase_error_degrees": -0.04998785721126063,
+          "resampler_db": 7.394325333751586e-05,
+          "resampler_latency_removed_phase_degrees": -4.071075334932634e-13
+        },
+        {
+          "frequency_hz": 4000,
+          "continuous_db": -1.459313507772151,
+          "baseline_db_error": -0.07367007371105246,
+          "oversampled_db_error": -0.004409154182588205,
+          "baseline_phase_error_degrees": -1.0880342470293787,
+          "oversampled_raw_phase_error_degrees": -91.3045358564195,
+          "oversampled_latency_removed_phase_error_degrees": -0.06623769471333134,
+          "resampler_db": 2.0032982620342184e-05,
+          "resampler_latency_removed_phase_degrees": -3.379331555015321e-15
+        },
+        {
+          "frequency_hz": 5000,
+          "continuous_db": -2.156783939534834,
+          "baseline_db_error": -0.1655070789318418,
+          "oversampled_db_error": -0.00972287710096067,
+          "baseline_phase_error_degrees": -1.9633076706620571,
+          "oversampled_raw_phase_error_degrees": -24.165901516842847,
+          "oversampled_latency_removed_phase_error_degrees": -0.11802881470950798,
+          "resampler_db": 3.696027730432288e-05,
+          "resampler_latency_removed_phase_degrees": 4.1665089033125607e-13
+        },
+        {
+          "frequency_hz": 8000,
+          "continuous_db": -4.563083665023167,
+          "baseline_db_error": -0.8373873946277219,
+          "oversampled_db_error": -0.04571098433300029,
+          "baseline_phase_error_degrees": -6.269605646746668,
+          "oversampled_raw_phase_error_degrees": 177.1634196939435,
+          "oversampled_latency_removed_phase_error_degrees": -0.3599839826441538,
+          "resampler_db": 5.247177755365636e-05,
+          "resampler_latency_removed_phase_degrees": -1.5902677338370933e-15
+        },
+        {
+          "frequency_hz": 10000,
+          "continuous_db": -6.246257135775698,
+          "baseline_db_error": -1.75478829392862,
+          "oversampled_db_error": -0.08964555321710854,
+          "baseline_phase_error_degrees": -10.454862073708599,
+          "oversampled_raw_phase_error_degrees": -48.674688200609246,
+          "oversampled_latency_removed_phase_error_degrees": -0.5789427963425751,
+          "resampler_db": 4.5675746137550086e-05,
+          "resampler_latency_removed_phase_degrees": 7.983150270052416e-13
+        },
+        {
+          "frequency_hz": 12000,
+          "continuous_db": -7.9020049198093965,
+          "baseline_db_error": -3.21318833544478,
+          "oversampled_db_error": -0.1511347516167477,
+          "baseline_phase_error_degrees": -15.618406770808207,
+          "oversampled_raw_phase_error_degrees": 85.45394656788098,
+          "oversampled_latency_removed_phase_error_degrees": -0.8311589469996775,
+          "resampler_db": 4.501999909017618e-05,
+          "resampler_latency_removed_phase_degrees": 1.599015578196376e-12
+        },
+        {
+          "frequency_hz": 16000,
+          "continuous_db": -11.017515797888354,
+          "baseline_db_error": -8.849608902085501,
+          "oversampled_db_error": -0.3292509160496868,
+          "baseline_phase_error_degrees": -28.801664012724686,
+          "oversampled_raw_phase_error_degrees": -6.3555814831864454,
+          "oversampled_latency_removed_phase_error_degrees": -1.4023888363617214,
+          "resampler_db": -2.906885718811249e-05,
+          "resampler_latency_removed_phase_degrees": -2.3854239943251805e-15
+        },
+        {
+          "frequency_hz": 18000,
+          "continuous_db": -12.458999905921655,
+          "baseline_db_error": -14.34663759432842,
+          "oversampled_db_error": -0.44620079505828647,
+          "baseline_phase_error_degrees": -37.04426378929456,
+          "oversampled_raw_phase_error_degrees": 127.71767984592292,
+          "oversampled_latency_removed_phase_error_degrees": -1.7099784263972424,
+          "resampler_db": 0.00019572930283293154,
+          "resampler_latency_removed_phase_degrees": 1.6379487507242921e-12
+        }
+      ],
+      "dense_comparison": [
+        {
+          "band_hz": [
+            20,
+            4000
+          ],
+          "dense_points": 2614,
+          "baseline_max_absolute_db_error": 0.0735210042231469,
+          "oversampled_max_absolute_db_error": 0.00440019527917829,
+          "baseline_max_absolute_phase_error_degrees": 1.086422871215607,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.06614130435565804,
+          "resampler_only_max_absolute_db_error": 9.791947935388545e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 5.51606526460992e-13
+        },
+        {
+          "band_hz": [
+            20,
+            10000
+          ],
+          "dense_points": 3145,
+          "baseline_max_absolute_db_error": 1.749997794956164,
+          "oversampled_max_absolute_db_error": 0.08942911168371917,
+          "baseline_max_absolute_phase_error_degrees": 10.435493230089367,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.5779613753343508,
+          "resampler_only_max_absolute_db_error": 0.00010844097856903971,
+          "resampler_latency_removed_max_phase_error_degrees": 1.2223496122569896e-12
+        },
+        {
+          "band_hz": [
+            20,
+            12000
+          ],
+          "dense_points": 3251,
+          "baseline_max_absolute_db_error": 3.209986051132186,
+          "oversampled_max_absolute_db_error": 0.15100848129582184,
+          "baseline_max_absolute_phase_error_degrees": 15.608342871776118,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.8306846232027227,
+          "resampler_only_max_absolute_db_error": 0.00010844097856903971,
+          "resampler_latency_removed_max_phase_error_degrees": 1.748276757878664e-12
+        },
+        {
+          "band_hz": [
+            20,
+            16000
+          ],
+          "dense_points": 3417,
+          "baseline_max_absolute_db_error": 8.795226394419707,
+          "oversampled_max_absolute_db_error": 0.3278588859424203,
+          "baseline_max_absolute_phase_error_degrees": 28.703792568647728,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.3984983124659132,
+          "resampler_only_max_absolute_db_error": 0.00012812071578999413,
+          "resampler_latency_removed_max_phase_error_degrees": 2.0719683369590553e-12
+        },
+        {
+          "band_hz": [
+            20,
+            19852.65
+          ],
+          "dense_points": 3542,
+          "baseline_max_absolute_db_error": 23.42003768827309,
+          "oversampled_max_absolute_db_error": 0.5693976389875084,
+          "baseline_max_absolute_phase_error_degrees": 46.51822302249248,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.9982437869605587,
+          "resampler_only_max_absolute_db_error": 0.0001977152254977678,
+          "resampler_latency_removed_max_phase_error_degrees": 2.9500533856097132e-12
+        }
+      ],
+      "independent_checks": {
+        "native_vs_full_descriptor_upfirdn_max_abs": 3.4802716264437095e-13,
+        "native_vs_full_descriptor_upfirdn_relative_l2": 1.3189052078249703e-11,
+        "native_vs_separate_mna_sos_upfirdn_max_abs": 4.698884510656587e-13,
+        "resampler_vs_independent_upfirdn_max_abs": 3.3306690738754696e-16,
+        "native_vs_exact_alias_sum_max_complex": 3.1188135425976636e-10,
+        "impulse_final_second_peak": 3.607980992036376e-95
+      },
+      "outer_halfband_stopband_db_max_0_6_to_1_host_rate": -104.5817533074692,
+      "inner_halfband_stopband_db_max_1_2_to_2_host_rate": -98.7498626298862,
+      "interpolation_image_levels": [
+        {
+          "image_index": 1,
+          "maximum_relative_db": -118.3249885977433
+        },
+        {
+          "image_index": 2,
+          "maximum_relative_db": -107.95756842791172
+        },
+        {
+          "image_index": 3,
+          "maximum_relative_db": -98.36252764353661
+        }
+      ],
+      "alias_sum_relative_to_fundamental_db_max": -199.9973646051619,
+      "native_runtime": {
+        "sample_rate": 44117,
+        "frames": 88234,
+        "block_max_error": 0,
+        "reset_max_error": 0,
+        "zero_input_peak": 0,
+        "reset_after_step_zero_peak": 0,
+        "step_peak": 0.9824799318030709,
+        "step_final_second_peak": 8.44374866355723e-11,
+        "multitone_peak": 0.25725232618507177,
+        "process_heap_allocations": 0,
+        "passed": true
+      },
+      "cpu_benchmark": {
+        "sample_rate": 44117,
+        "frames_per_repetition": 1048576,
+        "median_repetitions": 3,
+        "baseline_seconds": 0.005520584,
+        "candidate_seconds": 0.142845542,
+        "candidate_realtime_single_thread_percent": 0.6009976173795699,
+        "candidate_to_baseline_cpu_ratio": 25.87507807145041
+      }
+    },
+    {
+      "sample_rate": 48000,
+      "integration_rate": 192000,
+      "latency_frames": 80,
+      "latency_ms": 1.6666666666666667,
+      "frequency_rows": [
+        {
+          "frequency_hz": 20,
+          "continuous_db": -2.602485092455969,
+          "baseline_db_error": 2.433735990041888e-06,
+          "oversampled_db_error": 2.5321392986964024e-07,
+          "baseline_phase_error_degrees": -2.6015865059359134e-05,
+          "oversampled_raw_phase_error_degrees": -12.000001647481975,
+          "oversampled_latency_removed_phase_error_degrees": -1.6474819764855396e-06,
+          "resampler_db": 9.968877077290811e-08,
+          "resampler_latency_removed_phase_degrees": -3.1805546449599913e-15
+        },
+        {
+          "frequency_hz": 50,
+          "continuous_db": -0.49885625891815993,
+          "baseline_db_error": 3.4092433444086824e-06,
+          "oversampled_db_error": 8.338678895495686e-07,
+          "baseline_phase_error_degrees": -8.842377279094044e-05,
+          "oversampled_raw_phase_error_degrees": -30.000005528360347,
+          "oversampled_latency_removed_phase_error_degrees": -5.528360345974264e-06,
+          "resampler_db": 6.212117914668424e-07,
+          "resampler_latency_removed_phase_degrees": 1.9083326723948195e-14
+        },
+        {
+          "frequency_hz": 100,
+          "continuous_db": -0.13005268446307147,
+          "baseline_db_error": 3.6008708609367937e-06,
+          "oversampled_db_error": 2.683567753002728e-06,
+          "baseline_phase_error_degrees": -0.00019900247006056585,
+          "oversampled_raw_phase_error_degrees": -60.00001243727288,
+          "oversampled_latency_removed_phase_error_degrees": -1.2437272868909611e-05,
+          "resampler_db": 2.4586682260773362e-06,
+          "resampler_latency_removed_phase_degrees": 3.1805537811610775e-15
+        },
+        {
+          "frequency_hz": 1000,
+          "continuous_db": -0.10340396276303841,
+          "baseline_db_error": -0.00028475557779737427,
+          "oversampled_db_error": 3.425613492469741e-05,
+          "baseline_phase_error_degrees": -0.018509836740332696,
+          "oversampled_raw_phase_error_degrees": 119.9988448191069,
+          "oversampled_latency_removed_phase_error_degrees": -0.0011551808932012248,
+          "resampler_db": 5.201264665815074e-05,
+          "resampler_latency_removed_phase_degrees": -9.541606907386142e-15
+        },
+        {
+          "frequency_hz": 2000,
+          "continuous_db": -0.3977244468161844,
+          "baseline_db_error": -0.004432343241906472,
+          "oversampled_db_error": -0.00019189044131554404,
+          "baseline_phase_error_degrees": -0.1322593637192549,
+          "oversampled_raw_phase_error_degrees": -120.00821658337897,
+          "oversampled_latency_removed_phase_error_degrees": -0.008216583379145001,
+          "resampler_db": 8.269726374712273e-05,
+          "resampler_latency_removed_phase_degrees": 3.1805243999462275e-15
+        },
+        {
+          "frequency_hz": 3000,
+          "continuous_db": -0.8612352780683419,
+          "baseline_db_error": -0.021122071543674268,
+          "oversampled_db_error": -0.0012455794972282361,
+          "baseline_phase_error_degrees": -0.4160882079202541,
+          "oversampled_raw_phase_error_degrees": -0.025666889113286573,
+          "oversampled_latency_removed_phase_error_degrees": -0.025666889113356784,
+          "resampler_db": 4.949957866332662e-05,
+          "resampler_latency_removed_phase_degrees": -7.731572676628559e-16
+        },
+        {
+          "frequency_hz": 3600,
+          "continuous_db": -1.206235285151575,
+          "baseline_db_error": -0.04189254359308721,
+          "oversampled_db_error": -0.002458360804681493,
+          "baseline_phase_error_degrees": -0.6879858908640458,
+          "oversampled_raw_phase_error_degrees": -0.04221796528805004,
+          "oversampled_latency_removed_phase_error_degrees": -0.04221796528813424,
+          "resampler_db": 9.037306442610323e-05,
+          "resampler_latency_removed_phase_degrees": 2.99955339767968e-16
+        },
+        {
+          "frequency_hz": 4000,
+          "continuous_db": -1.459313507772151,
+          "baseline_db_error": -0.061829258526430904,
+          "oversampled_db_error": -0.003676894334633485,
+          "baseline_phase_error_degrees": -0.9150844132266607,
+          "oversampled_raw_phase_error_degrees": 119.94406057226755,
+          "oversampled_latency_removed_phase_error_degrees": -0.055939427732812436,
+          "resampler_db": 6.319415114076969e-05,
+          "resampler_latency_removed_phase_degrees": -3.498584695579997e-14
+        },
+        {
+          "frequency_hz": 5000,
+          "continuous_db": -2.156783939534834,
+          "baseline_db_error": -0.13844644116241325,
+          "oversampled_db_error": -0.008190178529256823,
+          "baseline_phase_error_degrees": -1.6477042818616123,
+          "oversampled_raw_phase_error_degrees": -120.09966576800028,
+          "oversampled_latency_removed_phase_error_degrees": -0.09966576800011893,
+          "resampler_db": 4.962312544486464e-05,
+          "resampler_latency_removed_phase_degrees": -1.9083219064637575e-14
+        },
+        {
+          "frequency_hz": 8000,
+          "continuous_db": -4.563083665023167,
+          "baseline_db_error": -0.6911143109958852,
+          "oversampled_db_error": -0.03850536315231087,
+          "baseline_phase_error_degrees": -5.219989396220224,
+          "oversampled_raw_phase_error_degrees": -120.30384071497919,
+          "oversampled_latency_removed_phase_error_degrees": -0.30384071497991594,
+          "resampler_db": 0.00010264733526648036,
+          "resampler_latency_removed_phase_degrees": 3.180517094808927e-15
+        },
+        {
+          "frequency_hz": 10000,
+          "continuous_db": -6.246257135775698,
+          "baseline_db_error": -1.4302819089151706,
+          "oversampled_db_error": -0.07558570223700423,
+          "baseline_phase_error_degrees": -8.648592604256274,
+          "oversampled_raw_phase_error_degrees": 119.5115165107533,
+          "oversampled_latency_removed_phase_error_degrees": -0.4884834892464051,
+          "resampler_db": 3.64359443576274e-05,
+          "resampler_latency_removed_phase_degrees": 1.2722165358254355e-14
+        },
+        {
+          "frequency_hz": 12000,
+          "continuous_db": -7.9020049198093965,
+          "baseline_db_error": -2.576331647177848,
+          "oversampled_db_error": -0.12736701226978916,
+          "baseline_phase_error_degrees": -12.827186977500967,
+          "oversampled_raw_phase_error_degrees": -0.7010343852848739,
+          "oversampled_latency_removed_phase_error_degrees": -0.7010343852851536,
+          "resampler_db": 1.1042717314590232e-05,
+          "resampler_latency_removed_phase_degrees": -3.291611074402337e-15
+        },
+        {
+          "frequency_hz": 16000,
+          "continuous_db": -11.017515797888354,
+          "baseline_db_error": -6.724147698938587,
+          "oversampled_db_error": -0.2769582275368668,
+          "baseline_phase_error_degrees": -23.262922310361375,
+          "oversampled_raw_phase_error_degrees": 118.81809456579865,
+          "oversampled_latency_removed_phase_error_degrees": -1.1819054342027993,
+          "resampler_db": -2.2778037988034825e-05,
+          "resampler_latency_removed_phase_degrees": 0.0
+        },
+        {
+          "frequency_hz": 18000,
+          "continuous_db": -12.458999905921655,
+          "baseline_db_error": -10.360613744004318,
+          "oversampled_db_error": -0.3750525817620903,
+          "baseline_phase_error_degrees": -29.5615853890325,
+          "oversampled_raw_phase_error_degrees": -1.440533960249693,
+          "oversampled_latency_removed_phase_error_degrees": -1.440533960249301,
+          "resampler_db": 8.990812606892085e-05,
+          "resampler_latency_removed_phase_degrees": 1.6128138563405337e-12
+        },
+        {
+          "frequency_hz": 20000,
+          "continuous_db": -13.822413942976917,
+          "baseline_db_error": -16.10029278406666,
+          "oversampled_db_error": -0.4891413687279089,
+          "baseline_phase_error_degrees": -36.89383146014245,
+          "oversampled_raw_phase_error_degrees": -121.7072089439126,
+          "oversampled_latency_removed_phase_error_degrees": -1.707208943912004,
+          "resampler_db": 3.2485577188917604e-06,
+          "resampler_latency_removed_phase_degrees": 4.1347195395005155e-14
+        }
+      ],
+      "dense_comparison": [
+        {
+          "band_hz": [
+            20,
+            4000
+          ],
+          "dense_points": 2573,
+          "baseline_max_absolute_db_error": 0.06181541038438365,
+          "oversampled_max_absolute_db_error": 0.003676036668662766,
+          "baseline_max_absolute_phase_error_degrees": 0.914934391338736,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.05593039164186432,
+          "resampler_only_max_absolute_db_error": 9.791947617935522e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 5.791749037677972e-13
+        },
+        {
+          "band_hz": [
+            20,
+            10000
+          ],
+          "dense_points": 3103,
+          "baseline_max_absolute_db_error": 1.4252681070325486,
+          "oversampled_max_absolute_db_error": 0.07534359068143832,
+          "baseline_max_absolute_phase_error_degrees": 8.627884204114837,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.48739752347748844,
+          "resampler_only_max_absolute_db_error": 0.00010844716299966674,
+          "resampler_latency_removed_max_phase_error_degrees": 1.3089515631615273e-12
+        },
+        {
+          "band_hz": [
+            20,
+            12000
+          ],
+          "dense_points": 3209,
+          "baseline_max_absolute_db_error": 2.5734053157357293,
+          "oversampled_max_absolute_db_error": 0.12724274834762206,
+          "baseline_max_absolute_phase_error_degrees": 12.81764080454222,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.7005630197618149,
+          "resampler_only_max_absolute_db_error": 0.00010844716299966674,
+          "resampler_latency_removed_max_phase_error_degrees": 1.5987637491067486e-12
+        },
+        {
+          "band_hz": [
+            20,
+            16000
+          ],
+          "dense_points": 3375,
+          "baseline_max_absolute_db_error": 6.692222636279554,
+          "oversampled_max_absolute_db_error": 0.27597647709247647,
+          "baseline_max_absolute_phase_error_degrees": 23.19895246880772,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.179156526057942,
+          "resampler_only_max_absolute_db_error": 0.00012809845536900047,
+          "resampler_latency_removed_max_phase_error_degrees": 1.8920030490591404e-12
+        },
+        {
+          "band_hz": [
+            20,
+            20000
+          ],
+          "dense_points": 3504,
+          "baseline_max_absolute_db_error": 15.972941341990081,
+          "oversampled_max_absolute_db_error": 0.4870193417234715,
+          "baseline_max_absolute_phase_error_degrees": 36.75394680135047,
+          "oversampled_latency_removed_max_phase_error_degrees": 1.7025452247685855,
+          "resampler_only_max_absolute_db_error": 0.00019757056105035168,
+          "resampler_latency_removed_max_phase_error_degrees": 2.9652369372794023e-12
+        }
+      ],
+      "independent_checks": {
+        "native_vs_full_descriptor_upfirdn_max_abs": 6.374777279400529e-13,
+        "native_vs_full_descriptor_upfirdn_relative_l2": 3.896587939475056e-11,
+        "native_vs_separate_mna_sos_upfirdn_max_abs": 7.202566315719569e-13,
+        "resampler_vs_independent_upfirdn_max_abs": 3.3306690738754696e-16,
+        "native_vs_exact_alias_sum_max_complex": 4.5332921893677106e-10,
+        "impulse_final_second_peak": 2.5188063238182702e-86
+      },
+      "outer_halfband_stopband_db_max_0_6_to_1_host_rate": -104.58175330745206,
+      "inner_halfband_stopband_db_max_1_2_to_2_host_rate": -98.7498626298862,
+      "interpolation_image_levels": [
+        {
+          "image_index": 1,
+          "maximum_relative_db": -118.3249959426808
+        },
+        {
+          "image_index": 2,
+          "maximum_relative_db": -107.95844742828393
+        },
+        {
+          "image_index": 3,
+          "maximum_relative_db": -102.6022056287176
+        }
+      ],
+      "alias_sum_relative_to_fundamental_db_max": -211.11782351013747,
+      "native_runtime": {
+        "sample_rate": 48000,
+        "frames": 96000,
+        "block_max_error": 0,
+        "reset_max_error": 0,
+        "zero_input_peak": 0,
+        "reset_after_step_zero_peak": 0,
+        "step_peak": 0.9816913872503932,
+        "step_final_second_peak": 1.0042767107744257e-09,
+        "multitone_peak": 0.25975125540002236,
+        "process_heap_allocations": 0,
+        "passed": true
+      },
+      "cpu_benchmark": {
+        "sample_rate": 48000,
+        "frames_per_repetition": 1048576,
+        "median_repetitions": 3,
+        "baseline_seconds": 0.005306125,
+        "candidate_seconds": 0.143679833,
+        "candidate_realtime_single_thread_percent": 0.6577140792846681,
+        "candidate_to_baseline_cpu_ratio": 27.078109354755117
+      }
+    },
+    {
+      "sample_rate": 96000,
+      "integration_rate": 384000,
+      "latency_frames": 80,
+      "latency_ms": 0.8333333333333334,
+      "frequency_rows": [
+        {
+          "frequency_hz": 20,
+          "continuous_db": -2.602485092455969,
+          "baseline_db_error": 6.077378946866036e-07,
+          "oversampled_db_error": 7.224455329846082e-08,
+          "baseline_phase_error_degrees": -6.502749311967253e-06,
+          "oversampled_raw_phase_error_degrees": -6.000000400275354,
+          "oversampled_latency_removed_phase_error_degrees": -4.0027534921483603e-07,
+          "resampler_db": 2.493273868563387e-08,
+          "resampler_latency_removed_phase_degrees": 7.951386680834437e-16
+        },
+        {
+          "frequency_hz": 50,
+          "continuous_db": -0.49885625891815993,
+          "baseline_db_error": 8.521469424852981e-07,
+          "oversampled_db_error": 2.104907488055495e-07,
+          "baseline_phase_error_degrees": -2.210473403371331e-05,
+          "oversampled_raw_phase_error_degrees": -15.0000013798637,
+          "oversampled_latency_removed_phase_error_degrees": -1.3798637024746923e-06,
+          "resampler_db": 1.5571428638757302e-07,
+          "resampler_latency_removed_phase_degrees": 0.0
+        },
+        {
+          "frequency_hz": 100,
+          "continuous_db": -0.13005268446307147,
+          "baseline_db_error": 9.001779479423611e-07,
+          "oversampled_db_error": 6.778498271186724e-07,
+          "baseline_phase_error_degrees": -4.9749772225187544e-05,
+          "oversampled_raw_phase_error_degrees": -30.000003108235386,
+          "oversampled_latency_removed_phase_error_degrees": -3.1082353802006055e-06,
+          "resampler_db": 6.212117914668424e-07,
+          "resampler_latency_removed_phase_degrees": 1.9083326723948195e-14
+        },
+        {
+          "frequency_hz": 1000,
+          "continuous_db": -0.10340396276303841,
+          "baseline_db_error": -7.105848976048828e-05,
+          "oversampled_db_error": 3.89515194166406e-05,
+          "baseline_phase_error_degrees": -0.004622069178386394,
+          "oversampled_raw_phase_error_degrees": 59.99971122585581,
+          "oversampled_latency_removed_phase_error_degrees": -0.00028877414422718694,
+          "resampler_db": 4.339014436848838e-05,
+          "resampler_latency_removed_phase_degrees": 1.5902693965609336e-14
+        },
+        {
+          "frequency_hz": 2000,
+          "continuous_db": -0.3977244468161844,
+          "baseline_db_error": -0.0011002850571299036,
+          "oversampled_db_error": -1.660411237790896e-05,
+          "baseline_phase_error_degrees": -0.032905840163173335,
+          "oversampled_raw_phase_error_degrees": 119.9979464705315,
+          "oversampled_latency_removed_phase_error_degrees": -0.0020535294685994905,
+          "resampler_db": 5.201264665815074e-05,
+          "resampler_latency_removed_phase_degrees": -9.541606907386142e-15
+        },
+        {
+          "frequency_hz": 3000,
+          "continuous_db": -0.8612352780683419,
+          "baseline_db_error": -0.005200078761378916,
+          "oversampled_db_error": -0.00029517349492103116,
+          "baseline_phase_error_degrees": -0.10293562801368976,
+          "oversampled_raw_phase_error_degrees": 179.9935874526993,
+          "oversampled_latency_removed_phase_error_degrees": -0.006412547300721275,
+          "resampler_db": 2.8288814084243408e-05,
+          "resampler_latency_removed_phase_degrees": -1.9823735495750675e-15
+        },
+        {
+          "frequency_hz": 3600,
+          "continuous_db": -1.206235285151575,
+          "baseline_db_error": -0.010249497330128301,
+          "oversampled_db_error": -0.000579445735227302,
+          "baseline_phase_error_degrees": -0.16948775845339492,
+          "oversampled_raw_phase_error_degrees": -0.010544911195730106,
+          "oversampled_latency_removed_phase_error_degrees": -0.010544911195769394,
+          "resampler_db": 5.689034990170398e-05,
+          "resampler_latency_removed_phase_degrees": 5.1585939225280747e-17
+        },
+        {
+          "frequency_hz": 4000,
+          "continuous_db": -1.459313507772151,
+          "baseline_db_error": -0.015057416070224398,
+          "oversampled_db_error": -0.0008508193713989997,
+          "baseline_phase_error_degrees": -0.22474300244767131,
+          "oversampled_raw_phase_error_degrees": -120.01396954480839,
+          "oversampled_latency_removed_phase_error_degrees": -0.013969544808579011,
+          "resampler_db": 8.269726374712273e-05,
+          "resampler_latency_removed_phase_degrees": 3.1805243999462275e-15
+        },
+        {
+          "frequency_hz": 5000,
+          "continuous_db": -2.156783939534834,
+          "baseline_db_error": -0.03327816657775125,
+          "oversampled_db_error": -0.001970180581610298,
+          "baseline_phase_error_degrees": -0.40124867779696205,
+          "oversampled_raw_phase_error_degrees": -60.02487635869975,
+          "oversampled_latency_removed_phase_error_degrees": -0.02487635869967469,
+          "resampler_db": 8.484001979862699e-05,
+          "resampler_latency_removed_phase_degrees": 3.1805236153303327e-15
+        },
+        {
+          "frequency_hz": 8000,
+          "continuous_db": -4.563083665023167,
+          "baseline_db_error": -0.1578100048227763,
+          "oversampled_db_error": -0.009537312317017094,
+          "baseline_phase_error_degrees": -1.2323316120209966,
+          "oversampled_raw_phase_error_degrees": 119.92430058510875,
+          "oversampled_latency_removed_phase_error_degrees": -0.07569941489161211,
+          "resampler_db": 6.319415114076969e-05,
+          "resampler_latency_removed_phase_degrees": -3.498584695579997e-14
+        },
+        {
+          "frequency_hz": 10000,
+          "continuous_db": -6.246257135775698,
+          "baseline_db_error": -0.3122035507393743,
+          "oversampled_db_error": -0.01870954953465529,
+          "baseline_phase_error_degrees": -1.9924659666839686,
+          "oversampled_raw_phase_error_degrees": -120.1215326556317,
+          "oversampled_latency_removed_phase_error_degrees": -0.12153265563152613,
+          "resampler_db": 4.962312544486464e-05,
+          "resampler_latency_removed_phase_degrees": -1.9083219064637575e-14
+        },
+        {
+          "frequency_hz": 12000,
+          "continuous_db": -7.9020049198093965,
+          "baseline_db_error": -0.5319940816278461,
+          "oversampled_db_error": -0.031508914933925436,
+          "baseline_phase_error_degrees": -2.876893781516454,
+          "oversampled_raw_phase_error_degrees": -0.1741556080620435,
+          "oversampled_latency_removed_phase_error_degrees": -0.17415560806218375,
+          "resampler_db": 1.6045762021257754e-06,
+          "resampler_latency_removed_phase_degrees": -3.512340669927064e-15
+        },
+        {
+          "frequency_hz": 16000,
+          "continuous_db": -11.017515797888354,
+          "baseline_db_error": -1.1896346001104268,
+          "oversampled_db_error": -0.0679563353676786,
+          "baseline_phase_error_degrees": -4.914420452983283,
+          "oversampled_raw_phase_error_degrees": -120.2926852347106,
+          "oversampled_latency_removed_phase_error_degrees": -0.29268523471131797,
+          "resampler_db": 0.00010264733526648036,
+          "resampler_latency_removed_phase_degrees": 3.180517094808927e-15
+        },
+        {
+          "frequency_hz": 18000,
+          "continuous_db": -12.458999905921655,
+          "baseline_db_error": -1.638813303714647,
+          "oversampled_db_error": -0.09179922984620129,
+          "baseline_phase_error_degrees": -6.032183175281178,
+          "oversampled_raw_phase_error_degrees": -0.3561305889609878,
+          "oversampled_latency_removed_phase_error_degrees": -0.3561305889607908,
+          "resampler_db": 4.494936028199951e-05,
+          "resampler_latency_removed_phase_degrees": 8.060122691716583e-13
+        },
+        {
+          "frequency_hz": 20000,
+          "continuous_db": -13.822413942976917,
+          "baseline_db_error": -2.177546385749593,
+          "oversampled_db_error": -0.11922121725474967,
+          "baseline_phase_error_degrees": -7.2024903469502055,
+          "oversampled_raw_phase_error_degrees": 119.57868612293835,
+          "oversampled_latency_removed_phase_error_degrees": -0.4213138770613398,
+          "resampler_db": 3.64359443576274e-05,
+          "resampler_latency_removed_phase_degrees": 1.2722165358254355e-14
+        }
+      ],
+      "dense_comparison": [
+        {
+          "band_hz": [
+            20,
+            4000
+          ],
+          "dense_points": 2226,
+          "baseline_max_absolute_db_error": 0.01505408775944685,
+          "oversampled_max_absolute_db_error": 0.0008506274478192836,
+          "baseline_max_absolute_phase_error_degrees": 0.22470659240647461,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.013967289906135386,
+          "resampler_only_max_absolute_db_error": 8.268367392388433e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 2.871813014650357e-13
+        },
+        {
+          "band_hz": [
+            20,
+            10000
+          ],
+          "dense_points": 2756,
+          "baseline_max_absolute_db_error": 0.31119352014180124,
+          "oversampled_max_absolute_db_error": 0.018650563028413905,
+          "baseline_max_absolute_phase_error_degrees": 1.9879728011709725,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.12126342165338738,
+          "resampler_only_max_absolute_db_error": 9.791903754452273e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 6.584748090713131e-13
+        },
+        {
+          "band_hz": [
+            20,
+            12000
+          ],
+          "dense_points": 2862,
+          "baseline_max_absolute_db_error": 0.5314818880941283,
+          "oversampled_max_absolute_db_error": 0.0314796598423407,
+          "baseline_max_absolute_phase_error_degrees": 2.8750072257103985,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.1740441333876898,
+          "resampler_only_max_absolute_db_error": 9.791903754452273e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 7.817478797695222e-13
+        },
+        {
+          "band_hz": [
+            20,
+            16000
+          ],
+          "dense_points": 3028,
+          "baseline_max_absolute_db_error": 1.1851931675683596,
+          "oversampled_max_absolute_db_error": 0.06771755215661629,
+          "baseline_max_absolute_phase_error_degrees": 4.9025257454307365,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.2920040161439196,
+          "resampler_only_max_absolute_db_error": 0.00010175237571056396,
+          "resampler_latency_removed_max_phase_error_degrees": 1.2428346278114475e-12
+        },
+        {
+          "band_hz": [
+            20,
+            20000
+          ],
+          "dense_points": 3158,
+          "baseline_max_absolute_db_error": 2.1775105935666876,
+          "oversampled_max_absolute_db_error": 0.11921942368006022,
+          "baseline_max_absolute_phase_error_degrees": 7.202417411165139,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.42130985590573927,
+          "resampler_only_max_absolute_db_error": 0.00010845430067344551,
+          "resampler_latency_removed_max_phase_error_degrees": 1.5543660981159576e-12
+        }
+      ],
+      "independent_checks": {
+        "native_vs_full_descriptor_upfirdn_max_abs": 9.4411723447832e-13,
+        "native_vs_full_descriptor_upfirdn_relative_l2": 1.2511804750552165e-10,
+        "native_vs_separate_mna_sos_upfirdn_max_abs": 1.0959488525030814e-12,
+        "resampler_vs_independent_upfirdn_max_abs": 3.3306690738754696e-16,
+        "native_vs_exact_alias_sum_max_complex": 1.632498618197562e-09,
+        "impulse_final_second_peak": 3.5381526096212665e-36
+      },
+      "outer_halfband_stopband_db_max_0_6_to_1_host_rate": -104.58175330745206,
+      "inner_halfband_stopband_db_max_1_2_to_2_host_rate": -98.7498626298862,
+      "interpolation_image_levels": [
+        {
+          "image_index": 1,
+          "maximum_relative_db": -118.32498474473834
+        },
+        {
+          "image_index": 2,
+          "maximum_relative_db": -110.30727816996283
+        },
+        {
+          "image_index": 3,
+          "maximum_relative_db": -109.5046513898366
+        }
+      ],
+      "alias_sum_relative_to_fundamental_db_max": -242.99599779076055,
+      "native_runtime": {
+        "sample_rate": 96000,
+        "frames": 192000,
+        "block_max_error": 0,
+        "reset_max_error": 0,
+        "zero_input_peak": 0,
+        "reset_after_step_zero_peak": 0,
+        "step_peak": 0.981316382193684,
+        "step_final_second_peak": 1.025040597162407e-08,
+        "multitone_peak": 0.2605151731835222,
+        "process_heap_allocations": 0,
+        "passed": true
+      },
+      "cpu_benchmark": {
+        "sample_rate": 96000,
+        "frames_per_repetition": 1048576,
+        "median_repetitions": 3,
+        "baseline_seconds": 0.005325375,
+        "candidate_seconds": 0.143373792,
+        "candidate_realtime_single_thread_percent": 1.31262626953125,
+        "candidate_to_baseline_cpu_ratio": 26.922759805647487
+      }
+    },
+    {
+      "sample_rate": 192000,
+      "integration_rate": 768000,
+      "latency_frames": 80,
+      "latency_ms": 0.4166666666666667,
+      "frequency_rows": [
+        {
+          "frequency_hz": 20,
+          "continuous_db": -2.602485092455969,
+          "baseline_db_error": 1.536740568742674e-07,
+          "oversampled_db_error": 1.110541496439057e-08,
+          "baseline_phase_error_degrees": -1.6431102497386714e-06,
+          "oversampled_raw_phase_error_degrees": -3.0000002374851684,
+          "oversampled_latency_removed_phase_error_degrees": -2.3748516647066413e-07,
+          "resampler_db": 6.23383897430366e-09,
+          "resampler_latency_removed_phase_degrees": 7.951386697952106e-16
+        },
+        {
+          "frequency_hz": 50,
+          "continuous_db": -0.49885625891815993,
+          "baseline_db_error": 2.127740736819463e-07,
+          "oversampled_db_error": 4.8124914448761405e-08,
+          "baseline_phase_error_degrees": -5.527779352509353e-06,
+          "oversampled_raw_phase_error_degrees": -7.500000364882517,
+          "oversampled_latency_removed_phase_error_degrees": -3.648825144899316e-07,
+          "resampler_db": 3.895431458020361e-08,
+          "resampler_latency_removed_phase_degrees": 0.0
+        },
+        {
+          "frequency_hz": 100,
+          "continuous_db": -0.13005268446307147,
+          "baseline_db_error": 2.2494571243937952e-07,
+          "oversampled_db_error": 1.6837239949260041e-07,
+          "baseline_phase_error_degrees": -1.2437056186777634e-05,
+          "oversampled_raw_phase_error_degrees": -15.000000779592547,
+          "oversampled_latency_removed_phase_error_degrees": -7.795925468137653e-07,
+          "resampler_db": 1.5571428638757302e-07,
+          "resampler_latency_removed_phase_degrees": 0.0
+        },
+        {
+          "frequency_hz": 1000,
+          "continuous_db": -0.10340396276303841,
+          "baseline_db_error": -1.7756484224701478e-05,
+          "oversampled_db_error": 1.3152048784091928e-05,
+          "baseline_phase_error_degrees": -0.0011551808824989862,
+          "oversampled_raw_phase_error_degrees": -150.00007219213768,
+          "oversampled_latency_removed_phase_error_degrees": -7.219213770209059e-05,
+          "resampler_db": 1.426168041721181e-05,
+          "resampler_latency_removed_phase_degrees": 1.590274729599274e-14
+        },
+        {
+          "frequency_hz": 2000,
+          "continuous_db": -0.3977244468161844,
+          "baseline_db_error": -0.00027458762359485204,
+          "oversampled_db_error": 2.6237823262851828e-05,
+          "baseline_phase_error_degrees": -0.008216583379701789,
+          "oversampled_raw_phase_error_degrees": 59.99948665614478,
+          "oversampled_latency_removed_phase_error_degrees": -0.000513343855266981,
+          "resampler_db": 4.339014436848838e-05,
+          "resampler_latency_removed_phase_degrees": 1.5902693965609336e-14
+        },
+        {
+          "frequency_hz": 3000,
+          "continuous_db": -0.8612352780683419,
+          "baseline_db_error": -0.0012950790052036793,
+          "oversampled_db_error": -2.0537076320969676e-05,
+          "baseline_phase_error_degrees": -0.025666889109552986,
+          "oversampled_raw_phase_error_degrees": -90.00160287609124,
+          "oversampled_latency_removed_phase_error_degrees": -0.0016028760912359813,
+          "resampler_db": 6.0309339267998625e-05,
+          "resampler_latency_removed_phase_degrees": -1.0019455111757771e-15
+        },
+        {
+          "frequency_hz": 3600,
+          "continuous_db": -1.206235285151575,
+          "baseline_db_error": -0.002548733762286429,
+          "oversampled_db_error": -0.00010101926745324547,
+          "baseline_phase_error_degrees": -0.042217965276125195,
+          "oversampled_raw_phase_error_degrees": 179.99736437028156,
+          "oversampled_latency_removed_phase_error_degrees": -0.002635629718472657,
+          "resampler_db": 5.801189283939255e-05,
+          "resampler_latency_removed_phase_degrees": 1.5543894037343094e-16
+        },
+        {
+          "frequency_hz": 4000,
+          "continuous_db": -1.459313507772151,
+          "baseline_db_error": -0.00374008843274165,
+          "oversampled_db_error": -0.0001812725878986752,
+          "baseline_phase_error_degrees": -0.0559394277280031,
+          "oversampled_raw_phase_error_degrees": 119.99650856950694,
+          "oversampled_latency_removed_phase_error_degrees": -0.0034914304931567175,
+          "resampler_db": 5.201264665815074e-05,
+          "resampler_latency_removed_phase_degrees": -9.541606907386142e-15
+        },
+        {
+          "frequency_hz": 5000,
+          "continuous_db": -2.156783939534834,
+          "baseline_db_error": -0.008239801597278457,
+          "oversampled_db_error": -0.0004808879221807089,
+          "baseline_phase_error_degrees": -0.09966576798964326,
+          "oversampled_raw_phase_error_degrees": -30.00621658941046,
+          "oversampled_latency_removed_phase_error_degrees": -0.0062165894104256785,
+          "resampler_db": 3.255993309014997e-05,
+          "resampler_latency_removed_phase_degrees": 1.2722171035423804e-14
+        },
+        {
+          "frequency_hz": 8000,
+          "continuous_db": -4.563083665023167,
+          "baseline_db_error": -0.038608010332461376,
+          "oversampled_db_error": -0.002314230489850451,
+          "baseline_phase_error_degrees": -0.3038407149504425,
+          "oversampled_raw_phase_error_degrees": -120.01890862323768,
+          "oversampled_latency_removed_phase_error_degrees": -0.018908623237848216,
+          "resampler_db": 8.269726374712273e-05,
+          "resampler_latency_removed_phase_degrees": 3.1805243999462275e-15
+        },
+        {
+          "frequency_hz": 10000,
+          "continuous_db": -6.246257135775698,
+          "baseline_db_error": -0.07562213816070774,
+          "oversampled_db_error": -0.0045958874540443975,
+          "baseline_phase_error_degrees": -0.48848348923878526,
+          "oversampled_raw_phase_error_degrees": -60.03034661189629,
+          "oversampled_latency_removed_phase_error_degrees": -0.030346611896218102,
+          "resampler_db": 8.484001979862699e-05,
+          "resampler_latency_removed_phase_degrees": 3.1805236153303327e-15
+        },
+        {
+          "frequency_hz": 12000,
+          "continuous_db": -7.9020049198093965,
+          "baseline_db_error": -0.1273780549849033,
+          "oversampled_db_error": -0.0078075122341228565,
+          "baseline_phase_error_degrees": -0.7010343852865694,
+          "oversampled_raw_phase_error_degrees": -0.043470479058814245,
+          "oversampled_latency_removed_phase_error_degrees": -0.043470479058883696,
+          "resampler_db": 4.949957866332662e-05,
+          "resampler_latency_removed_phase_degrees": -7.731572676628559e-16
+        },
+        {
+          "frequency_hz": 16000,
+          "continuous_db": -11.017515797888354,
+          "baseline_db_error": -0.2769354494876536,
+          "oversampled_db_error": -0.01687961807935815,
+          "baseline_phase_error_degrees": -1.1819054341818214,
+          "oversampled_raw_phase_error_degrees": 119.92700122036094,
+          "oversampled_latency_removed_phase_error_degrees": -0.0729987796394414,
+          "resampler_db": 6.319415114076969e-05,
+          "resampler_latency_removed_phase_degrees": -3.498584695579997e-14
+        },
+        {
+          "frequency_hz": 18000,
+          "continuous_db": -12.458999905921655,
+          "baseline_db_error": -0.37514248974693326,
+          "oversampled_db_error": -0.022827811704284752,
+          "baseline_phase_error_degrees": -1.4405339599386424,
+          "oversampled_raw_phase_error_degrees": 179.911214307306,
+          "oversampled_latency_removed_phase_error_degrees": -0.08878569269388563,
+          "resampler_db": 1.4945183870378052e-05,
+          "resampler_latency_removed_phase_degrees": 4.006046455699414e-13
+        },
+        {
+          "frequency_hz": 20000,
+          "continuous_db": -13.822413942976917,
+          "baseline_db_error": -0.48914461709306134,
+          "oversampled_db_error": -0.02958127145494345,
+          "baseline_phase_error_degrees": -1.7072089435827855,
+          "oversampled_raw_phase_error_degrees": -120.10499059930434,
+          "oversampled_latency_removed_phase_error_degrees": -0.10499059930415539,
+          "resampler_db": 4.962312544486464e-05,
+          "resampler_latency_removed_phase_degrees": -1.9083219064637575e-14
+        }
+      ],
+      "dense_comparison": [
+        {
+          "band_hz": [
+            20,
+            4000
+          ],
+          "dense_points": 1852,
+          "baseline_max_absolute_db_error": 0.003739264389920651,
+          "oversampled_max_absolute_db_error": 0.00018121681095990304,
+          "baseline_max_absolute_phase_error_degrees": 0.0559303916370539,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.0034908670245048456,
+          "resampler_only_max_absolute_db_error": 6.062508363772986e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 1.3822283458791362e-13
+        },
+        {
+          "band_hz": [
+            20,
+            10000
+          ],
+          "dense_points": 2382,
+          "baseline_max_absolute_db_error": 0.07538998487122742,
+          "oversampled_max_absolute_db_error": 0.004581349987157422,
+          "baseline_max_absolute_phase_error_degrees": 0.48743411570330947,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.030281706659626956,
+          "resampler_only_max_absolute_db_error": 9.791921180810332e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 3.9146430643765937e-13
+        },
+        {
+          "band_hz": [
+            20,
+            12000
+          ],
+          "dense_points": 2488,
+          "baseline_max_absolute_db_error": 0.1272477323852809,
+          "oversampled_max_absolute_db_error": 0.007799549505547212,
+          "baseline_max_absolute_phase_error_degrees": 0.7005425276545736,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.04344016101782427,
+          "resampler_only_max_absolute_db_error": 9.791921180810332e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 4.503281632713535e-13
+        },
+        {
+          "band_hz": [
+            20,
+            16000
+          ],
+          "dense_points": 2654,
+          "baseline_max_absolute_db_error": 0.27596576639641285,
+          "oversampled_max_absolute_db_error": 0.016820374372291422,
+          "baseline_max_absolute_phase_error_degrees": 1.1791797509953883,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.0728320433064942,
+          "resampler_only_max_absolute_db_error": 9.791921180810332e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 6.310388585682729e-13
+        },
+        {
+          "band_hz": [
+            20,
+            20000
+          ],
+          "dense_points": 2783,
+          "baseline_max_absolute_db_error": 0.48706284340438105,
+          "oversampled_max_absolute_db_error": 0.029458429538815504,
+          "baseline_max_absolute_phase_error_degrees": 1.7025946534865157,
+          "oversampled_latency_removed_max_phase_error_degrees": 0.10471086483652968,
+          "resampler_only_max_absolute_db_error": 9.791921180810332e-05,
+          "resampler_latency_removed_max_phase_error_degrees": 6.310388585682729e-13
+        }
+      ],
+      "independent_checks": {
+        "native_vs_full_descriptor_upfirdn_max_abs": 6.561901087602517e-13,
+        "native_vs_full_descriptor_upfirdn_relative_l2": 1.1297733079865461e-10,
+        "native_vs_separate_mna_sos_upfirdn_max_abs": 1.3405876343915157e-12,
+        "resampler_vs_independent_upfirdn_max_abs": 3.3306690738754696e-16,
+        "native_vs_exact_alias_sum_max_complex": 4.329420298678256e-09,
+        "impulse_final_second_peak": 2.9651887880203865e-11
+      },
+      "outer_halfband_stopband_db_max_0_6_to_1_host_rate": -104.58175330745206,
+      "inner_halfband_stopband_db_max_1_2_to_2_host_rate": -98.7498626298862,
+      "interpolation_image_levels": [
+        {
+          "image_index": 1,
+          "maximum_relative_db": -118.32498502144249
+        },
+        {
+          "image_index": 2,
+          "maximum_relative_db": -110.7422821811396
+        },
+        {
+          "image_index": 3,
+          "maximum_relative_db": -111.37635772275438
+        }
+      ],
+      "alias_sum_relative_to_fundamental_db_max": -262.14299637212525,
+      "native_runtime": {
+        "sample_rate": 192000,
+        "frames": 384000,
+        "block_max_error": 0,
+        "reset_max_error": 0,
+        "zero_input_peak": 0,
+        "reset_after_step_zero_peak": 0,
+        "step_peak": 0.981398304623161,
+        "step_final_second_peak": 9.793327487424766e-10,
+        "multitone_peak": 0.26258840343106626,
+        "process_heap_allocations": 0,
+        "passed": true
+      },
+      "cpu_benchmark": {
+        "sample_rate": 192000,
+        "frames_per_repetition": 1048576,
+        "median_repetitions": 3,
+        "baseline_seconds": 0.005403584,
+        "candidate_seconds": 0.143064709,
+        "candidate_realtime_single_thread_percent": 2.6195930603027344,
+        "candidate_to_baseline_cpu_ratio": 26.475892481730643
+      }
+    }
+  ],
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.11.0",
+  "numpy": "1.26.4",
+  "scipy": "1.14.1",
+  "probe_sha256": "279ffd88a0fd57d2121e9893effe86a011c8fdf0e079a76bb3358387a33c7db5",
+  "source_sha256": {
+    "Source/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Tools/generate_analog_oversampling.py": "d005606191f31a715a4b6d9a37186b9160d8b949c381c2773120cba8120caa70",
+    "Tools/generate_analog.py": "56365f2d9d4d3508e50264daef3da5539a594b6a9319d62a6a1afe51354e23c0",
+    "Tools/OversampledAnalogProbe.cpp": "64355f99dc905bb775a849dbe6ef834f62cb375b08fd230253efb49045c559fa",
+    "Tools/check_analog_oversampled.py": "9e3c0bc0685cb4d2297d9ef002e5d8a2e7ca0f5f4182abbc23b5c2984abe3afb",
+    "Reference/Python/circuit/model.py": "50f19cb6a00fe79bea77c65befb1ef972f1349d7f1ce4d1a392529e924a4fae0"
+  },
+  "limitations": [
+    "80-frame FIR delay must also be applied to dry/bypass paths and added to device latency; this isolated tool does not verify engine integration.",
+    "Noise-free linear numerical component, not a recovered hardware DAC schedule, bit depth or complete PSS780 board.",
+    "All 8kHz frequency claims stop at3.6kHz; no above-Nyquist10/12kHz claim is made.",
+    "Existing retargeted SOS has small numerical unit-step DC residue; measured and accepted below1e-7, not hidden by an extra high-pass.",
+    "Alias figures below numerical verification floor are analytical coefficient predictions, not measured hardware performance.",
+    "CPU figures concern this mono output component in the supplied standalone binary; no whole-instrument/Reason performance claim."
+  ]
+}

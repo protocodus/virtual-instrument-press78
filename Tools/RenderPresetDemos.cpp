@@ -38,7 +38,7 @@ public:
         else if (kind == 0xb0 && data1 == 64) engine->sustainPedal (data2 >= 64);
         else if (kind == 0xe0 || (kind == 0xb0 && data1 == 1))
         {
-            if (kind == 0xe0) bend = std::clamp ((((data2 << 7) | data1) - 8192) / 8192.0, -1.0, 1.0);
+            if (kind == 0xe0) bend = (data2 << 7) | data1;
             else wheel = data2 / 127.0;
             engine->setControls (press78::controlsFromValues (values, bend, wheel));
         }
@@ -54,7 +54,8 @@ public:
 private:
     std::unique_ptr<press78::Press78Engine> engine;
     press78::ControlValues values;
-    double bend = 0.0, wheel = 0.0;
+    int bend = press78::kBendCentre;
+    double wheel = 0.0;
 };
 } // namespace
 

@@ -6,16 +6,18 @@ import math
 import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0b9'
+VERSION='0.1.0b12'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
-# Noise amplitude and slow clock excursion are conservative scenarios, not
-# recovered PSS-780 component measurements. Drive remains a creative control.
-REAL_DEFAULTS={'outputCircuit':1,'noiseModel':1,'noiseRms':.002,
+# Slow clock excursion is a conservative scenario, not a recovered PSS-780
+# component measurement. Former noise properties are inert compatibility slots.
+LEGACY_NOISE={'noiseRms','noiseModel'}
+REAL_DEFAULTS={'outputCircuit':1,'noiseModel':0,'noiseRms':0,
                'chorusMode':1,'chorusMix':1,'chorusRateHz':0.9546467517767424,
                'chorusDepthMs':math.hypot(0.0495126833338911,0.4943632948117077),
                'clockOffsetPpm':0,'clockDriftPpm':20,'clockDriftRateHz':.1,
-               'drive':0,'dcBlock':1,'outputLimit':1}
+               'lfoRateHz':5.24,'triangleLfo':1,'globalLfo':1,
+               'drive':0,'dcBlock':1,'outputLimit':1,'pitchModel':1}
 FACTORY_CHARACTER=REAL_DEFAULTS
 
 
@@ -74,8 +76,15 @@ def specs():
         add(name,label,lo,hi,default,integer)
         if name=='chorusMode': rows[-1]['options']=['Studio','Recorded']
         if name=='noiseModel': rows[-1]['options']=['White','Circuit']
+    # Missing properties in pre-b12 songs retain equal-tempered playback.
+    # New Init/factory files explicitly select the Original pitch model.
+    add('pitchModel','Pitch model',0,1,0,True)
+    rows[-1]['options']=['Equal','Original']
+    rows[-1]['startup_default']=1
     for row in rows:
-        if row['id'] in REAL_DEFAULTS: row['default']=REAL_DEFAULTS[row['id']]
+        if row['id'] in REAL_DEFAULTS and row['id']!='pitchModel': row['default']=REAL_DEFAULTS[row['id']]
+        if row['id'] in LEGACY_NOISE:
+            row.update(hidden=True,deprecated='Inert compatibility property; additive noise has been removed.')
     return rows
 
 
@@ -136,6 +145,7 @@ def main():
           'jbox.add_cv_routing_target{signal_type="pitch",path="/cv_inputs/note_cv",auto_route_enable=true}',
           'remote_implementation_chart = {']
     for row in rows:
+        if row.get('hidden'): continue
         lua.append(f' ["/custom_properties/{row["id"]}"] = {{internal_name="{row["label"]}",short_ui_name=jbox.ui_text("short {row["id"]}"),shortest_ui_name=jbox.ui_text("tiny {row["id"]}")}},')
     # Fixed registry: adding or reordering controls must never renumber existing
     # Reason automation lanes. SDK5 reserves 256..10039 for automation-only IDs.
@@ -153,6 +163,7 @@ def main():
     performance={'masterTuneCents','velocitySensitivity','velocityToModulation','polyphony','bendRange','modWheelDepth'}
     groups={'Modulator':[], 'Carrier':[], 'FM and LFO':[], 'Performance':[], 'Output and effects':[], 'Clock':[]}
     for row in rows:
+        if row.get('hidden'): continue
         name=row['id']
         group='Modulator' if name.startswith('mod_') else 'Carrier' if name.startswith('car_') else 'Clock' if name.startswith('clock') else 'Output and effects' if name in output else 'Performance' if name in performance else 'FM and LFO'
         groups[group].append(name)
@@ -171,7 +182,7 @@ def main():
     locale=device/'Resources/English';locale.mkdir(parents=True,exist_ok=True)
     (locale/'texts.lua').write_text('format_version = "1.0"\ntexts = {\n'+''.join(f' [{json.dumps(k)}] = {json.dumps(v)},\n' for k,v in texts.items())+'}\n')
     public=device/'Resources/Public';public.mkdir(parents=True,exist_ok=True)
-    write_patch(public/'Init.repatch',rows,{})
+    write_patch(public/'Init.repatch',rows,FACTORY_CHARACTER)
     bank=json.loads((ROOT/'Assets/FactoryBank/press78-factory.json').read_text())
     for voice in bank['voices']:
         write_patch(public/(voice['name'].replace('/','-')+'.repatch'),rows,{**decode(voice['raw_data']),**FACTORY_CHARACTER})
@@ -186,13 +197,15 @@ def main():
     header+=[' k_pitchBend, k_modWheel, k_sustainPedal, kParameterCount','};','}']
     (device/'Parameters.h').write_text('\n'.join(header)+'\n')
     (device/'ApplyParameters.inc').write_text('\n'.join(
-        [f'patch.{"modulator" if row["id"].startswith("mod_") else "carrier"}.{row["id"].split("_",1)[1]} = static_cast<{"bool" if row["id"].endswith(("amEnable","dt2")) else "int"}>(physical(k_{row["id"]}));'
+        [f'controls.{row["id"]} = 0; // Inert legacy noise property.'
+         if row['id'] in LEGACY_NOISE else
+         f'patch.{"modulator" if row["id"].startswith("mod_") else "carrier"}.{row["id"].split("_",1)[1]} = static_cast<{"bool" if row["id"].endswith(("amEnable","dt2")) else "int"}>(physical(k_{row["id"]}));'
          if row['id'].startswith(('mod_','car_')) else
          f'patch.{row["id"]} = static_cast<{"bool" if row["id"] in ("vibrato","sustain") else "int"}>(physical(k_{row["id"]}));'
          if row['target']=='patch' else
-         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel") else "double"}>(physical(k_{row["id"]}));'
+         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel") else "double"}>(physical(k_{row["id"]}));'
          for row in rows if row['id'] not in ('bendRange','modWheelDepth')])+'\n')
-    print(f'Generated {len(rows)} musical properties, 3 performance controls, Init +100 PSS patches at {device}')
+    print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS patches at {device}')
 
 
 if __name__=='__main__':main()

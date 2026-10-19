@@ -5,7 +5,7 @@ namespace
 constexpr int kMargin = 12, kHeader = 44, kSectionTitle = 18, kCell = 64, kRow = 96;
 
 // Sections and their parameter ids, in panel order; together they cover every
-// control in Assets/controls.json exactly once (checked by the processor tests).
+// control in Assets/controls.json once, except the hidden, inert noise ids.
 const std::vector<std::pair<juce::String, juce::StringArray>>& layout()
 {
     static const std::vector<std::pair<juce::String, juce::StringArray>> sections {
@@ -15,11 +15,11 @@ const std::vector<std::pair<juce::String, juce::StringArray>>& layout()
                        "car_rr", "car_srr", "car_lksHi", "car_lksLo", "car_rks", "car_amEnable", "car_dt2" } },
         { "Voice", { "feedback", "pms", "ams", "vibratoDelay", "vibrato", "sustain", "velocitySensitivity",
                      "velocityToModulation", "modulationAmount", "polyphony", "masterTuneCents", "bendRange",
-                     "modWheelDepth" } },
+                     "modWheelDepth", "pitchModel" } },
         { "LFO and clock", { "lfoRateHz", "vibratoDepth", "tremoloDepth", "lfoDelayScale", "triangleLfo",
                              "globalLfo", "clockOffsetPpm", "clockDriftPpm", "clockDriftRateHz" } },
         { "Output", { "toneCutoffHz", "drive", "chorusMode", "chorusMix", "chorusRateHz", "chorusDepthMs",
-                      "stereoWidth", "noiseModel", "noiseRms", "outputCircuit", "dcBlock", "outputLimit",
+                      "stereoWidth", "outputCircuit", "dcBlock", "outputLimit",
                       "masterGain" } },
     };
     return sections;

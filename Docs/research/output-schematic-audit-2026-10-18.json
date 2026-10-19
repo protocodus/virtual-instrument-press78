@@ -1,0 +1,277 @@
+{
+  "audit_date": "2026-10-18",
+  "scope": "Schematic/DAC evidence refresh and continuous-vs-native mathematical output-response audit; no new hardware measurement or exact PSS780 analog topology.",
+  "user_constraint": "No added noise, hiss, PRNG, random memory failures, or manufactured vintage artifacts.",
+  "source_sha256": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/Press78Engine.cpp": "dee61309fc179ac4924612976b94f74ce2554935d10b68429b17b176883009e7",
+    "Tools/generate_analog.py": "56365f2d9d4d3508e50264daef3da5539a594b6a9319d62a6a1afe51354e23c0",
+    "Reference/Python/circuit/model.py": "50f19cb6a00fe79bea77c65befb1ef972f1349d7f1ce4d1a392529e924a4fae0"
+  },
+  "local_primary_evidence_sha256": {
+    "hardware-pss480-full-schematic.png": "3f92f921e12e75aad9ea5d31e28d026a42ad690473d05a6e61406c16c76226b2",
+    "hardware-pss480-buffer.png": "a73a01b3d3b61a90b493cb21ea811bc61d16c1e6913ad4f422df3c4166665536",
+    "hardware-pss480-preamp.png": "39c9e70577029263f9a4485c6bdc4b60cba4642039f794a80a74b1ed87ec9c53",
+    "hardware-pss780-parts-p12.jpg": "d1ce3745ca331699bee59222cca159d4239a8b5bc3b1157a5d8589a21376ed5f",
+    "opu-pinout.png": "9d1b674399e69a7e25fd8ed0790f5a205edb2e90cc1918df063ed8e079fa699e",
+    "v3-MN3206.pdf": "045fb6a1c7f5bc1e5cb0cf51497bf64b4bf29bfe7be1b193a16a62e93c795fe2"
+  },
+  "exact_pss680_pss780_overall_foldout_recovered": false,
+  "ym3420_converter_resolution_bits": null,
+  "ym3420_converter_update_hz": null,
+  "ym3420_converter_encoding": null,
+  "ym3420_oscillator_hz": 5500000,
+  "ym3420_oscillator_kind": "ceramic resonator (exact PSS780 parts list)",
+  "sources": [
+    {
+      "id": "pss780-service",
+      "url": "https://www.manualslib.com/manual/4045165/Yamaha-Portasound-Pss-780.html",
+      "primary": true,
+      "pages": [
+        1,
+        12
+      ],
+      "inspected": "Manufacturer supplement HTML and preserved page12 raster",
+      "supports": [
+        "PSS680 is base service reference",
+        "YM3420BF/C and NJM4558 parts",
+        "MN3102/MN3206 on VF108000 AM board",
+        "5.5MHz ceramic resonator"
+      ],
+      "does_not_support": [
+        "complete overall circuit",
+        "DAC architecture",
+        "DAC update period",
+        "exact analog RC topology"
+      ]
+    },
+    {
+      "id": "pss480-foldout",
+      "url": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017",
+      "attachment_url": "https://forum.mamedev.org/download/file.php?id=323",
+      "primary": true,
+      "drawing_id": "KEC-11861",
+      "inspected": "scanner post and preserved full drawing/crops",
+      "supports": [
+        "PSS480 TB analog output and buffer/filter/preamp path",
+        "5V analog supply and 2.5V mixer bias",
+        "PSR36 CHA/CHB route differs from PSS480 TB according to scanner"
+      ],
+      "does_not_support": [
+        "same PSS780 output board",
+        "OPU converter resolution/update law"
+      ]
+    },
+    {
+      "id": "dtech-opu",
+      "url": "https://www.dtech.lv/techarticles_yamaha_chips.html",
+      "pinout_url": "https://www.dtech.lv/files_ym/YM3420_OPU_pinout.png",
+      "primary": true,
+      "kind": "first-hand hardware investigation",
+      "supports": [
+        "YM3420 contains DAC",
+        "sibling variants and differing pinouts",
+        "BF TB/AVDD/AGND and channel pin assignments"
+      ],
+      "does_not_support": [
+        "specified DAC resolution",
+        "measured TB event cadence"
+      ]
+    },
+    {
+      "id": "mame-driver",
+      "url": "https://raw.githubusercontent.com/mamedev/mame/master/src/mame/yamaha/ympsr16.cpp",
+      "primary": true,
+      "inspected": "fresh public source on audit date",
+      "supports": [
+        "driver remains skeleton without OPU audio",
+        "5.5MHz/4 divider explicitly guessed",
+        "PSS680/780 board identification"
+      ],
+      "does_not_support": [
+        "audio sample rate",
+        "YM3420 arithmetic or DAC emulation"
+      ]
+    },
+    {
+      "id": "mn3206",
+      "url": "https://github.com/fmillion/yamaha-pss270/blob/8943bf963f196f20b4e2fc714f15400db578891b/datasheets/MN3206.pdf",
+      "primary": true,
+      "pages_pdf": [
+        1,
+        5
+      ],
+      "pages_printed": [
+        75,
+        79
+      ],
+      "inspected": "local PDF rendered at160dpi, p1 and p5 visually checked",
+      "supports": [
+        "128 physical stages",
+        "10-200kHz CP and0.32-6.4ms delay",
+        "manufacturer application circuitry requires bias adjustment"
+      ],
+      "does_not_support": [
+        "PSS780 clock frequency",
+        "PSS780 surrounding components",
+        "default distortion amount"
+      ]
+    }
+  ],
+  "bounded_search_leads": [
+    {
+      "url": "https://www.ebay.com/itm/366559737055",
+      "result": "New2026 listing offers original PSS680 overall foldout; seller says shown folded. No component values acquired. No purchase or contact made."
+    },
+    {
+      "url": "https://pdf-manuals.ru/yamaha/pss680_manuals.html",
+      "result": "Search index advertises6922KB manual; public web fetch failed500, no PDF acquired."
+    },
+    {
+      "url": "https://www.test.remont-aud.net/load/lcd_pdp_tv/pro_audio/243",
+      "result": "Index lists2019 PSS680 service upload; public fetch403, no document acquired or access restriction bypassed."
+    },
+    {
+      "url": "https://www.transanalog.com/manuals/Yamaha/",
+      "result": "PSS680 manual catalogue; seller states mailed copies only, no scanned downloads."
+    },
+    {
+      "url": "https://katzelectronics.blogspot.com/2015/08/yamaha-pss-680-keyboard-teardown.html",
+      "result": "First-hand teardown does not remove/trace AM board; no exact analog network."
+    }
+  ],
+  "analog_baseline": {
+    "model": "PSS480 buffer/preamp volume-pot top",
+    "endpoint_is_pss780_aux": false,
+    "native_integration": "bilinear at host sample rate",
+    "reference_integration": "prior offline reference uses4x plus resampling",
+    "continuous_reference": "direct solve(G+2*pi*j*f*C), no SOS reduction",
+    "comparison": "same declared linear network only; no real hardware recording",
+    "oversampling_rows": [
+      {
+        "sample_rate": 44100,
+        "integration_factor": 1,
+        "max_absolute_db_error_20_20000_hz": 24.827973528328076,
+        "max_absolute_db_error_20_12000_hz": 3.212767006628096,
+        "max_absolute_phase_error_degrees_20_20000_hz": 47.773508955135114
+      },
+      {
+        "sample_rate": 44100,
+        "integration_factor": 2,
+        "max_absolute_db_error_20_20000_hz": 2.653480234497001,
+        "max_absolute_db_error_20_12000_hz": 0.6365084903641848,
+        "max_absolute_phase_error_degrees_20_20000_hz": 8.648727480599668
+      },
+      {
+        "sample_rate": 44100,
+        "integration_factor": 4,
+        "max_absolute_db_error_20_20000_hz": 0.583130997477055,
+        "max_absolute_db_error_20_12000_hz": 0.1511508858492481,
+        "max_absolute_phase_error_degrees_20_20000_hz": 2.029018158586507
+      },
+      {
+        "sample_rate": 44100,
+        "integration_factor": 8,
+        "max_absolute_db_error_20_20000_hz": 0.14149932920578095,
+        "max_absolute_db_error_20_12000_hz": 0.03731825693851072,
+        "max_absolute_phase_error_degrees_20_20000_hz": 0.49952275546388464
+      },
+      {
+        "sample_rate": 48000,
+        "integration_factor": 1,
+        "max_absolute_db_error_20_20000_hz": 16.1002927840658,
+        "max_absolute_db_error_20_12000_hz": 2.5734282025835373,
+        "max_absolute_phase_error_degrees_20_20000_hz": 36.89383146013772
+      },
+      {
+        "sample_rate": 48000,
+        "integration_factor": 2,
+        "max_absolute_db_error_20_20000_hz": 2.177546385749695,
+        "max_absolute_db_error_20_12000_hz": 0.5314628017763929,
+        "max_absolute_phase_error_degrees_20_20000_hz": 7.202490346951078
+      },
+      {
+        "sample_rate": 48000,
+        "integration_factor": 4,
+        "max_absolute_db_error_20_20000_hz": 0.48914461709352347,
+        "max_absolute_db_error_20_12000_hz": 0.12725413794842896,
+        "max_absolute_phase_error_degrees_20_20000_hz": 1.7072089435818736
+      },
+      {
+        "sample_rate": 48000,
+        "integration_factor": 8,
+        "max_absolute_db_error_20_20000_hz": 0.11925765318024485,
+        "max_absolute_db_error_20_12000_hz": 0.03148005878309278,
+        "max_absolute_phase_error_degrees_20_20000_hz": 0.4213138770527717
+      },
+      {
+        "sample_rate": 96000,
+        "integration_factor": 1,
+        "max_absolute_db_error_20_20000_hz": 2.177546385749695,
+        "max_absolute_db_error_20_12000_hz": 0.5314628017763929,
+        "max_absolute_phase_error_degrees_20_20000_hz": 7.202490346951078
+      },
+      {
+        "sample_rate": 96000,
+        "integration_factor": 2,
+        "max_absolute_db_error_20_20000_hz": 0.48914461709352347,
+        "max_absolute_db_error_20_12000_hz": 0.12725413794842896,
+        "max_absolute_phase_error_degrees_20_20000_hz": 1.7072089435818736
+      },
+      {
+        "sample_rate": 96000,
+        "integration_factor": 4,
+        "max_absolute_db_error_20_20000_hz": 0.11925765318024485,
+        "max_absolute_db_error_20_12000_hz": 0.03148005878309278,
+        "max_absolute_phase_error_degrees_20_20000_hz": 0.4213138770527717
+      },
+      {
+        "sample_rate": 96000,
+        "integration_factor": 8,
+        "max_absolute_db_error_20_20000_hz": 0.02963089452294794,
+        "max_absolute_db_error_20_12000_hz": 0.007849428413879245,
+        "max_absolute_phase_error_degrees_20_20000_hz": 0.10499059930590272
+      },
+      {
+        "sample_rate": 192000,
+        "integration_factor": 1,
+        "max_absolute_db_error_20_20000_hz": 0.48914461709352347,
+        "max_absolute_db_error_20_12000_hz": 0.12725413794842896,
+        "max_absolute_phase_error_degrees_20_20000_hz": 1.7072089435818736
+      },
+      {
+        "sample_rate": 192000,
+        "integration_factor": 2,
+        "max_absolute_db_error_20_20000_hz": 0.11925765318024485,
+        "max_absolute_db_error_20_12000_hz": 0.03148005878309278,
+        "max_absolute_phase_error_degrees_20_20000_hz": 0.4213138770527717
+      },
+      {
+        "sample_rate": 192000,
+        "integration_factor": 4,
+        "max_absolute_db_error_20_20000_hz": 0.02963089452294794,
+        "max_absolute_db_error_20_12000_hz": 0.007849428413879245,
+        "max_absolute_phase_error_degrees_20_20000_hz": 0.10499059930590272
+      },
+      {
+        "sample_rate": 192000,
+        "integration_factor": 8,
+        "max_absolute_db_error_20_20000_hz": 0.0073963408363130635,
+        "max_absolute_db_error_20_12000_hz": 0.0019610744123949647,
+        "max_absolute_phase_error_degrees_20_20000_hz": 0.026226612366837397
+      }
+    ]
+  },
+  "recommended_next_change": {
+    "priority": 1,
+    "change": "Reduce known host-rate bilinear frequency warping while preserving the declared circuit, polarity, loading, and low-frequency behavior.4x integration is a candidate, not a recovered DAC cadence.",
+    "requires": [
+      "explicit interpolation/decimation transfer and latency",
+      "block-state continuity",
+      "end-to-end frequency-response comparison against continuous MNA",
+      "CPU/runtime boundedness",
+      "fixed recording benchmark before adoption"
+    ],
+    "forbidden_inference": "Do not infer OPU DAC bit depth or native sample rate from analog integration rate."
+  }
+}

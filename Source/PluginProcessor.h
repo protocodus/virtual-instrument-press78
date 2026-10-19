@@ -64,7 +64,8 @@ private:
     std::unique_ptr<press78::Press78Engine> engine;
     Values applied {};
     bool appliedValid = false;
-    double bend = 0.0, wheel = 0.0; // -1..1 and 0..1, from MIDI
+    int bend = press78::kBendCentre; // raw 14-bit wheel, from MIDI
+    double wheel = 0.0;              // 0..1, from MIDI
     // Written on the host thread, polled by the editor timer.
     std::atomic<int> currentProgram { 0 };
 };

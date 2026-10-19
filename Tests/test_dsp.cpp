@@ -138,6 +138,64 @@ int main() {
         p.carrier.ar = 63; p.carrier.tl = 99; e->setPatch(p); e->noteOn(60, 100);
         CHECK(e->activeVoices() == 0);
     });
+    test("zero-height D1 plateau is independent of its unused rate", [] {
+        auto e = engine();
+        for (const int attack : {32, 63}) for (int wave = 0; wave < 4; ++wave) {
+            auto p = press78::initPatch();
+            p.carrier.ar = attack; p.carrier.wave = wave;
+            p.carrier.d1l = 0; p.carrier.d1r = 0; p.carrier.d2r = 0;
+            e->reset(); e->setPatch(p); e->noteOn(69, 127);
+            const auto reference = render(*e, 2048);
+            for (int rate = 1; rate <= 63; ++rate) {
+                p.carrier.d1r = rate;
+                e->reset(); e->setPatch(p); e->noteOn(69, 127);
+                CHECK(render(*e, reference.size()) == reference);
+            }
+        }
+    });
+    test("zero-height D1 enters D2 immediately even with zero D1 rate", [] {
+        auto e = engine();
+        for (const int rate : {0, 1, 24, 63}) {
+            auto p = press78::initPatch();
+            p.carrier.d1l = 0; p.carrier.d1r = rate; p.carrier.d2r = 48;
+            e->reset(); e->setPatch(p); e->noteOn(69, 127);
+            const auto audio = render(*e, 256);
+            // AR63 peaks on tick0; D2 starts on tick1. Derive the intended
+            // postattack line from the model's unchanged D2 rate, not D1.
+            const double dbPerTick = 96.0 / (48000.0 * 48.0 * std::pow(2.0, -48.0 / 4.0));
+            for (std::size_t frame = 32; frame < audio.size(); ++frame) {
+                const double tick = static_cast<double>(frame - 32);
+                const double expected = 0.8 * std::sin(2*pi*440*(tick+1)/48000)
+                    * std::pow(10.0, -tick*dbPerTick/20.0);
+                CHECK(std::abs(audio[frame] - expected) < 3.1e-8);
+            }
+        }
+    });
+    test("positive D1 target with zero D1 rate holds before D2", [] {
+        auto e = engine();
+        e->noteOn(69, 127); const auto reference = render(*e, 4096);
+        for (int target = 1; target <= 15; ++target) {
+            auto p = press78::initPatch();
+            p.carrier.d1l = target; p.carrier.d1r = 0; p.carrier.d2r = 63;
+            e->reset(); e->setPatch(p); e->noteOn(69, 127);
+            CHECK(render(*e, reference.size()) == reference);
+        }
+    });
+    test("release interrupts attack D1 and D2 after endpoint correction", [] {
+        for (int stage = 0; stage < 3; ++stage) {
+            auto e = engine(); auto p = press78::initPatch();
+            p.carrier.ar = stage == 0 ? 24 : 63;
+            p.carrier.d1l = stage == 1 ? 15 : 0;
+            p.carrier.d1r = stage == 1 ? 24 : 63;
+            p.carrier.d2r = 0; p.carrier.rr = 15;
+            e->setPatch(p); e->noteOn(69, 127);
+            const auto held = render(*e, 256);
+            CHECK(rms(held, 32) > 1e-5); CHECK(e->activeVoices() == 1);
+            e->noteOff(69); finiteBounded(render(*e, 512));
+            CHECK(e->activeVoices() == 0);
+            CHECK(rms(render(*e, 128)) == 0.0);
+        }
+    });
     test("velocity-zero note-on releases rather than allocates", [] {
         auto e = engine(); auto p = press78::initPatch(); p.carrier.rr = 15;
         e->setPatch(p); e->noteOn(60, 100); render(*e, 512); e->noteOn(60, 0); render(*e, 512);
@@ -258,12 +316,6 @@ int main() {
         b->setControls(c); a->noteOn(69, 127); b->noteOn(69, 127);
         CHECK(render(*a, 10000) == render(*b, 10000));
     });
-    test("noise is deterministic and absent by default", [] {
-        auto a = engine(), b = engine(); CHECK(rms(render(*a, 4096)) == 0);
-        a->reset(); auto c = transparent(); c.noiseRms = 0.001;
-        a->setControls(c); b->setControls(c); const auto x = render(*a, 48000), y = render(*b, 48000);
-        CHECK(x == y); CHECK(std::abs(rms(x) - 0.001) < 0.00002);
-    });
     test("filter and drive controls alter sound with bounded output", [] {
         auto a = engine(), b = engine(); auto c = transparent(); c.drive = 1; c.toneCutoffHz = 200;
         b->setControls(c); a->noteOn(93, 127); b->noteOn(93, 127);
@@ -311,7 +363,7 @@ int main() {
         e->setPatch(p); CHECK(e->patch().carrier.ar == 0 && e->patch().modulator.wave == 3 && e->patch().feedback == 7);
         auto c = transparent(); c.masterGain = std::numeric_limits<double>::infinity();
         c.lfoRateHz = std::numeric_limits<double>::quiet_NaN(); c.clockOffsetPpm = -1e30; c.polyphony = -7;
-        e->setControls(c); CHECK(e->controls().masterGain == .25 && e->controls().lfoRateHz == 6.1);
+        e->setControls(c); CHECK(e->controls().masterGain == .25 && e->controls().lfoRateHz == 5.24);
         CHECK(e->controls().clockOffsetPpm == -20000 && e->controls().polyphony == 1);
         finiteBounded(render(*e, 1000));
     });
@@ -401,39 +453,49 @@ int main() {
         press78::RecordedChorus f;f.setParameters(NAN,NAN);f.prepare(NAN,NAN);
         double x,y;f.process(NAN,x,y);CHECK(x==0&&y==0);
     });
-    test("circuit noise uses fixed physical reference without rate normalization", [] {
-        for (const double sr : {8000.,44100.,48000.,96000.,192000.}) {
-            auto e=engine(sr);auto c=transparent();c.noiseModel=1;c.noiseRms=.002;e->setControls(c);
-            press78::CircuitNoise physical;physical.prepare(sr);
-            std::array<float,2048>l{},r{};e->process(l.data(),r.data(),l.size());
-            const double scale=.002/press78::CircuitNoise::kReferenceRmsVolts;
-            double difference=0;
-            for(std::size_t i=0;i<l.size();++i) {
-                const auto v=physical.process();
-                CHECK(l[i]==static_cast<float>(scale*v[0]));
-                CHECK(r[i]==static_cast<float>(scale*v[1]));
-                difference+=std::abs(l[i]-r[i]);
-            }
-            CHECK(difference>.1);
+    test("legacy noise requests preserve exact silence and both musical channels", [] {
+        struct Legacy { int model; double level; };
+        const std::array<Legacy,7> requests{{
+            {0,.001}, {1,.002}, {1,.02}, {9,999}, {-9,-1},
+            {std::numeric_limits<int>::max(),std::numeric_limits<double>::infinity()},
+            {std::numeric_limits<int>::min(),std::numeric_limits<double>::quiet_NaN()}
+        }};
+        for (const double sr : {8000.,48000.,192000.}) for (const auto request : requests) {
+            auto a=engine(sr),b=engine(sr);press78::Controls c;
+            c.chorusMode=1;c.chorusMix=1;c.clockDriftPpm=20;
+            a->setControls(c);c.noiseModel=request.model;c.noiseRms=request.level;b->setControls(c);
+            CHECK(b->controls().noiseModel==0 && b->controls().noiseRms==0.0);
+            std::array<float,2048>al{},ar{},bl{},br{};
+            a->process(al.data(),ar.data(),al.size());b->process(bl.data(),br.data(),bl.size());
+            for(std::size_t i=0;i<al.size();++i) CHECK(al[i]==0 && ar[i]==0 && bl[i]==0 && br[i]==0);
+            const auto p=press78::decodeVoice(press78::kFactoryVoices[97].bytes);
+            a->setPatch(p);b->setPatch(p);a->noteOn(60,127);b->noteOn(60,127);
+            a->process(al.data(),ar.data(),al.size());b->process(bl.data(),br.data(),bl.size());
+            CHECK(al==bl && ar==br);
+            CHECK(std::any_of(al.begin(),al.end(),[](float x){return x!=0;}));
         }
     });
-    test("zero circuit noise level leaves musical output exactly unchanged", [] {
-        auto a=engine(),b=engine();auto c=transparent();c.noiseModel=1;b->setControls(c);
-        a->noteOn(60,127);b->noteOn(60,127);CHECK(render(*a,12000)==render(*b,12000));
+    test("legacy noise automation is inaudible and allocation free", [] {
+        auto a=engine(),b=engine();press78::Controls c;c.chorusMode=1;c.chorusMix=1;
+        a->setControls(c);b->setControls(c);a->noteOn(60,127);b->noteOn(60,127);
+        CHECK(render(*a,4096)==render(*b,4096));
+        std::array<float,64>al{},ar{},bl{},br{};bool identical=true;
+        allocations=0;trackAllocations=true;
+        for(int model : {0,1,9,-9}) {
+            c.noiseModel=model;c.noiseRms=.02;b->setControls(c);
+            a->process(al.data(),ar.data(),al.size());b->process(bl.data(),br.data(),bl.size());
+            identical=identical && al==bl && ar==br;
+        }
+        trackAllocations=false;CHECK(allocations==0 && identical);
     });
-    test("circuit noise is deterministic across block sizes and reset", [] {
-        auto a=engine(),b=engine();auto c=transparent();c.noiseModel=1;c.noiseRms=.002;
-        a->setControls(c);b->setControls(c);const auto x=render(*a,12000);
-        std::vector<float>y; y.reserve(x.size());
+    test("legacy noise requests preserve split blocks reset and sound-off silence", [] {
+        auto a=engine(),b=engine();auto c=transparent();c.noiseModel=1;c.noiseRms=.02;
+        c.chorusMode=1;c.chorusMix=1;a->setControls(c);b->setControls(c);
+        a->noteOn(60,127);b->noteOn(60,127);const auto x=render(*a,12000);
+        std::vector<float>y;y.reserve(x.size());
         while(y.size()<x.size()){auto z=render(*b,std::min<std::size_t>(43,x.size()-y.size()));y.insert(y.end(),z.begin(),z.end());}
-        CHECK(x==y);a->reset();CHECK(render(*a,12000)==x);a->allSoundOff();CHECK(render(*a,12000)==x);
-    });
-    test("circuit noise switching and realtime paths remain finite and allocation free", [] {
-        auto e=engine();auto c=transparent();c.noiseRms=.02;e->setControls(c);render(*e,1024);
-        std::array<float,4096>l{},r{};c.noiseModel=9;
-        allocations=0;trackAllocations=true;e->setControls(c);e->process(l.data(),r.data(),l.size());
-        c.noiseModel=0;e->setControls(c);e->process(l.data(),r.data(),l.size());trackAllocations=false;
-        CHECK(allocations==0);for(auto x:l)CHECK(std::isfinite(x)&&std::abs(x)<.3);
+        CHECK(x==y);a->reset();a->noteOn(60,127);CHECK(render(*a,12000)==x);
+        a->allSoundOff();CHECK(rms(render(*a,4096))==0.0);
     });
     std::printf("%d passed, %d failed\n", passed, failed);
     return failed == 0 ? 0 : 1;

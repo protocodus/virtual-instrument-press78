@@ -36,7 +36,8 @@ def main():
             'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},
             'limitations':['Fixed48k internalclock is a modeling choice, not measured OPU timing.',
                 'Reported32-tick latency is nominal and changes with clock ratio; positive clockoffset can alias nearNyquist.',
-                'Recorded chorus is a causal effective capturetransfer, not identified physical BBD; Studio remainsdefault.',
+                'Recorded chorus is a causal effective capture transfer, not an identified physical BBD.',
+                'LFO5.24Hz/triangle/binary PMS is a recording calibration; missing hardware timing/phase tables remain explicit.',
                 'Native tests do not establish SDK target or Reason host execution.']}
     out=ROOT/'Tests/results';out.mkdir(exist_ok=True)
     (out/('native-sanitizer.log' if args.sanitize else 'native-tests.log')).write_text(output)
