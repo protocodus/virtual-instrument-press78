@@ -136,7 +136,7 @@
     }
   ],
   "scope": "Software/component equivalence and bounded memory/Legacy compatibility. No target chip, physical timing, audio fidelity, host performance, market ranking or production adoption is established.",
-  "recording_report_sha256": "d9d7d90e98521062268a498fc1ad3cb7260449410213e57f274fc3eb6b3319c4",
+  "recording_report_sha256": "5f12411c763a8ff39c18731b5250b8f14e2c813094dcb8343522700562fb0e9f",
   "recording_audio_gates": {
     "historical_legacy_all4_retained_WAVs_identical": true,
     "merged_legacy_all4_independent_baselines_identical": true,
@@ -146,5 +146,19 @@
     "all_maps_STFT_log_bounds": true,
     "all_sine_diagnostics_each_map_band_bounds": false
   },
-  "recording_audio_gates_passed": false
+  "recording_audio_gates_passed": false,
+  "separate_native_performance": {
+    "path": "Reference/Research/allocator-native-performance-20261019.json",
+    "sha256": "89dc3ee7650fffec6bcab1e25c5b501ccfc87204b6875f9646e6feb98202577a",
+    "mean_time_sanity_gate": true,
+    "zero_wall_deadline_gate": false,
+    "wall_misses": 103,
+    "thread_cpu_misses": 0,
+    "scope": "One fixed fullbus native run, not host/target acceptance, sound-quality evidence or speed ranking.",
+    "independent_audit": {
+      "path": "build/allocator-native-performance-independent-20261019/receipt.json",
+      "sha256": "8bab35c4111aacbea783c1779df66b4e566225237e2cd5431293a01fbff01624",
+      "scope": "All raw paired timing values and reported distributions/gates checked without a second timing run."
+    }
+  }
 }

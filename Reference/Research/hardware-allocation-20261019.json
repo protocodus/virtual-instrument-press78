@@ -27035,6 +27035,14 @@
     {
       "path": "Reference/Prototypes/original-allocation-20261019/manifest.json",
       "sha256": "9869d4e4a80dd8022d35e8831e2d8e569dfb7d9d120bd6aeef38b0501aac92ee"
+    },
+    {
+      "path": "Reference/Research/recording-mode-effects-audit-20261019.md",
+      "sha256": "892004f1e360aab8a1eedec5b9b4729264a4423a290abf4d106dc922d06143de"
+    },
+    {
+      "path": "Reference/Research/recording-mode-effects-audit-20261019.json",
+      "sha256": "71f778c48324d7a0c430101b6118efc372f077ea5c642afa22a6dd62d1981225"
     }
   ],
   "open_requirements": [
@@ -27042,5 +27050,13 @@
     "Same-note physical envelope/retrigger/phase behavior with known gates",
     "Interaction with verified key-level commands and still-unidentified amplitude/envelope laws",
     "Separate native/SDK/host validation before any production change"
-  ]
+  ],
+  "known_recording_state": {
+    "audit": "Reference/Research/recording-mode-effects-audit-20261019.md",
+    "mode": "c.00 at300presetframes+6lateSineframes",
+    "reverb": "ON atall100sampledpresets+6lateSineframes",
+    "chorus": "ON atall100sampledpresets+6lateSineframes",
+    "unverified": "Continuousstate,receive masks,senderdeliveryandexactarrivalorder",
+    "current_model_gap": "The engine has no calibrated chip-Reverb envelope law; operatorcontrolcommands alone do not identify its physical transfer."
+  }
 }
