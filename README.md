@@ -56,7 +56,7 @@ python3 Tools/check_chorus_runtime.py --help
 python3 Tools/check_circuit_noise.py
 ```
 
-To regenerate the Rack parameter declarations, mappings and 101 local development patches:
+To regenerate the Rack parameter declarations, mappings and 151 local development patches:
 
 ```sh
 python3 Tools/generate_rack.py /path/to/SDK-worktree/Examples/Press78
