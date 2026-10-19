@@ -1,0 +1,437 @@
+{
+  "schema": "press78.comparison-landscape.v1",
+  "observed_date": "2026-10-19",
+  "created_utc": "2026-10-19T10:39:05.678434+00:00",
+  "purpose": "Bounded primary-source capability inventory, not an accuracy ranking or market census.",
+  "market_leading_accuracy": "not established",
+  "direct_target_engine_result": "No released commercial YM3420 FM engine established from the inspected first-party pages; no absence claim beyond this search.",
+  "entries": [
+    {
+      "id": "cubilas",
+      "type": "sample_library",
+      "target": "PSS-680",
+      "source_ids": [
+        "cubilas-sf2",
+        "cubilas-news"
+      ],
+      "facts": {
+        "preset_instruments": 100,
+        "wav_samples": 2234,
+        "drum_kits": 4,
+        "stereo": true,
+        "loops_edited": true,
+        "completion_date": "2021-12-13",
+        "soundfont_posting_date": "2022-01-15"
+      },
+      "audition": "Product-page downloadable demo marked forthcoming; not acquired.",
+      "exact_pss780_engine_established": false
+    },
+    {
+      "id": "labelwhore",
+      "type": "exact_device_multisample_lead",
+      "target": "PSS-780",
+      "source_ids": [
+        "labelwhore"
+      ],
+      "author_post_date": "2016-05-26",
+      "facts": {
+        "approximate_seconds_per_sample": 1,
+        "decay_removed": true,
+        "noise_gate_used": true,
+        "automatic_loops_unchecked": true
+      },
+      "audition": "Archive link exists in public post; no archive retrieval or validation.",
+      "comparison_limit": "Cannot supply original release/endpoint evidence after declared truncation/gating.",
+      "exact_pss780_engine_established": false
+    },
+    {
+      "id": "lewelsch",
+      "type": "drum_plugin",
+      "target": "PSS-680 drums/percussion",
+      "source_ids": [
+        "lewelsch"
+      ],
+      "publication_date": "2025-02-23",
+      "demo_url": "https://www.youtube.com/watch?v=U5qK2vR9qUk",
+      "audition": "Public title/author/description inspected; media not played.",
+      "comparison_limit": "No FM-voice-engine claim in inspected author description.",
+      "exact_pss780_engine_established": false
+    },
+    {
+      "id": "portafm",
+      "type": "programmable_chip_emulation",
+      "target": [
+        "YM2413 OPLL",
+        "YM3812 OPL2",
+        "YM7129 OPK2"
+      ],
+      "source_ids": [
+        "portafm",
+        "plogue-downloads",
+        "portafm-manual"
+      ],
+      "version_observed": "1.132",
+      "version_date": "2026-09-28",
+      "sample_free_claim": true,
+      "test_evidence": "Developer hardware-assisted/cycle-accuracy claims; no matched PSS780 test corpus identified on inspected pages.",
+      "demo_urls": [
+        "https://www.youtube.com/watch?v=ixsSoS0rvzU",
+        "https://bandcamp.com/EmbeddedPlayer/album=3339610183/size=medium/bgcol=ffffff/linkcol=63b2cc/transparent=true/"
+      ],
+      "exact_pss780_engine_established": false
+    },
+    {
+      "id": "discodsp-opl",
+      "type": "programmable_chip_emulation",
+      "target": "YMF262 OPL3",
+      "source_ids": [
+        "opl"
+      ],
+      "version_observed": "3.2",
+      "test_evidence": "Developer page describes up to16x oversampling and ymfm; no target-device comparison identified.",
+      "demo_url": "https://www.discodsp.com/en/opl/",
+      "exact_pss780_engine_established": false
+    },
+    {
+      "id": "dexed",
+      "type": "programmable_fm_emulation",
+      "target": "DX7 family",
+      "source_ids": [
+        "dexed"
+      ],
+      "version_observed": "1.0.1",
+      "exact_pss780_engine_established": false
+    },
+    {
+      "id": "ops7",
+      "type": "programmable_fm_emulation",
+      "target": "DX six-operator EGS/OPS family",
+      "source_ids": [
+        "ops7"
+      ],
+      "test_evidence": "Developer claims matched digital outputs and modeled DAC/filter path; not independently tested here.",
+      "exact_pss780_engine_established": false
+    },
+    {
+      "id": "reface-bank",
+      "type": "patch_translation",
+      "target": "Reface DX",
+      "source_ids": [
+        "reface-pss780"
+      ],
+      "listed_patches": 100,
+      "listed_focus_numbers": [
+        65,
+        93,
+        97
+      ],
+      "audition": "No matched audio on inspected page; ZIP not acquired.",
+      "exact_pss780_engine_established": false
+    },
+    {
+      "id": "ctrlr",
+      "type": "hardware_editor_librarian",
+      "target": "PSS480/580/680/780",
+      "source_ids": [
+        "ctrlr"
+      ],
+      "pss780_panel_version_observed": "20260609",
+      "exact_pss780_engine_established": false
+    },
+    {
+      "id": "pss-revive",
+      "type": "hardware_editor_librarian",
+      "target": "PSS480/580/680/780",
+      "source_ids": [
+        "pss-revive"
+      ],
+      "exact_pss780_engine_established": false
+    },
+    {
+      "id": "portasound-js",
+      "type": "hardware_sysex_editor",
+      "target": "PSS480/580/680/780 and DSR1000/2000",
+      "source_ids": [
+        "portasound-js"
+      ],
+      "exact_pss780_engine_established": false
+    }
+  ],
+  "source_evidence": [
+    {
+      "id": "portafm",
+      "url": "https://www.plogue.com/products/chipsynth-portafm.html",
+      "final_url": "https://www.plogue.com/products/chipsynth-portafm.html",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/portafm.html",
+      "bytes": 21883,
+      "sha256": "2b3a583863583484cad21cc9c515b1acbf5e44ddfaeb454bcd3fc73cfa813f32",
+      "retrieved_utc": "2026-10-19T10:36:31.982836+00:00"
+    },
+    {
+      "id": "plogue-downloads",
+      "url": "https://www.plogue.com/downloads.html",
+      "final_url": "https://www.plogue.com/downloads.html",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/plogue-downloads.html",
+      "bytes": 63342,
+      "sha256": "1bfd93cd8de55ee6657db84cbf11a5df65911ccffa48762decfffe2fed9b9aea",
+      "retrieved_utc": "2026-10-19T10:36:31.983036+00:00"
+    },
+    {
+      "id": "portafm-manual",
+      "url": "https://chipsynth.s3.amazonaws.com/PortaFM_Manual.pdf",
+      "final_url": "https://chipsynth.s3.amazonaws.com/PortaFM_Manual.pdf",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/portafm-manual.pdf",
+      "bytes": 2336942,
+      "sha256": "1f13aa405e877a3bb5ef3a0dd10a2f3121bc300c21368f32f3623b57bc6ff2ee",
+      "retrieved_utc": "2026-10-19T10:36:32.853140+00:00"
+    },
+    {
+      "id": "cubilas-sf2",
+      "url": "https://www.cubilas.com/p/sf2-pss680/",
+      "final_url": "https://www.cubilas.com/p/sf2-pss680/",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/cubilas-sf2.html",
+      "bytes": 61762,
+      "sha256": "b6c2324cc1be85ad65c88002a22260a40dd974be753f3c1b59662522590b35c0",
+      "retrieved_utc": "2026-10-19T10:36:31.900335+00:00"
+    },
+    {
+      "id": "cubilas-news",
+      "url": "https://www.cubilas.com/news/",
+      "final_url": "https://www.cubilas.com/news/",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/cubilas-news.html",
+      "bytes": 62805,
+      "sha256": "910d56dcc89fcadfabca5ab48886cb9f5bb6da4c308e18f22ee6ebea57f52ca7",
+      "retrieved_utc": "2026-10-19T10:36:32.213969+00:00"
+    },
+    {
+      "id": "labelwhore",
+      "url": "https://forum.image-line.com/viewtopic.php?t=157755",
+      "final_url": "https://forum.image-line.com/viewtopic.php?t=157755",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/labelwhore.html",
+      "bytes": 341055,
+      "sha256": "d0b5607f570ecfca75252eac248fcb446db5d1babcaf5bb8993aee428b64e14d",
+      "retrieved_utc": "2026-10-19T10:36:33.042488+00:00"
+    },
+    {
+      "id": "opl",
+      "url": "https://www.discodsp.com/en/opl/",
+      "final_url": "https://www.discodsp.com/en/opl/",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/opl.html",
+      "bytes": 142118,
+      "sha256": "02c20bbc7705d60a1b94f08211e99536c101a241bb3b1898efa8428a69f4aafc",
+      "retrieved_utc": "2026-10-19T10:36:32.281725+00:00"
+    },
+    {
+      "id": "dexed",
+      "url": "https://asb2m10.github.io/dexed/",
+      "final_url": "https://asb2m10.github.io/dexed/",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/dexed.html",
+      "bytes": 7214,
+      "sha256": "8339c683b332ae62d1c0296c87a6bad8a00e2d869c6be4a703d097e07d11b439",
+      "retrieved_utc": "2026-10-19T10:36:32.066811+00:00"
+    },
+    {
+      "id": "ops7",
+      "url": "https://www.plogue.com/products/chipsynth-ops7.html",
+      "final_url": "https://www.plogue.com/products/chipsynth-ops7.html",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/ops7.html",
+      "bytes": 21944,
+      "sha256": "ba623d853a82cc280fbe24d6f829217817d7cc7327230d742f59a1c66b2b1073",
+      "retrieved_utc": "2026-10-19T10:36:32.408550+00:00"
+    },
+    {
+      "id": "reface-pss780",
+      "url": "https://refacedx.martintarenskeen.nl/Reface-PSS780.html",
+      "final_url": "https://refacedx.martintarenskeen.nl/Reface-PSS780.html",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/reface-pss780.html",
+      "bytes": 5182,
+      "sha256": "917690f4ff6084d2db0a9ac60145b9eafc6fe9269bd34a8ad1a003d5c6fdf880",
+      "retrieved_utc": "2026-10-19T10:36:32.352743+00:00"
+    },
+    {
+      "id": "ctrlr",
+      "url": "https://ctrlr.martintarenskeen.nl/",
+      "final_url": "https://ctrlr.martintarenskeen.nl/",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/ctrlr.html",
+      "bytes": 8002,
+      "sha256": "910fe903235da2309fd432f8fb0d49b687225809c8d976c275c597bf35203083",
+      "retrieved_utc": "2026-10-19T10:36:32.432096+00:00"
+    },
+    {
+      "id": "pss-revive",
+      "url": "https://github.com/BobanSpasic/PSS-Revive",
+      "final_url": "https://github.com/BobanSpasic/PSS-Revive",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/pss-revive.html",
+      "bytes": 265289,
+      "sha256": "c24494555b86d3bd2e33687d5d72812fdd9e7b4bb84d928f312206d60c3598b2",
+      "retrieved_utc": "2026-10-19T10:36:33.210146+00:00"
+    },
+    {
+      "id": "portasound-js",
+      "url": "https://github.com/mmontag/portasound-js",
+      "final_url": "https://github.com/mmontag/portasound-js",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/portasound-js.html",
+      "bytes": 252558,
+      "sha256": "69e40ac50646ec4cba923946abb1375cf0e5d59111dd5dd716d6654dba0c0ce8",
+      "retrieved_utc": "2026-10-19T10:36:32.950492+00:00"
+    },
+    {
+      "id": "ymfm",
+      "url": "https://github.com/aaronsgiles/ymfm",
+      "final_url": "https://github.com/aaronsgiles/ymfm",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/ymfm.html",
+      "bytes": 279655,
+      "sha256": "3ec86a7792989574301daff7885d44dc50c186c565be55764b272f7c4033b132",
+      "retrieved_utc": "2026-10-19T10:36:33.402654+00:00"
+    },
+    {
+      "id": "audioanimals-historical",
+      "url": "https://www.audioanimals.co.uk/news/audio-animals-samples/yamaha-pss-480-free-vst-instrument-download",
+      "final_url": "https://www.audioanimals.co.uk/news/audio-animals-samples/yamaha-pss-480-free-vst-instrument-download",
+      "http_status": 404,
+      "file": "build/comparison-landscape-20261019/audioanimals-historical.html",
+      "bytes": 628740,
+      "sha256": "c3c1e4c0c720faf88ac2e57b60905e731f5827af64f6cf4c1add8a0d4fba1815",
+      "retrieved_utc": "2026-10-19T10:36:33.457526+00:00"
+    },
+    {
+      "id": "audioanimals-shop",
+      "url": "https://www.audioanimals.co.uk/pages/sample-shop",
+      "final_url": "https://www.audioanimals.co.uk/pages/sample-shop",
+      "http_status": 200,
+      "file": "build/comparison-landscape-20261019/audioanimals-shop.html",
+      "bytes": 663838,
+      "sha256": "8b0ee195fcd343e112ad5225f6c38af4810a1e1eeac6c3a482ba918d68576a74",
+      "retrieved_utc": "2026-10-19T10:36:33.456546+00:00"
+    },
+    {
+      "id": "lewelsch",
+      "url": "https://www.youtube.com/watch?v=U5qK2vR9qUk",
+      "file": "build/comparison-landscape-20261019/lewelsch-public-metadata.json",
+      "bytes": 710,
+      "sha256": "ad982cfb5caeb3dfc7099404ff08abcab976fb42b3973a68eaad97411d545202",
+      "retrieved_utc": "2026-10-19T10:36:34.178525+00:00",
+      "kind": "sanitized metadata extraction; not full page"
+    }
+  ],
+  "source_claims_independently_product_tested": false,
+  "downloads": {
+    "software": false,
+    "sample_packs": false,
+    "audio_video": false,
+    "public_documents_and_pages": true
+  },
+  "listening_or_rendering_performed": false,
+  "primary_inventory_observation": {
+    "source_id": "ymfm",
+    "observation": "YM3420 absent from README supported-chip list; no exhaustive implementation or fork audit."
+  },
+  "unresolved_leads": [
+    {
+      "source_ids": [
+        "audioanimals-historical",
+        "audioanimals-shop"
+      ],
+      "result": "Historical PSS480 article returns404; current shop does not resolve the lead. No implementation claim based on secondary descriptions."
+    }
+  ],
+  "search_queries": [
+    "PSS-780 VST plugin Yamaha emulation YM3420",
+    "PSS-680 plugin sample library developer FM",
+    "YM3420 OPU emulator synthesizer plugin",
+    "\"PSS-780\" \"sample\" \"library\"",
+    "\"PSS-480\" \"Audio Animals\"",
+    "\"PSS-780\" plugin emulation synth sample commercial",
+    "site:plogue.com chipsynth PortaFM YM2413",
+    "\"PSS-780\" \"samples\" -site:reddit.com -site:ebay.com -site:youtube.com",
+    "\"PSS-480\" site:audioanimals.co.uk",
+    "\"PSS-680\" \"VST\" -site:reddit.com",
+    "\"PSS780\" \"plugin\"",
+    "site:audioanimals.co.uk \"PSS\"",
+    "\"PSS-780\" \"Multisamples\"",
+    "\"PSS-780\" \"Kontakt\"",
+    "\"PSS-680\" \"LEWELSCH\"",
+    "\"Yamaha PSS-480\" \"Audio Animals\" plugin",
+    "\"PSS-780\" samples download -site:forum.image-line.com -site:wikipedia.org -site:reddit.com -site:youtube.com",
+    "\"PSS-680\" sampler library -site:reddit.com -site:wikipedia.org -site:youtube.com",
+    "\"PSS-780\" \"UVI\" OR \"Kontakt\" OR \"Decent\" OR \"sample pack\"",
+    "\"Audio Animals\" \"Yamaha PSS-480\" \"sample\"",
+    "site:youtube.com \"LeWelsch\" \"PSS-680\"",
+    "site:github.com \"YM3420\" \"emulation\"",
+    "site:github.com \"PSS-780\" \"synthesizer\"",
+    "\"LeWelsch Audio Visuals\" \"PSS\" \"youtube\"",
+    "\"Yamaha PSS-480\" site:audioanimals.co.uk/products",
+    "\"Yamaha PSS-480\" site:youtube.com \"Audio Animals\""
+  ],
+  "retrieval_limits": [
+    "Some web-tool YouTube fetches were throttled; ordinary public watch-page metadata was readable using requests. No media stream or download API was used.",
+    "One Python urllib fetch failed local CA validation; requests with normal certificate validation succeeded.",
+    "Search snippets differed from current Plogue download page; the directly fetched page supplied the reported1.132 version.",
+    "Cubilas legacy MPC link could not be read with web tool; the current SoundFont product and dated author news were readable."
+  ],
+  "comparison_requirements": [
+    "Same disclosed raw patch, notes/gates and controller events",
+    "Known Reverb/Sustain/Chorus states and capture chain",
+    "Separate factory timbre, edited-patch and performance-response questions",
+    "Fixed metrics, independent evaluation material and blinded auditions where feasible",
+    "No retuning a competitor or candidate on the scoring material without disclosure"
+  ],
+  "local_ledger_checkpoint": {
+    "path": "Reference/Research/fidelity-roadmap-20261018.md",
+    "bytes": 25539,
+    "sha256": "f24c18e9a0ed989e3491cf149f1c7e1bb43733e2af1fcfc88c782281ac9842af"
+  },
+  "ci_observation": {
+    "status": "completed",
+    "conclusion": "success",
+    "headSha": "76b2454deb37bc81258e4942876a46902bd1e954",
+    "name": "Native DSP",
+    "updatedAt": "2026-10-19T10:31:22Z",
+    "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39237861427",
+    "jobs": [
+      {
+        "name": "test (macos-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "completedAt": "2026-10-19T10:30:30Z",
+        "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39237861427/job/118011231981"
+      },
+      {
+        "name": "test (windows-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "completedAt": "2026-10-19T10:31:21Z",
+        "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39237861427/job/118011232422"
+      },
+      {
+        "name": "test (ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "completedAt": "2026-10-19T10:30:17Z",
+        "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39237861427/job/118011232468"
+      }
+    ],
+    "scope": "Read-only verification of an existing completed CI run, no retest; not an acoustic comparison."
+  },
+  "ci_receipt": {
+    "path": "build/comparison-landscape-20261019/b15-ci-observation.json",
+    "bytes": 1204,
+    "sha256": "306ff8835e836ce660f563379511601150679fd35ef817fda8086541a06a76bd"
+  },
+  "production_changes": false,
+  "sharing_scope": "Only authored report and provenance JSON; local source snapshots stay ignored and no external media/software/firmware is redistributed."
+}
