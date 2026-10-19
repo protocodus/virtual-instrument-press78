@@ -255,4 +255,13 @@ python3 Tools/check_rack_contract.py /path/to/SDK-worktree/Examples/Press78
 
 ## Licensing
 
-Press78's source code is MIT-licensed; see [LICENSE](LICENSE). The plug-in builds with JUCE (AGPLv3 or a commercial JUCE licence) and clap-juce-extensions; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The factory voice parameters are not covered by the MIT licence and their redistribution rights are unresolved; the notices file explains why.
+Press78's source is available under the [PolyForm Noncommercial License
+1.0.0](LICENSE): you may read, study, change and share it for any non-commercial
+purpose, but not sell it or use it commercially. Official Protocodus builds
+carry an additional permission in the same file to use them for any purpose,
+including making music commercially. Commits made before this licence change
+were published under MIT and remain so. The plug-in builds with JUCE (official
+builds use a commercial JUCE 8 Starter licence) and clap-juce-extensions; see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The factory voice parameters
+are not covered by that licence and their redistribution rights are unresolved;
+the notices file explains why.
