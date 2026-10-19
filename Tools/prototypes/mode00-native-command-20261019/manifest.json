@@ -1,0 +1,73 @@
+{
+  "schema": "press78.mode00-native-command-export.v1",
+  "created_utc": "2026-10-19T15:19:39.957814+00:00",
+  "scope": "Standalone C++17 research command frontend; no production/audio integration, ROM or factory payload.",
+  "files": {
+    "CommandProbe.cpp": {
+      "sha256": "6d02210b10f2993cd59c2e5010f7ff25ba8cbeacf3b7c2a19069a6d1eec27b5c",
+      "bytes": 5250
+    },
+    "FirmwareAllocation.h": {
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a",
+      "bytes": 4043
+    },
+    "Mode00ProgramCommands.h": {
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f",
+      "bytes": 7339
+    },
+    "README.md": {
+      "sha256": "95460760453e753d7fb0ca23ee98d5ae2de16ff3c8ed29806386ea29f4ad52da",
+      "bytes": 4645
+    },
+    "SyntheticTests.cpp": {
+      "sha256": "526d723a14bb609367d504b176e0d2f335b0fb09a3d01f01bce26f3f624b8948",
+      "bytes": 7650
+    },
+    "design-frozen.json": {
+      "sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+      "bytes": 6669
+    },
+    "independent-review.json": {
+      "sha256": "0d51000f407a51dc0e51b4ccb954411f726f0f4849429943314c221a639b476a",
+      "bytes": 30536
+    },
+    "source-test-bound.json": {
+      "sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+      "bytes": 1702
+    },
+    "validation-before-scope-correction.json": {
+      "sha256": "a758a0e7ffa75ae082b30afe26738228842ba6d6b4409483bc118c3fb4d59769",
+      "bytes": 2511
+    },
+    "validation-scoped.json": {
+      "sha256": "8dd83571563098c0d5212743508825f7db1a32ba8b7526e281b384bfa496c969",
+      "bytes": 3364
+    }
+  },
+  "source_identity": {
+    "Mode00ProgramCommands.h": {
+      "bound_original_path": "build/mode00-native-command-bridge-20261019/prototype/Mode00ProgramCommands.h",
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f",
+      "byte_identical": true
+    },
+    "FirmwareAllocation.h": {
+      "bound_original_path": "build/mode00-native-command-bridge-20261019/prototype/FirmwareAllocation.h",
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a",
+      "byte_identical": true
+    },
+    "SyntheticTests.cpp": {
+      "bound_original_path": "build/mode00-native-command-bridge-20261019/SyntheticTests.cpp",
+      "sha256": "526d723a14bb609367d504b176e0d2f335b0fb09a3d01f01bce26f3f624b8948",
+      "byte_identical": true
+    },
+    "CommandProbe.cpp": {
+      "bound_original_path": "build/mode00-native-command-bridge-20261019/CommandProbe.cpp",
+      "sha256": "6d02210b10f2993cd59c2e5010f7ff25ba8cbeacf3b7c2a19069a6d1eec27b5c",
+      "byte_identical": true
+    }
+  },
+  "copy_validation": "No native test was repeated for the export; exact implementation/test byte identity carries the bound original validation. Public synthetic test command is in README.",
+  "binding_path": "build/mode00-native-command-bridge-20261019/source-test-bound.json",
+  "binding_sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+  "original_workspace_paths": "Historical immutable provenance; no path migration or source retargeting performed by this export."
+}

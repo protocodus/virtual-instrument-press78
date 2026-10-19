@@ -1,0 +1,44 @@
+{
+  "schema": "press78.mode00-native-command-binding.v1",
+  "utc": "2026-10-19T15:12:37.601593+00:00",
+  "native_tests_started": false,
+  "files": {
+    "prototype/Mode00ProgramCommands.h": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f",
+    "prototype/FirmwareAllocation.h": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a",
+    "CommandProbe.cpp": "6d02210b10f2993cd59c2e5010f7ff25ba8cbeacf3b7c2a19069a6d1eec27b5c",
+    "SyntheticTests.cpp": "526d723a14bb609367d504b176e0d2f335b0fb09a3d01f01bce26f3f624b8948",
+    "run.py": "1903bd5a28b1a1d58018db2fb48a103a3ccaf4d3b61a938bcf52e7041394d9b2",
+    "design-frozen.json": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+    "fixture.txt": "c83bc7592962ab0a53fc0df542ec57d02f0736658444d3da054b8962e27eba3f",
+    "expected.jsonl": "2d5be173780655648cc75083e12f8ebdd4e0b9ebcc61e8f56e1c733d49f6425a"
+  },
+  "fixture_counts": {
+    "original_cases": 60,
+    "native_rows": 1344,
+    "python_command_checks": 2268,
+    "ram_prior_byte_checks": 49816,
+    "program_plans": 120,
+    "program_words": 20844
+  },
+  "compiler": "/usr/bin/clang++",
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.5.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+  "flags": {
+    "release": [
+      "-O2"
+    ],
+    "sanitized": [
+      "-O1",
+      "-g",
+      "-fno-omit-frame-pointer",
+      "-fsanitize=address,undefined"
+    ]
+  },
+  "common_flags": [
+    "-std=c++17",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Werror"
+  ],
+  "scope": "Fixed native research tests only; no Engine, original CPU or audio execution."
+}

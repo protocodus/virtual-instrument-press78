@@ -1,0 +1,74 @@
+{
+  "schema": "press78.mode00-native-command-validation.v1",
+  "passed": true,
+  "binding_sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+  "input_design_sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+  "fixture_counts": {
+    "original_cases": 60,
+    "native_rows": 1344,
+    "python_command_checks": 2268,
+    "ram_prior_byte_checks": 49816,
+    "program_plans": 120,
+    "program_words": 20844
+  },
+  "rows": [
+    {
+      "mode": "release",
+      "source": "CommandProbe.cpp",
+      "returncode": 0,
+      "executable_sha256": "f1fe66ca541c403cca9756900ffff3ed223095d6ad84af9f203fbbb557a676fb",
+      "allocations": 0,
+      "passed": true,
+      "rows": 1344,
+      "exact_fields": 18696,
+      "stdout_sha256": "881ec4e4d6f564666acdd2413d1ebf3573a79a37d0d0a0ba0b657ed53e1c17d2"
+    },
+    {
+      "mode": "release",
+      "source": "SyntheticTests.cpp",
+      "returncode": 0,
+      "executable_sha256": "d0e053fbbf54a0b840eb8fd88a487e7f6cf73a6a880de4771821f1cb99de96f6",
+      "allocations": 0,
+      "passed": true,
+      "assertions": 81361,
+      "frontend_bytes": 280,
+      "snapshot_bytes": 232,
+      "plan_bytes": 856,
+      "allocator_bytes": 184
+    },
+    {
+      "mode": "sanitized",
+      "source": "CommandProbe.cpp",
+      "returncode": 0,
+      "executable_sha256": "c0267c1bb6418cd5120465ce68f07f5a29aa7d6e2f09e7713e1817ee92c8dc05",
+      "allocations": 0,
+      "passed": true,
+      "rows": 1344,
+      "exact_fields": 18696,
+      "stdout_sha256": "881ec4e4d6f564666acdd2413d1ebf3573a79a37d0d0a0ba0b657ed53e1c17d2"
+    },
+    {
+      "mode": "sanitized",
+      "source": "SyntheticTests.cpp",
+      "returncode": 0,
+      "executable_sha256": "a434b222c25df384e86e2ff0c4a80a8b3f1e3de24badadeb17440d0ba5e53dac",
+      "allocations": 0,
+      "passed": true,
+      "assertions": 81361,
+      "frontend_bytes": 280,
+      "snapshot_bytes": 232,
+      "plan_bytes": 856,
+      "allocator_bytes": 184
+    }
+  ],
+  "errors": [],
+  "source_hashes_unchanged": true,
+  "limits": [
+    "Only normal12slot declaredMode00 serial domain, no physicalkeyscan/accompaniment/rhythm/Mode99 loader.",
+    "Caller supplies resolvedworkingbyte23 factoryeffectflags andinternalprogram; no factorybank/ROM/media export.",
+    "No silence/phase/retimbre/reset serviceperiod or DSP fidelityclaim.",
+    "Original60cases are reuseddevelopment evidence, no freshholdout orhardwaremeasurement."
+  ],
+  "no_audio": true,
+  "no_production_edits": true
+}

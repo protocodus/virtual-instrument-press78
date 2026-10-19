@@ -1,0 +1,1135 @@
+{
+  "schema": "press78.mode00-native-command-independent-review.v1",
+  "utc": "2026-10-19T15:17:06.815811+00:00",
+  "passed": true,
+  "checks": 126751,
+  "frozen_expected_fields_both_modes": 37392,
+  "independent_raw_state_fields_both_modes": 36672,
+  "native_rows_per_mode": 1344,
+  "original_cases": 60,
+  "complete_program_plans_per_mode": 120,
+  "complete_program_words_per_mode": 20844,
+  "raw_RAM_prior_byte_checks": 49816,
+  "original_cases_summary": [
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "empty",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "pending",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "held",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "released",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "mixed12",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 198,
+      "released_slots": [
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        3,
+        2,
+        1
+      ],
+      "released_pitches": [
+        59,
+        58,
+        57,
+        56,
+        55,
+        54,
+        53,
+        51,
+        50,
+        49
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "empty",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "pending",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "held",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "released",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "mixed12",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 198,
+      "released_slots": [
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        3,
+        2,
+        1
+      ],
+      "released_pitches": [
+        59,
+        58,
+        57,
+        56,
+        55,
+        54,
+        53,
+        51,
+        50,
+        49
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "empty",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "pending",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "held",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "released",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "mixed12",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 198,
+      "released_slots": [
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        3,
+        2,
+        1
+      ],
+      "released_pitches": [
+        59,
+        58,
+        57,
+        56,
+        55,
+        54,
+        53,
+        51,
+        50,
+        49
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "empty",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "pending",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "held",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "released",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "780",
+      "scenario": "mixed12",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 198,
+      "released_slots": [
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        3,
+        2,
+        1
+      ],
+      "released_pitches": [
+        59,
+        58,
+        57,
+        56,
+        55,
+        54,
+        53,
+        51,
+        50,
+        49
+      ]
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "empty",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "pending",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "held",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "released",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "mixed12",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "empty",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "pending",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "held",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "released",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "mixed12",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "empty",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "pending",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "held",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "released",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "mixed12",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "empty",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "pending",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "held",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "released",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "retained40",
+      "model": "680",
+      "scenario": "mixed12",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "ordering12",
+      "model": "780",
+      "scenario": "shuffled_held12",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 204,
+      "released_slots": [
+        2,
+        5,
+        7,
+        9,
+        11,
+        0,
+        6,
+        10,
+        4,
+        8,
+        1,
+        3
+      ],
+      "released_pitches": [
+        96,
+        84,
+        72,
+        67,
+        61,
+        60,
+        57,
+        56,
+        55,
+        49,
+        48,
+        36
+      ]
+    },
+    {
+      "family": "ordering12",
+      "model": "780",
+      "scenario": "shuffled_mixed12",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 201,
+      "released_slots": [
+        2,
+        5,
+        7,
+        9,
+        11,
+        0,
+        6,
+        10,
+        4,
+        8,
+        1
+      ],
+      "released_pitches": [
+        96,
+        84,
+        72,
+        67,
+        61,
+        60,
+        57,
+        56,
+        55,
+        49,
+        48
+      ]
+    },
+    {
+      "family": "ordering12",
+      "model": "780",
+      "scenario": "descending_held12",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 204,
+      "released_slots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "released_pitches": [
+        96,
+        84,
+        72,
+        67,
+        61,
+        60,
+        57,
+        56,
+        55,
+        49,
+        48,
+        36
+      ]
+    },
+    {
+      "family": "ordering12",
+      "model": "780",
+      "scenario": "paired_pending12",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 204,
+      "released_slots": [
+        2,
+        5,
+        7,
+        9,
+        11,
+        0,
+        6,
+        10,
+        4,
+        8,
+        1,
+        3
+      ],
+      "released_pitches": [
+        96,
+        84,
+        72,
+        67,
+        61,
+        60,
+        57,
+        56,
+        55,
+        49,
+        48,
+        36
+      ]
+    },
+    {
+      "family": "ordering12",
+      "model": "780",
+      "scenario": "cached_reuse6",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 177,
+      "released_slots": [
+        3,
+        0,
+        1
+      ],
+      "released_pitches": [
+        96,
+        60,
+        48
+      ]
+    },
+    {
+      "family": "ordering12",
+      "model": "780",
+      "scenario": "stolen_held13",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 204,
+      "released_slots": [
+        2,
+        0,
+        5,
+        7,
+        9,
+        11,
+        6,
+        10,
+        4,
+        8,
+        1,
+        3
+      ],
+      "released_pitches": [
+        96,
+        90,
+        84,
+        72,
+        67,
+        61,
+        57,
+        56,
+        55,
+        49,
+        48,
+        36
+      ]
+    },
+    {
+      "family": "ordering12",
+      "model": "680",
+      "scenario": "shuffled_held12",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "ordering12",
+      "model": "680",
+      "scenario": "shuffled_mixed12",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "ordering12",
+      "model": "680",
+      "scenario": "descending_held12",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "ordering12",
+      "model": "680",
+      "scenario": "paired_pending12",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "ordering12",
+      "model": "680",
+      "scenario": "cached_reuse6",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "ordering12",
+      "model": "680",
+      "scenario": "stolen_held13",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "caller8",
+      "model": "780",
+      "scenario": "held",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "caller8",
+      "model": "780",
+      "scenario": "held",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "caller8",
+      "model": "780",
+      "scenario": "held",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "caller8",
+      "model": "780",
+      "scenario": "held",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 171,
+      "released_slots": [
+        0
+      ],
+      "released_pitches": [
+        60
+      ]
+    },
+    {
+      "family": "caller8",
+      "model": "680",
+      "scenario": "held",
+      "target": "BowedBass",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "caller8",
+      "model": "680",
+      "scenario": "held",
+      "target": "HumanVoice1",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "caller8",
+      "model": "680",
+      "scenario": "held",
+      "target": "MusicalSaw",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    },
+    {
+      "family": "caller8",
+      "model": "680",
+      "scenario": "held",
+      "target": "SineControl",
+      "two_exact_plans": true,
+      "words_per_plan": 168,
+      "released_slots": [],
+      "released_pitches": []
+    }
+  ],
+  "allocation_measurement": {
+    "scope": "CommandProbe restore/noteOn/noteOff/service/selectProgram calls only; parser/iostream and synthetic executable are outside measured regions",
+    "measured_rows_per_mode": 1344,
+    "new_and_new_array_counts_both_modes": 0,
+    "synthetic_allocation_measurement": "not performed; initial placeholder zero explicitly removed in scoped validation"
+  },
+  "capacity_and_sizes": {
+    "maximum_register_writes": 204,
+    "maximum_release_slots": 12,
+    "frontend_bytes_native_arm64": 280,
+    "snapshot_bytes_native_arm64": 232,
+    "plan_bytes_native_arm64": 856
+  },
+  "artifacts": [
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/source-test-bound.json",
+      "bytes": 1702,
+      "sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/validation-scoped.json",
+      "bytes": 3364,
+      "sha256": "8dd83571563098c0d5212743508825f7db1a32ba8b7526e281b384bfa496c969"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/prototype/Mode00ProgramCommands.h",
+      "bytes": 7339,
+      "sha256": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/prototype/FirmwareAllocation.h",
+      "bytes": 4043,
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/CommandProbe.cpp",
+      "bytes": 5250,
+      "sha256": "6d02210b10f2993cd59c2e5010f7ff25ba8cbeacf3b7c2a19069a6d1eec27b5c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/SyntheticTests.cpp",
+      "bytes": 7650,
+      "sha256": "526d723a14bb609367d504b176e0d2f335b0fb09a3d01f01bce26f3f624b8948"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/run.py",
+      "bytes": 12091,
+      "sha256": "1903bd5a28b1a1d58018db2fb48a103a3ccaf4d3b61a938bcf52e7041394d9b2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/design-frozen.json",
+      "bytes": 6669,
+      "sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/fixture.txt",
+      "bytes": 45152,
+      "sha256": "c83bc7592962ab0a53fc0df542ec57d02f0736658444d3da054b8962e27eba3f"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/expected.jsonl",
+      "bytes": 811601,
+      "sha256": "2d5be173780655648cc75083e12f8ebdd4e0b9ebcc61e8f56e1c733d49f6425a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-native-candidate-20261019/prototype/Source/DSP/FirmwareAllocation.h",
+      "bytes": 4043,
+      "sha256": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-native-candidate-20261019/prototype/Source/DSP/Press78Engine.cpp",
+      "bytes": 32311,
+      "sha256": "4d7936aa579205c3c85487c8afedaf5d937dbce725dd89752068bbfbb5d8d5d8"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-native-candidate-20261019/prototype/Source/DSP/Press78Engine.h",
+      "bytes": 11072,
+      "sha256": "79c7eeba12560349b391cc3e13fa128673d4ad71733c98d00881a8c2be51fe9a"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-native-candidate-20261019/candidate-validation.json",
+      "bytes": 120966,
+      "sha256": "1eb807dcfe2d34330d37710271b81cd962ae243c627a7710287cce55fe5583e6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-program-command-adapter-20261019/design-frozen.json",
+      "bytes": 15784,
+      "sha256": "0871274b08bfb2906b98cfd8efc62fcf423f83b809cfcf90e46ef6ce05066ebe"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-program-command-adapter-20261019/implementation-bound.json",
+      "bytes": 1082,
+      "sha256": "dde2d8e010dd84150467200439436f93fcf36be71a9064f3018f5594ab8068e3"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-program-command-adapter-20261019/validation.json",
+      "bytes": 62123,
+      "sha256": "c7f6fb195420a356b66e3ee77b183612382c7e99dc111db4921176d6371cf1ce"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-program-command-adapter-20261019/ordering-observations.jsonl.gz",
+      "bytes": 254574,
+      "sha256": "8abfeaf4956b94ba1770428eeb60b7ee2020034e0ac48885cf7ea85176a7bc85"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-mode00-program-load-20261019/observations.jsonl.gz",
+      "bytes": 551758,
+      "sha256": "43ebc3ee18a7152a0ac8191abb6f8313c553c27b9c531ac907021d79137f6de5"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-mode00-program-load-20261019/serial-caller-result.json",
+      "bytes": 1592084,
+      "sha256": "34d03c2bbd977f8bf094e6d7041a9fe02111660bfc2a23f09ea98f687b8ed246"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/program_loader.py",
+      "bytes": 7342,
+      "sha256": "a5e5d3eb033da8996a719daa2c4a5078ff77770d1207ce00f5b6fc606bd35d16"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/firmware_allocator.py",
+      "bytes": 4837,
+      "sha256": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/mode00-program-load-20261019/state_fixture.json",
+      "bytes": 41741,
+      "sha256": "fe847803c819980f9415d8df2b39c8383f8d73888f6076fcc806731f8a4a8794"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/mode00-program-command-validation-20261019.json",
+      "bytes": 2942,
+      "sha256": "a81fbce01204e146d596bfd2e716e3978810073f18bb0301c8ea42451d1d34c2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/release/CommandProbe",
+      "bytes": 38672,
+      "sha256": "f1fe66ca541c403cca9756900ffff3ed223095d6ad84af9f203fbbb557a676fb"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/release/CommandProbe-build.json",
+      "bytes": 540,
+      "sha256": "b904400bd071ba08a9ca863d682fe2031db9b947962a96af934bc945e05f6cef"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/release/CommandProbe-stdout.jsonl",
+      "bytes": 803479,
+      "sha256": "881ec4e4d6f564666acdd2413d1ebf3573a79a37d0d0a0ba0b657ed53e1c17d2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/release/CommandProbe-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/release/SyntheticTests",
+      "bytes": 55776,
+      "sha256": "d0e053fbbf54a0b840eb8fd88a487e7f6cf73a6a880de4771821f1cb99de96f6"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/release/SyntheticTests-build.json",
+      "bytes": 544,
+      "sha256": "0ff214fe01c0e4d6e9e05a6a47544a7f89533739a3e0b54221911921c31eaefc"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/release/SyntheticTests-stdout.jsonl",
+      "bytes": 116,
+      "sha256": "e3e26d19573907e80b375ee1b9c10faea32a45691972fcf8293f808bc1976461"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/release/SyntheticTests-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/sanitized/CommandProbe",
+      "bytes": 122064,
+      "sha256": "c0267c1bb6418cd5120465ce68f07f5a29aa7d6e2f09e7713e1817ee92c8dc05"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/sanitized/CommandProbe-build.json",
+      "bytes": 619,
+      "sha256": "856f803b33bc8363fdc91b50a3bfefeb7873780596f5686843687c07ed2a831c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/sanitized/CommandProbe-stdout.jsonl",
+      "bytes": 803479,
+      "sha256": "881ec4e4d6f564666acdd2413d1ebf3573a79a37d0d0a0ba0b657ed53e1c17d2"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/sanitized/CommandProbe-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/sanitized/SyntheticTests",
+      "bytes": 118656,
+      "sha256": "a434b222c25df384e86e2ff0c4a80a8b3f1e3de24badadeb17440d0ba5e53dac"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/sanitized/SyntheticTests-build.json",
+      "bytes": 623,
+      "sha256": "678b6d9074a7a9553425ce481821a60cd716e0873685aa82401e1a483aa537bf"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/sanitized/SyntheticTests-stdout.jsonl",
+      "bytes": 116,
+      "sha256": "e3e26d19573907e80b375ee1b9c10faea32a45691972fcf8293f808bc1976461"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/sanitized/SyntheticTests-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-independent-20261019/audit.py",
+      "bytes": 11315,
+      "sha256": "43cec6582c942af6367346391bec0972ac93806ce96ef394d88324edc5e7e10c"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-bridge-20261019/validation.json",
+      "bytes": 2511,
+      "sha256": "a758a0e7ffa75ae082b30afe26738228842ba6d6b4409483bc118c3fb4d59769"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-independent-20261019/audit-before-comment-scan.py",
+      "bytes": 11175,
+      "sha256": "80131ee68783922a4d9eb1c4f8072fcc0f3c82cc87fe467141eadf2d248c1e64"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-independent-20261019/failure-before-comment-scan.json",
+      "bytes": 1139,
+      "sha256": "81e730ee45d70b8a6dcb2bc30d0fbbe5cebb6721454c069dfc5adbe0ccf59722"
+    },
+    {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-native-command-independent-20261019/comment-scan-correction.json",
+      "bytes": 528,
+      "sha256": "1c0bc36a040dc712130bc2052f421e9588125e4c89c04527d8c17b6cfa493af4"
+    }
+  ],
+  "limits": [
+    "No new native, original-CPU or audio executions; retained Release/sanitizer output and source were independently audited.",
+    "Original60cases are reused development evidence, with both sequential and restored pre-load paths; not fresh hardware measurements.",
+    "Ordinary note/service outputs cover allocator-selected slots and paired keys only, not all note-on/service registers.",
+    "Only full12slot normal Mode00 serial source0, notes36..96, valid sharedFFcache and pending0/1. No CV, physical key scan, rhythm/accompaniment or Mode99.",
+    "Caller resolves workingpatch and byte23 effect metadata; no factory bank or ROM payload embedded.",
+    "Commands do not imply oscillator phase, envelope restart/retimbre, output silence or actual service cadence. No DSP/default adoption."
+  ]
+}
