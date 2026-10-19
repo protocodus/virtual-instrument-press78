@@ -1,0 +1,42 @@
+{
+  "schema": "press78.key-level-research-patch.v1",
+  "base_revision": "c8e9982d1619438d5713a6b373f4edb64c1e77e4",
+  "patch_sha256": "288010b31b5d9ca4b210fd8a69678e509de27c768f6179b98b358542e7f5f13f",
+  "files": {
+    "CMakeLists.txt": {
+      "bytes": 3306,
+      "sha256": "bae379bc5a15b71bf8b51701281d8fffa4682dbbad5302475c07e9f014a2cfe4"
+    },
+    "Source/DSP/FirmwareLevel.h": {
+      "bytes": 3679,
+      "sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+    },
+    "Source/DSP/Press78Engine.cpp": {
+      "bytes": 27565,
+      "sha256": "06d1daef13efcce1ba4c3970e5485c75e77c6757ae1f960309a3f4ec93e2f71c"
+    },
+    "Source/DSP/Press78Engine.h": {
+      "bytes": 9561,
+      "sha256": "42047e65d40d7635f2d7be413882a2abc041f3a360e15c4c2e133011a852d63a"
+    },
+    "Tests/test_key_level.cpp": {
+      "bytes": 9348,
+      "sha256": "2446aefe17094a45fd10c849ebcdce876057a68b7a670ea47d78d9c53d51dd11"
+    },
+    "Tools/NativeRender.cpp": {
+      "bytes": 7487,
+      "sha256": "7a4e616aa123e4caaf945eeb10b96afc158613fc490ef302a3e90dd4683b5f40"
+    },
+    "Tools/PerformanceProbe.cpp": {
+      "bytes": 5315,
+      "sha256": "a592bc4050f4e93d8493f3048a1a86d720c56c9637183540b68d696c70d205e7"
+    },
+    "Tools/generate_firmware_level.py": {
+      "bytes": 5254,
+      "sha256": "a2fe39632c632037d2680c6114e63ab71dbbe5b1422917e92d8710e5776498b2"
+    }
+  },
+  "apply_and_exact_hash_check_passed": true,
+  "status": "Research candidate only; failed predeclared BowedBass audio gate; not production or Rack versionb13",
+  "scope": "Independent functional command implementation and tests. No original firmware executable, third-party media, unused ROM data or targetchip claim."
+}

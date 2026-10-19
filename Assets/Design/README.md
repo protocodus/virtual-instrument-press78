@@ -1,8 +1,8 @@
 # Press78 design — layout study 11
 
-Open `index.html` directly or serve the repository and visit `/Assets/Design/index.html`. It is a self-contained interactive layout review, with 100 factory-preset previews. Preset changes update both operators, wave selections, and values. Knobs support horizontal dragging, keyboard arrows and the precise-value inspector. Front, rear and folded views use logical rack geometry.
+Open `index.html` directly or serve the repository and visit `/Assets/Design/index.html`. It is a self-contained interactive layout review, with 150 factory-preset previews. Preset changes update both operators, wave selections, and values. Knobs support horizontal dragging, keyboard arrows and the precise-value inspector. Front, rear and folded views use logical rack geometry.
 
-This prototype does not produce audio. The native Reason patch selector and sockets are represented by review placeholders. Both native GUI formats use standard `jbox.patch_name` and `jbox.patch_browse_group` widgets with unchanged stock artwork. All 100 factory `.repatch` files use the `PSS` prefix; `Init.repatch` remains separate.
+This prototype does not produce audio. The native Reason patch selector and sockets are represented by review placeholders. Both native GUI formats use standard `jbox.patch_name` and `jbox.patch_browse_group` widgets with unchanged stock artwork. The 100 original `.repatch` files use the `PSS` prefix; 50 modern patches use category names; `Init.repatch` remains separate.
 
 ## Geometry and control contract
 

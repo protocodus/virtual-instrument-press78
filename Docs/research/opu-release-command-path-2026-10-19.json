@@ -1,0 +1,823 @@
+{
+  "schema": "press78.opu-release-command-path.v1",
+  "date": "2026-10-19",
+  "status": "ready_for_independent_audit",
+  "scope": "Original PSS780/PSS680 software command-path evidence only. No audio measurements, envelope-rate fitting, production changes, original hardware or complete boot emulation.",
+  "source_provenance": {
+    "identity_authority": "https://github.com/mamedev/mame/blob/983e76f8cd84f8da8d14241c9f07a5ee138cc3eb/src/mame/yamaha/ympsr16.cpp",
+    "manual": "https://usa.yamaha.com/files/download/other_assets/1/317511/PSS780E.PDF",
+    "roms": [
+      {
+        "model": "pss680",
+        "public_page": "https://mdk.cab/game/pss680",
+        "ordinary_linked_download": "https://mdk.cab/download/split/pss680.zip",
+        "rom_file": "xe416d0-093.ic4",
+        "rom_sha1": "d578324cfae73cd5f6c628eb3044be07684bc5d0",
+        "rom_sha256": "52f19aa8eae1730a8f00b43672b911cf5cfa7e5a2af324b9dd377249e2a995f1",
+        "rom_size_bytes": 262144,
+        "rom_crc32": "150d1392"
+      },
+      {
+        "model": "pss780",
+        "public_page": "https://mdk.cab/game/pss780",
+        "ordinary_linked_download": "https://mdk.cab/download/split/pss780.zip",
+        "rom_file": "xg503b0-132.ic4",
+        "rom_sha1": "33cc3f4ab27cf6e5068627625f6ab236209ad776",
+        "rom_sha256": "ce0a69d143deacdb52eb28a1f5de80584ce7576ba94488fa4b035dfc6f0a76a7",
+        "rom_size_bytes": 262144,
+        "rom_crc32": "0c055206"
+      }
+    ],
+    "distribution": "Original firmware, full disassembly and complete source-derived traces remain ignored; no firmware bytes distributed."
+  },
+  "fixture": {
+    "mode00": 0,
+    "mode99": 153,
+    "mode_entry": "0x8bfd after factory load; then explicit RAM3f80=153",
+    "panel_programs": [
+      65,
+      93,
+      97,
+      99
+    ],
+    "notes": [
+      36,
+      60,
+      74,
+      96
+    ],
+    "velocity": 127,
+    "effects": "All8 combinations of Vibrato1/Sustain2/Reverb4; explicit neutral effects RAM before real control paths.",
+    "memory": "Read-only program ROM, bank switch1800, zero-page mirrored at0100..01ff, always-ready0200 peripheral, explicit neutral channel-enable/bend/range RAM.",
+    "scope_limits": [
+      "Constructed startup state, not original firmware fullboot or peripheral timing.",
+      "Mode99 Sustain through receivedCC64; physical button evaluated separately.",
+      "All original initialization/control/note/service writes retained at0200..03ff.",
+      "32 postoff key/vibrato service invocations are not milliseconds and do not cover every firmware scheduler."
+    ]
+  },
+  "routines": {
+    "PSS780": {
+      "rom": "xg503b0-132.ic4",
+      "sha1": "33cc3f4ab27cf6e5068627625f6ab236209ad776",
+      "factory": 55606,
+      "serial": 45876,
+      "scan": 40988,
+      "mode_enter": 35837,
+      "effects": 57511,
+      "service": 51524,
+      "rr": 51588
+    },
+    "PSS680": {
+      "rom": "xe416d0-093.ic4",
+      "sha1": "d578324cfae73cd5f6c628eb3044be07684bc5d0",
+      "factory": 55345,
+      "serial": 45645,
+      "scan": 40769,
+      "mode_enter": 35837,
+      "effects": 57152,
+      "service": 51263,
+      "rr": 51327
+    }
+  },
+  "shared_bank2_vibrato_service": "0x43b7",
+  "commands": {
+    "operator_port_offset": "(slot>>1)+16*(slot&1)",
+    "D1L_RR_ports": "modulator0200+e0+offset; carrier0200+e8+offset",
+    "release_word": "(raw_D1L_RR & 0xf0) | ((sustain_enabled ? raw_SRR : raw_D1L_RR) & 0x0f)",
+    "reverb": "Adds128 to both operator-level control writes; low7 bits unchanged in every main case.",
+    "level_ports": "modulator0200+60+offset; carrier0200+68+offset",
+    "keyoff": "Always emits0208 after RR/SRR writes, retaining paired slot key bits. Sustain does not defer keyoff in tested paths.",
+    "CC64": "All values1..127 enable sustain;0 disables. Mode00 global state, Mode99 receiving-channel state.",
+    "keyon": "Initial key service counter1; carrier temporarily RR15, then one key service restores raw carrier RR and asserts paired key-on bitfield. Early off clears counter and prevents later keyon. No elapsed-time claim.",
+    "postoff": "No RR or TL writes in32 tested key/vibrato service passes.32 main cases retain delayed vibrato-only0218..021d writes;480 have no postoff writes."
+  },
+  "transitions": {
+    "Reverb_panel": "No immediate operator writes for held or released notes in96-case transition fixture subset; state toggles. Next level-builder use is distinct from immediate refresh.",
+    "Sustain_panel_Mode00": "Updates RR/SRR commands on cached slots, including already-keyoff slot.",
+    "Sustain_panel_Mode99": "Updates global effect state and emits MIDI output, but does not refresh received-note RR in tested path.",
+    "CC64_Mode00_Mode99": "Updates appropriate global/channel state and refreshes corresponding RR/SRR commands, including released slot.",
+    "limits": "Do not infer whether a running OPU envelope recalculates instantaneous slope from a changed command without hardware validation."
+  },
+  "panel_numbering": {
+    "PSS780_display_to_internal": {
+      "65": 35,
+      "93": 94,
+      "97": 98,
+      "99": 99
+    },
+    "PSS680_display_to_internal": "Identity for literal65/93/97/99 tested.",
+    "exact_payload_matches_PSS780_to_PSS680": {
+      "65": 35,
+      "93": 94,
+      "97": 98,
+      "99": 99
+    },
+    "matched_check": "64 original-firmware cases have identical32byte payload and all noteon/keyservice/noteoff IO writes across the matched models.",
+    "caution": "A Mode99 wireprogram number is not necessarily a PSS780 displayed factory number; no retroactive change to old pitch or Mode00 audio results."
+  },
+  "factory_baselines": [
+    {
+      "model": "PSS780",
+      "mode": 0,
+      "panel_program": 65,
+      "internal_program": 35,
+      "mode99_wire_program_for_same_timbre": 35,
+      "fields": {
+        "modulator": {
+          "D1L": 1,
+          "RR": 4,
+          "SRR": 3,
+          "TL_raw": 18
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 6,
+          "SRR": 5,
+          "TL_raw": 19
+        }
+      },
+      "raw_payload_sha256": "ff9358eac9be59f3dad69531ebbd9f17250538432df069125fa57675b0bcda1c",
+      "initialization_write_count": 171,
+      "initialization_writes_sha256": "4df7969dfb80c2845853ad7f2a7f2d751bfe6e4dcb876c94dca26eb0a941a0c9"
+    },
+    {
+      "model": "PSS780",
+      "mode": 0,
+      "panel_program": 93,
+      "internal_program": 94,
+      "mode99_wire_program_for_same_timbre": 94,
+      "fields": {
+        "modulator": {
+          "D1L": 1,
+          "RR": 3,
+          "SRR": 1,
+          "TL_raw": 31
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 7,
+          "SRR": 5,
+          "TL_raw": 19
+        }
+      },
+      "raw_payload_sha256": "acb5b15a3b9a08c00b7a7af52b8735763f927a8f1ee7666bd4147c42c2fe438c",
+      "initialization_write_count": 171,
+      "initialization_writes_sha256": "de61fca721412a729d573f8dfc9b050c2eedeee01990eb8bfe8da76255be9cf2"
+    },
+    {
+      "model": "PSS780",
+      "mode": 0,
+      "panel_program": 97,
+      "internal_program": 98,
+      "mode99_wire_program_for_same_timbre": 98,
+      "fields": {
+        "modulator": {
+          "D1L": 0,
+          "RR": 3,
+          "SRR": 1,
+          "TL_raw": 52
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 6,
+          "SRR": 4,
+          "TL_raw": 16
+        }
+      },
+      "raw_payload_sha256": "36f197e799be1e461525c36ad465e26f4df680aae2b983429d7bbe536fc2b09b",
+      "initialization_write_count": 171,
+      "initialization_writes_sha256": "4045f187fde7e3748629fc84f56838f4a635a89acd8571f846cb65e77064ab81"
+    },
+    {
+      "model": "PSS780",
+      "mode": 0,
+      "panel_program": 99,
+      "internal_program": 99,
+      "mode99_wire_program_for_same_timbre": 99,
+      "fields": {
+        "modulator": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 127
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 13
+        }
+      },
+      "raw_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "initialization_write_count": 171,
+      "initialization_writes_sha256": "ebb793120c30771b9dc6d3831fb81bb55c31fc24417410ffea2388183d5b2986"
+    },
+    {
+      "model": "PSS780",
+      "mode": 153,
+      "panel_program": 65,
+      "internal_program": 35,
+      "mode99_wire_program_for_same_timbre": 35,
+      "fields": {
+        "modulator": {
+          "D1L": 1,
+          "RR": 4,
+          "SRR": 3,
+          "TL_raw": 18
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 6,
+          "SRR": 5,
+          "TL_raw": 19
+        }
+      },
+      "raw_payload_sha256": "ff9358eac9be59f3dad69531ebbd9f17250538432df069125fa57675b0bcda1c",
+      "initialization_write_count": 389,
+      "initialization_writes_sha256": "5a0b92f2218169b89d50e8dba27acf7208d53abf2b97b81ec9036001c52aad67"
+    },
+    {
+      "model": "PSS780",
+      "mode": 153,
+      "panel_program": 93,
+      "internal_program": 94,
+      "mode99_wire_program_for_same_timbre": 94,
+      "fields": {
+        "modulator": {
+          "D1L": 1,
+          "RR": 3,
+          "SRR": 1,
+          "TL_raw": 31
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 7,
+          "SRR": 5,
+          "TL_raw": 19
+        }
+      },
+      "raw_payload_sha256": "acb5b15a3b9a08c00b7a7af52b8735763f927a8f1ee7666bd4147c42c2fe438c",
+      "initialization_write_count": 389,
+      "initialization_writes_sha256": "8961ba819a719d5098d399f2011e6bde7f6206026d4371f0034ad4600db4465f"
+    },
+    {
+      "model": "PSS780",
+      "mode": 153,
+      "panel_program": 97,
+      "internal_program": 98,
+      "mode99_wire_program_for_same_timbre": 98,
+      "fields": {
+        "modulator": {
+          "D1L": 0,
+          "RR": 3,
+          "SRR": 1,
+          "TL_raw": 52
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 6,
+          "SRR": 4,
+          "TL_raw": 16
+        }
+      },
+      "raw_payload_sha256": "36f197e799be1e461525c36ad465e26f4df680aae2b983429d7bbe536fc2b09b",
+      "initialization_write_count": 389,
+      "initialization_writes_sha256": "b180a5f81c9c430672bd8774dd7da83e69e99e4f10958eac63d5c7578f69630b"
+    },
+    {
+      "model": "PSS780",
+      "mode": 153,
+      "panel_program": 99,
+      "internal_program": 99,
+      "mode99_wire_program_for_same_timbre": 99,
+      "fields": {
+        "modulator": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 127
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 13
+        }
+      },
+      "raw_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "initialization_write_count": 389,
+      "initialization_writes_sha256": "b5f3253040832a7c2f23f6cbbf4c02bbc08d76126cb2644010382ee3d8bd78f6"
+    },
+    {
+      "model": "PSS680",
+      "mode": 0,
+      "panel_program": 65,
+      "internal_program": 65,
+      "mode99_wire_program_for_same_timbre": 65,
+      "fields": {
+        "modulator": {
+          "D1L": 5,
+          "RR": 1,
+          "SRR": 1,
+          "TL_raw": 17
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 5,
+          "SRR": 3,
+          "TL_raw": 11
+        }
+      },
+      "raw_payload_sha256": "9c47ef837fa8cb82238fc78b9b7661e56ebd2edbc364f206fb93131c840ec4bf",
+      "initialization_write_count": 171,
+      "initialization_writes_sha256": "13dd86b88547ddd93a9344a1ab6a7cc6bbc5a9ff006830aaea53310d955671a5"
+    },
+    {
+      "model": "PSS680",
+      "mode": 0,
+      "panel_program": 93,
+      "internal_program": 93,
+      "mode99_wire_program_for_same_timbre": 93,
+      "fields": {
+        "modulator": {
+          "D1L": 1,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 40
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 15
+        }
+      },
+      "raw_payload_sha256": "91e83ee486439597040f51bac8a2ec766cecdb831476e210f06a5263e35825bd",
+      "initialization_write_count": 171,
+      "initialization_writes_sha256": "def34cb5500fa02488785cdb4385881defeab74b6036c2f35896f2260791d25d"
+    },
+    {
+      "model": "PSS680",
+      "mode": 0,
+      "panel_program": 97,
+      "internal_program": 97,
+      "mode99_wire_program_for_same_timbre": 97,
+      "fields": {
+        "modulator": {
+          "D1L": 1,
+          "RR": 3,
+          "SRR": 1,
+          "TL_raw": 24
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 15
+        }
+      },
+      "raw_payload_sha256": "acb73f911d4025ad38d99486c3cab213217463a5143d351bf5f037278858ced7",
+      "initialization_write_count": 171,
+      "initialization_writes_sha256": "6fa620274da070f19b10686c32b776af57e410bb413b4dc417b5abae470db36a"
+    },
+    {
+      "model": "PSS680",
+      "mode": 0,
+      "panel_program": 99,
+      "internal_program": 99,
+      "mode99_wire_program_for_same_timbre": 99,
+      "fields": {
+        "modulator": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 127
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 13
+        }
+      },
+      "raw_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "initialization_write_count": 171,
+      "initialization_writes_sha256": "d078d8580fc736a0a4753008a3fd964e0cb37d46f8bab6e4793a3c5d14796a7c"
+    },
+    {
+      "model": "PSS680",
+      "mode": 153,
+      "panel_program": 65,
+      "internal_program": 65,
+      "mode99_wire_program_for_same_timbre": 65,
+      "fields": {
+        "modulator": {
+          "D1L": 5,
+          "RR": 1,
+          "SRR": 1,
+          "TL_raw": 17
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 5,
+          "SRR": 3,
+          "TL_raw": 11
+        }
+      },
+      "raw_payload_sha256": "9c47ef837fa8cb82238fc78b9b7661e56ebd2edbc364f206fb93131c840ec4bf",
+      "initialization_write_count": 389,
+      "initialization_writes_sha256": "6a30731dd59e16c854885f9d491f202ec8606c2f25cda9a8226883376f89427c"
+    },
+    {
+      "model": "PSS680",
+      "mode": 153,
+      "panel_program": 93,
+      "internal_program": 93,
+      "mode99_wire_program_for_same_timbre": 93,
+      "fields": {
+        "modulator": {
+          "D1L": 1,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 40
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 15
+        }
+      },
+      "raw_payload_sha256": "91e83ee486439597040f51bac8a2ec766cecdb831476e210f06a5263e35825bd",
+      "initialization_write_count": 389,
+      "initialization_writes_sha256": "d07f414185eee7cbe957b17dceade37e9de67f36b94e4a563db336935df40dbd"
+    },
+    {
+      "model": "PSS680",
+      "mode": 153,
+      "panel_program": 97,
+      "internal_program": 97,
+      "mode99_wire_program_for_same_timbre": 97,
+      "fields": {
+        "modulator": {
+          "D1L": 1,
+          "RR": 3,
+          "SRR": 1,
+          "TL_raw": 24
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 15
+        }
+      },
+      "raw_payload_sha256": "acb73f911d4025ad38d99486c3cab213217463a5143d351bf5f037278858ced7",
+      "initialization_write_count": 389,
+      "initialization_writes_sha256": "34260c705bd5d987cd571a916279cedc3e645e266c1174041025e1cb0fa45c81"
+    },
+    {
+      "model": "PSS680",
+      "mode": 153,
+      "panel_program": 99,
+      "internal_program": 99,
+      "mode99_wire_program_for_same_timbre": 99,
+      "fields": {
+        "modulator": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 127
+        },
+        "carrier": {
+          "D1L": 0,
+          "RR": 8,
+          "SRR": 5,
+          "TL_raw": 13
+        }
+      },
+      "raw_payload_sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "initialization_write_count": 389,
+      "initialization_writes_sha256": "4e8655437e5ee7fb01d78a572d816517bbfd3346e59be256ed561a2890226f27"
+    }
+  ],
+  "human_voice1_note74_examples": [
+    {
+      "panel_program": 93,
+      "note": 74,
+      "effect_mask": 0,
+      "modulator_level_command": 36,
+      "carrier_level_command": 54,
+      "release_words": [
+        19,
+        7
+      ],
+      "keyon_service_OPU_writes": [
+        [
+          "0x218",
+          0
+        ],
+        [
+          "0x2e8",
+          7
+        ],
+        [
+          "0x208",
+          24
+        ]
+      ],
+      "noteoff_OPU_writes": [
+        [
+          "0x2e0",
+          19
+        ],
+        [
+          "0x2e8",
+          7
+        ],
+        [
+          "0x208",
+          0
+        ]
+      ]
+    },
+    {
+      "panel_program": 93,
+      "note": 74,
+      "effect_mask": 2,
+      "modulator_level_command": 36,
+      "carrier_level_command": 54,
+      "release_words": [
+        17,
+        5
+      ],
+      "keyon_service_OPU_writes": [
+        [
+          "0x218",
+          0
+        ],
+        [
+          "0x2e8",
+          7
+        ],
+        [
+          "0x208",
+          24
+        ]
+      ],
+      "noteoff_OPU_writes": [
+        [
+          "0x2e0",
+          17
+        ],
+        [
+          "0x2e8",
+          5
+        ],
+        [
+          "0x208",
+          0
+        ]
+      ]
+    },
+    {
+      "panel_program": 93,
+      "note": 74,
+      "effect_mask": 4,
+      "modulator_level_command": 164,
+      "carrier_level_command": 182,
+      "release_words": [
+        19,
+        7
+      ],
+      "keyon_service_OPU_writes": [
+        [
+          "0x218",
+          0
+        ],
+        [
+          "0x2e8",
+          7
+        ],
+        [
+          "0x208",
+          24
+        ]
+      ],
+      "noteoff_OPU_writes": [
+        [
+          "0x2e0",
+          19
+        ],
+        [
+          "0x2e8",
+          7
+        ],
+        [
+          "0x208",
+          0
+        ]
+      ]
+    },
+    {
+      "panel_program": 93,
+      "note": 74,
+      "effect_mask": 6,
+      "modulator_level_command": 164,
+      "carrier_level_command": 182,
+      "release_words": [
+        17,
+        5
+      ],
+      "keyon_service_OPU_writes": [
+        [
+          "0x218",
+          0
+        ],
+        [
+          "0x2e8",
+          7
+        ],
+        [
+          "0x208",
+          24
+        ]
+      ],
+      "noteoff_OPU_writes": [
+        [
+          "0x2e0",
+          17
+        ],
+        [
+          "0x2e8",
+          5
+        ],
+        [
+          "0x208",
+          0
+        ]
+      ]
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "asserted_checks": 1280,
+    "main_effect_note_cases": 512,
+    "zero_velocity_noteoff_equivalence_cases": 128,
+    "CC64_value_cases": 512,
+    "matched_payload_cases": 64,
+    "early_off_cases": 64,
+    "observation_only_transition_cases": 96,
+    "twelve_slot_sequences": 4,
+    "errors_current": 0,
+    "superseded_firstpass_errors_preserved": 256,
+    "audio_fits": 0,
+    "claimed_hardware_holdouts": 0
+  },
+  "production_comparison": {
+    "current_engine_source_sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f",
+    "current_engine_header_sha256": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0",
+    "differences": [
+      "Engine sustainPedal currently defers envelope release, unlike recovered firmwareCC64 command semantics.",
+      "Patch.sustain selectsSRR at voice start; original firmware can refreshRR/SRR after noteon or keyoff.",
+      "Engine has no recovered Reverb modebit behavior.",
+      "Current analytical envelope timing remains an approximation; these commands do not identify the rate law."
+    ],
+    "changes": "None. Compatibility policy and any chip-envelope hypothesis require a separate reviewed implementation."
+  },
+  "unknowns": [
+    "Exact OPU Reverb envelope algorithm, threshold, rates and interaction with keyon/off.",
+    "OPU envelope rate tables, quantization, key scaling and native clock divider.",
+    "Hardware elapsed key-on service cadence and other scheduler/peripheral timing.",
+    "Audible effect of updating release commands during a live hardware envelope.",
+    "Complete fullboot/channel/rhythm/accompaniment behavior outside constructed fixtures."
+  ],
+  "reproduction": {
+    "python": "build/opu-digital-primary-leads-20261019/venv/bin/python",
+    "scripts": [
+      "verify_release.py",
+      "verify_transitions.py",
+      "verify_matched_payloads.py",
+      "verify_early_off.py"
+    ],
+    "working_directory": "build/opu-release-command-path-20261019",
+    "requires": "Original local ROMs with recorded hashes and prior probe_midi/verify_pitch_path dependencies. Scripts remain ignored; no firmware redistribution."
+  },
+  "artifacts": [
+    {
+      "path": "build/opu-release-command-path-20261019/design-frozen.json",
+      "sha256": "4f4f4daea228e76220f2990802ebc24b7e1277c0eab33a99bdaa7e069de39d72",
+      "bytes": 1914,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/fixture-amendments.json",
+      "sha256": "655350d7453d21426c0012719e1511a4199849a10a6de6b29d40a1144316fb7c",
+      "bytes": 1515,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/probe_release.py",
+      "sha256": "0f7300dad9e37356f9db56a2f14ffaa1afeedd414c6bd4ae2525b06785e8dfc2",
+      "bytes": 2164,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/verify_release.py",
+      "sha256": "f252a598ebdcd99e716210cf4185732817e02fb384621d28507d060a85b7e981",
+      "bytes": 5692,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/verify_transitions.py",
+      "sha256": "8025177d7cb99c78dc3729028a812f90a7d658ce1bdbb95f683657543a8b06cc",
+      "bytes": 3762,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/verify_matched_payloads.py",
+      "sha256": "b0ed3d3367183f6e470d39e61cad957e81461a6205731bbcf97741a8c58d717d",
+      "bytes": 1439,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/verify_early_off.py",
+      "sha256": "de14b22cc1da0a1180ae347648bd4530b8f83b60d869642747fb17f36df1d4cc",
+      "bytes": 1336,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/cross-model-payload-match.json",
+      "sha256": "b627c23341f0794587bb7775acadc5913d668ec58dbb55fd923e62215ce43323",
+      "bytes": 283,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/release-validation.json",
+      "sha256": "8d18a8ae1e737759402f0e926331118d5bba23a8d004d7e82802175cc7f771d5",
+      "bytes": 2528341,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/transition-validation.json",
+      "sha256": "31e0a929e28da280d06fbde8fe2e57fae376a714c3e14701c8d6830f446fb83b",
+      "bytes": 2495046,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/matched-payload-validation.json",
+      "sha256": "e7606cf7a499985dbc59cf927ff621f6cb46982a84853352b39eb6390a85e08b",
+      "bytes": 77181,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/early-off-validation.json",
+      "sha256": "11c77de6440601b91e90ed1d14c63592f38b6cf2f7ff581819b3695b2b94acad",
+      "bytes": 113819,
+      "status": "current evidence"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/release-validation-firstpass.json",
+      "sha256": "419226844a31e1ef752ca81af46b2f78db4468fa160ef5df4c9d25aabdc39a62",
+      "bytes": 1533287,
+      "status": "superseded exploratory or harness failure"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/baseline-probe.txt",
+      "sha256": "64d683601a40016ac648322bc0dde83be301f9408efa5ebd705f6019fd44cf6c",
+      "bytes": 32109,
+      "status": "superseded exploratory or harness failure"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/explore.py",
+      "sha256": "10279ae444fb178a3bc3596f2f63c34d2c9d95cce7c38ada5330a4866b7f03ff",
+      "bytes": 757,
+      "status": "superseded exploratory or harness failure"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/explore.txt",
+      "sha256": "58c16167ff0e80a106acde3c015a2cf784a96a2d9d4286aecf90bafeea6014db",
+      "bytes": 9488,
+      "status": "superseded exploratory or harness failure"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/extra_probes.py",
+      "sha256": "1f234f3c52b489c3264cff5e68e3abdb4151c052bca43e34391ac665a4f10111",
+      "bytes": 489,
+      "status": "superseded exploratory or harness failure"
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/probe_midi.py",
+      "sha256": "41ae883eabd3e212cdb3755185c46c549252b37c96dd4147330058a6521368ca",
+      "bytes": 1373,
+      "status": "fixture dependency"
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/verify_pitch_path.py",
+      "sha256": "414c8646b61365b95afdff1fbe5805f4970e8dd9b25d165d010873c205550a0e",
+      "bytes": 4244,
+      "status": "fixture dependency"
+    }
+  ]
+}

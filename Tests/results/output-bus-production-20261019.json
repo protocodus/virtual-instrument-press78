@@ -1,0 +1,177 @@
+{
+  "schema": "press78.output-bus-production-validation.v1",
+  "created_utc": "2026-10-19T09:58:04.368977+00:00",
+  "passed": true,
+  "source_sha256": {
+    "Source/DSP/Press78OutputBus.h": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9",
+    "Source/DSP/OutputKernelTable.h": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7",
+    "Source/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "Tools/generate_output_kernel.py": "33c4270a476dce220d94eece41f07d9695870c1e1402cd0c3d24006f44bb1187",
+    "Tools/NativeRender.cpp": "724a9cba623d5de0289ea3a070d4ae777df6e7a1c15c87cf82e03bfee1e8f141",
+    "Tests/test_output_bus.cpp": "a6c3479b2d65f9ff3cb326db3cb8d0ee7c88de54f34af32c1c3320edd88b003c",
+    "CMakeLists.txt": "5c395828bc3bcaf4d7a1e676596ec25510543a49cd48639f28a92912f843e833",
+    "Tests/output_bus_latency_cases.h": "2d4f9c4faf42a585b2b3e8a8a5a2fc210af93aeb34043df85f5dc248befc4ea1"
+  },
+  "source_binding": {
+    "path": "build/fixed-output-bus-20261019/production-promotion/source-bound-v2.json",
+    "sha256": "713fe4ebc875c3e18e29ce0f42ff7a2492c9daebe1c42f3115f202a44d9440f7"
+  },
+  "results": {
+    "release-ctest-v2.log": {
+      "sha256": "4eb9410a701cbb835f31e2aed3223053e5cd25907342eb793a4c84059bf1b389",
+      "ctest_targets_passed": 10,
+      "output_bus_test": {
+        "passed": true,
+        "checks": 277,
+        "production_prototype_compared_bytes": 12515880,
+        "sizeof_output_bus": 193816,
+        "shared_kernel_bytes": 393220,
+        "render_event_allocations": 0
+      }
+    },
+    "sanitizer-ctest-v2.log": {
+      "sha256": "fbcb2d5aefdbe69194cfe275365dcd623bf2bbb6cd8e2ecb8dbeaf654d5c97b4",
+      "ctest_targets_passed": 10,
+      "output_bus_test": {
+        "passed": true,
+        "checks": 277,
+        "production_prototype_compared_bytes": 12515880,
+        "sizeof_output_bus": 193816,
+        "shared_kernel_bytes": 393220,
+        "render_event_allocations": 0
+      }
+    }
+  },
+  "cli": {
+    "passed": true,
+    "rows": [
+      {
+        "command": [
+          "build/output-bus-production-20261019/press78_render",
+          "--real",
+          "--output",
+          "build/fixed-output-bus-20261019/production-promotion/cli-24000.wav",
+          "--rate",
+          "24000",
+          "--note",
+          "69",
+          "--seconds",
+          ".6",
+          "--gate",
+          ".3"
+        ],
+        "result": {
+          "frames": 14400,
+          "rate": 24000,
+          "latency_samples": 112,
+          "nominal_latency_seconds": 0.00466667,
+          "clipped_channel_samples": 0,
+          "maximum_clip_delta": 0,
+          "pitch_model": 1,
+          "sustain_mode": 1,
+          "peak": 0.225761,
+          "rms": 0.0868237
+        },
+        "wav_sha256": "82802d19f70ff22165ee189a44937ffba79df828680b3aa21f91eaa65fb5f257"
+      },
+      {
+        "command": [
+          "build/output-bus-production-20261019/press78_render",
+          "--real",
+          "--output",
+          "build/fixed-output-bus-20261019/production-promotion/cli-44100.wav",
+          "--rate",
+          "44100",
+          "--note",
+          "69",
+          "--seconds",
+          ".6",
+          "--gate",
+          ".3"
+        ],
+        "result": {
+          "frames": 26460,
+          "rate": 44100,
+          "latency_samples": 126,
+          "nominal_latency_seconds": 0.00285417,
+          "clipped_channel_samples": 0,
+          "maximum_clip_delta": 0,
+          "pitch_model": 1,
+          "sustain_mode": 1,
+          "peak": 0.225769,
+          "rms": 0.0868237
+        },
+        "wav_sha256": "bb5fbb0a4e53d56a0c25300732cbbe6c79283373006d2aee6415ef70e8492e7d"
+      },
+      {
+        "command": [
+          "build/output-bus-production-20261019/press78_render",
+          "--real",
+          "--output",
+          "build/fixed-output-bus-20261019/production-promotion/cli-48000.wav",
+          "--rate",
+          "48000",
+          "--note",
+          "69",
+          "--seconds",
+          ".6",
+          "--gate",
+          ".3"
+        ],
+        "result": {
+          "frames": 28800,
+          "rate": 48000,
+          "latency_samples": 32,
+          "nominal_latency_seconds": 0.000666667,
+          "clipped_channel_samples": 0,
+          "maximum_clip_delta": 0,
+          "pitch_model": 1,
+          "sustain_mode": 1,
+          "peak": 0.225762,
+          "rms": 0.0868237
+        },
+        "wav_sha256": "9bb27d66d74505333ca1436946ee5bdf88a9d655a40d622668f080df4ca21524"
+      },
+      {
+        "command": [
+          "build/output-bus-production-20261019/press78_render",
+          "--real",
+          "--output",
+          "build/fixed-output-bus-20261019/production-promotion/cli-96000.wav",
+          "--rate",
+          "96000",
+          "--note",
+          "69",
+          "--seconds",
+          ".6",
+          "--gate",
+          ".3"
+        ],
+        "result": {
+          "frames": 57600,
+          "rate": 96000,
+          "latency_samples": 256,
+          "nominal_latency_seconds": 0.00266667,
+          "clipped_channel_samples": 0,
+          "maximum_clip_delta": 0,
+          "pitch_model": 1,
+          "sustain_mode": 1,
+          "peak": 0.225769,
+          "rms": 0.0868237
+        },
+        "wav_sha256": "6063ccfb265ae6dda674e45feed23797fc153afcfbcc60d37f0add3ca27d0834"
+      }
+    ]
+  },
+  "prototype_report": {
+    "path": "Reference/Prototypes/fixed-output-bus-20261019/results.json",
+    "sha256": "ce1617bf2cb2ee7faab16c237002b2bc4ae4b3db633ae5f61577d20f22a01e9c"
+  },
+  "latency_correction": {
+    "path": "Reference/Prototypes/fixed-output-bus-20261019/latency-correction.json",
+    "sha256": "0d3c037a6c3ca165a4add8cc2baffc53c40edb9a0fc39a6da11f56467e5ad711"
+  },
+  "failure_preserved": "Initial Release+sanitizer eachpassed9/10; exactlatencyassertion found24kgetter113vs112. Oldsources/logs mappedunderpre-latency-correction. Audio75casespassedbeforefailure; correctionchangesonlyreportedintegerlatency.",
+  "scope": "StandaloneC++17production/prototypebyteequivalence, generatorcheck,native/sanitizerandCLI. DoesnotclaimWindows/ReasonSDKvalidation, hardwareFMfidelity ornewhardwareclock."
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "original_report_sha256": "a2974d6278fa33d9f38ff39158f098fbe9e8103f070efe9818f2d837590ca4c8",
+  "published_report_sha256": "7573dba2eaec1178ee4bc0234795901bb9e8fe458e29a7dd928ff96f4b413196",
+  "changes": [
+    "Editorial: agreed\u2192predeclared, accurately naming engineering protocol limits",
+    "Append independently reproducible source-patch link and six raw focus-score checks"
+  ],
+  "scientific_inputs_or_results_changed": false,
+  "original_report_preserved": "/Users/vojta/Dev/virtual-instrument-press78/build/key-level-b13-20261019/report-before-publication.md"
+}

@@ -5,7 +5,8 @@ namespace
 constexpr int kMargin = 12, kHeader = 44, kSectionTitle = 18, kCell = 64, kRow = 96;
 
 // Sections and their parameter ids, in panel order; together they cover every
-// control in Assets/controls.json once, except the hidden, inert noise ids.
+// control in Assets/controls.json once, except the ones hidden from the Rack
+// panel: the inert noise ids and the Original release policy.
 const std::vector<std::pair<juce::String, juce::StringArray>>& layout()
 {
     static const std::vector<std::pair<juce::String, juce::StringArray>> sections {

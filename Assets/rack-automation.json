@@ -67,6 +67,7 @@
     "outputLimit": 316,
     "bendRange": 317,
     "modWheelDepth": 318,
-    "pitchModel": 319
+    "pitchModel": 319,
+    "sustainMode": 320
   }
 }

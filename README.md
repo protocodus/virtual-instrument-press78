@@ -122,7 +122,10 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 - Two-operator FM engine with the 100 `PSS` factory voices and an Init sine, sibling-circuit output stage, Studio and Recorded chorus, and clock variation.
 - b11: the D1 endpoint correction and a 5.24 Hz triangle LFO with recording-supported vibrato depths; additive noise removed (its two controls stay as inert, hidden ids).
 - b12: a **Pitch model** selector, Original (the firmware pitch-command table, the new default) or Equal (the earlier continuous law).
-- Reason Rack Extension prototype 0.1.0b12, built outside this repository.
+- b13: the Original release-pedal policy (the pedal selects the release rate; key-up releases at once), a hidden setting that new patches turn on.
+- b14: a fixed output bus and final converter keep the 48 kHz output character at every host rate; other rates change audio and latency.
+- b15: 50 modern Rack presets (basses, donks, plucks, leads, pads and FX) beside the 100 `PSS` voices; the plug-in does not include them yet.
+- Reason Rack Extension prototype 0.1.0b15, built outside this repository.
 - First JUCE plug-in: every control as a parameter, Init plus the 100 voices as programs, and a working editor; the Rack panel design is not yet ported to it.
 
 ## Downloads
@@ -138,7 +141,7 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 
 Both operators expose ratio, fine/coarse detune, four waveform families, raw envelope rates, key scaling and AM. Additional controls cover feedback, velocity, LFO phase/depth/delay, twelve-voice allocation, pitch bend, mod wheel, clock variation, analog output, tone, drive, chorus and stereo width. The Rack adapter adds separate MIDI/CV note ownership and Note/Gate/FM/Level CV inputs. All 64 active controls have explicit Reason automation mappings. The two former noise properties and their IDs remain reserved for compatibility; they are hidden and inert. The registry stays frozen in `Assets/rack-automation.json`; Volume/Tone retain MIDI CC7/74.
 
-The initial port preserved the frozen Python raw-FM behavior. Starting with b11, a documented D1 endpoint correction and recording-supported modulation replace those corresponding hypotheses; the Python files remain frozen historical references. It adds fixed-storage voice management, short voice-stealing tails, continuous-control smoothing and host-rate conversion. The internal 48 kHz timebase, floating-point operators, envelope laws and detune mappings are modeling choices, not recovered chip internals. Nominal reconstruction latency is 32 internal samples, rounded up to host frames for reporting. Clock controls also scale that physical delay; upward clock shifts can alias near-Nyquist energy. Clock drift is a controllable scenario, not a measurement of aged hardware. Memory faults and random digital bit corruption are not introduced as normal vintage behavior.
+The initial port preserved the frozen Python raw-FM behavior. Starting with b11, a documented D1 endpoint correction and recording-supported modulation replace those corresponding hypotheses; the Python files remain frozen historical references. It adds fixed-storage voice management, short voice-stealing tails, continuous-control smoothing and host-rate conversion. The internal 48 kHz timebase, floating-point operators, envelope laws and detune mappings are modeling choices, not recovered chip internals. The legacy core has 32 internal samples of nominal reconstruction latency. The b14 instrument adds a final host converter outside 48k; its declared Rack latency is 126/32/236/256/512 frames at 44.1/48/88.2/96/192k. Clock controls also scale that physical delay; upward clock shifts can alias near-Nyquist energy. Clock drift is a controllable scenario, not a measurement of aged hardware. Memory faults and random digital bit corruption are not introduced as normal vintage behavior.
 
 The b12 rear **Pitch model** selector offers **Original** and **Equal**. New Init/PSS patches explicitly select Original; older patches missing the new property retain Equal. Original uses the independently reconstructed 384-word firmware pitch-command table, including its nonmonotonic A-flat fractional entry and high-seven-bit MIDI bend behavior. Device Tune rounds to 3.125-cent steps; host master tuning and internal vibrato stay continuous. The downstream command-to-frequency floor/grid remains a recording-supported behavioral hypothesis, not identified silicon arithmetic. Extended keyboard/tuning ranges are plugin extensions. The selector displays the requested model; changes wait until held notes, releases and steal fades finish, or reset/all-sound-off. [Firmware evidence](Docs/research/opu-pitch-command-path-2026-10-19.md), [physical panel mapping](Docs/research/front-panel-envelope-map-2026-10-19.md) and [frozen comparison](Docs/research/hardware-pitch-b12-2026-10-19.md) separate verified commands from inferred synthesis behavior.
 
@@ -147,6 +150,14 @@ The b11 modulation profile uses a continuous 5.24 Hz triangle and a binary PMS d
 ### Output circuit
 
 The enabled-by-default output circuit is the six-section small-signal transfer from the researched **PSS-480** circuit, used explicitly as a sibling surrogate. It is not a recovered PSS-780 board, a verified YM3420 DAC transfer, or a transistor-level model. Drive is a separate creative saturation control.
+
+Authentic signal-dependent distortion, DAC behavior, component tolerances and power sensitivity remain fidelity requirements despite removal of artificial noise. A new [research supply component](Docs/research/local-supply-model-2026-10-19.md) implements the documented sibling local rail filter with independent circuit checks. Its load and voltage-to-audio coupling remain unknown; it does not change b13 audio or imply a calibrated nonlinear output model.
+
+B14 preserves the established 48k output character across host rates through a fixed output bus and a final stereo converter. It intentionally changes non-48k audio and latency in existing documents; all 48k renders remain unchanged. [Adoption and A/B evidence](Docs/research/output-bus-b14-2026-10-19.md) separates improved host-rate consistency from still-unidentified DAC, BBD nonlinear and voltage-to-audio behavior.
+
+### Sustain pedal
+
+B13 adds the [Original release-pedal policy](Docs/research/sustain-policy-2026-10-19.md): the pedal selects RR/SRR while keyoff releases immediately, including live rate updates on released notes. New Init/PSS files select it; older documents retain conventional pedal holding. The hidden compatibility setting leaves the panel unchanged. All eight no-pedal full-performance WAVs match b12 exactly, so existing recording scores are unchanged. The authored Sustain button does not display the temporary pedal override, and the plugin does not emulate complete keyboard program-change behavior.
 
 ### Chorus
 
@@ -160,15 +171,15 @@ The standalone PSS-480 resistor/opamp noise model and earlier noise research rem
 
 The Rack Init and all 100 factory patches use the **Real** startup profile: related-hardware output circuit on, Recorded chorus at its captured rate/depth and full reference side level, and a slow ±20 ppm clock excursion at 0.1 Hz (about ±0.035 cents). Clock offset and creative Drive stay zero. Clock excursion is an explicit modeling choice, not recovered PSS-780 calibration. Additive noise has been removed from the runtime, including both White and Circuit paths. Old patches and automation may still contain the former noise properties; their values are ignored and cannot restore hiss. Other values remain editable and persist with patches. The portable constructor also uses the new 5.24 Hz shared triangle LFO; its effect defaults remain independent of the Rack Real profile. Model selectors and fine calibration are on the rear.
 
-Init is an independently defined sine patch. The public development bank contains the 100 original parameter presets as `PSS 00 …` through `PSS 99 …`. Loading/editing a Rack patch retimbres held voices while preserving their oscillator/envelope state. The standalone engine also offers future-voices-only program snapshots.
+Init is an independently defined sine patch. The public development bank contains the 100 original parameter presets as `PSS 00 …` through `PSS 99 …`. The Rack bank also carries 50 modern presets (12 basses, 8 donks, 12 plucks, 8 leads, 6 pads and 4 FX) under `Modern`, defined in `Assets/FactoryBank/modern-*.json`; the [factory presets guide](Docs/guide/factory-presets.md) lists them, and [the modern audition page](Docs/guide/modern-presets.html) plays each one. Loading/editing a Rack patch retimbres held voices while preserving their oscillator/envelope state. The standalone engine also offers future-voices-only program snapshots.
 
 ### Plug-in front end
 
-The plug-in's parameter IDs are the control ids in `Assets/controls.json`, the same names as the Rack properties; `Source/PluginControls.h` is generated from that file by `Tools/generate_plugin_controls.py`. `Source/ControlMapping.h` maps the controls to the engine's patch and controls for both the plug-in and the demo renderer. Program 0 is Init and programs 1–100 are the factory voices; a program change sets the 36 sound controls and leaves performance and output controls, including Pitch model, alone, and editing a sound control retimbres held voices, as the Rack does. Pitch bend scales by Pitch bend range, and Original receives the raw 14-bit wheel as the firmware does; the mod wheel adds its position times Wheel to vibrato to Pitch depth (this mapping is the plug-in's own choice; the Rack adapter's is not in this repository). A new instance starts with Pitch model on Original, as the Rack Init does. The two noise ids stay as parameters so saved sessions load, but they are inert and the editor omits them. The editor is a working one-control-per-parameter layout; the designed Rack panel below is not yet ported to it.
+The plug-in's parameter IDs are the control ids in `Assets/controls.json`, the same names as the Rack properties; `Source/PluginControls.h` is generated from that file by `Tools/generate_plugin_controls.py`. `Source/ControlMapping.h` maps the controls to the engine's patch and controls for both the plug-in and the demo renderer. Program 0 is Init and programs 1–100 are the factory voices; a program change sets the 36 sound controls and leaves performance and output controls, including Pitch model, alone, and editing a sound control retimbres held voices, as the Rack does. Pitch bend scales by Pitch bend range, and Original receives the raw 14-bit wheel as the firmware does; the mod wheel adds its position times Wheel to vibrato to Pitch depth (this mapping is the plug-in's own choice; the Rack adapter's is not in this repository). A new instance starts with Pitch model and the Original release policy on, as the Rack Init does, and CC64 reaches the engine as its raw value because Original treats any nonzero value as down. The release policy and the two inert noise ids stay as parameters so saved sessions load, but like the Rack panel the editor omits them. The programs are Init and the 100 `PSS` voices; the 50 modern presets are Rack patches only for now. The editor is a working one-control-per-parameter layout; the designed Rack panel below is not yet ported to it.
 
 ### Panel design
 
-Open [the interactive design preview](Assets/Design/index.html). Layout study 11 uses an eight-rack-unit panel with consistent section padding and puts 34 main sound/performance controls on the front, with 30 detailed sound, calibration and configuration controls on the rear. It combines the canonical Protocodus logo, YouKnow's DIN lettering and recessed groups with charcoal ABS, cyan, lavender, coral and ivory inspired by the PSS-780 moodboard. Doubled pointer arrows remain clear of the knob number wells. The preview has editable operator controls and all 100 factory voices. It demonstrates layout and parameter relationships, without audio. [Design notes](Assets/Design/README.md) describe the front, rear and folded panels. Both native GUI asset sets and the native local/universal builds carry this styling. Level increases clockwise while preserving the original raw attenuation values; clearer envelope/unit labels and value arcs improve editing. The current layout follows the photographic recesses, shares vertical centres within each row and aligns the header controls.
+Open [the interactive design preview](Assets/Design/index.html). Layout study 11 uses an eight-rack-unit panel with consistent section padding and puts 34 main sound/performance controls on the front, with 30 detailed sound, calibration and configuration controls on the rear. It combines the canonical Protocodus logo, YouKnow's DIN lettering and recessed groups with charcoal ABS, cyan, lavender, coral and ivory inspired by the PSS-780 moodboard. Doubled pointer arrows remain clear of the knob number wells. The preview has editable operator controls, all 100 PSS originals and 50 modern sounds. It demonstrates layout and parameter relationships, without audio. [Design notes](Assets/Design/README.md) describe the front, rear and folded panels. Both native GUI asset sets and the native local/universal builds carry this styling. Level increases clockwise while preserving the original raw attenuation values; clearer envelope/unit labels and value arcs improve editing. The current layout follows the photographic recesses, shares vertical centres within each row and aligns the header controls.
 
 ### Repository layout
 
@@ -176,11 +187,12 @@ Open [the interactive design preview](Assets/Design/index.html). Layout study 11
 | --- | --- |
 | `Source/DSP` | Fixed-storage polyphonic engine and generated circuit/preset tables (JUCE-free, C++17) |
 | `Source/Plugin*`, `Source/ControlMapping.h` | JUCE plug-in front end and its control mapping |
-| `Assets/controls.json` | Parameter contract shared with the Rack adapter: 64 controls plus two inert legacy properties |
+| `Assets/controls.json` | Parameter contract shared with the Rack adapter: 64 controls, two inert legacy noise properties and the hidden release policy |
 | `Assets/rack-automation.json` | Frozen Reason automation IDs |
-| `Assets/FactoryBank` | 100 imported parameter patches, all named with `PSS` prefix, plus provenance |
+| `Assets/FactoryBank` | 100 original `PSS` parameter patches, 50 modern Rack presets and provenance |
 | `Assets/Design` | Panel geometry, SVG/PNG panels and the interactive HTML wireframe |
 | `Tools/reference` | Frozen research implementation used as the comparison oracle |
+| `Tools/prototypes` | Unadopted candidate patches and their checks, kept with their evidence |
 | `Docs/research/migration.json` | Original source location and file hashes |
 | `Tests/results` | Native validation, Python parity, circuit and timing evidence |
 
@@ -190,7 +202,7 @@ A focused [Human Voice 1 release audit](Docs/research/human-voice1-release-audit
 
 - The plug-in has only passed the checks CI runs; it has not been tried in a DAW. Its editor is a plain control grid, not the designed panel.
 - The Rack adapter lives in a local SDK workspace, not in `protocodus/reason-rack-extensions`, and its DSP directory is a generated snapshot of this repository (`Tools/sync_rack_dsp.py`) rather than the pinned submodule the portfolio standard asks for. The b5 Rack patch exporter uses the SDK’s canonical XML declaration after Recon rejected the earlier declaration during default Init loading. All 101 patch sound parameter maps are preserved. The b6 native display formatter also fixes a subsequent Recon drawing crash caused by concatenating host-formatted text; independent regression tests cover all 50 numeric readouts, with 444 passing cases and an explicit reproduction of the prior failure.
-- The b11/b12 fidelity work, its rejected candidates and the open fidelity requirements are in [fidelity status, 2026-10-19](Docs/research/fidelity-status-2026-10-19.md); no superlative accuracy claim follows from it.
+- The b11–b15 fidelity work, its rejected candidates and the open fidelity requirements are in [fidelity status, 2026-10-19](Docs/research/fidelity-status-2026-10-19.md); no superlative accuracy claim follows from it.
 - The native evidence, sanitizer runs, hardware comparison and Rack prototype validation are recorded in [native evidence, 2026-10-18](Docs/validation/native-evidence-2026-10-18.md) for b9 and in the fidelity status above for b11 and b12. They establish agreement with the research model, not with Yamaha hardware.
 - The preset source is recorded in [bank provenance](Assets/FactoryBank/provenance.json). Public availability of a SysEx archive and the editor project's license do not establish permission to distribute Yamaha's factory bank commercially. No research videos, recordings, manual scans or executable Yamaha firmware are shipped in this repository. `Press78` has not received trademark clearance; development names and source availability are not legal clearance.
 
@@ -228,7 +240,7 @@ python3 Tools/check_chorus_runtime.py --help
 python3 Tools/check_circuit_noise.py
 ```
 
-To regenerate the Rack parameter declarations, mappings and 101 local development patches:
+To regenerate the Rack parameter declarations, mappings and 151 local development patches:
 
 ```sh
 python3 Tools/generate_rack.py /path/to/SDK-worktree/Examples/Press78

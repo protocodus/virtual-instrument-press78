@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "scope": "Actual RTC Lua callback with SDK5 Lua and native engine latency; no Reason host scheduling claim.",
+  "rates_and_latency_frames": [
+    [
+      44100,
+      126
+    ],
+    [
+      48000,
+      32
+    ],
+    [
+      88200,
+      236
+    ],
+    [
+      96000,
+      256
+    ],
+    [
+      192000,
+      512
+    ]
+  ],
+  "both_output_latencies_equal": true,
+  "native_sample_rate_forwarded": true,
+  "source_sha256": {
+    "realtime_controller.lua": "402a69b8cffbf73a389664dddb9718c15bd85fa42a803e3188566d6a547b05db",
+    "DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "DSP/Press78OutputBus.h": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9",
+    "DSP/OutputKernelTable.h": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7",
+    "Tests/LatencyContract.py": "246f0b7fcc359681ee811a3e0f420f17e714aebed0317d8afa516a8f16fbab7f"
+  }
+}

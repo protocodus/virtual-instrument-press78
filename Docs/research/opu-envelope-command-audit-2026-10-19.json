@@ -1,0 +1,2136 @@
+{
+  "schema": "press78.opu-envelope-command-audit.v1",
+  "date": "2026-10-19",
+  "status": "Original software command audit complete; no production edits or audio fit.",
+  "sources": [
+    {
+      "kind": "original firmware identity / memory mapping",
+      "url": "https://github.com/mamedev/mame/blob/983e76f8cd84f8da8d14241c9f07a5ee138cc3eb/src/mame/yamaha/ympsr16.cpp"
+    },
+    {
+      "kind": "owner voice-format field names",
+      "url": "https://usa.yamaha.com/files/download/other_assets/1/317511/PSS780E.PDF",
+      "printed_page": 41
+    },
+    {
+      "kind": "firsthand authored recipe",
+      "url": "https://www.pss680.com/patches.php",
+      "recipe_name": "Synth Bass 1",
+      "base": 99,
+      "parameters_0_to_8": [
+        63,
+        63,
+        24,
+        22,
+        1,
+        1,
+        0,
+        77,
+        86
+      ],
+      "effects": "To taste"
+    }
+  ],
+  "scope": "Original routine execution on constructed neutral RAM. No hardware audio, rate fitting, new constants, firmware distribution, or production mutation.",
+  "design_sha256": "c1a82f352973582e5b6077e4f8e8577d798bb9c0fc49b70066a2e9f494e801aa",
+  "source_sha256": {
+    "Source/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "Reference/Research/front-panel-envelope-map-20261019.json": "7493791cb5158ea0a3ab41a25cb87bff63ea571f44c85e1e3ae63b33b9c442df",
+    "Reference/Research/opu-release-command-path-20261019.json": "8d0603033eab325f8a9ed61bbd530752a65d45566a343c67aa64a1dafbef6fa9",
+    "Reference/Research/opu-level-command-path-20261019.json": "775c1a763cb58245c059e56c0df738c09cf926b043217bc4b86595f7e3d08d69",
+    "Reference/Research/opu-pitch-command-path-20261019.json": "dcd30c0359b8a05e4df6148aaa9f6f3fe043e41f161d09a8036d8d97634467f3",
+    "build/opu-pitch-command-path-20261019/xg503b0-132.ic4": "ce0a69d143deacdb52eb28a1f5de80584ce7576ba94488fa4b035dfc6f0a76a7",
+    "build/opu-pitch-command-path-20261019/xe416d0-093.ic4": "52f19aa8eae1730a8f00b43672b911cf5cfa7e5a2af324b9dd377249e2a995f1"
+  },
+  "raw_payload_identity": {
+    "PSS780": {
+      "sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "equal_between_models": true
+    },
+    "PSS680": {
+      "sha256": "f0fdcaa8fb3ecceaa4bf24f27038f9a1229c9fb8249d2eedc4a132b9e754c289",
+      "equal_between_models": true
+    }
+  },
+  "factory99_decoded": {
+    "modulator": {
+      "MUL": 1,
+      "DT1_encoded": 0,
+      "TL": 127,
+      "LKS_high": 0,
+      "LKS_low": 0,
+      "AR": 63,
+      "RKS": 0,
+      "D1R": 1,
+      "DT2": false,
+      "AM_enable": false,
+      "D2R": 0,
+      "wave": 0,
+      "D1L": 0,
+      "RR": 8,
+      "SRR": 5,
+      "SRR_other_nibble": 5
+    },
+    "carrier": {
+      "MUL": 1,
+      "DT1_encoded": 0,
+      "TL": 13,
+      "LKS_high": 11,
+      "LKS_low": 9,
+      "AR": 63,
+      "RKS": 0,
+      "D1R": 1,
+      "DT2": false,
+      "AM_enable": false,
+      "D2R": 0,
+      "wave": 0,
+      "D1L": 0,
+      "RR": 8,
+      "SRR": 5,
+      "SRR_other_nibble": 5
+    },
+    "shared": {
+      "feedback": 0,
+      "PMS": 3,
+      "AMS": 0,
+      "vibrato_delay": 11,
+      "vibrato": false,
+      "sustain": false
+    }
+  },
+  "recipe_decoded": {
+    "modulator": {
+      "MUL": 1,
+      "DT1_encoded": 0,
+      "TL": 22,
+      "LKS_high": 0,
+      "LKS_low": 0,
+      "AR": 63,
+      "RKS": 0,
+      "D1R": 1,
+      "DT2": false,
+      "AM_enable": false,
+      "D2R": 24,
+      "wave": 0,
+      "D1L": 0,
+      "RR": 8,
+      "SRR": 5,
+      "SRR_other_nibble": 5
+    },
+    "carrier": {
+      "MUL": 1,
+      "DT1_encoded": 0,
+      "TL": 13,
+      "LKS_high": 11,
+      "LKS_low": 9,
+      "AR": 63,
+      "RKS": 0,
+      "D1R": 1,
+      "DT2": false,
+      "AM_enable": false,
+      "D2R": 22,
+      "wave": 0,
+      "D1L": 0,
+      "RR": 8,
+      "SRR": 5,
+      "SRR_other_nibble": 5
+    },
+    "shared": {
+      "feedback": 0,
+      "PMS": 3,
+      "AMS": 0,
+      "vibrato_delay": 11,
+      "vibrato": false,
+      "sustain": false
+    }
+  },
+  "recipe_changes_working_payload_offsets": [
+    2,
+    10,
+    11
+  ],
+  "panel_edit_count_each_model": 123,
+  "routines": {
+    "PSS780": {
+      "program": "0xc6c3",
+      "pointer": "0xc4e8",
+      "AR_RKS": "0xc611",
+      "D1R_AM_DT2": "0xc62e",
+      "D2R_WAVE": "0xc64b",
+      "D1L_RR": "0xc668",
+      "noteon": "0x9a2b",
+      "noteoff": "0x9a5d"
+    },
+    "PSS680": {
+      "program": "0xc5be",
+      "pointer": "0xc3e3",
+      "AR_RKS": "0xc50c",
+      "D1R_AM_DT2": "0xc529",
+      "D2R_WAVE": "0xc546",
+      "D1L_RR": "0xc563",
+      "noteon": "0x9982",
+      "noteoff": "0x99b4"
+    }
+  },
+  "command_mapping": {
+    "slot_displacement": "floor(slot/2)+16*(slot mod2), slots0..11",
+    "groups": [
+      {
+        "field": "AR/RKS",
+        "modulator_base": "0x0280",
+        "carrier_base": "0x0288",
+        "low6": "AR",
+        "high2": "RKS",
+        "recipe_bytes_hex": [
+          "3f",
+          "3f"
+        ]
+      },
+      {
+        "field": "D1R/DT2/AM",
+        "modulator_base": "0x02a0",
+        "carrier_base": "0x02a8",
+        "low6": "D1R",
+        "bit6": "DT2",
+        "bit7": "AM enable",
+        "recipe_bytes_hex": [
+          "01",
+          "01"
+        ]
+      },
+      {
+        "field": "D2R/waveform",
+        "modulator_base": "0x02c0",
+        "carrier_base": "0x02c8",
+        "low6": "D2R",
+        "high2": "waveform",
+        "recipe_bytes_hex": [
+          "18",
+          "16"
+        ]
+      },
+      {
+        "field": "D1L/RR",
+        "modulator_base": "0x02e0",
+        "carrier_base": "0x02e8",
+        "low4": "RR",
+        "high4": "D1L",
+        "recipe_bytes_hex": [
+          "08",
+          "08"
+        ]
+      }
+    ],
+    "forwarding": "Original paired writers preserve all8 bits, independent of note. Original Mode00 note-on does not rewrite AR/D1R/D2R. No software per-note rate preaddition was observed.",
+    "noteon_transient": "Carrier D1L/RR word temporarily15, then8 on keyon service; same all notes/slots. This is a keyon preparation command, not D2R22 conversion.",
+    "reverb": "Global effect bit0x04 is preserved by selecting99 and recipe edits; noteon ORs0x80 into both TL command bytes if enabled. Its chip action and timing remain unknown.",
+    "SRR": "Both low-nibble SRR5 inherited. Factory Sustain off, so baseline release RR8. SRR high nibble5 is retained as uninterpreted payload data; not promoted to envelope semantics."
+  },
+  "validation": {
+    "passed": true,
+    "counts": {
+      "factory_and_full_recipe": 2,
+      "cached_slot_pitch": 2928,
+      "actual_serial": 244,
+      "actual_12_note_chord": 4,
+      "packed_byte_forwarding": 24576,
+      "physical_reverb_history": 4
+    },
+    "total": 27758,
+    "final_errors": [],
+    "packed_byte_forwarded_writes": 49152,
+    "packed_byte_digest_sha256": "fc965e11cdec1175b60e309e9b0f46e876ad16985c3b1c5edf4ee23e143a4140",
+    "packed_digest_order": "modelsPSS780,PSS680; fieldsAR,D1R,D2R,D1L; slots0..11; x0..255; appendbytes(model_index,working_offset,slot,x,255-x) thenlittle-endian16bitaddress+value for both emitted operator writes",
+    "independent_limited_spot_checks": [
+      {
+        "path": "build/pm-envelope-method-review-20261019/preset99-result.json",
+        "sha256": "6dc957bcece68184a3730afdb3dad6088c88957053440d42c0fdf02105bde30d",
+        "passed": true,
+        "cases": 16,
+        "scope": "Original factory99 routine in independent mirrored-bus constructed state; not a recovered recording effect state"
+      },
+      {
+        "path": "build/pm-envelope-method-review-20261019/physical-reverb-result.json",
+        "sha256": "008b01b48c40ac4320ae64261d3b33d6da068fed55f66671cb109280cc2aae82",
+        "passed": true,
+        "cases": 6,
+        "scope": "Actual original Reverb button-handler calls, constructed initialized state; no recording claim"
+      }
+    ],
+    "retained_attempts": [
+      {
+        "attempt": 0,
+        "error": "SyntaxError: missing whitespace in Python conditional else128, line53; no ROM execution occurred",
+        "preserved_source": "verify-v0-syntax-error.py"
+      },
+      {
+        "attempt": 1,
+        "error": "Note-off prefix occurs twice; discovered during entry resolution before formal sweep. Corrected entry is function immediately after uniquely identified common note-on, +0x32 verified in readable original instructions.",
+        "preserved_source": "verify-v1-ambiguous-off-entry.py"
+      },
+      {
+        "attempt": 2,
+        "error": "Formal execution retained 27260 fixture assertions: writer entry extraction was one JSR late (24576 cases); direct common note-off requires explicit patch argument04=FF, previously left service-clobbered (2684 cases). No failures in actual serial, physical chord or effect history groups. Corrected these fixture arguments/entry offsets only.",
+        "preserved_source": "verify-v2-bad-fixture.py",
+        "preserved_report": "execution-results-v2-failed.json"
+      }
+    ]
+  },
+  "functional_examples": [
+    {
+      "model": "PSS780",
+      "patch": "SynthBass1",
+      "slot": 0,
+      "note": 36,
+      "program": [
+        {
+          "pc": 50386,
+          "address": 608,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 616,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 544,
+          "value": 64
+        },
+        {
+          "pc": 50386,
+          "address": 576,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 584,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 640,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 648,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 672,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 680,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 704,
+          "value": 24
+        },
+        {
+          "pc": 50386,
+          "address": 712,
+          "value": 22
+        },
+        {
+          "pc": 50386,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 536,
+          "value": 48
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 608,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 616,
+          "value": 17
+        },
+        {
+          "pc": 17156,
+          "address": 552,
+          "value": 5
+        },
+        {
+          "pc": 17156,
+          "address": 560,
+          "value": 26
+        },
+        {
+          "pc": 17156,
+          "address": 568,
+          "value": 40
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 536,
+          "value": 0
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 24
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 51908,
+          "address": 520,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "model": "PSS780",
+      "patch": "SynthBass1",
+      "slot": 0,
+      "note": 60,
+      "program": [
+        {
+          "pc": 50386,
+          "address": 608,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 616,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 544,
+          "value": 64
+        },
+        {
+          "pc": 50386,
+          "address": 576,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 584,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 640,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 648,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 672,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 680,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 704,
+          "value": 24
+        },
+        {
+          "pc": 50386,
+          "address": 712,
+          "value": 22
+        },
+        {
+          "pc": 50386,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 536,
+          "value": 48
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 608,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 616,
+          "value": 13
+        },
+        {
+          "pc": 17156,
+          "address": 552,
+          "value": 5
+        },
+        {
+          "pc": 17156,
+          "address": 560,
+          "value": 26
+        },
+        {
+          "pc": 17156,
+          "address": 568,
+          "value": 48
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 536,
+          "value": 0
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 24
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 51908,
+          "address": 520,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "model": "PSS780",
+      "patch": "SynthBass1",
+      "slot": 0,
+      "note": 96,
+      "program": [
+        {
+          "pc": 50386,
+          "address": 608,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 616,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 544,
+          "value": 64
+        },
+        {
+          "pc": 50386,
+          "address": 576,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 584,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 640,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 648,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 672,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 680,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 704,
+          "value": 24
+        },
+        {
+          "pc": 50386,
+          "address": 712,
+          "value": 22
+        },
+        {
+          "pc": 50386,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 536,
+          "value": 48
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 608,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 616,
+          "value": 20
+        },
+        {
+          "pc": 17156,
+          "address": 552,
+          "value": 5
+        },
+        {
+          "pc": 17156,
+          "address": 560,
+          "value": 26
+        },
+        {
+          "pc": 17156,
+          "address": 568,
+          "value": 60
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 536,
+          "value": 0
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 24
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 51908,
+          "address": 520,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "model": "PSS780",
+      "patch": "SynthBass1",
+      "slot": 11,
+      "note": 36,
+      "program": [
+        {
+          "pc": 50386,
+          "address": 629,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 637,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 549,
+          "value": 192
+        },
+        {
+          "pc": 50386,
+          "address": 597,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 605,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 661,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 669,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 693,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 701,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 725,
+          "value": 24
+        },
+        {
+          "pc": 50386,
+          "address": 733,
+          "value": 22
+        },
+        {
+          "pc": 50386,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 541,
+          "value": 176
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 629,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 637,
+          "value": 17
+        },
+        {
+          "pc": 17156,
+          "address": 557,
+          "value": 133
+        },
+        {
+          "pc": 17156,
+          "address": 565,
+          "value": 154
+        },
+        {
+          "pc": 17156,
+          "address": 573,
+          "value": 168
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 541,
+          "value": 128
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 101
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 51908,
+          "address": 520,
+          "value": 5
+        }
+      ]
+    },
+    {
+      "model": "PSS780",
+      "patch": "SynthBass1",
+      "slot": 11,
+      "note": 60,
+      "program": [
+        {
+          "pc": 50386,
+          "address": 629,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 637,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 549,
+          "value": 192
+        },
+        {
+          "pc": 50386,
+          "address": 597,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 605,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 661,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 669,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 693,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 701,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 725,
+          "value": 24
+        },
+        {
+          "pc": 50386,
+          "address": 733,
+          "value": 22
+        },
+        {
+          "pc": 50386,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 541,
+          "value": 176
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 629,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 637,
+          "value": 13
+        },
+        {
+          "pc": 17156,
+          "address": 557,
+          "value": 133
+        },
+        {
+          "pc": 17156,
+          "address": 565,
+          "value": 154
+        },
+        {
+          "pc": 17156,
+          "address": 573,
+          "value": 176
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 541,
+          "value": 128
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 101
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 51908,
+          "address": 520,
+          "value": 5
+        }
+      ]
+    },
+    {
+      "model": "PSS780",
+      "patch": "SynthBass1",
+      "slot": 11,
+      "note": 96,
+      "program": [
+        {
+          "pc": 50386,
+          "address": 629,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 637,
+          "value": 127
+        },
+        {
+          "pc": 50386,
+          "address": 549,
+          "value": 192
+        },
+        {
+          "pc": 50386,
+          "address": 597,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 605,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 661,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 669,
+          "value": 63
+        },
+        {
+          "pc": 50386,
+          "address": 693,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 701,
+          "value": 1
+        },
+        {
+          "pc": 50386,
+          "address": 725,
+          "value": 24
+        },
+        {
+          "pc": 50386,
+          "address": 733,
+          "value": 22
+        },
+        {
+          "pc": 50386,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 50386,
+          "address": 541,
+          "value": 176
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 629,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 637,
+          "value": 20
+        },
+        {
+          "pc": 17156,
+          "address": 557,
+          "value": 133
+        },
+        {
+          "pc": 17156,
+          "address": 565,
+          "value": 154
+        },
+        {
+          "pc": 17156,
+          "address": 573,
+          "value": 188
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 541,
+          "value": 128
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 101
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 51908,
+          "address": 520,
+          "value": 5
+        }
+      ]
+    },
+    {
+      "model": "PSS680",
+      "patch": "SynthBass1",
+      "slot": 0,
+      "note": 36,
+      "program": [
+        {
+          "pc": 50125,
+          "address": 608,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 616,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 544,
+          "value": 64
+        },
+        {
+          "pc": 50125,
+          "address": 576,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 584,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 640,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 648,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 672,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 680,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 704,
+          "value": 24
+        },
+        {
+          "pc": 50125,
+          "address": 712,
+          "value": 22
+        },
+        {
+          "pc": 50125,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 536,
+          "value": 48
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 608,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 616,
+          "value": 17
+        },
+        {
+          "pc": 17156,
+          "address": 552,
+          "value": 5
+        },
+        {
+          "pc": 17156,
+          "address": 560,
+          "value": 26
+        },
+        {
+          "pc": 17156,
+          "address": 568,
+          "value": 40
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 536,
+          "value": 0
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 24
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 51647,
+          "address": 520,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "model": "PSS680",
+      "patch": "SynthBass1",
+      "slot": 0,
+      "note": 60,
+      "program": [
+        {
+          "pc": 50125,
+          "address": 608,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 616,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 544,
+          "value": 64
+        },
+        {
+          "pc": 50125,
+          "address": 576,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 584,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 640,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 648,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 672,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 680,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 704,
+          "value": 24
+        },
+        {
+          "pc": 50125,
+          "address": 712,
+          "value": 22
+        },
+        {
+          "pc": 50125,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 536,
+          "value": 48
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 608,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 616,
+          "value": 13
+        },
+        {
+          "pc": 17156,
+          "address": 552,
+          "value": 5
+        },
+        {
+          "pc": 17156,
+          "address": 560,
+          "value": 26
+        },
+        {
+          "pc": 17156,
+          "address": 568,
+          "value": 48
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 536,
+          "value": 0
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 24
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 51647,
+          "address": 520,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "model": "PSS680",
+      "patch": "SynthBass1",
+      "slot": 0,
+      "note": 96,
+      "program": [
+        {
+          "pc": 50125,
+          "address": 608,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 616,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 544,
+          "value": 64
+        },
+        {
+          "pc": 50125,
+          "address": 576,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 584,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 640,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 648,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 672,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 680,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 704,
+          "value": 24
+        },
+        {
+          "pc": 50125,
+          "address": 712,
+          "value": 22
+        },
+        {
+          "pc": 50125,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 536,
+          "value": 48
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 608,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 616,
+          "value": 20
+        },
+        {
+          "pc": 17156,
+          "address": 552,
+          "value": 5
+        },
+        {
+          "pc": 17156,
+          "address": 560,
+          "value": 26
+        },
+        {
+          "pc": 17156,
+          "address": 568,
+          "value": 60
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 536,
+          "value": 0
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 24
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 736,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 744,
+          "value": 8
+        },
+        {
+          "pc": 51647,
+          "address": 520,
+          "value": 0
+        }
+      ]
+    },
+    {
+      "model": "PSS680",
+      "patch": "SynthBass1",
+      "slot": 11,
+      "note": 36,
+      "program": [
+        {
+          "pc": 50125,
+          "address": 629,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 637,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 549,
+          "value": 192
+        },
+        {
+          "pc": 50125,
+          "address": 597,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 605,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 661,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 669,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 693,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 701,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 725,
+          "value": 24
+        },
+        {
+          "pc": 50125,
+          "address": 733,
+          "value": 22
+        },
+        {
+          "pc": 50125,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 541,
+          "value": 176
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 629,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 637,
+          "value": 17
+        },
+        {
+          "pc": 17156,
+          "address": 557,
+          "value": 133
+        },
+        {
+          "pc": 17156,
+          "address": 565,
+          "value": 154
+        },
+        {
+          "pc": 17156,
+          "address": 573,
+          "value": 168
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 541,
+          "value": 128
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 101
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 51647,
+          "address": 520,
+          "value": 5
+        }
+      ]
+    },
+    {
+      "model": "PSS680",
+      "patch": "SynthBass1",
+      "slot": 11,
+      "note": 60,
+      "program": [
+        {
+          "pc": 50125,
+          "address": 629,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 637,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 549,
+          "value": 192
+        },
+        {
+          "pc": 50125,
+          "address": 597,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 605,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 661,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 669,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 693,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 701,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 725,
+          "value": 24
+        },
+        {
+          "pc": 50125,
+          "address": 733,
+          "value": 22
+        },
+        {
+          "pc": 50125,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 541,
+          "value": 176
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 629,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 637,
+          "value": 13
+        },
+        {
+          "pc": 17156,
+          "address": 557,
+          "value": 133
+        },
+        {
+          "pc": 17156,
+          "address": 565,
+          "value": 154
+        },
+        {
+          "pc": 17156,
+          "address": 573,
+          "value": 176
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 541,
+          "value": 128
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 101
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 51647,
+          "address": 520,
+          "value": 5
+        }
+      ]
+    },
+    {
+      "model": "PSS680",
+      "patch": "SynthBass1",
+      "slot": 11,
+      "note": 96,
+      "program": [
+        {
+          "pc": 50125,
+          "address": 629,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 637,
+          "value": 127
+        },
+        {
+          "pc": 50125,
+          "address": 549,
+          "value": 192
+        },
+        {
+          "pc": 50125,
+          "address": 597,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 605,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 661,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 669,
+          "value": 63
+        },
+        {
+          "pc": 50125,
+          "address": 693,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 701,
+          "value": 1
+        },
+        {
+          "pc": 50125,
+          "address": 725,
+          "value": 24
+        },
+        {
+          "pc": 50125,
+          "address": 733,
+          "value": 22
+        },
+        {
+          "pc": 50125,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 50125,
+          "address": 541,
+          "value": 176
+        }
+      ],
+      "noteon": [
+        {
+          "pc": 16591,
+          "address": 629,
+          "value": 22
+        },
+        {
+          "pc": 16591,
+          "address": 637,
+          "value": 20
+        },
+        {
+          "pc": 17156,
+          "address": 557,
+          "value": 133
+        },
+        {
+          "pc": 17156,
+          "address": 565,
+          "value": 154
+        },
+        {
+          "pc": 17156,
+          "address": 573,
+          "value": 188
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 15
+        }
+      ],
+      "keyon_service": [
+        {
+          "pc": 16628,
+          "address": 541,
+          "value": 128
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 17156,
+          "address": 520,
+          "value": 101
+        }
+      ],
+      "noteoff": [
+        {
+          "pc": 16591,
+          "address": 757,
+          "value": 8
+        },
+        {
+          "pc": 16591,
+          "address": 765,
+          "value": 8
+        },
+        {
+          "pc": 51647,
+          "address": 520,
+          "value": 5
+        }
+      ]
+    }
+  ],
+  "reverb_history_examples": [
+    {
+      "model": "PSS780",
+      "reverb_prior": 0,
+      "before": 0,
+      "after_factory": 0,
+      "after_recipe": 0,
+      "TL_writes": {
+        "608": 22,
+        "616": 45
+      }
+    },
+    {
+      "model": "PSS780",
+      "reverb_prior": 1,
+      "before": 4,
+      "after_factory": 4,
+      "after_recipe": 4,
+      "TL_writes": {
+        "608": 150,
+        "616": 173
+      }
+    },
+    {
+      "model": "PSS680",
+      "reverb_prior": 0,
+      "before": 0,
+      "after_factory": 0,
+      "after_recipe": 0,
+      "TL_writes": {
+        "608": 22,
+        "616": 45
+      }
+    },
+    {
+      "model": "PSS680",
+      "reverb_prior": 1,
+      "before": 4,
+      "after_factory": 4,
+      "after_recipe": 4,
+      "TL_writes": {
+        "608": 150,
+        "616": 173
+      }
+    }
+  ],
+  "current_b13_comparison": {
+    "source_unchanged": true,
+    "RKS0_native_pitch_rate_addend": 0,
+    "D1L0_native_stage_behavior": "No D1 attenuation step before D2; behavioral assumption, not recovered chip schedule",
+    "native_D2R_db_per_second": [
+      {
+        "D2R": 22,
+        "db_per_second": 90.50966799187809,
+        "seconds_per_60dB": 0.6629126073623882
+      },
+      {
+        "D2R": 24,
+        "db_per_second": 128.0,
+        "seconds_per_60dB": 0.46875
+      }
+    ],
+    "no_fitted_rate_or_precision": true
+  },
+  "conclusions": [
+    "Under the authored recipe, the software sends modD2R24/carD2R22 and RKS0 verbatim across notes36..96; a CPU pitch-dependent rate macro does not explain the captured two-group decay in these tested paths.",
+    "RKS0 remains an encoded chip input; it does not prove the hardware has zero intrinsic note dependence.",
+    "The independent source has no captured raw patch, gates or effect history; the published recipe alone does not establish actual recorded commands.",
+    "Carrier LKS0xb9 changes static command attenuation with note through the separately audited CPU table; it does not change these rate fields. Static gain alone cannot change an exponential slope, but capture dynamics or signal-dependent effects can.",
+    "No exact attack, decay, release, Reverb, keycode, internal attenuation unit or EG update cadence is recovered."
+  ],
+  "unknowns": [
+    "Original captured voice bytes and effect state",
+    "OPU internal envelope rate/keycode arithmetic even atRKS0",
+    "OPU cadence/precision and D1L0 scheduling",
+    "Interpretation of untouched undocumented payload fields",
+    "Capture dynamics and true key gates"
+  ],
+  "reproduction": {
+    "interpreter": "build/opu-digital-primary-leads-20261019/venv/bin/python",
+    "script": "build/opu-envelope-command-audit-20261019/verify.py",
+    "firmware": "Hash-matching files already acquired through normal public sources, retained ignored; no executable bytes distributed.",
+    "fixture": "Mirrored stack, banked read-only ROM, ready status, explicit RAM; common routines and actual Mode00 serial/button paths, not full instrument boot."
+  },
+  "artifacts": [
+    {
+      "path": "build/opu-envelope-command-audit-20261019/design-frozen.json",
+      "sha256": "c1a82f352973582e5b6077e4f8e8577d798bb9c0fc49b70066a2e9f494e801aa",
+      "bytes": 3043
+    },
+    {
+      "path": "build/opu-envelope-command-audit-20261019/verify.py",
+      "sha256": "9f1671d7309cc32cda0612e59dc53266754fe971b9780aa8475eb825f793520e",
+      "bytes": 9658
+    },
+    {
+      "path": "build/opu-envelope-command-audit-20261019/execution-results.json",
+      "sha256": "0ed7a832b65a0e3bd722e896386b1a57e0b033a66863ba19cdca550051e131d2",
+      "bytes": 73957612
+    },
+    {
+      "path": "build/opu-envelope-command-audit-20261019/attempts.json",
+      "sha256": "6488cd8f3d18f9cf370c3ca85c2b81bbb9b88d97312831e6f2916ba50494eab7",
+      "bytes": 1012
+    },
+    {
+      "path": "build/opu-envelope-command-audit-20261019/verify-v0-syntax-error.py",
+      "sha256": "190e5a5eb6ed5894a5951b8da783ca1aeebe346841e2720c5d5440b9fe64e478",
+      "bytes": 9626
+    },
+    {
+      "path": "build/opu-envelope-command-audit-20261019/verify-v1-ambiguous-off-entry.py",
+      "sha256": "2449f9b05a75f80b5faafeb9629c6697db2c9d8c25119431063e25c6e96d0d48",
+      "bytes": 9627
+    },
+    {
+      "path": "build/opu-envelope-command-audit-20261019/verify-v2-bad-fixture.py",
+      "sha256": "fb41a4cdad782b76dae474dbe862a21502ecfadaf544baedcb37d91e5cad4e7f",
+      "bytes": 9650
+    },
+    {
+      "path": "build/opu-envelope-command-audit-20261019/execution-results-v2-failed.json",
+      "sha256": "daf503aa0c4df972ff9f8dfaf96b738114c9a6371f277edd228fb3f0fef9ff04",
+      "bytes": 56387312
+    }
+  ]
+}

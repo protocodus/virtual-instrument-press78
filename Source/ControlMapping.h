@@ -91,6 +91,7 @@ inline Controls controlsFromValues(const ControlValues& v, int bend, double whee
     c.velocityToModulation = value("velocityToModulation");
     c.modulationAmount = value("modulationAmount");
     c.polyphony = integer("polyphony");
+    c.sustainMode = integer("sustainMode");
     c.lfoRateHz = value("lfoRateHz");
     // The mod wheel adds Wheel to vibrato times its position to Pitch depth.
     c.vibratoDepth = std::min(4.0, value("vibratoDepth") + wheel * value("modWheelDepth"));

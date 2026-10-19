@@ -95,7 +95,7 @@ bool Press78AudioProcessor::handleMidi (const juce::MidiMessage& m) noexcept
     else if (m.isNoteOff())
         engine->noteOff (m.getNoteNumber());
     else if (m.isSustainPedalOn() || m.isSustainPedalOff())
-        engine->sustainPedal (m.isSustainPedalOn());
+        engine->sustainController (m.getControllerValue()); // Original reads any nonzero value
     else if (m.isAllSoundOff())
         engine->allSoundOff();
     else if (m.isAllNotesOff())

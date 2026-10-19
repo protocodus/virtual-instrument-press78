@@ -48,6 +48,9 @@ struct Controls {
     double velocityToModulation = 0.0;// modulator velocity exponent, 0..2.
     double modulationAmount = 1.0;    // 0..2 times the baseline FM index (8*pi).
     int polyphony = 12;               // 1..12. Reductions fade the oldest voices.
+    // Legacy0 holds released keys under the pedal. Original1 selects RR/SRR
+    // immediately; it uses the existing approximate envelope timing law.
+    int sustainMode = 0;
     double lfoRateHz = 5.24;            // 0..30, shared by AM and PM.
     double vibratoDepth = 1.0;         // 0..4 multiplier of the patch PMS law.
     double tremoloDepth = 1.0;         // 0..4 multiplier of the patch AMS law.
@@ -86,8 +89,9 @@ public:
     Press78Engine() noexcept;
     void prepare(double sampleRate) noexcept; // 8000..192000; resets state.
     void reset() noexcept;
-    // Program changes snapshot future voices. Explicit live edit preserves
-    // oscillator/envelope state and updates the sounding voices' coefficients.
+    // Program changes snapshot future voices and seed Original Sustain from
+    // the patch flag, without retimbring existing voices. A live edit preserves
+    // the controller override unless the Sustain flag actually changes.
     void setPatch(const Patch&, bool updateActiveVoices = false) noexcept;
     void setControls(const Controls&) noexcept;
     // Research fixture only: set a capture epoch for the continuous chorus
@@ -97,6 +101,9 @@ public:
     void noteOn(int note, int velocity, int source = 0) noexcept;
     void noteOff(int note, int source = 0) noexcept; // Oldest held match; source0=MIDI,1=CV.
     void sustainPedal(bool down) noexcept;
+    // An actual CC64 message, not a continuously replayed host-state snapshot.
+    // Legacy threshold is64; Original enables SRR for every nonzero value.
+    void sustainController(int rawValue) noexcept;
     void allNotesOff() noexcept;
     void allSoundOff() noexcept;
     // Null outputs still advance time. If outputs alias, the right channel wins.
@@ -110,14 +117,17 @@ public:
     const Controls& controls() const noexcept { return controls_; }
     // A requested law change waits until voices and steal tails are idle.
     int effectivePitchModel() const noexcept { return effectivePitchModel_; }
+    int effectiveSustainMode() const noexcept { return effectiveSustainMode_; }
 
 private:
+    friend struct Press78SustainTestAccess;
     struct Envelope {
         double attenuation = 96.0, attackMul = 0.0, decay1 = 0.0;
         double decay2 = 0.0, release = 0.0, target = 0.0;
         int stage = 0;
         bool instantAttack = false, disabled = true, finished = false;
         void configure(const Operator&, int midi, bool sustain) noexcept;
+        void updateRelease(const Operator&, int midi, bool sustain) noexcept;
         double next(bool released) noexcept;
     };
     struct Voice {
@@ -133,6 +143,7 @@ private:
         bool active = false, held = false, released = false;
         void configure(const Patch&, int midi, int vel, std::uint64_t serial) noexcept;
         void updatePatch(const Patch&) noexcept;
+        void updateRelease(bool sustain) noexcept;
         void updateOriginalPitch(int steps) noexcept;
         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
     };
@@ -164,9 +175,13 @@ private:
     std::uint64_t serial_ = 0;
     std::size_t delayWrite_ = 0;
     bool pedal_ = false, hasProcessed_ = false;
+    bool originalSustain_ = false;
     int effectivePitchModel_ = 0, pitchSteps_ = 0;
+    int effectiveSustainMode_ = 0;
     bool pitchIdle() const noexcept;
     void applyPendingPitchModel() noexcept;
+    void applyPendingSustainMode() noexcept;
+    void refreshOriginalRelease() noexcept;
     void updatePitchControls() noexcept;
     void buildResampler() noexcept;
     double synthesizeTick() noexcept;

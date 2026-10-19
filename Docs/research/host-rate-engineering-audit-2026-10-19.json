@@ -1,0 +1,1627 @@
+{
+  "schema": "press78.host-rate-engineering-audit.v1",
+  "date": "2026-10-19",
+  "scope": "Read-only engineering analysis of b13 host-rate behavior. No hardware audio scores, production changes, fits, new noise or converter-bit assumptions.",
+  "production_source_unchanged": false,
+  "diagnostic_result": {
+    "schema": "press78.host-rate-audit.result.v1",
+    "passed": true,
+    "scope": "Engineering invariance of existing b13 numerical algorithms; no audio-reference scoring, fits, defaults or Source edits.",
+    "source_sha256": {
+      "Source/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+      "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+      "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+      "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+      "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+      "Tests/results/analog-oversampled.json": "b30a7de0887e6d5e62424ca271753c6f5e3d19e5539a20d330e6e7be581a77c7",
+      "Tests/results/analog-runtime.json": "10b159e402ec957427f05885089345493413254a56a4bb89d7bdf157f25982b8",
+      "Tests/results/recorded-chorus-parity.json": "2c8786680ef5b7be796ef0d28cb51461ec4cd017132ada777a1bbc3d3bb5d27e",
+      "Tests/results/hardware-fidelity-b11.json": "03e67fe03eb2a3b0534e3154444f7b2ed9ed281536dd7f6e4570f49c448c17b0"
+    },
+    "design_sha256": "9f9459a56fbaca81fcdd5f2b670c26fc71f28d9a02f4453dfa9be7c3838b8ec7",
+    "rows": [
+      {
+        "rate": 8000,
+        "frequency_hz": 1000,
+        "existing_stages_absolute_db": {
+          "analog": -0.11460608700922173,
+          "tone14k": -0.3335960699581092,
+          "dc10": 0.033652105763714,
+          "product": -0.4145500512036159
+        },
+        "delta_db_vs48": {
+          "analog": -0.01091736866820032,
+          "tone14k": -0.2999617162233419,
+          "dc10": 0.028402097716187694,
+          "product": -0.2824769871753522
+        },
+        "half_sample_linear_delay_magnitude_db": -0.6876930815810873
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 1000,
+        "existing_stages_absolute_db": {
+          "analog": -0.1037414627788612,
+          "tone14k": -0.03202749084113003,
+          "dc10": 0.0057526396896635645,
+          "product": -0.13001631393032853
+        },
+        "delta_db_vs48": {
+          "analog": -5.2744437840420036e-05,
+          "tone14k": 0.0016068628936388967,
+          "dc10": 0.0005026316421363485,
+          "product": 0.002056750097935505
+        },
+        "half_sample_linear_delay_magnitude_db": -0.022058427502393292
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 4000,
+        "existing_stages_absolute_db": {
+          "analog": -1.5330427799393187,
+          "tone14k": -0.48659803927485584,
+          "dc10": 0.006159757798229808,
+          "product": -2.013481061415945
+        },
+        "delta_db_vs48": {
+          "analog": -0.011900013640747737,
+          "tone14k": 0.025730392256246466,
+          "dc10": 0.0005026283646637435,
+          "product": 0.014333006980160282
+        },
+        "half_sample_linear_delay_magnitude_db": -0.35751431503962605
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 8000,
+        "existing_stages_absolute_db": {
+          "analog": -5.401214587145215,
+          "tone14k": -1.6719792027940001,
+          "dc10": 0.006180077059582402,
+          "product": -7.06701371287963
+        },
+        "delta_db_vs48": {
+          "analog": -0.1470166111262242,
+          "tone14k": 0.10316271399669305,
+          "dc10": 0.0005026170985590934,
+          "product": -0.04335128003097265
+        },
+        "half_sample_linear_delay_magnitude_db": -1.4942421595814894
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 12000,
+        "existing_stages_absolute_db": {
+          "analog": -11.118524177755582,
+          "tone14k": -3.015506270096742,
+          "dc10": 0.0061837760351007845,
+          "product": -14.127846671817226
+        },
+        "delta_db_vs48": {
+          "analog": -0.6401876107684128,
+          "tone14k": 0.23282919722956846,
+          "dc10": 0.0005025953190120005,
+          "product": -0.40685581821983224
+        },
+        "half_sample_linear_delay_magnitude_db": -3.657583905847797
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 16000,
+        "existing_stages_absolute_db": {
+          "analog": -19.87887203302095,
+          "tone14k": -4.092691350559955,
+          "dc10": 0.006184977892791763,
+          "product": -23.965378405688114
+        },
+        "delta_db_vs48": {
+          "analog": -2.137208536193709,
+          "tone14k": 0.4148318153608981,
+          "dc10": 0.0005025569243079517,
+          "product": -1.7218741639085013
+        },
+        "half_sample_linear_delay_magnitude_db": -7.581255183117774
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 18000,
+        "existing_stages_absolute_db": {
+          "analog": -26.828986947497626,
+          "tone14k": -4.45499773410652,
+          "dc10": 0.006185249745486276,
+          "product": -31.277799431858657
+        },
+        "delta_db_vs48": {
+          "analog": -4.009373297571332,
+          "tone14k": 0.5249698073039163,
+          "dc10": 0.0005025278412513217,
+          "product": -3.483900962426167
+        },
+        "half_sample_linear_delay_magnitude_db": -10.917512396217424
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 1000,
+        "existing_stages_absolute_db": {
+          "analog": -0.10374120197168561,
+          "tone14k": -0.032035205843142345,
+          "dc10": 0.005750255914941824,
+          "product": -0.13002615189988545
+        },
+        "delta_db_vs48": {
+          "analog": -5.2483630663888306e-05,
+          "tone14k": 0.0015991478916238646,
+          "dc10": 0.0005002478674176276,
+          "product": 0.0020469121283797917
+        },
+        "half_sample_linear_delay_magnitude_db": -0.022041416442044607
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 4000,
+        "existing_stages_absolute_db": {
+          "analog": -1.5329835814832604,
+          "tone14k": -0.48672154911307064,
+          "dc10": 0.0061573740410993906,
+          "product": -2.0135477565552318
+        },
+        "delta_db_vs48": {
+          "analog": -0.011840815184689771,
+          "tone14k": 0.02560688241803225,
+          "dc10": 0.0005002446075305147,
+          "product": 0.014266311840876206
+        },
+        "half_sample_linear_delay_magnitude_db": -0.35723500028868493
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 8000,
+        "existing_stages_absolute_db": {
+          "analog": -5.4004710596509575,
+          "tone14k": -1.672473991302432,
+          "dc10": 0.0061776933632720615,
+          "product": -7.066767357590119
+        },
+        "delta_db_vs48": {
+          "analog": -0.14627308363196861,
+          "tone14k": 0.1026679254882591,
+          "dc10": 0.000500233402249046,
+          "product": -0.04310492474146049
+        },
+        "half_sample_linear_delay_magnitude_db": -1.4930200843184895
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 12000,
+        "existing_stages_absolute_db": {
+          "analog": -11.115193255254125,
+          "tone14k": -3.016621121005886,
+          "dc10": 0.006181392457849714,
+          "product": -14.125632983802163
+        },
+        "delta_db_vs48": {
+          "analog": -0.6368566882669542,
+          "tone14k": 0.23171434632042423,
+          "dc10": 0.0005002117417604174,
+          "product": -0.40464213020476764
+        },
+        "half_sample_linear_delay_magnitude_db": -3.654295920416621
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 16000,
+        "existing_stages_absolute_db": {
+          "analog": -19.867124699974063,
+          "tone14k": -4.094671692350173,
+          "dc10": 0.006182594529683238,
+          "product": -23.955613797794552
+        },
+        "delta_db_vs48": {
+          "analog": -2.12546120314682,
+          "tone14k": 0.4128514735706794,
+          "dc10": 0.000500173561200987,
+          "product": -1.7121095560149422
+        },
+        "half_sample_linear_delay_magnitude_db": -7.572963355193927
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 18000,
+        "existing_stages_absolute_db": {
+          "analog": -26.805637500249254,
+          "tone14k": -4.457498030598735,
+          "dc10": 0.006182866547790062,
+          "product": -31.256952664300197
+        },
+        "delta_db_vs48": {
+          "analog": -3.986023850322962,
+          "tone14k": 0.5224695108117022,
+          "dc10": 0.0005001446435572281,
+          "product": -3.4630541948677056
+        },
+        "half_sample_linear_delay_magnitude_db": -10.903064928646721
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 1000,
+        "existing_stages_absolute_db": {
+          "analog": -0.10368871834102135,
+          "tone14k": -0.033634353734768,
+          "dc10": 0.0052500080475254285,
+          "product": -0.1320730640282643
+        },
+        "delta_db_vs48": {
+          "analog": 0.0,
+          "tone14k": -9.643274665532871e-16,
+          "dc10": 0.0,
+          "product": 0.0
+        },
+        "half_sample_linear_delay_magnitude_db": -0.018617093889340755
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 4000,
+        "existing_stages_absolute_db": {
+          "analog": -1.5211427662985724,
+          "tone14k": -0.5123284315311021,
+          "dc10": 0.0056571294335680256,
+          "product": -2.0278140683961072
+        },
+        "delta_db_vs48": {
+          "analog": 0.0,
+          "tone14k": 0.0,
+          "dc10": 0.0,
+          "product": -9.643274665532871e-16
+        },
+        "half_sample_linear_delay_magnitude_db": -0.3011244379460297
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 8000,
+        "existing_stages_absolute_db": {
+          "analog": -5.254197976018988,
+          "tone14k": -1.7751419167906914,
+          "dc10": 0.005677459961023073,
+          "product": -7.023662432848657
+        },
+        "delta_db_vs48": {
+          "analog": 0.0,
+          "tone14k": -9.643274665532871e-16,
+          "dc10": 0.0,
+          "product": 0.0
+        },
+        "half_sample_linear_delay_magnitude_db": -1.2493873660829988
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 12000,
+        "existing_stages_absolute_db": {
+          "analog": -10.478336566987172,
+          "tone14k": -3.248335467326311,
+          "dc10": 0.00568118071608859,
+          "product": -13.720990853597392
+        },
+        "delta_db_vs48": {
+          "analog": 0.0,
+          "tone14k": 0.0,
+          "dc10": 0.0,
+          "product": 0.0
+        },
+        "half_sample_linear_delay_magnitude_db": -3.0102999566398116
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 16000,
+        "existing_stages_absolute_db": {
+          "analog": -17.74166349682724,
+          "tone14k": -4.507523165920855,
+          "dc10": 0.005682420968484902,
+          "product": -22.24350424177961
+        },
+        "delta_db_vs48": {
+          "analog": 0.0,
+          "tone14k": 0.0,
+          "dc10": 0.0,
+          "product": 0.0
+        },
+        "half_sample_linear_delay_magnitude_db": -6.0205999132796215
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 18000,
+        "existing_stages_absolute_db": {
+          "analog": -22.819613649926293,
+          "tone14k": -4.979967541410435,
+          "dc10": 0.005682721904233443,
+          "product": -27.793898469432495
+        },
+        "delta_db_vs48": {
+          "analog": 0.0,
+          "tone14k": 0.0,
+          "dc10": 0.0,
+          "product": 0.0
+        },
+        "half_sample_linear_delay_magnitude_db": -8.343206788338348
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 20000,
+        "existing_stages_absolute_db": {
+          "analog": -29.922706727042716,
+          "tone14k": -5.325826021969123,
+          "dc10": 0.005682907525606249,
+          "product": -35.24284984148623
+        },
+        "delta_db_vs48": {
+          "analog": 0.0,
+          "tone14k": 0.0,
+          "dc10": 0.0,
+          "product": 0.0
+        },
+        "half_sample_linear_delay_magnitude_db": -11.740075388613217
+      },
+      {
+        "rate": 88200,
+        "frequency_hz": 1000,
+        "existing_stages_absolute_db": {
+          "analog": -0.10348815465200702,
+          "tone14k": -0.04070539901290056,
+          "dc10": 0.0026593674517037488,
+          "product": -0.14153418621320368
+        },
+        "delta_db_vs48": {
+          "analog": 0.00020056368901339396,
+          "tone14k": -0.007071045278134119,
+          "dc10": -0.0025906405958216494,
+          "product": -0.009461122184939939
+        },
+        "half_sample_linear_delay_magnitude_db": -0.005511105693556433
+      },
+      {
+        "rate": 88200,
+        "frequency_hz": 4000,
+        "existing_stages_absolute_db": {
+          "analog": -1.477180425604906,
+          "tone14k": -0.6256034323498074,
+          "dc10": 0.0030664961985812636,
+          "product": -2.0997173617561313
+        },
+        "delta_db_vs48": {
+          "analog": 0.04396234069366478,
+          "tone14k": -0.11327500081870565,
+          "dc10": -0.002590633234984442,
+          "product": -0.07190329336002564
+        },
+        "half_sample_linear_delay_magnitude_db": -0.08845893013180497
+      },
+      {
+        "rate": 88200,
+        "frequency_hz": 8000,
+        "existing_stages_absolute_db": {
+          "analog": -4.751049915335497,
+          "tone14k": -2.2300009268723917,
+          "dc10": 0.003086851399457411,
+          "product": -6.97796399080843
+        },
+        "delta_db_vs48": {
+          "analog": 0.5031480606834907,
+          "tone14k": -0.4548590100816996,
+          "dc10": -0.0025906085615667917,
+          "product": 0.045698442040228354
+        },
+        "half_sample_linear_delay_magnitude_db": -0.35751431503962605
+      },
+      {
+        "rate": 88200,
+        "frequency_hz": 12000,
+        "existing_stages_absolute_db": {
+          "analog": -8.539153963766902,
+          "tone14k": -4.2782644144984445,
+          "dc10": 0.003090617423476838,
+          "product": -12.814327760841868
+        },
+        "delta_db_vs48": {
+          "analog": 1.9391826032202681,
+          "tone14k": -1.0299289471721327,
+          "dc10": -0.0025905632926122163,
+          "product": 0.9066630927555246
+        },
+        "half_sample_linear_delay_magnitude_db": -0.8188370263093727
+      },
+      {
+        "rate": 88200,
+        "frequency_hz": 16000,
+        "existing_stages_absolute_db": {
+          "analog": -12.452916862710685,
+          "tone14k": -6.354183678873506,
+          "dc10": 0.003091931229705703,
+          "product": -18.804008610354483
+        },
+        "delta_db_vs48": {
+          "analog": 5.288746634116556,
+          "tone14k": -1.8466605129526517,
+          "dc10": -0.0025904897387775227,
+          "product": 3.4394956314251286
+        },
+        "half_sample_linear_delay_magnitude_db": -1.4942421595814894
+      },
+      {
+        "rate": 88200,
+        "frequency_hz": 18000,
+        "existing_stages_absolute_db": {
+          "analog": -14.445455791377258,
+          "tone14k": -7.328731080936422,
+          "dc10": 0.003092283707460249,
+          "product": -21.77109458860622
+        },
+        "delta_db_vs48": {
+          "analog": 8.374157858549033,
+          "tone14k": -2.3487635395259865,
+          "dc10": -0.002590438196774298,
+          "product": 6.022803880826272
+        },
+        "half_sample_linear_delay_magnitude_db": -1.9228656001375233
+      },
+      {
+        "rate": 88200,
+        "frequency_hz": 20000,
+        "existing_stages_absolute_db": {
+          "analog": -16.475894177473908,
+          "tone14k": -8.240873097740492,
+          "dc10": 0.003092534273679664,
+          "product": -24.713674740940725
+        },
+        "delta_db_vs48": {
+          "analog": 13.446812549568808,
+          "tone14k": -2.915047075771371,
+          "dc10": -0.0025903732519278458,
+          "product": 10.529175100545508
+        },
+        "half_sample_linear_delay_magnitude_db": -2.4202761713254977
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 1000,
+        "existing_stages_absolute_db": {
+          "analog": -0.10347502125256326,
+          "tone14k": -0.04122832535221676,
+          "dc10": 0.002408022903696545,
+          "product": -0.14229532370108366
+        },
+        "delta_db_vs48": {
+          "analog": 0.00021369708846141527,
+          "tone14k": -0.007593971617448599,
+          "dc10": -0.0028419851438287406,
+          "product": -0.010222259672817927
+        },
+        "half_sample_linear_delay_magnitude_db": -0.004651779512785283
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 4000,
+        "existing_stages_absolute_db": {
+          "analog": -1.4743709238422866,
+          "tone14k": -0.6339778156699061,
+          "dc10": 0.002815151852503689,
+          "product": -2.1055335876596883
+        },
+        "delta_db_vs48": {
+          "analog": 0.04677184245628625,
+          "tone14k": -0.12164938413880533,
+          "dc10": -0.0028419775810629875,
+          "product": -0.077719519263583
+        },
+        "half_sample_linear_delay_magnitude_db": -0.07462867641439908
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 8000,
+        "existing_stages_absolute_db": {
+          "analog": -4.7208936698459,
+          "tone14k": -2.2635956951831138,
+          "dc10": 0.0028355077110706617,
+          "product": -6.981653857317941
+        },
+        "delta_db_vs48": {
+          "analog": 0.5333043061730903,
+          "tone14k": -0.4884537783924219,
+          "dc10": -0.0028419522499525266,
+          "product": 0.04200857553071698
+        },
+        "half_sample_linear_delay_magnitude_db": -0.3011244379460297
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 12000,
+        "existing_stages_absolute_db": {
+          "analog": -8.43399900143732,
+          "tone14k": -4.3542206711396645,
+          "dc10": 0.002839274871488362,
+          "product": -12.785380397705497
+        },
+        "delta_db_vs48": {
+          "analog": 2.044337565549851,
+          "tone14k": -1.105885203813356,
+          "dc10": -0.002841905844599279,
+          "product": 0.9356104558918971
+        },
+        "half_sample_linear_delay_magnitude_db": -0.6876930815810873
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 16000,
+        "existing_stages_absolute_db": {
+          "analog": -12.207150397998927,
+          "tone14k": -6.490145824782248,
+          "dc10": 0.0028405903578450913,
+          "product": -18.69445563242333
+        },
+        "delta_db_vs48": {
+          "analog": 5.534513098828314,
+          "tone14k": -1.982622658861395,
+          "dc10": -0.0028418306106386304,
+          "product": 3.5490486093562805
+        },
+        "half_sample_linear_delay_magnitude_db": -1.2493873660829988
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 18000,
+        "existing_stages_absolute_db": {
+          "analog": -14.097813209636127,
+          "tone14k": -7.501531218113452,
+          "dc10": 0.0028409439094748616,
+          "product": -21.596503483840106
+        },
+        "delta_db_vs48": {
+          "analog": 8.721800440290163,
+          "tone14k": -2.521563676703014,
+          "dc10": -0.002841777994757038,
+          "product": 6.197394985592387
+        },
+        "half_sample_linear_delay_magnitude_db": -1.603072366062503
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 20000,
+        "existing_stages_absolute_db": {
+          "analog": -15.999960328726605,
+          "tone14k": -8.455214691172191,
+          "dc10": 0.0028411957268752487,
+          "product": -24.452333824171923
+        },
+        "delta_db_vs48": {
+          "analog": 13.92274639831611,
+          "tone14k": -3.1293886692030704,
+          "dc10": -0.0028417117987298303,
+          "product": 10.79051601731431
+        },
+        "half_sample_linear_delay_magnitude_db": -2.0106669078380666
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 1000,
+        "existing_stages_absolute_db": {
+          "analog": -0.10342171924766358,
+          "tone14k": -0.04343599936814961,
+          "dc10": 0.0009869138399743011,
+          "product": -0.14587080477584025
+        },
+        "delta_db_vs48": {
+          "analog": 0.0002669990933562474,
+          "tone14k": -0.009801645633381302,
+          "dc10": -0.004263094207551368,
+          "product": -0.013797740747575919
+        },
+        "half_sample_linear_delay_magnitude_db": -0.0011627891726980158
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 4000,
+        "existing_stages_absolute_db": {
+          "analog": -1.463053596205006,
+          "tone14k": -0.669320664473208,
+          "dc10": 0.001394043257152504,
+          "product": -2.1309802174210617
+        },
+        "delta_db_vs48": {
+          "analog": 0.05808917009356626,
+          "tone14k": -0.15699223294210615,
+          "dc10": -0.004263086176415693,
+          "product": -0.10316614902495685
+        },
+        "half_sample_linear_delay_magnitude_db": -0.018617093889340755
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 8000,
+        "existing_stages_absolute_db": {
+          "analog": -4.601691675355607,
+          "tone14k": -2.4052247899550654,
+          "dc10": 0.0014144006315141978,
+          "product": -7.005502064679158
+        },
+        "delta_db_vs48": {
+          "analog": 0.6525063006633818,
+          "tone14k": -0.6300828731643735,
+          "dc10": -0.004263059329509461,
+          "product": 0.01816036816950112
+        },
+        "half_sample_linear_delay_magnitude_db": -0.07462867641439908
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 12000,
+        "existing_stages_absolute_db": {
+          "analog": -8.029382974794178,
+          "tone14k": -4.673859208782741,
+          "dc10": 0.001418170377135417,
+          "product": -12.701824013199783
+        },
+        "delta_db_vs48": {
+          "analog": 2.448953592192992,
+          "tone14k": -1.4255237414564301,
+          "dc10": -0.004263010338951952,
+          "product": 1.0191668403976113
+        },
+        "half_sample_linear_delay_magnitude_db": -0.1685212131123655
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 16000,
+        "existing_stages_absolute_db": {
+          "analog": -11.294451247376301,
+          "tone14k": -7.060839301899886,
+          "dc10": 0.0014194896110682437,
+          "product": -18.353871059665117
+        },
+        "delta_db_vs48": {
+          "analog": 6.447212249450941,
+          "tone14k": -2.553316135979033,
+          "dc10": -0.004262931357417045,
+          "product": 3.889633182114493
+        },
+        "half_sample_linear_delay_magnitude_db": -0.3011244379460297
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 18000,
+        "existing_stages_absolute_db": {
+          "analog": -12.834142395668202,
+          "tone14k": -8.225714075436283,
+          "dc10": 0.0014198455140375164,
+          "product": -21.058436625590453
+        },
+        "delta_db_vs48": {
+          "analog": 9.985471254258089,
+          "tone14k": -3.245746534025848,
+          "dc10": -0.0042628763901968085,
+          "product": 6.735461843842043
+        },
+        "half_sample_linear_delay_magnitude_db": -0.3823027840669113
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 20000,
+        "existing_stages_absolute_db": {
+          "analog": -14.311558560070463,
+          "tone14k": -9.351908401969238,
+          "dc10": 0.0014201000301476744,
+          "product": -23.662046862009554
+        },
+        "delta_db_vs48": {
+          "analog": 15.611148166972253,
+          "tone14k": -4.0260823800001155,
+          "dc10": -0.004262807495457245,
+          "product": 11.580802979476676
+        },
+        "half_sample_linear_delay_magnitude_db": -0.4736412962639081
+      }
+    ],
+    "event_timing": [
+      {
+        "rate": 8000,
+        "event_frame": 0,
+        "requested_seconds": 0,
+        "position_before_note": 0,
+        "first_new_voice_tick": 0,
+        "first_tick_at_or_after_host_event": 0,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 0,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 8000,
+        "event_frame": 800,
+        "requested_seconds": 0.1,
+        "position_before_note": 4800,
+        "first_new_voice_tick": 4795,
+        "first_tick_at_or_after_host_event": 4800,
+        "new_voice_ticks_after_first_generation": 6,
+        "first_generation_host_frame": 800,
+        "first_tick_minus_host_event_microseconds": -104.16666666666907,
+        "backdated_internal_ticks": 5
+      },
+      {
+        "rate": 8000,
+        "event_frame": 988,
+        "requested_seconds": 0.12345,
+        "position_before_note": 5928,
+        "first_new_voice_tick": 5923,
+        "first_tick_at_or_after_host_event": 5928,
+        "new_voice_ticks_after_first_generation": 6,
+        "first_generation_host_frame": 988,
+        "first_tick_minus_host_event_microseconds": -104.16666666666907,
+        "backdated_internal_ticks": 5
+      },
+      {
+        "rate": 8000,
+        "event_frame": 8000,
+        "requested_seconds": 1,
+        "position_before_note": 48000,
+        "first_new_voice_tick": 47995,
+        "first_tick_at_or_after_host_event": 48000,
+        "new_voice_ticks_after_first_generation": 6,
+        "first_generation_host_frame": 8000,
+        "first_tick_minus_host_event_microseconds": -104.16666666668294,
+        "backdated_internal_ticks": 5
+      },
+      {
+        "rate": 44100,
+        "event_frame": 0,
+        "requested_seconds": 0,
+        "position_before_note": 0,
+        "first_new_voice_tick": 0,
+        "first_tick_at_or_after_host_event": 0,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 0,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 44100,
+        "event_frame": 4410,
+        "requested_seconds": 0.1,
+        "position_before_note": 4800.000000000197,
+        "first_new_voice_tick": 4799,
+        "first_tick_at_or_after_host_event": 4800,
+        "new_voice_ticks_after_first_generation": 2,
+        "first_generation_host_frame": 4410,
+        "first_tick_minus_host_event_microseconds": -20.833333333344918,
+        "backdated_internal_ticks": 1
+      },
+      {
+        "rate": 44100,
+        "event_frame": 5444,
+        "requested_seconds": 0.12345,
+        "position_before_note": 5925.44217687069,
+        "first_new_voice_tick": 5925,
+        "first_tick_at_or_after_host_event": 5926,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 5444,
+        "first_tick_minus_host_event_microseconds": -9.212018140580813,
+        "backdated_internal_ticks": 1
+      },
+      {
+        "rate": 44100,
+        "event_frame": 44100,
+        "requested_seconds": 1,
+        "position_before_note": 47999.99999999038,
+        "first_new_voice_tick": 47999,
+        "first_tick_at_or_after_host_event": 48000,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 44100,
+        "first_tick_minus_host_event_microseconds": -20.833333333358794,
+        "backdated_internal_ticks": 1
+      },
+      {
+        "rate": 44117,
+        "event_frame": 0,
+        "requested_seconds": 0,
+        "position_before_note": 0,
+        "first_new_voice_tick": 0,
+        "first_tick_at_or_after_host_event": 0,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 0,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 44117,
+        "event_frame": 4412,
+        "requested_seconds": 0.1,
+        "position_before_note": 4800.326404786928,
+        "first_new_voice_tick": 4800,
+        "first_tick_at_or_after_host_event": 4801,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 4412,
+        "first_tick_minus_host_event_microseconds": -6.800099734791121,
+        "backdated_internal_ticks": 1
+      },
+      {
+        "rate": 44117,
+        "event_frame": 5446,
+        "requested_seconds": 0.12345,
+        "position_before_note": 5925.334904911436,
+        "first_new_voice_tick": 5925,
+        "first_tick_at_or_after_host_event": 5926,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 5446,
+        "first_tick_minus_host_event_microseconds": -6.977185665391072,
+        "backdated_internal_ticks": 1
+      },
+      {
+        "rate": 44117,
+        "event_frame": 44117,
+        "requested_seconds": 1,
+        "position_before_note": 48000.00000002677,
+        "first_new_voice_tick": 47999,
+        "first_tick_at_or_after_host_event": 48000,
+        "new_voice_ticks_after_first_generation": 2,
+        "first_generation_host_frame": 44117,
+        "first_tick_minus_host_event_microseconds": -20.833333333358794,
+        "backdated_internal_ticks": 1
+      },
+      {
+        "rate": 48000,
+        "event_frame": 0,
+        "requested_seconds": 0,
+        "position_before_note": 0,
+        "first_new_voice_tick": 0,
+        "first_tick_at_or_after_host_event": 0,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 0,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 48000,
+        "event_frame": 4800,
+        "requested_seconds": 0.1,
+        "position_before_note": 4800,
+        "first_new_voice_tick": 4800,
+        "first_tick_at_or_after_host_event": 4800,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 4800,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 48000,
+        "event_frame": 5926,
+        "requested_seconds": 0.12345,
+        "position_before_note": 5926,
+        "first_new_voice_tick": 5926,
+        "first_tick_at_or_after_host_event": 5926,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 5926,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 48000,
+        "event_frame": 48000,
+        "requested_seconds": 1,
+        "position_before_note": 48000,
+        "first_new_voice_tick": 48000,
+        "first_tick_at_or_after_host_event": 48000,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 48000,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 88200,
+        "event_frame": 0,
+        "requested_seconds": 0,
+        "position_before_note": 0,
+        "first_new_voice_tick": 0,
+        "first_tick_at_or_after_host_event": 0,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 0,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 88200,
+        "event_frame": 8820,
+        "requested_seconds": 0.1,
+        "position_before_note": 4799.999999999553,
+        "first_new_voice_tick": 4800,
+        "first_tick_at_or_after_host_event": 4800,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 8821,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 88200,
+        "event_frame": 10888,
+        "requested_seconds": 0.12345,
+        "position_before_note": 5925.442176870046,
+        "first_new_voice_tick": 5925,
+        "first_tick_at_or_after_host_event": 5926,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 10888,
+        "first_tick_minus_host_event_microseconds": -9.212018140580813,
+        "backdated_internal_ticks": 1
+      },
+      {
+        "rate": 88200,
+        "event_frame": 88200,
+        "requested_seconds": 1,
+        "position_before_note": 48000.00000009155,
+        "first_new_voice_tick": 48000,
+        "first_tick_at_or_after_host_event": 48000,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 88200,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 96000,
+        "event_frame": 0,
+        "requested_seconds": 0,
+        "position_before_note": 0,
+        "first_new_voice_tick": 0,
+        "first_tick_at_or_after_host_event": 0,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 0,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 96000,
+        "event_frame": 9600,
+        "requested_seconds": 0.1,
+        "position_before_note": 4800,
+        "first_new_voice_tick": 4800,
+        "first_tick_at_or_after_host_event": 4800,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 9600,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 96000,
+        "event_frame": 11851,
+        "requested_seconds": 0.12345,
+        "position_before_note": 5925.5,
+        "first_new_voice_tick": 5926,
+        "first_tick_at_or_after_host_event": 5926,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 11852,
+        "first_tick_minus_host_event_microseconds": 10.41666666666552,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 96000,
+        "event_frame": 96000,
+        "requested_seconds": 1,
+        "position_before_note": 48000,
+        "first_new_voice_tick": 48000,
+        "first_tick_at_or_after_host_event": 48000,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 96000,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 192000,
+        "event_frame": 0,
+        "requested_seconds": 0,
+        "position_before_note": 0,
+        "first_new_voice_tick": 0,
+        "first_tick_at_or_after_host_event": 0,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 0,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 192000,
+        "event_frame": 19200,
+        "requested_seconds": 0.1,
+        "position_before_note": 4800,
+        "first_new_voice_tick": 4800,
+        "first_tick_at_or_after_host_event": 4800,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 19200,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 192000,
+        "event_frame": 23702,
+        "requested_seconds": 0.12345,
+        "position_before_note": 5925.5,
+        "first_new_voice_tick": 5926,
+        "first_tick_at_or_after_host_event": 5926,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 23704,
+        "first_tick_minus_host_event_microseconds": 10.41666666666552,
+        "backdated_internal_ticks": 0
+      },
+      {
+        "rate": 192000,
+        "event_frame": 192000,
+        "requested_seconds": 1,
+        "position_before_note": 48000,
+        "first_new_voice_tick": 48000,
+        "first_tick_at_or_after_host_event": 48000,
+        "new_voice_ticks_after_first_generation": 1,
+        "first_generation_host_frame": 192000,
+        "first_tick_minus_host_event_microseconds": 0,
+        "backdated_internal_ticks": 0
+      }
+    ],
+    "old_independent_MNA_receipt_excerpts": [
+      {
+        "rate": 8000,
+        "frequency_hz": 1000,
+        "baseline_db_error": -0.011202124246220718,
+        "oversampled_db_error": -0.0006410601383207853,
+        "baseline_phase_error_degrees": -0.7048981262270905,
+        "oversampled_latency_removed_phase_error_degrees": -0.04172825527192924
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 1000,
+        "baseline_db_error": -0.00033750001578253816,
+        "oversampled_db_error": 2.399308695016362e-05,
+        "baseline_phase_error_degrees": -0.0219347471432338,
+        "oversampled_latency_removed_phase_error_degrees": -0.0013685575841844123
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 4000,
+        "baseline_db_error": -0.07372927216706043,
+        "oversampled_db_error": -0.004412695546932152,
+        "baseline_phase_error_degrees": -1.0888971043387163,
+        "oversampled_latency_removed_phase_error_degrees": -0.06628886062317724
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 10000,
+        "baseline_db_error": -1.7564582371420256,
+        "oversampled_db_error": -0.08971515672840649,
+        "baseline_phase_error_degrees": -10.464023364573096,
+        "oversampled_latency_removed_phase_error_degrees": -0.5793926489101204
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 12000,
+        "baseline_db_error": -3.2165192579462447,
+        "oversampled_db_error": -0.1512538044432022,
+        "baseline_phase_error_degrees": -15.632662833863353,
+        "oversampled_latency_removed_phase_error_degrees": -0.8318062920550473
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 16000,
+        "baseline_db_error": -8.8613562351325,
+        "oversampled_db_error": -0.3295126346337699,
+        "baseline_phase_error_degrees": -28.83041653008123,
+        "oversampled_latency_removed_phase_error_degrees": -1.4034865634665248
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 1000,
+        "baseline_db_error": -0.00033723920871178226,
+        "oversampled_db_error": 2.4044068794613227e-05,
+        "baseline_phase_error_degrees": -0.021917814650832503,
+        "oversampled_latency_removed_phase_error_degrees": -0.0013675029478132357
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 4000,
+        "baseline_db_error": -0.07367007371105246,
+        "oversampled_db_error": -0.004409154182588205,
+        "baseline_phase_error_degrees": -1.0880342470293787,
+        "oversampled_latency_removed_phase_error_degrees": -0.06623769471333134
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 10000,
+        "baseline_db_error": -1.75478829392862,
+        "oversampled_db_error": -0.08964555321710854,
+        "baseline_phase_error_degrees": -10.454862073708599,
+        "oversampled_latency_removed_phase_error_degrees": -0.5789427963425751
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 12000,
+        "baseline_db_error": -3.21318833544478,
+        "oversampled_db_error": -0.1511347516167477,
+        "baseline_phase_error_degrees": -15.618406770808207,
+        "oversampled_latency_removed_phase_error_degrees": -0.8311589469996775
+      },
+      {
+        "rate": 44117,
+        "frequency_hz": 16000,
+        "baseline_db_error": -8.849608902085501,
+        "oversampled_db_error": -0.3292509160496868,
+        "baseline_phase_error_degrees": -28.801664012724686,
+        "oversampled_latency_removed_phase_error_degrees": -1.4023888363617214
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 1000,
+        "baseline_db_error": -0.00028475557779737427,
+        "oversampled_db_error": 3.425613492469741e-05,
+        "baseline_phase_error_degrees": -0.018509836740332696,
+        "oversampled_latency_removed_phase_error_degrees": -0.0011551808932012248
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 4000,
+        "baseline_db_error": -0.061829258526430904,
+        "oversampled_db_error": -0.003676894334633485,
+        "baseline_phase_error_degrees": -0.9150844132266607,
+        "oversampled_latency_removed_phase_error_degrees": -0.055939427732812436
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 10000,
+        "baseline_db_error": -1.4302819089151706,
+        "oversampled_db_error": -0.07558570223700423,
+        "baseline_phase_error_degrees": -8.648592604256274,
+        "oversampled_latency_removed_phase_error_degrees": -0.4884834892464051
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 12000,
+        "baseline_db_error": -2.576331647177848,
+        "oversampled_db_error": -0.12736701226978916,
+        "baseline_phase_error_degrees": -12.827186977500967,
+        "oversampled_latency_removed_phase_error_degrees": -0.7010343852851536
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 16000,
+        "baseline_db_error": -6.724147698938587,
+        "oversampled_db_error": -0.2769582275368668,
+        "baseline_phase_error_degrees": -23.262922310361375,
+        "oversampled_latency_removed_phase_error_degrees": -1.1819054342027993
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 20000,
+        "baseline_db_error": -16.10029278406666,
+        "oversampled_db_error": -0.4891413687279089,
+        "baseline_phase_error_degrees": -36.89383146014245,
+        "oversampled_latency_removed_phase_error_degrees": -1.707208943912004
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 1000,
+        "baseline_db_error": -7.105848976048828e-05,
+        "oversampled_db_error": 3.89515194166406e-05,
+        "baseline_phase_error_degrees": -0.004622069178386394,
+        "oversampled_latency_removed_phase_error_degrees": -0.00028877414422718694
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 4000,
+        "baseline_db_error": -0.015057416070224398,
+        "oversampled_db_error": -0.0008508193713989997,
+        "baseline_phase_error_degrees": -0.22474300244767131,
+        "oversampled_latency_removed_phase_error_degrees": -0.013969544808579011
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 10000,
+        "baseline_db_error": -0.3122035507393743,
+        "oversampled_db_error": -0.01870954953465529,
+        "baseline_phase_error_degrees": -1.9924659666839686,
+        "oversampled_latency_removed_phase_error_degrees": -0.12153265563152613
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 12000,
+        "baseline_db_error": -0.5319940816278461,
+        "oversampled_db_error": -0.031508914933925436,
+        "baseline_phase_error_degrees": -2.876893781516454,
+        "oversampled_latency_removed_phase_error_degrees": -0.17415560806218375
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 16000,
+        "baseline_db_error": -1.1896346001104268,
+        "oversampled_db_error": -0.0679563353676786,
+        "baseline_phase_error_degrees": -4.914420452983283,
+        "oversampled_latency_removed_phase_error_degrees": -0.29268523471131797
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 20000,
+        "baseline_db_error": -2.177546385749593,
+        "oversampled_db_error": -0.11922121725474967,
+        "baseline_phase_error_degrees": -7.2024903469502055,
+        "oversampled_latency_removed_phase_error_degrees": -0.4213138770613398
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 1000,
+        "baseline_db_error": -1.7756484224701478e-05,
+        "oversampled_db_error": 1.3152048784091928e-05,
+        "baseline_phase_error_degrees": -0.0011551808824989862,
+        "oversampled_latency_removed_phase_error_degrees": -7.219213770209059e-05
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 4000,
+        "baseline_db_error": -0.00374008843274165,
+        "oversampled_db_error": -0.0001812725878986752,
+        "baseline_phase_error_degrees": -0.0559394277280031,
+        "oversampled_latency_removed_phase_error_degrees": -0.0034914304931567175
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 10000,
+        "baseline_db_error": -0.07562213816070774,
+        "oversampled_db_error": -0.0045958874540443975,
+        "baseline_phase_error_degrees": -0.48848348923878526,
+        "oversampled_latency_removed_phase_error_degrees": -0.030346611896218102
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 12000,
+        "baseline_db_error": -0.1273780549849033,
+        "oversampled_db_error": -0.0078075122341228565,
+        "baseline_phase_error_degrees": -0.7010343852865694,
+        "oversampled_latency_removed_phase_error_degrees": -0.043470479058883696
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 16000,
+        "baseline_db_error": -0.2769354494876536,
+        "oversampled_db_error": -0.01687961807935815,
+        "baseline_phase_error_degrees": -1.1819054341818214,
+        "oversampled_latency_removed_phase_error_degrees": -0.0729987796394414
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 20000,
+        "baseline_db_error": -0.48914461709306134,
+        "oversampled_db_error": -0.02958127145494345,
+        "baseline_phase_error_degrees": -1.7072089435827855,
+        "oversampled_latency_removed_phase_error_degrees": -0.10499059930415539
+      }
+    ],
+    "buffer_check": {
+      "recorded_conservative_max_delay_ms_at_depth8": 20.667579606459146,
+      "host192k_max_delay_samples": 3968.1752844401562,
+      "engine_read_delay_limit_samples": 4094,
+      "studio_max_delay_samples_at192k": 3840.0,
+      "overflow_found": false
+    },
+    "limits": [
+      "The linear response product excludes core SRC, chorus, drive and limiter; no claim it is the full synth response.",
+      "Half-sample delay droop is an interpolation worstcase bound, not a complete moving-chorus or hardware response.",
+      "New event probe observes state timing, not original hardware. Events quantize to the internal grid; it distinguishes causal ceil scheduling from existing backdating.",
+      "All response deltas are deterministic engineering calculations, not fits to reused recordings."
+    ],
+    "scripts_sha256": {
+      "analyze.py": "c724a61259b8d644601b925e2d5387c6b18cc3429eda897eafde977111a64da1",
+      "EventProbe.cpp": "421dc04834e1bde1f830d1fcdacddd3da9d8570905a22776b820722a1e40e9df"
+    }
+  },
+  "source_converter_addendum": {
+    "schema": "press78.host-rate-audit.src-result.v1",
+    "rows": [
+      {
+        "rate": 44100,
+        "frequency_hz": 4000,
+        "phase_cycle_length": 147,
+        "mean_gain_db": -4.409542098685497e-06,
+        "mean_phase_degrees": 5.839817602422932e-17,
+        "phase_cycle_rms_relative_to_input": 7.946200517128159e-07,
+        "maximum_phase_cycle_complex_error": 1.4140073659878374e-06
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 12000,
+        "phase_cycle_length": 147,
+        "mean_gain_db": 7.393980515799497e-07,
+        "mean_phase_degrees": -2.1636424562683862e-17,
+        "phase_cycle_rms_relative_to_input": 1.6188382736482096e-06,
+        "maximum_phase_cycle_complex_error": 3.6825557824082665e-06
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 18000,
+        "phase_cycle_length": 147,
+        "mean_gain_db": 0.0005423170958064773,
+        "mean_phase_degrees": 1.243647103638091e-16,
+        "phase_cycle_rms_relative_to_input": 5.342651006956186e-06,
+        "maximum_phase_cycle_complex_error": 7.25596474025564e-05
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 19000,
+        "phase_cycle_length": 147,
+        "mean_gain_db": -0.025580258880703834,
+        "mean_phase_degrees": 4.664545079462242e-16,
+        "phase_cycle_rms_relative_to_input": 1.365665053796378e-05,
+        "maximum_phase_cycle_complex_error": 0.0029572573562928095
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 20000,
+        "phase_cycle_length": 147,
+        "mean_gain_db": -1.4077171660152,
+        "mean_phase_degrees": 1.7506473180317472e-16,
+        "phase_cycle_rms_relative_to_input": 9.98130633551692e-06,
+        "maximum_phase_cycle_complex_error": 0.14963071520878657
+      },
+      {
+        "rate": 44100,
+        "frequency_hz": 21000,
+        "phase_cycle_length": 147,
+        "mean_gain_db": -9.107530048295512,
+        "mean_phase_degrees": 1.2357365512224617e-15,
+        "phase_cycle_rms_relative_to_input": 1.4655098855407788e-05,
+        "maximum_phase_cycle_complex_error": 0.6495682618662943
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 4000,
+        "phase_cycle_length": 1,
+        "mean_gain_db": 0.0,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 0.0,
+        "maximum_phase_cycle_complex_error": 0.0
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 12000,
+        "phase_cycle_length": 1,
+        "mean_gain_db": 0.0,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 0.0,
+        "maximum_phase_cycle_complex_error": 0.0
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 18000,
+        "phase_cycle_length": 1,
+        "mean_gain_db": 0.0,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 0.0,
+        "maximum_phase_cycle_complex_error": 0.0
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 19000,
+        "phase_cycle_length": 1,
+        "mean_gain_db": 0.0,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 0.0,
+        "maximum_phase_cycle_complex_error": 0.0
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 20000,
+        "phase_cycle_length": 1,
+        "mean_gain_db": 0.0,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 0.0,
+        "maximum_phase_cycle_complex_error": 0.0
+      },
+      {
+        "rate": 48000,
+        "frequency_hz": 21000,
+        "phase_cycle_length": 1,
+        "mean_gain_db": 0.0,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 0.0,
+        "maximum_phase_cycle_complex_error": 0.0
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 4000,
+        "phase_cycle_length": 2,
+        "mean_gain_db": -1.4635261004495263e-05,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 1.6849452715850255e-06,
+        "maximum_phase_cycle_complex_error": 3.369890543170051e-06
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 12000,
+        "phase_cycle_length": 2,
+        "mean_gain_db": 2.9583794764218058e-05,
+        "mean_phase_degrees": 1.5902719243195879e-15,
+        "phase_cycle_rms_relative_to_input": 3.4059660412033566e-06,
+        "maximum_phase_cycle_complex_error": 6.811932082406713e-06
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 18000,
+        "phase_cycle_length": 2,
+        "mean_gain_db": 0.00027296661023188654,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 3.142693619606618e-05,
+        "maximum_phase_cycle_complex_error": 6.285387239213236e-05
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 19000,
+        "phase_cycle_length": 2,
+        "mean_gain_db": -0.00019039402949714616,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 2.1919682466065016e-05,
+        "maximum_phase_cycle_complex_error": 4.383936493213003e-05
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 20000,
+        "phase_cycle_length": 2,
+        "mean_gain_db": -0.0005265584584035914,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 6.062044535204425e-05,
+        "maximum_phase_cycle_complex_error": 0.0001212408907040885
+      },
+      {
+        "rate": 96000,
+        "frequency_hz": 21000,
+        "phase_cycle_length": 2,
+        "mean_gain_db": 0.0014850666361491138,
+        "mean_phase_degrees": 3.180010933836451e-15,
+        "phase_cycle_rms_relative_to_input": 0.0001709892319174955,
+        "maximum_phase_cycle_complex_error": 0.000341978463834991
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 4000,
+        "phase_cycle_length": 4,
+        "mean_gain_db": -1.5063626678364898e-05,
+        "mean_phase_degrees": 7.951400493475348e-16,
+        "phase_cycle_rms_relative_to_input": 1.2067662889555198e-06,
+        "maximum_phase_cycle_complex_error": 3.369890543170051e-06
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 12000,
+        "phase_cycle_length": 4,
+        "mean_gain_db": 2.9643057075188912e-05,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 3.8052301346851855e-06,
+        "maximum_phase_cycle_complex_error": 6.811932082406713e-06
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 18000,
+        "phase_cycle_length": 4,
+        "mean_gain_db": 0.000273113530492192,
+        "mean_phase_degrees": -1.5902273378594193e-15,
+        "phase_cycle_rms_relative_to_input": 3.186772780553235e-05,
+        "maximum_phase_cycle_complex_error": 6.285387239213236e-05
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 19000,
+        "phase_cycle_length": 4,
+        "mean_gain_db": -0.00019089915286253038,
+        "mean_phase_degrees": 1.5903122923539777e-15,
+        "phase_cycle_rms_relative_to_input": 2.1344198746888106e-05,
+        "maximum_phase_cycle_complex_error": 4.383936493213003e-05
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 20000,
+        "phase_cycle_length": 4,
+        "mean_gain_db": -0.0005270839390369131,
+        "mean_phase_degrees": 0.0,
+        "phase_cycle_rms_relative_to_input": 6.004515295740189e-05,
+        "maximum_phase_cycle_complex_error": 0.0001212408907040885
+      },
+      {
+        "rate": 192000,
+        "frequency_hz": 21000,
+        "phase_cycle_length": 4,
+        "mean_gain_db": 0.0014852805262024881,
+        "mean_phase_degrees": -7.950027138821687e-16,
+        "phase_cycle_rms_relative_to_input": 0.00017144553526536618,
+        "maximum_phase_cycle_complex_error": 0.000341978463834991
+      }
+    ],
+    "design_sha256": "186da863f2a8220669fe3587bb49c96895f0354ac18cc2a31dc164628a03ebdf",
+    "script_sha256": "100d5074aa280c5b31dfc22115408ab4e878f7788348d6091a6dc3a48efdb12a",
+    "scope": "Additional exact coefficient analysis only; no new recordings or source changes. Frozen after linear-output/event results, before this SRC evaluation.",
+    "native_runtime_vs_formula_tested": false
+  },
+  "code_locations": {
+    "analog_host_rate": "Source/DSP/Press78Engine.cpp:254",
+    "analog_bilinear_retarget": "Source/DSP/AnalogOutput.h:11",
+    "tone_coefficient": "Source/DSP/Press78Engine.cpp:311",
+    "tone_processing": "Source/DSP/Press78Engine.cpp:543",
+    "core_src_cutoff": "Source/DSP/Press78Engine.cpp:459",
+    "core_src_integer_bypass": "Source/DSP/Press78Engine.cpp:511",
+    "chorus_interpolation": "Source/DSP/Press78Engine.cpp:522",
+    "chorus_timebase": "Source/DSP/Press78Engine.cpp:571",
+    "dc": "Source/DSP/Press78Engine.cpp:573",
+    "note_on_mutation": "Source/DSP/Press78Engine.cpp:350",
+    "tick_generation": "Source/DSP/Press78Engine.cpp:590",
+    "clock_position_update": "Source/DSP/Press78Engine.cpp:598"
+  },
+  "proposed_compatibility_pipeline": [
+    "Variable common modeled FM clock",
+    "Existing raw FM reconstruction onto fixed48k physical output time",
+    "Existing48k analog/tone/drive/chorus/DC/gain/limit",
+    "Final stereo host converter; exact bypass at48k"
+  ],
+  "proposal_not_implemented": false,
+  "compatibility_risks": [
+    "Non48k output intentionally changes",
+    "Finalconverter latency outside48k bypass must be declared; commonextra latency would change48k rawbyte alignment",
+    "Eventcatchup correction preservesnominal48 but can change48 withclockvariation andallocation/idlehandover",
+    "Analogandchorus mustnot followdigitalmasterclock variation",
+    "Avoid perinstance duplication of257x64double table",
+    "Recordedchorusidentified100\u20134000Hz; highfrequencyresponse nothardwareverified",
+    "Highratephysicalcircuit approximation needsseparatepolicy becausechanges48k"
+  ],
+  "artifacts": [
+    {
+      "path": "build/host-rate-audit-20261019/design-frozen.json",
+      "sha256": "9f9459a56fbaca81fcdd5f2b670c26fc71f28d9a02f4453dfa9be7c3838b8ec7",
+      "bytes": 2734
+    },
+    {
+      "path": "build/host-rate-audit-20261019/EventProbe.cpp",
+      "sha256": "421dc04834e1bde1f830d1fcdacddd3da9d8570905a22776b820722a1e40e9df",
+      "bytes": 2102
+    },
+    {
+      "path": "build/host-rate-audit-20261019/event_probe",
+      "sha256": "6a88233364e879dadeb18953a84358e6eb51e9757e9ea89bfb936afb8e442e64",
+      "bytes": 57720
+    },
+    {
+      "path": "build/host-rate-audit-20261019/analyze.py",
+      "sha256": "c724a61259b8d644601b925e2d5387c6b18cc3429eda897eafde977111a64da1",
+      "bytes": 4032
+    },
+    {
+      "path": "build/host-rate-audit-20261019/event-timing.json",
+      "sha256": "343d1f6ef834ce4ff66dd4e2cf60f0de27de48ba9ce8e7078820632347431c3f",
+      "bytes": 9726
+    },
+    {
+      "path": "build/host-rate-audit-20261019/result.json",
+      "sha256": "87d87cfcf461708cb940c335fcbf511b822885e0f5e3567543e90f69bb2cf04f",
+      "bytes": 43601
+    },
+    {
+      "path": "build/host-rate-audit-20261019/src-addendum-frozen.json",
+      "sha256": "186da863f2a8220669fe3587bb49c96895f0354ac18cc2a31dc164628a03ebdf",
+      "bytes": 1110
+    },
+    {
+      "path": "build/host-rate-audit-20261019/source_resampler.py",
+      "sha256": "100d5074aa280c5b31dfc22115408ab4e878f7788348d6091a6dc3a48efdb12a",
+      "bytes": 1829
+    },
+    {
+      "path": "build/host-rate-audit-20261019/src-result.json",
+      "sha256": "ec6a6fc8e7ceabcc82272ed30f0c4d59d3cc3a056ff8784f2794aefb633e248c",
+      "bytes": 7650
+    }
+  ],
+  "initial_audit_snapshot": {
+    "path": "build/host-rate-audit-20261019/initial-tracked-draft.json",
+    "sha256": "7043f9122e154d0cdb321e1d145b2529451bc18cc9477121b2670756b5d558c4",
+    "production_source_unchanged_at_initial_audit": true,
+    "proposal_not_implemented_at_initial_audit": true
+  },
+  "legacy_fm_engine_source_unchanged": true,
+  "followup": {
+    "prototype": "Reference/Prototypes/fixed-output-bus-20261019/README.md",
+    "frozen_prototype_result": "Reference/Prototypes/fixed-output-bus-20261019/results.json",
+    "metadata_correction": "Reference/Prototypes/fixed-output-bus-20261019/latency-correction.json",
+    "production_validation": "Tests/results/output-bus-production-20261019.json",
+    "scope": "A separatelyauthorizedwrapper andkernel wereaddedafteraudit; underlyingEngineunchanged. Non48host outputchangesintentionally; nohardwareclock/analog/EGinference. NativeSDKdeliveryseparate."
+  }
+}

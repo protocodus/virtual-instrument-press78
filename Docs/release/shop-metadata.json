@@ -1,6 +1,6 @@
 {
   "product_id": "cz.protocodus.Press78",
-  "version": "0.1.0b12",
+  "version": "0.1.0b15",
   "schema": [
     "Tagline",
     "Top features",
@@ -9,15 +9,15 @@
     "Images"
   ],
   "source": "SHOP.md",
-  "source_sha256": "f11d08a4a08c144344b687dbd9083a7f587b20954d07a96fe37318b3a3b3ebc2",
+  "source_sha256": "9ab8bd897330569a014031a274a659207c844170fd0d31ffb11166d41f6c51a8",
   "preview_state": "canonical Init defaults",
   "tagline_characters": 16,
   "feature_characters": [
     38,
-    44,
+    39,
     48
   ],
-  "intro_characters": 200,
+  "intro_characters": 227,
   "image_sources": {
     "Press78_Front.png": "GUI2D/Preview_front@1x.png",
     "Press78_Back.png": "GUI2D/Preview_back@1x.png"

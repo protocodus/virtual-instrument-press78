@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "diagnostic_result_sha256": "e1b9582c390b4dbf3cf47e4f2905d13da1024795e48db2b55c53e7771c934dbf",
+  "protocol_sha256": "14c811257c8ce7cbc0fa2af8ad9fb93bfc5586701a0f800196180b37823d019c",
+  "comparisons": 6,
+  "metrics_per_comparison": 4,
+  "rows": [
+    {
+      "patch": 65,
+      "variant": "ModulatorOnly",
+      "metrics": {
+        "joint_lr_band_rmse_db": 5.1246136846802965,
+        "mid_band_rmse_db": 5.081160963677343,
+        "stereo_stft_convergence": 0.5115776922946175,
+        "stereo_stft_log_error_db": 4.440357178676821
+      },
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "patch": 93,
+      "variant": "ModulatorOnly",
+      "metrics": {
+        "joint_lr_band_rmse_db": 5.259531166077835,
+        "mid_band_rmse_db": 5.122651934748502,
+        "stereo_stft_convergence": 0.6626184054911638,
+        "stereo_stft_log_error_db": 3.4948217610131436
+      },
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "patch": 97,
+      "variant": "ModulatorOnly",
+      "metrics": {
+        "joint_lr_band_rmse_db": 3.1687087992799303,
+        "mid_band_rmse_db": 2.966426672621038,
+        "stereo_stft_convergence": 0.6934512252755146,
+        "stereo_stft_log_error_db": 2.8428135725858055
+      },
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "patch": 65,
+      "variant": "CarrierOnly",
+      "metrics": {
+        "joint_lr_band_rmse_db": 5.224962255895475,
+        "mid_band_rmse_db": 5.141423185824564,
+        "stereo_stft_convergence": 0.5134745276258637,
+        "stereo_stft_log_error_db": 4.439869628060561
+      },
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "patch": 93,
+      "variant": "CarrierOnly",
+      "metrics": {
+        "joint_lr_band_rmse_db": 5.254714867640323,
+        "mid_band_rmse_db": 5.159594159745754,
+        "stereo_stft_convergence": 0.6513460702684098,
+        "stereo_stft_log_error_db": 3.4694170305252388
+      },
+      "maximum_absolute_difference": 0.0
+    },
+    {
+      "patch": 97,
+      "variant": "CarrierOnly",
+      "metrics": {
+        "joint_lr_band_rmse_db": 3.226757026644158,
+        "mid_band_rmse_db": 3.033839835335914,
+        "stereo_stft_convergence": 0.690565860898814,
+        "stereo_stft_log_error_db": 2.913321715889827
+      },
+      "maximum_absolute_difference": 0.0
+    }
+  ],
+  "scope": "Independent parent raw focus-score recheck only; not an all100 rerun or adoption decision."
+}

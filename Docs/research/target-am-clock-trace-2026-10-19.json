@@ -1,0 +1,314 @@
+{
+  "schema": "press78.target-am-clock-trace.v1",
+  "date": "2026-10-19",
+  "status": "ANONYMOUS_VISIBLE_COPPER_ONLY",
+  "accepted_numbered_target_nets": 0,
+  "accepted_rc_component_pairs": 0,
+  "accepted_clock_frequency_hz": null,
+  "coordinate_system": {
+    "source": "build/target-am-board-20261019/commons-03.jpg",
+    "dimensions": [
+      2000,
+      1335
+    ],
+    "approximate_pad_center_tolerance_px": 3
+  },
+  "orientation": {
+    "view": "unmirrored component-side top view; notch rotated left",
+    "feature": "centered short-edge notch, not corner dot",
+    "near_row_left_to_right": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "far_row_left_to_right": [
+      8,
+      7,
+      6,
+      5
+    ],
+    "independent_inspections": 2,
+    "copper_footprint_mapping_accepted": false
+  },
+  "original_anonymous_edges": [
+    {
+      "id": "edge01",
+      "endpoints": [
+        [
+          1625,
+          391
+        ],
+        [
+          1645,
+          392
+        ]
+      ],
+      "path": "short broad horizontal bridge",
+      "confidence": "unoccluded visual connection"
+    },
+    {
+      "id": "edge02",
+      "endpoints": [
+        [
+          1665,
+          391
+        ],
+        [
+          1685,
+          428
+        ]
+      ],
+      "path": "narrow diagonal southeast trace between adjacent four-pad rows",
+      "confidence": "unoccluded visual connection"
+    },
+    {
+      "id": "edge03",
+      "endpoints": [
+        [
+          1685,
+          391
+        ],
+        [
+          1720,
+          381
+        ]
+      ],
+      "path": "broad rise then horizontal arm northeast",
+      "confidence": "unoccluded visual connection"
+    },
+    {
+      "id": "edge04",
+      "endpoints": [
+        [
+          1665,
+          428
+        ],
+        [
+          1720,
+          411
+        ]
+      ],
+      "path": "wide U below row, south to~445 then east and north",
+      "confidence": "unoccluded visual connection"
+    }
+  ],
+  "additional_local_groups": [
+    {
+      "id": "group05",
+      "pads": [
+        [
+          1647,
+          483
+        ],
+        [
+          1654,
+          518
+        ],
+        [
+          1692,
+          518
+        ],
+        [
+          1673,
+          571
+        ],
+        [
+          1711,
+          571
+        ]
+      ],
+      "visible_path": "Second pad of lower four-pad row descends to a broad branching copper area joining two upper passive-row pads and two lower passive-row pads."
+    },
+    {
+      "id": "group06",
+      "pads": [
+        [
+          1684,
+          483
+        ],
+        [
+          1673,
+          518
+        ]
+      ],
+      "visible_path": "Fourth pad of lower four-pad row branches downward-left to this upper passive-row pad; its other branch leaves the inspected local region."
+    },
+    {
+      "id": "group07",
+      "pads": [
+        [
+          1627,
+          518
+        ],
+        [
+          1654,
+          571
+        ]
+      ],
+      "visible_path": "Leftmost upper passive-row pad has a broad southeast diagonal to the second lower-row pad."
+    },
+    {
+      "id": "group08",
+      "pads": [
+        [
+          1711,
+          518
+        ],
+        [
+          1750,
+          518
+        ]
+      ],
+      "visible_path": "Broad U-shaped copper below the upper passive row connects these two pads; further copper continues beyond the listed group."
+    },
+    {
+      "id": "group09",
+      "pads": [
+        [
+          1692,
+          571
+        ],
+        [
+          1730,
+          571
+        ],
+        [
+          1750,
+          571
+        ]
+      ],
+      "visible_path": "The fourth, sixth and seventh lower passive-row pads share the broad bottom horizontal copper trace; its continuation is not classified."
+    }
+  ],
+  "isolated_land_observation": {
+    "coordinate": [
+      1665,
+      483
+    ],
+    "claim": "no visible outgoing copper trace",
+    "electrical_nc_proved": false,
+    "pin_number": null,
+    "component_side_connection_excluded": false
+  },
+  "rejected_observation": {
+    "claim": "join between two adjacent long parallel traces right of the paired footprints",
+    "reason": "larger unwarped crop shows separating gap",
+    "ever_accepted_as_edge": false
+  },
+  "manufacturer_example_only": {
+    "R_between_pins": [
+      6,
+      7
+    ],
+    "C_between_pins": [
+      5,
+      7
+    ],
+    "shared_node_is_ground": false,
+    "cp_frequency_divided_by_oscillator_frequency": 0.5,
+    "target_wiring_claimed": false
+  },
+  "unresolved": [
+    "package-to-copper footprint identities",
+    "68P/390K/2.7K pad pairs and exact circuit roles",
+    "ground/supply/bias and clock assignments",
+    "component-side hidden connections",
+    "oscillator control and modulation law",
+    "component tolerances, clock frequency and BBD physical delay"
+  ],
+  "scope": {
+    "production_changes": false,
+    "gui_changes": false,
+    "preset_changes": false,
+    "version_changes": false,
+    "new_acquisitions": false,
+    "noise_added": false,
+    "frozen_prior_reports_modified": false
+  },
+  "report": {
+    "path": "Reference/Research/target-am-clock-trace-20261019.md",
+    "bytes": 5011,
+    "sha256": "3e010a99b9fcbe5ae75e22508d174ab6c84b966321996629d4cca017f276cc2c"
+  },
+  "bindings": [
+    {
+      "path": "build/target-am-board-20261019/commons-03.jpg",
+      "bytes": 1003639,
+      "sha256": "6ec2ff036d79f24c0034226760bbb4aa419bc3ffe03d304fb885eb85ef991799"
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-06.jpg",
+      "bytes": 810212,
+      "sha256": "8a4c7fce6231d73a523ea28b949079501d14793500fcb4ac717ff808dd13fe55"
+    },
+    {
+      "path": "Reference/Research/target-am-board-20261019.md",
+      "bytes": 6846,
+      "sha256": "12bd5d4054c2c7cc936d69dd4c6557d2b13f3e3aff994e7973cf0bf35d0a41c3"
+    },
+    {
+      "path": "Reference/Research/target-am-board-20261019.json",
+      "bytes": 23206,
+      "sha256": "d27fe5289de9fed7e623bbff9d74712c09d92296ae149a9969be6bf1f0fee06e"
+    },
+    {
+      "path": "Reference/Research/target-am-registration-v2-20261019.md",
+      "bytes": 4854,
+      "sha256": "a36409c5f00dec794c70746d5e6848f74bda793555ec984806e49f4c885fa032"
+    },
+    {
+      "path": "Reference/Research/target-am-registration-v2-20261019.json",
+      "bytes": 27005,
+      "sha256": "d525b2f267d60b0b67418f6a26f4b310586945bb4b6059b524e91162fc38db3c"
+    },
+    {
+      "path": "build/target-am-clock-trace-20261019/anonymous-edges-before-registration.json",
+      "bytes": 1816,
+      "sha256": "14cc8d91195ff6bf6d9b3637874497defdf3ad99e161a33a6a9a6b3e5149f9c4"
+    },
+    {
+      "path": "build/target-am-clock-trace-20261019/clock-oscillator-pads-closeup.png",
+      "bytes": 1133804,
+      "sha256": "020372f33b9ca24baebc30d423b46a7293b05bc6813f71462386497736fcd694"
+    },
+    {
+      "path": "build/target-am-clock-trace-20261019/clock-right-complete-paths.png",
+      "bytes": 1343415,
+      "sha256": "57fa3b4f4d6b01ae88f6f64eab2af3e9f776685bac5903ca1a298380e89deb05"
+    },
+    {
+      "path": "build/target-am-clock-trace-20261019/copper-right-grid.png",
+      "bytes": 2176610,
+      "sha256": "e5c67191ff8bbc4cb6f3b245470a9cfa3a11e18fbbcec2154e817f3037700d35"
+    },
+    {
+      "path": "build/target-am-clock-trace-20261019/package-orientation-unmirrored.png",
+      "bytes": 1129397,
+      "sha256": "479d67c5b45061c8893ed47e3d29232b38511eb955886eaa4ec4e75ec2915818"
+    },
+    {
+      "path": "build/target-am-clock-trace-20261019/paired-footprint-unmarked.png",
+      "bytes": 1060786,
+      "sha256": "de78b22957854188adb388b2f4ff0e76313a74107ac7c2421d296420c771c845"
+    },
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3102-oscillator-p107.png",
+      "bytes": 238796,
+      "sha256": "957e327d6d207dad66e8e8f6050c943d3b3a4bfe4647c871a8f64b76f3eb09db"
+    }
+  ],
+  "production_source_sha256": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "Source/DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+    "Source/DSP/OutputKernelTable.h": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7",
+    "Source/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+    "Source/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "Source/DSP/Press78OutputBus.h": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+  }
+}

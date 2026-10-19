@@ -1,0 +1,117 @@
+{
+  "schema": "press78.sustain-independent-external-api-review.v1",
+  "utc": "2026-10-19T08:14:04.114928+00:00",
+  "passed": true,
+  "findings": [],
+  "source_binding": {
+    "files": {
+      "AnalogOutput.h": {
+        "bytes": 2195,
+        "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+      },
+      "CircuitNoise.h": {
+        "bytes": 8721,
+        "sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+      },
+      "FactoryVoices.h": {
+        "bytes": 12725,
+        "sha256": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7"
+      },
+      "FirmwarePitch.h": {
+        "bytes": 5430,
+        "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+      },
+      "OversampledAnalogOutput.h": {
+        "bytes": 6548,
+        "sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1"
+      },
+      "Press78Engine.cpp": {
+        "bytes": 28519,
+        "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+      },
+      "Press78Engine.h": {
+        "bytes": 10040,
+        "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+      },
+      "RecordedChorus.h": {
+        "bytes": 3581,
+        "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+      },
+      "RecordedChorusProfile.h": {
+        "bytes": 1073,
+        "sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+      }
+    },
+    "candidate_path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/prototype/Source/DSP"
+  },
+  "method": "Independent black-box public API audio equivalences plus analytic rate-difference ratio; no peer internal test-access friend or peer test implementation imported. Copied candidate9DSP files bound before compilation.",
+  "checks": {
+    "release_groups": 11,
+    "asan_ubsan_groups": 11,
+    "raw_original_values": 128,
+    "held_phase_and_release_equivalence": true,
+    "release_coefficient_continuity": true,
+    "release_ratio_max_error_db": 2.01636306134e-06,
+    "legacy_threshold_and_bool": true,
+    "factory_override_and_explicit_program": true,
+    "live_flag_edits": true,
+    "deferred_voice_and_48tick_tail_handover": true,
+    "noise_inert_and_split_processing": true
+  },
+  "source_review": [
+    "Envelope::updateRelease writes onlyreleasecoefficient; stored amplitude/stage/phase/feedback/age unchanged.",
+    "ActualCC overwrites sustain selection, noORwithfactoryflag; zero clearsfactorySustain.",
+    "Originalkeyoff/allNotesOff immediate; legacyrelease deferral unchanged.",
+    "Explicitfutureprogram seeds newvoices only; cachedoldvoice coefficient survives keyoff per pre-audio amendment.",
+    "Liveflagchanges update rates; unrelatedlive snapshots preservecontrolleroverride.",
+    "Modes switch only pitchIdle includingall48ticktails; noEG/Reverb/FM/DAC/noise law change."
+  ],
+  "limits": [
+    "No new hardwareaudio or measuredhardwareEGclock; analyticalrate lawunchanged.",
+    "Singlepartmode; no fullphysicalMode00/99 or programchangevoicekill emulation.",
+    "Stealtails areplugin clickguards, nothardwareallocator evidence.",
+    "Native normalizedpedal threshold/rawresolution separately reviewed bywrapperagent."
+  ],
+  "artifacts": {
+    "build/sustain-independent-engine-review-20261019/design-frozen.json": {
+      "bytes": 1674,
+      "sha256": "dc8afb957d9747410f93d9af4fd596769c3c38aa8fc697791e579f827041bbf5"
+    },
+    "build/sustain-independent-engine-review-20261019/candidate-bound.json": {
+      "bytes": 1381,
+      "sha256": "cd23b16f4046deb098e55b7e534b2a6213865c57abcdce64bd9455f8088315f7"
+    },
+    "build/sustain-independent-engine-review-20261019/witness.cpp": {
+      "bytes": 6012,
+      "sha256": "b236c289e02253b0303aabeb22ef018b792a0bd2671a2d058c3584c63ae2be87"
+    },
+    "build/sustain-independent-engine-review-20261019/witness": {
+      "bytes": 73208,
+      "sha256": "906c08a75d4e351e54cd2c9d2d643d0af32855157b7fd6484e0a7af9003d1a51"
+    },
+    "build/sustain-independent-engine-review-20261019/witness-asan": {
+      "bytes": 240256,
+      "sha256": "4cf200525366163550ab8afeb710b5e77184fe56f1defb0df83f834664081440"
+    },
+    "build/sustain-independent-engine-review-20261019/run.log": {
+      "bytes": 765,
+      "sha256": "ebc468bd974682e74494a1b35034650d458df8328c2448b66b396ac9c27fb0c4"
+    },
+    "build/sustain-independent-engine-review-20261019/run-asan.log": {
+      "bytes": 765,
+      "sha256": "ebc468bd974682e74494a1b35034650d458df8328c2448b66b396ac9c27fb0c4"
+    },
+    "build/sustain-b13-20261019/design-frozen.json": {
+      "bytes": 3491,
+      "sha256": "e5574fb0125772ee1c096cab2381c0cad131165ca6a56ca06700da33a018ef29"
+    },
+    "build/sustain-b13-20261019/scope-amendment-before-audio.json": {
+      "bytes": 713,
+      "sha256": "e1aabcda1b913ee900c5db074f36a0846c330ebb737029d0d028208663b264b5"
+    },
+    "build/sustain-b13-20261019/core-validation.json": {
+      "bytes": 7556,
+      "sha256": "abb46d32a157b280e0c4508f0ca19a543aa42ef3b23aa916e1ce9a0239f846a9"
+    }
+  }
+}

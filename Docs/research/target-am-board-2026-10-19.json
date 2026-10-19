@@ -1,0 +1,612 @@
+{
+  "schema": "press78.target-am-board-source.v1",
+  "date": "2026-10-19",
+  "status": "source_acquisition_ready_for_review",
+  "scope": "Target PSS680/PSS780 AM drawing or first-hand two-sided photographs; no circuit or runtime change",
+  "principal_result": {
+    "new_target_two_sided_photographs": true,
+    "complete_target_schematic_acquired": false,
+    "complete_netlist_recovered": false,
+    "accepted_photo_registration": false,
+    "new_timing_or_nonlinearity_model_justified": false
+  },
+  "prior_ledgers_read": [
+    {
+      "path": "Reference/Research/exact-circuit-source-search-20261019.md",
+      "sha256": "03bce1b9ac563d17bb89e3b6b4447b943cf218e2da14451c52a9c93785145830"
+    },
+    {
+      "path": "Reference/Research/output-schematic-audit-20261018.md",
+      "sha256": "5feed0063269d4ad4901d86b055847163196a5f7292feebfbb831ded8b99353e"
+    },
+    {
+      "path": "Reference/Research/opu-sibling-clock-circuit-20261019.md",
+      "sha256": "9f8d46dc7a0387fcb6807e9ce0e19b5c0f62fb57276bf9e246ae7d7767035ab4"
+    }
+  ],
+  "source_collection": {
+    "author": "deepsonic",
+    "author_page": "https://www.deepsonic.ch/deep/htm/yamaha_pss-780.php",
+    "commons_category": "https://commons.wikimedia.org/wiki/Category:Yamaha_PSS-780_(ser._no._047087)",
+    "photos_in_category": 14,
+    "full_resolution_files_acquired": 10,
+    "date_from_provenance": "2013-10-04",
+    "serial_from_category_only": "047087",
+    "serial_independently_read_in_board_images": false,
+    "license_from_commons_review": "CC BY 2.0",
+    "license_review_date": "2019-07-05"
+  },
+  "acquisitions": [
+    {
+      "index": 0,
+      "page": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090178754).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Yamaha_PSS-780_%2810090178754%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "path": "build/target-am-board-20261019/commons-00.jpg",
+      "size": [
+        2000,
+        1335
+      ],
+      "sha256": "30320e28541bd7fb4d5c4f3cb30e8333b9083102ffd39ba69a90008e17f28680",
+      "original_author_url": "https://www.flickr.com/photos/deepsonic/10090178754/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "author": "deepsonic",
+      "content_role": "set/context photograph"
+    },
+    {
+      "index": 1,
+      "page": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090180094).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Yamaha_PSS-780_%2810090180094%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "path": "build/target-am-board-20261019/commons-01.jpg",
+      "size": [
+        2000,
+        1335
+      ],
+      "sha256": "e14d5c3ef468e559d8d2d1e09613c671a7ff26cc5e079435db14183573da2354",
+      "original_author_url": "https://www.flickr.com/photos/deepsonic/10090180094/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "author": "deepsonic",
+      "content_role": "set/context photograph"
+    },
+    {
+      "index": 2,
+      "page": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090182584).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Yamaha_PSS-780_%2810090182584%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "path": "build/target-am-board-20261019/commons-02.jpg",
+      "size": [
+        2000,
+        1299
+      ],
+      "sha256": "efd9551080f03dcd61129b92701f110a10a3cb1e67c7d60d09dc58b19ca48931",
+      "original_author_url": "https://www.flickr.com/photos/deepsonic/10090182584/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "author": "deepsonic",
+      "content_role": "set/context photograph"
+    },
+    {
+      "index": 3,
+      "page": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090216715).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Yamaha_PSS-780_%2810090216715%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "path": "build/target-am-board-20261019/commons-03.jpg",
+      "size": [
+        2000,
+        1335
+      ],
+      "sha256": "6ec2ff036d79f24c0034226760bbb4aa419bc3ffe03d304fb885eb85ef991799",
+      "original_author_url": "https://www.flickr.com/photos/deepsonic/10090216715/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "author": "deepsonic",
+      "content_role": "AM copper side"
+    },
+    {
+      "index": 4,
+      "page": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090219365).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Yamaha_PSS-780_%2810090219365%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "path": "build/target-am-board-20261019/commons-04.jpg",
+      "size": [
+        2000,
+        1125
+      ],
+      "sha256": "6f257f6b4e2dbcc2cce8b63378d8f02112951eb3d1b68431c0825ba22a92ae1a",
+      "original_author_url": "https://www.flickr.com/photos/deepsonic/10090219365/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "author": "deepsonic",
+      "content_role": "set/context photograph"
+    },
+    {
+      "index": 5,
+      "page": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090219755).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Yamaha_PSS-780_%2810090219755%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "path": "build/target-am-board-20261019/commons-05.jpg",
+      "size": [
+        2000,
+        1500
+      ],
+      "sha256": "05bbed2f60c6846199d7087db12e3bcb4f4d5a42f6c359d12e1c44432d8a76f9",
+      "original_author_url": "https://www.flickr.com/photos/deepsonic/10090219755/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "author": "deepsonic",
+      "content_role": "set/context photograph"
+    },
+    {
+      "index": 6,
+      "page": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090241086).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Yamaha_PSS-780_%2810090241086%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "path": "build/target-am-board-20261019/commons-06.jpg",
+      "size": [
+        2000,
+        1379
+      ],
+      "sha256": "8a4c7fce6231d73a523ea28b949079501d14793500fcb4ac717ff808dd13fe55",
+      "original_author_url": "https://www.flickr.com/photos/deepsonic/10090241086/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "author": "deepsonic",
+      "content_role": "AM component side"
+    },
+    {
+      "index": 7,
+      "page": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090243326).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Yamaha_PSS-780_%2810090243326%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "path": "build/target-am-board-20261019/commons-07.jpg",
+      "size": [
+        2000,
+        1309
+      ],
+      "sha256": "75ecb6073ade6a1997ac9cf93d75e09c24f66a1ea4b027c25663333a4ca1af13",
+      "original_author_url": "https://www.flickr.com/photos/deepsonic/10090243326/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "author": "deepsonic",
+      "content_role": "set/context photograph"
+    },
+    {
+      "index": 8,
+      "page": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090244096).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Yamaha_PSS-780_%2810090244096%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "path": "build/target-am-board-20261019/commons-08.jpg",
+      "size": [
+        2000,
+        865
+      ],
+      "sha256": "7298f1141d3812d50924f107f23d775d3ab7234697d5187619d1a478af4d6f99",
+      "original_author_url": "https://www.flickr.com/photos/deepsonic/10090244096/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "author": "deepsonic",
+      "content_role": "set/context photograph"
+    },
+    {
+      "index": 9,
+      "page": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090245856).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Yamaha_PSS-780_%2810090245856%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "path": "build/target-am-board-20261019/commons-09.jpg",
+      "size": [
+        2000,
+        968
+      ],
+      "sha256": "cfb719c055038a978130429a5f14e4b298ab41520e4a66db59a3faf974dcda9f",
+      "original_author_url": "https://www.flickr.com/photos/deepsonic/10090245856/",
+      "license": "https://creativecommons.org/licenses/by/2.0/",
+      "author": "deepsonic",
+      "content_role": "set/context photograph"
+    },
+    {
+      "index": 10,
+      "error": "image curl",
+      "url": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090245946).jpg"
+    },
+    {
+      "index": 11,
+      "error": "page curl",
+      "url": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090246086).jpg"
+    },
+    {
+      "index": 12,
+      "error": "page curl",
+      "url": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090296853).jpg"
+    },
+    {
+      "index": 13,
+      "error": "page curl",
+      "url": "https://commons.wikimedia.org/wiki/File:Yamaha_PSS-780_(10090297703).jpg"
+    }
+  ],
+  "visual_observations": {
+    "component_board_marking": "AM",
+    "copper_artwork_marking": "YAMAHA XE422",
+    "assembly_VF108000_visible": false,
+    "VF108000_correspondence": "inference from target model, AM role and prior parts inventory; no all-revision identity proof",
+    "visible_dip8_packages": 5,
+    "readable_package_strings": [
+      "MN3206",
+      "4558DV"
+    ],
+    "original_unmirrored_reference_near_MN3206": "IC2",
+    "neighbor_MN3102_photo_reading": "provisional; dark marking, prior parts list supports hypothesis",
+    "unambiguous_silkscreen_strings": [
+      "68P",
+      "390K",
+      "2.7K",
+      "220P",
+      "1000P",
+      "47K",
+      "22K"
+    ],
+    "conventional_candidate_values_SI": {
+      "68P": 6.8e-11,
+      "390K": 390000,
+      "2.7K": 2700,
+      "220P": 2.2e-10,
+      "1000P": 1e-09,
+      "47K": 47000,
+      "22K": 22000
+    },
+    "pin_connections_from_value_proximity_accepted": false,
+    "ambiguous_strings_not_typed": [
+      "6800",
+      "3900"
+    ],
+    "ambiguity": "last glyph may be unit symbol; component type/bands require review",
+    "occlusions": [
+      "tape",
+      "speaker wiring",
+      "foam",
+      "heatsink",
+      "perspective/limited marking contrast"
+    ]
+  },
+  "failed_or_unresolved_inspections": [
+    {
+      "artifact": "build/target-am-board-20261019/trial-warp.png",
+      "reason": "Approximate mounting-hole homography not validated; mirrored labels; no net proof",
+      "preserved": true
+    },
+    {
+      "artifact": "build/target-am-board-20261019/failed-derived-thumbnail-url.html",
+      "reason": "Initial derived thumbnail URL produced HTML; corrected by following actual original-file link",
+      "preserved": true
+    }
+  ],
+  "bounded_other_leads": [
+    {
+      "url": "https://hollobon.com/techblog/yamaha_pss680_fix.html",
+      "discovered_via": "https://diyelectromusic.com/2023/08/02/arduino-pss-680-synth-editor-part-1/",
+      "web_results": [
+        "502 gateway",
+        "timeout"
+      ],
+      "curl_exit": 35,
+      "curl_error": "TLS handshake internal-error alert; verification was not disabled",
+      "media_acquired": false
+    },
+    {
+      "url": "https://www.manuals.altervista.org/",
+      "result": "Inspected PSS680/780 catalogue entries have no ordinary public document links; contact-based exchange offered",
+      "contact_made": false
+    }
+  ],
+  "unestablished": [
+    "full pin-level AM netlist",
+    "all-revision XE422/VF108000 equivalence",
+    "exact BBD clock or modulation law",
+    "actual supplies/bias/load",
+    "component tolerance/aging",
+    "filter response/gain",
+    "DAC architecture or timing",
+    "physical distortion/noise transfer"
+  ],
+  "production_source_sha256": {
+    "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "Source/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+  },
+  "scope_invariants": {
+    "source_changes": false,
+    "native_changes": false,
+    "gui_changes": false,
+    "preset_changes": false,
+    "version_changes": false,
+    "noise_added": false,
+    "purchases": false,
+    "logins": false,
+    "outreach": false,
+    "access_workarounds": false,
+    "hardware_access": false,
+    "acquired_media_tracked_or_shipped": false
+  },
+  "artifacts": [
+    {
+      "path": "build/target-am-board-20261019/am-board-marking.jpg",
+      "bytes": 64003,
+      "sha256": "644537934bb5f769bd17c24d8b3da92d6da728cb9e9eec98c9448273e218d2c2",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/am-chip-markings.jpg",
+      "bytes": 129385,
+      "sha256": "cbeb8d10fb772ef3eb1c01b4f6df507a518010a0607aeb80d2dd4c489a27e84b",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/am-component-closeup.jpg",
+      "bytes": 232318,
+      "sha256": "f1f0e628d72910e3cd4571b1485874627ac4487968b5eb0bc136272cac701427",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/am-copper-chip-closeup.jpg",
+      "bytes": 265726,
+      "sha256": "f73a9ac13105bc82c3f42693c2c47fc77a7c2f1ad1cb853e641002b4124da975",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/author-page-acquisition.json",
+      "bytes": 253,
+      "sha256": "8d8412f86d2fb441a706df9179e2077465dc131087db6ada022fefbeed7cba0a",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-00.html",
+      "bytes": 119656,
+      "sha256": "71f4b5be4ad599a087a0321263147c891e1bea16c00f68efbcac677acf495fd9",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-00.jpg",
+      "bytes": 869407,
+      "sha256": "30320e28541bd7fb4d5c4f3cb30e8333b9083102ffd39ba69a90008e17f28680",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-01.html",
+      "bytes": 119646,
+      "sha256": "975500104e51f8b8f6861a1b92af85776e0b49dc12f932f87e15a3e8e4c845dd",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-01.jpg",
+      "bytes": 894860,
+      "sha256": "e14d5c3ef468e559d8d2d1e09613c671a7ff26cc5e079435db14183573da2354",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-02.html",
+      "bytes": 119771,
+      "sha256": "e8c3061e6f394a2a327d3a1d1f1e994c3945ac21f75367aed7ffbd0a055f37b0",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-02.jpg",
+      "bytes": 542621,
+      "sha256": "efd9551080f03dcd61129b92701f110a10a3cb1e67c7d60d09dc58b19ca48931",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-03-grid.png",
+      "bytes": 5012540,
+      "sha256": "a9f3c54598502d0aa95b991b7df6b2cb7da8867d0ef552657594086f5677c13a",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-03.html",
+      "bytes": 131510,
+      "sha256": "f70ea7fb01b67a91fc3208f3da60b7d29429891104e96707037e63d3412248c6",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-03.jpg",
+      "bytes": 1003639,
+      "sha256": "6ec2ff036d79f24c0034226760bbb4aa419bc3ffe03d304fb885eb85ef991799",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-04.html",
+      "bytes": 129930,
+      "sha256": "dc11d35cd23efb04a5e0e1a92ccc5e221e56fbbeb67759b78b878c4cf3b1746f",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-04.jpg",
+      "bytes": 501791,
+      "sha256": "6f257f6b4e2dbcc2cce8b63378d8f02112951eb3d1b68431c0825ba22a92ae1a",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-05.html",
+      "bytes": 121464,
+      "sha256": "00b951a28fdce2a014e54a0a9d387aa47130055735b99c9157ea52f01ecb6ab1",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-05.jpg",
+      "bytes": 651333,
+      "sha256": "05bbed2f60c6846199d7087db12e3bcb4f4d5a42f6c359d12e1c44432d8a76f9",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-06-grid.png",
+      "bytes": 4428624,
+      "sha256": "8b4e9cd18fffb4ddbeccdd29afb8aceebf53f6296bd7bed6a2f92f1e0da7e632",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-06.html",
+      "bytes": 129829,
+      "sha256": "e4b050fb8776cd4f1397bb3eab3befcdc3077f770f9b06a8567936dec70f3a2b",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-06.jpg",
+      "bytes": 810212,
+      "sha256": "8a4c7fce6231d73a523ea28b949079501d14793500fcb4ac717ff808dd13fe55",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-07.html",
+      "bytes": 129919,
+      "sha256": "0fdb944c8b2e9f6e59b74891aeb1c1a2ab006ddb8373b57997cac2102e5576e8",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-07.jpg",
+      "bytes": 673473,
+      "sha256": "75ecb6073ade6a1997ac9cf93d75e09c24f66a1ea4b027c25663333a4ca1af13",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-08.html",
+      "bytes": 121474,
+      "sha256": "bae4dc154e3753bce66b1ef2edfcc4e756e8093a8b99703b6496b08912cefbf8",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-08.jpg",
+      "bytes": 441412,
+      "sha256": "7298f1141d3812d50924f107f23d775d3ab7234697d5187619d1a478af4d6f99",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-09.html",
+      "bytes": 129897,
+      "sha256": "572fc3af0f607f31152ff98ec577732baf12e04bf3d657d2994a9b7c14f8c2de",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-09.jpg",
+      "bytes": 393046,
+      "sha256": "cfb719c055038a978130429a5f14e4b298ab41520e4a66db59a3faf974dcda9f",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-10.html",
+      "bytes": 131305,
+      "sha256": "2e75df482687dea12ae57f68597f61160545ce830dd6c0fb473d256a65712479",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-acquisitions.json",
+      "bytes": 5304,
+      "sha256": "2ccc561faa22235366b38124a6da60fec723d4e67f6dfd81c66bc171b6ff9dd2",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-category.html",
+      "bytes": 59731,
+      "sha256": "63cfa2a74d13b2607f44d455f3a64aeaa0ad19f4bd6ca0b11b12d4deedf11dbc",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/commons-contact.jpg",
+      "bytes": 173037,
+      "sha256": "ffd0d711f1504691dd75d8c028ad057dbcefe2e7ce7ee0c14f5623e8ef952643",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/contact.jpg",
+      "bytes": 114864,
+      "sha256": "2cef9d3f40099c2c949fee10f5d13743bc24ae940d46fc9d8a6772f161c67d72",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/deepsonic-04.jpg",
+      "bytes": 77143,
+      "sha256": "96d35ce8c652004a057552513cca6166c35e74814173dc0a01f63d15d6183966",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/deepsonic-05.jpg",
+      "bytes": 80383,
+      "sha256": "5eddc4badbf09efadd8e858a8086d8ad611cc1f19b0eed2d0308e2bd030c2340",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/deepsonic-06.jpg",
+      "bytes": 96631,
+      "sha256": "f690cd48cee767065b87262685254b67bde3e62783b40e84d67ea8828fbefb9f",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/deepsonic-07.jpg",
+      "bytes": 87545,
+      "sha256": "28412b5ca8dec8c35325ad1fbf8a23c38f13a9e34dddb21c887dce62e3ac68fd",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/deepsonic-08.jpg",
+      "bytes": 57985,
+      "sha256": "e3187a9af413003599d3b91f698b4dc4be106ff2a1e47e47f61ba48ae89eebfa",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/deepsonic-09.jpg",
+      "bytes": 46584,
+      "sha256": "04ab8e82df0b091266f92b268971e11ed2ce071c9522440daacac1dba4cc7188",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/deepsonic-10.jpg",
+      "bytes": 100106,
+      "sha256": "75fb8b1ba1f7543c4564f7911377b7d3b53dd3cc8bdf60cabc433859ff6b29ce",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/deepsonic-author-page.html",
+      "bytes": 5588,
+      "sha256": "87f4f8d54cbaa937deb6f9c741858b7df0adc94d2235ca1069c3e4586d238fd6",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/failed-derived-thumbnail-url.html",
+      "bytes": 255477,
+      "sha256": "5300c0ce72b96757b6cf292183e6288b171f4fb86c8d3cc711d234e3d95c710f",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/ic1.png",
+      "bytes": 360579,
+      "sha256": "4e47f69d6e077c1a4d2c5452557ffa2ad6ee31fe110ef909c1119f6b2a8c3bca",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/ic2.png",
+      "bytes": 352918,
+      "sha256": "568dc2e5bd9af4c57117305df54e6055cb2bc6ef1f9d4679d4ce9216fcc8e6c7",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/image-acquisitions.json",
+      "bytes": 1928,
+      "sha256": "f2b9d987c6ed77937c38a16633e2637cbe3a01bd6d88ab26eb39c4b95b25c300",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/leftamp.png",
+      "bytes": 185360,
+      "sha256": "62805453ff6a51bc9d5469fc38e359e01bcd22384daa095d50d6585734c999c3",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/rightamp.png",
+      "bytes": 260604,
+      "sha256": "b7f6a2f40312c0d5dc769e1349eefff53f4f99c3142ffacce48cd5141876d621",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/trial-homography.npy",
+      "bytes": 192,
+      "sha256": "4bcd6f6279eb26de515d5ed367d51281b0304478c9c5265d9bfd448def6c5633",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/trial-warp.png",
+      "bytes": 526312,
+      "sha256": "e25189844ec443c012ba5f906b8cfbb470f5860ed92ec4624682b9ea0d5c57d2",
+      "ignored": true
+    },
+    {
+      "path": "build/target-am-board-20261019/upperamp.png",
+      "bytes": 254752,
+      "sha256": "8373caaef5643a97590ce6c2aa5fa02ae0dbfe00389a4f0d133064a17bde776a",
+      "ignored": true
+    }
+  ],
+  "report_sha256": "12bd5d4054c2c7cc936d69dd4c6557d2b13f3e3aff994e7973cf0bf35d0a41c3"
+}

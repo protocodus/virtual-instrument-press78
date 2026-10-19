@@ -1,0 +1,93 @@
+{
+  "schema": "press78.hosted-ci-receipt.v1",
+  "observed_utc": "2026-10-19T09:11:02.430999+00:00",
+  "repository": "protocodus/virtual-instrument-press78",
+  "runs": [
+    {
+      "databaseId": 39222491183,
+      "headSha": "586c80e9475b35d00135eaec21365c95d5e2cba2",
+      "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39222491183",
+      "status": "completed",
+      "conclusion": "success",
+      "workflowName": "Native DSP",
+      "jobs": [
+        {
+          "name": "test (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39222491183/job/117960842172"
+        },
+        {
+          "name": "test (macos-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39222491183/job/117960842354"
+        },
+        {
+          "name": "test (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39222491183/job/117960842392"
+        }
+      ]
+    },
+    {
+      "databaseId": 39223269381,
+      "headSha": "bd43fee3ea3d74d22e598e4b142dc1acfeb92a2a",
+      "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39223269381",
+      "status": "completed",
+      "conclusion": "success",
+      "workflowName": "Native DSP",
+      "jobs": [
+        {
+          "name": "test (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39223269381/job/117963353851"
+        },
+        {
+          "name": "test (macos-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39223269381/job/117963354126"
+        },
+        {
+          "name": "test (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39223269381/job/117963354236"
+        }
+      ]
+    },
+    {
+      "databaseId": 39226254290,
+      "headSha": "66ab41eae9005b5ab623928fbac35034a98ce879",
+      "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39226254290",
+      "status": "completed",
+      "conclusion": "success",
+      "workflowName": "Native DSP",
+      "jobs": [
+        {
+          "name": "test (macos-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39226254290/job/117973155671"
+        },
+        {
+          "name": "test (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39226254290/job/117973155753"
+        },
+        {
+          "name": "test (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/protocodus/virtual-instrument-press78/actions/runs/39226254290/job/117973155799"
+        }
+      ]
+    }
+  ],
+  "all_passed": true,
+  "scope": "Actual hosted CI for b13 implementation, final b13 evidence and research supply integration. Covers configured CTest contracts, not hardware fidelity, native Reason GUI/playback or pending later research commits."
+}

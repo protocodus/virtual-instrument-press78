@@ -1,0 +1,1044 @@
+{
+  "schema": "press78.target-am-photo-registration.v2",
+  "status": "NOT_ACCEPTED_FOR_PIN_OR_NET_MAPPING",
+  "production_dsp_changes": false,
+  "objective_met": false,
+  "photos": {
+    "component": {
+      "path": "build/target-am-board-20261019/commons-06.jpg",
+      "sha256": "8a4c7fce6231d73a523ea28b949079501d14793500fcb4ac717ff808dd13fe55",
+      "size": [
+        2000,
+        1379
+      ],
+      "author_url": "https://www.flickr.com/photos/deepsonic/10090241086/"
+    },
+    "copper": {
+      "path": "build/target-am-board-20261019/commons-03.jpg",
+      "sha256": "6ec2ff036d79f24c0034226760bbb4aa419bc3ffe03d304fb885eb85ef991799",
+      "size": [
+        2000,
+        1335
+      ],
+      "author_url": "https://www.flickr.com/photos/deepsonic/10090216715/"
+    }
+  },
+  "scope": "Exploratory component-to-copper projective registration of two existing photographs. No new source acquisition or electrical continuity test.",
+  "coordinate_convention": "Original unrotated JPEG pixels, x right, y down. Image-display rescaling is not used for numeric coordinates.",
+  "observations": {
+    "source_contact_uncertainty_pixels": "approximately 3\u20136 pixels for visible bent leads; some actual through-hole entry points remain hidden. This is a manual estimate, not a measured confidence interval.",
+    "copper_pad_uncertainty_pixels": "approximately 2\u20133 pixels; proposed identities remain uncertain independently of coordinate precision.",
+    "handedness": "Component-to-copper mapping reverses local handedness. A rotated-only package crop is used independently for orientation.",
+    "notch_correction": "The visible dark marking on the short left end of IC2 and its neighbor is a centered notch, not a pin-1 corner dot. Under conventional DIP top-view numbering with notch-left, the near visible row is 1,2,3,4 and the far row is 8,7,6,5. This does not establish which copper footprint is that package.",
+    "orientation_crop": {
+      "path": "build/target-am-clock-trace-20261019/package-orientation-unmirrored.png",
+      "sha256": "479d67c5b45061c8893ed47e3d29232b38511eb955886eaa4ec4e75ec2915818"
+    },
+    "no_net_or_clock_result": "No component-valued electrical connection, oscillator frequency, physical BBD delay, or complete AM schematic is established."
+  },
+  "best_exploratory_trial": {
+    "attempt": 13,
+    "accepted": false,
+    "input_sha256": "6254baf4390ff083cfb2209cf75e1ab103d39bd1be10b9148d8fca9f163b5638",
+    "H": [
+      [
+        0.6463879657849394,
+        1.4047526037074394,
+        -94.44759016456209
+      ],
+      [
+        0.8279207884402915,
+        -1.3380710749611051,
+        1122.4625704677126
+      ],
+      [
+        -4.900978484144228e-05,
+        0.000309163191065036,
+        1.0
+      ]
+    ],
+    "fit_method": "OpenCV findHomography method=0 over 26 manually proposed correspondences; no electrical constraints",
+    "correspondences": [
+      {
+        "source": [
+          721.0,
+          970.0
+        ],
+        "copper": [
+          1370.0,
+          334.0
+        ],
+        "predicted": [
+          1371.400961757383,
+          333.2915025058792
+        ],
+        "error_pixels": 1.5699243755114034
+      },
+      {
+        "source": [
+          741.0,
+          982.0
+        ],
+        "copper": [
+          1389.0,
+          334.0
+        ],
+        "predicted": [
+          1391.9498146945232,
+          332.96936125647187
+        ],
+        "error_pixels": 3.124679655850523
+      },
+      {
+        "source": [
+          760.0,
+          994.0
+        ],
+        "copper": [
+          1409.0,
+          334.0
+        ],
+        "predicted": [
+          1411.8468868524612,
+          331.98389346777907
+        ],
+        "error_pixels": 3.4884739213559515
+      },
+      {
+        "source": [
+          781.0,
+          1005.0
+        ],
+        "copper": [
+          1429.0,
+          334.0
+        ],
+        "predicted": [
+          1432.0272164365165,
+          333.4615556434155
+        ],
+        "error_pixels": 3.0747295293494066
+      },
+      {
+        "source": [
+          886.0,
+          866.0
+        ],
+        "copper": [
+          1388.0,
+          568.0
+        ],
+        "predicted": [
+          1384.260708787114,
+          569.4875698447559
+        ],
+        "error_pixels": 4.024321410845959
+      },
+      {
+        "source": [
+          904.0,
+          879.0
+        ],
+        "copper": [
+          1407.0,
+          568.0
+        ],
+        "predicted": [
+          1405.0798259556682,
+          566.0016416466362
+        ],
+        "error_pixels": 2.771372307898075
+      },
+      {
+        "source": [
+          923.0,
+          891.0
+        ],
+        "copper": [
+          1427.0,
+          568.0
+        ],
+        "predicted": [
+          1425.591469288756,
+          564.4579057908021
+        ],
+        "error_pixels": 3.811874886634021
+      },
+      {
+        "source": [
+          942.0,
+          904.0
+        ],
+        "copper": [
+          1446.0,
+          568.0
+        ],
+        "predicted": [
+          1446.787183990866,
+          561.695079563835
+        ],
+        "error_pixels": 6.353871287793556
+      },
+      {
+        "source": [
+          984.0,
+          1119.0
+        ],
+        "copper": [
+          1627.0,
+          340.0
+        ],
+        "predicted": [
+          1628.6281564306641,
+          338.9270319640744
+        ],
+        "error_pixels": 1.9499112207562388
+      },
+      {
+        "source": [
+          1004.0,
+          1132.0
+        ],
+        "copper": [
+          1647.0,
+          340.0
+        ],
+        "predicted": [
+          1648.801073572332,
+          337.4921228415216
+        ],
+        "error_pixels": 3.0876064928954334
+      },
+      {
+        "source": [
+          1022.0,
+          1143.0
+        ],
+        "copper": [
+          1665.0,
+          340.0
+        ],
+        "predicted": [
+          1666.3985684233623,
+          336.98093654883417
+        ],
+        "error_pixels": 3.3272718189218633
+      },
+      {
+        "source": [
+          1041.0,
+          1154.0
+        ],
+        "copper": [
+          1684.0,
+          340.0
+        ],
+        "predicted": [
+          1684.4864136193871,
+          337.1184063799807
+        ],
+        "error_pixels": 2.922358636454689
+      },
+      {
+        "source": [
+          1040.0,
+          1070.0
+        ],
+        "copper": [
+          1627.0,
+          428.0
+        ],
+        "predicted": [
+          1625.8987241647092,
+          431.12149803635293
+        ],
+        "error_pixels": 3.310069252500729
+      },
+      {
+        "source": [
+          1060.0,
+          1081.0
+        ],
+        "copper": [
+          1647.0,
+          428.0
+        ],
+        "predicted": [
+          1644.9623174089486,
+          431.74232734043375
+        ],
+        "error_pixels": 4.2611224184282595
+      },
+      {
+        "source": [
+          1078.0,
+          1091.0
+        ],
+        "copper": [
+          1665.0,
+          428.0
+        ],
+        "predicted": [
+          1662.1274769199895,
+          432.1844943782223
+        ],
+        "error_pixels": 5.075567165013915
+      },
+      {
+        "source": [
+          1098.0,
+          1102.0
+        ],
+        "copper": [
+          1684.0,
+          428.0
+        ],
+        "predicted": [
+          1681.054336288645,
+          432.8010905442524
+        ],
+        "error_pixels": 5.632708506083405
+      },
+      {
+        "source": [
+          1226.0,
+          1027.0
+        ],
+        "copper": [
+          1700.0,
+          605.0
+        ],
+        "predicted": [
+          1702.4519626695146,
+          607.0300060126524
+        ],
+        "error_pixels": 3.183244468164219
+      },
+      {
+        "source": [
+          1246.0,
+          1039.0
+        ],
+        "copper": [
+          1720.0,
+          605.0
+        ],
+        "predicted": [
+          1722.3999163465496,
+          606.1130668112867
+        ],
+        "error_pixels": 2.6454708837603826
+      },
+      {
+        "source": [
+          1266.0,
+          1051.0
+        ],
+        "copper": [
+          1740.0,
+          605.0
+        ],
+        "predicted": [
+          1742.2616338017747,
+          605.2000915940783
+        ],
+        "error_pixels": 2.270467815088027
+      },
+      {
+        "source": [
+          1285.0,
+          1063.0
+        ],
+        "copper": [
+          1760.0,
+          605.0
+        ],
+        "predicted": [
+          1761.4587313176478,
+          603.6135149307389
+        ],
+        "error_pixels": 2.012520286697843
+      },
+      {
+        "source": [
+          350.0,
+          722.0
+        ],
+        "copper": [
+          953.0,
+          366.0
+        ],
+        "predicted": [
+          950.2158250231249,
+          369.9207690876448
+        ],
+        "error_pixels": 4.808748334077029
+      },
+      {
+        "source": [
+          1218.0,
+          1298.0
+        ],
+        "copper": [
+          1880.0,
+          298.0
+        ],
+        "predicted": [
+          1875.5381721097883,
+          293.71933785500823
+        ],
+        "error_pixels": 6.18320115485792
+      },
+      {
+        "source": [
+          1065.8,
+          1182.4
+        ],
+        "copper": [
+          1715.0,
+          319.0
+        ],
+        "predicted": [
+          1717.3669062394831,
+          321.87534705141775
+        ],
+        "error_pixels": 3.724226874480237
+      },
+      {
+        "source": [
+          1098.5,
+          1146.6
+        ],
+        "copper": [
+          1715.0,
+          381.0
+        ],
+        "predicted": [
+          1711.6827598877494,
+          382.6560126103711
+        ],
+        "error_pixels": 3.707621842641509
+      },
+      {
+        "source": [
+          1089.1,
+          1195.9
+        ],
+        "copper": [
+          1738.0,
+          319.0
+        ],
+        "predicted": [
+          1739.2594821100108,
+          322.06582897042836
+        ],
+        "error_pixels": 3.3144535690449954
+      },
+      {
+        "source": [
+          1122.2,
+          1162.7
+        ],
+        "copper": [
+          1738.0,
+          381.0
+        ],
+        "predicted": [
+          1735.7570982114485,
+          380.06381231736816
+        ],
+        "error_pixels": 2.4304435418662265
+      }
+    ],
+    "training_max_error_pixels": 6.353871287793556,
+    "training_rms_radial_error_pixels": 3.7436108388774803,
+    "candidate_group_order": [
+      "left_front_opamp_candidate",
+      "left_back_opamp_candidate",
+      "IC2_MN3206_candidate",
+      "neighbor_clock_candidate",
+      "right_opamp_candidate"
+    ],
+    "leave_one_candidate_row_out": [
+      {
+        "candidate_group": "left_front_opamp_candidate",
+        "excluded_source_points": [
+          [
+            721.0,
+            970.0
+          ],
+          [
+            741.0,
+            982.0
+          ],
+          [
+            760.0,
+            994.0
+          ],
+          [
+            781.0,
+            1005.0
+          ]
+        ],
+        "proposed_copper_points": [
+          [
+            1370.0,
+            334.0
+          ],
+          [
+            1389.0,
+            334.0
+          ],
+          [
+            1409.0,
+            334.0
+          ],
+          [
+            1429.0,
+            334.0
+          ]
+        ],
+        "predicted_copper_points": [
+          [
+            1374.796668689547,
+            332.3082739430287
+          ],
+          [
+            1395.266918973652,
+            332.0303745931562
+          ],
+          [
+            1415.0849750965438,
+            331.08712776702424
+          ],
+          [
+            1435.1506722428512,
+            332.6102514478566
+          ]
+        ],
+        "errors_pixels": [
+          5.086252802320797,
+          6.569147407815198,
+          6.746239439213442,
+          6.3057251824960625
+        ],
+        "max_error_pixels": 6.746239439213442
+      },
+      {
+        "candidate_group": "left_back_opamp_candidate",
+        "excluded_source_points": [
+          [
+            886.0,
+            866.0
+          ],
+          [
+            904.0,
+            879.0
+          ],
+          [
+            923.0,
+            891.0
+          ],
+          [
+            942.0,
+            904.0
+          ]
+        ],
+        "proposed_copper_points": [
+          [
+            1388.0,
+            568.0
+          ],
+          [
+            1407.0,
+            568.0
+          ],
+          [
+            1427.0,
+            568.0
+          ],
+          [
+            1446.0,
+            568.0
+          ]
+        ],
+        "predicted_copper_points": [
+          [
+            1370.2003613698378,
+            564.3688981345173
+          ],
+          [
+            1391.798469241658,
+            561.0433331042063
+          ],
+          [
+            1412.9920350322423,
+            559.672695401522
+          ],
+          [
+            1434.9665771019143,
+            557.0769359339071
+          ]
+        ],
+        "errors_pixels": [
+          18.166233404915722,
+          16.717707728508955,
+          16.296229147068384,
+          15.525776935147999
+        ],
+        "max_error_pixels": 18.166233404915722
+      },
+      {
+        "candidate_group": "IC2_MN3206_candidate",
+        "excluded_source_points": [
+          [
+            984.0,
+            1119.0
+          ],
+          [
+            1004.0,
+            1132.0
+          ],
+          [
+            1022.0,
+            1143.0
+          ],
+          [
+            1041.0,
+            1154.0
+          ]
+        ],
+        "proposed_copper_points": [
+          [
+            1627.0,
+            340.0
+          ],
+          [
+            1647.0,
+            340.0
+          ],
+          [
+            1665.0,
+            340.0
+          ],
+          [
+            1684.0,
+            340.0
+          ]
+        ],
+        "predicted_copper_points": [
+          [
+            1629.2204097990739,
+            338.02425845477836
+          ],
+          [
+            1649.3903636781,
+            336.56474013267325
+          ],
+          [
+            1666.9819772809121,
+            336.03458536594917
+          ],
+          [
+            1685.060786451603,
+            336.1547114783605
+          ]
+        ],
+        "errors_pixels": [
+          2.972166605245756,
+          4.185074535733514,
+          4.433141906368026,
+          3.9889236280677016
+        ],
+        "max_error_pixels": 4.433141906368026
+      },
+      {
+        "candidate_group": "neighbor_clock_candidate",
+        "excluded_source_points": [
+          [
+            1040.0,
+            1070.0
+          ],
+          [
+            1060.0,
+            1081.0
+          ],
+          [
+            1078.0,
+            1091.0
+          ],
+          [
+            1098.0,
+            1102.0
+          ]
+        ],
+        "proposed_copper_points": [
+          [
+            1627.0,
+            428.0
+          ],
+          [
+            1647.0,
+            428.0
+          ],
+          [
+            1665.0,
+            428.0
+          ],
+          [
+            1684.0,
+            428.0
+          ]
+        ],
+        "predicted_copper_points": [
+          [
+            1625.0248957773663,
+            432.9496157640764
+          ],
+          [
+            1644.1125246741783,
+            433.62460647522244
+          ],
+          [
+            1661.3060987362464,
+            434.11525285852855
+          ],
+          [
+            1680.271373245936,
+            434.7861142436271
+          ]
+        ],
+        "errors_pixels": [
+          5.329139977731772,
+          6.322476710779034,
+          7.144314107743425,
+          7.742997094063762
+        ],
+        "max_error_pixels": 7.742997094063762
+      },
+      {
+        "candidate_group": "right_opamp_candidate",
+        "excluded_source_points": [
+          [
+            1226.0,
+            1027.0
+          ],
+          [
+            1246.0,
+            1039.0
+          ],
+          [
+            1266.0,
+            1051.0
+          ],
+          [
+            1285.0,
+            1063.0
+          ]
+        ],
+        "proposed_copper_points": [
+          [
+            1700.0,
+            605.0
+          ],
+          [
+            1720.0,
+            605.0
+          ],
+          [
+            1740.0,
+            605.0
+          ],
+          [
+            1760.0,
+            605.0
+          ]
+        ],
+        "predicted_copper_points": [
+          [
+            1724.2030132576751,
+            614.3563327829382
+          ],
+          [
+            1745.7634190612055,
+            613.5355254269684
+          ],
+          [
+            1767.2474637749028,
+            612.7176251472758
+          ],
+          [
+            1787.9542027332157,
+            611.1535453252931
+          ]
+        ],
+        "errors_pixels": [
+          25.94854165259164,
+          27.14054082065628,
+          28.319357691842274,
+          28.623479357341548
+        ],
+        "max_error_pixels": 28.623479357341548
+      }
+    ],
+    "leave_one_row_out_scope": "Exploratory geometric cross-check, not a fresh independent holdout: candidate identities were already examined. No row is used to fit its own check.",
+    "outer_mounting_feature_check": {
+      "source": [
+        1263,
+        1319
+      ],
+      "proposed_copper": [
+        1915,
+        307
+      ],
+      "prediction": [
+        1913.0947129278438,
+        299.58741790434135
+      ],
+      "error_pixels": 7.653528085282278,
+      "qualification": "Proposed outer-hole to adjacent circular feature correspondence remains conditional; not used in the fit."
+    },
+    "rejection_reason": "Two excluded DIP-row predictions err by18.17 and28.62pixels, comparable to or greater than roughly19\u201320pixel pad pitch. Small26-point training residual is insufficient to certify all5footprints. Oscillator passive endpoints also remain near competing columns; slider/connector through-hole checks are not reliably identified."
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt01-H.npy",
+          "sha256": "1eb0ae34954e6cc6ade27eb326a97346575812c2724ad40bb9aa1beff24028da"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt01-chip-centers.jpg",
+          "sha256": "73c0939b559c2c9876111accfe02ae8aec291efa60e884ec8388b75f8304032a"
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt02-H.npy",
+          "sha256": "c074e14fa7c667de9a5ffc741c0fc12748b71fbab6a87f875dc46d2fe6cd63d2"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt02-opposite-corners.jpg",
+          "sha256": "821750202206d2a07fa998b118a5160dab7af2588edcd48e0e53a2a033f554b4"
+        }
+      ]
+    },
+    {
+      "attempt": 3,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt03-corner-rotation0.jpg",
+          "sha256": "f975d8e7dacc2b9e8912076faa341249df0acda39ecd2f75753d9c8bef4e8eb0"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt03-corner-rotation1.jpg",
+          "sha256": "9280f31d16b9faba9c529100481c51413757b739c9e1e316b72bffe4c77676cc"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt03-corner-rotation2.jpg",
+          "sha256": "5a68e586393a7119d96177f792415849d155e2df568d605f106fc19a2df32670"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt03-corner-rotation3.jpg",
+          "sha256": "ef7f61f625609aab572a6e11c0b3bf5dda03eeb6ea11abc4b4e48e5c439bec47"
+        }
+      ]
+    },
+    {
+      "attempt": 4,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt04-H.npy",
+          "sha256": "a70a5141d9d4b4ebf52c37a95eb00f8990ecb9dc4ec26b7e31e5495fc307b440"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt04-five-footprints.jpg",
+          "sha256": "46de7b1480753764bf267c6f6982c259497a7297a19d543a2d1bd452e6c13b9f"
+        }
+      ]
+    },
+    {
+      "attempt": 5,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt05-H.npy",
+          "sha256": "3e497bb887084fe3c47793201e4c0fa0b436cdad3377f4dbb540969fe59e08a9"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt05-near-lead-feet.jpg",
+          "sha256": "2a9e6f99f0d2b49edaca86dddcc431ca5eaf6338994535ee6862943de2989be0"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt05-near-lead-feet.json",
+          "sha256": "00fc630258ab700194a7265052ae1fa5ca28f852c78ec75f7d0197554500b9ae"
+        }
+      ]
+    },
+    {
+      "attempt": 6,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt06-H.npy",
+          "sha256": "f32e553cbb0a9b5cd41485084fd13ae8d96d438bacae6df8d75b4ac3da67278d"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt06-refined-heatsink.jpg",
+          "sha256": "cd49216fc9f33800512a8a58e8aeafe0d011690d103250207bf322013693a897"
+        }
+      ]
+    },
+    {
+      "attempt": 7,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt07-H.npy",
+          "sha256": "fbd4a47d53a1651774fc3f70a113b54d1c391d912207e1bb40bf29bfdd0b5b0e"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt07-front-holes-plus-feet.jpg",
+          "sha256": "fc308c952b833fe03507b66dd99deef70fcee85b4dab394526f26862af648ec8"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt07-front-holes-plus-feet.json",
+          "sha256": "8011c377d38993959db21385dcdcea582bcee3c3a23ebae8b8e6b2138b574c45"
+        }
+      ]
+    },
+    {
+      "attempt": 8,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt08-H.npy",
+          "sha256": "704b879bafa58a6c7369d85b932f8ec024a291f790e0e17df42cb224f4205b4c"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt08-corrected-hole-pair.jpg",
+          "sha256": "fe4204e6e46b38e464ac1251d94abedf6b53107bdf3da6185637939c960c3780"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt08-corrected-hole-pair.json",
+          "sha256": "2d34e2fa905776ad5968a6f8eed53164f688cad039078e99f5ed0037479a9885"
+        }
+      ]
+    },
+    {
+      "attempt": 9,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt09-H.npy",
+          "sha256": "36105a0f3b9b34f881bcdcd4306e44273405cd7d0890da905d7766a8369fac1a"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt09-jumper-landmarks.jpg",
+          "sha256": "24db5a978ae387795f80293584ce528153a0e3793e6400aac4962a18a0fe6ba9"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt09-jumper-landmarks.json",
+          "sha256": "a0bfa477c8cd4916929c673749e4422a00511fd43b7facd3eff7843dff04f769"
+        }
+      ]
+    },
+    {
+      "attempt": 10,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt10-H.npy",
+          "sha256": "62fd4ca1681c4334a3a75fde529eca428b34b4f24673116574304084db2735e3"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt10-refined-contact-feet.jpg",
+          "sha256": "d9eec908d1b94a872087074c203df8ad1cba51c7479a47f156933b7f264300e5"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt10-refined-contact-feet.json",
+          "sha256": "a9c77eb72a012280aee3a43011af2fae2b4036825ef127acf4c157d7d9fb8b6b"
+        }
+      ]
+    },
+    {
+      "attempt": 11,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt11-H.npy",
+          "sha256": "59bdbf5f998cb880fb2c0cf06480f106e00f64dfeb3f1717fde3f7c91b8aa8d6"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt11-five-contact-rows.jpg",
+          "sha256": "9d91abba3e3b033e93ee0d10f1ba65d8fc357c341c99aaec664322464841cb7b"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt11-five-contact-rows.json",
+          "sha256": "df12c5e559cf7e7390ff0be6e8b028a662a4af377f354b54099b2fbddf81c90a"
+        }
+      ]
+    },
+    {
+      "attempt": 12,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt12-H.npy",
+          "sha256": "efcebcb3fcb779b7654e238cfe2d615a1d3db191ec37daddd4c8728541843af1"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt12-refined-jumper-ends.jpg",
+          "sha256": "3d55833bcd1e71b681fb291ed11d7a61b538b9e98bf80aed4357b985972acd43"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt12-refined-jumper-ends.json",
+          "sha256": "086cc80a578a45c94c28283ba71f9519681b05838c27a25e6e75ffa3bc7b9a09"
+        }
+      ]
+    },
+    {
+      "attempt": 13,
+      "accepted": false,
+      "artifacts": [
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt13-H.npy",
+          "sha256": "cae77f1dc0a6d24edd930e2b14e39df7222267180b463c48aa573748e84be652"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt13-contact-rows-holes-jumpers.jpg",
+          "sha256": "06da603cf2ee1a565cb105ef82bc70ea71ebf1552d8f93c59b0ded789a07314a"
+        },
+        {
+          "path": "build/target-am-registration-v2-20261019/attempt13-contact-rows-holes-jumpers.json",
+          "sha256": "6254baf4390ff083cfb2209cf75e1ab103d39bd1be10b9148d8fca9f163b5638"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "Global homography with independently verified distant physical landmarks",
+    "Five-DIP footprint identification at pad-level certainty",
+    "Exact68P/390K/2.7K through-hole correspondences",
+    "Independent power-slider and connector-hole validation",
+    "Actual part marking of the dark neighboring clock package at the same confidence as MN3206",
+    "Any complete electrical netlist"
+  ],
+  "next_step": "Use independently identifiable distant board-plane holes or a less-oblique component photograph. Do not derive RC values, CP cadence or component nets from this unaccepted transform.",
+  "software": {
+    "opencv": "4.10.0",
+    "numpy": "1.26.4"
+  },
+  "reproducer": {
+    "path": "build/target-am-registration-v2-20261019/reproduce_registration.py",
+    "sha256": "0d1774d2f86b647c91602cc922121fdbd9fc93cad33c2f1b89b2bc70dcf3c17e"
+  }
+}

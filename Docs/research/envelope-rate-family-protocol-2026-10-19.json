@@ -1,0 +1,88 @@
+{
+  "schema": "press78.envelope-rate-family-prospective-observable.v1",
+  "frozen_at_utc": "2026-10-19T08:38:26.950835+00:00",
+  "source_prior": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/Reference/Research/opu-envelope-independent-20261019.json",
+    "sha256": "cfe77490c69bb317d5a4b0c9054d0d7ff4c505508bac3824e2ee730a58b36412"
+  },
+  "calibration": {
+    "observable": "Previously published median low-group late Bass fundamental decay",
+    "slope_db_s": 24.329866,
+    "rounding": "Use this fixed six-decimal published value exactly; no new rate normalization fit"
+  },
+  "families": {
+    "quarter_pattern": "q(r)=(4+(r mod4))*2^floor(r/4), slope(r)=cal*q(r)/q(22)",
+    "continuous_quarter": "e(r)=2^(r/4), slope(r)=cal*e(r)/e(22)"
+  },
+  "predictions": [
+    {
+      "effective_rate": 21,
+      "quarter_pattern_slope_db_s": 20.274888333333333,
+      "continuous_quarter_slope_db_s": 20.458897103003228
+    },
+    {
+      "effective_rate": 22,
+      "quarter_pattern_slope_db_s": 24.329866,
+      "continuous_quarter_slope_db_s": 24.329866
+    },
+    {
+      "effective_rate": 23,
+      "quarter_pattern_slope_db_s": 28.384843666666665,
+      "continuous_quarter_slope_db_s": 28.933249754262786
+    },
+    {
+      "effective_rate": 24,
+      "quarter_pattern_slope_db_s": 32.439821333333335,
+      "continuous_quarter_slope_db_s": 34.40762646792004
+    },
+    {
+      "effective_rate": 25,
+      "quarter_pattern_slope_db_s": 40.549776666666666,
+      "continuous_quarter_slope_db_s": 40.917794206006455
+    },
+    {
+      "effective_rate": 31,
+      "quarter_pattern_slope_db_s": 113.53937466666666,
+      "continuous_quarter_slope_db_s": 115.73299901705114
+    },
+    {
+      "effective_rate": 32,
+      "quarter_pattern_slope_db_s": 129.75928533333334,
+      "continuous_quarter_slope_db_s": 137.63050587168016
+    }
+  ],
+  "assumed_grouping": {
+    "low_inferred_notes": [
+      36,
+      39,
+      43,
+      46,
+      48,
+      51,
+      55,
+      58
+    ],
+    "high_inferred_notes": [
+      60,
+      63,
+      67,
+      70,
+      72,
+      75,
+      79,
+      82
+    ],
+    "effective_code_shift_low": 0,
+    "effective_code_shift_high": 1,
+    "status": "Posthoc hypothesis from prior carrier grouping; not recovered OPU keycode/RKS arithmetic."
+  },
+  "new_separator": "Modulator beta-decay profile intervals recovered without imposing either exponential decay or a rate law; compare r24 low and r25 high predictions. Retain every feasible source window and control failure. Carrier grouping itself was used to propose this family and is not new validation.",
+  "scope": "Reused audio, conditional source recipe and processing. Cross-observable prediction only, not an independent device/recording holdout. No hardware law or global envelope replacement follows from one matched rate.",
+  "gates": [
+    "No production adoption from this protocol",
+    "If compatible slope intervals include both families, result is unresolved",
+    "If measurement/numerical/identifiability controls fail, no family selection",
+    "Do not refit normalization, group boundary, raw rates, key shift or source settings after beta measurements"
+  ],
+  "no_new_audio_measurements": true
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "press78.research-publication-production-guard.v1",
+  "passed": true,
+  "production_files": [
+    {
+      "file": "AnalogOutput.h",
+      "baseline_sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+      "public_sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+      "native_sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+    },
+    {
+      "file": "CircuitNoise.h",
+      "baseline_sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+      "public_sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+      "native_sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+    },
+    {
+      "file": "FactoryVoices.h",
+      "baseline_sha256": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+      "public_sha256": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+      "native_sha256": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7"
+    },
+    {
+      "file": "FirmwarePitch.h",
+      "baseline_sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+      "public_sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+      "native_sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    {
+      "file": "OversampledAnalogOutput.h",
+      "baseline_sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+      "public_sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+      "native_sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1"
+    },
+    {
+      "file": "Press78Engine.cpp",
+      "baseline_sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f",
+      "public_sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f",
+      "native_sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f"
+    },
+    {
+      "file": "Press78Engine.h",
+      "baseline_sha256": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0",
+      "public_sha256": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0",
+      "native_sha256": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0"
+    },
+    {
+      "file": "RecordedChorus.h",
+      "baseline_sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+      "public_sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+      "native_sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+    },
+    {
+      "file": "RecordedChorusProfile.h",
+      "baseline_sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+      "public_sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+      "native_sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+    }
+  ],
+  "unchanged_b12_package": {
+    "path": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/dist/Press78-0.1.0b12.u45",
+    "sha256": "11ce1b17c1b1d9eaaf5cfde9f104bba719777882add6cc7b345e448e04e40e57",
+    "bytes": 9839431
+  },
+  "benchmark_python_syntax_passed": true,
+  "no_production_source_or_default_change": true,
+  "no_native_repackage": true,
+  "note": "Research candidate is separately preserved, fails original audio adoption gate and is not installed. This is a content/hash check, not a new host playback test."
+}

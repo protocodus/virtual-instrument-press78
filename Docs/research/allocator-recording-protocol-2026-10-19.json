@@ -1,0 +1,832 @@
+{
+  "schema": "press78.original-allocation-recording-protocol.v3",
+  "frozen_at_utc": "2026-10-19T11:32:12.416078+00:00",
+  "status": "Before candidate recording renders, scores or fitting",
+  "frozen_runner": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/benchmark_allocator.py",
+    "sha256": "26b9999ed4d2fb36ea598abe4f0363a2278ec9b865c3263b30505000a18621f5"
+  },
+  "frozen_common": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/Tools/benchmark_pitch_model.py",
+    "sha256": "918d97ea32710798e5f7c87fc165b2cb618cccd03b5201ff0f0aa0d4f662a98d"
+  },
+  "superseded": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-v2-20261019/superseded-before-render.json",
+    "sha256": "a7c6aa64c5ec7f3517d912c86ce02296cfa9a4b9ec8a94564a784a88a4762151"
+  },
+  "prior_source_policy_correction": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-20261019/superseded-before-render.json",
+    "sha256": "00e7310f1a191c3fc4b13ae5b28199896c1b73178b542d4998f92df1efef108b"
+  },
+  "v3_amendment": "Before binding/audio: allow only the existing three optional width diagnostics to be null; all primary metrics and remaining diagnostics must be finite. Correct deletion receipt identity wording. No source/timing/window/metric/gate changes.",
+  "baseline": {
+    "source_manifest": "/Users/vojta/Dev/virtual-instrument-press78/build/allocator-recording-comparison-v3-20261019/baseline-source-frozen.json",
+    "sha256": "ad665893eac447cfda8359c5d1b29439971f4bc3d0c750b62da2dd9861ef7c63",
+    "prior_b12_result": "/Users/vojta/Dev/virtual-instrument-press78/build/pitch-model-b12-20261019/benchmark/result.json",
+    "prior_result_sha256": "f0f1c384228bb9d64d1e4afe3894b653477b6d7d775860b10d5f5e2f3fb599a8"
+  },
+  "prior_design": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/build/key-level-b13-20261019/design-frozen-v2.json",
+    "sha256": "b15889ad4a109b0d6fde8ec4c8cd49903298e0af6e57958758a287d7c41a5a13"
+  },
+  "maps": [
+    {
+      "id": "unchanged",
+      "offset_seconds": 0.8906462238832541,
+      "scale": 0.9998070138348876,
+      "events": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/unchanged/events.txt",
+        "sha256": "4d91a9c507156f858bec46792d42b3d169d3ce100c987a5f0523932913d642c4"
+      },
+      "historical_b11_equal_audio_not_comparison_target": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/unchanged/baseline/mode00.wav",
+        "sha256": "e54a8542e53daadb88dbe90e05769ffc0718f0e0d66087272050e5c78615153e"
+      },
+      "expected_legacy_audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pitch-model-b12-20261019/benchmark/maps/unchanged/Original.wav",
+        "sha256": "a870220247c1f9a81af3677c345abfa13024be3dd48bde8e4c863839b159e735",
+        "frames": 8931705,
+        "peak": 2.183053493499756
+      }
+    },
+    {
+      "id": "old_scale_median_offset",
+      "offset_seconds": 0.9327535031570672,
+      "scale": 0.9998070138348876,
+      "events": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/old_scale_median_offset/events.txt",
+        "sha256": "4a12d62062edd7b1362039c54ab13b7ef89bb1fc1058fa97defb73cf2c52a1ef"
+      },
+      "historical_b11_equal_audio_not_comparison_target": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/old_scale_median_offset/baseline/mode00.wav",
+        "sha256": "d363dd95e27a3c4c38b625f822ad20b20a7995ec9a5a9c199cd6c9f4170b9af4"
+      },
+      "expected_legacy_audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pitch-model-b12-20261019/benchmark/maps/old_scale_median_offset/Original.wav",
+        "sha256": "dcf91ee79c72dfef082e7df211bbc12c4276d8c7533e1ec683a3deb49b265089",
+        "frames": 8931705,
+        "peak": 2.2412877082824707
+      }
+    },
+    {
+      "id": "nominal_scale_median_intercept",
+      "offset_seconds": 0.9129181334157996,
+      "scale": 1.0,
+      "events": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/nominal_scale_median_intercept/events.txt",
+        "sha256": "7f59667ccafe3c821af9df2d93a75424b520edda1f0335fbce7b339c702e927b"
+      },
+      "historical_b11_equal_audio_not_comparison_target": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/nominal_scale_median_intercept/baseline/mode00.wav",
+        "sha256": "ab932ea654a43ab2085b76f46afe3a4e4d5e3d4b5c478744ea0b57496fea5074"
+      },
+      "expected_legacy_audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pitch-model-b12-20261019/benchmark/maps/nominal_scale_median_intercept/Original.wav",
+        "sha256": "242fa76189d46cb665f23284b85c52f745037f2227ccc19867316b9dad6b486d",
+        "frames": 8931705,
+        "peak": 2.2365164756774902
+      }
+    },
+    {
+      "id": "equal_patch_robust_affine",
+      "offset_seconds": 0.9158456466155656,
+      "scale": 0.9999670078976708,
+      "events": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/equal_patch_robust_affine/events.txt",
+        "sha256": "49b537e34bbc5facee2dfb1c38f3626e1ad2af20008c2508483e783f07bea1a9"
+      },
+      "historical_b11_equal_audio_not_comparison_target": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/equal_patch_robust_affine/baseline/mode00.wav",
+        "sha256": "d0b94da8de5e7095b3701f165c7ee0835a39a8b67a0110cd4b81a7aed1c04933"
+      },
+      "expected_legacy_audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/pitch-model-b12-20261019/benchmark/maps/equal_patch_robust_affine/Original.wav",
+        "sha256": "24c37252a3eef66d62aff951b73fc37d44697aa9947343862b2ec269ccb5dca3",
+        "frames": 8931705,
+        "peak": 2.239014148712158
+      }
+    }
+  ],
+  "windows": [
+    {
+      "patch": 0,
+      "name": "piano 1",
+      "start_seconds": 1.140646223883254,
+      "end_seconds": 2.6
+    },
+    {
+      "patch": 1,
+      "name": "piano 2",
+      "start_seconds": 3.2,
+      "end_seconds": 4.333333333333333
+    },
+    {
+      "patch": 2,
+      "name": "electric piano 1",
+      "start_seconds": 4.933333333333334,
+      "end_seconds": 6.066666666666666
+    },
+    {
+      "patch": 3,
+      "name": "electric piano 2",
+      "start_seconds": 6.666666666666667,
+      "end_seconds": 7.833333333333333
+    },
+    {
+      "patch": 4,
+      "name": "honky-tonk piano",
+      "start_seconds": 8.433333333333334,
+      "end_seconds": 9.6
+    },
+    {
+      "patch": 5,
+      "name": "toy piano",
+      "start_seconds": 10.2,
+      "end_seconds": 11.366666666666667
+    },
+    {
+      "patch": 6,
+      "name": "reed organ",
+      "start_seconds": 11.966666666666667,
+      "end_seconds": 13.133333333333333
+    },
+    {
+      "patch": 7,
+      "name": "pipe organ 1",
+      "start_seconds": 13.733333333333333,
+      "end_seconds": 14.9
+    },
+    {
+      "patch": 8,
+      "name": "pipe organ 2",
+      "start_seconds": 15.5,
+      "end_seconds": 16.666666666666668
+    },
+    {
+      "patch": 9,
+      "name": "small church organ",
+      "start_seconds": 17.266666666666666,
+      "end_seconds": 18.433333333333334
+    },
+    {
+      "patch": 10,
+      "name": "electronic organ",
+      "start_seconds": 19.03333333333333,
+      "end_seconds": 20.200000000000003
+    },
+    {
+      "patch": 11,
+      "name": "transistor organ",
+      "start_seconds": 20.8,
+      "end_seconds": 21.933333333333334
+    },
+    {
+      "patch": 12,
+      "name": "tremolo organ",
+      "start_seconds": 22.53333333333333,
+      "end_seconds": 23.700000000000003
+    },
+    {
+      "patch": 13,
+      "name": "jazz organ",
+      "start_seconds": 24.3,
+      "end_seconds": 25.46666666666667
+    },
+    {
+      "patch": 14,
+      "name": "street organ",
+      "start_seconds": 26.066666666666666,
+      "end_seconds": 27.233333333333334
+    },
+    {
+      "patch": 15,
+      "name": "harpsichord 1",
+      "start_seconds": 27.833333333333332,
+      "end_seconds": 29.0
+    },
+    {
+      "patch": 16,
+      "name": "harpsichord 2",
+      "start_seconds": 29.599999999999998,
+      "end_seconds": 30.8
+    },
+    {
+      "patch": 17,
+      "name": "funky clavi",
+      "start_seconds": 31.4,
+      "end_seconds": 32.53333333333333
+    },
+    {
+      "patch": 18,
+      "name": "celesta",
+      "start_seconds": 33.13333333333333,
+      "end_seconds": 34.333333333333336
+    },
+    {
+      "patch": 19,
+      "name": "glass celesta",
+      "start_seconds": 34.93333333333334,
+      "end_seconds": 36.06666666666667
+    },
+    {
+      "patch": 20,
+      "name": "accordion",
+      "start_seconds": 36.66666666666667,
+      "end_seconds": 37.86666666666667
+    },
+    {
+      "patch": 21,
+      "name": "bandoneon",
+      "start_seconds": 38.46666666666667,
+      "end_seconds": 39.6
+    },
+    {
+      "patch": 22,
+      "name": "trumpet",
+      "start_seconds": 40.2,
+      "end_seconds": 41.36666666666667
+    },
+    {
+      "patch": 23,
+      "name": "mute trumpet",
+      "start_seconds": 41.96666666666667,
+      "end_seconds": 43.13333333333333
+    },
+    {
+      "patch": 24,
+      "name": "wow trumpet",
+      "start_seconds": 43.733333333333334,
+      "end_seconds": 44.9
+    },
+    {
+      "patch": 25,
+      "name": "electric trumpet",
+      "start_seconds": 45.5,
+      "end_seconds": 46.66666666666667
+    },
+    {
+      "patch": 26,
+      "name": "horn",
+      "start_seconds": 47.26666666666667,
+      "end_seconds": 48.43333333333334
+    },
+    {
+      "patch": 27,
+      "name": "alpenhorn",
+      "start_seconds": 49.03333333333334,
+      "end_seconds": 50.16666666666667
+    },
+    {
+      "patch": 28,
+      "name": "trombone",
+      "start_seconds": 50.76666666666667,
+      "end_seconds": 51.93333333333334
+    },
+    {
+      "patch": 29,
+      "name": "tuba",
+      "start_seconds": 52.53333333333334,
+      "end_seconds": 53.733333333333334
+    },
+    {
+      "patch": 30,
+      "name": "Brass ensemble",
+      "start_seconds": 54.333333333333336,
+      "end_seconds": 55.5
+    },
+    {
+      "patch": 31,
+      "name": "soprano sax",
+      "start_seconds": 56.1,
+      "end_seconds": 57.233333333333334
+    },
+    {
+      "patch": 32,
+      "name": "alto sax",
+      "start_seconds": 57.833333333333336,
+      "end_seconds": 59.0
+    },
+    {
+      "patch": 33,
+      "name": "tenor sax",
+      "start_seconds": 59.6,
+      "end_seconds": 60.766666666666666
+    },
+    {
+      "patch": 34,
+      "name": "clarinet",
+      "start_seconds": 61.36666666666667,
+      "end_seconds": 62.53333333333333
+    },
+    {
+      "patch": 35,
+      "name": "bass clarinet",
+      "start_seconds": 63.13333333333333,
+      "end_seconds": 64.33333333333333
+    },
+    {
+      "patch": 36,
+      "name": "oboe",
+      "start_seconds": 64.93333333333334,
+      "end_seconds": 66.1
+    },
+    {
+      "patch": 37,
+      "name": "basson",
+      "start_seconds": 66.7,
+      "end_seconds": 67.83333333333333
+    },
+    {
+      "patch": 38,
+      "name": "piccolo",
+      "start_seconds": 68.43333333333334,
+      "end_seconds": 69.63333333333333
+    },
+    {
+      "patch": 39,
+      "name": "flute",
+      "start_seconds": 70.23333333333333,
+      "end_seconds": 71.36666666666666
+    },
+    {
+      "patch": 40,
+      "name": "panflute",
+      "start_seconds": 71.96666666666667,
+      "end_seconds": 73.13333333333333
+    },
+    {
+      "patch": 41,
+      "name": "recorder",
+      "start_seconds": 73.73333333333333,
+      "end_seconds": 74.89999999999999
+    },
+    {
+      "patch": 42,
+      "name": "ocarina",
+      "start_seconds": 75.5,
+      "end_seconds": 76.66666666666666
+    },
+    {
+      "patch": 43,
+      "name": "woodwind ensemble",
+      "start_seconds": 77.26666666666667,
+      "end_seconds": 78.39999999999999
+    },
+    {
+      "patch": 44,
+      "name": "bagpipe",
+      "start_seconds": 79.0,
+      "end_seconds": 80.13333333333333
+    },
+    {
+      "patch": 45,
+      "name": "harmonica",
+      "start_seconds": 80.73333333333333,
+      "end_seconds": 81.86666666666666
+    },
+    {
+      "patch": 46,
+      "name": "jug",
+      "start_seconds": 82.46666666666667,
+      "end_seconds": 83.6
+    },
+    {
+      "patch": 47,
+      "name": "kazoo",
+      "start_seconds": 84.2,
+      "end_seconds": 85.36666666666666
+    },
+    {
+      "patch": 48,
+      "name": "samba whistle",
+      "start_seconds": 85.96666666666667,
+      "end_seconds": 87.13333333333333
+    },
+    {
+      "patch": 49,
+      "name": "acoustic guitar",
+      "start_seconds": 87.73333333333333,
+      "end_seconds": 88.86666666666666
+    },
+    {
+      "patch": 50,
+      "name": "classic guitar",
+      "start_seconds": 89.46666666666667,
+      "end_seconds": 90.66666666666666
+    },
+    {
+      "patch": 51,
+      "name": "hawaiian guitar",
+      "start_seconds": 91.26666666666667,
+      "end_seconds": 92.43333333333332
+    },
+    {
+      "patch": 52,
+      "name": "jazz guitar",
+      "start_seconds": 93.03333333333333,
+      "end_seconds": 94.19999999999999
+    },
+    {
+      "patch": 53,
+      "name": "rock guitar 1",
+      "start_seconds": 94.8,
+      "end_seconds": 96.0
+    },
+    {
+      "patch": 54,
+      "name": "rock guitar 2",
+      "start_seconds": 96.60000000000001,
+      "end_seconds": 97.8
+    },
+    {
+      "patch": 55,
+      "name": "rock guitar 3",
+      "start_seconds": 98.4,
+      "end_seconds": 99.56666666666666
+    },
+    {
+      "patch": 56,
+      "name": "pedal steel guitar",
+      "start_seconds": 100.16666666666667,
+      "end_seconds": 101.33333333333333
+    },
+    {
+      "patch": 57,
+      "name": "tremolo guitar",
+      "start_seconds": 101.93333333333334,
+      "end_seconds": 103.1
+    },
+    {
+      "patch": 58,
+      "name": "12string guitar",
+      "start_seconds": 103.7,
+      "end_seconds": 104.89999999999999
+    },
+    {
+      "patch": 59,
+      "name": "electric bass",
+      "start_seconds": 105.5,
+      "end_seconds": 106.63333333333333
+    },
+    {
+      "patch": 60,
+      "name": "mute bass",
+      "start_seconds": 107.23333333333333,
+      "end_seconds": 108.43333333333332
+    },
+    {
+      "patch": 61,
+      "name": "picked bass",
+      "start_seconds": 109.03333333333333,
+      "end_seconds": 110.16666666666666
+    },
+    {
+      "patch": 62,
+      "name": "slap bass",
+      "start_seconds": 110.76666666666667,
+      "end_seconds": 111.93333333333332
+    },
+    {
+      "patch": 63,
+      "name": "wood bass 1",
+      "start_seconds": 112.53333333333333,
+      "end_seconds": 113.69999999999999
+    },
+    {
+      "patch": 64,
+      "name": "wood bass 2",
+      "start_seconds": 114.3,
+      "end_seconds": 115.46666666666665
+    },
+    {
+      "patch": 65,
+      "name": "bowed bass",
+      "start_seconds": 116.06666666666666,
+      "end_seconds": 117.23333333333333
+    },
+    {
+      "patch": 66,
+      "name": "banjo",
+      "start_seconds": 117.83333333333334,
+      "end_seconds": 119.0
+    },
+    {
+      "patch": 67,
+      "name": "ukulele",
+      "start_seconds": 119.60000000000001,
+      "end_seconds": 120.76666666666667
+    },
+    {
+      "patch": 68,
+      "name": "mandolin",
+      "start_seconds": 121.36666666666667,
+      "end_seconds": 122.53333333333333
+    },
+    {
+      "patch": 69,
+      "name": "harp",
+      "start_seconds": 123.13333333333334,
+      "end_seconds": 124.3
+    },
+    {
+      "patch": 70,
+      "name": "sitar",
+      "start_seconds": 124.9,
+      "end_seconds": 126.06666666666666
+    },
+    {
+      "patch": 71,
+      "name": "shamisen",
+      "start_seconds": 126.66666666666667,
+      "end_seconds": 127.8
+    },
+    {
+      "patch": 72,
+      "name": "jamisen",
+      "start_seconds": 128.4,
+      "end_seconds": 129.6
+    },
+    {
+      "patch": 73,
+      "name": "koto",
+      "start_seconds": 130.2,
+      "end_seconds": 131.36666666666667
+    },
+    {
+      "patch": 74,
+      "name": "violin 1",
+      "start_seconds": 131.96666666666667,
+      "end_seconds": 133.13333333333333
+    },
+    {
+      "patch": 75,
+      "name": "violin 2",
+      "start_seconds": 133.73333333333332,
+      "end_seconds": 134.9
+    },
+    {
+      "patch": 76,
+      "name": "cello",
+      "start_seconds": 135.5,
+      "end_seconds": 136.66666666666666
+    },
+    {
+      "patch": 77,
+      "name": "strings",
+      "start_seconds": 137.26666666666665,
+      "end_seconds": 138.4
+    },
+    {
+      "patch": 78,
+      "name": "synth brass",
+      "start_seconds": 139.0,
+      "end_seconds": 140.2
+    },
+    {
+      "patch": 79,
+      "name": "synth bass",
+      "start_seconds": 140.79999999999998,
+      "end_seconds": 141.93333333333334
+    },
+    {
+      "patch": 80,
+      "name": "synth tom",
+      "start_seconds": 142.53333333333333,
+      "end_seconds": 143.73333333333332
+    },
+    {
+      "patch": 81,
+      "name": "carillon",
+      "start_seconds": 144.33333333333331,
+      "end_seconds": 145.46666666666667
+    },
+    {
+      "patch": 82,
+      "name": "chimes",
+      "start_seconds": 146.06666666666666,
+      "end_seconds": 147.23333333333332
+    },
+    {
+      "patch": 83,
+      "name": "hand bell",
+      "start_seconds": 147.83333333333331,
+      "end_seconds": 149.0
+    },
+    {
+      "patch": 84,
+      "name": "tubular bells",
+      "start_seconds": 149.6,
+      "end_seconds": 150.76666666666665
+    },
+    {
+      "patch": 85,
+      "name": "timpani",
+      "start_seconds": 151.36666666666665,
+      "end_seconds": 152.53333333333333
+    },
+    {
+      "patch": 86,
+      "name": "steel drum 1",
+      "start_seconds": 153.13333333333333,
+      "end_seconds": 154.29999999999998
+    },
+    {
+      "patch": 87,
+      "name": "steel drum 2",
+      "start_seconds": 154.89999999999998,
+      "end_seconds": 156.03333333333333
+    },
+    {
+      "patch": 88,
+      "name": "glockenspiel",
+      "start_seconds": 156.63333333333333,
+      "end_seconds": 157.83333333333331
+    },
+    {
+      "patch": 89,
+      "name": "marimba 1",
+      "start_seconds": 158.4333333333333,
+      "end_seconds": 159.56666666666666
+    },
+    {
+      "patch": 90,
+      "name": "marimba 2",
+      "start_seconds": 160.16666666666666,
+      "end_seconds": 161.36666666666667
+    },
+    {
+      "patch": 91,
+      "name": "vibraphone",
+      "start_seconds": 161.96666666666667,
+      "end_seconds": 163.13333333333333
+    },
+    {
+      "patch": 92,
+      "name": "human chorus",
+      "start_seconds": 163.73333333333332,
+      "end_seconds": 164.9
+    },
+    {
+      "patch": 93,
+      "name": "human voice 1",
+      "start_seconds": 165.5,
+      "end_seconds": 166.66666666666666
+    },
+    {
+      "patch": 94,
+      "name": "human voice 2",
+      "start_seconds": 167.26666666666665,
+      "end_seconds": 168.43333333333334
+    },
+    {
+      "patch": 95,
+      "name": "whistle",
+      "start_seconds": 169.03333333333333,
+      "end_seconds": 170.16666666666666
+    },
+    {
+      "patch": 96,
+      "name": "ice block",
+      "start_seconds": 170.76666666666665,
+      "end_seconds": 171.96666666666667
+    },
+    {
+      "patch": 97,
+      "name": "musical saw",
+      "start_seconds": 172.56666666666666,
+      "end_seconds": 173.7
+    },
+    {
+      "patch": 98,
+      "name": "music box",
+      "start_seconds": 174.29999999999998,
+      "end_seconds": 175.5
+    },
+    {
+      "patch": 99,
+      "name": "sine wave",
+      "start_seconds": 176.1,
+      "end_seconds": 178.1
+    }
+  ],
+  "recording": {
+    "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/references/v2/user-ONfIvtDOog0.wav",
+    "sha256": "8350d0e04cb6ce1ba6200d3a9d3aa9e95006aba312e65f6f2fab2bf91a7c31ba"
+  },
+  "bank": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/Resources/FactoryBank/press78-factory.json",
+    "sha256": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
+  },
+  "render": {
+    "rate": 48000,
+    "polyphony": 12,
+    "latency_samples": 32,
+    "chorus": "Frozen Recorded mode; epoch=-32/48000 seconds for every scenario, not remapped or fitted",
+    "master_gain": 1,
+    "drive": 0,
+    "tone_cutoff": 0,
+    "dc_block": false,
+    "limiter": false,
+    "artificial_noise": false,
+    "frames": 8931705
+  },
+  "timing_and_metric": {
+    "note_mapping": "on=round(48000*(offset+scale*source_start)); gate=round(48000*scale*source_gate); off=on+gate. This separate gate rounding exactly preserves the established baseline; it can differ by one sample from rounding mapped source end.",
+    "program_mapping": "All100 inferred program changes use round(48000*(offset+scale*timeline.midi_start_seconds)). The old timeline audio_start_seconds is not reused for corrected maps. Bar-based program inference remains an assumption, not measured MIDI command time.",
+    "event_order": "Sort by frame, then patch, old off, new on; preserve source-file order within each category. Patch changes preserve existing held/release voices.",
+    "score_windows": "Exactly the100 prior v4 absolute recording-time windows, unchanged for every map/model. No moved or reselected windows.",
+    "metric": "Unchanged frozen stereo_metrics.py: one stereo-pair RMS normalization;64 bands80-14000Hz;STFT512/2048/8192. No local or per-model timing, phase, pitch, frequency or gain optimization beyond established pair RMS normalization."
+  },
+  "source_policy": {
+    "evidence": {
+      "path": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-allocation-mode00-channels-20261019/review.json",
+      "sha256": "00804e8875bb1086f89a4aaae7f8e1bf670de20ee99e0803684290028ef83076"
+    },
+    "counts": {
+      "unchanged": {
+        "on": {
+          "0": 842,
+          "1": 919
+        },
+        "off": {
+          "0": 842,
+          "1": 919
+        },
+        "patch": 100
+      },
+      "old_scale_median_offset": {
+        "on": {
+          "0": 842,
+          "1": 919
+        },
+        "off": {
+          "0": 842,
+          "1": 919
+        },
+        "patch": 100
+      },
+      "nominal_scale_median_intercept": {
+        "on": {
+          "0": 842,
+          "1": 919
+        },
+        "off": {
+          "0": 842,
+          "1": 919
+        },
+        "patch": 100
+      },
+      "equal_patch_robust_affine": {
+        "on": {
+          "0": 842,
+          "1": 919
+        },
+        "off": {
+          "0": 842,
+          "1": 919
+        },
+        "patch": 100
+      }
+    },
+    "HistoricalLegacy": "Original file MIDI-channel IDs0/1 remain engine source IDs0/1; historical reproduction only, not a CV capture.",
+    "Legacy": "All accepted raw MIDI channels enter one engine source0 domain; allocationModel0. Independently compiled unchanged b15 source must reproduce each complete merged Legacy WAV.",
+    "Original": "Exactly the same global MIDI domain/source0, allocationModel1. Original-minus-Legacy isolates allocation from source mapping.",
+    "unchanged": "No input event is deleted, reordered, retimed, repitched or re-velocitized. Raw channel metadata stays in the event file/pressure log; the fixture changes only the API owner argument for merged lanes.",
+    "scope": "Original Mode00 CPU witnesses support one received-key bitmap across enabled MIDI channels. Actual sender delivery/filtering remains conditional. Plugin MIDI/CV owners remain separate in normal host use."
+  },
+  "diagnostic_windows": [
+    {
+      "patch": 199,
+      "name": "Sine99 full ending",
+      "start_seconds": 176.1,
+      "end_seconds": 184.2
+    },
+    {
+      "patch": 200,
+      "name": "Sine99 prior primary repeated75",
+      "start_seconds": 181.55,
+      "end_seconds": 182.2
+    }
+  ],
+  "diagnostic_selection": "Fixed before candidate audio, from prior Sine99 retrigger evidence. These reused-source supports do not establish actual gate arrival, phase or an independent holdout.",
+  "changed_path": "Optional Original normalMode00 allocator with disclosed host extensions. No EG, phase reset, CPU-service period, pitch, level, waveform, Reverb, analog, DAC, clock or noise fit. The historical channel-owner mapping is separated as a third lane; CV is not simulated as MIDI-channel1.",
+  "required_gates": {
+    "historical_legacy_all4_fullWAV_hash_equality": true,
+    "merged_legacy_all4_independent_baseline_fullWAV_equality": true,
+    "unchanged_map_all100_joint_band_delta_max_db": -0.01,
+    "other_maps_all100_joint_band_delta_max_db": 0.03,
+    "each_focus_each_map_joint_band_delta_max_db": 0.1,
+    "all_maps_all100_STFTlog_delta_max_db": 0.05,
+    "each_sine_diagnostic_each_map_band_delta_max_db": 0.1
+  },
+  "decision_scope": "Regression gates for default promotion, not a definition of physical truth. Preserve every failed outcome and the candidate; no moving gates or fitting source/map/gain/time/phase to force a pass. Command evidence remains valid if its audio embedding fails.",
+  "analysis": "All100 patches x4maps x3lanes plus both Sine supports. Report Original-minus-mergedLegacy and mergedLegacy-minus-historical separately. Retain all metrics/regressions/focus/neighbors and20 four-part auditions. Native/CPU/SDK/host and independent acoustic evidence remain separate.",
+  "auditions": "Hardware/HistoricalLegacy/mergedLegacy/Original, fixed windows. Established one RMS gain per stereo model pair plus common safety across maps/lanes; no EQ/time/phase/pitch/channel-gain fitting.",
+  "maximum_new_wav_bytes": 800000000,
+  "storage": "At most four merged b15 baseline WAVs plus four Original WAVs and auditions; delete candidate Legacy copies only after exact independent hash identity and historical copies only after their exact retained hashes. Preserve mismatches. Limit raised prospectively from superseded v1 because the independent merged baseline is now retained.",
+  "limits": [
+    "Reused exact-device tour; sender timing, capture dynamics and chip behavior remain unidentified.",
+    "All velocities127/noCC64; not a velocity or pedal measurement.",
+    "Passing reused-recording gates cannot establish market-leading accuracy or complete chip emulation."
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "schema": "press78.modern-b15-delivery.v1",
+  "passed": true,
+  "version": "0.1.0b15",
+  "preset_counts": {
+    "original_pss": 100,
+    "modern": 50,
+    "init": 1,
+    "total": 151
+  },
+  "all_shipping_native_sources_unchanged_from_b14": true,
+  "modern_categories": {
+    "Bass": 12,
+    "Donk": 8,
+    "Pluck": 12,
+    "Lead": 8,
+    "Pad": 6,
+    "FX": 4
+  },
+  "native_audition_summary_sha256": "cbbe74ff0a861919860cc1ff8a1c7036b6af3f7906dd4b7bd84282f155bda1eb",
+  "source_original_compatibility_sha256": "7d98e14692bfb4c8d2b1aa68cef44649754e375bd37560422548753041ae66c6",
+  "archive": {
+    "passed": true,
+    "archive": "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Output/Universal45/Press78.u45",
+    "archive_sha256": "cccc26c0e7f5a0e009cf46741e6295a426f564950adb8773a1433af1391f0ef3",
+    "archive_bytes": 11712930,
+    "patches": 151,
+    "chip_inputs": [
+      "chip_binaries/Deployment/Press7832.ll",
+      "chip_binaries/Deployment/Press7864.ll",
+      "chip_binaries/Testing/Press7832.ll",
+      "chip_binaries/Testing/Press7864.ll"
+    ],
+    "native_modules": [
+      "Press78.dylib",
+      "Press78-arm64.dylib"
+    ],
+    "installed": "/Users/vojta/Library/Application Support/Propellerhead Software/RackExtensions_Dev/Press78",
+    "scope": "Source-aligned local/universal payload inspection; no host execution or delivery acceptance"
+  },
+  "host": {
+    "recorded_at_utc": "2026-10-19T10:26:41.052273+00:00",
+    "passed": true,
+    "status": "protected_cli_validation_passed",
+    "product_id": "cz.protocodus.Press78",
+    "version": "0.1.0b15",
+    "host": {
+      "capability_sha256": "ec7bf6037438d99dd3536d1c72997c1a53d5460706be9243dd4ab5c0b32aee04",
+      "host_sha256": "9c6373121e9ce60fbaf77a8a8723539aed3d66a19b35c11b6a8807892eaa739e",
+      "host_version": "14.0.2d7 build 20275 TESTING VERSION",
+      "sdk": [
+        "JukeboxSDK_500_028",
+        "TargetVersion=5.0"
+      ]
+    },
+    "session": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001",
+    "host_exit_code": 0,
+    "protection_preflight_passed": true,
+    "protection_checks": [
+      {
+        "check": "protected_create_gate_before_existing_files",
+        "pass": true
+      },
+      {
+        "check": "task_write_runtime",
+        "pass": true
+      },
+      {
+        "check": "task_write_Vojta Hord_j_uk_360456667",
+        "pass": true
+      },
+      {
+        "check": "protected_create",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "protected_truncate",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "protected_unlink",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "protected_rename",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "protected_chmod",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "profile_write",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "symlink_escape",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "hardlink_escape",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "original_scratch_open_write_db.cmif",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "original_scratch_open_write_5015baf6-6279-4f5c-bb82-d66a57900bcf.cachemanager",
+        "errno": 1,
+        "pass": true
+      },
+      {
+        "check": "child_and_grandchild_denied",
+        "pass": true
+      },
+      {
+        "check": "fixture_preserved",
+        "pass": true
+      }
+    ],
+    "device_creation_count": 3,
+    "create_re_pass": true,
+    "data_conversion_pass": true,
+    "native_module_observed": true,
+    "production_preserved": true,
+    "scratch_restored": true,
+    "payload_unchanged": true,
+    "production_files_before": 4950,
+    "production_files_after": 4950,
+    "patches": 151,
+    "original_pss": 100,
+    "modern": 50,
+    "archive_sha256": "cccc26c0e7f5a0e009cf46741e6295a426f564950adb8773a1433af1391f0ef3",
+    "native_modules": {
+      "Press78-arm64.dylib": {
+        "architectures": [
+          "arm64"
+        ],
+        "sha256": "74a7707bb6e939dbfcfadcc454e8f3562f8a54b232ce463863eb0cc65041161f"
+      },
+      "Press78.dylib": {
+        "architectures": [
+          "x86_64"
+        ],
+        "sha256": "738f8243f7e14e7edf27325aa876c28704bdb7992c912d2c68729787f1517637"
+      }
+    },
+    "scope": [
+      "CLI creation/conversions do not verify default-patch loading, interactive playback, song persistence, host performance, or publication."
+    ],
+    "artifacts": [
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001/candidate.json",
+        "sha256": "76181071755e5db6545f325c5cafe51c43794037f4bbf056adaa4e1ad9b285d8"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001/host-result.json",
+        "sha256": "aa47a62d8eadc09043474da466cf587b49b1de73c3a5b03e2e5a5d8d4ee71e74"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001/runtime/preflight.json",
+        "sha256": "32a779a43c4ffece3413cfa7c6cfd795632e485e9e9d2dd73a066f290bf2c6c8"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001/runtime/recon-test.log",
+        "sha256": "d41012febbad61a8db1d3e3619fe2e436408614a3e11cd0f702e61f512c47ac9"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001/runtime/recon-device.log",
+        "sha256": "93b3b58bac4d744527d02f5c273bd3a5ee97674a8682fb8bb541273fc081105a"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001/launch-plan.json",
+        "sha256": "5331aa15e2a9731112c0fe3f3ffdfb06e4fe67d5c4da710527e7157808266545"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001/production-comparison.json",
+        "sha256": "b784898527352b2ea46539f3fc294d50b6931070366278b3d6285d3c845e6c3f"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001/production-before.json",
+        "sha256": "9446f950598c214f05c864508e75d74d967e3d29364c1d5dc4adc504ea788491"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001/production-after.json",
+        "sha256": "5cdf2ed3e2157b6a187a25df1d4e19bdf739cbe0c3950b6aecae5887afbf0879"
+      },
+      {
+        "path": "/Users/vojta/Dev/reason-rack-extension/diagnostics/press78-presets-b15-20261019/recon/cli-001/scratch-baseline.json",
+        "sha256": "146326508fdd34a44144f5171cf7ab27b8641f4bd1b8aa812bd74720548ccd4c"
+      }
+    ]
+  },
+  "source_contract_sha256": "955c00251dbaeece8210b379f111123c2b9ae1b1f1901c64f948eb2d2e364374",
+  "gui_contract_sha256": "b6209e3b4f04891cff974cba812d2bd2e8fb89b3ec1620baa6b205cda1e65aa8",
+  "bank_zip": {
+    "name": "Press78-FactoryPresets-0.1.0b15.zip",
+    "bytes": 138303,
+    "sha256": "aa54b070d78af00442b024dc53035900be7a39c05fee1cf6bede4a191e60745e"
+  },
+  "audio_catalog_sha256": "8339b91148cf71967e30619b28099478ac3dcc806077e070eb4d6c065c80d42a",
+  "audio_manifest_sha256": "57e3b0b0715089458205ba63e04cab30edc047a0dbdfb7a07dcda7b1a4c71445",
+  "limitations": [
+    "Audition audio uses actual native wrapper with typed SDK5 MOM, not actual Reason audio scheduling.",
+    "Fresh protected Recon checks creation/native loading/conversions; not named patch loading, interactive playback, persistence or host CPU.",
+    "Numerical audio checks and expressive sound design do not replace subjective listening."
+  ]
+}

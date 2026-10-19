@@ -1,0 +1,233 @@
+{
+  "schema": "press78.key-level-prototype-core-validation.v1",
+  "status": "READY ignored candidate; no adoption or audio score yet",
+  "passed": true,
+  "protocol": {
+    "path": "build/key-level-b13-20261019/design-frozen-v2.json",
+    "bytes": 22338,
+    "sha256": "b15889ad4a109b0d6fde8ec4c8cd49903298e0af6e57958758a287d7c41a5a13"
+  },
+  "superseded_protocol_preserved": {
+    "path": "build/key-level-b13-20261019/design-frozen.json",
+    "bytes": 20461,
+    "sha256": "b0d2b1df3ea03aeed3c0eef9e2227350340d02ac39466132b8eefdfb63ae281c"
+  },
+  "baseline": {
+    "path": "build/key-level-b13-20261019/baseline/source-frozen.json",
+    "bytes": 1405,
+    "sha256": "00228c87880d65a994b61e81a1ba9d5f28d143d2e2ef4465c08bc488d759c062"
+  },
+  "source": {
+    "CMakeLists.txt": {
+      "path": "build/key-level-b13-20261019/prototype/CMakeLists.txt",
+      "bytes": 3306,
+      "sha256": "bae379bc5a15b71bf8b51701281d8fffa4682dbbad5302475c07e9f014a2cfe4"
+    },
+    "Source/DSP/Press78Engine.cpp": {
+      "path": "build/key-level-b13-20261019/prototype/Source/DSP/Press78Engine.cpp",
+      "bytes": 27565,
+      "sha256": "06d1daef13efcce1ba4c3970e5485c75e77c6757ae1f960309a3f4ec93e2f71c"
+    },
+    "Source/DSP/Press78Engine.h": {
+      "path": "build/key-level-b13-20261019/prototype/Source/DSP/Press78Engine.h",
+      "bytes": 9561,
+      "sha256": "42047e65d40d7635f2d7be413882a2abc041f3a360e15c4c2e133011a852d63a"
+    },
+    "Source/DSP/FirmwareLevel.h": {
+      "path": "build/key-level-b13-20261019/prototype/Source/DSP/FirmwareLevel.h",
+      "bytes": 3679,
+      "sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+    },
+    "Tools/generate_firmware_level.py": {
+      "path": "build/key-level-b13-20261019/prototype/Tools/generate_firmware_level.py",
+      "bytes": 5254,
+      "sha256": "a2fe39632c632037d2680c6114e63ab71dbbe5b1422917e92d8710e5776498b2"
+    },
+    "Tests/test_key_level.cpp": {
+      "path": "build/key-level-b13-20261019/prototype/Tests/test_key_level.cpp",
+      "bytes": 9348,
+      "sha256": "2446aefe17094a45fd10c849ebcdce876057a68b7a670ea47d78d9c53d51dd11"
+    },
+    "Tools/NativeRender.cpp": {
+      "path": "build/key-level-b13-20261019/prototype/Tools/NativeRender.cpp",
+      "bytes": 7487,
+      "sha256": "7a4e616aa123e4caaf945eeb10b96afc158613fc490ef302a3e90dd4683b5f40"
+    },
+    "Tools/PerformanceProbe.cpp": {
+      "path": "build/key-level-b13-20261019/prototype/Tools/PerformanceProbe.cpp",
+      "bytes": 5315,
+      "sha256": "a592bc4050f4e93d8493f3048a1a86d720c56c9637183540b68d696c70d205e7"
+    }
+  },
+  "scope": "Software key-level lookup and signed saturation only, opt-in keyLevelModel1. Existing0.75dB/command and finalcode>=99 silence are downstream hypotheses. Continuous velocity/volume, both pitch paths, host/LFO/clock/filter/effects and exact-zero additive noise behavior unchanged.",
+  "deferred_policy": "Mode request waits for active voices AND48tick steal tails to finish; reset/allSoundOff commit immediately. Current active TL/LKS live edits preserve phase/envelope state and use effective law. Stolen-tail patch snapshots preserve existing behavior.",
+  "default_compatibility": "Controls.keyLevelModel default0; no preset or wrapper/schema/default changes.",
+  "test_summary": {
+    "release_ctest_targets": 8,
+    "sanitizer_ctest_targets": 8,
+    "new_key_level_contract_groups": 12,
+    "existing_DSP_groups": 44,
+    "existing_pitch_groups": 12,
+    "host_rates": [
+      22050,
+      44100,
+      48000,
+      96000,
+      192000
+    ],
+    "render_allocations": 0,
+    "idle_samples_exact_zero": true,
+    "noise_compatibility_fields_inert": true
+  },
+  "helper_audit": {
+    "path": "build/key-level-b13-20261019/independent-command-audit/command-report.json",
+    "bytes": 6604,
+    "sha256": "2d507b5235476f79c6941cc2ce351ce93e4cc420bee581391199161f19f0f372"
+  },
+  "helper_scope": "Independent fresh original-program primitives composed for4,194,304 valid commands,343 invalid clamps,all640 entries. Not4M full firmware builder invocations.",
+  "legacy_identity": {
+    "pitch_laws": [
+      0,
+      1
+    ],
+    "factory_patches": 100,
+    "rates": [
+      44100,
+      48000,
+      96000
+    ],
+    "frames_per_patch": 8192,
+    "float_bytes": 39321600,
+    "baseline_sha256": "e97a84a27196ed17fef1103cf8fe418b0ef03761917cd08470e35528a70b6b8c",
+    "candidate_sha256": "e97a84a27196ed17fef1103cf8fe418b0ef03761917cd08470e35528a70b6b8c",
+    "exact": true,
+    "harness": {
+      "path": "build/key-level-b13-20261019/prototype/legacy-compat.cpp",
+      "bytes": 1361,
+      "sha256": "3f3d01d405160c5ef29d52069d2dff51290538c1c1f4b963c89bf16caf811048"
+    },
+    "baseline_binary": {
+      "path": "build/key-level-b13-20261019/prototype/legacy-baseline",
+      "bytes": 55808,
+      "sha256": "d7f34b5fb554df20e558b2cc29b4177746f6a3906bc4b826e0296e08d5228797"
+    },
+    "candidate_binary": {
+      "path": "build/key-level-b13-20261019/prototype/legacy-candidate",
+      "bytes": 56032,
+      "sha256": "4aee499b8dbf6886ab5cce4ad8914c8675397a3f3cf2b4db2d3a2f99d745b57e"
+    },
+    "compiler": "AppleClang21.0.0; c++ -std=c++17 -O2; same harness/options for baseline and candidate"
+  },
+  "native_performance": {
+    "scope": "Native wall-clock only, not Reason or translated target.3seconds per each workload/rate.",
+    "rows": 6,
+    "rates": [
+      48000,
+      96000
+    ],
+    "deadline_misses": 0,
+    "receipt": {
+      "path": "build/key-level-b13-20261019/prototype/performance-firmware.json",
+      "bytes": 2147,
+      "sha256": "3121dab9c89bb03b60bb942f01d4d41eed7f0383d6410c748c4dad3b2a18372c"
+    }
+  },
+  "cli_smoke": {
+    "passed": true,
+    "render": {
+      "path": "build/key-level-b13-20261019/prototype/cli-firmware.json",
+      "bytes": 117,
+      "sha256": "4eb84bdd05b5b8cecf279b00ffb67d4bc83abefdb2ece06a053e9d95d4d34a20"
+    },
+    "audio": {
+      "path": "build/key-level-b13-20261019/prototype/cli-firmware.wav",
+      "bytes": 38444,
+      "sha256": "b39b2602bd287c6a3fe5d1235a5453abdae77e2d2d6536152fcd858ce918128f"
+    }
+  },
+  "logs": [
+    {
+      "path": "build/key-level-b13-20261019/prototype/release-build.log",
+      "bytes": 2017,
+      "sha256": "3046be05239a98c643dc1f211f63f4b607453bd8c0e982fec0ab80bc6106d06c"
+    },
+    {
+      "path": "build/key-level-b13-20261019/prototype/release-tests.log",
+      "bytes": 995,
+      "sha256": "c400b4f42806d823c90548b19e0ec9a610dde62f6c45c5baa036763c23dca268"
+    },
+    {
+      "path": "build/key-level-b13-20261019/prototype/sanitizer-configure.log",
+      "bytes": 870,
+      "sha256": "461ecd3f2327882bb745906a29caec637e570bf238d2e503feff6bd89f8ffad6"
+    },
+    {
+      "path": "build/key-level-b13-20261019/prototype/sanitizer-build.log",
+      "bytes": 2017,
+      "sha256": "60c113f11b65c4c992ce363a8a7fb7499549dba313f8469d6ffac616b828f76b"
+    },
+    {
+      "path": "build/key-level-b13-20261019/prototype/sanitizer-tests.log",
+      "bytes": 997,
+      "sha256": "267128e1a7a42fd07868b6dde5cf19efe4f711ecd487c554008427eb209ac99c"
+    },
+    {
+      "path": "build/key-level-b13-20261019/prototype/key-level-tests.log",
+      "bytes": 829,
+      "sha256": "ddb677e8d3b5f2de8c0fa167de59a0d539d74de1cfc9facc8d30655c1e829d38"
+    }
+  ],
+  "unchanged_production": {
+    "AnalogOutput.h": {
+      "path": "Source/DSP/AnalogOutput.h",
+      "bytes": 2195,
+      "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+    },
+    "CircuitNoise.h": {
+      "path": "Source/DSP/CircuitNoise.h",
+      "bytes": 8721,
+      "sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+    },
+    "FactoryVoices.h": {
+      "path": "Source/DSP/FactoryVoices.h",
+      "bytes": 12725,
+      "sha256": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7"
+    },
+    "FirmwarePitch.h": {
+      "path": "Source/DSP/FirmwarePitch.h",
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    "OversampledAnalogOutput.h": {
+      "path": "Source/DSP/OversampledAnalogOutput.h",
+      "bytes": 6548,
+      "sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1"
+    },
+    "Press78Engine.cpp": {
+      "path": "Source/DSP/Press78Engine.cpp",
+      "bytes": 26257,
+      "sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f"
+    },
+    "Press78Engine.h": {
+      "path": "Source/DSP/Press78Engine.h",
+      "bytes": 9170,
+      "sha256": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0"
+    },
+    "RecordedChorus.h": {
+      "path": "Source/DSP/RecordedChorus.h",
+      "bytes": 3581,
+      "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+    },
+    "RecordedChorusProfile.h": {
+      "path": "Source/DSP/RecordedChorusProfile.h",
+      "bytes": 1073,
+      "sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+    }
+  },
+  "not_done": [
+    "Frozen four-map audio benchmark and adoption gates are owned by root.",
+    "No native wrapper/schema/preset/UI changes.",
+    "No build45,SDK/ReCon install, host playback or packaging.",
+    "No new Reverb/Sustain/velocity law or analog/noise changes."
+  ]
+}

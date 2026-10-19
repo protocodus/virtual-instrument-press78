@@ -194,7 +194,7 @@ void editorContract()
     {
         const auto name = parameters[i]->getName (64);
         if (press78::kPluginControls[static_cast<std::size_t> (i)].hidden)
-            check (shown.count (name) == 0, "the editor omits the inert " + name);
+            check (shown.count (name) == 0, "the editor omits the hidden " + name);
         else
             check (shown.count (name) == 1, "the editor shows " + name);
     }

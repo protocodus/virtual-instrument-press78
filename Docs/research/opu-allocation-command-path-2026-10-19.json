@@ -1,0 +1,408 @@
+{
+  "schema": "press78.opu-allocation-command-path.v1",
+  "created_utc": "2026-10-19T11:05:07.769718+00:00",
+  "status": "Verified normal-voice software-command reconstruction; research prototype only",
+  "source_inventory_url": "https://github.com/mamedev/mame/blob/983e76f8cd84f8da8d14241c9f07a5ee138cc3eb/src/mame/yamaha/ympsr16.cpp",
+  "sources": {
+    "PSS780": {
+      "rom_sha1": "33cc3f4ab27cf6e5068627625f6ab236209ad776",
+      "rom_sha256": "ce0a69d143deacdb52eb28a1f5de80584ce7576ba94488fa4b035dfc6f0a76a7",
+      "functions": {
+        "general": {
+          "entry": 41429,
+          "bytes": 36,
+          "sha256": "214d146577b9c27da7074a7f5be35c2b0cde8c036cfca241a382648ad181236a"
+        },
+        "cached_free": {
+          "entry": 36015,
+          "bytes": 58,
+          "sha256": "7ab746a996dbe6194268042f1c0eeb8357bb4aa5e0afcdc59d50eb5dab36bfed"
+        },
+        "set_held": {
+          "entry": 41535,
+          "bytes": 8,
+          "sha256": "0bdc6e1072371febe2a0ff14ba18920a16daab00d3fc55770baf2226b1fd8505"
+        },
+        "set_released": {
+          "entry": 41543,
+          "bytes": 8,
+          "sha256": "1bb53f405d69271084b6d312b82285117d823b7fb1115a4ee0d6c41aea49d84b"
+        },
+        "age": {
+          "entry": 41551,
+          "bytes": 25,
+          "sha256": "361a1084dce6b459ee09b215a901e63c33b359357e4279a449c1e0c3da679155"
+        },
+        "find_mode99_off": {
+          "entry": 36129,
+          "bytes": 36,
+          "sha256": "de66a967aa9fe1f455f8dba69d7d5fe062db9c2434cba5db233594f298bff12d"
+        },
+        "find_mode00_note": {
+          "entry": 41342,
+          "bytes": 30,
+          "sha256": "86add781f2cdc262d3c4c33da4db547067330edacd150d75e18aa8fcd6cc01fa"
+        }
+      }
+    },
+    "PSS680": {
+      "rom_sha1": "d578324cfae73cd5f6c628eb3044be07684bc5d0",
+      "rom_sha256": "52f19aa8eae1730a8f00b43672b911cf5cfa7e5a2af324b9dd377249e2a995f1",
+      "functions": {
+        "general": {
+          "entry": 41210,
+          "bytes": 36,
+          "sha256": "214d146577b9c27da7074a7f5be35c2b0cde8c036cfca241a382648ad181236a"
+        },
+        "cached_free": {
+          "entry": 36015,
+          "bytes": 58,
+          "sha256": "7ab746a996dbe6194268042f1c0eeb8357bb4aa5e0afcdc59d50eb5dab36bfed"
+        },
+        "set_held": {
+          "entry": 41316,
+          "bytes": 8,
+          "sha256": "0bdc6e1072371febe2a0ff14ba18920a16daab00d3fc55770baf2226b1fd8505"
+        },
+        "set_released": {
+          "entry": 41324,
+          "bytes": 8,
+          "sha256": "1bb53f405d69271084b6d312b82285117d823b7fb1115a4ee0d6c41aea49d84b"
+        },
+        "age": {
+          "entry": 41332,
+          "bytes": 25,
+          "sha256": "361a1084dce6b459ee09b215a901e63c33b359357e4279a449c1e0c3da679155"
+        },
+        "find_mode99_off": {
+          "entry": 36129,
+          "bytes": 36,
+          "sha256": "de66a967aa9fe1f455f8dba69d7d5fe062db9c2434cba5db233594f298bff12d"
+        },
+        "find_mode00_note": {
+          "entry": 41123,
+          "bytes": 30,
+          "sha256": "86add781f2cdc262d3c4c33da4db547067330edacd150d75e18aa8fcd6cc01fa"
+        }
+      }
+    }
+  },
+  "scope": {
+    "hardware_audio": false,
+    "full_boot": false,
+    "chip_phase": false,
+    "key_service_period_seconds": null,
+    "rhythm_or_accompaniment_reconstructed": false,
+    "adapter": "Normal kind0 voices, declared fixed-program serial/scan/key-service sequences, explicit initial snapshots",
+    "rank": "Unsigned8bit event-state rank, floors0 and128; not elapsed age or audible-envelope activity"
+  },
+  "observation": {
+    "cases": 456,
+    "events": 22032,
+    "execution_errors": 0,
+    "panel_programs_literal": [
+      65,
+      93,
+      97,
+      99
+    ],
+    "modes": [
+      0,
+      153
+    ],
+    "protocol_sha256": "a42fd646daeafcd198de3a366bda5f528d1217abb7f76c6df8d5fc0cea7c1840",
+    "two_channel_original_fixture": "Mask1 enables only channel0; channel1 ignored, retained as filter observations",
+    "intended_multichannel_coverage_achieved": false
+  },
+  "primitive_validation": {
+    "passed": true,
+    "assertions": 106496,
+    "per_model": {
+      "PSS780": {
+        "general": 22528,
+        "age": 3072,
+        "set_held": 3072,
+        "set_released": 3072,
+        "find_mode99_off": 8704,
+        "find_mode00_note": 8704,
+        "cached_free": 4096
+      },
+      "PSS680": {
+        "general": 22528,
+        "age": 3072,
+        "set_held": 3072,
+        "set_released": 3072,
+        "find_mode99_off": 8704,
+        "find_mode00_note": 8704,
+        "cached_free": 4096
+      }
+    },
+    "frozen_protocol_sha256": "956168419dc46e4bcb9406a4060305b703e3111d5b60ba2a23182b178ff4c92d"
+  },
+  "adapter_validation": {
+    "passed": true,
+    "cases": 456,
+    "events": 22032,
+    "checks": 154224,
+    "binding_sha256": "b0096bf457646606b4a636b4afbe69460a00e5dc646e1758fdab83ff975c6807",
+    "prototype_sha256": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439",
+    "posthoc_development_data": true
+  },
+  "independent_execution": {
+    "cases": 24,
+    "overlap_cases": 22,
+    "overlap_serial_events": 272,
+    "compared_fields": [
+      "selected sorted unique pitch slots",
+      "serial key-command order",
+      "service key-command order"
+    ],
+    "new_enabled_channel_cases": 2,
+    "scope": "Independent bus implementation imports only py65; Sine99; constructed neutral state",
+    "mask3_result": "In both ROMs ch0/ch1/ch0 note60 allocate0/1/2; ch0/ch1/ch0 noteoffs release2/1/0. With mask1 the ch1 on/off have no writes or allocation.",
+    "service_schedule_per_event": 1
+  },
+  "independent_replay_review": {
+    "receipt": {
+      "path": "build/opu-allocation-review-20261019/result.json",
+      "bytes": 3895,
+      "sha256": "ba2a55c2dd93fa60d12b9b78c40c013dbcb515611eb83042246ca57ffa993f4b"
+    },
+    "reported_scope": "All456cases/22032events/154224fields and199250 sparse RAM prior-value checks",
+    "blocking_findings": false,
+    "caveats": [
+      "Sorted unique pitch slots do not prove pitch command payload/order/multiplicity.",
+      "Rank0 does not prove a release is silent.",
+      "No phase/reset, envelope/tail or elapsed-time inference.",
+      "Frozen comparer records primitive-result hash but does not enforce that one guard at runtime; current bytes independently verified."
+    ],
+    "passed": true,
+    "cases": 456,
+    "events": 22032,
+    "field_checks": 154224,
+    "sparse_RAM_changes_verified_against_prior_image": 199250
+  },
+  "public_prototype": [
+    {
+      "path": "Reference/Prototypes/voice-allocation-20261019/README.md",
+      "bytes": 2286,
+      "sha256": "6b734707072f88dfd295af9783d42d8bc97cedb93a6f7111ee686d1e29848b26"
+    },
+    {
+      "path": "Reference/Prototypes/voice-allocation-20261019/check.py",
+      "bytes": 1632,
+      "sha256": "4765adc4264d0b716a8cc1595f8fa89cbde3a40a506a697e2a4da5626aeaee3c"
+    },
+    {
+      "path": "Reference/Prototypes/voice-allocation-20261019/command_fixture.json",
+      "bytes": 188451,
+      "sha256": "75203f2cc0c4dfc28995cf275ca1ff09781c1bd1fe795d2d5bb0e14192ecde33"
+    },
+    {
+      "path": "Reference/Prototypes/voice-allocation-20261019/firmware_allocator.py",
+      "bytes": 4837,
+      "sha256": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439"
+    }
+  ],
+  "public_fixture_summary": {
+    "cases": 16,
+    "events": 526,
+    "field_assertions": 3682,
+    "passed": true,
+    "requires_firmware": false
+  },
+  "shipping_dsp_files": [
+    {
+      "path": "Source/DSP/AnalogOutput.h",
+      "bytes": 2195,
+      "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+    },
+    {
+      "path": "Source/DSP/CircuitNoise.h",
+      "bytes": 8721,
+      "sha256": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa"
+    },
+    {
+      "path": "Source/DSP/FactoryVoices.h",
+      "bytes": 12725,
+      "sha256": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7"
+    },
+    {
+      "path": "Source/DSP/FirmwarePitch.h",
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    },
+    {
+      "path": "Source/DSP/OutputKernelTable.h",
+      "bytes": 1642464,
+      "sha256": "3ece787106c79f4b535d8c4071007df36bdbb4165be95433e52419cf3c20dea7"
+    },
+    {
+      "path": "Source/DSP/OversampledAnalogOutput.h",
+      "bytes": 6548,
+      "sha256": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1"
+    },
+    {
+      "path": "Source/DSP/Press78Engine.cpp",
+      "bytes": 28519,
+      "sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01"
+    },
+    {
+      "path": "Source/DSP/Press78Engine.h",
+      "bytes": 10040,
+      "sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2"
+    },
+    {
+      "path": "Source/DSP/Press78OutputBus.h",
+      "bytes": 10270,
+      "sha256": "af2cff2f1e4c757415d0b6b7658163cf563a7ab9e30264f79cf91f5c42e73ac9"
+    },
+    {
+      "path": "Source/DSP/RecordedChorus.h",
+      "bytes": 3581,
+      "sha256": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09"
+    },
+    {
+      "path": "Source/DSP/RecordedChorusProfile.h",
+      "bytes": 1073,
+      "sha256": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+    }
+  ],
+  "shipping_tree_no_diff_against": "76b2454deb37bc81258e4942876a46902bd1e954",
+  "production_changes": false,
+  "artificial_noise_added": false,
+  "new_audio_scores": null,
+  "artifacts": [
+    {
+      "path": "build/opu-allocation-command-path-20261019/adapter-comparison-frozen.json",
+      "bytes": 954,
+      "sha256": "b0096bf457646606b4a636b4afbe69460a00e5dc646e1758fdab83ff975c6807",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/adapter-comparison-result.json",
+      "bytes": 626,
+      "sha256": "19eca545ed85db1a47def231339b8fe8bf70af82723f3d0bfca06b8217db7a51",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/compare_adapter.py",
+      "bytes": 3991,
+      "sha256": "9b61af594a0bdbd19b3e1ada148b521befaf4e875d78aa4baed3495a9615f1a3",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/export_fixture.py",
+      "bytes": 4069,
+      "sha256": "f740acb9de39c0b11081e931883336f0928e967d28676d6595e1232a9d86c330",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/freeze_protocol.py",
+      "bytes": 3638,
+      "sha256": "6cef649bf6bbcedb29a17f844476dd0bd2ed1c0103527f235b93004d7f7afbb7",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/independent-comparison-recomputed.json",
+      "bytes": 2933,
+      "sha256": "ce211a3d832b0bdb044e7a2cb41f3cfb4215bab0a8f2965b54e143b74c9cc30c",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/observation-summary.json",
+      "bytes": 37536767,
+      "sha256": "167d7163b5dabd1ebbaa2ae92f999a437b651e3db6dc7628697544ddab87b32f",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/observation.jsonl.gz",
+      "bytes": 1438449,
+      "sha256": "aceae92cdb85a274b02fbe1f8a0ee0be7d6fd7dc5fac06b206aaf9129f5b2869",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/observe.py",
+      "bytes": 5725,
+      "sha256": "126504c838ff869047104b4a2aa0902ae3bcc3964feac7cea5730c2d3f46e4bf",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/primitive-protocol-frozen.json",
+      "bytes": 4547,
+      "sha256": "956168419dc46e4bcb9406a4060305b703e3111d5b60ba2a23182b178ff4c92d",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/primitive-validation.json",
+      "bytes": 3777,
+      "sha256": "0cb6041c6ee14ae46f92d02bd3c1d26394aab92c185b0b3fdf2dc61d0e86f8a2",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/protocol-frozen.json",
+      "bytes": 5298,
+      "sha256": "a42fd646daeafcd198de3a366bda5f528d1217abb7f76c6df8d5fc0cea7c1840",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/verify_independent_comparison.py",
+      "bytes": 2203,
+      "sha256": "62c0ee8bdafd3b32dd43f4bfeb3d6f0a1dcf402ddc1a7d8e47fd5fbbf78d46ae",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-command-path-20261019/verify_primitives.py",
+      "bytes": 7491,
+      "sha256": "ea5e83bc0b35628b8886aba5dca1af3c39fac0eaedb000f9a5b75e20133dc5a8",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-independent-20261019/protocol-frozen.json",
+      "bytes": 978,
+      "sha256": "d2ad83a1a0d746ebfe6fd164e227a59a9bcebc5b861fb2328efc8cd238e2165f",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-independent-20261019/result.json",
+      "bytes": 2615923,
+      "sha256": "dbea8122cf5aa8c6b8dc89b6f20dfe32a2672795077bbf0db8853b3433319ecc",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-independent-20261019/review.json",
+      "bytes": 6842,
+      "sha256": "82af7f740bd99532675f9f3264448d8032c4f02815b12956bd4429e2b6c4d2c2",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-independent-20261019/verify.py",
+      "bytes": 5967,
+      "sha256": "cda8f2fee8092474ca14d06bcc999a20a8e4129fd36b91b2e8c85e086306838c",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-review-20261019/check_saved_trace.py",
+      "bytes": 8174,
+      "sha256": "ff1a5abd254745fa135e245dfb88073c27be68599e2d90bcd460835a843f340e",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-review-20261019/result.json",
+      "bytes": 3895,
+      "sha256": "ba2a55c2dd93fa60d12b9b78c40c013dbcb515611eb83042246ca57ffa993f4b",
+      "ignored": true
+    },
+    {
+      "path": "build/opu-allocation-review-20261019/whole-rom-hash-crosscheck.json",
+      "bytes": 1083,
+      "sha256": "4c1b910b16a73e34bd850f18d468a7e2e024cecd6cedfac0115356500d858362",
+      "ignored": true
+    }
+  ],
+  "report": {
+    "path": "Reference/Research/opu-allocation-command-path-20261019.md",
+    "bytes": 10186,
+    "sha256": "8263114ee3a7c552d582d2d1c4954b62619293acfae04f086716d01d432b11b4"
+  }
+}

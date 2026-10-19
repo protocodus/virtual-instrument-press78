@@ -1,0 +1,43 @@
+{
+  "scope": "native SDK5 typed MOM mock; excludes actual host/target execution",
+  "passed": true,
+  "tests_passed": 34,
+  "tests_failed": 0,
+  "sanitizers": false,
+  "sdk_root": "/Users/vojta/Dev/reason-rack-extension/SDK",
+  "sdk_version": "JukeboxSDK_500_028\nTargetVersion=5.0",
+  "compile_command": [
+    "clang++",
+    "-std=c++17",
+    "-O2",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-pedantic",
+    "-I/Users/vojta/Dev/reason-rack-extension/SDK/API",
+    "-I/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Press78.cpp",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/DSP/Press78Engine.cpp",
+    "/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78/Tests/WrapperHostContract.cpp",
+    "-o",
+    "/var/folders/jl/cjv384t54g3bpst5xzs9zqnc0000gn/T/press78-wrapper-44vfq2uk/wrapper-contract"
+  ],
+  "source_sha256": {
+    "Press78.cpp": "511889664e56f93ab0be74e767f24f6a35cab88237d6b3fb83c9ff6382ed79b0",
+    "DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "Tests/WrapperHostContract.cpp": "d5ec4465798875c12c06ca6fc8089c60380c452b171b4a11cd52454463e375ba",
+    "Press78.h": "73b8357461b9f8267b8716bead30dd1dd502ba12d6f530b772e8a7e07374bd78",
+    "Parameters.h": "48bf14fd1942580ea5cae892642ed9dd78dd24c92c82053968126cc1d7433f75",
+    "ApplyParameters.inc": "77d1a6707f03160c2bc538f7264a25bb1eee9302a2435b00eff5a1fd42456020",
+    "DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+    "DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+    "DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+    "Tests/run_wrapper.py": "de8cf9e30686404f66bb990b4b9514139a2c9cea63ce805dd5082f2021d6d69e"
+  }
+}

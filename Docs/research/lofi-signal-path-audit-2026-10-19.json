@@ -1,0 +1,864 @@
+{
+  "schema": "press78.lofi-signal-path-audit.v1",
+  "audit_date": "2026-10-19",
+  "scope": "Source/circuit audit only; no new numeric audiofixture, simulation, hardwaremeasurement, runtime/control/preset/package/git change.",
+  "noise_policy": "No additive noise, random faults or default random supply excitation.",
+  "primary_conclusions": [
+    "Exactmanual warns of highlevel/chord distortion; physical stage remainsunidentified.",
+    "Readable sibling separates regulatedFM/preamp from upstream poweramp supply and hasdistinct localfilters.",
+    "NJM4558 standard30V data doesnot validate siblingnominal5V nonlinearity.",
+    "AN7148 condition-dependent THD is relevantto a futurepoweramp model, not identifiedtargetAUX distortion.",
+    "YM3420 bitdepth/cadence/companding/glitch law remainunknown.",
+    "No measured componenttolerance/aging/supply variation bounds recovered."
+  ],
+  "sources": [
+    {
+      "id": "pss480-foldout",
+      "url": "https://forum.mamedev.org/download/file.php?id=323",
+      "context_url": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017",
+      "kind": "manufacturer drawing posted by original scanner",
+      "drawing": "KEC-11861",
+      "local": "build/opu-sibling-clock-circuit-20261019/pss480-full-schematic.png",
+      "new_observations": [
+        "AM regulator network",
+        "distinct OPU/buffer/mixer supply decoupling",
+        "upstream AN7148 supply",
+        "speaker/headphone output placement"
+      ],
+      "target_limit": "PSS480 sibling only; no PSS780 AUX/chorus board equivalence",
+      "binding": {
+        "path": "build/opu-sibling-clock-circuit-20261019/pss480-full-schematic.png",
+        "bytes": 2112423,
+        "sha256": "3f92f921e12e75aad9ea5d31e28d026a42ad690473d05a6e61406c16c76226b2",
+        "dimensions_px": [
+          8864,
+          6512
+        ]
+      }
+    },
+    {
+      "id": "pss780-service",
+      "url": "https://static.wikitide.net/circuitbendingwiki/6/6b/Yamaha_PSS-780_Service_Manual.pdf",
+      "kind": "manufacturer service supplement mirror",
+      "local": "build/exact-circuit-source-search-20261019/wiki-PSS-780-Service-Manual.pdf",
+      "pdf_pages_inspected": "all12 in coverage contact; exact electrical parts page12 inspected using existing high-resolution raster",
+      "supports": [
+        "named target board/components"
+      ],
+      "does_not_support": [
+        "target supply wiring",
+        "target AUX tap",
+        "full foldout"
+      ],
+      "binding": {
+        "path": "build/exact-circuit-source-search-20261019/wiki-PSS-780-Service-Manual.pdf",
+        "bytes": 808983,
+        "sha256": "0c826d1a0cdb98103bb9632ca1cafba786e4d88ad4e294d2b279eb3d1ad331b1"
+      }
+    },
+    {
+      "id": "pss780-owner",
+      "url": "https://www.nurykabe.com/dump/docs/PSS/manuals/PSS-780_00.pdf",
+      "kind": "manufacturer manual mirror",
+      "local": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/owner-manual.pdf",
+      "printed_pages": [
+        4,
+        8,
+        11,
+        29
+      ],
+      "pdf_pages": [
+        7,
+        11,
+        14,
+        32
+      ],
+      "observations": [
+        "6Ccell/battery-adaptor input and lowbattery indication",
+        "AUX/headphone distinction and keyboardvolume advice",
+        "high front-panel TotalLevel/maxMelodyVolume/chord distortion warning"
+      ],
+      "limits": [
+        "No calibrated input/output voltage curve",
+        "No distortion-stage identification",
+        "No supply modulation law"
+      ],
+      "binding": {
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/owner-manual.pdf",
+        "bytes": 3911928,
+        "sha256": "e1382c76aa9f6351fb3de191228b3209def0cf4ceba54ca6a20406c1e2db0adb"
+      }
+    },
+    {
+      "id": "AN7148",
+      "url": "https://datasheet.octopart.com/AN7148-Panasonic-datasheet-180974205.pdf",
+      "kind": "Panasonic manufacturer datasheet hosted by distributor mirror",
+      "local": "build/lofi-signal-path-audit-20261019/AN7148-Panasonic.pdf",
+      "pages_visually_inspected_pdf": [
+        2,
+        3
+      ],
+      "facts": {
+        "operating_supply_v": [
+          6,
+          18
+        ],
+        "thd_condition": {
+          "vcc_v": 9,
+          "load_ohm": 4,
+          "input_mvrms": 3,
+          "frequency_hz": 1000,
+          "typical_percent": 0.2,
+          "maximum_percent": 0.75
+        },
+        "power_condition": {
+          "vcc_v": 9,
+          "load_ohm": 4,
+          "frequency_hz": 1000,
+          "thd_percent": 10,
+          "typical_w": 2.1
+        }
+      },
+      "limits": [
+        "Datasheetcondition is not targetAUX operatingpoint",
+        "Headphone load is not4ohm speaker test",
+        "Graphs not digitized/fitted"
+      ],
+      "binding": {
+        "path": "build/lofi-signal-path-audit-20261019/AN7148-Panasonic.pdf",
+        "bytes": 252917,
+        "sha256": "765c58dd250dde5cb200010e5a3fc41b0517e1e80027e3b634667fe849058034"
+      }
+    },
+    {
+      "id": "NJM4558",
+      "url": "https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4558_E.pdf",
+      "product_url": "https://www.nisshinbo-microdevices.co.jp/en/products/operational-amplifier/spec/?product=njm4558",
+      "kind": "public official manufacturer datasheet",
+      "version": "20260723",
+      "local": "build/lofi-signal-path-audit-20261019/NJM4558-manufacturer.pdf",
+      "pages_visually_inspected_pdf": [
+        1,
+        2,
+        3
+      ],
+      "facts": {
+        "operating_total_supply_v": [
+          8,
+          36
+        ],
+        "electrical_table_rails_v": [
+          -15,
+          15
+        ],
+        "typ_slew_v_us": 1,
+        "typ_gbw_mhz": 3
+      },
+      "limits": [
+        "Historical DV/NK variants not separately characterized",
+        "Nominal sibling+5A operation cannot be validated by standard30V characterization",
+        "SPICE model requireslogin; noaccess attempted"
+      ],
+      "binding": {
+        "path": "build/lofi-signal-path-audit-20261019/NJM4558-manufacturer.pdf",
+        "bytes": 212409,
+        "sha256": "9d73cf4cc7b5fa8c9fac83c0f5bd58e8571e7076fca57456a2b689cb5c39acbe"
+      }
+    },
+    {
+      "id": "MN3206",
+      "url": "https://github.com/fmillion/yamaha-pss270/blob/8943bf963f196f20b4e2fc714f15400db578891b/datasheets/MN3206.pdf",
+      "kind": "manufacturer datasheet mirror already inspected in prior audit",
+      "local": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206.pdf",
+      "reused_report": "Reference/Research/hardware-pass-20261018.md",
+      "new_measurement": false,
+      "facts": {
+        "thd_vdd_v": 5,
+        "thd_clock_hz": 40000,
+        "thd_frequency_hz": 1000,
+        "thd_input_vrms": 0.25,
+        "thd_typ_percent": 0.3,
+        "thd_max_percent": 2.5
+      },
+      "limits": [
+        "Actual keyboard input/bias/CP/filtering unknown",
+        "No noise excitation authorized"
+      ],
+      "binding": {
+        "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/v3-MN3206.pdf",
+        "bytes": 188245,
+        "sha256": "045fb6a1c7f5bc1e5cb0cf51497bf64b4bf29bfe7be1b193a16a62e93c795fe2"
+      }
+    },
+    {
+      "id": "stereo-ninja-owner",
+      "url": "https://stereoninjamusic.weebly.com/yamaha-pss-580-review.html",
+      "kind": "original PSS580 owner review",
+      "local": "build/lofi-signal-path-audit-20261019/stereo-ninja-review.html",
+      "published": "2016-11-14",
+      "updated": "2023-07-21",
+      "observation": "Author describes Reverb as carrier sustain",
+      "calibration_qualified": false,
+      "reason": "Qualitative firsthand description, no numeric gates/patch or measured mechanism",
+      "binding": {
+        "path": "build/lofi-signal-path-audit-20261019/stereo-ninja-review.html",
+        "bytes": 52364,
+        "sha256": "cf87ab66d7b8cbefc6836c851cce8b4d8505f9e987e084906397e4cfd73084c1"
+      }
+    },
+    {
+      "id": "alfonse-owner",
+      "url": "https://www.alfonsemusic.com/yamaha-pss-680-780/",
+      "kind": "original musician recordings/procedure",
+      "local": "build/lofi-signal-path-audit-20261019/alfonse-owner.html",
+      "observation": "Honestmix still explicitly includes externalReverb",
+      "calibration_qualified": false,
+      "reason": "Composed processed mix, not dry isolatedrelease/DAC fixture",
+      "binding": {
+        "path": "build/lofi-signal-path-audit-20261019/alfonse-owner.html",
+        "bytes": 104435,
+        "sha256": "d63c8fcfa3cc1d049b6819e86f82b15e806846c22843b587bc2f85e58258a29a"
+      }
+    },
+    {
+      "id": "soden-reused",
+      "url": "https://www.youtube.com/watch?v=eiIw-ffhzXM",
+      "kind": "originalowner tutorial alreadyacquired",
+      "local": "build/soden-pss680-20261019/physical-effects-contact.jpg",
+      "settings_only_interval_s": [
+        836,
+        845
+      ],
+      "earlier_audit": "Reference/Research/soden-pss680-source-audit-20261019.md",
+      "calibration_qualified": false,
+      "new_audio_acquired_or_measured": false,
+      "reason": "Edited bankb1; raw patch/gates/fixedcapture not established",
+      "binding": {
+        "path": "build/soden-pss680-20261019/physical-effects-contact.jpg",
+        "bytes": 405418,
+        "sha256": "c78d846affcfa9e3254cee9adce05dfd74181f62a99bc180cd08402ec4e060a5",
+        "dimensions_px": [
+          1280,
+          1950
+        ]
+      }
+    }
+  ],
+  "sibling_networks": [
+    {
+      "id": "regulated-main",
+      "scope": "PSS480",
+      "evidence": "AM G6/H6 circuit",
+      "component_facts": {
+        "Tr1": "2SC3419",
+        "ZD1_v": 6.2,
+        "series_reference_resistors_ohm": [
+          150,
+          150
+        ],
+        "reference_cap_uF": 100,
+        "raw_rail_cap_uF": 470,
+        "regulated_rail_cap_uF": 470
+      },
+      "output_labels": [
+        "+5A",
+        "+5D"
+      ],
+      "same_drawn_output": true,
+      "absolute_real_output_voltage_v": null,
+      "dropout_v": null,
+      "input_source_impedance_ohm": null,
+      "load_current_a": null
+    },
+    {
+      "id": "OPU-AVDD",
+      "scope": "PSS480",
+      "pin": 41,
+      "return_pin": 43,
+      "source_rail": "+5A",
+      "series_resistance_ohm": 47,
+      "shunt_capacitance_uF": 470,
+      "tau_ideal_s": 0.02209,
+      "corner_ideal_hz": 7.2048412445403045,
+      "derivation": "Ideal unloaded RClowpass only, not regulator+load transfer and not audiofrequency response",
+      "capacitor_esr_ohm": null
+    },
+    {
+      "id": "buffer",
+      "scope": "PSS480",
+      "ic": "IC13",
+      "part": "NJM4558DV",
+      "vplus_pin": 8,
+      "vminus_pin": 4,
+      "source_rail": "+5A",
+      "return": "ground",
+      "local_cap_uF": 470
+    },
+    {
+      "id": "mixer",
+      "scope": "PSS480",
+      "ic": "IC12",
+      "part": "NJM4558DV",
+      "vplus_pin": 8,
+      "vminus_pin": 4,
+      "source_rail": "+5A",
+      "series_inductance_uH": 3.3,
+      "local_cap_uF": 470,
+      "return": "ground",
+      "bias_divider_ohm": [
+        2200,
+        2200
+      ],
+      "bias_cap_uF": 100,
+      "bias_label_v": 2.5
+    },
+    {
+      "id": "poweramp",
+      "scope": "PSS480",
+      "ic": "IC15",
+      "part": "AN7148",
+      "supply_pin": 10,
+      "source_rail": "+9",
+      "master_volume_pots_ohm": [
+        10000,
+        10000
+      ],
+      "speaker_load_ohm": 4,
+      "headphone_endpoint_after_amp": true,
+      "target_AUX_tap_identified": false
+    }
+  ],
+  "target_parts_only": {
+    "board": "VF108000 AM",
+    "components": [
+      "AN7148",
+      "MN3102",
+      "MN3206",
+      "NJM4558DV/NK",
+      "2SC3419",
+      "2SC2603",
+      "5.6Vzener",
+      "6.2Vzener",
+      "1000uF16Vcapacitor"
+    ],
+    "connections_recovered": false
+  },
+  "derived_only": [
+    {
+      "expression": "tau=47*470e-6;fc=1/(2*pi*tau)",
+      "tau_s": 0.02209,
+      "corner_hz": 7.2048412445403045,
+      "physical_scope": "Ideal unloaded AVDD filter, componentnominals only",
+      "does_not_establish": [
+        "actualripple",
+        "regulatorrejection",
+        "dropout",
+        "audioTHD",
+        "pitchsupplycoefficient"
+      ]
+    }
+  ],
+  "simulation_or_measurement": {
+    "new_audio_windows_selected": 0,
+    "qualified_new_numeric_audio_fixtures": 0,
+    "new_audio_downloads": 0,
+    "new_full_video_downloads": 0,
+    "new_simulated_transferfits": 0,
+    "new_hardware_measurements": 0
+  },
+  "production_path_observations": {
+    "AnalogOutput": "Linear smallsignal siblingnetwork",
+    "Drive": "Creative tanh crossfade, not recoveredcomponent transfer",
+    "OutputLimit": "Separate bounded safetytransfer",
+    "OriginalPitch": "Softwarecommand evidence plus explicitdownstreamgridhypothesis, not DACbitdepth",
+    "deprecated_noise_fields": "Forcedzero; no restorednoise path"
+  },
+  "unknowns": [
+    "ExactPSS780 fullfoldout and AUXtap",
+    "physicalvolts perengineunit",
+    "actualOPU converterlaw",
+    "historicalopamp lowvoltage transfer",
+    "BBD bias/input/clock in target",
+    "power-source impedance/current/load and dropout",
+    "component tolerances/temperature/aging distributions",
+    "healthyunit supply-dependent audio capture"
+  ],
+  "search_log": {
+    "query_groups": [
+      [
+        "Yamaha PSS reverb sustain demo release",
+        "PSS780 HumanVoice reverb",
+        "PSS680 sustain reverb youtube",
+        "PSS480 release envelope reverb demonstration"
+      ],
+      [
+        "PSS780 reverb demo youtube",
+        "PSS680 reverb demo",
+        "PSS480 Part1 Sustain",
+        "PSS580 HumanVoice"
+      ],
+      [
+        "Yamaha PSS780 all effects off",
+        "Yamaha PSS680 effects comparison",
+        "PSS480 reverb off comparison",
+        "PSS780 release synthesizer"
+      ],
+      [
+        "PSS780 voltage distortion",
+        "PSS680 power supply5",
+        "PSS480 schematic regulator",
+        "YM3420 distortion DAC supply"
+      ],
+      [
+        "2SC3419 transistor regulator datasheet",
+        "AN7148 outputpower THD voltage",
+        "NJM4558 lowvoltage5V distortion",
+        "PSS780 distortion volume"
+      ],
+      [
+        "PSS780 voltage bend",
+        "PSS680 voltage bend",
+        "PSS480 voltage starve",
+        "PSS680 power distorted"
+      ]
+    ],
+    "public_only": true,
+    "access_failures": [
+      {
+        "url": "https://katzelectronics.blogspot.com/2015/08/yamaha-pss-680-keyboard-teardown.html",
+        "web_result": "Redirect to Google anti-abuse page; no workaround"
+      },
+      {
+        "url": "https://circuitbending.miraheze.org/wiki/Yamaha_PSS-680",
+        "web_result": "Internal error; no readable new circuit"
+      }
+    ],
+    "spice_login": "Didnot access account-required manufacturer model",
+    "scope_limit": "Bounded search, not global absence proof"
+  },
+  "rights": "Research-only retained documents/images; no thirdparty audio or manufacturer documents added to productresources. No redistribution clearance asserted.",
+  "crop_definitions": [
+    {
+      "source": "build/opu-sibling-clock-circuit-20261019/pss480-full-schematic.png",
+      "source_dimensions_px": [
+        8864,
+        6512
+      ],
+      "box_px": [
+        5850,
+        3540,
+        8210,
+        4540
+      ],
+      "result": "build/lofi-signal-path-audit-20261019/pss480-power.png"
+    },
+    {
+      "source": "build/opu-sibling-clock-circuit-20261019/pss480-full-schematic.png",
+      "source_dimensions_px": [
+        8864,
+        6512
+      ],
+      "box_px": [
+        5550,
+        2180,
+        8410,
+        4580
+      ],
+      "result": "build/lofi-signal-path-audit-20261019/pss480-am-supply.png"
+    },
+    {
+      "source": "build/opu-sibling-clock-circuit-20261019/pss480-full-schematic.png",
+      "source_dimensions_px": [
+        8864,
+        6512
+      ],
+      "box_px": [
+        6170,
+        4630,
+        7970,
+        5600
+      ],
+      "result": "build/lofi-signal-path-audit-20261019/pss480-parts.png"
+    }
+  ],
+  "previous_report_bindings": [
+    {
+      "path": "Reference/Research/output-schematic-audit-20261018.md",
+      "bytes": 9170,
+      "sha256": "5feed0063269d4ad4901d86b055847163196a5f7292feebfbb831ded8b99353e"
+    },
+    {
+      "path": "Reference/Research/exact-circuit-source-search-20261019.md",
+      "bytes": 4290,
+      "sha256": "03bce1b9ac563d17bb89e3b6b4447b943cf218e2da14451c52a9c93785145830"
+    },
+    {
+      "path": "Reference/Research/dac-endpoint-evidence-20261019.md",
+      "bytes": 8843,
+      "sha256": "0dc824b9ada79886d6b201e045188ecd781cea8b628b2b797efa529f86690b7f"
+    },
+    {
+      "path": "Reference/Research/opu-sibling-clock-circuit-20261019.md",
+      "bytes": 6474,
+      "sha256": "9f8d46dc7a0387fcb6807e9ce0e19b5c0f62fb57276bf9e246ae7d7767035ab4"
+    },
+    {
+      "path": "Reference/Research/reverb-release-evidence.md",
+      "bytes": 4809,
+      "sha256": "7c47d6131accecc780ee7f587ea1a17ca8493a24190a012bd62fd54bb7d133fd"
+    },
+    {
+      "path": "Reference/Research/opu-envelope-independent-20261019.md",
+      "bytes": 10329,
+      "sha256": "363ee7a0ff8c7e08332bf8c7c1dcefca07b088e88ad355cf64e9cc6f0fbafa41"
+    },
+    {
+      "path": "Reference/Research/recording-holdout-audit-20261018.md",
+      "bytes": 12675,
+      "sha256": "b6c8beb867df78e9ed4584356021298c50357b18b7f5e1b5d86705cb4a6aa159"
+    },
+    {
+      "path": "Reference/Research/soden-pss680-source-audit-20261019.md",
+      "bytes": 9407,
+      "sha256": "0b28a7dbe86c7ee77c7f7c8580058a0c84458a168186770f69edbeecadb5d3b5"
+    }
+  ],
+  "production_source_bindings": [
+    {
+      "path": "Source/DSP/AnalogOutput.h",
+      "bytes": 2195,
+      "sha256": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb"
+    },
+    {
+      "path": "Source/DSP/Press78Engine.cpp",
+      "bytes": 26257,
+      "sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f"
+    },
+    {
+      "path": "Source/DSP/Press78Engine.h",
+      "bytes": 9170,
+      "sha256": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0"
+    },
+    {
+      "path": "Source/DSP/FirmwarePitch.h",
+      "bytes": 5430,
+      "sha256": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "build/lofi-signal-path-audit-20261019/AN7148-Panasonic.pdf",
+      "bytes": 252917,
+      "sha256": "765c58dd250dde5cb200010e5a3fc41b0517e1e80027e3b634667fe849058034"
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/AN7148-Panasonic.txt",
+      "bytes": 50675,
+      "sha256": "17c051d8951ccf558b7227028a04c9504e0bbfd8ec3da5cad904a53d00ee5d2c"
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/AN7148-p2.png",
+      "bytes": 285188,
+      "sha256": "77953e5340a835fe50d890b5084c6bdf5e8cf55fe2ad6022be492392d2d928ca",
+      "dimensions_px": [
+        1323,
+        1872
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/AN7148-p3.png",
+      "bytes": 246638,
+      "sha256": "aa79862826cec4a166391d5897bda60fadd2f8495bc9089d7e9d8ce99a0404b6",
+      "dimensions_px": [
+        1323,
+        1872
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/NJM4558-manufacturer.pdf",
+      "bytes": 212409,
+      "sha256": "9d73cf4cc7b5fa8c9fac83c0f5bd58e8571e7076fca57456a2b689cb5c39acbe"
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/NJM4558-manufacturer.txt",
+      "bytes": 25220,
+      "sha256": "6002333f346ebd7150bb46299d85e85e88881d9daa5024293c823fe4510bffef"
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/NJM4558-p1.png",
+      "bytes": 287185,
+      "sha256": "ac3afd7acf5caac6865afc2eae186d9b7c489795d524af27332737dc7db5ccb2",
+      "dimensions_px": [
+        1323,
+        1871
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/NJM4558-p2.png",
+      "bytes": 242609,
+      "sha256": "57912b8a8d73246b6674958a276c6319121b5adaf40bdd5fb622f4c3ba3e4aec",
+      "dimensions_px": [
+        1323,
+        1871
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/NJM4558-p3.png",
+      "bytes": 201664,
+      "sha256": "e83cfcc2e849d61394f6b03c0cee51ec2cd6e634a7664246558ad6e246d3c7d4",
+      "dimensions_px": [
+        1323,
+        1871
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/acquisitions.json",
+      "bytes": 850,
+      "sha256": "178c93496e881de16db79b5c2bcf4e9c84f4b020df06c68ba680e0d7d443351d"
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/alfonse-owner.html",
+      "bytes": 104435,
+      "sha256": "d63c8fcfa3cc1d049b6819e86f82b15e806846c22843b587bc2f85e58258a29a"
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/njm4558-product.html",
+      "bytes": 166430,
+      "sha256": "7438ee9b7521f3e730f4fc4c60778bf7428667be7f508f25d7206b35bca22c5d"
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/pss480-am-supply.png",
+      "bytes": 273387,
+      "sha256": "d28cab7805ae0711032cf8926afdfced240e32ce197471bfc35353272f981225",
+      "dimensions_px": [
+        2860,
+        2400
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/pss480-parts.png",
+      "bytes": 114498,
+      "sha256": "416b2de9bcc389816e74b68571e7e535b4e0b9ad7a8c63cd9f041c0678fd5f6a",
+      "dimensions_px": [
+        1800,
+        970
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/pss480-power.png",
+      "bytes": 94919,
+      "sha256": "91ed4bcb1370124591d797e32b1abb3d51591c62e5162e9f810727f1f81d0bd5",
+      "dimensions_px": [
+        2360,
+        1000
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/pss780-owner-p10.png",
+      "bytes": 162486,
+      "sha256": "3066b4a7c7618643663c2b56dc8bf53902123974405749268b69fe70a32545f2",
+      "dimensions_px": [
+        1338,
+        1776
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/pss780-owner-p11.png",
+      "bytes": 143173,
+      "sha256": "a204c4aa2469b3a1c9f430e424426c8d305172423b4ebc66a9f3ddbdf74778c1",
+      "dimensions_px": [
+        1212,
+        1609
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/pss780-owner-p14.png",
+      "bytes": 165972,
+      "sha256": "4e121ef07686eb5a4a2127fd68f5a0f28981e9e72339647803fc7218a36043b4",
+      "dimensions_px": [
+        1338,
+        1776
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/pss780-owner-p32.png",
+      "bytes": 161959,
+      "sha256": "025d91757408e86b528deaaf120e72387a89f6770fde3725195ca488e51c3913",
+      "dimensions_px": [
+        1338,
+        1776
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/pss780-owner-p6.png",
+      "bytes": 94645,
+      "sha256": "6f2c1f7f2e78cdaf5b942d1a21c6def5874109ad4b987dd279dccdb1f9d102cf",
+      "dimensions_px": [
+        1212,
+        1609
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/pss780-owner-p7.png",
+      "bytes": 131855,
+      "sha256": "f0c5f3b75e13f062723661c904d6c5b842fb53fb7c6f776f3013b26295acd567",
+      "dimensions_px": [
+        1212,
+        1609
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/stereo-ninja-review.html",
+      "bytes": 52364,
+      "sha256": "cf87ab66d7b8cbefc6836c851cce8b4d8505f9e987e084906397e4cfd73084c1"
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-01.png",
+      "bytes": 45631,
+      "sha256": "d5e81e1318b6132f96de6f6115356025c6ecaf123a95cafedd44047c42a20541",
+      "dimensions_px": [
+        424,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-02.png",
+      "bytes": 45604,
+      "sha256": "9ffa45df44012385f76b23fcddc86daab3684f18a9482ccb76305c2e685ab9f8",
+      "dimensions_px": [
+        423,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-03.png",
+      "bytes": 159029,
+      "sha256": "db17947db2dca904970d6afb3a203517fb5981613cdcfe632d628a55445f3fbb",
+      "dimensions_px": [
+        846,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-04.png",
+      "bytes": 119132,
+      "sha256": "368b4dfe468578abe055c456f67de4574f17e025e6d2c0f0396c582bd28454e9",
+      "dimensions_px": [
+        846,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-05.png",
+      "bytes": 55785,
+      "sha256": "118fa6ed56e6eaccc8b994d6abf6d6ec6c5a890ed9622e1d5878ac9dd884ddd2",
+      "dimensions_px": [
+        423,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-06.png",
+      "bytes": 58800,
+      "sha256": "19f252c5dac5600e8c8205285df7aad0ec1726c7f0fa7119c9364b2551e69ccc",
+      "dimensions_px": [
+        423,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-07.png",
+      "bytes": 55402,
+      "sha256": "b6863c9928321223bdb2cde78e8af193d83f99508b4434865b7672609fc2bae9",
+      "dimensions_px": [
+        422,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-08.png",
+      "bytes": 54009,
+      "sha256": "9b1f35fbe518bf863c519b408ac3d4603eaf0f1fd68554c0cd3bde7f79fdaee1",
+      "dimensions_px": [
+        422,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-09.png",
+      "bytes": 19542,
+      "sha256": "d1afc426063409a070c67016c6a2dc454b0d11f2cbbbaa61ee521a5efeaf3cde",
+      "dimensions_px": [
+        423,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-10.png",
+      "bytes": 93173,
+      "sha256": "3fcfa71342cf9901af1809ea6974b6d3a813aca833e9855a1363b76e6f1b4a4b",
+      "dimensions_px": [
+        423,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-11.png",
+      "bytes": 64165,
+      "sha256": "277987ebfc2ce57c509e49f251f9851b9d72243fe05ea54beeecc1d200ec8ede",
+      "dimensions_px": [
+        422,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-12.png",
+      "bytes": 78353,
+      "sha256": "4173ddb1a1d164ed8ff8ad8c2f55ddeb6266d37b13920f0b61a8a08e77feeca0",
+      "dimensions_px": [
+        422,
+        550
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-contact.jpg",
+      "bytes": 247467,
+      "sha256": "4245ca176e2a79a754df6f37e9cebab97c78fdf44278b1f44b2a8a2839e5334b",
+      "dimensions_px": [
+        1000,
+        1760
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/target-service-p3.png",
+      "bytes": 301496,
+      "sha256": "14287afc22a316acf6f3e81492120c0144e99d155fe182731b95ded7e71be63b",
+      "dimensions_px": [
+        2707,
+        1758
+      ]
+    },
+    {
+      "path": "build/lofi-signal-path-audit-20261019/validate_receipt.py",
+      "bytes": 1166,
+      "sha256": "e29afad737429bafa163cb75b7a4a00b1599b4a1159a5c6321dc67dd0970e6c9"
+    }
+  ],
+  "source_raster_bindings": [
+    {
+      "path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/hardware-pss480-preamp.png",
+      "bytes": 52637,
+      "sha256": "39c9e70577029263f9a4485c6bdc4b60cba4642039f794a80a74b1ed87ec9c53"
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-opu-output.png",
+      "bytes": 70141,
+      "sha256": "2838c85d9e06218b5046e4d09a5ceb5b63ca836883946cffb4bb34c701bf7cc9"
+    },
+    {
+      "path": "build/exact-circuit-source-search-20261019/780-p12-large.png",
+      "bytes": 217242,
+      "sha256": "32ac78a23226ffc3a7a10b1a0dfc64e49e37486b23606e695c3478f3493661fd"
+    }
+  ]
+}

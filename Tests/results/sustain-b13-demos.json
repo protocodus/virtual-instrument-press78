@@ -1,0 +1,228 @@
+{
+  "schema": "press78.sustain-model-demos-receipt.v1",
+  "passed": true,
+  "scope": "Software comparison only; NOT hardwareA/B or measuredtailfidelity validation",
+  "design_sha256": "5af017c7482da61eed665d69acecc3853f09d7fa5f3ed282a0352f83c11b8ba4",
+  "source_CPP_sha256": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+  "source_header_sha256": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+  "packaging_correction": "Initialfirst52832hostsampleequality assertion was incorrect for nonintegerclock sinc support. Failed script/note preserved; correctcausal equality before APIkeyoff52800 passes. No audio/source/events/gain/timing changed, existingpartial65combinedWAVexactlyreused.",
+  "independent_review_sha256": "deb5f4587cafac7378780144daeb362ec31866325f0e504b5e96ea5f52bdc5e2",
+  "rows": [
+    {
+      "preset": 65,
+      "name": "PSS 65 Bowed Bass",
+      "raw_modes": [
+        {
+          "mode": "legacy",
+          "path": "build/sustain-model-demos-20261019/65-legacy.wav",
+          "bytes": 1536044,
+          "sha256": "9bfe8778c6f4281aa4259c2b74fb4e36631a196bbf2291edf198ca46a8d88268",
+          "frames": 192000,
+          "channels": 2,
+          "peak": 0.051538702100515366,
+          "rms": 0.012912997981890698
+        },
+        {
+          "mode": "original",
+          "path": "build/sustain-model-demos-20261019/65-original.wav",
+          "bytes": 1536044,
+          "sha256": "34f3f61c22a3a53ac0a383cc6c2952c3ac9dedea83b1b6fdcd5762f9019f3499",
+          "frames": 192000,
+          "channels": 2,
+          "peak": 0.051538702100515366,
+          "rms": 0.008552256459032063
+        }
+      ],
+      "pair_common_safety": 1.0,
+      "no_RMS_normalization": true,
+      "held_prefix_equal_frames": 52800,
+      "first_mode_difference_frame": 52807,
+      "first_mode_difference_seconds": 1.1001458333333334,
+      "combined": {
+        "path": "build/sustain-model-demos-20261019/65-legacy-then-original.wav",
+        "bytes": 3168058,
+        "sha256": "c855430b6f22c71eaec30de448771663eb79c91b4e295d7e436f11e691382c63",
+        "frames": 396000,
+        "seconds": 8.25,
+        "peak": 0.051538702100515366
+      },
+      "fixed_window_RMS": {
+        "held_0p8_to_1p0": {
+          "legacy": 0.017129525856391,
+          "original": 0.017129525856391
+        },
+        "released_under_pedal_1p2_to_1p4": {
+          "legacy": 0.016996467824676627,
+          "original": 0.0030116183729265006
+        },
+        "after_pedal_up_2p5_to_2p7": {
+          "legacy": 0.0008171879800616002,
+          "original": 3.6099907444369466e-15
+        }
+      }
+    },
+    {
+      "preset": 93,
+      "name": "PSS 93 Human Voice 1",
+      "raw_modes": [
+        {
+          "mode": "legacy",
+          "path": "build/sustain-model-demos-20261019/93-legacy.wav",
+          "bytes": 1536044,
+          "sha256": "682008aaf2c0e505d04f8f2c637c23a963477043d871e02280657f6f76135f2e",
+          "frames": 192000,
+          "channels": 2,
+          "peak": 0.0551578514277935,
+          "rms": 0.01806785069298193
+        },
+        {
+          "mode": "original",
+          "path": "build/sustain-model-demos-20261019/93-original.wav",
+          "bytes": 1536044,
+          "sha256": "d7ae9b02b951072d3df46785a1722a2c7c8d1f940e84fb9aa757cc0b020c6a47",
+          "frames": 192000,
+          "channels": 2,
+          "peak": 0.0551578514277935,
+          "rms": 0.012135662998097294
+        }
+      ],
+      "pair_common_safety": 1.0,
+      "no_RMS_normalization": true,
+      "held_prefix_equal_frames": 52800,
+      "first_mode_difference_frame": 52826,
+      "first_mode_difference_seconds": 1.1005416666666668,
+      "combined": {
+        "path": "build/sustain-model-demos-20261019/93-legacy-then-original.wav",
+        "bytes": 3168058,
+        "sha256": "f4a3a7f56c80e9b6a64f49bef71bc1cf638663cbd0ab91009481fd45c512d4fb",
+        "frames": 396000,
+        "seconds": 8.25,
+        "peak": 0.0551578514277935
+      },
+      "fixed_window_RMS": {
+        "held_0p8_to_1p0": {
+          "legacy": 0.02398459765331739,
+          "original": 0.02398459765331739
+        },
+        "released_under_pedal_1p2_to_1p4": {
+          "legacy": 0.023375382206506222,
+          "original": 0.004086049427730724
+        },
+        "after_pedal_up_2p5_to_2p7": {
+          "legacy": 9.379313145179055e-05,
+          "original": 4.752446668480003e-15
+        }
+      }
+    },
+    {
+      "preset": 97,
+      "name": "PSS 97 Musical Saw",
+      "raw_modes": [
+        {
+          "mode": "legacy",
+          "path": "build/sustain-model-demos-20261019/97-legacy.wav",
+          "bytes": 1536044,
+          "sha256": "c511cbcb6e3475de4fb94c43c864e936af218107a0568ed789c0e0ac65e277f2",
+          "frames": 192000,
+          "channels": 2,
+          "peak": 0.05749238282442093,
+          "rms": 0.021108576801369214
+        },
+        {
+          "mode": "original",
+          "path": "build/sustain-model-demos-20261019/97-original.wav",
+          "bytes": 1536044,
+          "sha256": "d8cf5672ea7a7bf54b2d3bb89e6d722e86782b1e846541ad2bdb304d7516c4de",
+          "frames": 192000,
+          "channels": 2,
+          "peak": 0.05749238282442093,
+          "rms": 0.014244622470425931
+        }
+      ],
+      "pair_common_safety": 1.0,
+      "no_RMS_normalization": true,
+      "held_prefix_equal_frames": 52800,
+      "first_mode_difference_frame": 52824,
+      "first_mode_difference_seconds": 1.1005,
+      "combined": {
+        "path": "build/sustain-model-demos-20261019/97-legacy-then-original.wav",
+        "bytes": 3168058,
+        "sha256": "ed1f996b34d00a50c72360707f3e0198005bb4478ec5b52c107b6ca5040a9e4d",
+        "frames": 396000,
+        "seconds": 8.25,
+        "peak": 0.05749238282442093
+      },
+      "fixed_window_RMS": {
+        "held_0p8_to_1p0": {
+          "legacy": 0.027000198122340748,
+          "original": 0.027000198122340748
+        },
+        "released_under_pedal_1p2_to_1p4": {
+          "legacy": 0.027200789777766,
+          "original": 0.010471983117598956
+        },
+        "after_pedal_up_2p5_to_2p7": {
+          "legacy": 0.010823354437534176,
+          "original": 1.3892361332479332e-06
+        }
+      }
+    }
+  ],
+  "retained_WAV_bytes": 18720438,
+  "maximum_WAV_bytes": 25000000,
+  "checks": [
+    "all6rawfiles finitefloat32stereo48kHz192000frames",
+    "all3combined396000frames exactreconstruction4s+.25s+4s",
+    "commonshrinkonlysafetyscalar allchannels/modes; peak<=.9",
+    "all6pre-note silence exactzero; noartificialnoise",
+    "all3pairs first52800frames exactlyequal; causaldivergenceonlyafterAPIkeyoff; nominal32tickdelaycenterretained",
+    "noRMSnormalization, tuningfit,retiming,EQ,permodelevelchange",
+    "exactcopiedreviewedcore source; allinputhashes checkedbeforepackaging"
+  ],
+  "artifacts": {
+    "build/sustain-model-demos-20261019/design-frozen.json": {
+      "bytes": 7090,
+      "sha256": "5af017c7482da61eed665d69acecc3853f09d7fa5f3ed282a0352f83c11b8ba4"
+    },
+    "build/sustain-model-demos-20261019/render.cpp": {
+      "bytes": 2653,
+      "sha256": "31e79d58dbe40f7e90201420893b4b49191bab15260c5ce5ff031c8b6dbd93da"
+    },
+    "build/sustain-model-demos-20261019/render": {
+      "bytes": 78296,
+      "sha256": "a1bc75d583df58cf04a84a437eb10ffb163d208ef26f93e2953eeebf8e6cc8cc"
+    },
+    "build/sustain-model-demos-20261019/render.log": {
+      "bytes": 768,
+      "sha256": "38669387b580aebc87a63343da636c5182cc1223570b21cc52de1803a8e02b77"
+    },
+    "build/sustain-model-demos-20261019/package.py": {
+      "bytes": 8663,
+      "sha256": "1804d4ecdeeeabd38a4a6e665321c76b6be7da2f1c64d709c81b7125c2ceebf8"
+    },
+    "build/sustain-model-demos-20261019/package-firstattempt.py": {
+      "bytes": 8051,
+      "sha256": "9df4196e336a419cfb6be637be588a5454c9f6f7960b6cf4765286f925c1c4df"
+    },
+    "build/sustain-model-demos-20261019/package-firstattempt-error.txt": {
+      "bytes": 433,
+      "sha256": "8538eec02eb22aea33ea1583a47faa41a6f558176185c0085b8d8cb17b5967c9"
+    },
+    "build/sustain-model-demos-20261019/controls-input.json": {
+      "bytes": 13055,
+      "sha256": "5b7536198609114c84ccbd5aaf8ee6a7384e7445544ac632216b122fec5b9af5"
+    },
+    "build/sustain-model-demos-20261019/factory-input.json": {
+      "bytes": 64721,
+      "sha256": "fde18860785399045438b3ed687b99d4e34018ccb58c7eeaf830e6090c9a52f2"
+    },
+    "build/sustain-model-demos-20261019/level-comparison.png": {
+      "bytes": 160037,
+      "sha256": "82f0a432f4c00ef5b74f6e77881b22c7395f4a002887beaa2e01583958b18be6"
+    },
+    "build/sustain-model-demos-20261019/index.html": {
+      "bytes": 3438,
+      "sha256": "12e90fd660534fc9ce07cd1f0159534c35c87c1fe96f67606133b8a0cf06b68b"
+    }
+  }
+}

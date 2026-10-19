@@ -1,0 +1,802 @@
+diff --git a/Source/DSP/FirmwareAllocation.h b/Source/DSP/FirmwareAllocation.h
+new file mode 100644
+--- /dev/null
++++ b/Source/DSP/FirmwareAllocation.h
+@@ -0,0 +1,102 @@
++#pragma once
++#include <algorithm>
++#include <array>
++#include <bitset>
++#include <cstdint>
++
++namespace press78 {
++
++// Independently expressed normal Mode00 allocation command behavior. No ROM,
++// patch data, chip timing, oscillator/reset law or rhythm engine is present.
++// The second source namespace and first-N pool are explicit host extensions.
++struct Mode00Allocator {
++    struct Decision {
++        bool edge = false;
++        int slot = -1;
++        std::array<std::uint8_t, 12> keys{};
++        int keyCount = 0;
++    };
++    std::array<std::uint8_t, 12> ranks{};
++    std::array<int, 12> notes{}, sources{};
++    std::array<bool, 12> valid{}, keyed{};
++    std::array<std::uint8_t, 12> pending{};
++    std::array<std::bitset<128>, 2> held{};
++    int pool = 12;
++
++    Mode00Allocator() noexcept { reset(12); }
++    static bool validSource(int source) noexcept { return source == 0 || source == 1; }
++    void reset(int polyphony) noexcept {
++        ranks.fill(0); notes.fill(0); sources.fill(0); valid.fill(true);
++        keyed.fill(false); pending.fill(0);
++        for (auto& h : held) h.reset();
++        pool = 12;
++        setPolyphony(polyphony);
++    }
++    void setPolyphony(int polyphony) noexcept {
++        const int next = std::clamp(polyphony, 1, 12);
++        if (next < pool) for (int i = next; i < 12; ++i) {
++            ranks[i] = 0; valid[i] = false; keyed[i] = false; pending[i] = 0;
++        }
++        pool = next;
++    }
++    void age() noexcept {
++        for (auto& rank : ranks) if (rank != 0 && rank != 128) --rank;
++    }
++    int find(int note, int source) const noexcept {
++        for (int i = pool - 1; i >= 0; --i)
++            if (valid[i] && notes[i] == note && sources[i] == source) return i;
++        return -1;
++    }
++    std::uint8_t keyCommand(int slot) const noexcept {
++        const int pair = slot / 2;
++        return static_cast<std::uint8_t>(pair | (keyed[2 * pair] ? 24 : 0)
++                                        | (keyed[2 * pair + 1] ? 96 : 0));
++    }
++    void releaseSlot(int slot, Decision& out) noexcept {
++        ranks[slot] = 127; age(); pending[slot] = 0; keyed[slot] = false;
++        out.keys[out.keyCount++] = keyCommand(slot);
++    }
++    Decision noteOn(int note, int source) noexcept {
++        Decision out;
++        if (!validSource(source) || note < 0 || note > 127 || held[source][note]) return out;
++        held[source].set(static_cast<std::size_t>(note)); out.edge = true;
++        int slot = find(note, source);
++        if (slot < 0) {
++            int smallest = 255;
++            for (int i = 0; i < pool; ++i) if (ranks[i] < smallest) {
++                smallest = ranks[i]; slot = i;
++            }
++        }
++        if (slot < 0) return out;
++        releaseSlot(slot, out);
++        notes[slot] = note; sources[slot] = source; valid[slot] = true;
++        pending[slot] = 1; ranks[slot] = 255; age(); out.slot = slot;
++        return out;
++    }
++    Decision noteOff(int note, int source) noexcept {
++        Decision out;
++        if (!validSource(source) || note < 0 || note > 127 || !held[source][note]) return out;
++        held[source].reset(static_cast<std::size_t>(note)); out.edge = true;
++        out.slot = find(note, source);
++        if (out.slot >= 0) releaseSlot(out.slot, out);
++        return out;
++    }
++    // Explicit invocation counter for original command-fixture checks only.
++    // The engine invokes one immediately after its existing immediate noteOn;
++    // it does not invent or schedule a CPU service time in the audio process.
++    Decision service(int invocations) noexcept {
++        Decision out;
++        for (int n = 0; n < invocations; ++n) for (int i = 0; i < pool; ++i) {
++            if (pending[i] && --pending[i] == 0) {
++                keyed[i] = true; out.keys[out.keyCount++] = keyCommand(i);
++            }
++        }
++        return out;
++    }
++    void allNotesOff() noexcept {
++        for (int source = 0; source < 2; ++source)
++            for (int note = 0; note < 128; ++note)
++                if (held[source][note]) (void)noteOff(note, source);
++    }
++};
++} // namespace press78
+diff --git a/Source/DSP/Press78Engine.h b/Source/DSP/Press78Engine.h
+--- a/Source/DSP/Press78Engine.h
++++ b/Source/DSP/Press78Engine.h
+@@ -4,6 +4,7 @@
+ #include <cstddef>
+ #include <cstdint>
+ #include "AnalogOutput.h"
++#include "FirmwareAllocation.h"
+ 
+ // Independently written port of the documented PSS-780 behavioral experiment.
+ // This is not a bit-exact YM3420/OPU emulator. No Yamaha firmware is included.
+@@ -47,7 +48,10 @@
+     double velocitySensitivity = 1.0; // carrier velocity exponent, 0..2.
+     double velocityToModulation = 0.0;// modulator velocity exponent, 0..2.
+     double modulationAmount = 1.0;    // 0..2 times the baseline FM index (8*pi).
+-    int polyphony = 12;               // 1..12. Reductions fade the oldest voices.
++    int polyphony = 12;               // 1..12; Original uses a first-N slot pool.
++    // Research candidate: missing/default0 preserves Legacy allocation.
++    // Original1 is normal Mode00 policy, with disclosed MIDI/CV extensions.
++    int allocationModel = 0;
+     // Legacy0 holds released keys under the pedal. Original1 selects RR/SRR
+     // immediately; it uses the existing approximate envelope timing law.
+     int sustainMode = 0;
+@@ -118,9 +122,11 @@
+     // A requested law change waits until voices and steal tails are idle.
+     int effectivePitchModel() const noexcept { return effectivePitchModel_; }
+     int effectiveSustainMode() const noexcept { return effectiveSustainMode_; }
++    int effectiveAllocationModel() const noexcept { return effectiveAllocationModel_; }
+ 
+ private:
+     friend struct Press78SustainTestAccess;
++    friend struct Press78AllocationTestAccess;
+     struct Envelope {
+         double attenuation = 96.0, attackMul = 0.0, decay1 = 0.0;
+         double decay2 = 0.0, release = 0.0, target = 0.0;
+@@ -148,10 +154,13 @@
+         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
+     };
+     struct Tail { Voice voice{}; int remaining = 0; };
+-    static constexpr std::size_t kHistory = 256;
++    // Post-fill sinc reads at most the latest64 ticks;128 preserves every
++    // retained value while keeping exact64-bit input ownership in budget.
++    static constexpr std::size_t kHistory = 128;
+     static constexpr std::size_t kDelaySize = 4096;
+     static constexpr int kSincTaps = 64;
+     static constexpr int kSincPhases = 256;
++    static_assert(kHistory >= kResamplerDelay + 32, "History must retain every causal sinc tap");
+     std::array<Voice, kMaxVoices> voices_{};
+     std::array<Tail, kMaxVoices> tails_{};
+     std::array<double, kHistory> history_{};
+@@ -178,7 +187,16 @@
+     bool originalSustain_ = false;
+     int effectivePitchModel_ = 0, pitchSteps_ = 0;
+     int effectiveSustainMode_ = 0;
++    int effectiveAllocationModel_ = 0;
++    Mode00Allocator allocator_{};
++    std::array<std::array<std::uint64_t,128>,2> heldInputCounts_{};
+     bool pitchIdle() const noexcept;
++    bool allocationIdle() const noexcept;
++    void applyPendingAllocationModel() noexcept;
++    void clearAllocationState() noexcept;
++    void originalNoteOn(int note, int velocity, int source) noexcept;
++    void originalNoteOff(int note, int source) noexcept;
++    void fadeVoice(Voice&) noexcept;
+     void applyPendingPitchModel() noexcept;
+     void applyPendingSustainMode() noexcept;
+     void refreshOriginalRelease() noexcept;
+diff --git a/Source/DSP/Press78Engine.cpp b/Source/DSP/Press78Engine.cpp
+--- a/Source/DSP/Press78Engine.cpp
++++ b/Source/DSP/Press78Engine.cpp
+@@ -125,6 +125,7 @@
+     c.velocityToModulation = bounded(c.velocityToModulation, 0, 2, 0);
+     c.modulationAmount = bounded(c.modulationAmount, 0, 2, 1);
+     c.polyphony = std::clamp(c.polyphony, 1, 12);
++    c.allocationModel = std::clamp(c.allocationModel, 0, 1);
+     c.sustainMode = std::clamp(c.sustainMode, 0, 1);
+     c.lfoRateHz = bounded(c.lfoRateHz, 0, 30, 5.24);
+     c.vibratoDepth = bounded(c.vibratoDepth, 0, 4, 1);
+@@ -267,6 +268,8 @@
+     globalLfoPhase_ = 0.0; chorusPhase_ = 0.0;
+     effectivePitchModel_ = controls_.pitchModel;
+     effectiveSustainMode_ = controls_.sustainMode;
++    effectiveAllocationModel_ = controls_.allocationModel;
++    clearAllocationState();
+     originalSustain_ = patch_.sustain;
+     updatePitchControls();
+     gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_;
+@@ -305,6 +308,7 @@
+ 
+ void Press78Engine::setControls(const Controls& controls) noexcept {
+     controls_ = sanitizeControls(controls);
++    applyPendingAllocationModel();
+     applyPendingPitchModel();
+     applyPendingSustainMode();
+     updatePitchControls();
+@@ -319,7 +323,13 @@
+         chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
+         width_ = controls_.stereoWidth;
+     }
+-    while (activeVoices() > static_cast<std::size_t>(controls_.polyphony)) {
++    if (effectiveAllocationModel_ == 1) {
++        if (allocator_.pool != controls_.polyphony) {
++            for (std::size_t i = static_cast<std::size_t>(controls_.polyphony); i < kMaxVoices; ++i)
++                if (voices_[i].active) fadeVoice(voices_[i]);
++            allocator_.setPolyphony(controls_.polyphony);
++        }
++    } else while (activeVoices() > static_cast<std::size_t>(controls_.polyphony)) {
+         Voice* victim = nullptr;
+         for (auto& v : voices_) if (v.active && (!victim || v.age < victim->age)) victim = &v;
+         if (!victim) break;
+@@ -333,6 +343,12 @@
+     note = std::clamp(note, 0, 127);
+     if (velocity <= 0) { noteOff(note, source); return; }
+     velocity = std::min(velocity, 127);
++    applyPendingAllocationModel();
++    if (effectiveAllocationModel_ == 1) { originalNoteOn(note, velocity, source); return; }
++    if (Mode00Allocator::validSource(source)) {
++        auto& count = heldInputCounts_[source][note];
++        if (count != std::numeric_limits<std::uint64_t>::max()) ++count;
++    }
+     if (patch_.carrier.tl >= 99 || patch_.carrier.ar == 0) return;
+     applyPendingPitchModel();
+     applyPendingSustainMode();
+@@ -355,6 +371,11 @@
+ 
+ void Press78Engine::noteOff(int note, int source) noexcept {
+     note = std::clamp(note, 0, 127);
++    if (effectiveAllocationModel_ == 1) { originalNoteOff(note, source); return; }
++    if (Mode00Allocator::validSource(source)) {
++        auto& count = heldInputCounts_[source][note];
++        if (count) --count;
++    }
+     Voice* target = nullptr;
+     for (auto& v : voices_) if (v.active && v.held && v.note == note && v.source == source && (!target || v.age < target->age)) target = &v;
+     if (target) {
+@@ -363,6 +384,7 @@
+         // cached selection until an actual CC or explicit live Sustain edit.
+         target->released = effectiveSustainMode_ == 1 || !pedal_;
+     }
++    applyPendingAllocationModel();
+ }
+ 
+ void Press78Engine::sustainPedal(bool down) noexcept {
+@@ -378,10 +400,13 @@
+ }
+ 
+ void Press78Engine::allNotesOff() noexcept {
++    if (effectiveAllocationModel_ == 1) allocator_.allNotesOff();
++    for (auto& source : heldInputCounts_) source.fill(0);
+     for (auto& v : voices_) if (v.active) {
+         v.held = false;
+         v.released = effectiveSustainMode_ == 1 || !pedal_;
+     }
++    applyPendingAllocationModel();
+ }
+ 
+ void Press78Engine::allSoundOff() noexcept {
+@@ -393,8 +418,68 @@
+     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
+     pedal_ = false;
+     originalSustain_ = patch_.sustain;
++    clearAllocationState();
++    applyPendingAllocationModel();
+     applyPendingPitchModel();
+     applyPendingSustainMode();
++}
++
++void Press78Engine::clearAllocationState() noexcept {
++    allocator_.reset(controls_.polyphony);
++    for (auto& source : heldInputCounts_) source.fill(0);
++}
++
++bool Press78Engine::allocationIdle() const noexcept {
++    if (!pitchIdle()) return false;
++    for (const auto& source : heldInputCounts_) for (auto count : source) if (count) return false;
++    return true;
++}
++
++void Press78Engine::applyPendingAllocationModel() noexcept {
++    if (effectiveAllocationModel_ == controls_.allocationModel || !allocationIdle()) return;
++    effectiveAllocationModel_ = controls_.allocationModel;
++    clearAllocationState();
++}
++
++void Press78Engine::fadeVoice(Voice& voice) noexcept {
++    auto* tail = &tails_[0];
++    for (auto& t : tails_) if (t.remaining < tail->remaining) tail = &t;
++    tail->voice = voice; tail->remaining = 48; voice.active = false;
++}
++
++void Press78Engine::originalNoteOn(int note, int velocity, int source) noexcept {
++    if (!Mode00Allocator::validSource(source)) return;
++    const auto event = allocator_.noteOn(note, source);
++    if (!event.edge) return;
++    heldInputCounts_[source][note] = 1;
++    if (event.slot < 0) return;
++    auto& target = voices_[static_cast<std::size_t>(event.slot)];
++    if (target.active) fadeVoice(target);
++    // Silent patch commands still own their key/cache/rank. Do not start an
++    // inaudible audio voice or mistake EG retirement for free input ownership.
++    if (patch_.carrier.tl < 99 && patch_.carrier.ar != 0) {
++        applyPendingPitchModel(); applyPendingSustainMode();
++        target.configure(patch_, note, velocity, ++serial_);
++        if (effectivePitchModel_ == 1) target.updateOriginalPitch(pitchSteps_);
++        if (effectiveSustainMode_ == 1) target.updateRelease(originalSustain_);
++        target.source = source;
++    }
++    (void)allocator_.service(1); // Preserve immediate engine delivery, no timed CPU model.
++}
++
++void Press78Engine::originalNoteOff(int note, int source) noexcept {
++    if (!Mode00Allocator::validSource(source)) return;
++    const auto event = allocator_.noteOff(note, source);
++    if (!event.edge) return;
++    heldInputCounts_[source][note] = 0;
++    if (event.slot >= 0) {
++        auto& target = voices_[static_cast<std::size_t>(event.slot)];
++        if (target.active && target.note == note && target.source == source) {
++            target.held = false;
++            target.released = effectiveSustainMode_ == 1 || !pedal_;
++        }
++    }
++    applyPendingAllocationModel();
+ }
+ 
+ bool Press78Engine::pitchIdle() const noexcept {
+@@ -473,6 +558,7 @@
+ }
+ 
+ double Press78Engine::synthesizeTick() noexcept {
++    applyPendingAllocationModel();
+     applyPendingPitchModel();
+     applyPendingSustainMode();
+     // Tune smoothing is clocked with the envelopes/operators. Clock offset
+diff --git a/Source/DSP/Press78OutputBus.h b/Source/DSP/Press78OutputBus.h
+--- a/Source/DSP/Press78OutputBus.h
++++ b/Source/DSP/Press78OutputBus.h
+@@ -146,6 +146,7 @@
+     const Controls& controls() const noexcept { return engine_.controls(); }
+     int effectivePitchModel() const noexcept { return engine_.effectivePitchModel(); }
+     int effectiveSustainMode() const noexcept { return engine_.effectiveSustainMode(); }
++    int effectiveAllocationModel() const noexcept { return engine_.effectiveAllocationModel(); }
+     // Diagnostic counters: actual generated frames, not intended timestamps.
+     std::uint64_t nextPhysicalFrame() const noexcept { return direct_?frame_:src_.nextIndex(); }
+     std::uint64_t hostFrame() const noexcept { return frame_; }
+diff --git a/Tools/NativeRender.cpp b/Tools/NativeRender.cpp
+--- a/Tools/NativeRender.cpp
++++ b/Tools/NativeRender.cpp
+@@ -83,6 +83,11 @@
+             else if (arg == "--seconds") duration = std::stod(value);
+             else if (arg == "--gate") gate = std::stod(value);
+             else if (arg == "--gain") controls.masterGain = std::stod(value);
++            else if (arg == "--allocation-model") {
++                if (value == "legacy" || value == "0") controls.allocationModel = 0;
++                else if (value == "original" || value == "1") controls.allocationModel = 1;
++                else throw std::runtime_error("--allocation-model requires legacy|original|0|1");
++            }
+             else if (arg == "--sustain-mode") {
+                 if (value == "legacy" || value == "0") controls.sustainMode = 0;
+                 else if (value == "original" || value == "1") controls.sustainMode = 1;
+@@ -109,7 +114,7 @@
+         }
+         if (output.empty() || rate < 8000 || rate > 192000 || !std::isfinite(duration) || duration <= 0 || duration > 120
+             || !std::isfinite(gate) || gate < 0 || note < 0 || note > 127 || velocity < 0 || velocity > 127)
+-            throw std::runtime_error("Usage: press78_render --output file.wav [--raw 66hex] [--real] [--transparent] [--rate 48000] [--note 60] [--velocity 100] [--seconds 3] [--gate 1.5] [--pitch-model equal|original] [--sustain-mode legacy|original] [--bend semitones] [--midi-bend -1..16383] [--bend-range 0..24] [--fine-cents cents] [--host-tune-cents cents]");
++            throw std::runtime_error("Usage: press78_render --output file.wav [--raw 66hex] [--real] [--transparent] [--rate 48000] [--note 60] [--velocity 100] [--seconds 3] [--gate 1.5] [--pitch-model equal|original] [--sustain-mode legacy|original] [--allocation-model legacy|original] [--bend semitones] [--midi-bend -1..16383] [--bend-range 0..24] [--fine-cents cents] [--host-tune-cents cents]");
+         const auto frames = static_cast<std::size_t>(std::llround(duration * rate));
+         if (!frames) throw std::runtime_error("Duration rounds to zero samples");
+         const auto gateFrame = gate >= duration ? frames : static_cast<std::size_t>(std::llround(gate * rate));
+@@ -136,6 +141,7 @@
+                   << ",\"clipped_channel_samples\":" << engine->clippedChannels()
+                   << ",\"maximum_clip_delta\":" << engine->maximumClipDelta()
+                   << ",\"pitch_model\":" << engine->effectivePitchModel()
++                  << ",\"allocation_model\":" << engine->effectiveAllocationModel()
+                   << ",\"sustain_mode\":" << engine->effectiveSustainMode()
+                   << ",\"peak\":" << peak << ",\"rms\":" << std::sqrt(energy / frames) << "}\n";
+         return 0;
+diff --git a/Tools/LegacyByteProbe.cpp b/Tools/LegacyByteProbe.cpp
+new file mode 100644
+--- /dev/null
++++ b/Tools/LegacyByteProbe.cpp
+@@ -0,0 +1,45 @@
++#include "Press78Engine.h"
++#include "FactoryVoices.h"
++#include <algorithm>
++#include <array>
++#include <cmath>
++#include <cstdint>
++#include <cstdio>
++#include <fstream>
++#include <memory>
++#include <stdexcept>
++#include <string>
++
++int main(int argc,char** argv){try{
++ if(argc<2||argc>3)throw std::runtime_error("output.bin [explicit-legacy]");
++ if(std::ifstream(argv[1]).good())throw std::runtime_error("Refuse existing output");
++ const bool explicitLegacy=argc==3&&std::string(argv[2])=="explicit-legacy";
++ if(argc==3&&!explicitLegacy)throw std::runtime_error("Unknown probe option");
++ std::ofstream out(argv[1],std::ios::binary);if(!out)throw std::runtime_error("Open failure");
++ std::uint64_t frames=0;int cases=0;
++ auto select=[&](press78::Controls& c){
++#ifdef ALLOCATION_CANDIDATE
++  if(explicitLegacy)c.allocationModel=0;
++#else
++  (void)c;(void)explicitLegacy;
++#endif
++ };
++ auto block=[&](press78::Press78Engine& e,int count){std::array<float,256>l{},r{};while(count>0){int n=std::min(count,256);e.process(l.data(),r.data(),static_cast<std::size_t>(n));for(int i=0;i<n;++i){if(!std::isfinite(l[i])||!std::isfinite(r[i]))throw std::runtime_error("Nonfinite probe");out.write(reinterpret_cast<const char*>(&l[i]),4);out.write(reinterpret_cast<const char*>(&r[i]),4);}frames+=static_cast<std::uint64_t>(n);count-=n;}const auto active=static_cast<std::uint32_t>(e.activeVoices());out.write(reinterpret_cast<const char*>(&active),4);};
++ for(double rate:{44100.,48000.,96000.})for(const auto& factory:press78::kFactoryVoices){
++  auto e=std::make_unique<press78::Press78Engine>();e->prepare(rate);auto patch=press78::decodeVoice(factory.bytes);e->setPatch(patch);
++  press78::Controls c;c.masterGain=.12;c.pitchModel=(factory.number/2)%2;c.sustainMode=factory.number%2;c.chorusMode=1;c.chorusMix=.8;c.clockDriftPpm=20;c.drive=0;select(c);e->setControls(c);
++  int note=48+factory.number%36;e->noteOn(note,80+factory.number%48,0);block(*e,1);e->noteOn(note,99,0);e->noteOn(note,77,1);block(*e,127);
++  e->noteOff(note,0);e->sustainController(127);block(*e,64);e->noteOff(note,1);block(*e,257);
++  c.pitchBendSemitones=(factory.number%9-4)*.125;c.masterTuneCents=.4*factory.number;e->setControls(c);patch.feedback=(patch.feedback+1)%8;e->setPatch(patch,factory.number%2);block(*e,389);
++  c.polyphony=2;e->setControls(c);for(int i=0;i<15;++i)e->noteOn(48+i,100,i%2);block(*e,128);c.polyphony=12;e->setControls(c);e->allNotesOff();e->sustainController(0);block(*e,512);e->allSoundOff();block(*e,64);++cases;
++ }
++ // Direct-core rate/clock-boundary probes also exercise the complete retained
++ // history span. These are compatibility checks, not hardware calibration.
++ for(double rate:{8000.,44100.,48000.,96000.,192000.})for(double offset:{-20000.,0.,20000.})for(int preset:{-1,93}){
++  auto e=std::make_unique<press78::Press78Engine>();e->prepare(rate);e->setPatch(preset<0?press78::initPatch():press78::decodeVoice(press78::kFactoryVoices[93].bytes));
++  press78::Controls c;c.masterGain=.12;c.pitchModel=1;c.sustainMode=1;c.clockOffsetPpm=offset;c.clockDriftPpm=10000;c.clockDriftRateHz=2.;c.outputCircuit=true;c.chorusMode=1;c.chorusMix=1;select(c);e->setControls(c);e->noteOn(127,111,0);e->noteOn(36,99,1);
++  block(*e,static_cast<int>(std::llround(rate*.3)));e->noteOff(127,0);e->noteOff(36,1);block(*e,257);e->process(nullptr,nullptr,37);block(*e,129);++cases;
++ }
++ if(!out)throw std::runtime_error("Write failure");out.close();
++ std::printf("{\"cases\":%d,\"frames\":%llu,\"explicit_legacy\":%s}\n",cases,static_cast<unsigned long long>(frames),explicitLegacy?"true":"false");return 0;
++}catch(const std::exception& e){std::fprintf(stderr,"%s\n",e.what());return 1;}}
+diff --git a/Tests/test_allocation.cpp b/Tests/test_allocation.cpp
+new file mode 100644
+--- /dev/null
++++ b/Tests/test_allocation.cpp
+@@ -0,0 +1,78 @@
++#include "Press78Engine.h"
++#include "Press78OutputBus.h"
++#include "mode00_command_fixture.h"
++#include <algorithm>
++#include <array>
++#include <cmath>
++#include <cstdio>
++#include <cstdlib>
++#include <limits>
++#include <memory>
++#include <new>
++#include <stdexcept>
++#include <string>
++#include <vector>
++namespace { bool tracking=false; std::size_t allocations=0; }
++void* operator new(std::size_t n) { if(tracking)++allocations; if(void* p=std::malloc(n?n:1))return p;throw std::bad_alloc(); }
++void* operator new[](std::size_t n){return ::operator new(n);}
++void operator delete(void* p)noexcept{std::free(p);} void operator delete[](void* p)noexcept{std::free(p);}
++#if defined(__cpp_sized_deallocation)
++void operator delete(void* p,std::size_t)noexcept{std::free(p);}void operator delete[](void* p,std::size_t)noexcept{std::free(p);}
++#endif
++namespace press78 {
++struct Press78AllocationTestAccess {
++ static auto allocator(const Press78Engine& e){return e.allocator_;}
++ static constexpr std::size_t historySize(){return Press78Engine::kHistory;}
++ static auto voice(const Press78Engine& e,int i){return e.voices_[i];}
++ static auto count(const Press78Engine& e,int n,int s=0){return e.heldInputCounts_[s][n];}
++ static int tails(const Press78Engine& e){int n=0;for(const auto& t:e.tails_)n+=t.remaining>0;return n;}
++ static int longestTail(const Press78Engine& e){int n=0;for(const auto& t:e.tails_)n=std::max(n,t.remaining);return n;}
++ static auto phaseState(const Press78Engine& e,int i){const auto& v=e.voices_[i];return std::array<double,12>{{v.modPhase,v.carrierPhase,v.prev1,v.prev2,v.lfoPhase,v.modEnvelope.attenuation,v.carrierEnvelope.attenuation,static_cast<double>(v.ticks),static_cast<double>(v.age),v.velocity,v.modGain,v.carrierGain}};}
++};
++}
++namespace {
++using E=press78::Press78Engine;using A=press78::Press78AllocationTestAccess;
++int passed=0,failed=0,fixtureEvents=0,fixtureChecks=0;
++#define CHECK(x) do{if(!(x))throw std::runtime_error(std::string("line ")+std::to_string(__LINE__)+": " #x);}while(false)
++template<class F>void test(const char* name,F f){try{f();++passed;std::printf("PASS %s\n",name);}catch(const std::exception& e){tracking=false;++failed;std::printf("FAIL %s: %s\n",name,e.what());}}
++press78::Controls controls(int allocation=1,int polyphony=12){press78::Controls c;c.allocationModel=allocation;c.polyphony=polyphony;c.sustainMode=1;c.masterGain=1;c.outputCircuit=false;c.toneCutoffHz=0;c.outputLimit=false;c.dcBlock=false;return c;}
++auto engine(int allocation=1,int polyphony=12){auto e=std::make_unique<E>();e->setControls(controls(allocation,polyphony));auto p=press78::initPatch();p.carrier.rr=15;e->setPatch(p);return e;}
++void advance(E& e,int n=256){e.process(nullptr,nullptr,static_cast<std::size_t>(n));}
++bool same(const press78::Mode00Allocator& a,const press78::Mode00Allocator& b){return a.ranks==b.ranks&&a.notes==b.notes&&a.sources==b.sources&&a.valid==b.valid&&a.keyed==b.keyed&&a.pending==b.pending&&a.held==b.held&&a.pool==b.pool;}
++void invariants(const E& e){const auto a=A::allocator(e);CHECK(e.activeVoices()<=static_cast<std::size_t>(e.controls().polyphony));for(int s=0;s<2;++s)for(int n=0;n<128;++n)CHECK(a.held[s][n]==(A::count(e,n,s)!=0));for(int i=0;i<12;++i){auto v=A::voice(e,i);if(v.active){CHECK(i<e.controls().polyphony);CHECK(a.valid[i]);CHECK(v.note==a.notes[i]);CHECK(v.source==a.sources[i]);}}}
++}
++int main(){
++ test("history capacity covers all causal taps at rate clock and wrap boundaries",[]{CHECK(A::historySize()==128);std::size_t checked=0;for(double rate:{8000.,8001.,44100.,48000.,96000.,192000.})for(double ppm:{-30000.,-10000.,0.,10000.,30000.}){double position=0;for(int i=0;i<4096;++i){const auto latest=static_cast<std::int64_t>(std::floor(position));const auto next=latest+1;const auto base=static_cast<std::int64_t>(std::floor(position-E::kResamplerDelay));for(int j=0;j<64;++j){const auto tick=base+j-31;CHECK(tick<next);CHECK(tick>=next-static_cast<std::int64_t>(A::historySize()));++checked;}CHECK(position>=0);position+=E::kInternalRate/rate*(1+ppm*1e-6);}}CHECK(checked==7864320);});
++ test("default compatibility and bounded selector",[]{press78::Controls c;CHECK(c.allocationModel==0);auto e=engine(0);CHECK(e->effectiveAllocationModel()==0);c.allocationModel=-99;CHECK(press78::sanitizeControls(c).allocationModel==0);c.allocationModel=99;CHECK(press78::sanitizeControls(c).allocationModel==1);});
++ test("all published Mode00 command fixture events exactly",[]{
++  for(const auto& c:allocation_fixture::cases){press78::Mode00Allocator a;for(int i=0;i<12;++i){a.ranks[i]=static_cast<std::uint8_t>(c.ranks[i]);a.notes[i]=c.notes[i];}
++   for(int i=0;i<c.size;++i){const auto& e=c.events[i];auto d=e.kind==1?a.noteOn(e.note,0):e.kind==0?a.noteOff(e.note,0):a.service(e.count);int pitch=e.kind==1?d.slot:-1;
++    CHECK(pitch==e.pitch);++fixtureChecks;CHECK(d.keyCount==e.keyCount);++fixtureChecks;for(int k=0;k<d.keyCount;++k)CHECK(d.keys[k]==e.keys[k]);++fixtureChecks;
++    for(int k=0;k<12;++k){CHECK(a.ranks[k]==e.ranks[k]);CHECK(a.notes[k]==e.notes[k]);CHECK(a.pending[k]==e.pending[k]);}fixtureChecks+=3;++fixtureEvents;
++   }
++  }CHECK(fixtureEvents==251);CHECK(fixtureChecks==1506);
++ });
++ test("unsigned rank floors deterministic ties and long event aging",[]{press78::Mode00Allocator a;a.ranks.fill(128);a.ranks[3]=a.ranks[8]=0;auto d=a.noteOn(60,0);CHECK(d.slot==3);CHECK(a.ranks[3]==254);CHECK(a.ranks[8]==0);CHECK(a.ranks[0]==128);a.ranks[0]=0;a.ranks[1]=128;a.ranks[2]=1;a.ranks[3]=129;a.ranks[4]=255;a.age();CHECK(a.ranks[0]==0&&a.ranks[1]==128&&a.ranks[2]==0&&a.ranks[3]==128&&a.ranks[4]==254);for(int i=0;i<4096;++i){a.noteOff(60,0);a.noteOn(60,0);a.service(1);}CHECK(a.find(60,0)>=0);});
++ test("held duplicate is a complete edge no-op even after future patch load",[]{auto e=engine();e->noteOn(60,100);advance(*e);auto p=e->patch();p.carrier.mul=7;e->setPatch(p,false);auto a=A::allocator(*e);auto v=A::phaseState(*e,0);int tails=A::tails(*e);e->noteOn(60,127);CHECK(same(a,A::allocator(*e)));CHECK(v==A::phaseState(*e,0));CHECK(A::tails(*e)==tails);CHECK(e->activeVoices()==1);CHECK(A::count(*e,60)==1);});
++ test("velocity zero and redundant offs preserve logical edge policy",[]{auto e=engine();e->noteOn(60,127);e->noteOn(60,0);CHECK(!A::voice(*e,0).held);CHECK(A::voice(*e,0).released);CHECK(A::count(*e,60)==0);auto a=A::allocator(*e);e->noteOff(60);CHECK(same(a,A::allocator(*e)));});
++ test("MIDI and CV same pitch have independent ownership",[]{auto e=engine();e->noteOn(60,100,0);e->noteOn(60,100,1);CHECK(e->activeVoices()==2);e->noteOn(60,127,0);CHECK(e->activeVoices()==2);e->noteOff(60,0);CHECK(!A::voice(*e,0).held);CHECK(A::voice(*e,1).held);e->noteOff(60,1);CHECK(!A::voice(*e,1).held);invariants(*e);});
++ test("unsupported Original source IDs are rejected without aliasing",[]{auto e=engine();e->noteOn(60,100);auto a=A::allocator(*e);auto v=A::phaseState(*e,0);for(int s:{-1,2,17,std::numeric_limits<int>::min(),std::numeric_limits<int>::max()}){e->noteOn(60,100,s);e->noteOff(60,s);}CHECK(same(a,A::allocator(*e)));CHECK(v==A::phaseState(*e,0));CHECK(e->activeVoices()==1);});
++ test("silent legal patches still allocate keys ranks and retained caches",[]{for(int kind=0;kind<3;++kind){auto e=engine();auto p=e->patch();if(kind<2)p.carrier.tl=kind?127:99;else p.carrier.ar=0;e->setPatch(p);e->noteOn(60,100);CHECK(e->activeVoices()==0);auto a=A::allocator(*e);CHECK(a.find(60,0)==0&&a.ranks[0]==254&&a.held[0][60]);CHECK(A::count(*e,60)==1);auto c=e->controls();c.allocationModel=0;e->setControls(c);advance(*e);CHECK(e->effectiveAllocationModel()==1);e->setPatch(press78::initPatch(),true);e->noteOn(60,127);CHECK(e->activeVoices()==0);CHECK(same(a,A::allocator(*e)));e->noteOff(60);CHECK(e->effectiveAllocationModel()==0);}});
++ test("live mute edits preserve logical cache and do not retrigger a held key",[]{auto e=engine();e->noteOn(60,127);advance(*e);auto a=A::allocator(*e);auto p=e->patch();p.carrier.tl=127;e->setPatch(p,true);CHECK(same(a,A::allocator(*e)));auto phase=A::phaseState(*e,0);e->noteOn(60,100);CHECK(phase==A::phaseState(*e,0));p.carrier.tl=0;e->setPatch(p,true);CHECK(same(a,A::allocator(*e)));CHECK(A::voice(*e,0).held);});
++ test("retired envelopes keep cache and held-input ownership",[]{auto e=engine();auto p=e->patch();p.carrier.d2r=63;e->setPatch(p);e->noteOn(60,127);advance(*e,512);CHECK(e->activeVoices()==0);CHECK(A::allocator(*e).find(60,0)==0);CHECK(A::count(*e,60)==1);e->noteOn(60,127);CHECK(e->activeVoices()==0);e->noteOff(60);p.carrier.d2r=0;e->setPatch(p);e->noteOn(60,127);CHECK(A::allocator(*e).find(60,0)==0);CHECK(A::voice(*e,0).active);});
++ test("release retrigger reuses cached slot and existing fade guard",[]{auto e=engine();auto p=e->patch();p.carrier.rr=8;e->setPatch(p);e->noteOn(60,100);advance(*e);e->noteOff(60);advance(*e,16);e->noteOn(60,111);CHECK(e->activeVoices()==1);CHECK(A::allocator(*e).find(60,0)==0);CHECK(A::longestTail(*e)==48);CHECK(A::voice(*e,0).held);});
++ test("each reduced pool prefers a released slot before held ranks",[]{for(int n=1;n<=12;++n){auto e=engine(1,n);for(int i=0;i<n;++i)e->noteOn(48+i,100);CHECK(e->activeVoices()==static_cast<std::size_t>(n));int slot=n/2;e->noteOff(48+slot);e->noteOn(90,100);CHECK(A::allocator(*e).find(90,0)==slot);CHECK(e->activeVoices()==static_cast<std::size_t>(n));invariants(*e);}});
++ test("live pool shrink enlarge retains stolen key latches without respawn",[]{auto e=engine();for(int i=0;i<12;++i)e->noteOn(60+i,100);auto c=e->controls();c.polyphony=3;e->setControls(c);CHECK(e->activeVoices()==3);CHECK(A::tails(*e)==9);for(int i=3;i<12;++i)CHECK(!A::allocator(*e).valid[i]);c.polyphony=12;e->setControls(c);CHECK(e->activeVoices()==3);e->noteOn(70,127);CHECK(e->activeVoices()==3);e->noteOff(70);e->noteOn(70,127);CHECK(e->activeVoices()==4);CHECK(A::allocator(*e).find(70,0)==3);e->noteOff(71);CHECK(A::voice(*e,3).held);invariants(*e);});
++ test("Legacy duplicate ownership defers mode through natural retirement",[]{auto e=engine(0);auto p=e->patch();p.carrier.d2r=63;e->setPatch(p);e->noteOn(60,100);e->noteOn(60,100);advance(*e,512);CHECK(!e->activeVoices());CHECK(A::count(*e,60)==2);auto c=e->controls();c.allocationModel=1;e->setControls(c);CHECK(e->effectiveAllocationModel()==0);e->noteOff(60);CHECK(e->effectiveAllocationModel()==0);e->noteOff(60);CHECK(e->effectiveAllocationModel()==1);});
++ test("stolen but still held key defers allocation mode after audio ends",[]{auto e=engine(1,1);e->noteOn(60,100);e->noteOn(62,100);e->noteOff(62);advance(*e,1024);CHECK(!e->activeVoices());CHECK(!A::tails(*e));CHECK(A::count(*e,60)==1);auto c=e->controls();c.allocationModel=0;e->setControls(c);CHECK(e->effectiveAllocationModel()==1);e->noteOff(60);CHECK(e->effectiveAllocationModel()==0);});
++ test("model request cancellation and fade-tail deferral",[]{auto e=engine(1,1);e->noteOn(60,100);advance(*e);e->noteOn(62,100);e->noteOff(60);e->noteOff(62);auto c=e->controls();c.allocationModel=0;e->setControls(c);CHECK(e->effectiveAllocationModel()==1);c.allocationModel=1;e->setControls(c);advance(*e,1024);CHECK(e->effectiveAllocationModel()==1);e->noteOn(64,100);e->noteOn(65,100);e->noteOff(64);e->noteOff(65);c.allocationModel=0;e->setControls(c);advance(*e,1);CHECK(e->effectiveAllocationModel()==1);CHECK(A::longestTail(*e)==47);advance(*e,1024);CHECK(e->effectiveAllocationModel()==0);});
++ test("allNotesOff clears silent stolen and active ownership but keeps fades",[]{auto e=engine(1,1);e->noteOn(60,100);e->noteOn(62,100);auto p=e->patch();p.carrier.tl=127;e->setPatch(p);e->noteOn(64,100);CHECK(A::tails(*e)>0);auto c=e->controls();c.allocationModel=0;e->setControls(c);e->allNotesOff();for(int n:{60,62,64})CHECK(A::count(*e,n)==0);CHECK(A::tails(*e)>0);CHECK(e->effectiveAllocationModel()==1);advance(*e,1024);CHECK(e->effectiveAllocationModel()==0);});
++ test("reset and allSoundOff clear allocation state and adopt requested mode",[]{for(bool panic:{false,true}){auto e=engine(1,1);e->noteOn(60,100);e->noteOn(62,100);auto c=e->controls();c.allocationModel=0;e->setControls(c);if(panic)e->allSoundOff();else e->reset();CHECK(!e->activeVoices()&&!A::tails(*e));CHECK(e->effectiveAllocationModel()==0);for(int n:{60,62})CHECK(A::count(*e,n)==0);c.allocationModel=1;e->setControls(c);e->noteOn(60,100);CHECK(e->activeVoices()==1);}});
++ test("pitch sustain patch and repeated control snapshots preserve ownership",[]{auto e=engine();e->noteOn(60,100);auto a=A::allocator(*e);auto c=e->controls();c.pitchModel=1;c.sustainMode=0;c.masterTuneCents=5;c.pitchBendSemitones=1;e->setControls(c);e->sustainController(127);auto p=e->patch();p.feedback=4;e->setPatch(p,true);for(int i=0;i<4;++i)e->setControls(c);CHECK(same(a,A::allocator(*e)));CHECK(A::count(*e,60)==1);});
++ test("split processing preserves both audio and allocation state",[]{auto a=engine(),b=engine();a->noteOn(67,111);b->noteOn(67,111);std::array<float,1024>x{},y{};a->process(x.data(),nullptr,x.size());b->process(y.data(),nullptr,17);b->process(y.data()+17,nullptr,y.size()-17);CHECK(x==y);CHECK(same(A::allocator(*a),A::allocator(*b)));});
++ test("noise requests remain inert in Original allocation",[]{auto a=engine(),b=engine();auto c=b->controls();c.noiseRms=std::numeric_limits<double>::infinity();c.noiseModel=99;b->setControls(c);CHECK(b->controls().noiseRms==0&&b->controls().noiseModel==0);a->noteOn(60,100);b->noteOn(60,100);std::array<float,2048>x{},y{};a->process(x.data(),nullptr,x.size());b->process(y.data(),nullptr,y.size());CHECK(x==y);});
++ test("bounded deterministic input stream preserves ownership and capacity",[]{auto e=engine();unsigned state=0x780680;for(int i=0;i<4096;++i){state=state*1664525u+1013904223u;int n=36+int((state>>8)%60),source=int((state>>20)&1);if(state&1)e->noteOn(n,1+int((state>>1)%127),source);else e->noteOff(n,source);if(i%127==0){auto c=e->controls();c.polyphony=1+int((state>>12)%12);e->setControls(c);}if(i%251==0)e->allNotesOff();invariants(*e);advance(*e,3);}});
++ test("render and event path allocate no dynamic memory",[]{auto e=engine();std::array<float,64>l{},r{};allocations=0;tracking=true;for(int i=0;i<128;++i){e->noteOn(48+i%24,100,i%2);e->noteOff(48+(i+7)%24,i%2);if(i%17==0)e->allNotesOff();e->process(l.data(),r.data(),64);}tracking=false;CHECK(allocations==0);for(float v:l)CHECK(std::isfinite(v));});
++ test("output bus exposes selector at three rates without nonfinite audio",[]{for(double rate:{44100.,48000.,96000.}){auto e=std::make_unique<press78::Press78OutputBus>();e->prepare(rate);e->setControls(controls());e->setPatch(press78::initPatch());CHECK(e->effectiveAllocationModel()==1);e->noteOn(60,100);std::array<float,1024>l{},r{};e->process(l.data(),r.data(),l.size());for(float v:l)CHECK(std::isfinite(v));e->allNotesOff();}});
++ std::printf("Allocation groups passed=%d failed=%d fixture_events=%d fixture_field_checks=%d engine_bytes=%zu bus_bytes=%zu\n",passed,failed,fixtureEvents,fixtureChecks,sizeof(E),sizeof(press78::Press78OutputBus));return failed?1:0;
++}
+diff --git a/Tests/mode00_command_fixture.h b/Tests/mode00_command_fixture.h
+new file mode 100644
+--- /dev/null
++++ b/Tests/mode00_command_fixture.h
+@@ -0,0 +1,280 @@
++#pragma once
++#include <array>
++namespace allocation_fixture {
++struct Event { int kind,note,count,pitch,keyCount; std::array<int,12> keys,ranks,notes,pending; };
++struct Case { const char* name; std::array<int,12> ranks,notes; const Event* events; int size; };
++static const Event events0[] = {
++ {1,48,0,0,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{48,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{24,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{48,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,49,0,1,1,{{24,0,0,0,0,0,0,0,0,0,0,0}},{{252,254,0,0,0,0,0,0,0,0,0,0}},{{48,49,0,0,0,0,0,0,0,0,0,0}},{{0,1,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{120,0,0,0,0,0,0,0,0,0,0,0}},{{252,254,0,0,0,0,0,0,0,0,0,0}},{{48,49,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,50,0,2,1,{{1,0,0,0,0,0,0,0,0,0,0,0}},{{250,252,254,0,0,0,0,0,0,0,0,0}},{{48,49,50,0,0,0,0,0,0,0,0,0}},{{0,0,1,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{25,0,0,0,0,0,0,0,0,0,0,0}},{{250,252,254,0,0,0,0,0,0,0,0,0}},{{48,49,50,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,51,0,3,1,{{25,0,0,0,0,0,0,0,0,0,0,0}},{{248,250,252,254,0,0,0,0,0,0,0,0}},{{48,49,50,51,0,0,0,0,0,0,0,0}},{{0,0,0,1,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{121,0,0,0,0,0,0,0,0,0,0,0}},{{248,250,252,254,0,0,0,0,0,0,0,0}},{{48,49,50,51,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,52,0,4,1,{{2,0,0,0,0,0,0,0,0,0,0,0}},{{246,248,250,252,254,0,0,0,0,0,0,0}},{{48,49,50,51,52,0,0,0,0,0,0,0}},{{0,0,0,0,1,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{246,248,250,252,254,0,0,0,0,0,0,0}},{{48,49,50,51,52,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,53,0,5,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{244,246,248,250,252,254,0,0,0,0,0,0}},{{48,49,50,51,52,53,0,0,0,0,0,0}},{{0,0,0,0,0,1,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{122,0,0,0,0,0,0,0,0,0,0,0}},{{244,246,248,250,252,254,0,0,0,0,0,0}},{{48,49,50,51,52,53,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,54,0,6,1,{{3,0,0,0,0,0,0,0,0,0,0,0}},{{242,244,246,248,250,252,254,0,0,0,0,0}},{{48,49,50,51,52,53,54,0,0,0,0,0}},{{0,0,0,0,0,0,1,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{27,0,0,0,0,0,0,0,0,0,0,0}},{{242,244,246,248,250,252,254,0,0,0,0,0}},{{48,49,50,51,52,53,54,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,55,0,7,1,{{27,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,0,0,0,0}},{{48,49,50,51,52,53,54,55,0,0,0,0}},{{0,0,0,0,0,0,0,1,0,0,0,0}}},
++ {2,-1,1,-1,1,{{123,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,0,0,0,0}},{{48,49,50,51,52,53,54,55,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,56,0,8,1,{{4,0,0,0,0,0,0,0,0,0,0,0}},{{238,240,242,244,246,248,250,252,254,0,0,0}},{{48,49,50,51,52,53,54,55,56,0,0,0}},{{0,0,0,0,0,0,0,0,1,0,0,0}}},
++ {2,-1,1,-1,1,{{28,0,0,0,0,0,0,0,0,0,0,0}},{{238,240,242,244,246,248,250,252,254,0,0,0}},{{48,49,50,51,52,53,54,55,56,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,57,0,9,1,{{28,0,0,0,0,0,0,0,0,0,0,0}},{{236,238,240,242,244,246,248,250,252,254,0,0}},{{48,49,50,51,52,53,54,55,56,57,0,0}},{{0,0,0,0,0,0,0,0,0,1,0,0}}},
++ {2,-1,1,-1,1,{{124,0,0,0,0,0,0,0,0,0,0,0}},{{236,238,240,242,244,246,248,250,252,254,0,0}},{{48,49,50,51,52,53,54,55,56,57,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,58,0,10,1,{{5,0,0,0,0,0,0,0,0,0,0,0}},{{234,236,238,240,242,244,246,248,250,252,254,0}},{{48,49,50,51,52,53,54,55,56,57,58,0}},{{0,0,0,0,0,0,0,0,0,0,1,0}}},
++ {2,-1,1,-1,1,{{29,0,0,0,0,0,0,0,0,0,0,0}},{{234,236,238,240,242,244,246,248,250,252,254,0}},{{48,49,50,51,52,53,54,55,56,57,58,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,59,0,11,1,{{29,0,0,0,0,0,0,0,0,0,0,0}},{{232,234,236,238,240,242,244,246,248,250,252,254}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,1}}},
++ {2,-1,1,-1,1,{{125,0,0,0,0,0,0,0,0,0,0,0}},{{232,234,236,238,240,242,244,246,248,250,252,254}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,0,1,{{96,0,0,0,0,0,0,0,0,0,0,0}},{{254,232,234,236,238,240,242,244,246,248,250,252}},{{60,49,50,51,52,53,54,55,56,57,58,59}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{120,0,0,0,0,0,0,0,0,0,0,0}},{{254,232,234,236,238,240,242,244,246,248,250,252}},{{60,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,61,0,1,1,{{24,0,0,0,0,0,0,0,0,0,0,0}},{{252,254,232,234,236,238,240,242,244,246,248,250}},{{60,61,50,51,52,53,54,55,56,57,58,59}},{{0,1,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{120,0,0,0,0,0,0,0,0,0,0,0}},{{252,254,232,234,236,238,240,242,244,246,248,250}},{{60,61,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,62,0,2,1,{{97,0,0,0,0,0,0,0,0,0,0,0}},{{250,252,254,232,234,236,238,240,242,244,246,248}},{{60,61,62,51,52,53,54,55,56,57,58,59}},{{0,0,1,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{121,0,0,0,0,0,0,0,0,0,0,0}},{{250,252,254,232,234,236,238,240,242,244,246,248}},{{60,61,62,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,63,0,3,1,{{25,0,0,0,0,0,0,0,0,0,0,0}},{{248,250,252,254,232,234,236,238,240,242,244,246}},{{60,61,62,63,52,53,54,55,56,57,58,59}},{{0,0,0,1,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{121,0,0,0,0,0,0,0,0,0,0,0}},{{248,250,252,254,232,234,236,238,240,242,244,246}},{{60,61,62,63,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,64,0,4,1,{{98,0,0,0,0,0,0,0,0,0,0,0}},{{246,248,250,252,254,232,234,236,238,240,242,244}},{{60,61,62,63,64,53,54,55,56,57,58,59}},{{0,0,0,0,1,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{122,0,0,0,0,0,0,0,0,0,0,0}},{{246,248,250,252,254,232,234,236,238,240,242,244}},{{60,61,62,63,64,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,65,0,5,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{244,246,248,250,252,254,232,234,236,238,240,242}},{{60,61,62,63,64,65,54,55,56,57,58,59}},{{0,0,0,0,0,1,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{122,0,0,0,0,0,0,0,0,0,0,0}},{{244,246,248,250,252,254,232,234,236,238,240,242}},{{60,61,62,63,64,65,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,66,0,6,1,{{99,0,0,0,0,0,0,0,0,0,0,0}},{{242,244,246,248,250,252,254,232,234,236,238,240}},{{60,61,62,63,64,65,66,55,56,57,58,59}},{{0,0,0,0,0,0,1,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{123,0,0,0,0,0,0,0,0,0,0,0}},{{242,244,246,248,250,252,254,232,234,236,238,240}},{{60,61,62,63,64,65,66,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,67,0,7,1,{{27,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,1,0,0,0,0}}},
++ {2,-1,1,-1,1,{{123,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,48,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,49,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,50,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,51,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,52,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,53,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,54,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,55,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,232,234,236,238}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,56,0,-1,1,{{100,0,0,0,0,0,0,0,0,0,0,0}},{{239,241,243,245,247,249,251,253,126,233,235,237}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{239,241,243,245,247,249,251,253,126,233,235,237}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,57,0,-1,1,{{4,0,0,0,0,0,0,0,0,0,0,0}},{{238,240,242,244,246,248,250,252,125,126,234,236}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{238,240,242,244,246,248,250,252,125,126,234,236}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,58,0,-1,1,{{101,0,0,0,0,0,0,0,0,0,0,0}},{{237,239,241,243,245,247,249,251,124,125,126,235}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{237,239,241,243,245,247,249,251,124,125,126,235}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,59,0,-1,1,{{5,0,0,0,0,0,0,0,0,0,0,0}},{{236,238,240,242,244,246,248,250,123,124,125,126}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{236,238,240,242,244,246,248,250,123,124,125,126}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,1,{{96,0,0,0,0,0,0,0,0,0,0,0}},{{126,237,239,241,243,245,247,249,122,123,124,125}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,237,239,241,243,245,247,249,122,123,124,125}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,61,0,-1,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{125,126,238,240,242,244,246,248,121,122,123,124}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{125,126,238,240,242,244,246,248,121,122,123,124}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,62,0,-1,1,{{97,0,0,0,0,0,0,0,0,0,0,0}},{{124,125,126,239,241,243,245,247,120,121,122,123}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{124,125,126,239,241,243,245,247,120,121,122,123}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,63,0,-1,1,{{1,0,0,0,0,0,0,0,0,0,0,0}},{{123,124,125,126,240,242,244,246,119,120,121,122}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{123,124,125,126,240,242,244,246,119,120,121,122}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,64,0,-1,1,{{98,0,0,0,0,0,0,0,0,0,0,0}},{{122,123,124,125,126,241,243,245,118,119,120,121}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{122,123,124,125,126,241,243,245,118,119,120,121}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,65,0,-1,1,{{2,0,0,0,0,0,0,0,0,0,0,0}},{{121,122,123,124,125,126,242,244,117,118,119,120}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{121,122,123,124,125,126,242,244,117,118,119,120}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,66,0,-1,1,{{99,0,0,0,0,0,0,0,0,0,0,0}},{{120,121,122,123,124,125,126,243,116,117,118,119}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{120,121,122,123,124,125,126,243,116,117,118,119}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,67,0,-1,1,{{3,0,0,0,0,0,0,0,0,0,0,0}},{{119,120,121,122,123,124,125,126,115,116,117,118}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{119,120,121,122,123,124,125,126,115,116,117,118}},{{60,61,62,63,64,65,66,67,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++};
++static const Event events1[] = {
++ {1,60,0,0,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++};
++static const Event events2[] = {
++ {1,60,0,0,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{24,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++};
++static const Event events3[] = {
++ {1,60,0,0,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{24,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++};
++static const Event events4[] = {
++ {1,48,0,0,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{48,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{24,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{48,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,49,0,1,1,{{24,0,0,0,0,0,0,0,0,0,0,0}},{{252,254,0,0,0,0,0,0,0,0,0,0}},{{48,49,0,0,0,0,0,0,0,0,0,0}},{{0,1,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{120,0,0,0,0,0,0,0,0,0,0,0}},{{252,254,0,0,0,0,0,0,0,0,0,0}},{{48,49,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,50,0,2,1,{{1,0,0,0,0,0,0,0,0,0,0,0}},{{250,252,254,0,0,0,0,0,0,0,0,0}},{{48,49,50,0,0,0,0,0,0,0,0,0}},{{0,0,1,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{25,0,0,0,0,0,0,0,0,0,0,0}},{{250,252,254,0,0,0,0,0,0,0,0,0}},{{48,49,50,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,51,0,3,1,{{25,0,0,0,0,0,0,0,0,0,0,0}},{{248,250,252,254,0,0,0,0,0,0,0,0}},{{48,49,50,51,0,0,0,0,0,0,0,0}},{{0,0,0,1,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{121,0,0,0,0,0,0,0,0,0,0,0}},{{248,250,252,254,0,0,0,0,0,0,0,0}},{{48,49,50,51,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,52,0,4,1,{{2,0,0,0,0,0,0,0,0,0,0,0}},{{246,248,250,252,254,0,0,0,0,0,0,0}},{{48,49,50,51,52,0,0,0,0,0,0,0}},{{0,0,0,0,1,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{246,248,250,252,254,0,0,0,0,0,0,0}},{{48,49,50,51,52,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,53,0,5,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{244,246,248,250,252,254,0,0,0,0,0,0}},{{48,49,50,51,52,53,0,0,0,0,0,0}},{{0,0,0,0,0,1,0,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{122,0,0,0,0,0,0,0,0,0,0,0}},{{244,246,248,250,252,254,0,0,0,0,0,0}},{{48,49,50,51,52,53,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,54,0,6,1,{{3,0,0,0,0,0,0,0,0,0,0,0}},{{242,244,246,248,250,252,254,0,0,0,0,0}},{{48,49,50,51,52,53,54,0,0,0,0,0}},{{0,0,0,0,0,0,1,0,0,0,0,0}}},
++ {2,-1,1,-1,1,{{27,0,0,0,0,0,0,0,0,0,0,0}},{{242,244,246,248,250,252,254,0,0,0,0,0}},{{48,49,50,51,52,53,54,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,55,0,7,1,{{27,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,0,0,0,0}},{{48,49,50,51,52,53,54,55,0,0,0,0}},{{0,0,0,0,0,0,0,1,0,0,0,0}}},
++ {2,-1,1,-1,1,{{123,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,0,0,0,0}},{{48,49,50,51,52,53,54,55,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,56,0,8,1,{{4,0,0,0,0,0,0,0,0,0,0,0}},{{238,240,242,244,246,248,250,252,254,0,0,0}},{{48,49,50,51,52,53,54,55,56,0,0,0}},{{0,0,0,0,0,0,0,0,1,0,0,0}}},
++ {2,-1,1,-1,1,{{28,0,0,0,0,0,0,0,0,0,0,0}},{{238,240,242,244,246,248,250,252,254,0,0,0}},{{48,49,50,51,52,53,54,55,56,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,57,0,9,1,{{28,0,0,0,0,0,0,0,0,0,0,0}},{{236,238,240,242,244,246,248,250,252,254,0,0}},{{48,49,50,51,52,53,54,55,56,57,0,0}},{{0,0,0,0,0,0,0,0,0,1,0,0}}},
++ {2,-1,1,-1,1,{{124,0,0,0,0,0,0,0,0,0,0,0}},{{236,238,240,242,244,246,248,250,252,254,0,0}},{{48,49,50,51,52,53,54,55,56,57,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,58,0,10,1,{{5,0,0,0,0,0,0,0,0,0,0,0}},{{234,236,238,240,242,244,246,248,250,252,254,0}},{{48,49,50,51,52,53,54,55,56,57,58,0}},{{0,0,0,0,0,0,0,0,0,0,1,0}}},
++ {2,-1,1,-1,1,{{29,0,0,0,0,0,0,0,0,0,0,0}},{{234,236,238,240,242,244,246,248,250,252,254,0}},{{48,49,50,51,52,53,54,55,56,57,58,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,59,0,11,1,{{29,0,0,0,0,0,0,0,0,0,0,0}},{{232,234,236,238,240,242,244,246,248,250,252,254}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,1}}},
++ {2,-1,1,-1,1,{{125,0,0,0,0,0,0,0,0,0,0,0}},{{232,234,236,238,240,242,244,246,248,250,252,254}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,53,0,-1,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{231,233,235,237,239,126,243,245,247,249,251,253}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,1,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{231,233,235,237,239,126,243,245,247,249,251,253}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,72,0,5,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{229,231,233,235,237,254,241,243,245,247,249,251}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,1,0,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{122,0,0,0,0,0,0,0,0,0,0,0}},{{229,231,233,235,237,254,241,243,245,247,249,251}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,48,0,-1,1,{{96,0,0,0,0,0,0,0,0,0,0,0}},{{126,230,232,234,236,253,240,242,244,246,248,250}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,230,232,234,236,253,240,242,244,246,248,250}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,49,0,-1,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{125,126,231,233,235,252,239,241,243,245,247,249}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{125,126,231,233,235,252,239,241,243,245,247,249}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,50,0,-1,1,{{97,0,0,0,0,0,0,0,0,0,0,0}},{{124,125,126,232,234,251,238,240,242,244,246,248}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{124,125,126,232,234,251,238,240,242,244,246,248}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,51,0,-1,1,{{1,0,0,0,0,0,0,0,0,0,0,0}},{{123,124,125,126,233,250,237,239,241,243,245,247}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{123,124,125,126,233,250,237,239,241,243,245,247}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,52,0,-1,1,{{98,0,0,0,0,0,0,0,0,0,0,0}},{{122,123,124,125,126,249,236,238,240,242,244,246}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{122,123,124,125,126,249,236,238,240,242,244,246}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,53,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{122,123,124,125,126,249,236,238,240,242,244,246}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{122,123,124,125,126,249,236,238,240,242,244,246}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,54,0,-1,1,{{99,0,0,0,0,0,0,0,0,0,0,0}},{{121,122,123,124,125,248,126,237,239,241,243,245}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{121,122,123,124,125,248,126,237,239,241,243,245}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,55,0,-1,1,{{3,0,0,0,0,0,0,0,0,0,0,0}},{{120,121,122,123,124,247,125,126,238,240,242,244}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{120,121,122,123,124,247,125,126,238,240,242,244}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,56,0,-1,1,{{100,0,0,0,0,0,0,0,0,0,0,0}},{{119,120,121,122,123,246,124,125,126,239,241,243}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{119,120,121,122,123,246,124,125,126,239,241,243}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,57,0,-1,1,{{4,0,0,0,0,0,0,0,0,0,0,0}},{{118,119,120,121,122,245,123,124,125,126,240,242}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{118,119,120,121,122,245,123,124,125,126,240,242}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,58,0,-1,1,{{101,0,0,0,0,0,0,0,0,0,0,0}},{{117,118,119,120,121,244,122,123,124,125,126,241}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{117,118,119,120,121,244,122,123,124,125,126,241}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,59,0,-1,1,{{5,0,0,0,0,0,0,0,0,0,0,0}},{{116,117,118,119,120,243,121,122,123,124,125,126}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{116,117,118,119,120,243,121,122,123,124,125,126}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,72,0,-1,1,{{2,0,0,0,0,0,0,0,0,0,0,0}},{{115,116,117,118,119,126,120,121,122,123,124,125}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{115,116,117,118,119,126,120,121,122,123,124,125}},{{48,49,50,51,52,72,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++};
++static const Event events5[] = {
++ {1,48,0,0,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{48,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{24,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{48,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,49,0,1,1,{{24,0,0,0,0,0,0,0,0,0,0,0}},{{252,254,0,0,0,0,0,0,0,0,0,0}},{{48,49,0,0,0,0,0,0,0,0,0,0}},{{0,1,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{120,0,0,0,0,0,0,0,0,0,0,0}},{{252,254,0,0,0,0,0,0,0,0,0,0}},{{48,49,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,50,0,2,1,{{1,0,0,0,0,0,0,0,0,0,0,0}},{{250,252,254,0,0,0,0,0,0,0,0,0}},{{48,49,50,0,0,0,0,0,0,0,0,0}},{{0,0,1,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{25,0,0,0,0,0,0,0,0,0,0,0}},{{250,252,254,0,0,0,0,0,0,0,0,0}},{{48,49,50,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,51,0,3,1,{{25,0,0,0,0,0,0,0,0,0,0,0}},{{248,250,252,254,0,0,0,0,0,0,0,0}},{{48,49,50,51,0,0,0,0,0,0,0,0}},{{0,0,0,1,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{121,0,0,0,0,0,0,0,0,0,0,0}},{{248,250,252,254,0,0,0,0,0,0,0,0}},{{48,49,50,51,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,52,0,4,1,{{2,0,0,0,0,0,0,0,0,0,0,0}},{{246,248,250,252,254,0,0,0,0,0,0,0}},{{48,49,50,51,52,0,0,0,0,0,0,0}},{{0,0,0,0,1,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{246,248,250,252,254,0,0,0,0,0,0,0}},{{48,49,50,51,52,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,53,0,5,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{244,246,248,250,252,254,0,0,0,0,0,0}},{{48,49,50,51,52,53,0,0,0,0,0,0}},{{0,0,0,0,0,1,0,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{122,0,0,0,0,0,0,0,0,0,0,0}},{{244,246,248,250,252,254,0,0,0,0,0,0}},{{48,49,50,51,52,53,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,54,0,6,1,{{3,0,0,0,0,0,0,0,0,0,0,0}},{{242,244,246,248,250,252,254,0,0,0,0,0}},{{48,49,50,51,52,53,54,0,0,0,0,0}},{{0,0,0,0,0,0,1,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{27,0,0,0,0,0,0,0,0,0,0,0}},{{242,244,246,248,250,252,254,0,0,0,0,0}},{{48,49,50,51,52,53,54,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,55,0,7,1,{{27,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,0,0,0,0}},{{48,49,50,51,52,53,54,55,0,0,0,0}},{{0,0,0,0,0,0,0,1,0,0,0,0}}},
++ {2,-1,8,-1,1,{{123,0,0,0,0,0,0,0,0,0,0,0}},{{240,242,244,246,248,250,252,254,0,0,0,0}},{{48,49,50,51,52,53,54,55,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,56,0,8,1,{{4,0,0,0,0,0,0,0,0,0,0,0}},{{238,240,242,244,246,248,250,252,254,0,0,0}},{{48,49,50,51,52,53,54,55,56,0,0,0}},{{0,0,0,0,0,0,0,0,1,0,0,0}}},
++ {2,-1,8,-1,1,{{28,0,0,0,0,0,0,0,0,0,0,0}},{{238,240,242,244,246,248,250,252,254,0,0,0}},{{48,49,50,51,52,53,54,55,56,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,57,0,9,1,{{28,0,0,0,0,0,0,0,0,0,0,0}},{{236,238,240,242,244,246,248,250,252,254,0,0}},{{48,49,50,51,52,53,54,55,56,57,0,0}},{{0,0,0,0,0,0,0,0,0,1,0,0}}},
++ {2,-1,8,-1,1,{{124,0,0,0,0,0,0,0,0,0,0,0}},{{236,238,240,242,244,246,248,250,252,254,0,0}},{{48,49,50,51,52,53,54,55,56,57,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,58,0,10,1,{{5,0,0,0,0,0,0,0,0,0,0,0}},{{234,236,238,240,242,244,246,248,250,252,254,0}},{{48,49,50,51,52,53,54,55,56,57,58,0}},{{0,0,0,0,0,0,0,0,0,0,1,0}}},
++ {2,-1,8,-1,1,{{29,0,0,0,0,0,0,0,0,0,0,0}},{{234,236,238,240,242,244,246,248,250,252,254,0}},{{48,49,50,51,52,53,54,55,56,57,58,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,59,0,11,1,{{29,0,0,0,0,0,0,0,0,0,0,0}},{{232,234,236,238,240,242,244,246,248,250,252,254}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,1}}},
++ {2,-1,8,-1,1,{{125,0,0,0,0,0,0,0,0,0,0,0}},{{232,234,236,238,240,242,244,246,248,250,252,254}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,53,0,-1,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{231,233,235,237,239,126,243,245,247,249,251,253}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{231,233,235,237,239,126,243,245,247,249,251,253}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,53,0,5,1,{{26,0,0,0,0,0,0,0,0,0,0,0}},{{229,231,233,235,237,254,241,243,245,247,249,251}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,1,0,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{122,0,0,0,0,0,0,0,0,0,0,0}},{{229,231,233,235,237,254,241,243,245,247,249,251}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,48,0,-1,1,{{96,0,0,0,0,0,0,0,0,0,0,0}},{{126,230,232,234,236,253,240,242,244,246,248,250}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,230,232,234,236,253,240,242,244,246,248,250}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,49,0,-1,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{125,126,231,233,235,252,239,241,243,245,247,249}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{125,126,231,233,235,252,239,241,243,245,247,249}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,50,0,-1,1,{{97,0,0,0,0,0,0,0,0,0,0,0}},{{124,125,126,232,234,251,238,240,242,244,246,248}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{124,125,126,232,234,251,238,240,242,244,246,248}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,51,0,-1,1,{{1,0,0,0,0,0,0,0,0,0,0,0}},{{123,124,125,126,233,250,237,239,241,243,245,247}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{123,124,125,126,233,250,237,239,241,243,245,247}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,52,0,-1,1,{{98,0,0,0,0,0,0,0,0,0,0,0}},{{122,123,124,125,126,249,236,238,240,242,244,246}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{122,123,124,125,126,249,236,238,240,242,244,246}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,53,0,-1,1,{{2,0,0,0,0,0,0,0,0,0,0,0}},{{121,122,123,124,125,126,235,237,239,241,243,245}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{121,122,123,124,125,126,235,237,239,241,243,245}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,54,0,-1,1,{{99,0,0,0,0,0,0,0,0,0,0,0}},{{120,121,122,123,124,125,126,236,238,240,242,244}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{120,121,122,123,124,125,126,236,238,240,242,244}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,55,0,-1,1,{{3,0,0,0,0,0,0,0,0,0,0,0}},{{119,120,121,122,123,124,125,126,237,239,241,243}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{119,120,121,122,123,124,125,126,237,239,241,243}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,56,0,-1,1,{{100,0,0,0,0,0,0,0,0,0,0,0}},{{118,119,120,121,122,123,124,125,126,238,240,242}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{118,119,120,121,122,123,124,125,126,238,240,242}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,57,0,-1,1,{{4,0,0,0,0,0,0,0,0,0,0,0}},{{117,118,119,120,121,122,123,124,125,126,239,241}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{117,118,119,120,121,122,123,124,125,126,239,241}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,58,0,-1,1,{{101,0,0,0,0,0,0,0,0,0,0,0}},{{116,117,118,119,120,121,122,123,124,125,126,240}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{116,117,118,119,120,121,122,123,124,125,126,240}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,59,0,-1,1,{{5,0,0,0,0,0,0,0,0,0,0,0}},{{115,116,117,118,119,120,121,122,123,124,125,126}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{115,116,117,118,119,120,121,122,123,124,125,126}},{{48,49,50,51,52,53,54,55,56,57,58,59}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++};
++static const Event events6[] = {
++ {1,60,0,0,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {0,60,0,-1,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{126,0,0,0,0,0,0,0,0,0,0,0}},{{60,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,61,0,1,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{124,254,0,0,0,0,0,0,0,0,0,0}},{{60,61,0,0,0,0,0,0,0,0,0,0}},{{0,1,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{124,254,0,0,0,0,0,0,0,0,0,0}},{{60,61,0,0,0,0,0,0,0,0,0,0}},{{0,1,0,0,0,0,0,0,0,0,0,0}}},
++ {0,61,0,-1,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{123,126,0,0,0,0,0,0,0,0,0,0}},{{60,61,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{123,126,0,0,0,0,0,0,0,0,0,0}},{{60,61,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++ {1,60,0,0,1,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,124,0,0,0,0,0,0,0,0,0,0}},{{60,61,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,0,-1,0,{{0,0,0,0,0,0,0,0,0,0,0,0}},{{254,124,0,0,0,0,0,0,0,0,0,0}},{{60,61,0,0,0,0,0,0,0,0,0,0}},{{1,0,0,0,0,0,0,0,0,0,0,0}}},
++ {2,-1,8,-1,1,{{24,0,0,0,0,0,0,0,0,0,0,0}},{{254,124,0,0,0,0,0,0,0,0,0,0}},{{60,61,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}}},
++};
++static const Case cases[] = {
++ {"ascending20-s1",{{0,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}},events0,80},
++ {"repeat-s0",{{0,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}},events1,18},
++ {"repeat-s1",{{0,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}},events2,18},
++ {"repeat-s8",{{0,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}},events3,18},
++ {"release-replace-i5-s1",{{0,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}},events4,54},
++ {"same-pitch-release-replace-i5-s0",{{0,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}},events5,52},
++ {"pending-cancel-reuse-s0",{{0,0,0,0,0,0,0,0,0,0,0,0}},{{0,0,0,0,0,0,0,0,0,0,0,0}},events6,11},
++};
++} // namespace allocation_fixture

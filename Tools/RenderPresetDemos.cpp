@@ -35,7 +35,7 @@ public:
         const int data1 = size > 1 ? bytes[1] : 0, data2 = size > 2 ? bytes[2] : 0;
         if (kind == 0x80 || (kind == 0x90 && data2 == 0)) engine->noteOff (data1);
         else if (kind == 0x90) engine->noteOn (data1, data2);
-        else if (kind == 0xb0 && data1 == 64) engine->sustainPedal (data2 >= 64);
+        else if (kind == 0xb0 && data1 == 64) engine->sustainController (data2);
         else if (kind == 0xe0 || (kind == 0xb0 && data1 == 1))
         {
             if (kind == 0xe0) bend = (data2 << 7) | data1;

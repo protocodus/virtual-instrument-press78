@@ -228,6 +228,12 @@ if(BUILD_TESTING)
     add_executable(Press78ModulationTests Tests/test_modulation.cpp)
     target_link_libraries(Press78ModulationTests PRIVATE Press78DSP)
     add_test(NAME Press78.Modulation COMMAND Press78ModulationTests)
+    add_executable(Press78SustainTests Tests/test_sustain.cpp)
+    target_link_libraries(Press78SustainTests PRIVATE Press78DSP)
+    add_test(NAME Press78.Sustain COMMAND Press78SustainTests)
+    add_executable(Press78OutputBusTests Tests/test_output_bus.cpp)
+    target_link_libraries(Press78OutputBusTests PRIVATE Press78DSP)
+    add_test(NAME Press78.OutputBus COMMAND Press78OutputBusTests)
     add_executable(Press78PitchTests Tests/test_pitch.cpp)
     target_link_libraries(Press78PitchTests PRIVATE Press78DSP)
     add_test(NAME Press78.Pitch COMMAND Press78PitchTests)
@@ -266,12 +272,18 @@ if(BUILD_TESTING)
 
     find_package(Python3 COMPONENTS Interpreter)
     if(Python3_Interpreter_FOUND)
+        add_test(NAME Press78.ModernFactoryBank COMMAND ${Python3_EXECUTABLE}
+            ${CMAKE_CURRENT_SOURCE_DIR}/Tools/modern_bank.py)
+        add_test(NAME Press78.OutputKernel COMMAND ${Python3_EXECUTABLE}
+            ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_output_kernel.py --check)
         add_test(NAME Press78.FactoryBank COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_factory.py --check)
         add_test(NAME Press78.ChorusProfile COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_chorus_profile.py --check)
         add_test(NAME Press78.FirmwarePitch COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_firmware_pitch.py --check)
+        add_test(NAME Press78.LocalSupply COMMAND ${Python3_EXECUTABLE}
+            ${CMAKE_CURRENT_SOURCE_DIR}/Tools/check_supply.py)
         add_test(NAME Press78.PluginControls COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_plugin_controls.py --check)
         add_test(NAME Press78.DemoMidiSources COMMAND ${Python3_EXECUTABLE}

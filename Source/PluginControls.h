@@ -9,11 +9,11 @@ namespace press78 {
 struct PluginControl {
     std::string_view id, label;
     double minimum, maximum, defaultValue;
-    bool integer, patch, hidden; // hidden: inert compatibility id, kept for recall
+    bool integer, patch, hidden; // hidden: not on the Rack panel, so not in the editor
     std::string_view options; // '|'-separated choice names, empty for numbers
 };
 
-inline constexpr std::array<PluginControl, 66> kPluginControls{{
+inline constexpr std::array<PluginControl, 67> kPluginControls{{
     {"mod_mul", "Modulator Ratio", 0.0, 15.0, 1.0, true, true, false, ""},
     {"mod_dt1", "Modulator Fine detune", -7.0, 7.0, 0.0, true, true, false, ""},
     {"mod_tl", "Modulator Attenuation", 0.0, 127.0, 127.0, true, true, false, ""},
@@ -80,6 +80,7 @@ inline constexpr std::array<PluginControl, 66> kPluginControls{{
     {"bendRange", "Pitch bend range", 0.0, 24.0, 2.0, true, false, false, ""},
     {"modWheelDepth", "Wheel to vibrato", 0.0, 4.0, 1.0, false, false, false, ""},
     {"pitchModel", "Pitch model", 0.0, 1.0, 1.0, true, false, false, "Equal|Original"},
+    {"sustainMode", "Original release policy", 0.0, 1.0, 1.0, true, false, true, "Legacy|Original"},
 }};
 
 // Index of a control id; unknown ids are a compile-time error where constant-evaluated.

@@ -4,9 +4,10 @@ import argparse
 import json
 import math
 import xml.etree.ElementTree as ET
+from modern_bank import load_modern, preset_relative_path
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0b12'
+VERSION='0.1.0b15'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -17,7 +18,7 @@ REAL_DEFAULTS={'outputCircuit':1,'noiseModel':0,'noiseRms':0,
                'chorusDepthMs':math.hypot(0.0495126833338911,0.4943632948117077),
                'clockOffsetPpm':0,'clockDriftPpm':20,'clockDriftRateHz':.1,
                'lfoRateHz':5.24,'triangleLfo':1,'globalLfo':1,
-               'drive':0,'dcBlock':1,'outputLimit':1,'pitchModel':1}
+               'drive':0,'dcBlock':1,'outputLimit':1,'pitchModel':1,'sustainMode':1}
 FACTORY_CHARACTER=REAL_DEFAULTS
 
 
@@ -81,8 +82,13 @@ def specs():
     add('pitchModel','Pitch model',0,1,0,True)
     rows[-1]['options']=['Equal','Original']
     rows[-1]['startup_default']=1
+    # Preserve conventional pedal holding for older patches. The current
+    # factory bank explicitly chooses the Original release-rate policy.
+    add('sustainMode','Original release policy',0,1,0,True)
+    rows[-1].update(options=['Legacy','Original'],startup_default=1,hidden=True,
+                   description='Compatibility policy: Original pedal selects release rate; Legacy pedal holds notes.')
     for row in rows:
-        if row['id'] in REAL_DEFAULTS and row['id']!='pitchModel': row['default']=REAL_DEFAULTS[row['id']]
+        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode'): row['default']=REAL_DEFAULTS[row['id']]
         if row['id'] in LEGACY_NOISE:
             row.update(hidden=True,deprecated='Inert compatibility property; additive noise has been removed.')
     return rows
@@ -186,6 +192,11 @@ def main():
     bank=json.loads((ROOT/'Assets/FactoryBank/press78-factory.json').read_text())
     for voice in bank['voices']:
         write_patch(public/(voice['name'].replace('/','-')+'.repatch'),rows,{**decode(voice['raw_data']),**FACTORY_CHARACTER})
+    modern=load_modern()
+    for voice in modern:
+        destination=public/preset_relative_path(voice)
+        destination.parent.mkdir(parents=True,exist_ok=True)
+        write_patch(destination,rows,voice['parameters'])
     header=['#pragma once','#include <array>','namespace press78rack {',
         'struct Parameter { const char* name; double minimum, maximum, initial; bool stepped; };',
         f'inline constexpr std::array<Parameter,{len(rows)+3}> kParameters{{{{']
@@ -203,9 +214,9 @@ def main():
          if row['id'].startswith(('mod_','car_')) else
          f'patch.{row["id"]} = static_cast<{"bool" if row["id"] in ("vibrato","sustain") else "int"}>(physical(k_{row["id"]}));'
          if row['target']=='patch' else
-         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel") else "double"}>(physical(k_{row["id"]}));'
+         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode") else "double"}>(physical(k_{row["id"]}));'
          for row in rows if row['id'] not in ('bendRange','modWheelDepth')])+'\n')
-    print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS patches at {device}')
+    print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS +{len(modern)} modern patches at {device}')
 
 
 if __name__=='__main__':main()

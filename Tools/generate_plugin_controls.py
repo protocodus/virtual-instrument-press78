@@ -40,7 +40,7 @@ def render() -> str:
         "struct PluginControl {",
         "    std::string_view id, label;",
         "    double minimum, maximum, defaultValue;",
-        "    bool integer, patch, hidden; // hidden: inert compatibility id, kept for recall",
+        "    bool integer, patch, hidden; // hidden: not on the Rack panel, so not in the editor",
         "    std::string_view options; // '|'-separated choice names, empty for numbers",
         "};",
         "",

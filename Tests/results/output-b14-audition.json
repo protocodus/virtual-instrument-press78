@@ -1,0 +1,463 @@
+{
+  "schema": "press78.fixed-output-audition-result.v1",
+  "design_sha256": "c92b598b8588aa088b26394f5555282e2dadbe4ea3fcff3f67ca8681bd26ad97",
+  "renderer_sha256": "6a544505d77e829f34ffc27fd91b1947dafdaeabda50bab46c359c6fe186b444",
+  "compile_command": [
+    "c++",
+    "-std=c++17",
+    "-O3",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-I/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/fixed-output-bus-20261019",
+    "-I/Users/vojta/Dev/virtual-instrument-press78/Source/DSP",
+    "/Users/vojta/Dev/virtual-instrument-press78/Reference/Prototypes/fixed-output-bus-20261019/Audition.cpp",
+    "/Users/vojta/Dev/virtual-instrument-press78/Source/DSP/Press78Engine.cpp",
+    "-o",
+    "build/fixed-output-audition-b14-final-20261019/audition"
+  ],
+  "passed": true,
+  "48k_identity": [
+    {
+      "preset": 65,
+      "exact": true
+    },
+    {
+      "preset": 93,
+      "exact": true
+    },
+    {
+      "preset": 97,
+      "exact": true
+    }
+  ],
+  "comparisons": [
+    {
+      "preset": 65,
+      "rate": 44100,
+      "old_nrmse": 0.043015205794656154,
+      "candidate_nrmse": 1.3938477945352088e-06,
+      "lower": true
+    },
+    {
+      "preset": 65,
+      "rate": 96000,
+      "old_nrmse": 0.04999036882709963,
+      "candidate_nrmse": 6.799860228971585e-07,
+      "lower": true
+    },
+    {
+      "preset": 93,
+      "rate": 44100,
+      "old_nrmse": 0.0348229322433235,
+      "candidate_nrmse": 1.34976387603695e-06,
+      "lower": true
+    },
+    {
+      "preset": 93,
+      "rate": 96000,
+      "old_nrmse": 0.03834878884388566,
+      "candidate_nrmse": 5.706370751422488e-07,
+      "lower": true
+    },
+    {
+      "preset": 97,
+      "rate": 44100,
+      "old_nrmse": 0.019410651254148762,
+      "candidate_nrmse": 2.1998608018629943e-06,
+      "lower": true
+    },
+    {
+      "preset": 97,
+      "rate": 96000,
+      "old_nrmse": 0.02317509692482631,
+      "candidate_nrmse": 5.975151758352638e-07,
+      "lower": true
+    }
+  ],
+  "metrics": [
+    {
+      "preset": 65,
+      "rate": 44100,
+      "mode": "old",
+      "channel_nrmse": [
+        0.04568685833097564,
+        0.04050054876253843
+      ],
+      "joint_nrmse": 0.043015205794656154,
+      "joint_stft_logmag_rms_db": 0.11304531198009173,
+      "qualified_stft_bins": 117326
+    },
+    {
+      "preset": 65,
+      "rate": 44100,
+      "mode": "candidate",
+      "channel_nrmse": [
+        1.4756092346158117e-06,
+        1.3171555090837344e-06
+      ],
+      "joint_nrmse": 1.3938477945352088e-06,
+      "joint_stft_logmag_rms_db": 0.00025938791480075823,
+      "qualified_stft_bins": 117326
+    },
+    {
+      "preset": 65,
+      "rate": 48000,
+      "mode": "old",
+      "channel_nrmse": [
+        0.0,
+        0.0
+      ],
+      "joint_nrmse": 0.0,
+      "joint_stft_logmag_rms_db": 0.0,
+      "qualified_stft_bins": 117326
+    },
+    {
+      "preset": 65,
+      "rate": 48000,
+      "mode": "candidate",
+      "channel_nrmse": [
+        0.0,
+        0.0
+      ],
+      "joint_nrmse": 0.0,
+      "joint_stft_logmag_rms_db": 0.0,
+      "qualified_stft_bins": 117326
+    },
+    {
+      "preset": 65,
+      "rate": 96000,
+      "mode": "old",
+      "channel_nrmse": [
+        0.053507889170842746,
+        0.04665199009250633
+      ],
+      "joint_nrmse": 0.04999036882709963,
+      "joint_stft_logmag_rms_db": 0.09351632363659979,
+      "qualified_stft_bins": 117326
+    },
+    {
+      "preset": 65,
+      "rate": 96000,
+      "mode": "candidate",
+      "channel_nrmse": [
+        7.273134060917576e-07,
+        6.351035113363284e-07
+      ],
+      "joint_nrmse": 6.799860228971585e-07,
+      "joint_stft_logmag_rms_db": 1.2327170546578102e-05,
+      "qualified_stft_bins": 117326
+    },
+    {
+      "preset": 93,
+      "rate": 44100,
+      "mode": "old",
+      "channel_nrmse": [
+        0.0338546932168845,
+        0.03571889941872827
+      ],
+      "joint_nrmse": 0.0348229322433235,
+      "joint_stft_logmag_rms_db": 0.057328545354988346,
+      "qualified_stft_bins": 37447
+    },
+    {
+      "preset": 93,
+      "rate": 44100,
+      "mode": "candidate",
+      "channel_nrmse": [
+        1.4131351414278975e-06,
+        1.2866410769045925e-06
+      ],
+      "joint_nrmse": 1.34976387603695e-06,
+      "joint_stft_logmag_rms_db": 1.5789330636633965e-05,
+      "qualified_stft_bins": 37447
+    },
+    {
+      "preset": 93,
+      "rate": 48000,
+      "mode": "old",
+      "channel_nrmse": [
+        0.0,
+        0.0
+      ],
+      "joint_nrmse": 0.0,
+      "joint_stft_logmag_rms_db": 0.0,
+      "qualified_stft_bins": 37447
+    },
+    {
+      "preset": 93,
+      "rate": 48000,
+      "mode": "candidate",
+      "channel_nrmse": [
+        0.0,
+        0.0
+      ],
+      "joint_nrmse": 0.0,
+      "joint_stft_logmag_rms_db": 0.0,
+      "qualified_stft_bins": 37447
+    },
+    {
+      "preset": 93,
+      "rate": 96000,
+      "mode": "old",
+      "channel_nrmse": [
+        0.03798033633707855,
+        0.038695742095421586
+      ],
+      "joint_nrmse": 0.03834878884388566,
+      "joint_stft_logmag_rms_db": 0.04095805016402644,
+      "qualified_stft_bins": 37447
+    },
+    {
+      "preset": 93,
+      "rate": 96000,
+      "mode": "candidate",
+      "channel_nrmse": [
+        5.82405199032366e-07,
+        5.592222552747037e-07
+      ],
+      "joint_nrmse": 5.706370751422488e-07,
+      "joint_stft_logmag_rms_db": 8.854470385433927e-06,
+      "qualified_stft_bins": 37447
+    },
+    {
+      "preset": 97,
+      "rate": 44100,
+      "mode": "old",
+      "channel_nrmse": [
+        0.018045478961217356,
+        0.021731097321669977
+      ],
+      "joint_nrmse": 0.019410651254148762,
+      "joint_stft_logmag_rms_db": 0.024704233142536988,
+      "qualified_stft_bins": 77846
+    },
+    {
+      "preset": 97,
+      "rate": 44100,
+      "mode": "candidate",
+      "channel_nrmse": [
+        2.140570925220912e-06,
+        2.306479492573774e-06
+      ],
+      "joint_nrmse": 2.1998608018629943e-06,
+      "joint_stft_logmag_rms_db": 0.0001751201682082919,
+      "qualified_stft_bins": 77846
+    },
+    {
+      "preset": 97,
+      "rate": 48000,
+      "mode": "old",
+      "channel_nrmse": [
+        0.0,
+        0.0
+      ],
+      "joint_nrmse": 0.0,
+      "joint_stft_logmag_rms_db": 0.0,
+      "qualified_stft_bins": 77846
+    },
+    {
+      "preset": 97,
+      "rate": 48000,
+      "mode": "candidate",
+      "channel_nrmse": [
+        0.0,
+        0.0
+      ],
+      "joint_nrmse": 0.0,
+      "joint_stft_logmag_rms_db": 0.0,
+      "qualified_stft_bins": 77846
+    },
+    {
+      "preset": 97,
+      "rate": 96000,
+      "mode": "old",
+      "channel_nrmse": [
+        0.019879121752737844,
+        0.028320004519263225
+      ],
+      "joint_nrmse": 0.02317509692482631,
+      "joint_stft_logmag_rms_db": 0.0495089006819266,
+      "qualified_stft_bins": 77846
+    },
+    {
+      "preset": 97,
+      "rate": 96000,
+      "mode": "candidate",
+      "channel_nrmse": [
+        5.778583718694299e-07,
+        6.325817499628606e-07
+      ],
+      "joint_nrmse": 5.975151758352638e-07,
+      "joint_stft_logmag_rms_db": 1.2381842086052327e-05,
+      "qualified_stft_bins": 77846
+    }
+  ],
+  "native_files": [
+    {
+      "rate": 44100,
+      "preset": 65,
+      "latency_samples": 30,
+      "peak": 0.136757,
+      "mode": "old",
+      "path": "pss65-44100-old-native.wav",
+      "sha256": "fb8ab9fac0594803ef304f6a5a203cfd1a78bbf2f57a2b576a499d19d2c8233f"
+    },
+    {
+      "rate": 44100,
+      "preset": 65,
+      "latency_samples": 126,
+      "peak": 0.136704,
+      "mode": "candidate",
+      "path": "pss65-44100-candidate-native.wav",
+      "sha256": "fa8d0cecb89f4b513bd9210cbbb2bcf5ac39e469cbaf3edcbec4d988664080e9"
+    },
+    {
+      "rate": 48000,
+      "preset": 65,
+      "latency_samples": 32,
+      "peak": 0.13679,
+      "mode": "old",
+      "path": "pss65-48000-old-native.wav",
+      "sha256": "5b1df7addc337845f8f047bfe045f057a0b87823885fae040d2448f6d9625970"
+    },
+    {
+      "rate": 48000,
+      "preset": 65,
+      "latency_samples": 32,
+      "peak": 0.13679,
+      "mode": "candidate",
+      "path": "pss65-48000-candidate-native.wav",
+      "sha256": "5b1df7addc337845f8f047bfe045f057a0b87823885fae040d2448f6d9625970"
+    },
+    {
+      "rate": 96000,
+      "preset": 65,
+      "latency_samples": 64,
+      "peak": 0.13669,
+      "mode": "old",
+      "path": "pss65-96000-old-native.wav",
+      "sha256": "1d54fccf25926f86f0aaeeffdbbe9308f29393a26e180801693b31ae19801532"
+    },
+    {
+      "rate": 96000,
+      "preset": 65,
+      "latency_samples": 256,
+      "peak": 0.13679,
+      "mode": "candidate",
+      "path": "pss65-96000-candidate-native.wav",
+      "sha256": "786c0566ac5871922e324c3ea5423d028edff7de05944b6dd256e3cf0a079542"
+    },
+    {
+      "rate": 44100,
+      "preset": 93,
+      "latency_samples": 30,
+      "peak": 0.117824,
+      "mode": "old",
+      "path": "pss93-44100-old-native.wav",
+      "sha256": "f81fd6765bfde59a3f8e91d629658d08578b05d823245370fe292a73323cf91b"
+    },
+    {
+      "rate": 44100,
+      "preset": 93,
+      "latency_samples": 126,
+      "peak": 0.117808,
+      "mode": "candidate",
+      "path": "pss93-44100-candidate-native.wav",
+      "sha256": "f52eaa40ffd6645f5878e14d791bb2555e7706bc02a13c11310ffc59f58e123d"
+    },
+    {
+      "rate": 48000,
+      "preset": 93,
+      "latency_samples": 32,
+      "peak": 0.117823,
+      "mode": "old",
+      "path": "pss93-48000-old-native.wav",
+      "sha256": "1f7a2fbc66802e6d85de1260d3f3174e9a48cdd7764cb34e4a37132b278196c6"
+    },
+    {
+      "rate": 48000,
+      "preset": 93,
+      "latency_samples": 32,
+      "peak": 0.117823,
+      "mode": "candidate",
+      "path": "pss93-48000-candidate-native.wav",
+      "sha256": "1f7a2fbc66802e6d85de1260d3f3174e9a48cdd7764cb34e4a37132b278196c6"
+    },
+    {
+      "rate": 96000,
+      "preset": 93,
+      "latency_samples": 64,
+      "peak": 0.117762,
+      "mode": "old",
+      "path": "pss93-96000-old-native.wav",
+      "sha256": "78e4388f22c8fe4b270ab7284c0fe1dd96a33cc1687e861c5b8565d5018299a4"
+    },
+    {
+      "rate": 96000,
+      "preset": 93,
+      "latency_samples": 256,
+      "peak": 0.117823,
+      "mode": "candidate",
+      "path": "pss93-96000-candidate-native.wav",
+      "sha256": "7ffc298430ae34f6fdee3b15d7acacd53c98de2cf3ecedc00e7eb9061ce01d0e"
+    },
+    {
+      "rate": 44100,
+      "preset": 97,
+      "latency_samples": 30,
+      "peak": 0.151299,
+      "mode": "old",
+      "path": "pss97-44100-old-native.wav",
+      "sha256": "a0445410c722cca04d3ca1ea046c4409d03bc6c4c799f1b381292d76c431d585"
+    },
+    {
+      "rate": 44100,
+      "preset": 97,
+      "latency_samples": 126,
+      "peak": 0.151243,
+      "mode": "candidate",
+      "path": "pss97-44100-candidate-native.wav",
+      "sha256": "832b586a728105ac5a3c854f1f845a59c2f356eb10f8aee4f38f8e81f432ecdc"
+    },
+    {
+      "rate": 48000,
+      "preset": 97,
+      "latency_samples": 32,
+      "peak": 0.151275,
+      "mode": "old",
+      "path": "pss97-48000-old-native.wav",
+      "sha256": "ff532a61320dbfe6bbbde6404a539becff4465a6e982b6050f5093b40643e067"
+    },
+    {
+      "rate": 48000,
+      "preset": 97,
+      "latency_samples": 32,
+      "peak": 0.151275,
+      "mode": "candidate",
+      "path": "pss97-48000-candidate-native.wav",
+      "sha256": "ff532a61320dbfe6bbbde6404a539becff4465a6e982b6050f5093b40643e067"
+    },
+    {
+      "rate": 96000,
+      "preset": 97,
+      "latency_samples": 64,
+      "peak": 0.151245,
+      "mode": "old",
+      "path": "pss97-96000-old-native.wav",
+      "sha256": "fcb742b53c8f0903169979d0439e626645d3dd5bac8d131d445f89cba41de013"
+    },
+    {
+      "rate": 96000,
+      "preset": 97,
+      "latency_samples": 256,
+      "peak": 0.15128,
+      "mode": "candidate",
+      "path": "pss97-96000-candidate-native.wav",
+      "sha256": "32dcd4a31fe7d685caf00b7920f9f2e3b7c75cfe5f7bf952077b58a19c63684c"
+    }
+  ],
+  "scope": "Host-rate consistency against unchanged b13 48k model; NOT hardware accuracy.",
+  "listening_alignment": "Remove ONLY declared candidate extra SRC delay:105 ticks at44.1k,96 at96k. Common32tick base delay retained. No fitted lag/gain/pitch.",
+  "no_noise_added": true
+}
