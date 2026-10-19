@@ -1,0 +1,1755 @@
+{
+  "schema": "press78.editingfun-tonal-audit.v1",
+  "date": "2026-10-19",
+  "conclusion": "No qualified source envelope rate. This frozen method does not rescue the old speech-RMS-rejected fits. Coherent near-tone contamination can falsely pass its diagnostics.",
+  "source": {
+    "url": "https://www.youtube.com/watch?v=a0SFoa7lUNQ",
+    "author": "Jungle Jon",
+    "source_wav": {
+      "path": "build/opu-envelope-independent-20261019/jon-carrier-60-78-float48.wav",
+      "bytes": 6912092,
+      "sha256": "0534bccdd2b319a12e5279e6426a6801cfdc78fdf4fb21fb1ecbb9dd1ac985c8"
+    },
+    "retained_wave_absolute_span_seconds": [
+      60,
+      78
+    ],
+    "acquisition": "Existing local acquisition only; no new download or decode.",
+    "prior_report": "Reference/Research/opu-envelope-independent-20261019.md",
+    "fresh_holdout": false
+  },
+  "selection": {
+    "windows_absolute_seconds": [
+      [
+        70.1,
+        70.2
+      ],
+      [
+        70.15,
+        70.45
+      ]
+    ],
+    "channels": [
+      "mid",
+      "left",
+      "right"
+    ],
+    "centers": "Exactly prior5ms grids including both endpoints;21and61epochs",
+    "local_support": "20ms and40ms centered Hann, truncated at each original absolute fit boundary. No sample beyond those supports is used. Local polynomial coefficients evaluated at the declared center, including boundary centers.",
+    "frequency": "One strongest Hann spectral peak180..2000Hz in70.10..70.45mid,32xzero-padding/log3pointinterpolation. Samefrequency all6rows; no optimization by slope/fitquality. This is a selected spectral line, not establishedfundamental or MIDI pitch.",
+    "display31": "All12priorcroppedrows stay rejected, no extraction."
+  },
+  "method": {
+    "projector": "Weighted joint LS DC+linear plus H1/H2/H3 each complexquadratic time amplitude. Target=first selected line; higherharmonics are nuisances. Singularvaluecondition is retained.",
+    "slope": "OLS20log10 of targetline amplitude on original21/61center grids. Primary40ms; independent20ms sensitivity.",
+    "diagnostics": "Fixed residual probes at selectedline \u00b175,125,175Hz, excluding<20Hz/Nyquist and within50Hz ofjointmodeled harmonics. These are signal-residual interference indicators, never an independent noise floor.",
+    "phase": "Phase ofcoefficient relativefixedglobaloscillator; max-min successivephase-derivedfrequency must<=2Hz.",
+    "gates": {
+      "frequency_range_hz": [
+        180,
+        2000
+      ],
+      "peak_max_exclusive": 0.98,
+      "condition_max": 10000000000.0,
+      "r_squared_min": 0.99,
+      "max_abs_fit_residual_db": 0.5,
+      "decay_slope_range": [
+        -120,
+        -1
+      ],
+      "20_40ms_slope_difference_max": 1.0,
+      "phase_frequency_span_max": 2.0,
+      "minimum_residual_probe_separation_db": 20
+    }
+  },
+  "prospective_controls": [
+    {
+      "id": "clean-00",
+      "kind": "clean",
+      "frequency": 220.0,
+      "decay": 8.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-01",
+      "kind": "clean",
+      "frequency": 220.0,
+      "decay": 8.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-02",
+      "kind": "clean",
+      "frequency": 220.0,
+      "decay": 24.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-03",
+      "kind": "clean",
+      "frequency": 220.0,
+      "decay": 24.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-04",
+      "kind": "clean",
+      "frequency": 220.0,
+      "decay": 40.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-05",
+      "kind": "clean",
+      "frequency": 220.0,
+      "decay": 40.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-06",
+      "kind": "clean",
+      "frequency": 261.625565,
+      "decay": 8.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-07",
+      "kind": "clean",
+      "frequency": 261.625565,
+      "decay": 8.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-08",
+      "kind": "clean",
+      "frequency": 261.625565,
+      "decay": 24.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-09",
+      "kind": "clean",
+      "frequency": 261.625565,
+      "decay": 24.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-10",
+      "kind": "clean",
+      "frequency": 261.625565,
+      "decay": 40.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-11",
+      "kind": "clean",
+      "frequency": 261.625565,
+      "decay": 40.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-12",
+      "kind": "clean",
+      "frequency": 523.25113,
+      "decay": 8.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-13",
+      "kind": "clean",
+      "frequency": 523.25113,
+      "decay": 8.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-14",
+      "kind": "clean",
+      "frequency": 523.25113,
+      "decay": 24.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-15",
+      "kind": "clean",
+      "frequency": 523.25113,
+      "decay": 24.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-16",
+      "kind": "clean",
+      "frequency": 523.25113,
+      "decay": 40.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-17",
+      "kind": "clean",
+      "frequency": 523.25113,
+      "decay": 40.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-18",
+      "kind": "clean",
+      "frequency": 1046.50226,
+      "decay": 8.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-19",
+      "kind": "clean",
+      "frequency": 1046.50226,
+      "decay": 8.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-20",
+      "kind": "clean",
+      "frequency": 1046.50226,
+      "decay": 24.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-21",
+      "kind": "clean",
+      "frequency": 1046.50226,
+      "decay": 24.0,
+      "phase": 0.37
+    },
+    {
+      "id": "clean-22",
+      "kind": "clean",
+      "frequency": 1046.50226,
+      "decay": 40.0,
+      "phase": 0.0
+    },
+    {
+      "id": "clean-23",
+      "kind": "clean",
+      "frequency": 1046.50226,
+      "decay": 40.0,
+      "phase": 0.37
+    },
+    {
+      "id": "speech-24",
+      "kind": "speech",
+      "frequency": 261.625565,
+      "decay": 24.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -20.0
+    },
+    {
+      "id": "speech-25",
+      "kind": "speech",
+      "frequency": 261.625565,
+      "decay": 24.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -10.0
+    },
+    {
+      "id": "speech-26",
+      "kind": "speech",
+      "frequency": 261.625565,
+      "decay": 40.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -20.0
+    },
+    {
+      "id": "speech-27",
+      "kind": "speech",
+      "frequency": 261.625565,
+      "decay": 40.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -10.0
+    },
+    {
+      "id": "speech-28",
+      "kind": "speech",
+      "frequency": 523.25113,
+      "decay": 24.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -20.0
+    },
+    {
+      "id": "speech-29",
+      "kind": "speech",
+      "frequency": 523.25113,
+      "decay": 24.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -10.0
+    },
+    {
+      "id": "speech-30",
+      "kind": "speech",
+      "frequency": 523.25113,
+      "decay": 40.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -20.0
+    },
+    {
+      "id": "speech-31",
+      "kind": "speech",
+      "frequency": 523.25113,
+      "decay": 40.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -10.0
+    },
+    {
+      "id": "speech-32",
+      "kind": "speech",
+      "frequency": 1046.50226,
+      "decay": 24.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -20.0
+    },
+    {
+      "id": "speech-33",
+      "kind": "speech",
+      "frequency": 1046.50226,
+      "decay": 24.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -10.0
+    },
+    {
+      "id": "speech-34",
+      "kind": "speech",
+      "frequency": 1046.50226,
+      "decay": 40.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -20.0
+    },
+    {
+      "id": "speech-35",
+      "kind": "speech",
+      "frequency": 1046.50226,
+      "decay": 40.0,
+      "phase": 0.37,
+      "speech_relative_rms_db": -10.0
+    },
+    {
+      "id": "nearby-tone",
+      "kind": "nearby-tone",
+      "frequency": 523.25113,
+      "decay": 24.0,
+      "phase": 0.37
+    },
+    {
+      "id": "dynamic-gain",
+      "kind": "dynamic-gain",
+      "frequency": 523.25113,
+      "decay": 24.0,
+      "phase": 0.37
+    }
+  ],
+  "control_qualification": {
+    "declared_pre_source_gate_passed": true,
+    "total_controls": 38,
+    "total_window_evaluations": 76,
+    "clean_evaluations": 48,
+    "clean_qualified": 48,
+    "clean_max_primary_slope_error_db_per_second": 0.0005882478364718224,
+    "speech_evaluations": 24,
+    "speech_qualified": 0,
+    "required_evaluations": 72,
+    "required_failed": [],
+    "robustness_against_nearby_coherent_tones_proven": false,
+    "nearby_tone_false_admissions": [
+      {
+        "id": "nearby-tone",
+        "kind": "nearby-tone",
+        "window": "short",
+        "qualified": true,
+        "slope_db_per_second": -33.21096819919233,
+        "truth_captured_line_slope": -24.0,
+        "absolute_error": 9.21096819919233,
+        "failed_gates": []
+      },
+      {
+        "id": "nearby-tone",
+        "kind": "nearby-tone",
+        "window": "extended",
+        "qualified": true,
+        "slope_db_per_second": -37.55624230999136,
+        "truth_captured_line_slope": -24.0,
+        "absolute_error": 13.556242309991362,
+        "failed_gates": []
+      }
+    ],
+    "hardware_envelope_inference_qualified": false,
+    "important_limit": "A protocol gate pass is only clean accuracy plus accuracy of admitted speech mixtures. All speech mixtures were rejected. Near-tone diagnostic is excluded prospectively but reveals two false admissions; do not describe broad interference robustness."
+  },
+  "all_control_summaries": [
+    {
+      "id": "clean-00",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -8.000238240598684,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 0.00023824059868360337,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-00",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -7.999987815362441,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 1.218463755936483e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-01",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -8.000194669053348,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 0.00019466905334830642,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-01",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -8.000009786849848,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 9.786849847870371e-06,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-02",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -23.999836363048733,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.00016363695126742073,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-02",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -24.000001634863363,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 1.6348633629093001e-06,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-03",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -24.000588247836472,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.0005882478364718224,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-03",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -24.000044917564054,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 4.491756405400338e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-04",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -40.000168446353314,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.00016844635331381141,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-04",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -39.99980217690604,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.00019782309396276787,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-05",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -40.000215827013044,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.00021582701304367902,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-05",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -40.00000695429228,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 6.954292281591279e-06,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-06",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -8.000180389960958,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 0.0001803899609580384,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-06",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -7.999961117595571,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 3.8882404428619566e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-07",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -7.999974156774383,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 2.584322561727248e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-07",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -8.000038426666599,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 3.842666659892302e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-08",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -24.000304448118204,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.0003044481182037373,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-08",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -23.99994563053998,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 5.43694600203537e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-09",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -24.000240915210792,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.00024091521079228073,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-09",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -23.99989182564379,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.00010817435621035543,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-10",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -40.0001860774495,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.0001860774494986117,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-10",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -40.00000530810587,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 5.308105869517021e-06,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-11",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -39.99995281864045,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 4.718135954817626e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-11",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -40.000065781447866,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 6.578144786573148e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-12",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -8.000090190206882,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 9.019020688150192e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-12",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -7.999936281575397,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 6.371842460328736e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-13",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -7.999878051260532,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 0.00012194873946835827,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-13",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -8.00000063252163,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 6.325216297398129e-07,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-14",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -24.000016065650744,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 1.6065650743968263e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-14",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -23.99990376918339,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 9.623081660947719e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-15",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -24.00000617365995,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 6.173659951258514e-06,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-15",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -23.999985411884257,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 1.4588115742952823e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-16",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -40.000169096623836,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.00016909662383568502,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-16",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -40.00018079031065,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.00018079031065099116,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-17",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -40.00032758696529,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.0003275869652910046,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-17",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -40.00002763841728,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 2.7638417279263194e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-18",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -8.000043131676234,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 4.3131676234153815e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-18",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -7.999979230976253,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 2.076902374703593e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-19",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -7.999987314527628,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 1.2685472372098161e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-19",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -8.000018908816685,
+      "truth_captured_line_slope": -8.0,
+      "absolute_error": 1.8908816684870544e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-20",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -23.999911328541003,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 8.867145899671414e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-20",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -23.99995819447335,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 4.180552664934112e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-21",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -24.000145115870442,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.00014511587044196972,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-21",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -24.000077277014427,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 7.727701442661328e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-22",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -40.00011031822737,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.00011031822737095354,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-22",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -40.00008233562719,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 8.233562719084375e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-23",
+      "kind": "clean",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -40.00057823584083,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.0005782358408268351,
+      "failed_gates": []
+    },
+    {
+      "id": "clean-23",
+      "kind": "clean",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -40.00013800732704,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.0001380073270382809,
+      "failed_gates": []
+    },
+    {
+      "id": "speech-24",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -19.91313184677412,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 4.086868153225879,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary"
+      ]
+    },
+    {
+      "id": "speech-24",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -23.657875653344362,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.3421243466556376,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-25",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -8.52345505359662,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 15.47654494640338,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-25",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -22.912258391462586,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 1.0877416085374136,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-26",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -35.605628961923216,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 4.394371038076784,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary"
+      ]
+    },
+    {
+      "id": "speech-26",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -39.4926668165217,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.5073331834783019,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-27",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -23.582037852669576,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 16.417962147330424,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-27",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -38.48734370422737,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 1.5126562957726293,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-28",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -28.512571371751104,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 4.512571371751104,
+      "failed_gates": [
+        "linear",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-28",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -24.63411523020959,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.6341152302095914,
+      "failed_gates": [
+        "linear",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-29",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -39.10046547414845,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 15.10046547414845,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-29",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -26.033668183229757,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 2.033668183229757,
+      "failed_gates": [
+        "linear",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-30",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -45.149165446039895,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 5.149165446039895,
+      "failed_gates": [
+        "linear",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-30",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -40.90291216233646,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.9029121623364631,
+      "failed_gates": [
+        "linear",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-31",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -57.743832675274604,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 17.743832675274604,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-31",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -43.31018372650046,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 3.310183726500462,
+      "failed_gates": [
+        "linear",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-32",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -24.43729698493355,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.43729698493354974,
+      "failed_gates": [
+        "phase_stationary"
+      ]
+    },
+    {
+      "id": "speech-32",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -24.223148327829943,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.22314832782994287,
+      "failed_gates": [
+        "linear",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-33",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -24.5438135145914,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.5438135145913989,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-33",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -24.885786596411506,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 0.8857865964115064,
+      "failed_gates": [
+        "linear",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-34",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -40.46009921160373,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.46009921160373324,
+      "failed_gates": [
+        "phase_stationary"
+      ]
+    },
+    {
+      "id": "speech-34",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -40.48366281303919,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.4836628130391887,
+      "failed_gates": [
+        "linear",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-35",
+      "kind": "speech",
+      "window": "short",
+      "qualified": false,
+      "slope_db_per_second": -40.3013078366066,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 0.3013078366065969,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "speech-35",
+      "kind": "speech",
+      "window": "extended",
+      "qualified": false,
+      "slope_db_per_second": -42.49451253830548,
+      "truth_captured_line_slope": -40.0,
+      "absolute_error": 2.4945125383054787,
+      "failed_gates": [
+        "linear",
+        "projection_width_agreement",
+        "phase_stationary",
+        "residual_probe_separation"
+      ]
+    },
+    {
+      "id": "nearby-tone",
+      "kind": "nearby-tone",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -33.21096819919233,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 9.21096819919233,
+      "failed_gates": []
+    },
+    {
+      "id": "nearby-tone",
+      "kind": "nearby-tone",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -37.55624230999136,
+      "truth_captured_line_slope": -24.0,
+      "absolute_error": 13.556242309991362,
+      "failed_gates": []
+    },
+    {
+      "id": "dynamic-gain",
+      "kind": "dynamic-gain",
+      "window": "short",
+      "qualified": true,
+      "slope_db_per_second": -12.00006316089529,
+      "truth_captured_line_slope": -12.0,
+      "absolute_error": 6.31608952907925e-05,
+      "failed_gates": []
+    },
+    {
+      "id": "dynamic-gain",
+      "kind": "dynamic-gain",
+      "window": "extended",
+      "qualified": true,
+      "slope_db_per_second": -12.000008595915395,
+      "truth_captured_line_slope": -12.0,
+      "absolute_error": 8.59591539459359e-06,
+      "failed_gates": []
+    }
+  ],
+  "source_summary": {
+    "qualified_rows": 0,
+    "total_rows": 6,
+    "selected_line_frequency_hz": 349.284698246851,
+    "all_rows": [
+      {
+        "channel": "mid",
+        "window": "short",
+        "absolute_support_seconds": [
+          70.1,
+          70.19999999999999
+        ],
+        "selected_line_hz": 349.284698246851,
+        "qualified": false,
+        "metrics_by_width": {
+          "0.02": {
+            "slope_db_per_second": -45.933696376857526,
+            "r_squared": 0.40309941359091206,
+            "max_residual_db": 5.139551034084263,
+            "residual_frequency_span_hz": 42.661346722352036,
+            "minimum_line_above_residual_probe_db": 9.329551603457194,
+            "max_condition": 213.3694078545277
+          },
+          "0.04": {
+            "slope_db_per_second": -50.4683897242511,
+            "r_squared": 0.6128796156909215,
+            "max_residual_db": 4.138063896894494,
+            "residual_frequency_span_hz": 31.951961761922245,
+            "minimum_line_above_residual_probe_db": 9.169156956562993,
+            "max_condition": 157.18154446312994
+          }
+        },
+        "failed_gates": [
+          "linear",
+          "projection_width_agreement",
+          "phase_stationary",
+          "residual_probe_separation"
+        ]
+      },
+      {
+        "channel": "mid",
+        "window": "extended",
+        "absolute_support_seconds": [
+          70.14999999999999,
+          70.44999999999999
+        ],
+        "selected_line_hz": 349.284698246851,
+        "qualified": false,
+        "metrics_by_width": {
+          "0.02": {
+            "slope_db_per_second": -23.68702086865363,
+            "r_squared": 0.8056752271480561,
+            "max_residual_db": 1.601325603557223,
+            "residual_frequency_span_hz": 41.4296336119318,
+            "minimum_line_above_residual_probe_db": 9.329551603457194,
+            "max_condition": 213.36940785452558
+          },
+          "0.04": {
+            "slope_db_per_second": -21.804662462716774,
+            "r_squared": 0.9425605333900168,
+            "max_residual_db": 3.2815535461840444,
+            "residual_frequency_span_hz": 27.23843884069661,
+            "minimum_line_above_residual_probe_db": 9.931219014529773,
+            "max_condition": 157.18154446312855
+          }
+        },
+        "failed_gates": [
+          "linear",
+          "projection_width_agreement",
+          "phase_stationary",
+          "residual_probe_separation"
+        ]
+      },
+      {
+        "channel": "left",
+        "window": "short",
+        "absolute_support_seconds": [
+          70.1,
+          70.19999999999999
+        ],
+        "selected_line_hz": 349.284698246851,
+        "qualified": false,
+        "metrics_by_width": {
+          "0.02": {
+            "slope_db_per_second": -42.1827034290721,
+            "r_squared": 0.44924291076509226,
+            "max_residual_db": 3.9298157474183135,
+            "residual_frequency_span_hz": 44.29263821631586,
+            "minimum_line_above_residual_probe_db": 9.541700542135844,
+            "max_condition": 213.3694078545277
+          },
+          "0.04": {
+            "slope_db_per_second": -46.072092286155986,
+            "r_squared": 0.6201661274232315,
+            "max_residual_db": 3.5297556236532337,
+            "residual_frequency_span_hz": 28.633628750239303,
+            "minimum_line_above_residual_probe_db": 9.958238008739755,
+            "max_condition": 157.18154446312994
+          }
+        },
+        "failed_gates": [
+          "linear",
+          "projection_width_agreement",
+          "phase_stationary",
+          "residual_probe_separation"
+        ]
+      },
+      {
+        "channel": "left",
+        "window": "extended",
+        "absolute_support_seconds": [
+          70.14999999999999,
+          70.44999999999999
+        ],
+        "selected_line_hz": 349.284698246851,
+        "qualified": false,
+        "metrics_by_width": {
+          "0.02": {
+            "slope_db_per_second": -22.50387849721195,
+            "r_squared": 0.8469113764238505,
+            "max_residual_db": 1.4857384851002475,
+            "residual_frequency_span_hz": 34.45527328349,
+            "minimum_line_above_residual_probe_db": 9.541700542135844,
+            "max_condition": 213.36940785452558
+          },
+          "0.04": {
+            "slope_db_per_second": -21.59945169061384,
+            "r_squared": 0.9585615221066838,
+            "max_residual_db": 2.483015358495974,
+            "residual_frequency_span_hz": 18.522027106999435,
+            "minimum_line_above_residual_probe_db": 11.471062938728442,
+            "max_condition": 157.18154446312855
+          }
+        },
+        "failed_gates": [
+          "linear",
+          "phase_stationary",
+          "residual_probe_separation"
+        ]
+      },
+      {
+        "channel": "right",
+        "window": "short",
+        "absolute_support_seconds": [
+          70.1,
+          70.19999999999999
+        ],
+        "selected_line_hz": 349.284698246851,
+        "qualified": false,
+        "metrics_by_width": {
+          "0.02": {
+            "slope_db_per_second": -49.55317011809405,
+            "r_squared": 0.3546180717897891,
+            "max_residual_db": 6.418717639649648,
+            "residual_frequency_span_hz": 41.14523739456058,
+            "minimum_line_above_residual_probe_db": 8.745647018447782,
+            "max_condition": 213.3694078545277
+          },
+          "0.04": {
+            "slope_db_per_second": -54.45348412022144,
+            "r_squared": 0.5971139705673889,
+            "max_residual_db": 4.762993785306234,
+            "residual_frequency_span_hz": 35.96031476985467,
+            "minimum_line_above_residual_probe_db": 8.410465024682752,
+            "max_condition": 157.18154446312994
+          }
+        },
+        "failed_gates": [
+          "linear",
+          "projection_width_agreement",
+          "phase_stationary",
+          "residual_probe_separation"
+        ]
+      },
+      {
+        "channel": "right",
+        "window": "extended",
+        "absolute_support_seconds": [
+          70.14999999999999,
+          70.44999999999999
+        ],
+        "selected_line_hz": 349.284698246851,
+        "qualified": false,
+        "metrics_by_width": {
+          "0.02": {
+            "slope_db_per_second": -24.722366002424508,
+            "r_squared": 0.7507518912590387,
+            "max_residual_db": 1.9719023249145806,
+            "residual_frequency_span_hz": 48.19469047503919,
+            "minimum_line_above_residual_probe_db": 7.5998978671613795,
+            "max_condition": 213.36940785452558
+          },
+          "0.04": {
+            "slope_db_per_second": -21.978201085183095,
+            "r_squared": 0.9185459822940869,
+            "max_residual_db": 4.047064328082081,
+            "residual_frequency_span_hz": 36.20680474699928,
+            "minimum_line_above_residual_probe_db": 7.207738249452147,
+            "max_condition": 157.18154446312855
+          }
+        },
+        "failed_gates": [
+          "linear",
+          "projection_width_agreement",
+          "phase_stationary",
+          "residual_probe_separation"
+        ]
+      }
+    ],
+    "display31_rows_not_remeasured": 12,
+    "old_display31_rows": [
+      {
+        "channel": "mid",
+        "display_value": 31,
+        "segment_index": 0,
+        "audio_active_entry_seconds": 64.5,
+        "audio_active_exit_seconds": 65.965,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.005018621858692151,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "short",
+        "start_seconds": 64.55,
+        "end_seconds": 64.65,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "mid",
+        "display_value": 31,
+        "segment_index": 0,
+        "audio_active_entry_seconds": 64.5,
+        "audio_active_exit_seconds": 65.965,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.005018621858692151,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "extended",
+        "start_seconds": 64.6,
+        "end_seconds": 64.9,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "mid",
+        "display_value": 31,
+        "segment_index": 1,
+        "audio_active_entry_seconds": 66.04,
+        "audio_active_exit_seconds": 67.5,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.005018621858692151,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "short",
+        "start_seconds": 66.09,
+        "end_seconds": 66.19000000000001,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "mid",
+        "display_value": 31,
+        "segment_index": 1,
+        "audio_active_entry_seconds": 66.04,
+        "audio_active_exit_seconds": 67.5,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.005018621858692151,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "extended",
+        "start_seconds": 66.14,
+        "end_seconds": 66.44000000000001,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "left",
+        "display_value": 31,
+        "segment_index": 0,
+        "audio_active_entry_seconds": 64.5,
+        "audio_active_exit_seconds": 65.965,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.004971549522173191,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "short",
+        "start_seconds": 64.55,
+        "end_seconds": 64.65,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "left",
+        "display_value": 31,
+        "segment_index": 0,
+        "audio_active_entry_seconds": 64.5,
+        "audio_active_exit_seconds": 65.965,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.004971549522173191,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "extended",
+        "start_seconds": 64.6,
+        "end_seconds": 64.9,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "left",
+        "display_value": 31,
+        "segment_index": 1,
+        "audio_active_entry_seconds": 66.04,
+        "audio_active_exit_seconds": 67.5,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.004971549522173191,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "short",
+        "start_seconds": 66.09,
+        "end_seconds": 66.19000000000001,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "left",
+        "display_value": 31,
+        "segment_index": 1,
+        "audio_active_entry_seconds": 66.04,
+        "audio_active_exit_seconds": 67.5,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.004971549522173191,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "extended",
+        "start_seconds": 66.14,
+        "end_seconds": 66.44000000000001,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "right",
+        "display_value": 31,
+        "segment_index": 0,
+        "audio_active_entry_seconds": 64.5,
+        "audio_active_exit_seconds": 65.98,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.0048602148654105,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "short",
+        "start_seconds": 64.55,
+        "end_seconds": 64.65,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "right",
+        "display_value": 31,
+        "segment_index": 0,
+        "audio_active_entry_seconds": 64.5,
+        "audio_active_exit_seconds": 65.98,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.0048602148654105,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "extended",
+        "start_seconds": 64.6,
+        "end_seconds": 64.9,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "right",
+        "display_value": 31,
+        "segment_index": 1,
+        "audio_active_entry_seconds": 66.04,
+        "audio_active_exit_seconds": 67.5,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.0048602148654105,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "short",
+        "start_seconds": 66.09,
+        "end_seconds": 66.19000000000001,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      },
+      {
+        "channel": "right",
+        "display_value": 31,
+        "segment_index": 1,
+        "audio_active_entry_seconds": 66.04,
+        "audio_active_exit_seconds": 67.5,
+        "range_edge_cropped": true,
+        "active_threshold_rms": 0.0048602148654105,
+        "range_seconds": [
+          64.5,
+          67.5
+        ],
+        "kind": "extended",
+        "start_seconds": 66.14,
+        "end_seconds": 66.44000000000001,
+        "metadata_eligible": false,
+        "rejection_reason": "Range-edge cropped or fixed window plus25ms exceeds detected active segment; no shortening"
+      }
+    ],
+    "limits": [
+      "Selected spectral line is not an established fundamental or known MIDI note",
+      "Three-line model can leak unmodeled FM partials, polyphony or processing into target coefficients",
+      "Coefficient oscillation and boundary sensitivity do not prove physical envelope fluctuation",
+      "Residual probes are not an independent noise floor",
+      "Unknown gates, gain dynamics, effects and capture transfer prevent hardware EG law proof",
+      "No post-result rewindowing, extra harmonics, alternate selected peak or relaxed criteria"
+    ]
+  },
+  "validation": {
+    "passed": true,
+    "checks": 189,
+    "scope": "Hash, support, gate, count, and independent OLS bookkeeping; not a second raw source projector implementation.",
+    "independent_OLS_max_error_db_per_second": 3.552713678800501e-14
+  },
+  "bindings": [
+    {
+      "path": "Tools/analyze_editingfun_tonal.py",
+      "bytes": 9936,
+      "sha256": "b24de81ef2304908e8b1203fa265cb55e64755dcfbe7cbbc9efc127d1d788188"
+    },
+    {
+      "path": "build/opu-envelope-independent-20261019/jon-carrier-60-78-float48.wav",
+      "bytes": 6912092,
+      "sha256": "0534bccdd2b319a12e5279e6426a6801cfdc78fdf4fb21fb1ecbb9dd1ac985c8"
+    },
+    {
+      "path": "build/opu-envelope-independent-20261019/protocol-frozen.json",
+      "bytes": 39082,
+      "sha256": "c009354ad30af119ec368087c728910e4d6b19ca28504f55b4bdfd3978c23cc3"
+    },
+    {
+      "path": "build/opu-envelope-independent-20261019/result.json",
+      "bytes": 522954,
+      "sha256": "9365d6db85862910e0cc61ef8253026bbe0be8575faffdaa0637b47f8fee4f7b"
+    },
+    {
+      "path": "Reference/Research/opu-envelope-independent-20261019.json",
+      "bytes": 771818,
+      "sha256": "cfe77490c69bb317d5a4b0c9054d0d7ff4c505508bac3824e2ee730a58b36412"
+    },
+    {
+      "path": "build/editingfun-tonal-20261019/protocol-frozen.json",
+      "bytes": 37616,
+      "sha256": "533e79a6cefc570998defb9416affac6885e0e93fbdd511190d63e7e97a3df71"
+    },
+    {
+      "path": "build/editingfun-tonal-20261019/run-001/started.json",
+      "bytes": 369,
+      "sha256": "da1503fdd93a29013dbfbd532b0d34153952d33f7b96826a1023bfa599f16c5b"
+    },
+    {
+      "path": "build/editingfun-tonal-20261019/run-001/controls.json",
+      "bytes": 9984745,
+      "sha256": "37588f4ad57d68af4c913bdb8c867df4722c4e2caf318574038b91b47a51e9ed"
+    },
+    {
+      "path": "build/editingfun-tonal-20261019/run-001/result.json",
+      "bytes": 793153,
+      "sha256": "14b48cc68a0dc8315af7ef85bce05057b0cd195900f830f58ea32e0829415c7e"
+    },
+    {
+      "path": "build/editingfun-tonal-20261019/run-001/compact-summary.json",
+      "bytes": 30017,
+      "sha256": "8935b2291e27d4439b0d76ddd3f4caf0318410f1c8c64004596f72be8c5cf352"
+    },
+    {
+      "path": "build/editingfun-tonal-20261019/run-001/validation.json",
+      "bytes": 17095,
+      "sha256": "4e1cc3afcb0d726e3f8c8ce4f06a58840f81f063391039a97d549938784f6a35"
+    },
+    {
+      "path": "build/editingfun-tonal-20261019/run-001/tonal-lines.png",
+      "bytes": 341456,
+      "sha256": "fb7fc2d2d77d79e7abcb253333885c23280b86536fb5ab74ebf8c3c08f9a694d"
+    }
+  ],
+  "production_changes": false,
+  "rights": "Third-party audio and images remain ignored and are not bundled or relicensed by this report. Tracked material is original method, numerical summaries and provenance only.",
+  "reproduction": "python3 -B Tools/analyze_editingfun_tonal.py --protocol build/editingfun-tonal-20261019/protocol-frozen.json --out build/editingfun-tonal-20261019/a-new-output-directory"
+}
