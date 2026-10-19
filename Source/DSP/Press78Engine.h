@@ -51,6 +51,10 @@ struct Controls {
     // Legacy0 holds released keys under the pedal. Original1 selects RR/SRR
     // immediately; it uses the existing approximate envelope timing law.
     int sustainMode = 0;
+    // User-selected envelope-Reverb estimate, default on in both hosts.
+    // Native reference callers may disable it; this is not a new host parameter.
+    // Carrier EG >=18dB during release caps both operators at native RR4/RKS.
+    bool envelopeReverb = true;
     double lfoRateHz = 5.24;            // 0..30, shared by AM and PM.
     double vibratoDepth = 1.0;         // 0..4 multiplier of the patch PMS law.
     double tremoloDepth = 1.0;         // 0..4 multiplier of the patch AMS law.
@@ -62,7 +66,7 @@ struct Controls {
     // shifts can alias near-Nyquist energy; this is not an alias-free warper.
     double clockDriftPpm = 0.0;        // 0..10000 sinusoidal excursion.
     double clockDriftRateHz = 0.1;     // 0.001..2; common digital timebase only.
-    bool outputCircuit = true;        // Related PSS480 small-signal circuit model.
+    bool outputCircuit = true;        // Selected shared headroom + sibling filter.
     double toneCutoffHz = 14000.0;     // 20..0.9*Nyquist; 0 bypasses filter.
     double drive = 0.0;               // 0..1 creative tanh saturation; 0 bypass.
     int chorusMode = 0;              // 0 Studio legacy;1 recorded effective v3.
@@ -123,12 +127,12 @@ private:
     friend struct Press78SustainTestAccess;
     struct Envelope {
         double attenuation = 96.0, attackMul = 0.0, decay1 = 0.0;
-        double decay2 = 0.0, release = 0.0, target = 0.0;
+        double decay2 = 0.0, release = 0.0, reverbRelease = 0.0, target = 0.0;
         int stage = 0;
         bool instantAttack = false, disabled = true, finished = false;
         void configure(const Operator&, int midi, bool sustain) noexcept;
         void updateRelease(const Operator&, int midi, bool sustain) noexcept;
-        double next(bool released) noexcept;
+        double next(bool released, bool reverbKnee = false) noexcept;
     };
     struct Voice {
         Patch patch{};

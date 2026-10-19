@@ -22,7 +22,7 @@ endif()
 
 # C is required in addition to C++: JUCE's macOS plug-in wrappers (AU and
 # Standalone) compile C/Objective-C sources with non-Xcode generators too.
-project(Press78 VERSION 0.1.0 LANGUAGES C CXX)
+project(Press78 VERSION 0.1.1 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -237,6 +237,9 @@ if(BUILD_TESTING)
     add_executable(Press78PitchTests Tests/test_pitch.cpp)
     target_link_libraries(Press78PitchTests PRIVATE Press78DSP)
     add_test(NAME Press78.Pitch COMMAND Press78PitchTests)
+    add_executable(Press78HardwareCharacterTests Tests/test_hardware_character.cpp)
+    target_link_libraries(Press78HardwareCharacterTests PRIVATE Press78DSP)
+    add_test(NAME Press78.HardwareCharacter COMMAND Press78HardwareCharacterTests)
 
     # U4 input fuzzing. With PRESS78_BUILD_LIBFUZZER (Clang) it is a libFuzzer
     # target over coverage-instrumented DSP; otherwise FuzzHarness.h supplies

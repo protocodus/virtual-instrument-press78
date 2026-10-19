@@ -40,7 +40,7 @@ int passed=0,failed=0;
 #define CHECK(x) do{if(!(x))throw std::runtime_error(std::string("line ")+std::to_string(__LINE__)+": " #x);}while(false)
 template<class F>void test(const char* name,F f){try{f();++passed;std::printf("PASS %s\n",name);}catch(const std::exception& e){tracking=false;++failed;std::printf("FAIL %s: %s\n",name,e.what());}}
 press78::Patch patch(bool sustain=false){auto p=press78::initPatch();p.sustain=sustain;p.modulator.rr=7;p.modulator.srr=3;p.carrier.rr=7;p.carrier.srr=5;return p;}
-press78::Controls controls(int mode=1){press78::Controls c;c.sustainMode=mode;c.outputCircuit=false;c.masterGain=1;c.toneCutoffHz=0;c.outputLimit=false;c.dcBlock=false;return c;}
+press78::Controls controls(int mode=1){press78::Controls c;c.sustainMode=mode;c.outputCircuit=false;c.envelopeReverb=false;c.masterGain=1;c.toneCutoffHz=0;c.outputLimit=false;c.dcBlock=false;return c;}
 auto engine(int mode=1,bool sustain=false){auto e=std::make_unique<E>();e->setControls(controls(mode));e->setPatch(patch(sustain));return e;}
 void advance(E& e,int n=257){e.process(nullptr,nullptr,n);}
 template<class V>void unchanged(const V& a,const V& b){CHECK(A::continuous(a)==A::continuous(b));CHECK(A::flags(a)==A::flags(b));}

@@ -117,7 +117,12 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 
 ## Version history
 
-### Unreleased — 0.1.0 — engine, Rack prototype and plug-in front end
+### Unreleased — 0.1.1 — selected release and output character
+
+- Applies the selected B listening options: a longer envelope-Reverb tail and shared asymmetric output headroom, enabled by default. No artificial noise is added.
+- Existing patches acquire the selected character when their models are enabled. The values are chosen assumptions, not recovered PSS-780 calibration. See the [decision](Docs/decisions.md) and [adoption note](Docs/release/assumed-hardware-adoption-2026-10-19.md).
+
+### 0.1.0 — engine, Rack prototype and plug-in front end
 
 - Two-operator FM engine with the 100 `PSS` factory voices and an Init sine, sibling-circuit output stage, Studio and Recorded chorus, and clock variation.
 - b11: the D1 endpoint correction and a 5.24 Hz triangle LFO with recording-supported vibrato depths; additive noise removed (its two controls stay as inert, hidden ids).
@@ -150,9 +155,9 @@ The b11 modulation profile uses a continuous 5.24 Hz triangle and a binary PMS d
 
 ### Output circuit
 
-The enabled-by-default output circuit is the six-section small-signal transfer from the researched **PSS-480** circuit, used explicitly as a sibling surrogate. It is not a recovered PSS-780 board, a verified YM3420 DAC transfer, or a transistor-level model. Drive is a separate creative saturation control.
+The enabled-by-default output circuit combines the selected shared asymmetric headroom curve with the six-section small-signal transfer from the researched **PSS-480** circuit. The curve's normalized headroom of 1 and bias of 0.14 were selected through the B audition; the filter is a sibling surrogate. Neither is a recovered PSS-780 board, verified YM3420 DAC transfer or transistor-level model. The existing output-circuit switch bypasses both together. Drive remains a separate creative saturation control.
 
-Authentic signal-dependent distortion, DAC behavior, component tolerances and power sensitivity remain fidelity requirements despite removal of artificial noise. A new [research supply component](Docs/research/local-supply-model-2026-10-19.md) implements the documented sibling local rail filter with independent circuit checks. Its load and voltage-to-audio coupling remain unknown; it does not change b13 audio or imply a calibrated nonlinear output model.
+Authentic DAC behavior, component tolerances and power sensitivity remain fidelity requirements despite removal of artificial noise. The selected output curve supplies deterministic signal-dependent color; its constants do not establish physical operating levels. A [research supply component](Docs/research/local-supply-model-2026-10-19.md) implements the documented sibling local rail filter with independent circuit checks. Its load and voltage-to-audio coupling remain unknown and are not connected to the audio engine.
 
 B14 preserves the established 48k output character across host rates through a fixed output bus and a final stereo converter. It intentionally changes non-48k audio and latency in existing documents; all 48k renders remain unchanged. [Adoption and A/B evidence](Docs/research/output-bus-b14-2026-10-19.md) separates improved host-rate consistency from still-unidentified DAC, BBD nonlinear and voltage-to-audio behavior.
 
@@ -203,7 +208,7 @@ Open [the interactive design preview](Assets/Design/index.html). Layout study 11
 
 The [four-waveform fidelity audit](Docs/research/oscillator-fidelity-audit-2026-10-19.md) verifies the current mathematical shapes and exposes higher-partial, internal-DC and capture-chain constraints. Low-order shape agreement does not establish OPU ROM precision, arithmetic or native timing. The separate Drive/output study distinguishes creative saturation and safety limiting from unidentified hardware overload.
 
-A focused [Human Voice 1 release audit](Docs/research/human-voice1-release-audit.md) finds a tail deficit under the original inferred timing. At 150–220 ms after the clearest inferred note-off, its tracked carrier component falls about 16 dB in the recording versus 60 dB in the model. The preset import is correct and the baseline has no target-voice steals. The separate [Reverb performance effect](Docs/research/reverb-release-evidence.md) is not modeled; its exact envelope behavior remains unidentified. The [release A/B report](build/release-analysis-20261018T0905/report.html) includes carrier-only RR6/RR5 experiments, with timing, overlap and allocation caveats. A subsequent [timing sensitivity test](Docs/research/timing-sensitivity-2026-10-19.md) reverses Human Voice 1's joint-band preference under all three alternative maps, so the original score does not select a replacement release law. These are diagnostic candidates, not factory or DSP changes.
+A focused [Human Voice 1 release audit](Docs/research/human-voice1-release-audit.md) finds a tail deficit under the original inferred timing. At 150–220 ms after the clearest inferred note-off, its tracked carrier component falls about 16 dB in the recording versus 60 dB in the former model. The selected B estimate now applies an envelope-Reverb tail: after the carrier envelope reaches an assumed 18 dB during release, both operators use no faster than their own native RR4/RKS slope. Already slower releases remain slower. This sibling-inspired choice is enabled by default, but the exact [PSS-780 Reverb behavior](Docs/research/reverb-release-evidence.md) remains unidentified. The original [release A/B report](build/release-analysis-20261018T0905/report.html) and [timing sensitivity test](Docs/research/timing-sensitivity-2026-10-19.md) remain historical diagnostics; the latter reverses Human Voice 1's joint-band preference under alternative timing maps. The [new audition](Docs/research/assumed-hardware-auditions-2026-10-19.md) and listener choice do not establish measured hardware fidelity.
 
 - The plug-in has only passed the checks CI runs; it has not been tried in a DAW. Its editor is a plain control grid, not the designed panel.
 - The Rack adapter lives in a local SDK workspace, not in `protocodus/reason-rack-extensions`, and its DSP directory is a generated snapshot of this repository (`Tools/sync_rack_dsp.py`) rather than the pinned submodule the portfolio standard asks for. The b5 Rack patch exporter uses the SDK’s canonical XML declaration after Recon rejected the earlier declaration during default Init loading. All 101 patch sound parameter maps are preserved. The b6 native display formatter also fixes a subsequent Recon drawing crash caused by concatenating host-formatted text; independent regression tests cover all 50 numeric readouts, with 444 passing cases and an explicit reproduction of the prior failure.
@@ -232,7 +237,7 @@ ctest --test-dir build-plugin --output-on-failure
 
 Every test is `Press78.<Suite>` with one tier label: `unit`, `audio` (`Press78.AudioDemos` renders every voice's demo twice and compares the bits), `render` (`Press78.EditorRender`, the editor screenshot) or `fuzz` (`Press78.DspFuzz`, and `Press78.ParameterMatrix` in the plug-in build). `-DPRESS78_ENABLE_SANITIZERS=ON` builds everything under ASan + UBSan, and `-DPRESS78_BUILD_LIBFUZZER=ON` with Clang builds the libFuzzer target.
 
-`press78_render --raw <66 hexadecimal digits>` renders a decoded 33-byte voice. `--transparent` disables the output circuit, creative tone filter, DC removal and output protection and sets unity gain for reference comparisons. Other options include gain, chorus mix, drive, clock offset and clock drift. See `Tools/NativeRender.cpp` for the complete bounded CLI.
+`press78_render --raw <66 hexadecimal digits>` renders a decoded 33-byte voice. `--transparent` disables the output circuit, envelope-Reverb estimate, creative tone filter, DC removal and output protection and sets unity gain for reference comparisons. Native diagnostic callers can select `--envelope-reverb 0|1` independently; this is not a new host parameter. Other options include gain, chorus mix, drive, clock offset and clock drift. See `Tools/NativeRender.cpp` for the complete bounded CLI.
 
 Numerical comparison tools additionally require NumPy and SciPy; Numba accelerates the frozen Python renderer when available.
 

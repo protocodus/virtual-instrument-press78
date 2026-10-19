@@ -1,6 +1,7 @@
 #include "Press78Engine.h"
 #include "RecordedChorus.h"
 #include "FirmwarePitch.h"
+#include "HardwareCharacter.h"
 
 #include <algorithm>
 #include <cmath>
@@ -151,22 +152,25 @@ Controls sanitizeControls(Controls c) noexcept {
 void Press78Engine::Envelope::configure(const Operator& op, int midi, bool sustain) noexcept {
     const double ar = rate(op.ar, op.rks, midi);
     const double d1r = rate(op.d1r, op.rks, midi), d2r = rate(op.d2r, op.rks, midi);
-    const double rr = rate(4 * (sustain ? op.srr : op.rr) + 2, op.rks, midi);
     disabled = ar == 0.0;
     instantAttack = ar >= 63.0;
     attackMul = std::exp(-std::log(1000.0) / std::max(1.0, kInternalRate * 8.0 * std::pow(2.0, -ar / 4.0)));
     decay1 = d1r == 0.0 ? 0.0 : 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -d1r / 4.0));
     decay2 = d2r == 0.0 ? 0.0 : 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -d2r / 4.0));
-    release = 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -rr / 4.0));
+    updateRelease(op, midi, sustain);
     target = op.d1l == 15 ? 93.0 : op.d1l * 3.0;
 }
 
 void Press78Engine::Envelope::updateRelease(const Operator& op, int midi, bool sustain) noexcept {
     const double rr = rate(4 * (sustain ? op.srr : op.rr) + 2, op.rks, midi);
     release = 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -rr / 4.0));
+    // Selected B uses each operator's unchanged native RR4/RKS transform.
+    // Precompute at configuration/rate edits, not with pow/copies every tick.
+    const double capRate = rate(4 * 4 + 2, op.rks, midi);
+    reverbRelease = 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -capRate / 4.0));
 }
 
-double Press78Engine::Envelope::next(bool released) noexcept {
+double Press78Engine::Envelope::next(bool released, bool reverbKnee) noexcept {
     if (disabled || finished) return 0.0;
     if (released) stage = 3;
     if (stage == 0) {
@@ -181,7 +185,7 @@ double Press78Engine::Envelope::next(bool released) noexcept {
             attenuation += decay1;
             if (attenuation >= target) stage = 2;
         } else if (stage == 2) attenuation += decay2;
-        else attenuation += release;
+        else attenuation += reverbKnee ? std::min(release, reverbRelease) : release;
     }
     if (attenuation >= 96.0) {
         if (stage != 0) finished = true;
@@ -220,7 +224,13 @@ void Press78Engine::Voice::updateRelease(bool sustain) noexcept {
 
 double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo) noexcept {
     if (!active) return 0.0;
-    const double em = modEnvelope.next(released), ec = carrierEnvelope.next(released);
+    // User-selected sibling-inspired pseudo-Reverb. One pre-step carrier
+    // snapshot gates both operators; TL, velocity and gain do not move the knee.
+    // 18dB/RR4 are assumed choices, not an identified PSS-780 Reverb algorithm.
+    const bool knee = c.envelopeReverb && (released || carrierEnvelope.stage == 3)
+        && std::isfinite(carrierEnvelope.attenuation)
+        && carrierEnvelope.attenuation >= hardware_character::kReleaseKneeDb;
+    const double em = modEnvelope.next(released, knee), ec = carrierEnvelope.next(released, knee);
     if (carrierEnvelope.finished || (carrierEnvelope.disabled && released)) {
         active = false; return 0.0;
     }
@@ -488,6 +498,7 @@ double Press78Engine::synthesizeTick() noexcept {
     voiceControls_.lfoDelayScale = controls_.lfoDelayScale;
     voiceControls_.triangleLfo = controls_.triangleLfo;
     voiceControls_.globalLfo = controls_.globalLfo;
+    voiceControls_.envelopeReverb = controls_.envelopeReverb;
     const double global = std::sin(globalLfoPhase_);
     double sum = 0.0;
     for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global);
@@ -530,9 +541,9 @@ double Press78Engine::readDelay(double samples) const noexcept {
 }
 
 void Press78Engine::output(double mono, double& left, double& right) noexcept {
-    // Always advance the related-hardware small-signal circuit, including
-    // during bypass, so re-enabling it does not expose stale filter memory.
-    const double circuit = analog_.process(mono);
+    // Always advance the selected headroom and related-hardware small-signal
+    // circuit, including during bypass, to avoid stale filter memory.
+    const double circuit = analog_.process(hardware_character::output(mono));
     circuitMix_ += ((controls_.outputCircuit ? 1.0 : 0.0) - circuitMix_) * gainSmoothing_;
     mono += circuitMix_ * (circuit - mono);
     currentToneCoefficient_ += (toneCoefficient_ - currentToneCoefficient_) * gainSmoothing_;

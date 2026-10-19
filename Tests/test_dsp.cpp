@@ -46,7 +46,7 @@ template<class F> void test(const char* name, F&& body) {
 press78::Controls transparent() {
     press78::Controls c;
     c.masterGain = 1.0; c.toneCutoffHz = 0.0; c.dcBlock = false; c.outputLimit = false;
-    c.outputCircuit = false;
+    c.outputCircuit = false; c.envelopeReverb = false;
     return c;
 }
 std::unique_ptr<Press78Engine> engine(double sr = 48000.0) {

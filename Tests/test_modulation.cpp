@@ -39,7 +39,7 @@ template<class F> void test(const char* name, F body) {
 }
 press78::Controls clearOutput() {
     press78::Controls c; // Exercise the product modulation defaults.
-    c.masterGain = 1; c.outputCircuit = false; c.toneCutoffHz = 0;
+    c.masterGain = 1; c.outputCircuit = false; c.envelopeReverb = false; c.toneCutoffHz = 0;
     c.outputLimit = false; c.dcBlock = false;
     return c;
 }
