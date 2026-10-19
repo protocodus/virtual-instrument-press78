@@ -1,0 +1,191 @@
+{
+  "schema": "press78.sustain-candidate.core-validation.v1",
+  "passed": true,
+  "status": "isolated candidate source frozen for independent review; not adopted",
+  "baseline_commit": "b4f98f0a89e0890455accffc18da223d1d3b8912",
+  "source_sha256": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "Source/DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+    "Source/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+    "Source/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+  },
+  "owned_sha256": {
+    "Tests/test_sustain.cpp": "af69080ce91b362399f12e594b87e1a8684fa81c17aeee0642d67d5f0fd8d25b",
+    "Tools/NativeRender.cpp": "140e16a59ddab7df7ae36fb51352e92bdb4d0fa3d572a34a161982a4f79ccb12",
+    "Tools/PerformanceProbe.cpp": "cc60739676bfd0a9634b5ca2a569b59abdf60040886b7acbfd76c44785f34f65",
+    "CMakeLists.txt": "49e2b470fab6c0f08bc50093a3a6127aeaa82a59445c5083010b860ccc1c8afa"
+  },
+  "production_source_unchanged": true,
+  "release_targets_passed": 7,
+  "sanitizer_targets_passed": 7,
+  "sustain_groups_passed": 17,
+  "legacy_parity": {
+    "passed": true,
+    "bytes_compared": 39321600,
+    "exact_equal": true,
+    "scope": "100factory patches x bothpitchlaws x44100/48000/96000,8192stereoframes each, pedal/program/liveedit/steal/allNotesOff/reset/allSoundOff events",
+    "sha256": "9b33aabe94c72420c48fc8b96167ecf53b62b5bba723617274292a4a7a0e45c0",
+    "fixture_sha256": "5a8ce1bb0c44ad2ed01095f3d5aee5551de1a39bac916e92ac64fa410c1e253f",
+    "compiler": "Apple clang21, C++17 -O3; separately compiled baseline andcandidate",
+    "all_raw_CC_semantics": "separate17group testtarget includesall128 rawvalues; legacy floatfixture calls unchangedboolAPI"
+  },
+  "CLI": {
+    "passed": true,
+    "rows": [
+      {
+        "case": "default",
+        "result": {
+          "frames": 9600,
+          "rate": 48000,
+          "latency_samples": 32,
+          "pitch_model": 0,
+          "sustain_mode": 0,
+          "peak": 0.169971,
+          "rms": 0.0790461
+        },
+        "wav_sha256": "72cf07448f245eac616fd77ab13a5f8e3947512c479ccc83c4f386b27bf12146"
+      },
+      {
+        "case": "legacy",
+        "result": {
+          "frames": 9600,
+          "rate": 48000,
+          "latency_samples": 32,
+          "pitch_model": 0,
+          "sustain_mode": 0,
+          "peak": 0.169971,
+          "rms": 0.0790461
+        },
+        "wav_sha256": "72cf07448f245eac616fd77ab13a5f8e3947512c479ccc83c4f386b27bf12146"
+      },
+      {
+        "case": "real",
+        "result": {
+          "frames": 9600,
+          "rate": 48000,
+          "latency_samples": 32,
+          "pitch_model": 1,
+          "sustain_mode": 1,
+          "peak": 0.216172,
+          "rms": 0.0871258
+        },
+        "wav_sha256": "8fcb2d578b730f78c3cebfe141189037439ac8036178be1c3d102bdd727c5eae"
+      },
+      {
+        "case": "real-explicit",
+        "result": {
+          "frames": 9600,
+          "rate": 48000,
+          "latency_samples": 32,
+          "pitch_model": 1,
+          "sustain_mode": 1,
+          "peak": 0.216172,
+          "rms": 0.0871258
+        },
+        "wav_sha256": "8fcb2d578b730f78c3cebfe141189037439ac8036178be1c3d102bdd727c5eae"
+      },
+      {
+        "case": "real-legacy",
+        "result": {
+          "frames": 9600,
+          "rate": 48000,
+          "latency_samples": 32,
+          "pitch_model": 1,
+          "sustain_mode": 0,
+          "peak": 0.216172,
+          "rms": 0.0871258
+        },
+        "wav_sha256": "8fcb2d578b730f78c3cebfe141189037439ac8036178be1c3d102bdd727c5eae"
+      },
+      {
+        "invalid_value": "-1",
+        "rejected": true,
+        "diagnostic": "--sustain-mode requires legacy|original|0|1"
+      },
+      {
+        "invalid_value": "2",
+        "rejected": true,
+        "diagnostic": "--sustain-mode requires legacy|original|0|1"
+      },
+      {
+        "invalid_value": "garbage",
+        "rejected": true,
+        "diagnostic": "--sustain-mode requires legacy|original|0|1"
+      }
+    ]
+  },
+  "original_precedence_cases": 224,
+  "program_live_observations": 16,
+  "original_firmware_evidence_sha256": {
+    "precedence.py": "8652eeb5b211c3cdb00fcc6fcb86291ff9e76894fb309dd4e5919a392ac9af1d",
+    "precedence-results.json": "343b32346b03227d820a8bb02d9891a9136d4803ba116489c4b7907a7440d7bc",
+    "precedence-firstpass.py": "3be7bcb36f85193d6b1c24d6042550ac3db630368874fe5a177e9580d6870676",
+    "firstpass-error.txt": "0350771ba7a9ca9108ce94d3739d1aeef0d9526c370079b04d9b8aba2ee996db",
+    "program_live.py": "33923b8eb6ef89c7a446d65fa76ed61d24d68cb01b4e0ebbc5b4684658408398",
+    "program-live-observations.json": "2d7d92b72a6124d3b13c51ff94b0d0c9ad917974ed25b0e93ca91ce188b8ddb5"
+  },
+  "artifacts": {
+    "design-frozen.json": {
+      "sha256": "e5574fb0125772ee1c096cab2381c0cad131165ca6a56ca06700da33a018ef29",
+      "size": 3491
+    },
+    "scope-amendment-before-audio.json": {
+      "sha256": "e1aabcda1b913ee900c5db074f36a0846c330ebb737029d0d028208663b264b5",
+      "size": 713
+    },
+    "baseline-source.json": {
+      "sha256": "76c1dfd6da51b9b5ff40273a08fa61a1be669221820cdebee1df6f8809ecad83",
+      "size": 1021
+    },
+    "LegacyProbe.cpp": {
+      "sha256": "5a8ce1bb0c44ad2ed01095f3d5aee5551de1a39bac916e92ac64fa410c1e253f",
+      "size": 1369
+    },
+    "legacy-byte-parity.json": {
+      "sha256": "a92048039f84f54a2f5b05a5de34a561bb81e89627a9a90f8cf363d93bbc569c",
+      "size": 609
+    },
+    "release-tests.log": {
+      "sha256": "a195aa92fc5de3cc6fabbd620d95f48ad180bfd4c6dd891d1976554cd57b3727",
+      "size": 872
+    },
+    "sanitizer-tests.log": {
+      "sha256": "e72dc9c182f99502d3755e0c0a5fb940b18c737fa53732b221e4af95d195f39c",
+      "size": 874
+    },
+    "sustain-groups.log": {
+      "sha256": "bcfb97b23b9d83e0c7c0153293112efb0998c78071a355d3a4792638d527c9ac",
+      "size": 1253
+    },
+    "cli-validation.json": {
+      "sha256": "930402a84b39df891a60e1c34585c4cd2bf207d429477ebfa08ab8ce5d6c1c81",
+      "size": 2113
+    },
+    "real-performance.json": {
+      "sha256": "afb0ca7dbde717aacc8928ab762eb65e6b04f5b7514c14419b3357c2c781720f",
+      "size": 2120
+    },
+    "legacy-real-performance.json": {
+      "sha256": "8d99a110b2448f8786714cf41d108eddb6d60cd355cf8a5d83e55e0102cf1ef2",
+      "size": 2125
+    },
+    "candidate-scope.md": {
+      "sha256": "5ed5af876eff8eda1394e9cb697ac642618f13b99ebcad85de596d52aa79e668",
+      "size": 3361
+    }
+  },
+  "policy": "See candidate-scope.md; single-part rate pedal with future-only program snapshots, not full keyboard PC/allocator behavior",
+  "audio_fits": 0,
+  "noise_added": false,
+  "performance_scope": "Real-profile 12voice/single/idle native wall times only; no hard realtime or host guarantee",
+  "adoption_gates_remaining": [
+    "independent core review",
+    "root frozen no-CC64 full-performance comparison",
+    "native wrapper edge-forwarding and packaging gates"
+  ]
+}

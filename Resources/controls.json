@@ -1,6 +1,6 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.0b12",
+  "version": "0.1.0b13",
   "startup_profile": {
     "name": "Real",
     "values": {
@@ -20,7 +20,8 @@
       "drive": 0,
       "dcBlock": 1,
       "outputLimit": 1,
-      "pitchModel": 1
+      "pitchModel": 1,
+      "sustainMode": 1
     }
   },
   "controls": [
@@ -634,6 +635,22 @@
         "Original"
       ],
       "startup_default": 1
+    },
+    {
+      "id": "sustainMode",
+      "label": "Original release policy",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "controls",
+      "options": [
+        "Legacy",
+        "Original"
+      ],
+      "startup_default": 1,
+      "hidden": true,
+      "description": "Compatibility policy: Original pedal selects release rate; Legacy pedal holds notes."
     }
   ]
 }

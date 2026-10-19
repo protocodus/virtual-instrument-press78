@@ -125,6 +125,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.velocityToModulation = bounded(c.velocityToModulation, 0, 2, 0);
     c.modulationAmount = bounded(c.modulationAmount, 0, 2, 1);
     c.polyphony = std::clamp(c.polyphony, 1, 12);
+    c.sustainMode = std::clamp(c.sustainMode, 0, 1);
     c.lfoRateHz = bounded(c.lfoRateHz, 0, 30, 5.24);
     c.vibratoDepth = bounded(c.vibratoDepth, 0, 4, 1);
     c.tremoloDepth = bounded(c.tremoloDepth, 0, 4, 1);
@@ -158,6 +159,11 @@ void Press78Engine::Envelope::configure(const Operator& op, int midi, bool susta
     decay2 = d2r == 0.0 ? 0.0 : 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -d2r / 4.0));
     release = 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -rr / 4.0));
     target = op.d1l == 15 ? 93.0 : op.d1l * 3.0;
+}
+
+void Press78Engine::Envelope::updateRelease(const Operator& op, int midi, bool sustain) noexcept {
+    const double rr = rate(4 * (sustain ? op.srr : op.rr) + 2, op.rks, midi);
+    release = 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -rr / 4.0));
 }
 
 double Press78Engine::Envelope::next(bool released) noexcept {
@@ -205,6 +211,11 @@ void Press78Engine::Voice::updateOriginalPitch(int steps) noexcept {
     // survive bends/fine edits, including voices in the steal fade.
     modStep = originalStep(patch.modulator, note, steps);
     carrierStep = originalStep(patch.carrier, note, steps);
+}
+
+void Press78Engine::Voice::updateRelease(bool sustain) noexcept {
+    modEnvelope.updateRelease(patch.modulator, note, sustain);
+    carrierEnvelope.updateRelease(patch.carrier, note, sustain);
 }
 
 double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo) noexcept {
@@ -255,6 +266,8 @@ void Press78Engine::reset() noexcept {
     position_ = 0.0; nextTick_ = 0; hostTime_ = 0.0;
     globalLfoPhase_ = 0.0; chorusPhase_ = 0.0;
     effectivePitchModel_ = controls_.pitchModel;
+    effectiveSustainMode_ = controls_.sustainMode;
+    originalSustain_ = patch_.sustain;
     updatePitchControls();
     gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_;
     voiceControls_ = controls_;
@@ -271,11 +284,17 @@ void Press78Engine::reset() noexcept {
 }
 
 void Press78Engine::setPatch(const Patch& patch, bool updateActive) noexcept {
+    const bool flagChanged = patch.sustain != patch_.sustain;
     patch_ = sanitizePatch(patch);
+    if (!updateActive || flagChanged) originalSustain_ = patch_.sustain;
     if (updateActive) for (auto& voice : voices_) if (voice.active) {
         voice.updatePatch(patch_);
         if (effectivePitchModel_ == 1) voice.updateOriginalPitch(pitchSteps_);
+        if (effectiveSustainMode_ == 1) voice.updateRelease(originalSustain_);
     }
+    // Steal fades retain their old patch, but an explicit live Sustain edit
+    // also updates their rate. These short fades are a plugin click guard.
+    if (updateActive && flagChanged) refreshOriginalRelease();
 }
 
 void Press78Engine::setChorusTime(double seconds) noexcept {
@@ -287,6 +306,7 @@ void Press78Engine::setChorusTime(double seconds) noexcept {
 void Press78Engine::setControls(const Controls& controls) noexcept {
     controls_ = sanitizeControls(controls);
     applyPendingPitchModel();
+    applyPendingSustainMode();
     updatePitchControls();
     toneCoefficient_ = controls_.toneCutoffHz == 0.0 ? 0.0
         : 1.0 - std::exp(-tau * std::min(controls_.toneCutoffHz, sampleRate_ * 0.45) / sampleRate_);
@@ -315,6 +335,7 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
     velocity = std::min(velocity, 127);
     if (patch_.carrier.tl >= 99 || patch_.carrier.ar == 0) return;
     applyPendingPitchModel();
+    applyPendingSustainMode();
     Voice* target = nullptr;
     if (activeVoices() < static_cast<std::size_t>(controls_.polyphony)) {
         for (auto& v : voices_) if (!v.active) { target = &v; break; }
@@ -328,6 +349,7 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
     }
     target->configure(patch_, note, velocity, ++serial_);
     if (effectivePitchModel_ == 1) target->updateOriginalPitch(pitchSteps_);
+    if (effectiveSustainMode_ == 1) target->updateRelease(originalSustain_);
     target->source = source;
 }
 
@@ -335,16 +357,31 @@ void Press78Engine::noteOff(int note, int source) noexcept {
     note = std::clamp(note, 0, 127);
     Voice* target = nullptr;
     for (auto& v : voices_) if (v.active && v.held && v.note == note && v.source == source && (!target || v.age < target->age)) target = &v;
-    if (target) { target->held = false; target->released = !pedal_; }
+    if (target) {
+        target->held = false;
+        // Program loads are future-only in this instrument. Keep this voice's
+        // cached selection until an actual CC or explicit live Sustain edit.
+        target->released = effectiveSustainMode_ == 1 || !pedal_;
+    }
 }
 
 void Press78Engine::sustainPedal(bool down) noexcept {
-    pedal_ = down;
-    if (!down) for (auto& v : voices_) if (v.active && !v.held) v.released = true;
+    sustainController(down ? 127 : 0);
+}
+
+void Press78Engine::sustainController(int rawValue) noexcept {
+    rawValue = std::clamp(rawValue, 0, 127);
+    pedal_ = rawValue >= 64;
+    originalSustain_ = rawValue != 0;
+    if (effectiveSustainMode_ == 1) refreshOriginalRelease();
+    else if (!pedal_) for (auto& v : voices_) if (v.active && !v.held) v.released = true;
 }
 
 void Press78Engine::allNotesOff() noexcept {
-    for (auto& v : voices_) if (v.active) { v.held = false; v.released = !pedal_; }
+    for (auto& v : voices_) if (v.active) {
+        v.held = false;
+        v.released = effectiveSustainMode_ == 1 || !pedal_;
+    }
 }
 
 void Press78Engine::allSoundOff() noexcept {
@@ -355,7 +392,9 @@ void Press78Engine::allSoundOff() noexcept {
     tone1_ = tone2_ = 0.0;
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
     pedal_ = false;
+    originalSustain_ = patch_.sustain;
     applyPendingPitchModel();
+    applyPendingSustainMode();
 }
 
 bool Press78Engine::pitchIdle() const noexcept {
@@ -371,6 +410,17 @@ void Press78Engine::applyPendingPitchModel() noexcept {
     // There are no oscillators to glide between laws. Starting the next voice
     // with the previous law's bend multiplier would otherwise double bend it.
     pitchMultiplier_ = targetPitch_;
+}
+
+void Press78Engine::applyPendingSustainMode() noexcept {
+    if (effectiveSustainMode_ != controls_.sustainMode && pitchIdle())
+        effectiveSustainMode_ = controls_.sustainMode;
+}
+
+void Press78Engine::refreshOriginalRelease() noexcept {
+    if (effectiveSustainMode_ != 1) return;
+    for (auto& voice : voices_) if (voice.active) voice.updateRelease(originalSustain_);
+    for (auto& tail : tails_) if (tail.remaining > 0) tail.voice.updateRelease(originalSustain_);
 }
 
 void Press78Engine::updatePitchControls() noexcept {
@@ -424,6 +474,7 @@ void Press78Engine::buildResampler() noexcept {
 
 double Press78Engine::synthesizeTick() noexcept {
     applyPendingPitchModel();
+    applyPendingSustainMode();
     // Tune smoothing is clocked with the envelopes/operators. Clock offset
     // changes the arrival of these ticks, including feedback and the LFO.
     constexpr double smooth = 0.00415800184511004; // 1-exp(-1/(48000*.005)).

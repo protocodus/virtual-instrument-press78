@@ -22,14 +22,16 @@ def main():
     device = args.device.resolve()
     schema = json.loads((ROOT/'Resources/controls.json').read_text())
     rows = {row['id']: row for row in schema['controls']}
-    assert len(rows) == len(schema['controls']) == 66
+    assert len(rows) == len(schema['controls']) == 67
     hidden={name for name,row in rows.items() if row.get('hidden')}
-    assert hidden == {'noiseRms','noiseModel'}
+    assert hidden == {'noiseRms','noiseModel','sustainMode'}
     visible=set(rows)-hidden
     assert all(rows[name]['default']==0 for name in hidden)
     # Old songs lack this property and must keep their original tuning.
     assert rows['pitchModel']['default']==0
     assert schema['startup_profile']['values']['pitchModel']==1
+    assert rows['sustainMode']['default']==0 and rows['sustainMode']['startup_default']==1
+    assert schema['startup_profile']['values']['sustainMode']==1
     info = (device/'info.lua').read_text()
     for field, expected in [('product_id', schema['product']), ('version_number', schema['version'])]:
         assert re.search(rf'{field}\s*=\s*"([^"]+)"', info)[1] == expected
@@ -40,7 +42,7 @@ def main():
     for key in rows:
         assert re.search(rf'\b{key}\s*=\s*jbox.number', mother), key
         assert f'k_{key}' in cpp, key
-        if key in hidden:
+        if key in {'noiseRms','noiseModel'}:
             assert f'controls.{key} = 0;' in apply, key
         else:
             assert f'physical(k_{key})' in apply or key in ('bendRange', 'modWheelDepth'), key
@@ -59,6 +61,7 @@ def main():
     assert ids == registry['ids'] and set(ids) == set(rows)
     assert len(set(ids.values())) == len(ids)
     assert ids['masterGain'] == 7 and ids['toneCutoffHz'] == 74
+    assert ids['pitchModel'] == 319 and ids['sustainMode'] == 320
     assert all(number in (7,74) or 256 <= number <= 10039 for number in ids.values())
     locale = (device/'Resources/English/texts.lua').read_text()
     keys = set(re.findall(r'\["([^"]+)"\]\s*=', locale))
@@ -76,7 +79,7 @@ def main():
     namespace = {}
     exec(compile(ast.Module(body=[decoder], type_ignores=[]), str(source), 'exec'), namespace)
     bank = json.loads((ROOT/'Resources/FactoryBank/press78-factory.json').read_text())
-    expected = {'Init': {'pitchModel': 1}}
+    expected = {'Init': {'pitchModel': 1, 'sustainMode': 1}}
     aliases = {'lks_hi': 'lksHi', 'lks_lo': 'lksLo', 'am_enable': 'amEnable'}
     for voice in bank['voices']:
         patch = namespace['read_sysex'](bytes.fromhex(voice['sysex_hex']))
@@ -85,7 +88,7 @@ def main():
             values.update({prefix+'_'+aliases.get(key, key): value for key, value in patch[op].items()})
         for key in ('feedback', 'pms', 'ams', 'vibrato_delay', 'vibrato', 'sustain'):
             values['vibratoDelay' if key == 'vibrato_delay' else key] = int(patch[key])
-        values.update(pitchModel=1,chorusMode=1,chorusRateHz=0.9546467517767424,
+        values.update(pitchModel=1,sustainMode=1,chorusMode=1,chorusRateHz=0.9546467517767424,
                       chorusDepthMs=math.hypot(0.0495126833338911,0.4943632948117077))
         assert voice['name'].startswith('PSS ')
         expected[voice['name'].replace('/', '-')] = values

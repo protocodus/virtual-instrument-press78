@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "scope": "Native SDK5 typed-MOM audio comparison, not actual host playback",
+  "cases": 4,
+  "fixed_equals_frozen_b12_bytes": true,
+  "controlled_edge_replay_mutant_rejected": true,
+  "first_mutant_difference_byte": 15536,
+  "design_sha256": "83b06fbe5704e1eeb195c838cf1c0c5873c9c987cefc33bebbcdde1ed79fa04c",
+  "variants": {
+    "b12": {
+      "bytes": 763904,
+      "sha256": "b412f8eec9099cc7e39052aaed172d6a62c451b9332abcc251907b2919fe0999"
+    },
+    "fixed": {
+      "bytes": 763904,
+      "sha256": "b412f8eec9099cc7e39052aaed172d6a62c451b9332abcc251907b2919fe0999"
+    },
+    "edge-replay-mutant": {
+      "bytes": 763904,
+      "sha256": "6335f52487e7120874cd41d0c75273be0da8bfdbbdfff461ea52d8451e271ec7"
+    }
+  },
+  "frozen_design": {
+    "scope": "Post-review regression witness; fixed source and controlled reproduction of earlier unconditional-edge candidate. Mutation is not presented as an untouched historical artifact.",
+    "cases": "Four preset/reset-pedal combinations, held/released notes, frame17 and frame0 pedal bounces, ordinary controls, reset. All three variants run the same harness.",
+    "sources": {
+      "b12/ApplyParameters.inc": "e4b24402f64e140152a9586b4481f0a1b41911a571e071ebbc280267fc8db1ff",
+      "b12/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+      "b12/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+      "b12/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+      "b12/DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+      "b12/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+      "b12/DSP/Press78Engine.cpp": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f",
+      "b12/DSP/Press78Engine.h": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0",
+      "b12/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+      "b12/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+      "b12/Parameters.h": "67c709c962461e7f06577d06b080bab2983a39d672fd76cb037a5a4dbe602402",
+      "b12/Press78.cpp": "093fd757ebc49c8cfcc92cc227f40084004641edc3f2c3c4d4db8b35517db7f8",
+      "b12/Press78.h": "24643858355c03cfb57b2c2f5d0f283cd30db6f4a61a39aa9ace0d0131b88126",
+      "fixed/ApplyParameters.inc": "77d1a6707f03160c2bc538f7264a25bb1eee9302a2435b00eff5a1fd42456020",
+      "fixed/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+      "fixed/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+      "fixed/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+      "fixed/DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+      "fixed/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+      "fixed/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+      "fixed/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+      "fixed/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+      "fixed/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+      "fixed/Parameters.h": "48bf14fd1942580ea5cae892642ed9dd78dd24c92c82053968126cc1d7433f75",
+      "fixed/Press78.cpp": "511889664e56f93ab0be74e767f24f6a35cab88237d6b3fb83c9ff6382ed79b0",
+      "fixed/Press78.h": "73b8357461b9f8267b8716bead30dd1dd502ba12d6f530b772e8a7e07374bd78",
+      "edge-replay-mutant/ApplyParameters.inc": "77d1a6707f03160c2bc538f7264a25bb1eee9302a2435b00eff5a1fd42456020",
+      "edge-replay-mutant/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+      "edge-replay-mutant/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+      "edge-replay-mutant/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+      "edge-replay-mutant/DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+      "edge-replay-mutant/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+      "edge-replay-mutant/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+      "edge-replay-mutant/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+      "edge-replay-mutant/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+      "edge-replay-mutant/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18",
+      "edge-replay-mutant/Parameters.h": "48bf14fd1942580ea5cae892642ed9dd78dd24c92c82053968126cc1d7433f75",
+      "edge-replay-mutant/Press78.cpp": "dfca10e78c68dbe70bd1c6b4f00595feb6c94120737b0d47b3b300a4b69f30e8",
+      "edge-replay-mutant/Press78.h": "73b8357461b9f8267b8716bead30dd1dd502ba12d6f530b772e8a7e07374bd78"
+    },
+    "probe_sha256": "4a11b4748bb7b73cd387ca4f28f8241281c0731106aa951167686f9b84e531f0"
+  },
+  "b12_source_bindings": {
+    "scope": "Committed b12 files verified byte-for-byte against preserved wrapper-native source receipt",
+    "files": {
+      "Press78.cpp": "093fd757ebc49c8cfcc92cc227f40084004641edc3f2c3c4d4db8b35517db7f8",
+      "Press78.h": "24643858355c03cfb57b2c2f5d0f283cd30db6f4a61a39aa9ace0d0131b88126",
+      "Parameters.h": "67c709c962461e7f06577d06b080bab2983a39d672fd76cb037a5a4dbe602402",
+      "ApplyParameters.inc": "e4b24402f64e140152a9586b4481f0a1b41911a571e071ebbc280267fc8db1ff",
+      "DSP/Press78Engine.cpp": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f",
+      "DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+      "DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+      "DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+      "DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+      "DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+      "DSP/Press78Engine.h": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0",
+      "DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+      "DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+    }
+  },
+  "previous_native_receipt_sha256": "f8d92d5f8ef33e582263d935d7c28cfbb2b6f6fe1896b7b16a6a9c11a29e3e94",
+  "raw_result_sha256": "b3095d426d7265cd9cde0c3e171f2f4476cec33a6b6962037bbd31b8433c86ed"
+}

@@ -1,0 +1,3127 @@
+{
+  "schema": "press78.sustain-policy.v1",
+  "date": "2026-10-19",
+  "status": "Reviewed exact core adopted; native wrapper validation and b13 packaging pending at this checkpoint",
+  "source_sha256": {
+    "Source/DSP/AnalogOutput.h": "61ce2189053bfb616cb901bf2d988d539d52e763e61d55b696dbbec732d8bdbb",
+    "Source/DSP/CircuitNoise.h": "5fc5d4523a4a2fd5b3c9c97153a5d9d24f5bafb313461b25503430478f8db6fa",
+    "Source/DSP/FactoryVoices.h": "e8b586b4016f697d16285a5e6ae88250fa793a4469afabadc327af34db7b7ac7",
+    "Source/DSP/FirmwarePitch.h": "da6074b5dbe21c8aecd6412576c1af935b0148096a19fe33c075a51c7d19feca",
+    "Source/DSP/OversampledAnalogOutput.h": "ab63e481494a63c462d205bbd24d66251a1f8a1810f8e42fefadd3e1c26e86a1",
+    "Source/DSP/Press78Engine.cpp": "262082d697fb8f9143f8b26e4fcd50f97b1655c11ca79bdd9de978149949ce01",
+    "Source/DSP/Press78Engine.h": "70b605711d4879e40403d3bfc4f3dc397762a962ff1ae038d4aa23ad29bc66d2",
+    "Source/DSP/RecordedChorus.h": "57963a0528ca5eb8e7979ce356ad543e4f4421796e8d49af455f8835a1ad8d09",
+    "Source/DSP/RecordedChorusProfile.h": "431e8ff3dbcc0c45cdd18c39a2ef201f60439cd5f338d227b808c0351133ba18"
+  },
+  "canonical_sources_match_reviewed_core": true,
+  "original_program_evidence": {
+    "constructed_state": true,
+    "full_boot_or_hardware_audio": false,
+    "new_cases_passed": 224,
+    "held_released_program_observations": 16,
+    "prior_release_audit": "Reference/Research/opu-release-command-path-20261019.md",
+    "sources": {
+      "780": "ce0a69d143deacdb52eb28a1f5de80584ce7576ba94488fa4b035dfc6f0a76a7",
+      "680": "52f19aa8eae1730a8f00b43672b911cf5cfa7e5a2af324b9dd377249e2a995f1"
+    },
+    "semantics": [
+      "All nonzero CC64 selects SRR; zero selects RR; immediate keyoff",
+      "Program loading seeds Sustain from patch, later CC64 replaces state rather than OR",
+      "Mode00 shared working patch reload differs from Mode99 cached old patches",
+      "Mode99 held PC can keyoff old voice before state reseed; released PC has no OPU update in tested path",
+      "Later CC64 refresh uses the old cached patch rates"
+    ],
+    "incorrect_initial_inference_preserved": "Mode99 program changes retaining prior CC state; full serial witness falsified this before implementation"
+  },
+  "independent_original_program_evidence": {
+    "passed": true,
+    "cases": 64,
+    "scope": "Independent mirrored-bus program/repeated-program and CC64 transition witnesses, constructed state; no hardware envelope timing or audio.",
+    "original_receipt_path": "build/opu-sustain-policy-independent-20261019/result.json",
+    "original_receipt_sha256": "6244edb7a2058cbec3a5adddc8bf67381e0d166ac201349a9bd4c1bb69d7e82d",
+    "source_bus": {
+      "path": "build/opu-release-independent-20261019/correct-mode-byte/probe_independent.py",
+      "sha256": "2636c61a31fb474197bd2704afee682b723d4d26e022a8321fdb593f5584c05f"
+    },
+    "probe_sha256": "c211c4c5a5d9a7a6fb5788c2a4cff0ae70c5fdd8097a89042d1bce7a6fd95386",
+    "compact_case_receipts": [
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "780",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 0,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 255,
+        "slot0_patch_cache_after": 255,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Human",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Human",
+        "new_program": "Saw",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 94,
+        "slot0_patch_cache_after": 94,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                19
+              ],
+              [
+                744,
+                7
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                17
+              ],
+              [
+                744,
+                5
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Human",
+        "same_program": false,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": false,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 0,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": false,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": false,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      },
+      {
+        "model": "680",
+        "mode_byte": 153,
+        "old_program": "Saw",
+        "new_program": "Saw",
+        "same_program": true,
+        "cc_before": 127,
+        "already_released": true,
+        "passed": true,
+        "sustain_before_program": true,
+        "sustain_after_program": true,
+        "slot0_patch_cache_before": 98,
+        "slot0_patch_cache_after": 98,
+        "subsequent_CC": [
+          {
+            "value": 0,
+            "effective_sustain": false,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                3
+              ],
+              [
+                744,
+                6
+              ]
+            ],
+            "actual_matches": true
+          },
+          {
+            "value": 127,
+            "effective_sustain": true,
+            "expected_slot0_rr_writes": [
+              [
+                736,
+                1
+              ],
+              [
+                744,
+                4
+              ]
+            ],
+            "actual_matches": true
+          }
+        ]
+      }
+    ],
+    "excluded_from_tracked_ledger": "Full IO traces, ROM bytes and disassembly remain ignored."
+  },
+  "implementation": {
+    "sustainMode": {
+      "Legacy": 0,
+      "Original": 1,
+      "constructor_and_missing_property_default": 0,
+      "new_Init_factory_explicit_value": 1,
+      "hidden_property_tag": 320
+    },
+    "raw_API": "sustainController(int): clamp0..127; Legacy>=64, Original!=0",
+    "bool_API": "sustainPedal(bool):127/0",
+    "setPatch_false": "Future-only program seed; preserve cached voice release coefficient through keyoff",
+    "setPatch_true": "Preserve override unless authored Sustain flag changes; live edits update sounding coefficients",
+    "CC64": "Replace latch; update active/releasing voices and bounded steal fades using each cached patch",
+    "noteOff_allNotesOff": "Original immediate release using cached selection",
+    "reset_allSoundOff": "Seed latch from current patch; clear sounding voices",
+    "mode_switch": "Defer until voices and48-tick steal fades idle; effectiveSustainMode reports active selection",
+    "invariants": [
+      "phase",
+      "feedback history",
+      "envelope attenuation",
+      "envelope stage",
+      "finished flags",
+      "age",
+      "ticks"
+    ],
+    "adaptations": [
+      "single-part runtime state",
+      "future-only programs",
+      "48-tick steal fade is plugin click guard"
+    ],
+    "not_claimed": [
+      "full Mode00/99 program behavior",
+      "original allocator",
+      "measured live chip-envelope response"
+    ]
+  },
+  "host_boundary": {
+    "official_source": "https://developer.reasonstudios.com/documentation/rack-extension-sdk/5.0.0/jukebox-scripting-specification",
+    "cached_indexed_source_sha256": "8bf1ff082c01b5c7cdace8add05effefc1ee31e9d311a8adbb42c27d9e6ddc12",
+    "normalized_ON_threshold": 0.5,
+    "raw_nonzero_not_applied_to_normalized_host_value": true,
+    "Legacy_same_frame": "Coalesce final threshold state",
+    "Original_same_frame": "Replay meaningful threshold edges",
+    "routing_uses_effective_not_requested_mode": true,
+    "startup_reset": "Only held snapshot forwarded; zero snapshot is not a raw CC0 message",
+    "authored_toggle_is_not_runtime_override_LED": true,
+    "host_program_identity_and_repeated_raw_messages_not_inferred": true,
+    "validation_status": "Native wrapper and packaging still pending; no completed live Reason test asserted"
+  },
+  "validation": {
+    "implementation_groups": 17,
+    "Release_CTest_targets": 7,
+    "ASan_UBSan_CTest_targets": 7,
+    "legacy_exact_audio_bytes": 39321600,
+    "legacy_scope": "100 presets, both pitch laws,44100/48000/96000Hz, pedal/program/live-edit/steal/allNotesOff/reset/allSoundOff",
+    "independent_public_API_groups_per_build": 11,
+    "independent_builds": [
+      "Release",
+      "ASan/UBSan"
+    ],
+    "no_CC64_complete_WAV_comparisons": 8,
+    "no_CC64_passed": true,
+    "no_CC64_scope": "Compatibility only; no hardware pedal fidelity evidence",
+    "no_CC64_events": 3622,
+    "no_CC64_notes": 1761,
+    "new_audio_fits": 0,
+    "no_CC64_float_peaks_can_exceed_unity": true,
+    "receipts": {
+      "Tests/results/sustain-b13-core-validation.json": {
+        "sha256": "abb46d32a157b280e0c4508f0ca19a543aa42ef3b23aa916e1ce9a0239f846a9",
+        "passed": true
+      },
+      "Tests/results/sustain-b13-independent-review.json": {
+        "sha256": "deb5f4587cafac7378780144daeb362ec31866325f0e504b5e96ea5f52bdc5e2",
+        "passed": true
+      },
+      "Tests/results/sustain-b13-no-CC64-regression.json": {
+        "sha256": "15b7a7d904b791f327ee2a065c888d75a0b6a281eb34be8783480002d55cd31b",
+        "passed": true
+      }
+    }
+  },
+  "unchanged": [
+    "analytic envelope timing law",
+    "Reverb remains unimplemented",
+    "DAC law",
+    "aging/fault model",
+    "no additive noise"
+  ],
+  "artifacts": {
+    "build/sustain-policy-20261019/precedence.py": {
+      "sha256": "8652eeb5b211c3cdb00fcc6fcb86291ff9e76894fb309dd4e5919a392ac9af1d",
+      "bytes": 3298
+    },
+    "build/sustain-policy-20261019/precedence-results.json": {
+      "sha256": "343b32346b03227d820a8bb02d9891a9136d4803ba116489c4b7907a7440d7bc",
+      "bytes": 1225273
+    },
+    "build/sustain-policy-20261019/precedence-firstpass.py": {
+      "sha256": "3be7bcb36f85193d6b1c24d6042550ac3db630368874fe5a177e9580d6870676",
+      "bytes": 3320
+    },
+    "build/sustain-policy-20261019/firstpass-error.txt": {
+      "sha256": "0350771ba7a9ca9108ce94d3739d1aeef0d9526c370079b04d9b8aba2ee996db",
+      "bytes": 268
+    },
+    "build/sustain-policy-20261019/program_live.py": {
+      "sha256": "33923b8eb6ef89c7a446d65fa76ed61d24d68cb01b4e0ebbc5b4684658408398",
+      "bytes": 1428
+    },
+    "build/sustain-policy-20261019/program-live-observations.json": {
+      "sha256": "2d7d92b72a6124d3b13c51ff94b0d0c9ad917974ed25b0e93ca91ce188b8ddb5",
+      "bytes": 81057
+    },
+    "build/opu-sustain-policy-independent-20261019/result.json": {
+      "sha256": "6244edb7a2058cbec3a5adddc8bf67381e0d166ac201349a9bd4c1bb69d7e82d",
+      "bytes": 1580294
+    },
+    "build/opu-sustain-policy-independent-20261019/sdk5-sustain-indexed-source.json": {
+      "sha256": "8bf1ff082c01b5c7cdace8add05effefc1ee31e9d311a8adbb42c27d9e6ddc12",
+      "bytes": 1656
+    },
+    "build/sustain-b13-20261019/design-frozen.json": {
+      "sha256": "e5574fb0125772ee1c096cab2381c0cad131165ca6a56ca06700da33a018ef29",
+      "bytes": 3491
+    },
+    "build/sustain-b13-20261019/scope-amendment-before-audio.json": {
+      "sha256": "e1aabcda1b913ee900c5db074f36a0846c330ebb737029d0d028208663b264b5",
+      "bytes": 713
+    }
+  },
+  "report_sha256": "5bb7be33c52a5e6e9d4dea6f2e12717445e4ce1e38b47d1eb0baf56b5d4c6295"
+}

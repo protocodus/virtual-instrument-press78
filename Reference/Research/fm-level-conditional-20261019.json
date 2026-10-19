@@ -1,0 +1,5664 @@
+{
+  "schema": "press78.conditional-fm-level-audit.v1",
+  "date": "2026-10-19",
+  "status": "frozen; failed predeclared qualification and validation; no production adoption",
+  "sources": {
+    "author_recipes": "https://www.pss680.com/patches.php",
+    "author_samples": "https://www.pss680.com/samplepacks.php",
+    "media_file": "build/isolated-source-search-20261019/saw_synth.wav",
+    "rights": "Author public download, no broad commercial or redistribution license established. Private analysis only; original media/excerpts remain ignored.",
+    "recency_check": "Both original-author public pages re-opened2026-10-19; current visible recipe still agrees with cached source. No media download repeated.",
+    "association": "Same author and same-name recipe/sample; no captured SysEx, recordedMIDI, effects, ADC clock, signal-chain, gain or processing guarantee. Source already studied for pitch; not fresh audio."
+  },
+  "design": {
+    "schema": "press78.conditional-fm-level-design.v1",
+    "utc": "2026-10-19T08:01:34.361965+00:00",
+    "scope": "Reuse existing author PSS680 samples; conditional primitive-family test only. No production edits or adoption. Prior harmonic/pitch inventories exist, so this is not unseen-source validation. New harmonic estimators/calibration and validation split are frozen before new measurement.",
+    "source_premise_rejected": "Parent task originally assumed Saw Feedback0. Original-author recipe and cached page actually say Feedback07. No Bessel/no-feedback fit will be treated as source-correct.",
+    "recipe": {
+      "base": 99,
+      "panel_0_to_8": [
+        63,
+        63,
+        0,
+        0,
+        1,
+        1,
+        7,
+        77,
+        86
+      ],
+      "effects": "To taste; actual physical states and processing undocumented",
+      "same_name_association_only": true,
+      "mod_TL_conditional": 22,
+      "carrier_TL_conditional": 13,
+      "mod_LKS_base99": 0,
+      "carrier_LKS_base99": "nonzero; output normalization removes fixed gain only, not nonlinear/filter artifacts"
+    },
+    "panel_probe": "Load factory99 independently in original780 and680 programs; select dispatcher6 and execute ten increment/decrement operations to verify direct3bit feedback and clamp; select7 and decrementTL127 to98 then raw22 with77 display. No acoustic rate claim.",
+    "sources": {
+      "build/isolated-source-search-20261019/saw_synth.wav": {
+        "bytes": 2859618,
+        "sha256": "68a1c962f5cf4d9294504c04fe78ca7c6b178fb630fe704593d144894fa6b59a"
+      },
+      "build/isolated-source-search-20261019/fixture-notes.json": {
+        "bytes": 33401,
+        "sha256": "b9e56d5fdcf140ac7a8d838423403eade79d19cecfc1a35477b8ebadbf156961"
+      },
+      "build/isolated-source-search-20261019/pss680-patches.html": {
+        "bytes": 6981,
+        "sha256": "acbd67667a129fbbe83251087a876a8df29de21fdf98bdf939c09109ca067c0b"
+      },
+      "build/isolated-source-search-20261019/pss680-samplepacks.html": {
+        "bytes": 2363,
+        "sha256": "f5c080b6b9c9b5b4b28f596f7e4689457a1b20dee23ce1f08a6ea0a860f99360"
+      },
+      "Source/DSP/Press78Engine.cpp": {
+        "bytes": 26257,
+        "sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f"
+      },
+      "Source/DSP/Press78Engine.h": {
+        "bytes": 9170,
+        "sha256": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0"
+      },
+      "Reference/Research/front-panel-level-map-20261019.json": {
+        "bytes": 6201,
+        "sha256": "a1573d5f1aa44b8342ac123e74066b1b7a9d26bb5830603d519682358ad350e4"
+      },
+      "build/front-panel-level-map-20261019/probe.py": {
+        "bytes": 2136,
+        "sha256": "5b5dfb298420e953acbdc40fcd4eff4497c03c31498526e7749393509066b175"
+      },
+      "build/front-panel-envelope-map-20261019/probe_panel.py": {
+        "bytes": 1241,
+        "sha256": "1d8cff8503e00829cd4d4357a292c905d62637f5fd79d42a3839c7bddc0ecafe"
+      }
+    },
+    "rows": [
+      {
+        "file": "saw_synth.wav",
+        "segment_index": 0,
+        "expected_musical_midi_under_authored_sequence": 36,
+        "nearest_midi_fft": 36,
+        "window_start_seconds": 0.883,
+        "window_end_seconds": 1.177,
+        "fft_frequency_hz": 65.3913232705575,
+        "phase_frequency_hz": 65.39131666512256,
+        "phase_fft_difference_cents": -0.0001748787744471711,
+        "three_subwindow_cents_range": 0.12021734274854577,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "saw_synth.wav",
+        "segment_index": 1,
+        "expected_musical_midi_under_authored_sequence": 39,
+        "nearest_midi_fft": 39,
+        "window_start_seconds": 2.396,
+        "window_end_seconds": 2.684,
+        "fft_frequency_hz": 77.73761073518095,
+        "phase_frequency_hz": 77.7375204384876,
+        "phase_fft_difference_cents": -0.0020109288071161273,
+        "three_subwindow_cents_range": 0.038214252627486366,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "saw_synth.wav",
+        "segment_index": 2,
+        "expected_musical_midi_under_authored_sequence": 43,
+        "nearest_midi_fft": 43,
+        "window_start_seconds": 3.935,
+        "window_end_seconds": 4.205,
+        "fft_frequency_hz": 98.0053408092586,
+        "phase_frequency_hz": 98.00542080129456,
+        "phase_fft_difference_cents": 0.0014130340108295819,
+        "three_subwindow_cents_range": 0.12368219352428851,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "saw_synth.wav",
+        "segment_index": 3,
+        "expected_musical_midi_under_authored_sequence": 46,
+        "nearest_midi_fft": 46,
+        "window_start_seconds": 5.409,
+        "window_end_seconds": 5.691,
+        "fft_frequency_hz": 116.52441470984067,
+        "phase_frequency_hz": 116.52445224718748,
+        "phase_fft_difference_cents": 0.000557702200010867,
+        "three_subwindow_cents_range": 0.020922808324653357,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "saw_synth.wav",
+        "segment_index": 4,
+        "expected_musical_midi_under_authored_sequence": 48,
+        "nearest_midi_fft": 48,
+        "window_start_seconds": 6.949,
+        "window_end_seconds": 7.231,
+        "fft_frequency_hz": 130.7835015927836,
+        "phase_frequency_hz": 130.78321671261423,
+        "phase_fft_difference_cents": -0.003771078005058991,
+        "three_subwindow_cents_range": 0.027003051614981295,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "saw_synth.wav",
+        "segment_index": 5,
+        "expected_musical_midi_under_authored_sequence": 51,
+        "nearest_midi_fft": 51,
+        "window_start_seconds": 8.443,
+        "window_end_seconds": 8.737,
+        "fft_frequency_hz": 155.5300314206121,
+        "phase_frequency_hz": 155.53006274490116,
+        "phase_fft_difference_cents": 0.0003486765214982687,
+        "three_subwindow_cents_range": 0.0250556920385707,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "saw_synth.wav",
+        "segment_index": 6,
+        "expected_musical_midi_under_authored_sequence": 55,
+        "nearest_midi_fft": 55,
+        "window_start_seconds": 9.956000000000001,
+        "window_end_seconds": 10.244000000000002,
+        "fft_frequency_hz": 196.0104739283819,
+        "phase_frequency_hz": 196.01046162396293,
+        "phase_fft_difference_cents": -0.00010867699741105799,
+        "three_subwindow_cents_range": 0.018981872282504253,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "saw_synth.wav",
+        "segment_index": 7,
+        "expected_musical_midi_under_authored_sequence": 58,
+        "nearest_midi_fft": 58,
+        "window_start_seconds": 11.423,
+        "window_end_seconds": 11.717,
+        "fft_frequency_hz": 233.049442595317,
+        "phase_frequency_hz": 233.04936510700392,
+        "phase_fft_difference_cents": -0.0005756307623310572,
+        "three_subwindow_cents_range": 0.00532110445569101,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      }
+    ],
+    "selection": {
+      "calibration_indices": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "validation_indices": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "window_rule": "Exactly existing central interiors, no retiming, all eight retained",
+      "f0": "Prior phase_frequency_hz, fixed; no new tuning fit"
+    },
+    "estimator": {
+      "harmonics_fit": 12,
+      "harmonics_score": 8,
+      "basis": "Joint weighted LS: DC, linear trend, sin/cos at fixed h*f0, h1..12; Hann weights. Absolute complex phase ignored, magnitude vector H1..8 divided by its L2 norm. Compare20log10 with floor\u221280dB after normalization. No output gain, EQ, phase, or frequency fit.",
+      "subwindows": "three equal contiguous sample partitions; identical estimator",
+      "stationarity_gate_max_harmonic_change_db": 1.0,
+      "stationarity_evaluated_harmonics": "H1..8 that exceed\u221240dB relative normalized magnitude in full window; excluded weak terms retained in full score",
+      "maximum_weighted_residual_power_fraction": 0.1,
+      "minimum_H1_power_fraction_in_H1_to_H8": 0.01,
+      "maximum_abs_PCM": 0.98,
+      "minimum_source_window_samples": 5000
+    },
+    "model": {
+      "rate_hz": 48000,
+      "burn_seconds": 0.5,
+      "equation": "u[n]=sin(theta[n]+kappa*(u[n\u22121]+u[n\u22122])/2); y[n]=sin(theta[n]+beta*u[n]); theta increments2pi*f0/48000. All beta/kappa globally shared. Equal mod/carrier phases and sine tables assumed. Output gain canceled algebraically.",
+      "current_beta": "8pi*10^(\u2212.75*22/20)",
+      "current_kappa": "4pi*10^(\u2212.75*22/20)",
+      "fixed_controls": [
+        "current",
+        "beta_half_kappa_current",
+        "beta_twice_kappa_current",
+        "beta_current_kappa0_wrong_source_negative_control"
+      ],
+      "free_family": {
+        "beta_bounds": [
+          0.1,
+          10
+        ],
+        "kappa_bounds": [
+          0,
+          3
+        ],
+        "initial_grid_beta": [
+          0.25,
+          0.5,
+          0.75,
+          1,
+          1.5,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8
+        ],
+        "initial_grid_kappa": [
+          0,
+          0.25,
+          0.5,
+          0.75,
+          1,
+          1.25,
+          1.5,
+          1.75,
+          2,
+          2.5,
+          3
+        ],
+        "optimizer": "Five best deterministic grid starts; scipy least_squares with max_nfev100, finite derivative step0.001, ftol/xtol/gtol1e\u22128; all outcomes retained; select smallest calibration MSE only.",
+        "objective": "Unweighted RMS of all4calibration\u00d78 normalized harmonic dB residuals. Never use validation in selection."
+      }
+    },
+    "controls": {
+      "truth": "Same declared recurrence at current, half-beta and double-beta; compare selected-window magnitudes to2second steady reference. Four phase starts0,.25,.5,.75cycles, each note. PCM16 quantized at peak0.25. All96 conditions retained.",
+      "max_harmonic_error_db": 0.05,
+      "method_consistency": "Full estimator vs each3subwindow; same1dB gate as real capture. Failed controls disqualify corresponding model numerical interpretation."
+    },
+    "conclusion_gates": {
+      "qualified_capture": "All8notes pass frozen residual/clip/stationarity/H1 gates and all96 matched controls pass. Any failures retained; no alternative windows.",
+      "conditional_family_improvement": "Only if qualified: freeglobal family reduces held-out RMS by>=50percent relative current and heldout absoluteRMS<=2dB, with every validation note improving; this never authorizes production.",
+      "identifiability": "One modTL22 only constrains beta = phase_scale*10^(\u2212TLslope*22/20) times unknown envelope/velocity. It cannot independently identify8pi,0.75dB,hidden source fields,effects or capture transfer. Kappa feedback law conditional.",
+      "profile": "After selecting best calibration beta/kappa, profile beta at0.8/0.9/1/1.1/1.2 times best with kappa refit using calibration only; report curvature, not a hardware confidence interval."
+    }
+  },
+  "result": {
+    "schema": "press78.conditional-fm-level-result.v1",
+    "utc": "2026-10-19T08:03:27.674035+00:00",
+    "design_sha256": "6009805e9868a031b472035c3c4456039bc5f650d768aeeca9d623632bfe88b6",
+    "source_rows": [
+      {
+        "segment_index": 0,
+        "midi_conditional": 36,
+        "window_frames": [
+          38940,
+          51906
+        ],
+        "f0_fixed_hz": 65.39131666512256,
+        "full": {
+          "amp_h1_to_h12": [
+            0.27642260224446114,
+            0.103931913376575,
+            0.05900985716608864,
+            0.03929626126987223,
+            0.02806154812429138,
+            0.02082416156134296,
+            0.016440095013576034,
+            0.013504607826524451,
+            0.01137160848325422,
+            0.009501475053605008,
+            0.008079734558052304,
+            0.007558830576109927
+          ],
+          "normalized_h1_to_h8_db": [
+            -0.8957123298573221,
+            -9.392204898405396,
+            -14.308692083470905,
+            -17.840158699250452,
+            -20.76495081409641,
+            -23.35583286145511,
+            -25.409096888706237,
+            -27.117543815886542
+          ],
+          "residual_power_fraction": 0.014994786459888726,
+          "H1_power_fraction": 0.8136333976748776
+        },
+        "subwindows": [
+          {
+            "amp_h1_to_h12": [
+              0.27644952054697286,
+              0.10393647691406836,
+              0.05907692412616181,
+              0.03931381965181317,
+              0.02808852639634917,
+              0.020774908575629785,
+              0.016443318210468353,
+              0.013491913290086904,
+              0.01133827177788305,
+              0.009516418323792438,
+              0.008040515166618592,
+              0.0075889556034034475
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.8959929258571832,
+              -9.392949914012886,
+              -14.299952238459143,
+              -17.837404926214052,
+              -20.757730637606144,
+              -23.377527322102473,
+              -25.408520520749352,
+              -27.126838919226273
+            ],
+            "residual_power_fraction": 0.014991889270391898,
+            "H1_power_fraction": 0.8135808308311459
+          },
+          {
+            "amp_h1_to_h12": [
+              0.2764506894930128,
+              0.10395352670981975,
+              0.05898700564118548,
+              0.03931480591679179,
+              0.02804684462651894,
+              0.020835364498836037,
+              0.016483099857173566,
+              0.013485459936697778,
+              0.011405454484657039,
+              0.00947311910565736,
+              0.008104986619642483,
+              0.007572478710165307
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.8957233504401768,
+              -9.391292344980533,
+              -14.312949886811271,
+              -17.836954178351466,
+              -20.770396727173058,
+              -23.352054849136195,
+              -25.387299106178787,
+              -27.13076163654287
+            ],
+            "residual_power_fraction": 0.014999549122659031,
+            "H1_power_fraction": 0.8136313330152356
+          },
+          {
+            "amp_h1_to_h12": [
+              0.27629608292808455,
+              0.10391681757780136,
+              0.059006256036296355,
+              0.03923372200401751,
+              0.02811100039183704,
+              0.020848742193410028,
+              0.016407236429919193,
+              0.013553675680390086,
+              0.011408879788122255,
+              0.009474465054547717,
+              0.008129721592280833,
+              0.0075264919485437355
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.8962489744619417,
+              -9.390026770566852,
+              -14.305782345005813,
+              -17.85055332303545,
+              -20.74621750895075,
+              -23.342146351647138,
+              -25.42303480577818,
+              -27.08260174515706
+            ],
+            "residual_power_fraction": 0.015005450915707803,
+            "H1_power_fraction": 0.8135328656590091
+          }
+        ],
+        "max_strong_harmonic_subwindow_difference_db": 0.034942070729481856,
+        "PCM_peak": 0.795135498046875,
+        "gates": {
+          "source_window_samples": true,
+          "PCM_peak": true,
+          "harmonic_residual": true,
+          "H1_energy": true,
+          "amplitude_stationarity": true
+        },
+        "qualified": true
+      },
+      {
+        "segment_index": 1,
+        "midi_conditional": 39,
+        "window_frames": [
+          105664,
+          118364
+        ],
+        "f0_fixed_hz": 77.7375204384876,
+        "full": {
+          "amp_h1_to_h12": [
+            0.283557841524324,
+            0.10447842581182053,
+            0.059035911656188184,
+            0.039017508932936026,
+            0.027879284580273948,
+            0.02058251959935918,
+            0.01620737839024588,
+            0.013344398630827047,
+            0.011185821103377139,
+            0.009336261075266115,
+            0.008028479690780113,
+            0.007735539357914576
+          ],
+          "normalized_h1_to_h8_db": [
+            -0.8580997299483053,
+            -9.530400557454335,
+            -14.488607482248403,
+            -18.085742196247573,
+            -21.005300465949976,
+            -23.64096221311735,
+            -25.716677533377002,
+            -27.40495282661659
+          ],
+          "residual_power_fraction": 0.01556471843766907,
+          "H1_power_fraction": 0.8207105704365099
+        },
+        "subwindows": [
+          {
+            "amp_h1_to_h12": [
+              0.2835899174685828,
+              0.10450405211608216,
+              0.059056082575257386,
+              0.0390426402823057,
+              0.027875740209535496,
+              0.020577222959753,
+              0.016190682159116333,
+              0.01329562931634732,
+              0.011212517229484527,
+              0.009381674882142475,
+              0.00804969367659318,
+              0.00774337482763539
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.8582534863107676,
+              -9.529406602307093,
+              -14.486776508678421,
+              -18.081285622449776,
+              -21.007541042371148,
+              -23.64433394475043,
+              -25.726766266964802,
+              -27.437891242188375
+            ],
+            "residual_power_fraction": 0.015567371533463607,
+            "H1_power_fraction": 0.8206815147511533
+          },
+          {
+            "amp_h1_to_h12": [
+              0.28352305323902305,
+              0.10445702815082608,
+              0.05901368089128821,
+              0.03900320184728839,
+              0.02787301885501408,
+              0.020520940648801878,
+              0.01618027588585278,
+              0.01335349264371655,
+              0.011187540035898292,
+              0.009379781125709353,
+              0.008083364076004344,
+              0.00771566310574099
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.8577708424238941,
+              -9.530785068687516,
+              -14.490484305547483,
+              -18.08753317371796,
+              -21.00585821318588,
+              -23.66559309884586,
+              -25.729819937049086,
+              -27.397640954645617
+            ],
+            "residual_power_fraction": 0.015562150275082062,
+            "H1_power_fraction": 0.8207727245047141
+          },
+          {
+            "amp_h1_to_h12": [
+              0.2835356620457614,
+              0.10443149750856044,
+              0.05899970026323875,
+              0.03896844876307652,
+              0.02783748793395214,
+              0.020550512178316056,
+              0.016217312306553048,
+              0.013354585389270762,
+              0.011212251529829655,
+              0.009372962882915904,
+              0.008035537368294392,
+              0.0077572149604776255
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.8572923993525389,
+              -9.532816097690356,
+              -14.492450105122721,
+              -18.095183851971754,
+              -21.016845375088025,
+              -23.65299320658686,
+              -25.709868605859608,
+              -27.396838024640534
+            ],
+            "residual_power_fraction": 0.015551617899939758,
+            "H1_power_fraction": 0.8208631503956668
+          }
+        ],
+        "max_strong_harmonic_subwindow_difference_db": 0.032938415571784674,
+        "PCM_peak": 0.77667236328125,
+        "gates": {
+          "source_window_samples": true,
+          "PCM_peak": true,
+          "harmonic_residual": true,
+          "H1_energy": true,
+          "amplitude_stationarity": true
+        },
+        "qualified": true
+      },
+      {
+        "segment_index": 2,
+        "midi_conditional": 43,
+        "window_frames": [
+          173534,
+          185440
+        ],
+        "f0_fixed_hz": 98.00542080129456,
+        "full": {
+          "amp_h1_to_h12": [
+            0.31721239154215,
+            0.11418439578524286,
+            0.06373274191003919,
+            0.04161673924660825,
+            0.029238504826270783,
+            0.021304080230988537,
+            0.01687588016397718,
+            0.013844897466999373,
+            0.011611628095520113,
+            0.009944550159967404,
+            0.008874589271262636,
+            0.008676241958803286
+          ],
+          "normalized_h1_to_h8_db": [
+            -0.8094858908801066,
+            -9.68435361212647,
+            -14.749236712859963,
+            -18.451127787210602,
+            -21.517385569387393,
+            -24.267232995174872,
+            -26.29116011913332,
+            -28.010693899221486
+          ],
+          "residual_power_fraction": 0.016261824811029717,
+          "H1_power_fraction": 0.8299490094029417
+        },
+        "subwindows": [
+          {
+            "amp_h1_to_h12": [
+              0.31724941371256415,
+              0.11426475707272563,
+              0.06379344629233963,
+              0.041593999990181485,
+              0.029215913197549473,
+              0.021390547755126887,
+              0.01693688870794042,
+              0.013804278801243318,
+              0.011631257977921243,
+              0.009972791540295877,
+              0.008899573943639407,
+              0.008723373502515876
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.8102989672852846,
+              -9.680069517668048,
+              -14.74279424018323,
+              -18.457701783235223,
+              -21.525926220064985,
+              -24.233877413975623,
+              -26.261642854936433,
+              -28.038041090125052
+            ],
+            "residual_power_fraction": 0.016288466689305316,
+            "H1_power_fraction": 0.8297936427518069
+          },
+          {
+            "amp_h1_to_h12": [
+              0.3172098329705495,
+              0.11416661816968979,
+              0.06369093346910512,
+              0.04159829223117418,
+              0.02921482262467296,
+              0.0212673762499081,
+              0.016851944999978673,
+              0.013839955869119127,
+              0.011602736752370408,
+              0.009917853687531494,
+              0.008858677841600196,
+              0.00866083808537863
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.8089671540327009,
+              -9.685117246579695,
+              -14.754347698005612,
+              -18.454389948166956,
+              -21.523834901625673,
+              -24.281621690624103,
+              -26.3028993182313,
+              -28.013205872935796
+            ],
+            "residual_power_fraction": 0.01621600711015428,
+            "H1_power_fraction": 0.8300481473987809
+          },
+          {
+            "amp_h1_to_h12": [
+              0.3172643805891082,
+              0.11418075471351895,
+              0.06378264116042272,
+              0.04169447922557715,
+              0.029226979741967196,
+              0.021311548147863263,
+              0.016857260994222807,
+              0.013824319647273335,
+              0.011651424989201466,
+              0.009947415511801188,
+              0.008887208478419876,
+              0.00866521001664201
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.8096182548652615,
+              -9.686186397263269,
+              -14.743994605426902,
+              -18.436473507770682,
+              -21.522365812038412,
+              -24.26574459136715,
+              -26.30230436549479,
+              -28.025169241969294
+            ],
+            "residual_power_fraction": 0.016309342492786087,
+            "H1_power_fraction": 0.8299237146573551
+          }
+        ],
+        "max_strong_harmonic_subwindow_difference_db": 0.033355581199248974,
+        "PCM_peak": 0.810211181640625,
+        "gates": {
+          "source_window_samples": true,
+          "PCM_peak": true,
+          "harmonic_residual": true,
+          "H1_energy": true,
+          "amplitude_stationarity": true
+        },
+        "qualified": true
+      },
+      {
+        "segment_index": 3,
+        "midi_conditional": 46,
+        "window_frames": [
+          238537,
+          250973
+        ],
+        "f0_fixed_hz": 116.52445224718748,
+        "full": {
+          "amp_h1_to_h12": [
+            0.3496465398002559,
+            0.12414855608972927,
+            0.06913959055460464,
+            0.04517657614060918,
+            0.03133573699261168,
+            0.02314752003843381,
+            0.018589059320514727,
+            0.01507954636890012,
+            0.012902322167179278,
+            0.011226472085681031,
+            0.01025823573874404,
+            0.009906536950725062
+          ],
+          "normalized_h1_to_h8_db": [
+            -0.788087066410585,
+            -9.781838303247522,
+            -14.866135694024331,
+            -18.562405493221775,
+            -21.73987349175754,
+            -24.37058238574856,
+            -26.275523493978778,
+            -28.092906219415042
+          ],
+          "residual_power_fraction": 0.017058628880286402,
+          "H1_power_fraction": 0.8340484764190955
+        },
+        "subwindows": [
+          {
+            "amp_h1_to_h12": [
+              0.3497401727919128,
+              0.1241386697528836,
+              0.06920138212117175,
+              0.04520995672612572,
+              0.03133184103523724,
+              0.02322225879587011,
+              0.01857524941084083,
+              0.015050194702226601,
+              0.01291592878942514,
+              0.011261643914220052,
+              0.010287160184163069,
+              0.009987783166716066
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7880250243782501,
+              -9.784793684680912,
+              -14.860640060406393,
+              -18.558253603006985,
+              -21.74321714085124,
+              -24.344846216579654,
+              -26.284242354446334,
+              -28.11209306233193
+            ],
+            "residual_power_fraction": 0.017061308621211378,
+            "H1_power_fraction": 0.8340603914754259
+          },
+          {
+            "amp_h1_to_h12": [
+              0.34951541824685467,
+              0.12416603193337414,
+              0.06910799413671478,
+              0.045152968047120504,
+              0.03131228395341001,
+              0.023124645059146715,
+              0.018592920559154485,
+              0.015087587386677535,
+              0.012896678853416365,
+              0.011194669474113125,
+              0.010242399242408794,
+              0.009876942182776658
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7885003247708029,
+              -9.777771051944395,
+              -14.86726134270598,
+              -18.56410103462479,
+              -21.74353216326448,
+              -24.376325588054783,
+              -26.270874823026148,
+              -28.08543112676057
+            ],
+            "residual_power_fraction": 0.01703782764037167,
+            "H1_power_fraction": 0.8339691152663571
+          },
+          {
+            "amp_h1_to_h12": [
+              0.349787357674262,
+              0.12413742514035304,
+              0.06916787917663017,
+              0.045194150426933824,
+              0.03137072766730626,
+              0.023190009762870816,
+              0.018563475678021003,
+              0.015047520602681972,
+              0.012900469649417113,
+              0.01125969342749665,
+              0.010325253048867316,
+              0.009923898623801749
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7876544401833065,
+              -9.785681955511171,
+              -14.86564742438469,
+              -18.562092079380527,
+              -21.733244763615144,
+              -24.35771798608824,
+              -26.290550748523582,
+              -28.114437683118542
+            ],
+            "residual_power_fraction": 0.017116846883945196,
+            "H1_power_fraction": 0.8341315650222466
+          }
+        ],
+        "max_strong_harmonic_subwindow_difference_db": 0.025736169168904866,
+        "PCM_peak": 0.86334228515625,
+        "gates": {
+          "source_window_samples": true,
+          "PCM_peak": true,
+          "harmonic_residual": true,
+          "H1_energy": true,
+          "amplitude_stationarity": true
+        },
+        "qualified": true
+      },
+      {
+        "segment_index": 4,
+        "midi_conditional": 48,
+        "window_frames": [
+          306451,
+          318887
+        ],
+        "f0_fixed_hz": 130.78321671261423,
+        "full": {
+          "amp_h1_to_h12": [
+            0.35157911380357837,
+            0.12363678873754769,
+            0.06837333615069384,
+            0.04407144815640253,
+            0.030341379306459203,
+            0.022427154802670376,
+            0.01760147908133514,
+            0.014487442197594111,
+            0.012699571693038706,
+            0.011302994559053859,
+            0.010490088613912067,
+            0.010411826884146937
+          ],
+          "normalized_h1_to_h8_db": [
+            -0.7661162873575112,
+            -9.843623300611128,
+            -14.988842209365767,
+            -18.803431202617936,
+            -22.04587123474098,
+            -24.671094014326865,
+            -26.775594353061454,
+            -28.466743305359316
+          ],
+          "residual_power_fraction": 0.017677922006002787,
+          "H1_power_fraction": 0.8382785842749179
+        },
+        "subwindows": [
+          {
+            "amp_h1_to_h12": [
+              0.3519860034025728,
+              0.12385776231956289,
+              0.06838496588341214,
+              0.04427165461393152,
+              0.030317243028149005,
+              0.022346705849717992,
+              0.017693579644328123,
+              0.014463348987746143,
+              0.012728948985449908,
+              0.01127359822942273,
+              0.010544022349560447,
+              0.01028145121703743
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7665930603714635,
+              -9.838636354538158,
+              -14.997888253659939,
+              -18.774585872423135,
+              -22.063306842787036,
+              -24.71283069747436,
+              -26.740786839594506,
+              -28.491723636135905
+            ],
+            "residual_power_fraction": 0.017703778230418292,
+            "H1_power_fraction": 0.8381865622284509
+          },
+          {
+            "amp_h1_to_h12": [
+              0.35175915199100954,
+              0.12368270366214898,
+              0.06833951379338166,
+              0.04409772234031935,
+              0.03040015323230581,
+              0.0224436299795809,
+              0.017600588835026666,
+              0.014473871030339078,
+              0.012735807168287244,
+              0.011347335478951897,
+              0.010464026868121807,
+              0.010433985962309168
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7657780325344631,
+              -9.844506740970045,
+              -14.997248452086973,
+              -18.802362972830156,
+              -22.033170691538203,
+              -24.66882414461603,
+              -26.78014219394779,
+              -28.478992174759608
+            ],
+            "residual_power_fraction": 0.017652756072625717,
+            "H1_power_fraction": 0.8383438770264162
+          },
+          {
+            "amp_h1_to_h12": [
+              0.3512054136960775,
+              0.1235533174524816,
+              0.06842086105164974,
+              0.04405877507638362,
+              0.03030446366266366,
+              0.022569069175571447,
+              0.017733970672574446,
+              0.0144978404275056,
+              0.012635790322689747,
+              0.011292508811530174,
+              0.010494417466098449,
+              0.010407957512163609
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7674309387114457,
+              -9.841566756808234,
+              -14.974884267634938,
+              -18.798006599823236,
+              -22.04852293122127,
+              -24.608382020466916,
+              -26.702535255706227,
+              -28.45258866766573
+            ],
+            "residual_power_fraction": 0.017701481459000537,
+            "H1_power_fraction": 0.8380248676520178
+          }
+        ],
+        "max_strong_harmonic_subwindow_difference_db": 0.07305909735522675,
+        "PCM_peak": 0.83685302734375,
+        "gates": {
+          "source_window_samples": true,
+          "PCM_peak": true,
+          "harmonic_residual": true,
+          "H1_energy": true,
+          "amplitude_stationarity": true
+        },
+        "qualified": true
+      },
+      {
+        "segment_index": 5,
+        "midi_conditional": 51,
+        "window_frames": [
+          372336,
+          385302
+        ],
+        "f0_fixed_hz": 155.53006274490116,
+        "full": {
+          "amp_h1_to_h12": [
+            0.3541774663355418,
+            0.1228986271636451,
+            0.06715649655803402,
+            0.042914076350163304,
+            0.029307928406200084,
+            0.021432607090772996,
+            0.017538585209207657,
+            0.014592663258016553,
+            0.013068232349569086,
+            0.011947965735796335,
+            0.011405032753351788,
+            0.011585365678695123
+          ],
+          "normalized_h1_to_h8_db": [
+            -0.7397489316333116,
+            -9.933226835332773,
+            -15.182406835246457,
+            -19.072172077299285,
+            -22.384465028710842,
+            -25.102667419822012,
+            -26.844276326710986,
+            -28.44147625294534
+          ],
+          "residual_power_fraction": 0.01806865293382539,
+          "H1_power_fraction": 0.8433835128853745
+        },
+        "subwindows": [
+          {
+            "amp_h1_to_h12": [
+              0.3541535341037313,
+              0.12297533490815278,
+              0.06709134978785997,
+              0.042921488733806495,
+              0.02929854194790246,
+              0.021527710678367853,
+              0.017544329836315733,
+              0.014667176274035887,
+              0.013082077193780892,
+              0.01199264480522376,
+              0.01144989242367252,
+              0.011604340429746706
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7403275839252966,
+              -9.927798904067922,
+              -15.19082859596594,
+              -19.07066364209244,
+              -22.387239022147956,
+              -25.064202221777418,
+              -26.841423512583724,
+              -28.39722895404107
+            ],
+            "residual_power_fraction": 0.018077344476918767,
+            "H1_power_fraction": 0.8432711482774076
+          },
+          {
+            "amp_h1_to_h12": [
+              0.35416569746414545,
+              0.1228950809225816,
+              0.0671375918583773,
+              0.042898270671085106,
+              0.029345463307837473,
+              0.0214344942438814,
+              0.017570150609145914,
+              0.014626171996756053,
+              0.013073557886785535,
+              0.011914280196404751,
+              0.011379268115480705,
+              0.011591533745663256
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7397825437740984,
+              -9.93322245654334,
+              -15.184597262427316,
+              -19.075116751865366,
+              -22.373093042842296,
+              -25.10164764218858,
+              -26.828402769643688,
+              -28.42129892997999
+            ],
+            "residual_power_fraction": 0.01806439529992049,
+            "H1_power_fraction": 0.8433769855595957
+          },
+          {
+            "amp_h1_to_h12": [
+              0.354240866910812,
+              0.12279885157967603,
+              0.06713480684378416,
+              0.04284303396235911,
+              0.02928904979591002,
+              0.021442287142279595,
+              0.0175521200838138,
+              0.014577391926136121,
+              0.013118559714155098,
+              0.011940576511280025,
+              0.011433069660408402,
+              0.011609445510342795
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7385075994233703,
+              -9.940594734182675,
+              -15.185525965262222,
+              -19.08687647691578,
+              -22.390375191858784,
+              -25.09905868929886,
+              -26.83788921002208,
+              -28.450884233184745
+            ],
+            "residual_power_fraction": 0.01810962785167972,
+            "H1_power_fraction": 0.8436246093756131
+          }
+        ],
+        "max_strong_harmonic_subwindow_difference_db": 0.04424729890427059,
+        "PCM_peak": 0.809844970703125,
+        "gates": {
+          "source_window_samples": true,
+          "PCM_peak": true,
+          "harmonic_residual": true,
+          "H1_energy": true,
+          "amplitude_stationarity": true
+        },
+        "qualified": true
+      },
+      {
+        "segment_index": 6,
+        "midi_conditional": 55,
+        "window_frames": [
+          439060,
+          451760
+        ],
+        "f0_fixed_hz": 196.01046162396293,
+        "full": {
+          "amp_h1_to_h12": [
+            0.3876248270500197,
+            0.13211750118504448,
+            0.07109491385379783,
+            0.044669230979507174,
+            0.030277683293067695,
+            0.02275635007000075,
+            0.01911375270285846,
+            0.016639874573154634,
+            0.01564108398090927,
+            0.014825609655135207,
+            0.01477646301224494,
+            0.014885034004002304
+          ],
+          "normalized_h1_to_h8_db": [
+            -0.7074426544000363,
+            -10.056467343178,
+            -15.438903717534691,
+            -19.475504848430944,
+            -22.853221525576153,
+            -25.333622242404967,
+            -26.848755109256327,
+            -28.052673396379785
+          ],
+          "residual_power_fraction": 0.018048558872132966,
+          "H1_power_fraction": 0.8496806627097774
+        },
+        "subwindows": [
+          {
+            "amp_h1_to_h12": [
+              0.38803249353154173,
+              0.13216145832191964,
+              0.07115320001691841,
+              0.044551203578092,
+              0.0301696672970823,
+              0.022723353967701056,
+              0.019015385279547714,
+              0.016529442943845205,
+              0.015554937833970252,
+              0.014867252593223607,
+              0.014789555082710926,
+              0.014892986661027535
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7059227241203547,
+              -10.061188172326823,
+              -15.4393958828481,
+              -19.506095790667064,
+              -22.891874197541014,
+              -25.35383594296665,
+              -26.90118203035437,
+              -28.118120261369235
+            ],
+            "residual_power_fraction": 0.017972422140825266,
+            "H1_power_fraction": 0.8499780833396179
+          },
+          {
+            "amp_h1_to_h12": [
+              0.3875862782535013,
+              0.13212869514428544,
+              0.07107979713521373,
+              0.0446913925532792,
+              0.030365527137573865,
+              0.022781545084447276,
+              0.01916201659861427,
+              0.016675687412380607,
+              0.01572377443999067,
+              0.014834240197269375,
+              0.014787273800539968,
+              0.01492250482267391
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.7078747375991955,
+              -10.055299681926934,
+              -15.440319010605744,
+              -19.47076485959051,
+              -22.827626108162523,
+              -25.323579096257326,
+              -26.82641836287146,
+              -28.033567690763537
+            ],
+            "residual_power_fraction": 0.01811230989512327,
+            "H1_power_fraction": 0.8495961314776898
+          },
+          {
+            "amp_h1_to_h12": [
+              0.3876212405146677,
+              0.1321116528195692,
+              0.07111750599501505,
+              0.044640506442046854,
+              0.03016042090955989,
+              0.022669834844739483,
+              0.019089276843974618,
+              0.016565315687360596,
+              0.015573097700214514,
+              0.014753800112357052,
+              0.014738052537285131,
+              0.014837104979336177
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.707078322003256,
+              -10.05640714492525,
+              -15.435699303133317,
+              -19.48064740437323,
+              -22.886481701659804,
+              -25.36626254012297,
+              -26.85944013612916,
+              -28.091235330007727
+            ],
+            "residual_power_fraction": 0.01797139135047421,
+            "H1_power_fraction": 0.8497519459497123
+          }
+        ],
+        "max_strong_harmonic_subwindow_difference_db": 0.0654468649894504,
+        "PCM_peak": 0.842681884765625,
+        "gates": {
+          "source_window_samples": true,
+          "PCM_peak": true,
+          "harmonic_residual": true,
+          "H1_energy": true,
+          "amplitude_stationarity": true
+        },
+        "qualified": true
+      },
+      {
+        "segment_index": 7,
+        "midi_conditional": 58,
+        "window_frames": [
+          503754,
+          516720
+        ],
+        "f0_fixed_hz": 233.04936510700392,
+        "full": {
+          "amp_h1_to_h12": [
+            0.4232265160762462,
+            0.14223741033020407,
+            0.07532387158051358,
+            0.046585668361024325,
+            0.03165143625902092,
+            0.024756891985762895,
+            0.021394387694846913,
+            0.019448242635955917,
+            0.01888532372143875,
+            0.01842697448878592,
+            0.018176642735764355,
+            0.018097807670944002
+          ],
+          "normalized_h1_to_h8_db": [
+            -0.6834238721810543,
+            -10.154604527123269,
+            -15.676228574519747,
+            -19.849834646758964,
+            -23.207012821084824,
+            -25.34095882306341,
+            -26.608884029249623,
+            -27.43727397754872
+          ],
+          "residual_power_fraction": 0.01721998736626332,
+          "H1_power_fraction": 0.854392864720231
+        },
+        "subwindows": [
+          {
+            "amp_h1_to_h12": [
+              0.42269329380471543,
+              0.14211304742624567,
+              0.07531746551007029,
+              0.046534292227410574,
+              0.031604171286772315,
+              0.024652814641775673,
+              0.02135431219280717,
+              0.019402250301997784,
+              0.01889618153897573,
+              0.018391361997365414,
+              0.018145330601417535,
+              0.018026589800109728
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.6839249084203123,
+              -10.151753012681157,
+              -15.666518116014283,
+              -19.84896980482683,
+              -23.20954392305651,
+              -25.367101853595617,
+              -26.6147203075991,
+              -27.447390001544637
+            ],
+            "residual_power_fraction": 0.017208705876929378,
+            "H1_power_fraction": 0.8542943009315725
+          },
+          {
+            "amp_h1_to_h12": [
+              0.42326469407881284,
+              0.14227720090848373,
+              0.075304238535489,
+              0.04659690681618623,
+              0.03163920042891292,
+              0.024777530754943426,
+              0.02141839832473831,
+              0.019446330147998774,
+              0.018912459183605963,
+              0.018442859674210606,
+              0.018133036598759075,
+              0.018164485623300215
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.6835296016212428,
+              -10.153064232220146,
+              -15.679382054992129,
+              -19.84862871380724,
+              -23.211260488722143,
+              -25.334610004769495,
+              -26.600030661905357,
+              -27.43901738892978
+            ],
+            "residual_power_fraction": 0.017230844223275994,
+            "H1_power_fraction": 0.8543720646908821
+          },
+          {
+            "amp_h1_to_h12": [
+              0.4235540255948998,
+              0.14223760537221947,
+              0.0753777753876173,
+              0.0466412139217395,
+              0.03175690076328068,
+              0.02481106402574736,
+              0.021388255633640486,
+              0.01948500461703128,
+              0.018904984602257844,
+              0.01851139802722698,
+              0.01836766283500954,
+              0.01802035020222441
+            ],
+            "normalized_h1_to_h8_db": [
+              -0.6829405919234004,
+              -10.160828224094837,
+              -15.676250546608292,
+              -19.845719963463846,
+              -23.18435462897368,
+              -25.328209078420933,
+              -26.61760954394285,
+              -27.42710660665084
+            ],
+            "residual_power_fraction": 0.01718279682011928,
+            "H1_power_fraction": 0.8544879463287046
+          }
+        ],
+        "max_strong_harmonic_subwindow_difference_db": 0.026143030532207234,
+        "PCM_peak": 0.887359619140625,
+        "gates": {
+          "source_window_samples": true,
+          "PCM_peak": true,
+          "harmonic_residual": true,
+          "H1_energy": true,
+          "amplitude_stationarity": true
+        },
+        "qualified": true
+      }
+    ],
+    "controls": [
+      {
+        "label": "current",
+        "segment_index": 0,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.01085547552551347,
+        "strong_harmonic_subwindow_difference_db": 0.016515051825294336,
+        "residual_power_fraction": 0.042309116600818215,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 0,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.01088583650637176,
+        "strong_harmonic_subwindow_difference_db": 0.01685013679467673,
+        "residual_power_fraction": 0.043385060557725307,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 0,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.011063623517802768,
+        "strong_harmonic_subwindow_difference_db": 0.01723484107493789,
+        "residual_power_fraction": 0.04230724312552996,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 0,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.011190186143291925,
+        "strong_harmonic_subwindow_difference_db": 0.016587348485632702,
+        "residual_power_fraction": 0.04338871592390257,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 1,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.00025021248681511565,
+        "strong_harmonic_subwindow_difference_db": 0.0005347110598847848,
+        "residual_power_fraction": 0.04966018679478765,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 1,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.0001850171642026055,
+        "strong_harmonic_subwindow_difference_db": 0.00038501645772370807,
+        "residual_power_fraction": 0.0496623456364072,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 1,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.0002370873525237016,
+        "strong_harmonic_subwindow_difference_db": 0.0006439510684899119,
+        "residual_power_fraction": 0.04966376318302419,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 1,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.0002612793168168537,
+        "strong_harmonic_subwindow_difference_db": 0.0005282782936113506,
+        "residual_power_fraction": 0.04966346956017791,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 2,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.00018646825039070336,
+        "strong_harmonic_subwindow_difference_db": 0.00043669945731750204,
+        "residual_power_fraction": 0.0605459813808393,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 2,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.00023261606490265763,
+        "strong_harmonic_subwindow_difference_db": 0.0009298346342063724,
+        "residual_power_fraction": 0.0605456127118129,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 2,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.0003939166286315299,
+        "strong_harmonic_subwindow_difference_db": 0.0008669218021317704,
+        "residual_power_fraction": 0.0605474413553946,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 2,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.00027031055167014983,
+        "strong_harmonic_subwindow_difference_db": 0.0005660651140217965,
+        "residual_power_fraction": 0.06054500743559955,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 3,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.000776491402163515,
+        "strong_harmonic_subwindow_difference_db": 0.02451710631830295,
+        "residual_power_fraction": 0.07021918263313821,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 3,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.000989171451998061,
+        "strong_harmonic_subwindow_difference_db": 0.024577479973466154,
+        "residual_power_fraction": 0.07021884930466783,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 3,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.0011305386148308116,
+        "strong_harmonic_subwindow_difference_db": 0.024182082865337406,
+        "residual_power_fraction": 0.07021979229361555,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 3,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.0009685338658655951,
+        "strong_harmonic_subwindow_difference_db": 0.02441852691816493,
+        "residual_power_fraction": 0.070218658509146,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 4,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.027978883142697697,
+        "strong_harmonic_subwindow_difference_db": 0.03288112724847636,
+        "residual_power_fraction": 0.07471663479920829,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 4,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.006174068881442452,
+        "strong_harmonic_subwindow_difference_db": 0.042524364566830286,
+        "residual_power_fraction": 0.0765819136547336,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 4,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.027957303117247534,
+        "strong_harmonic_subwindow_difference_db": 0.03216595795274202,
+        "residual_power_fraction": 0.07996863967623685,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 4,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.006066212521446346,
+        "strong_harmonic_subwindow_difference_db": 0.042768652417581876,
+        "residual_power_fraction": 0.07812010693645799,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 5,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.00013972030369657773,
+        "strong_harmonic_subwindow_difference_db": 0.0005353961805276697,
+        "residual_power_fraction": 0.0894426800148487,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 5,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.00026022008644233097,
+        "strong_harmonic_subwindow_difference_db": 0.0006537029543167705,
+        "residual_power_fraction": 0.08944195635554761,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 5,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.00035592581049215255,
+        "strong_harmonic_subwindow_difference_db": 0.0005916984765725886,
+        "residual_power_fraction": 0.08944430606219214,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 5,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.00014189282109811074,
+        "strong_harmonic_subwindow_difference_db": 0.0005305634566283857,
+        "residual_power_fraction": 0.08944304498278859,
+        "passed": true
+      },
+      {
+        "label": "current",
+        "segment_index": 6,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.00030780631916726975,
+        "strong_harmonic_subwindow_difference_db": 0.0012718278290861917,
+        "residual_power_fraction": 0.10837670642413444,
+        "passed": false
+      },
+      {
+        "label": "current",
+        "segment_index": 6,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.00039014403987280843,
+        "strong_harmonic_subwindow_difference_db": 0.0011761923301314425,
+        "residual_power_fraction": 0.10837696450769903,
+        "passed": false
+      },
+      {
+        "label": "current",
+        "segment_index": 6,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.00016962189337377254,
+        "strong_harmonic_subwindow_difference_db": 0.0011556422181371317,
+        "residual_power_fraction": 0.10838835534720598,
+        "passed": false
+      },
+      {
+        "label": "current",
+        "segment_index": 6,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.0002583787824548267,
+        "strong_harmonic_subwindow_difference_db": 0.0012216470568588988,
+        "residual_power_fraction": 0.10839000439024991,
+        "passed": false
+      },
+      {
+        "label": "current",
+        "segment_index": 7,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.0015993175491573197,
+        "strong_harmonic_subwindow_difference_db": 0.06223168547064972,
+        "residual_power_fraction": 0.12497022920119114,
+        "passed": false
+      },
+      {
+        "label": "current",
+        "segment_index": 7,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.0017435716862266304,
+        "strong_harmonic_subwindow_difference_db": 0.06262759198219214,
+        "residual_power_fraction": 0.12549286616435318,
+        "passed": false
+      },
+      {
+        "label": "current",
+        "segment_index": 7,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.0016196785707549566,
+        "strong_harmonic_subwindow_difference_db": 0.062125063914436396,
+        "residual_power_fraction": 0.12496901732246819,
+        "passed": false
+      },
+      {
+        "label": "current",
+        "segment_index": 7,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.0016999392314041017,
+        "strong_harmonic_subwindow_difference_db": 0.06273165789297153,
+        "residual_power_fraction": 0.12549265360709155,
+        "passed": false
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 0,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.00033399949307977295,
+        "strong_harmonic_subwindow_difference_db": 0.0008487260106306849,
+        "residual_power_fraction": 0.022156970310321114,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 0,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.0004557993353380141,
+        "strong_harmonic_subwindow_difference_db": 0.001163436020117814,
+        "residual_power_fraction": 0.022098847783299184,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 0,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.0004924228789917606,
+        "strong_harmonic_subwindow_difference_db": 0.0010586036942861199,
+        "residual_power_fraction": 0.022156687343697183,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 0,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.0005206734992277973,
+        "strong_harmonic_subwindow_difference_db": 0.0006535469386932391,
+        "residual_power_fraction": 0.022100285125893685,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 1,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 8.654459538348647e-05,
+        "strong_harmonic_subwindow_difference_db": 0.00015960145361404443,
+        "residual_power_fraction": 0.02084516184290544,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 1,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.00010777376662218785,
+        "strong_harmonic_subwindow_difference_db": 0.00020107688694892545,
+        "residual_power_fraction": 0.020846279587909352,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 1,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.00010449026030556752,
+        "strong_harmonic_subwindow_difference_db": 0.0003673964054549117,
+        "residual_power_fraction": 0.020846411565719543,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 1,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.00013363961431522853,
+        "strong_harmonic_subwindow_difference_db": 0.0002030579543266242,
+        "residual_power_fraction": 0.020846202328198407,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 2,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 3.119821765196207e-05,
+        "strong_harmonic_subwindow_difference_db": 0.00015170615712634117,
+        "residual_power_fraction": 0.01914059340932573,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 2,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 7.649926648767291e-05,
+        "strong_harmonic_subwindow_difference_db": 0.00017017909726746439,
+        "residual_power_fraction": 0.019141208376369057,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 2,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 4.997518518834454e-05,
+        "strong_harmonic_subwindow_difference_db": 0.00021288995747426043,
+        "residual_power_fraction": 0.019140854980658695,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 2,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 6.257834025902298e-05,
+        "strong_harmonic_subwindow_difference_db": 0.0001901856723840467,
+        "residual_power_fraction": 0.019140625112425355,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 3,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.0001997143941778745,
+        "strong_harmonic_subwindow_difference_db": 0.00179328679981694,
+        "residual_power_fraction": 0.017930048505940464,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 3,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.00011786916929068525,
+        "strong_harmonic_subwindow_difference_db": 0.0018586876879638226,
+        "residual_power_fraction": 0.017930088061918315,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 3,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.0002396113561573543,
+        "strong_harmonic_subwindow_difference_db": 0.0017260351003578478,
+        "residual_power_fraction": 0.017930064543338904,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 3,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 8.039684470162456e-05,
+        "strong_harmonic_subwindow_difference_db": 0.0017956833845431674,
+        "residual_power_fraction": 0.017930395908668163,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 4,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.00281704805519567,
+        "strong_harmonic_subwindow_difference_db": 0.0032566530058915077,
+        "residual_power_fraction": 0.017292089580489584,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 4,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.00038535013760920833,
+        "strong_harmonic_subwindow_difference_db": 0.004100386981807702,
+        "residual_power_fraction": 0.01720164301592122,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 4,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.002851972928290536,
+        "strong_harmonic_subwindow_difference_db": 0.003074652767228514,
+        "residual_power_fraction": 0.017090762331880886,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 4,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.00042722006449835703,
+        "strong_harmonic_subwindow_difference_db": 0.004194973636352017,
+        "residual_power_fraction": 0.01718114473304856,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 5,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 5.947487517943273e-05,
+        "strong_harmonic_subwindow_difference_db": 6.394093042771942e-05,
+        "residual_power_fraction": 0.016234196535854103,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 5,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 5.182252582258684e-05,
+        "strong_harmonic_subwindow_difference_db": 0.00012992672110101466,
+        "residual_power_fraction": 0.016234759836549463,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 5,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 3.5532388997339126e-05,
+        "strong_harmonic_subwindow_difference_db": 8.430185592800399e-05,
+        "residual_power_fraction": 0.016234696906969433,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 5,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 6.376283203479716e-05,
+        "strong_harmonic_subwindow_difference_db": 0.0001390724233338858,
+        "residual_power_fraction": 0.01623434961913769,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 6,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 8.384147013273946e-05,
+        "strong_harmonic_subwindow_difference_db": 0.0003162870246384841,
+        "residual_power_fraction": 0.015415614217950837,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 6,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 9.689952909042177e-05,
+        "strong_harmonic_subwindow_difference_db": 0.00024432186675582557,
+        "residual_power_fraction": 0.015415784241314864,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 6,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 3.7656489624282585e-05,
+        "strong_harmonic_subwindow_difference_db": 0.00027739544555061,
+        "residual_power_fraction": 0.015415468361937032,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 6,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 5.687584006608404e-05,
+        "strong_harmonic_subwindow_difference_db": 0.00032057920231665094,
+        "residual_power_fraction": 0.015415683555509225,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 7,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.00045999228014892424,
+        "strong_harmonic_subwindow_difference_db": 0.011941635037949538,
+        "residual_power_fraction": 0.015345872929538713,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 7,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.00046048978573409727,
+        "strong_harmonic_subwindow_difference_db": 0.011906887818071255,
+        "residual_power_fraction": 0.015330307836159664,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 7,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.0004330721573211349,
+        "strong_harmonic_subwindow_difference_db": 0.011916380879078758,
+        "residual_power_fraction": 0.015346111659927403,
+        "passed": true
+      },
+      {
+        "label": "beta_half",
+        "segment_index": 7,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.0005538367332640348,
+        "strong_harmonic_subwindow_difference_db": 0.01175733903980003,
+        "residual_power_fraction": 0.015329945538815313,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 0,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.02632569178769728,
+        "strong_harmonic_subwindow_difference_db": 0.1046479713117705,
+        "residual_power_fraction": 0.02207370988627805,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 0,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.026361530009786804,
+        "strong_harmonic_subwindow_difference_db": 0.10512539635875129,
+        "residual_power_fraction": 0.026929281974052633,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 0,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.02612182585799161,
+        "strong_harmonic_subwindow_difference_db": 0.10464720279685835,
+        "residual_power_fraction": 0.02207278791748017,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 0,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.02651199391104342,
+        "strong_harmonic_subwindow_difference_db": 0.10534963746648529,
+        "residual_power_fraction": 0.026932409384884937,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 1,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 7.271892556559578e-05,
+        "strong_harmonic_subwindow_difference_db": 0.0007542102330759803,
+        "residual_power_fraction": 0.028220778333952163,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 1,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.0003593895772411315,
+        "strong_harmonic_subwindow_difference_db": 0.0014989377167360374,
+        "residual_power_fraction": 0.02821974337840289,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 1,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.00016909465819381353,
+        "strong_harmonic_subwindow_difference_db": 0.0006828934232316897,
+        "residual_power_fraction": 0.028227882420985846,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 1,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.00013402236445259064,
+        "strong_harmonic_subwindow_difference_db": 0.0014846762730051921,
+        "residual_power_fraction": 0.028229579831051316,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 2,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.00013214832133101595,
+        "strong_harmonic_subwindow_difference_db": 0.0005654881014436342,
+        "residual_power_fraction": 0.03431400406090744,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 2,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 7.533767904277511e-05,
+        "strong_harmonic_subwindow_difference_db": 0.0003671863861853808,
+        "residual_power_fraction": 0.0343094912221802,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 2,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.00011126849829068419,
+        "strong_harmonic_subwindow_difference_db": 0.00037612440890555376,
+        "residual_power_fraction": 0.03431541862978766,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 2,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.0002538399616049958,
+        "strong_harmonic_subwindow_difference_db": 0.0008627969636130217,
+        "residual_power_fraction": 0.03430729989511435,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 3,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.0034536063690353558,
+        "strong_harmonic_subwindow_difference_db": 0.15340778909587982,
+        "residual_power_fraction": 0.03994458085721598,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 3,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.003239895460165343,
+        "strong_harmonic_subwindow_difference_db": 0.1533384537129585,
+        "residual_power_fraction": 0.03994393309126594,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 3,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.003362985976057331,
+        "strong_harmonic_subwindow_difference_db": 0.15366151212926482,
+        "residual_power_fraction": 0.03994348015528018,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 3,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.003394904107299368,
+        "strong_harmonic_subwindow_difference_db": 0.15301843758208378,
+        "residual_power_fraction": 0.03994405439764341,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 4,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.16898604402331685,
+        "strong_harmonic_subwindow_difference_db": 0.3143181319964157,
+        "residual_power_fraction": 0.043827538441336994,
+        "passed": false
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 4,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.12213469920730091,
+        "strong_harmonic_subwindow_difference_db": 0.33400657523169386,
+        "residual_power_fraction": 0.04956236152910864,
+        "passed": false
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 4,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.16671087921655925,
+        "strong_harmonic_subwindow_difference_db": 0.3161590444726947,
+        "residual_power_fraction": 0.04429827363685045,
+        "passed": false
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 4,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.12113148655902606,
+        "strong_harmonic_subwindow_difference_db": 0.33246203229034776,
+        "residual_power_fraction": 0.03855791799424603,
+        "passed": false
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 5,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.00015126852893487808,
+        "strong_harmonic_subwindow_difference_db": 0.00036459853117065677,
+        "residual_power_fraction": 0.05144268559862246,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 5,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 5.807101673482862e-05,
+        "strong_harmonic_subwindow_difference_db": 0.0007058310397134449,
+        "residual_power_fraction": 0.05144236111628326,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 5,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.00019893804024917472,
+        "strong_harmonic_subwindow_difference_db": 0.0006716290022090732,
+        "residual_power_fraction": 0.05144256704092377,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 5,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 5.000380439312835e-05,
+        "strong_harmonic_subwindow_difference_db": 0.0006696759730111523,
+        "residual_power_fraction": 0.05144266156174542,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 6,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.0005211152024386934,
+        "strong_harmonic_subwindow_difference_db": 0.008126949167554187,
+        "residual_power_fraction": 0.06355107913760996,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 6,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.00034911075325894103,
+        "strong_harmonic_subwindow_difference_db": 0.009012172075781422,
+        "residual_power_fraction": 0.06353853900377089,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 6,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.000590655168558385,
+        "strong_harmonic_subwindow_difference_db": 0.007935425410526165,
+        "residual_power_fraction": 0.06353116226333765,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 6,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.0003794434912904876,
+        "strong_harmonic_subwindow_difference_db": 0.009001146290220419,
+        "residual_power_fraction": 0.06354274124659508,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 7,
+        "phase_cycles": 0.0,
+        "max_8harmonic_error_db": 0.015415276774795927,
+        "strong_harmonic_subwindow_difference_db": 0.39304769634115644,
+        "residual_power_fraction": 0.07488632467754187,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 7,
+        "phase_cycles": 0.25,
+        "max_8harmonic_error_db": 0.015574863923681903,
+        "strong_harmonic_subwindow_difference_db": 0.3964211530638231,
+        "residual_power_fraction": 0.07455093663615336,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 7,
+        "phase_cycles": 0.5,
+        "max_8harmonic_error_db": 0.015340023782158596,
+        "strong_harmonic_subwindow_difference_db": 0.3930737866250098,
+        "residual_power_fraction": 0.07488613716788152,
+        "passed": true
+      },
+      {
+        "label": "beta_double",
+        "segment_index": 7,
+        "phase_cycles": 0.75,
+        "max_8harmonic_error_db": 0.015579375205483359,
+        "strong_harmonic_subwindow_difference_db": 0.39661970451256323,
+        "residual_power_fraction": 0.07455056733309294,
+        "passed": true
+      }
+    ],
+    "fixed_models": {
+      "current": {
+        "beta": 3.760450356180301,
+        "kappa": 1.8802251780901504,
+        "per_note_rms_db": [
+          0.702327956127586,
+          0.6003593972840618,
+          0.3637854208643658,
+          0.39972385083073864,
+          0.2385370045587957,
+          0.21375302937599927,
+          0.48422146261099297,
+          0.8146239928948188
+        ],
+        "calibration_rms_db": 0.47879398434734655,
+        "validation_rms_db": 0.5544170745471209,
+        "residuals_db": [
+          [
+            0.1309858069682387,
+            -0.5675015445300691,
+            -0.6512369368710633,
+            -0.7876166146165176,
+            -0.8051677155275812,
+            -0.6876088112433365,
+            -0.7680731016976239,
+            -0.9227212376724125
+          ],
+          [
+            0.10172123385979148,
+            -0.44515283733251465,
+            -0.5231535180355156,
+            -0.6373190676368701,
+            -0.7057537443456674,
+            -0.5840747792124041,
+            -0.6680856013081993,
+            -0.8423228156730396
+          ],
+          [
+            0.06693040087240909,
+            -0.32007809851656077,
+            -0.35467903704602044,
+            -0.43875509934402146,
+            -0.4337638479956638,
+            -0.25122741357431977,
+            -0.3956175563730433,
+            -0.4750854609085522
+          ],
+          [
+            0.057511400568384774,
+            -0.2513431573396758,
+            -0.3261158237946429,
+            -0.4828938252295174,
+            -0.4236871175076935,
+            -0.38108164410675016,
+            -0.5969579119567463,
+            -0.4371745564507705
+          ],
+          [
+            0.04524842362746917,
+            -0.2153129604023043,
+            -0.2807715167127647,
+            -0.3754300985978425,
+            -0.29267634707167645,
+            -0.25336039072008987,
+            -0.1927009673461697,
+            0.005208793095299313
+          ],
+          [
+            0.03159600176297572,
+            -0.16842609910178474,
+            -0.20694233240844717,
+            -0.29886178580644795,
+            -0.17018741032065066,
+            0.044560643731948346,
+            -0.030379721711494057,
+            0.4148992327089722
+          ],
+          [
+            0.017148189934229174,
+            -0.12749833334708072,
+            -0.16356133770021586,
+            -0.2014715607436095,
+            0.049537405618305996,
+            0.3355135495075565,
+            0.5602441437390873,
+            1.1674646099002253
+          ],
+          [
+            0.003942724137872777,
+            -0.11466316628565565,
+            -0.12095622965741448,
+            -0.045590032344570375,
+            0.37892958730341775,
+            0.749599209192418,
+            1.2034785041155693,
+            1.7678175343221092
+          ]
+        ]
+      },
+      "beta_half": {
+        "beta": 1.8802251780901504,
+        "kappa": 1.8802251780901504,
+        "per_note_rms_db": [
+          3.8222800437936746,
+          4.005264553106276,
+          4.374067264340746,
+          4.39069554038748,
+          4.620548070198242,
+          4.700786215747944,
+          4.670405294758253,
+          4.53957321725829
+        ],
+        "calibration_rms_db": 4.384758809001909,
+        "validation_rms_db": 4.416601281238854,
+        "residuals_db": [
+          [
+            -0.655670487525167,
+            1.2160046421260713,
+            2.293279029880221,
+            3.104454143259984,
+            3.9148134766075273,
+            4.771295113759358,
+            5.350740249193329,
+            5.7751034378218336
+          ],
+          [
+            -0.6859477215985263,
+            1.3513157791201955,
+            2.4584449043808743,
+            3.32262027914933,
+            4.114523944932568,
+            5.002122359498628,
+            5.589985622958153,
+            5.979828006414767
+          ],
+          [
+            -0.7229083622119024,
+            1.500801121975753,
+            2.695516862048736,
+            3.643841717170165,
+            4.560787826420526,
+            5.540098250797605,
+            6.053039331722083,
+            6.450469902655897
+          ],
+          [
+            -0.7339254238965554,
+            1.594394993275607,
+            2.7912633647426954,
+            3.7151156095409466,
+            4.723322526976659,
+            5.5627167969827624,
+            5.93525902248388,
+            6.408649469251596
+          ],
+          [
+            -0.7482030656376596,
+            1.6532657186315625,
+            2.89808240075498,
+            3.926037601499809,
+            4.984176477809349,
+            5.802463303361396,
+            6.3585408806747665,
+            6.68941924671325
+          ],
+          [
+            -0.7609335772890317,
+            1.73786531550636,
+            3.0633260103204343,
+            4.140540306552705,
+            5.24086603991071,
+            6.123257737831327,
+            6.286784379355783,
+            6.493633214544484
+          ],
+          [
+            -0.7715439183843409,
+            1.8528425864417049,
+            3.27334934351488,
+            4.45472631836846,
+            5.575100510052341,
+            6.172816029688509,
+            6.062443062801496,
+            5.828821274562326
+          ],
+          [
+            -0.7759865862689089,
+            1.94297164239949,
+            3.4668896792522155,
+            4.745350432034364,
+            5.803225490586371,
+            6.011951815832052,
+            5.61236627502921,
+            4.962578489764692
+          ]
+        ]
+      },
+      "beta_double": {
+        "beta": 7.520900712360602,
+        "kappa": 1.8802251780901504,
+        "per_note_rms_db": [
+          2.254710724670319,
+          2.295437032987314,
+          2.3761527558941746,
+          2.397720071890987,
+          2.4414184472742413,
+          2.5585967913493186,
+          2.6797659431134777,
+          2.772022067802972
+        ],
+        "calibration_rms_db": 2.442923039917993,
+        "validation_rms_db": 2.5124000776472792,
+        "residuals_db": [
+          [
+            -2.2491347373507145,
+            5.917032561651691,
+            -0.4847104492697447,
+            -0.42770463440785633,
+            -0.1819211568999357,
+            0.16699371461117707,
+            0.26340729503892746,
+            0.2272468439613462
+          ],
+          [
+            -2.2583144380041267,
+            6.033718873808669,
+            -0.34631960147680907,
+            -0.247137481378644,
+            -0.02960981795861173,
+            0.3428691086396576,
+            0.44616868488874317,
+            0.38468840221728584
+          ],
+          [
+            -2.2623214064717123,
+            6.153073163279106,
+            -0.15452435853316082,
+            0.011551615366762746,
+            0.3414150439883983,
+            0.8018784757103177,
+            0.8444378657049896,
+            0.8329153664082547
+          ],
+          [
+            -2.24935949928355,
+            6.221728747471916,
+            -0.0906655876747724,
+            0.04461553754979164,
+            0.4682058123456372,
+            0.8057282590451464,
+            0.7484532951556488,
+            0.8855268154657878
+          ],
+          [
+            -2.229222859971971,
+            6.252227030841091,
+            -0.05026058263637623,
+            0.1544952053226254,
+            0.6005341925160295,
+            0.9084120460477116,
+            1.0616377633860417,
+            1.1336187524290082
+          ],
+          [
+            -2.2427954738257316,
+            6.320344001553322,
+            0.14665970062621625,
+            0.452203666170238,
+            1.014549057218609,
+            1.4840859623597709,
+            1.3635310559427332,
+            1.4413276494460234
+          ],
+          [
+            -2.2452347811623756,
+            6.403916025651083,
+            0.387150875363254,
+            0.8596815673055183,
+            1.5360229821725824,
+            1.850300615929246,
+            1.6213577232157057,
+            1.4481803608921737
+          ],
+          [
+            -2.2631357939155103,
+            6.4813960667986,
+            0.6704008578799066,
+            1.3151066611714093,
+            2.0142119526740885,
+            2.0359994947404125,
+            1.6258356665247398,
+            1.1480174087327732
+          ]
+        ]
+      },
+      "feedback0_wrong_source_negative_control": {
+        "beta": 3.760450356180301,
+        "kappa": 0.0,
+        "per_note_rms_db": [
+          6.889038623645825,
+          6.8941275609419925,
+          6.902842729933058,
+          6.948626959820012,
+          6.955600383981053,
+          7.103064219195091,
+          7.360473642023331,
+          7.635457648758805
+        ],
+        "calibration_rms_db": 7.029669975340791,
+        "validation_rms_db": 7.151331104439166,
+        "residuals_db": [
+          [
+            -1.7254423267501826,
+            1.448637861959229,
+            -1.841167742355239,
+            11.282129168538468,
+            6.250628460196777,
+            3.771244224667683,
+            -4.896595633740528,
+            -12.90927949986655
+          ],
+          [
+            -1.7630549266595865,
+            1.5868335210094777,
+            -1.6612523435730022,
+            11.527712665533315,
+            6.490978112053696,
+            4.05637357635926,
+            -4.589014989086049,
+            -12.621870489518411
+          ],
+          [
+            -1.8116687657281894,
+            1.7407865756814607,
+            -1.400623112959396,
+            11.893098256497595,
+            7.003063215495551,
+            4.682644358399074,
+            -4.014532403364303,
+            -12.016129417009942
+          ],
+          [
+            -1.8330675901976607,
+            1.8382712668022583,
+            -1.2837241317980261,
+            12.004375962509087,
+            7.225551137864667,
+            4.785993748977404,
+            -4.0301690285450675,
+            -11.933917096565466
+          ],
+          [
+            -1.8550383692506474,
+            1.900056264166139,
+            -1.1610176164550516,
+            12.245401671904961,
+            7.531548880846923,
+            5.086505377554538,
+            -3.53009816945276,
+            -11.560080010806438
+          ],
+          [
+            -1.881405724974977,
+            1.9896597988879146,
+            -0.9674529905744933,
+            12.514142546586505,
+            7.87014267481708,
+            5.51807878305107,
+            -3.4614161958232685,
+            -11.585347063204285
+          ],
+          [
+            -1.9137120022082104,
+            2.1129003067329863,
+            -0.7109561082861884,
+            12.917475317718152,
+            8.338899171682478,
+            5.7490336056332225,
+            -3.456937413270822,
+            -11.974149919745788
+          ],
+          [
+            -1.9377307844271527,
+            2.211037490678245,
+            -0.47363125130121375,
+            13.291805116046165,
+            8.692690467190964,
+            5.756370186291363,
+            -3.6968084932820737,
+            -12.589549338583723
+          ]
+        ]
+      }
+    },
+    "grid_calibration_only": [
+      {
+        "beta": 0.25,
+        "kappa": 0,
+        "calibration_mse": 1935.3357106948556
+      },
+      {
+        "beta": 0.25,
+        "kappa": 0.25,
+        "calibration_mse": 1276.127636642623
+      },
+      {
+        "beta": 0.25,
+        "kappa": 0.5,
+        "calibration_mse": 489.57237264199625
+      },
+      {
+        "beta": 0.25,
+        "kappa": 0.75,
+        "calibration_mse": 180.86094307668986
+      },
+      {
+        "beta": 0.25,
+        "kappa": 1,
+        "calibration_mse": 92.65067665323465
+      },
+      {
+        "beta": 0.25,
+        "kappa": 1.25,
+        "calibration_mse": 76.84159162904908
+      },
+      {
+        "beta": 0.25,
+        "kappa": 1.5,
+        "calibration_mse": 82.87529665113365
+      },
+      {
+        "beta": 0.25,
+        "kappa": 1.75,
+        "calibration_mse": 101.0129632090264
+      },
+      {
+        "beta": 0.25,
+        "kappa": 2,
+        "calibration_mse": 132.7466033053933
+      },
+      {
+        "beta": 0.25,
+        "kappa": 2.5,
+        "calibration_mse": 263.9821721811901
+      },
+      {
+        "beta": 0.25,
+        "kappa": 3,
+        "calibration_mse": 376.47732249570896
+      },
+      {
+        "beta": 0.5,
+        "kappa": 0,
+        "calibration_mse": 1605.9091731082208
+      },
+      {
+        "beta": 0.5,
+        "kappa": 0.25,
+        "calibration_mse": 866.9231970146961
+      },
+      {
+        "beta": 0.5,
+        "kappa": 0.5,
+        "calibration_mse": 235.8580131532235
+      },
+      {
+        "beta": 0.5,
+        "kappa": 0.75,
+        "calibration_mse": 58.62052508476025
+      },
+      {
+        "beta": 0.5,
+        "kappa": 1,
+        "calibration_mse": 18.26086939660927
+      },
+      {
+        "beta": 0.5,
+        "kappa": 1.25,
+        "calibration_mse": 13.045574566857258
+      },
+      {
+        "beta": 0.5,
+        "kappa": 1.5,
+        "calibration_mse": 15.551170453622934
+      },
+      {
+        "beta": 0.5,
+        "kappa": 1.75,
+        "calibration_mse": 22.413626346403795
+      },
+      {
+        "beta": 0.5,
+        "kappa": 2,
+        "calibration_mse": 35.251470511609185
+      },
+      {
+        "beta": 0.5,
+        "kappa": 2.5,
+        "calibration_mse": 86.68633625257186
+      },
+      {
+        "beta": 0.5,
+        "kappa": 3,
+        "calibration_mse": 157.80288243240113
+      },
+      {
+        "beta": 0.75,
+        "kappa": 0,
+        "calibration_mse": 1341.9765953586416
+      },
+      {
+        "beta": 0.75,
+        "kappa": 0.25,
+        "calibration_mse": 541.1428918384115
+      },
+      {
+        "beta": 0.75,
+        "kappa": 0.5,
+        "calibration_mse": 115.15285604099053
+      },
+      {
+        "beta": 0.75,
+        "kappa": 0.75,
+        "calibration_mse": 16.249040715590393
+      },
+      {
+        "beta": 0.75,
+        "kappa": 1,
+        "calibration_mse": 1.3797720700474896
+      },
+      {
+        "beta": 0.75,
+        "kappa": 1.25,
+        "calibration_mse": 0.922423417230896
+      },
+      {
+        "beta": 0.75,
+        "kappa": 1.5,
+        "calibration_mse": 1.7591130494915883
+      },
+      {
+        "beta": 0.75,
+        "kappa": 1.75,
+        "calibration_mse": 3.709409994249338
+      },
+      {
+        "beta": 0.75,
+        "kappa": 2,
+        "calibration_mse": 8.115590508347857
+      },
+      {
+        "beta": 0.75,
+        "kappa": 2.5,
+        "calibration_mse": 23.69461718484057
+      },
+      {
+        "beta": 0.75,
+        "kappa": 3,
+        "calibration_mse": 61.57762554223499
+      },
+      {
+        "beta": 1,
+        "kappa": 0,
+        "calibration_mse": 1088.7635887874333
+      },
+      {
+        "beta": 1,
+        "kappa": 0.25,
+        "calibration_mse": 327.9537367787789
+      },
+      {
+        "beta": 1,
+        "kappa": 0.5,
+        "calibration_mse": 50.69489443520268
+      },
+      {
+        "beta": 1,
+        "kappa": 0.75,
+        "calibration_mse": 2.716057611250327
+      },
+      {
+        "beta": 1,
+        "kappa": 1,
+        "calibration_mse": 1.7245872021894888
+      },
+      {
+        "beta": 1,
+        "kappa": 1.25,
+        "calibration_mse": 2.5166923291209695
+      },
+      {
+        "beta": 1,
+        "kappa": 1.5,
+        "calibration_mse": 1.8595776979668777
+      },
+      {
+        "beta": 1,
+        "kappa": 1.75,
+        "calibration_mse": 1.1364018861733358
+      },
+      {
+        "beta": 1,
+        "kappa": 2,
+        "calibration_mse": 1.2800747891339255
+      },
+      {
+        "beta": 1,
+        "kappa": 2.5,
+        "calibration_mse": 4.446217649452447
+      },
+      {
+        "beta": 1,
+        "kappa": 3,
+        "calibration_mse": 17.346139700317803
+      },
+      {
+        "beta": 1.5,
+        "kappa": 0,
+        "calibration_mse": 716.5970609009482
+      },
+      {
+        "beta": 1.5,
+        "kappa": 0.25,
+        "calibration_mse": 120.74652179343931
+      },
+      {
+        "beta": 1.5,
+        "kappa": 0.5,
+        "calibration_mse": 20.939231127362376
+      },
+      {
+        "beta": 1.5,
+        "kappa": 0.75,
+        "calibration_mse": 25.46396669400857
+      },
+      {
+        "beta": 1.5,
+        "kappa": 1,
+        "calibration_mse": 27.851530665939066
+      },
+      {
+        "beta": 1.5,
+        "kappa": 1.25,
+        "calibration_mse": 21.293958908550856
+      },
+      {
+        "beta": 1.5,
+        "kappa": 1.5,
+        "calibration_mse": 15.212319440257193
+      },
+      {
+        "beta": 1.5,
+        "kappa": 1.75,
+        "calibration_mse": 10.48967244839954
+      },
+      {
+        "beta": 1.5,
+        "kappa": 2,
+        "calibration_mse": 6.49004617351814
+      },
+      {
+        "beta": 1.5,
+        "kappa": 2.5,
+        "calibration_mse": 18.490049868307878
+      },
+      {
+        "beta": 1.5,
+        "kappa": 3,
+        "calibration_mse": 13.881171833697502
+      },
+      {
+        "beta": 2,
+        "kappa": 0,
+        "calibration_mse": 452.7121128068545
+      },
+      {
+        "beta": 2,
+        "kappa": 0.25,
+        "calibration_mse": 95.80034389188168
+      },
+      {
+        "beta": 2,
+        "kappa": 0.5,
+        "calibration_mse": 171.9916183864042
+      },
+      {
+        "beta": 2,
+        "kappa": 0.75,
+        "calibration_mse": 111.21561624126906
+      },
+      {
+        "beta": 2,
+        "kappa": 1,
+        "calibration_mse": 91.89697064103689
+      },
+      {
+        "beta": 2,
+        "kappa": 1.25,
+        "calibration_mse": 60.905768855067876
+      },
+      {
+        "beta": 2,
+        "kappa": 1.5,
+        "calibration_mse": 39.986131146014635
+      },
+      {
+        "beta": 2,
+        "kappa": 1.75,
+        "calibration_mse": 27.89286632284843
+      },
+      {
+        "beta": 2,
+        "kappa": 2,
+        "calibration_mse": 19.79282698071852
+      },
+      {
+        "beta": 2,
+        "kappa": 2.5,
+        "calibration_mse": 28.637178074326137
+      },
+      {
+        "beta": 2,
+        "kappa": 3,
+        "calibration_mse": 16.752101185473112
+      },
+      {
+        "beta": 3,
+        "kappa": 0,
+        "calibration_mse": 118.7031182709032
+      },
+      {
+        "beta": 3,
+        "kappa": 0.25,
+        "calibration_mse": 27.157937778253007
+      },
+      {
+        "beta": 3,
+        "kappa": 0.5,
+        "calibration_mse": 47.441392733887916
+      },
+      {
+        "beta": 3,
+        "kappa": 0.75,
+        "calibration_mse": 77.236012348878
+      },
+      {
+        "beta": 3,
+        "kappa": 1,
+        "calibration_mse": 50.45200643653654
+      },
+      {
+        "beta": 3,
+        "kappa": 1.25,
+        "calibration_mse": 23.033731339192975
+      },
+      {
+        "beta": 3,
+        "kappa": 1.5,
+        "calibration_mse": 34.09607027242922
+      },
+      {
+        "beta": 3,
+        "kappa": 1.75,
+        "calibration_mse": 74.13153187857847
+      },
+      {
+        "beta": 3,
+        "kappa": 2,
+        "calibration_mse": 75.6686645279089
+      },
+      {
+        "beta": 3,
+        "kappa": 2.5,
+        "calibration_mse": 60.237311176191845
+      },
+      {
+        "beta": 3,
+        "kappa": 3,
+        "calibration_mse": 30.209961789562406
+      },
+      {
+        "beta": 4,
+        "kappa": 0,
+        "calibration_mse": 54.01749450830871
+      },
+      {
+        "beta": 4,
+        "kappa": 0.25,
+        "calibration_mse": 101.6462382751368
+      },
+      {
+        "beta": 4,
+        "kappa": 0.5,
+        "calibration_mse": 93.01453834808076
+      },
+      {
+        "beta": 4,
+        "kappa": 0.75,
+        "calibration_mse": 105.61434226449128
+      },
+      {
+        "beta": 4,
+        "kappa": 1,
+        "calibration_mse": 34.39727346847064
+      },
+      {
+        "beta": 4,
+        "kappa": 1.25,
+        "calibration_mse": 15.78260874610552
+      },
+      {
+        "beta": 4,
+        "kappa": 1.5,
+        "calibration_mse": 5.096351765802316
+      },
+      {
+        "beta": 4,
+        "kappa": 1.75,
+        "calibration_mse": 1.3008600916277089
+      },
+      {
+        "beta": 4,
+        "kappa": 2,
+        "calibration_mse": 0.03686466902083342
+      },
+      {
+        "beta": 4,
+        "kappa": 2.5,
+        "calibration_mse": 15.381696030734329
+      },
+      {
+        "beta": 4,
+        "kappa": 3,
+        "calibration_mse": 73.82056790291966
+      },
+      {
+        "beta": 5,
+        "kappa": 0,
+        "calibration_mse": 149.78137536876665
+      },
+      {
+        "beta": 5,
+        "kappa": 0.25,
+        "calibration_mse": 121.97248971189441
+      },
+      {
+        "beta": 5,
+        "kappa": 0.5,
+        "calibration_mse": 120.40693576721964
+      },
+      {
+        "beta": 5,
+        "kappa": 0.75,
+        "calibration_mse": 31.062344444417647
+      },
+      {
+        "beta": 5,
+        "kappa": 1,
+        "calibration_mse": 14.264494385795112
+      },
+      {
+        "beta": 5,
+        "kappa": 1.25,
+        "calibration_mse": 12.770752763424753
+      },
+      {
+        "beta": 5,
+        "kappa": 1.5,
+        "calibration_mse": 4.568895816011462
+      },
+      {
+        "beta": 5,
+        "kappa": 1.75,
+        "calibration_mse": 4.140466628132857
+      },
+      {
+        "beta": 5,
+        "kappa": 2,
+        "calibration_mse": 4.0742260029480555
+      },
+      {
+        "beta": 5,
+        "kappa": 2.5,
+        "calibration_mse": 33.458544051512206
+      },
+      {
+        "beta": 5,
+        "kappa": 3,
+        "calibration_mse": 36.972532594872064
+      },
+      {
+        "beta": 6,
+        "kappa": 0,
+        "calibration_mse": 115.9933136183639
+      },
+      {
+        "beta": 6,
+        "kappa": 0.25,
+        "calibration_mse": 139.84783672312736
+      },
+      {
+        "beta": 6,
+        "kappa": 0.5,
+        "calibration_mse": 107.40697659276837
+      },
+      {
+        "beta": 6,
+        "kappa": 0.75,
+        "calibration_mse": 69.44559387497414
+      },
+      {
+        "beta": 6,
+        "kappa": 1,
+        "calibration_mse": 41.70230531780698
+      },
+      {
+        "beta": 6,
+        "kappa": 1.25,
+        "calibration_mse": 19.972440303795587
+      },
+      {
+        "beta": 6,
+        "kappa": 1.5,
+        "calibration_mse": 5.726211340169513
+      },
+      {
+        "beta": 6,
+        "kappa": 1.75,
+        "calibration_mse": 6.103461166778143
+      },
+      {
+        "beta": 6,
+        "kappa": 2,
+        "calibration_mse": 8.046797332193444
+      },
+      {
+        "beta": 6,
+        "kappa": 2.5,
+        "calibration_mse": 37.78281220644577
+      },
+      {
+        "beta": 6,
+        "kappa": 3,
+        "calibration_mse": 22.069144353892355
+      },
+      {
+        "beta": 8,
+        "kappa": 0,
+        "calibration_mse": 271.7596471914154
+      },
+      {
+        "beta": 8,
+        "kappa": 0.25,
+        "calibration_mse": 201.42060896173194
+      },
+      {
+        "beta": 8,
+        "kappa": 0.5,
+        "calibration_mse": 79.31998100334914
+      },
+      {
+        "beta": 8,
+        "kappa": 0.75,
+        "calibration_mse": 52.11998607249641
+      },
+      {
+        "beta": 8,
+        "kappa": 1,
+        "calibration_mse": 27.716123492717884
+      },
+      {
+        "beta": 8,
+        "kappa": 1.25,
+        "calibration_mse": 22.10120157738605
+      },
+      {
+        "beta": 8,
+        "kappa": 1.5,
+        "calibration_mse": 31.177828924875392
+      },
+      {
+        "beta": 8,
+        "kappa": 1.75,
+        "calibration_mse": 17.71170785962608
+      },
+      {
+        "beta": 8,
+        "kappa": 2,
+        "calibration_mse": 6.704753747133516
+      },
+      {
+        "beta": 8,
+        "kappa": 2.5,
+        "calibration_mse": 37.851873310164855
+      },
+      {
+        "beta": 8,
+        "kappa": 3,
+        "calibration_mse": 71.32571880220488
+      }
+    ],
+    "fits_calibration_only": [
+      {
+        "start": {
+          "beta": 4,
+          "kappa": 2,
+          "calibration_mse": 0.03686466902083342
+        },
+        "final": {
+          "beta": 3.9836459884562854,
+          "kappa": 1.9973612941924401,
+          "per_note_rms_db": [
+            0.20270661847857688,
+            0.19259392435148456,
+            0.19086760199852326,
+            0.3415088875190327,
+            0.1993363076916418,
+            0.24400459910501396,
+            0.10246117366580451,
+            0.3718472326931366
+          ],
+          "calibration_rms_db": 0.17871322722506933,
+          "validation_rms_db": 0.29644955253699357,
+          "residuals_db": [
+            [
+              0.056642062064420684,
+              -0.30707740036098485,
+              -0.18985320604231326,
+              -0.19993440029826814,
+              -0.1453995459950974,
+              -0.004264946912694967,
+              -0.11139191478571675,
+              -0.34875428556253496
+            ],
+            [
+              0.03154567364733252,
+              -0.18662264327890377,
+              -0.07350676123922462,
+              -0.07629590730191183,
+              -0.09520562010917999,
+              0.016269352212606947,
+              -0.14360675088778763,
+              -0.4687645537210905
+            ],
+            [
+              0.0033109714922411326,
+              -0.06458043990415341,
+              0.07579707145221981,
+              0.07745032517128791,
+              0.09131966112559908,
+              0.2007033763411492,
+              -0.11155076254663143,
+              -0.46309123169572075
+            ],
+            [
+              0.00010557112300191296,
+              0.00019955705843699434,
+              0.08300930877008561,
+              -0.01596577187140724,
+              0.00781557203237071,
+              -0.08987456154720164,
+              -0.5643314343008576,
+              -0.7741269741677534
+            ],
+            [
+              -0.010190103810999496,
+              0.03683796897433034,
+              0.12631641738619592,
+              0.08305377886003384,
+              0.11517083953453522,
+              -0.015399182956389978,
+              -0.25569750556628534,
+              -0.4633383163385183
+            ],
+            [
+              -0.012539946781661926,
+              0.06948421038641683,
+              0.14388785448002572,
+              0.040870992275795714,
+              0.030849975915977268,
+              -0.03157696628297657,
+              -0.49371329617743953,
+              -0.45082685368593545
+            ],
+            [
+              -0.013809603731566256,
+              0.08677563493652407,
+              0.11003867116344423,
+              -0.009903579732473133,
+              0.017447112183468505,
+              -0.033361863126462055,
+              -0.15615293870993696,
+              0.19559620382931442
+            ],
+            [
+              -0.016389044500374927,
+              0.07079143720558534,
+              0.07828154011095556,
+              0.029117116362353812,
+              0.20428863435478917,
+              0.27296106733085423,
+              0.4732235167999477,
+              0.8681733663769151
+            ]
+          ]
+        },
+        "status": 3,
+        "success": true,
+        "nfev": 18,
+        "message": "`xtol` termination condition is satisfied.",
+        "jacobian_singular_values": [
+          47.04683290467825,
+          19.496272569816384
+        ]
+      },
+      {
+        "start": {
+          "beta": 0.75,
+          "kappa": 1.25,
+          "calibration_mse": 0.922423417230896
+        },
+        "final": {
+          "beta": 0.8635513587305306,
+          "kappa": 0.993886693287176,
+          "per_note_rms_db": [
+            0.4288872786781104,
+            0.28998551309834586,
+            0.2020721284904882,
+            0.14156230696350602,
+            0.26735648167234705,
+            0.3537702363597828,
+            0.5730522702622209,
+            0.9385119829924643
+          ],
+          "calibration_rms_db": 0.3951726950554318,
+          "validation_rms_db": 0.526803949993317,
+          "residuals_db": [
+            [
+              0.10304991326239077,
+              -0.43790518327798367,
+              -0.5895767630538149,
+              -0.6447012897582027,
+              -0.5300822166664148,
+              -0.2732096621213671,
+              -0.23355595584029487,
+              -0.3094423619519162
+            ],
+            [
+              0.07008253316975444,
+              -0.30649900671089725,
+              -0.4344416265909512,
+              -0.4470014874017778,
+              -0.3648631230499966,
+              -0.0939137516205335,
+              -0.06546131825020751,
+              -0.19773630859895874
+            ],
+            [
+              0.028941725014076436,
+              -0.16401625593192648,
+              -0.21477497781317467,
+              -0.16009462907080518,
+              0.024843387402306405,
+              0.36082815372870414,
+              0.28391059144498954,
+              0.12549202977557883
+            ],
+            [
+              0.014184514727692554,
+              -0.07726801443375919,
+              -0.1353845811690988,
+              -0.12005750393019099,
+              0.1369287194501112,
+              0.31021298261777375,
+              0.06707589073874587,
+              -0.04386359000930895
+            ],
+            [
+              -0.0027993328326313405,
+              -0.023869925012121485,
+              -0.04151202271038734,
+              0.06655093809374435,
+              0.35897799256399665,
+              0.49408214059729616,
+              0.41519409427908016,
+              0.14049030086081515
+            ],
+            [
+              -0.020773964075915807,
+              0.05100148785209413,
+              0.1022417759110219,
+              0.24190866091478114,
+              0.5541929395488197,
+              0.7271984433020791,
+              0.2261766507185179,
+              -0.2052264194539788
+            ],
+            [
+              -0.04004647345066514,
+              0.1498494412479925,
+              0.27820064319627846,
+              0.4956896942462805,
+              0.7948922546353252,
+              0.6442240243507733,
+              -0.17509155604795623,
+              -1.0965461443356084
+            ],
+            [
+              -0.052846903763249964,
+              0.22552561394654447,
+              0.4430939867232393,
+              0.7368142424717945,
+              0.946955674454145,
+              0.3754279376516507,
+              -0.770165496564065,
+              -2.1500534303018206
+            ]
+          ]
+        },
+        "status": 3,
+        "success": true,
+        "nfev": 11,
+        "message": "`xtol` termination condition is satisfied.",
+        "jacobian_singular_values": [
+          59.73321271034716,
+          19.05022203610333
+        ]
+      },
+      {
+        "start": {
+          "beta": 1,
+          "kappa": 1.75,
+          "calibration_mse": 1.1364018861733358
+        },
+        "final": {
+          "beta": 0.8635518183214733,
+          "kappa": 0.993885545648918,
+          "per_note_rms_db": [
+            0.4288866467176169,
+            0.2899843064739109,
+            0.20206861545308738,
+            0.14156043188943254,
+            0.2673546040000227,
+            0.35377056674681295,
+            0.5730548583348151,
+            0.9385152123381821
+          ],
+          "calibration_rms_db": 0.3951726951678701,
+          "validation_rms_db": 0.5268051517317437,
+          "residuals_db": [
+            [
+              0.1030490266257541,
+              -0.43789941444555325,
+              -0.5895721350832144,
+              -0.6446989838392234,
+              -0.5300824825747128,
+              -0.2732125306113993,
+              -0.23356139890491434,
+              -0.30945033898381524
+            ],
+            [
+              0.07008163581881943,
+              -0.3064932053530658,
+              -0.4344369177415235,
+              -0.44699905733139644,
+              -0.3648632306199495,
+              -0.09391643818456785,
+              -0.06546656678438012,
+              -0.19774408932874366
+            ],
+            [
+              0.028940813111967834,
+              -0.1640104046923465,
+              -0.21477014986678356,
+              -0.16009202090574703,
+              0.024843501537226587,
+              0.36082571557326304,
+              0.283905601114153,
+              0.1254845007761105
+            ],
+            [
+              0.0141835919776514,
+              -0.07726212069184335,
+              -0.1353796556707998,
+              -0.1200547536023393,
+              0.1369290063624078,
+              0.31021073321628734,
+              0.06707109094574903,
+              -0.04387094003886105
+            ],
+            [
+              -0.0028002627272262215,
+              -0.023864000189222523,
+              -0.041507027789782214,
+              0.0665537878041782,
+              0.3589783982836039,
+              0.4940800187446719,
+              0.4151894206281632,
+              0.14048306616146533
+            ],
+            [
+              -0.02077490444520158,
+              0.05100746378982102,
+              0.10224688204417731,
+              0.2419116671562591,
+              0.5541935295328777,
+              0.7271965161190117,
+              0.226172165997518,
+              -0.2052334857085718
+            ],
+            [
+              -0.04004742708364972,
+              0.14985549455989222,
+              0.2782059120576239,
+              0.4956929247201458,
+              0.7948931037691764,
+              0.6442223659870052,
+              -0.17509578520132862,
+              -1.0965529888012178
+            ],
+            [
+              -0.052847866573045965,
+              0.2255317327232902,
+              0.44309938925855796,
+              0.7368176540276252,
+              0.9469567301415864,
+              0.3754264911865235,
+              -0.7701695262936319,
+              -2.150060103469311
+            ]
+          ]
+        },
+        "status": 3,
+        "success": true,
+        "nfev": 15,
+        "message": "`xtol` termination condition is satisfied.",
+        "jacobian_singular_values": [
+          59.73333326331851,
+          19.05028316952558
+        ]
+      },
+      {
+        "start": {
+          "beta": 1,
+          "kappa": 2,
+          "calibration_mse": 1.2800747891339255
+        },
+        "final": {
+          "beta": 1.1558751314651576,
+          "kappa": 2.179132214616061,
+          "per_note_rms_db": [
+            1.0088744977210289,
+            0.9959732622410762,
+            1.0052219897532864,
+            0.9390967818329987,
+            0.9881584082409145,
+            0.9587298053616832,
+            0.7921446199289377,
+            0.6714608594138906
+          ],
+          "calibration_rms_db": 0.9529230214837652,
+          "validation_rms_db": 0.9005398422837712,
+          "residuals_db": [
+            [
+              0.2291852086789542,
+              -1.1667669873149364,
+              -2.070683265919744,
+              -0.7577047552729539,
+              -0.7691430937394657,
+              0.13312604688259455,
+              0.6506412043532279,
+              0.9133825326326601
+            ],
+            [
+              0.19348587390010907,
+              -0.9723708663508681,
+              -2.12580356448513,
+              -0.40431058023039057,
+              -0.7404163174532563,
+              0.30404859094543113,
+              0.9087309812755535,
+              0.8965480034361413
+            ],
+            [
+              0.1600185509844786,
+              -0.8895977702220126,
+              -1.8884847246037797,
+              -0.27248801502617326,
+              -0.3147307682617182,
+              0.6940785530782634,
+              1.24917298016749,
+              1.218573739219842
+            ],
+            [
+              0.14081794120492885,
+              -0.7421817542837079,
+              -1.9030587858709236,
+              -0.20344981567149745,
+              -0.32316963310618263,
+              0.7424663230992259,
+              0.9631994665673531,
+              1.1126931478015578
+            ],
+            [
+              0.12358818270846061,
+              -0.6776375049920027,
+              -1.778190416544227,
+              -0.14063875298976924,
+              -0.11910054239225687,
+              0.9439514203228931,
+              1.2236332860500596,
+              1.3239870214436102
+            ],
+            [
+              0.10501929992043735,
+              -0.5752023981042118,
+              -1.798363618939387,
+              0.1007676031346314,
+              -0.02412406305446524,
+              1.2146105229614648,
+              1.0795035854777169,
+              1.0611132671103967
+            ],
+            [
+              0.08982279913282576,
+              -0.5013290196548823,
+              -1.6916799235350393,
+              0.2571856231478655,
+              0.18257002284450508,
+              1.1112878447673005,
+              0.7029962478320932,
+              0.2648098370269487
+            ],
+            [
+              0.09335406029446924,
+              -0.60988942716736,
+              -1.372577239521597,
+              0.23723376366596938,
+              0.437737374283067,
+              0.7222131882203691,
+              0.15364204725342745,
+              -0.7410381083392359
+            ]
+          ]
+        },
+        "status": 3,
+        "success": true,
+        "nfev": 18,
+        "message": "`xtol` termination condition is satisfied.",
+        "jacobian_singular_values": [
+          99.2812781269822,
+          37.33680698276539
+        ]
+      },
+      {
+        "start": {
+          "beta": 4,
+          "kappa": 1.75,
+          "calibration_mse": 1.3008600916277089
+        },
+        "final": {
+          "beta": 4.010501464282334,
+          "kappa": 2.0172170140873433,
+          "per_note_rms_db": [
+            0.1670241882336955,
+            0.16336013273433417,
+            0.19184893802662542,
+            0.3286562812762717,
+            0.18270483618673125,
+            0.22308490449573154,
+            0.12435452418432982,
+            0.4459947504462914
+          ],
+          "calibration_rms_db": 0.16848456852795177,
+          "validation_rms_db": 0.30958830575009066,
+          "residuals_db": [
+            [
+              0.04896435089133855,
+              -0.279027116256664,
+              -0.14791770343645183,
+              -0.14896434986243534,
+              -0.08885829865774397,
+              0.05497235126635047,
+              -0.05208355103322049,
+              -0.29192896211937835
+            ],
+            [
+              0.024107493030140703,
+              -0.15863218857881378,
+              -0.03203695047574939,
+              -0.026250873103013106,
+              -0.04005631820227862,
+              0.07369722823305835,
+              -0.08640946903279456,
+              -0.4141606696829001
+            ],
+            [
+              -0.0032690762030287424,
+              -0.03746973371554674,
+              0.11381248029864643,
+              0.12085526876073516,
+              0.1363088332279716,
+              0.24449803845403295,
+              -0.07089639255666569,
+              -0.42671827756878145
+            ],
+            [
+              -0.005631254498695171,
+              0.026028158414760583,
+              0.1167093627438387,
+              0.019690060053029868,
+              0.04191524268266633,
+              -0.0588718628955931,
+              -0.5359915093933374,
+              -0.7462519533994083
+            ],
+            [
+              -0.015855836076447583,
+              0.06187968776712438,
+              0.1586752811703196,
+              0.11828042420464158,
+              0.15265529411043843,
+              0.027038528238296777,
+              -0.20355958105427874,
+              -0.39790529848141176
+            ],
+            [
+              -0.01671348412442608,
+              0.09100938696615302,
+              0.1662352021468152,
+              0.06005757128007971,
+              0.048930300168485985,
+              -0.0067602443040613025,
+              -0.45238685004862234,
+              -0.38889350247596965
+            ],
+            [
+              -0.01688563364650597,
+              0.10184655487489636,
+              0.11977389296350793,
+              0.0005943406537838314,
+              0.04322179786203151,
+              0.026908481690330888,
+              -0.06196941491825925,
+              0.30376964769097015
+            ],
+            [
+              -0.019569612949540405,
+              0.08132578051896466,
+              0.08228152940501587,
+              0.054030022977553216,
+              0.2688867895657552,
+              0.38955925783830736,
+              0.6086671962125934,
+              0.9899858165131405
+            ]
+          ]
+        },
+        "status": 3,
+        "success": true,
+        "nfev": 16,
+        "message": "`xtol` termination condition is satisfied.",
+        "jacobian_singular_values": [
+          46.87828316222335,
+          19.335970492265602
+        ]
+      }
+    ],
+    "selected_fit": {
+      "start": {
+        "beta": 4,
+        "kappa": 1.75,
+        "calibration_mse": 1.3008600916277089
+      },
+      "final": {
+        "beta": 4.010501464282334,
+        "kappa": 2.0172170140873433,
+        "per_note_rms_db": [
+          0.1670241882336955,
+          0.16336013273433417,
+          0.19184893802662542,
+          0.3286562812762717,
+          0.18270483618673125,
+          0.22308490449573154,
+          0.12435452418432982,
+          0.4459947504462914
+        ],
+        "calibration_rms_db": 0.16848456852795177,
+        "validation_rms_db": 0.30958830575009066,
+        "residuals_db": [
+          [
+            0.04896435089133855,
+            -0.279027116256664,
+            -0.14791770343645183,
+            -0.14896434986243534,
+            -0.08885829865774397,
+            0.05497235126635047,
+            -0.05208355103322049,
+            -0.29192896211937835
+          ],
+          [
+            0.024107493030140703,
+            -0.15863218857881378,
+            -0.03203695047574939,
+            -0.026250873103013106,
+            -0.04005631820227862,
+            0.07369722823305835,
+            -0.08640946903279456,
+            -0.4141606696829001
+          ],
+          [
+            -0.0032690762030287424,
+            -0.03746973371554674,
+            0.11381248029864643,
+            0.12085526876073516,
+            0.1363088332279716,
+            0.24449803845403295,
+            -0.07089639255666569,
+            -0.42671827756878145
+          ],
+          [
+            -0.005631254498695171,
+            0.026028158414760583,
+            0.1167093627438387,
+            0.019690060053029868,
+            0.04191524268266633,
+            -0.0588718628955931,
+            -0.5359915093933374,
+            -0.7462519533994083
+          ],
+          [
+            -0.015855836076447583,
+            0.06187968776712438,
+            0.1586752811703196,
+            0.11828042420464158,
+            0.15265529411043843,
+            0.027038528238296777,
+            -0.20355958105427874,
+            -0.39790529848141176
+          ],
+          [
+            -0.01671348412442608,
+            0.09100938696615302,
+            0.1662352021468152,
+            0.06005757128007971,
+            0.048930300168485985,
+            -0.0067602443040613025,
+            -0.45238685004862234,
+            -0.38889350247596965
+          ],
+          [
+            -0.01688563364650597,
+            0.10184655487489636,
+            0.11977389296350793,
+            0.0005943406537838314,
+            0.04322179786203151,
+            0.026908481690330888,
+            -0.06196941491825925,
+            0.30376964769097015
+          ],
+          [
+            -0.019569612949540405,
+            0.08132578051896466,
+            0.08228152940501587,
+            0.054030022977553216,
+            0.2688867895657552,
+            0.38955925783830736,
+            0.6086671962125934,
+            0.9899858165131405
+          ]
+        ]
+      },
+      "status": 3,
+      "success": true,
+      "nfev": 16,
+      "message": "`xtol` termination condition is satisfied.",
+      "jacobian_singular_values": [
+        46.87828316222335,
+        19.335970492265602
+      ]
+    },
+    "beta_profiles_calibration_only": [
+      {
+        "beta_scale": 0.8,
+        "final": {
+          "beta": 3.2084011714258676,
+          "kappa": 1.4488688093176416,
+          "per_note_rms_db": [
+            1.887719346761445,
+            1.827810828432714,
+            1.9823954229253755,
+            2.1810714523419144,
+            2.5188169251282844,
+            2.9090511298777804,
+            3.459325998376078,
+            3.828133780879139
+          ],
+          "calibration_rms_db": 2.5399188476369816,
+          "validation_rms_db": 2.7935260794069903,
+          "residuals_db": [
+            [
+              0.382884297190076,
+              -2.1964896615229588,
+              -2.8885679849647055,
+              -2.860247622679058,
+              -2.1314239605885277,
+              -0.942114625079455,
+              0.1814139187599686,
+              1.2443499891927807
+            ],
+            [
+              0.3437996786841536,
+              -2.076827426008794,
+              -2.7386084451125097,
+              -2.616938784106317,
+              -1.8152466891134296,
+              -0.47116560806723484,
+              0.7935903472178509,
+              1.9494822370670732
+            ],
+            [
+              0.29234132357245435,
+              -1.9608380265239038,
+              -2.539088238331802,
+              -2.2550783542203945,
+              -1.153222443833947,
+              0.5049835563641949,
+              1.9154232981085784,
+              3.2745472073475455
+            ],
+            [
+              0.2673001895659346,
+              -1.903956945587563,
+              -2.483670162706721,
+              -2.134786167561167,
+              -0.7567386764281743,
+              0.9741133666789956,
+              2.4343603962974676,
+              4.023243682259029
+            ],
+            [
+              0.24164192452345246,
+              -1.8762217329877444,
+              -2.4087063289261543,
+              -1.8741900177793944,
+              -0.29175625948180794,
+              1.5795215284314672,
+              3.35558543666264,
+              4.901274610676101
+            ],
+            [
+              0.206862573417965,
+              -1.8498314286828332,
+              -2.2940745270334872,
+              -1.5404765836644962,
+              0.3689300169246934,
+              2.5699421678640846,
+              4.151443450655865,
+              5.711822695354925
+            ],
+            [
+              0.15519251045392124,
+              -1.8368287800954892,
+              -2.14423319666699,
+              -0.9425294243573035,
+              1.456354203921748,
+              3.7365804640834206,
+              5.279936379000112,
+              6.549094533294646
+            ],
+            [
+              0.1077210656857871,
+              -1.8426147073682664,
+              -1.9702867315746388,
+              -0.3040320707312745,
+              2.426534897848292,
+              4.56773778095425,
+              5.962593223417379,
+              6.89570517554472
+            ]
+          ]
+        },
+        "status": 3,
+        "nfev": 21
+      },
+      {
+        "beta_scale": 0.9,
+        "final": {
+          "beta": 3.609451317854101,
+          "kappa": 1.7771291458899385,
+          "per_note_rms_db": [
+            1.0527780264185018,
+            0.9083173495609694,
+            0.6092444422579274,
+            0.5842372678660721,
+            0.4975838342021719,
+            0.5709991712385589,
+            0.9014977284554859,
+            1.2275804172169853
+          ],
+          "calibration_rms_db": 0.7968387838517815,
+          "validation_rms_db": 0.8659340804828658,
+          "residuals_db": [
+            [
+              0.18823880821351546,
+              -0.8167463210160424,
+              -1.0394756625418982,
+              -1.248955172042276,
+              -1.2859868866279989,
+              -1.1361122357895717,
+              -1.1299588266790863,
+              -1.1412735306657211
+            ],
+            [
+              0.15720003132417426,
+              -0.6945772251954665,
+              -0.9087779198511825,
+              -1.0898314757182739,
+              -1.164583328492295,
+              -0.986434243972667,
+              -0.945694210609382,
+              -0.9251592018456201
+            ],
+            [
+              0.11895085940707073,
+              -0.5692172163243008,
+              -0.7330398024852567,
+              -0.8691527151639704,
+              -0.8406304102248328,
+              -0.5497595655046759,
+              -0.49420951060946194,
+              -0.29216583633903426
+            ],
+            [
+              0.10631284275492225,
+              -0.5001808936596959,
+              -0.6970627599039201,
+              -0.8898821469376834,
+              -0.7746047937359819,
+              -0.5694343472925674,
+              -0.5165410795704979,
+              -0.017682151159672088
+            ],
+            [
+              0.09034653132843673,
+              -0.4612820605080241,
+              -0.6368648825351126,
+              -0.7460028541067807,
+              -0.5711487687831891,
+              -0.31986980706028234,
+              0.05540196291461896,
+              0.6050286087591346
+            ],
+            [
+              0.07326626551462334,
+              -0.4150168155249059,
+              -0.5562570379104308,
+              -0.6415295594180819,
+              -0.37538850312938976,
+              0.11533432387030018,
+              0.39963112222135067,
+              1.181443138447971
+            ],
+            [
+              0.05142830118742503,
+              -0.3685435858114232,
+              -0.4819611830796493,
+              -0.4619595851054932,
+              0.007646863055327913,
+              0.6333309034309629,
+              1.1900722468349265,
+              2.0248417937629277
+            ],
+            [
+              0.031679490900773044,
+              -0.34661104103590823,
+              -0.4036179071603314,
+              -0.22575671941243414,
+              0.4635295876791936,
+              1.1616390621149257,
+              1.8685389037356792,
+              2.5816487961312475
+            ]
+          ]
+        },
+        "status": 3,
+        "nfev": 17
+      },
+      {
+        "beta_scale": 1,
+        "final": {
+          "beta": 4.010501464282334,
+          "kappa": 2.0172170140873433,
+          "per_note_rms_db": [
+            0.1670241882336955,
+            0.16336013273433417,
+            0.19184893802662542,
+            0.3286562812762717,
+            0.18270483618673125,
+            0.22308490449573154,
+            0.12435452418432982,
+            0.4459947504462914
+          ],
+          "calibration_rms_db": 0.16848456852795177,
+          "validation_rms_db": 0.30958830575009066,
+          "residuals_db": [
+            [
+              0.04896435089133855,
+              -0.279027116256664,
+              -0.14791770343645183,
+              -0.14896434986243534,
+              -0.08885829865774397,
+              0.05497235126635047,
+              -0.05208355103322049,
+              -0.29192896211937835
+            ],
+            [
+              0.024107493030140703,
+              -0.15863218857881378,
+              -0.03203695047574939,
+              -0.026250873103013106,
+              -0.04005631820227862,
+              0.07369722823305835,
+              -0.08640946903279456,
+              -0.4141606696829001
+            ],
+            [
+              -0.0032690762030287424,
+              -0.03746973371554674,
+              0.11381248029864643,
+              0.12085526876073516,
+              0.1363088332279716,
+              0.24449803845403295,
+              -0.07089639255666569,
+              -0.42671827756878145
+            ],
+            [
+              -0.005631254498695171,
+              0.026028158414760583,
+              0.1167093627438387,
+              0.019690060053029868,
+              0.04191524268266633,
+              -0.0588718628955931,
+              -0.5359915093933374,
+              -0.7462519533994083
+            ],
+            [
+              -0.015855836076447583,
+              0.06187968776712438,
+              0.1586752811703196,
+              0.11828042420464158,
+              0.15265529411043843,
+              0.027038528238296777,
+              -0.20355958105427874,
+              -0.39790529848141176
+            ],
+            [
+              -0.01671348412442608,
+              0.09100938696615302,
+              0.1662352021468152,
+              0.06005757128007971,
+              0.048930300168485985,
+              -0.0067602443040613025,
+              -0.45238685004862234,
+              -0.38889350247596965
+            ],
+            [
+              -0.01688563364650597,
+              0.10184655487489636,
+              0.11977389296350793,
+              0.0005943406537838314,
+              0.04322179786203151,
+              0.026908481690330888,
+              -0.06196941491825925,
+              0.30376964769097015
+            ],
+            [
+              -0.019569612949540405,
+              0.08132578051896466,
+              0.08228152940501587,
+              0.054030022977553216,
+              0.2688867895657552,
+              0.38955925783830736,
+              0.6086671962125934,
+              0.9899858165131405
+            ]
+          ]
+        },
+        "status": 3,
+        "nfev": 11
+      },
+      {
+        "beta_scale": 1.1,
+        "final": {
+          "beta": 4.411551610710568,
+          "kappa": 2.1117107039949077,
+          "per_note_rms_db": [
+            0.9155630804314848,
+            0.8600091878181565,
+            0.837353471164748,
+            0.6066536484682676,
+            0.5959520381356329,
+            0.6603222356041064,
+            0.6556624991269246,
+            0.5555375564430448
+          ],
+          "calibration_rms_db": 0.7623104247024668,
+          "validation_rms_db": 0.6804946516658709,
+          "residuals_db": [
+            [
+              -0.0579639377710407,
+              -0.070725305246512,
+              0.45468854578931683,
+              0.7435651868666753,
+              1.0105229893810517,
+              1.324808204345448,
+              1.3323859859969645,
+              1.1775089724785843
+            ],
+            [
+              -0.07771924035102407,
+              0.058282556518065576,
+              0.5542585938017943,
+              0.8584604533390632,
+              1.0052311703041639,
+              1.2878186008424564,
+              1.180943240259957,
+              0.8942812524286197
+            ],
+            [
+              -0.09886298919809211,
+              0.21853151944855043,
+              0.6335973563223263,
+              1.029555207125071,
+              1.0314570206707927,
+              1.36951725608915,
+              0.9322357266508554,
+              0.5308320685765757
+            ],
+            [
+              -0.09872083672482601,
+              0.34907768371670933,
+              0.5299335696698506,
+              0.984237382968054,
+              0.7457385649295496,
+              0.9604130264376209,
+              0.16794998678619777,
+              -0.2373793584026167
+            ],
+            [
+              -0.10061986246514532,
+              0.39893580345552593,
+              0.52033371770119,
+              1.0144435464502308,
+              0.7004744957267981,
+              0.8173855078121086,
+              0.1276665064090423,
+              -0.443927145991303
+            ],
+            [
+              -0.1147399454376864,
+              0.6240805896774884,
+              0.27765456411179557,
+              1.1629847493397776,
+              0.35014337646111215,
+              0.6063125725033132,
+              -0.3337279653769798,
+              -1.0268137817908105
+            ],
+            [
+              -0.1282913891650883,
+              0.8676358873703549,
+              -0.03442775069889059,
+              1.1615578605035317,
+              0.17681002186551353,
+              -0.0648346597557179,
+              -0.34273257702549387,
+              -1.080075422781242
+            ],
+            [
+              -0.1276202853207632,
+              0.8962556206377776,
+              -0.04194486197727976,
+              1.0480179482971614,
+              0.416276938213457,
+              -0.3029290209661397,
+              -0.037049114364666735,
+              -0.5318727562990482
+            ]
+          ]
+        },
+        "status": 3,
+        "nfev": 11
+      },
+      {
+        "beta_scale": 1.2,
+        "final": {
+          "beta": 4.8126017571388005,
+          "kappa": 2.1009907412763074,
+          "per_note_rms_db": [
+            1.785858042592156,
+            1.7860276741176482,
+            1.799968229683062,
+            1.4689142870276175,
+            1.3886217799738338,
+            1.1480838067946628,
+            0.99168629801758,
+            1.042438496065665
+          ],
+          "calibration_rms_db": 1.5281432146278842,
+          "validation_rms_db": 1.3921546682078576,
+          "residuals_db": [
+            [
+              -0.09629165689538222,
+              -0.25469674299370837,
+              0.7135919159331667,
+              1.3221870574064098,
+              1.8606483688323223,
+              2.3993359922443567,
+              2.623284203245934,
+              2.661265012709933
+            ],
+            [
+              -0.11952937513757134,
+              -0.11703985120887239,
+              0.8499654005234003,
+              1.4700701832809884,
+              1.9309962191071222,
+              2.435704785856828,
+              2.5862089119349356,
+              2.5015485122896877
+            ],
+            [
+              -0.1412390989553629,
+              0.03621910735110667,
+              1.0129799439943383,
+              1.6465960156437873,
+              2.0931672214955768,
+              2.5766819782202006,
+              2.4757133847350374,
+              2.238441894059953
+            ],
+            [
+              -0.13741428182514737,
+              0.13991696435764922,
+              1.0073892888838696,
+              1.5739716135798467,
+              1.928560392663904,
+              2.191851674847136,
+              1.7550900280564257,
+              1.4584561153246618
+            ],
+            [
+              -0.14000201993052241,
+              0.22253943139437915,
+              0.9940470768240495,
+              1.678757881367222,
+              1.8563227292009685,
+              2.0730735206988093,
+              1.6237796765708232,
+              1.0818748855674087
+            ],
+            [
+              -0.13551608224105605,
+              0.31581051463982135,
+              0.9931933937008743,
+              1.654905083996269,
+              1.6423187501651384,
+              1.8238866083595404,
+              0.8210642560930985,
+              0.06005685165943575
+            ],
+            [
+              -0.1228973279170269,
+              0.43618583171075187,
+              0.9068082108371076,
+              1.563324387200094,
+              1.149406528288477,
+              1.004119195104316,
+              -0.32328503764726335,
+              -1.4007082725322597
+            ],
+            [
+              -0.1097292573101778,
+              0.45776131838740497,
+              0.9119388581818679,
+              1.4785366719272872,
+              0.7792470537805976,
+              0.3006314344283254,
+              -0.9351267728599488,
+              -1.9702963551983856
+            ]
+          ]
+        },
+        "status": 3,
+        "nfev": 20
+      }
+    ],
+    "gates": {
+      "capture_notes_passed": 8,
+      "capture_notes_total": 8,
+      "numerical_controls_passed": 84,
+      "numerical_controls_total": 96,
+      "qualified_capture": false,
+      "numeric_validation_improvement": false,
+      "qualified_conditional_family_improvement": false
+    },
+    "elapsed_seconds": 5.312193125020713,
+    "source_invariants": {
+      "production_cpp_sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f",
+      "production_header_sha256": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0",
+      "no_production_change": true,
+      "no_noise_change": true
+    },
+    "artifacts": {
+      "build/fm-level-conditional-20261019/design-frozen.json": {
+        "bytes": 11211,
+        "sha256": "6009805e9868a031b472035c3c4456039bc5f650d768aeeca9d623632bfe88b6"
+      },
+      "build/fm-level-conditional-20261019/analyze.py": {
+        "bytes": 7472,
+        "sha256": "cf8ffcc238e77f46c4bb7bfc1e06cf8b9ccd575300ce8962e73d8a9248ef0953"
+      },
+      "build/fm-level-conditional-20261019/primitive.cpp": {
+        "bytes": 402,
+        "sha256": "764b9adf8d126b4df5f2bc2c06cb35c7499ea72582e1dde75b85ef640871f09c"
+      },
+      "build/fm-level-conditional-20261019/primitive.dylib": {
+        "bytes": 33408,
+        "sha256": "3a1d8aaa5ea01a3719799715192bb42634ecb4d2af84194272ae75cf10ed7e12"
+      },
+      "build/fm-level-conditional-20261019/probe_feedback.py": {
+        "bytes": 1560,
+        "sha256": "c2ff9cbf04fa366bef04e3eccfaa4032a2ec601cd69e5d809a05954b8a17122b"
+      },
+      "build/fm-level-conditional-20261019/panel-result.json": {
+        "bytes": 16168,
+        "sha256": "37a7291a93c9839f65d7ab59f50c2ee1e3e5200ac7a56b1b25c18805b22b341d"
+      }
+    }
+  },
+  "panel_mapping": {
+    "passed": true,
+    "scope": "Original program command mapping only, no hardware sound",
+    "feedback_steps": 44,
+    "modulation_level_endpoint_witnesses": 2,
+    "rows": [
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 0,
+        "before_raw": 0,
+        "after_raw": 1,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 1,
+        "before_raw": 1,
+        "after_raw": 2,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 2,
+        "before_raw": 2,
+        "after_raw": 3,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 3,
+        "before_raw": 3,
+        "after_raw": 4,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 4,
+        "before_raw": 4,
+        "after_raw": 5,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 5,
+        "before_raw": 5,
+        "after_raw": 6,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 6,
+        "before_raw": 6,
+        "after_raw": 7,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 7,
+        "before_raw": 7,
+        "after_raw": 7,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 8,
+        "before_raw": 7,
+        "after_raw": 7,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 9,
+        "before_raw": 7,
+        "after_raw": 7,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss780",
+        "direction": 1,
+        "iteration": 10,
+        "before_raw": 7,
+        "after_raw": 7,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 0,
+        "before_raw": 7,
+        "after_raw": 6,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 1,
+        "before_raw": 6,
+        "after_raw": 5,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 2,
+        "before_raw": 5,
+        "after_raw": 4,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 3,
+        "before_raw": 4,
+        "after_raw": 3,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 4,
+        "before_raw": 3,
+        "after_raw": 2,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 5,
+        "before_raw": 2,
+        "after_raw": 1,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 6,
+        "before_raw": 1,
+        "after_raw": 0,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 7,
+        "before_raw": 0,
+        "after_raw": 0,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 8,
+        "before_raw": 0,
+        "after_raw": 0,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 9,
+        "before_raw": 0,
+        "after_raw": 0,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss780",
+        "direction": -1,
+        "iteration": 10,
+        "before_raw": 0,
+        "after_raw": 0,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss780",
+        "parameter7_increment_count": 77,
+        "raw_mod_TL": 22,
+        "display_digits": [
+          [
+            6,
+            7
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            7
+          ]
+        ],
+        "working_payload": [
+          1,
+          1,
+          22,
+          13,
+          0,
+          185,
+          63,
+          63,
+          1,
+          1,
+          0,
+          0,
+          8,
+          8,
+          64,
+          56,
+          159,
+          11,
+          46,
+          85,
+          85,
+          11,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 0,
+        "before_raw": 0,
+        "after_raw": 1,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 1,
+        "before_raw": 1,
+        "after_raw": 2,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 2,
+        "before_raw": 2,
+        "after_raw": 3,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 3,
+        "before_raw": 3,
+        "after_raw": 4,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 4,
+        "before_raw": 4,
+        "after_raw": 5,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 5,
+        "before_raw": 5,
+        "after_raw": 6,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 6,
+        "before_raw": 6,
+        "after_raw": 7,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1287
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 7,
+        "before_raw": 7,
+        "after_raw": 7,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 8,
+        "before_raw": 7,
+        "after_raw": 7,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 9,
+        "before_raw": 7,
+        "after_raw": 7,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss680",
+        "direction": 1,
+        "iteration": 10,
+        "before_raw": 7,
+        "after_raw": 7,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 0,
+        "before_raw": 7,
+        "after_raw": 6,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 1,
+        "before_raw": 6,
+        "after_raw": 5,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 2,
+        "before_raw": 5,
+        "after_raw": 4,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 3,
+        "before_raw": 4,
+        "after_raw": 3,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 4,
+        "before_raw": 3,
+        "after_raw": 2,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 5,
+        "before_raw": 2,
+        "after_raw": 1,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 6,
+        "before_raw": 1,
+        "after_raw": 0,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1286
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 7,
+        "before_raw": 0,
+        "after_raw": 0,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 8,
+        "before_raw": 0,
+        "after_raw": 0,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 9,
+        "before_raw": 0,
+        "after_raw": 0,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss680",
+        "direction": -1,
+        "iteration": 10,
+        "before_raw": 0,
+        "after_raw": 0,
+        "digits": [
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            0
+          ],
+          [
+            5,
+            0
+          ]
+        ],
+        "original_steps": 1285
+      },
+      {
+        "model": "pss680",
+        "parameter7_increment_count": 77,
+        "raw_mod_TL": 22,
+        "display_digits": [
+          [
+            6,
+            7
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            7
+          ]
+        ],
+        "working_payload": [
+          1,
+          1,
+          22,
+          13,
+          0,
+          185,
+          63,
+          63,
+          1,
+          1,
+          0,
+          0,
+          8,
+          8,
+          64,
+          56,
+          159,
+          11,
+          46,
+          85,
+          85,
+          11,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "artifacts": {
+      "build/fm-level-conditional-20261019/probe_feedback.py": {
+        "bytes": 1560,
+        "sha256": "c2ff9cbf04fa366bef04e3eccfaa4032a2ec601cd69e5d809a05954b8a17122b"
+      },
+      "build/front-panel-level-map-20261019/probe.py": {
+        "bytes": 2136,
+        "sha256": "5b5dfb298420e953acbdc40fcd4eff4497c03c31498526e7749393509066b175"
+      },
+      "build/front-panel-envelope-map-20261019/probe_panel.py": {
+        "bytes": 1241,
+        "sha256": "1d8cff8503e00829cd4d4357a292c905d62637f5fd79d42a3839c7bddc0ecafe"
+      }
+    }
+  },
+  "findings": {
+    "rejected_premise": "Saw synth recipe is feedback7, not0; both original programs verify direct panel6 rawfeedback identity. Simple no-feedback Bessel inversion is invalid for this recipe.",
+    "fixture": "All8 real fixed low interiors pass declared clip, H1, harmonic residual and stationarity gates.",
+    "controls": "92/96 meet explicitly named control accuracy/consistency criteria; four double-beta magnitude errors fail. The script also applied the shared10% residual criterion to controls, yielding84/96 after eight additional current-control residual failures. This extra scope is disclosed; original design/script/results unchanged. Overall qualification fails under either reading.",
+    "model": "Current conditional primitive fits stationary harmonic magnitudes much better than half/double beta or wronglydisabledfeedback. The global2parameter alternative does not pass the predeclared heldout improvement rule, even without the failed controls.",
+    "identifiability": "At one modTL22, beta and kappa are effective parameters conditional on recurrence, exact recipe, hidden fields and unprocessed capture. beta cannot separate8pi from0.75dB/TL, operator waveform normalization, envelope amplitude or unknown source level. No DAC bits, clock imperfection or actual internal feedback placement recovered.",
+    "no_production_or_noise_change": true
+  },
+  "failure_history": [
+    {
+      "stage": "original-program probe first invocation",
+      "result": "System Python lacked py65; no numerical result produced. Retried unchanged script with existing research venv, 44feedback steps and2TL witnesses pass. No package installed."
+    }
+  ],
+  "reproduction": {
+    "analysis_script": "build/fm-level-conditional-20261019/analyze.py",
+    "primitive_source": "build/fm-level-conditional-20261019/primitive.cpp",
+    "compiler": "clang++ -O3 -std=c++17 -shared -fPIC primitive.cpp -o primitive.dylib",
+    "run": "python3 analyze.py; requires existing source media and exact source bindings, NumPy/SciPy/threadpoolctl. Script refuses an existing result.json; reproduce in a separate direct child of build with the same copied design/script/helper and source corpus.",
+    "panel_run": "build/opu-digital-primary-leads-20261019/venv/bin/python build/fm-level-conditional-20261019/probe_feedback.py",
+    "limits": "No rendered audio or scientific artifact from this pass is bundled with the product. Primitive simulation is a conditional equation-level comparison, not a complete native/Rack/output-path render."
+  },
+  "artifacts": {
+    "build/fm-level-conditional-20261019/design-frozen.json": {
+      "bytes": 11211,
+      "sha256": "6009805e9868a031b472035c3c4456039bc5f650d768aeeca9d623632bfe88b6"
+    },
+    "build/fm-level-conditional-20261019/result.json": {
+      "bytes": 117434,
+      "sha256": "42728ac873fe0ccb7911219d4f10daf879ca42e2dfe5a69e3175626a833a57f9"
+    },
+    "build/fm-level-conditional-20261019/panel-result.json": {
+      "bytes": 16168,
+      "sha256": "37a7291a93c9839f65d7ab59f50c2ee1e3e5200ac7a56b1b25c18805b22b341d"
+    },
+    "build/fm-level-conditional-20261019/analyze.py": {
+      "bytes": 7472,
+      "sha256": "cf8ffcc238e77f46c4bb7bfc1e06cf8b9ccd575300ce8962e73d8a9248ef0953"
+    },
+    "build/fm-level-conditional-20261019/primitive.cpp": {
+      "bytes": 402,
+      "sha256": "764b9adf8d126b4df5f2bc2c06cb35c7499ea72582e1dde75b85ef640871f09c"
+    },
+    "build/fm-level-conditional-20261019/primitive.dylib": {
+      "bytes": 33408,
+      "sha256": "3a1d8aaa5ea01a3719799715192bb42634ecb4d2af84194272ae75cf10ed7e12"
+    },
+    "build/fm-level-conditional-20261019/probe_feedback.py": {
+      "bytes": 1560,
+      "sha256": "c2ff9cbf04fa366bef04e3eccfaa4032a2ec601cd69e5d809a05954b8a17122b"
+    },
+    "build/fm-level-conditional-20261019/run.log": {
+      "bytes": 5717,
+      "sha256": "034ea563b22c9545685e62be8f5c08da9e8822ae2df66ef84d92d008b259d4e0"
+    },
+    "build/fm-level-conditional-20261019/write_report.py": {
+      "bytes": 11876,
+      "sha256": "8cfab1760747d7bca0322365d68dcbcfa74dc4230c02e046ba3d45b5691d43a2"
+    },
+    "build/isolated-source-search-20261019/saw_synth.wav": {
+      "bytes": 2859618,
+      "sha256": "68a1c962f5cf4d9294504c04fe78ca7c6b178fb630fe704593d144894fa6b59a"
+    },
+    "build/isolated-source-search-20261019/pss680-patches.html": {
+      "bytes": 6981,
+      "sha256": "acbd67667a129fbbe83251087a876a8df29de21fdf98bdf939c09109ca067c0b"
+    },
+    "build/isolated-source-search-20261019/fixture-notes.json": {
+      "bytes": 33401,
+      "sha256": "b9e56d5fdcf140ac7a8d838423403eade79d19cecfc1a35477b8ebadbf156961"
+    },
+    "build/opu-pitch-command-path-20261019/xe416d0-093.ic4": {
+      "bytes": 262144,
+      "sha256": "52f19aa8eae1730a8f00b43672b911cf5cfa7e5a2af324b9dd377249e2a995f1"
+    },
+    "build/opu-pitch-command-path-20261019/xg503b0-132.ic4": {
+      "bytes": 262144,
+      "sha256": "ce0a69d143deacdb52eb28a1f5de80584ce7576ba94488fa4b035dfc6f0a76a7"
+    },
+    "build/opu-pitch-command-path-20261019/probe_midi.py": {
+      "bytes": 1373,
+      "sha256": "41ae883eabd3e212cdb3755185c46c549252b37c96dd4147330058a6521368ca"
+    },
+    "build/opu-pitch-command-path-20261019/verify_pitch_path.py": {
+      "bytes": 4244,
+      "sha256": "414c8646b61365b95afdff1fbe5805f4970e8dd9b25d165d010873c205550a0e"
+    }
+  },
+  "control_scope_disclosure": {
+    "explicit_accuracy_and_stationarity_controls_passed": 92,
+    "controls_total": 96,
+    "combined_script_checks_passed": 84,
+    "extra_script_residual_failures": 8,
+    "unambiguous_accuracy_failures": 4,
+    "disclosure": "Frozen controls explicitly name magnitude accuracy<=.05dB and subwindow consistency<=1dB. The shared estimator states residual<=.10, but controls do not explicitly repeat that gate. Script additionally applies it to controls. Both interpretations are disclosed without editing the frozen design/script/result/flags. Either interpretation fails overall qualification due to four double-beta magnitude errors.",
+    "scientific_measurements_or_original_flags_changed": false,
+    "prior_report_preserved": {
+      "fm-level-conditional-20261019.md": {
+        "path": "build/fm-level-conditional-20261019/report-before-control-scope-amendment.md",
+        "bytes": 7287,
+        "sha256": "ff1a90ca9f80301fb02a7bc579c8ecf66b1bb02e727837e01d6485879e044c61"
+      },
+      "fm-level-conditional-20261019.json": {
+        "path": "build/fm-level-conditional-20261019/report-before-control-scope-amendment.json",
+        "bytes": 162045,
+        "sha256": "b1b4c651a89e213df5ce362f4a4ccbf0fb41fca9b1a0ef8b6ae5e02ea2352f0c"
+      }
+    }
+  }
+}

@@ -1,0 +1,330 @@
+{
+  "schema": "press78.sustain-no-CC64-regression.v1",
+  "design": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/design-frozen.json",
+    "sha256": "9d476fb820bd043362671ce8828fab121ccdbf4ac43a02c1a8e2fb5c5d9607c2",
+    "bytes": 19651
+  },
+  "candidate_binding": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/candidate-bound.json",
+    "sha256": "2f85ff4c536d083b7516d70c6d3751afa36a3854123d38fe414c15f7af6ec640",
+    "bytes": 1375
+  },
+  "compile_command": [
+    "c++",
+    "-std=c++17",
+    "-O2",
+    "-I",
+    "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/candidate-source",
+    "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/SustainSequence.cpp",
+    "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/candidate-source/Press78Engine.cpp",
+    "-o",
+    "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/sustain_sequence"
+  ],
+  "executable": {
+    "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/sustain_sequence",
+    "sha256": "92e26b646000898e6b0e62e321704c3c64ad2ee5e7137cbdead46840e33026fc",
+    "bytes": 78832
+  },
+  "renders": [
+    {
+      "map": "unchanged",
+      "mode": "Legacy",
+      "command": [
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/sustain_sequence",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/unchanged/events.txt",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/unchanged/Legacy.wav",
+        "8931705",
+        "48000",
+        "recorded",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/unchanged/Legacy-pressure.csv",
+        "0"
+      ],
+      "detail": {
+        "frames": 8931705,
+        "sample_rate": 48000,
+        "latency_samples": 32,
+        "mode": "recorded",
+        "peak": 2.18305,
+        "events": 3622,
+        "chorus_epoch_seconds": -0.000666667,
+        "chorus_rate_hz": 0.954647,
+        "chorus_depth_ms": 0.496837
+      },
+      "audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/unchanged/Legacy.wav",
+        "sha256": "a870220247c1f9a81af3677c345abfa13024be3dd48bde8e4c863839b159e735",
+        "bytes": 71453684
+      },
+      "pressure": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/unchanged/Legacy-pressure.csv",
+        "sha256": "da8add5eab99a301fd1fea9dfa5e9a3caff6618105c98f1d876660107ed9f5ca",
+        "bytes": 50148
+      },
+      "complete_WAV_equal_b12": true,
+      "duplicate_deleted_after_exact_identity": true
+    },
+    {
+      "map": "unchanged",
+      "mode": "Original",
+      "command": [
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/sustain_sequence",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/unchanged/events.txt",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/unchanged/Original.wav",
+        "8931705",
+        "48000",
+        "recorded",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/unchanged/Original-pressure.csv",
+        "1"
+      ],
+      "detail": {
+        "frames": 8931705,
+        "sample_rate": 48000,
+        "latency_samples": 32,
+        "mode": "recorded",
+        "peak": 2.18305,
+        "events": 3622,
+        "chorus_epoch_seconds": -0.000666667,
+        "chorus_rate_hz": 0.954647,
+        "chorus_depth_ms": 0.496837
+      },
+      "audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/unchanged/Original.wav",
+        "sha256": "a870220247c1f9a81af3677c345abfa13024be3dd48bde8e4c863839b159e735",
+        "bytes": 71453684
+      },
+      "pressure": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/unchanged/Original-pressure.csv",
+        "sha256": "da8add5eab99a301fd1fea9dfa5e9a3caff6618105c98f1d876660107ed9f5ca",
+        "bytes": 50148
+      },
+      "complete_WAV_equal_b12": true,
+      "duplicate_deleted_after_exact_identity": true
+    },
+    {
+      "map": "old_scale_median_offset",
+      "mode": "Legacy",
+      "command": [
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/sustain_sequence",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/old_scale_median_offset/events.txt",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/old_scale_median_offset/Legacy.wav",
+        "8931705",
+        "48000",
+        "recorded",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/old_scale_median_offset/Legacy-pressure.csv",
+        "0"
+      ],
+      "detail": {
+        "frames": 8931705,
+        "sample_rate": 48000,
+        "latency_samples": 32,
+        "mode": "recorded",
+        "peak": 2.24129,
+        "events": 3622,
+        "chorus_epoch_seconds": -0.000666667,
+        "chorus_rate_hz": 0.954647,
+        "chorus_depth_ms": 0.496837
+      },
+      "audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/old_scale_median_offset/Legacy.wav",
+        "sha256": "dcf91ee79c72dfef082e7df211bbc12c4276d8c7533e1ec683a3deb49b265089",
+        "bytes": 71453684
+      },
+      "pressure": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/old_scale_median_offset/Legacy-pressure.csv",
+        "sha256": "43438bf3d1d7cdd71c36bed4d6011009d4b518a3ec8602be8cfaa9faf95f8694",
+        "bytes": 50148
+      },
+      "complete_WAV_equal_b12": true,
+      "duplicate_deleted_after_exact_identity": true
+    },
+    {
+      "map": "old_scale_median_offset",
+      "mode": "Original",
+      "command": [
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/sustain_sequence",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/old_scale_median_offset/events.txt",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/old_scale_median_offset/Original.wav",
+        "8931705",
+        "48000",
+        "recorded",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/old_scale_median_offset/Original-pressure.csv",
+        "1"
+      ],
+      "detail": {
+        "frames": 8931705,
+        "sample_rate": 48000,
+        "latency_samples": 32,
+        "mode": "recorded",
+        "peak": 2.24129,
+        "events": 3622,
+        "chorus_epoch_seconds": -0.000666667,
+        "chorus_rate_hz": 0.954647,
+        "chorus_depth_ms": 0.496837
+      },
+      "audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/old_scale_median_offset/Original.wav",
+        "sha256": "dcf91ee79c72dfef082e7df211bbc12c4276d8c7533e1ec683a3deb49b265089",
+        "bytes": 71453684
+      },
+      "pressure": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/old_scale_median_offset/Original-pressure.csv",
+        "sha256": "43438bf3d1d7cdd71c36bed4d6011009d4b518a3ec8602be8cfaa9faf95f8694",
+        "bytes": 50148
+      },
+      "complete_WAV_equal_b12": true,
+      "duplicate_deleted_after_exact_identity": true
+    },
+    {
+      "map": "nominal_scale_median_intercept",
+      "mode": "Legacy",
+      "command": [
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/sustain_sequence",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/nominal_scale_median_intercept/events.txt",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/nominal_scale_median_intercept/Legacy.wav",
+        "8931705",
+        "48000",
+        "recorded",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/nominal_scale_median_intercept/Legacy-pressure.csv",
+        "0"
+      ],
+      "detail": {
+        "frames": 8931705,
+        "sample_rate": 48000,
+        "latency_samples": 32,
+        "mode": "recorded",
+        "peak": 2.23652,
+        "events": 3622,
+        "chorus_epoch_seconds": -0.000666667,
+        "chorus_rate_hz": 0.954647,
+        "chorus_depth_ms": 0.496837
+      },
+      "audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/nominal_scale_median_intercept/Legacy.wav",
+        "sha256": "242fa76189d46cb665f23284b85c52f745037f2227ccc19867316b9dad6b486d",
+        "bytes": 71453684
+      },
+      "pressure": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/nominal_scale_median_intercept/Legacy-pressure.csv",
+        "sha256": "559ab833ed3a7c9d4ac7de435979199b5f54d7568399a1e02f190028ba48c0fd",
+        "bytes": 50146
+      },
+      "complete_WAV_equal_b12": true,
+      "duplicate_deleted_after_exact_identity": true
+    },
+    {
+      "map": "nominal_scale_median_intercept",
+      "mode": "Original",
+      "command": [
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/sustain_sequence",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/nominal_scale_median_intercept/events.txt",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/nominal_scale_median_intercept/Original.wav",
+        "8931705",
+        "48000",
+        "recorded",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/nominal_scale_median_intercept/Original-pressure.csv",
+        "1"
+      ],
+      "detail": {
+        "frames": 8931705,
+        "sample_rate": 48000,
+        "latency_samples": 32,
+        "mode": "recorded",
+        "peak": 2.23652,
+        "events": 3622,
+        "chorus_epoch_seconds": -0.000666667,
+        "chorus_rate_hz": 0.954647,
+        "chorus_depth_ms": 0.496837
+      },
+      "audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/nominal_scale_median_intercept/Original.wav",
+        "sha256": "242fa76189d46cb665f23284b85c52f745037f2227ccc19867316b9dad6b486d",
+        "bytes": 71453684
+      },
+      "pressure": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/nominal_scale_median_intercept/Original-pressure.csv",
+        "sha256": "559ab833ed3a7c9d4ac7de435979199b5f54d7568399a1e02f190028ba48c0fd",
+        "bytes": 50146
+      },
+      "complete_WAV_equal_b12": true,
+      "duplicate_deleted_after_exact_identity": true
+    },
+    {
+      "map": "equal_patch_robust_affine",
+      "mode": "Legacy",
+      "command": [
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/sustain_sequence",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/equal_patch_robust_affine/events.txt",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/equal_patch_robust_affine/Legacy.wav",
+        "8931705",
+        "48000",
+        "recorded",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/equal_patch_robust_affine/Legacy-pressure.csv",
+        "0"
+      ],
+      "detail": {
+        "frames": 8931705,
+        "sample_rate": 48000,
+        "latency_samples": 32,
+        "mode": "recorded",
+        "peak": 2.23901,
+        "events": 3622,
+        "chorus_epoch_seconds": -0.000666667,
+        "chorus_rate_hz": 0.954647,
+        "chorus_depth_ms": 0.496837
+      },
+      "audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/equal_patch_robust_affine/Legacy.wav",
+        "sha256": "24c37252a3eef66d62aff951b73fc37d44697aa9947343862b2ec269ccb5dca3",
+        "bytes": 71453684
+      },
+      "pressure": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/equal_patch_robust_affine/Legacy-pressure.csv",
+        "sha256": "9716274ed0c24f59561bb67184f8adf37420508cdc6e53467ab2154341bfeb0e",
+        "bytes": 50146
+      },
+      "complete_WAV_equal_b12": true,
+      "duplicate_deleted_after_exact_identity": true
+    },
+    {
+      "map": "equal_patch_robust_affine",
+      "mode": "Original",
+      "command": [
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/sustain_sequence",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/mode00-benchmark-20261019/maps/equal_patch_robust_affine/events.txt",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/equal_patch_robust_affine/Original.wav",
+        "8931705",
+        "48000",
+        "recorded",
+        "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/equal_patch_robust_affine/Original-pressure.csv",
+        "1"
+      ],
+      "detail": {
+        "frames": 8931705,
+        "sample_rate": 48000,
+        "latency_samples": 32,
+        "mode": "recorded",
+        "peak": 2.23901,
+        "events": 3622,
+        "chorus_epoch_seconds": -0.000666667,
+        "chorus_rate_hz": 0.954647,
+        "chorus_depth_ms": 0.496837
+      },
+      "audio": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/equal_patch_robust_affine/Original.wav",
+        "sha256": "24c37252a3eef66d62aff951b73fc37d44697aa9947343862b2ec269ccb5dca3",
+        "bytes": 71453684
+      },
+      "pressure": {
+        "path": "/Users/vojta/Dev/virtual-instrument-press78/build/sustain-b13-20261019/no-CC64/equal_patch_robust_affine/Original-pressure.csv",
+        "sha256": "9716274ed0c24f59561bb67184f8adf37420508cdc6e53467ab2154341bfeb0e",
+        "bytes": 50146
+      },
+      "complete_WAV_equal_b12": true,
+      "duplicate_deleted_after_exact_identity": true
+    }
+  ],
+  "passed": true,
+  "scope": "No CC64 events. Tests recording-regression compatibility, not hardware pedal fidelity.",
+  "no_automatic_adoption": true
+}
