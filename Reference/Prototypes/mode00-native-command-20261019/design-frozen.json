@@ -1,0 +1,75 @@
+{
+  "schema": "press78.mode00-native-command-bridge-design.v1",
+  "utc": "2026-10-19T15:06:09.660419+00:00",
+  "implementation_started": false,
+  "tests_started": false,
+  "owner_paths": [
+    "build/mode00-native-command-bridge-20261019"
+  ],
+  "no_edits": [
+    "Source",
+    "nativewrapper",
+    "private repository",
+    "GUI",
+    "presets",
+    "defaults",
+    "existing candidate or Python adapter"
+  ],
+  "scope": "A C++17 command frontend composing the frozen native Mode00Allocator, not an audible program-loading implementation or integrated DSP backend.",
+  "input_bindings": {
+    "build/allocator-native-candidate-20261019/prototype/Source/DSP/FirmwareAllocation.h": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a",
+    "build/allocator-native-candidate-20261019/prototype/Source/DSP/Press78Engine.cpp": "4d7936aa579205c3c85487c8afedaf5d937dbce725dd89752068bbfbb5d8d5d8",
+    "build/allocator-native-candidate-20261019/prototype/Source/DSP/Press78Engine.h": "79c7eeba12560349b391cc3e13fa128673d4ad71733c98d00881a8c2be51fe9a",
+    "build/allocator-native-candidate-20261019/candidate-validation.json": "1eb807dcfe2d34330d37710271b81cd962ae243c627a7710287cce55fe5583e6",
+    "build/mode00-program-command-adapter-20261019/design-frozen.json": "0871274b08bfb2906b98cfd8efc62fcf423f83b809cfcf90e46ef6ce05066ebe",
+    "build/mode00-program-command-adapter-20261019/implementation-bound.json": "dde2d8e010dd84150467200439436f93fcf36be71a9064f3018f5594ab8068e3",
+    "build/mode00-program-command-adapter-20261019/validation.json": "c7f6fb195420a356b66e3ee77b183612382c7e99dc111db4921176d6371cf1ce",
+    "build/mode00-program-command-adapter-20261019/ordering-observations.jsonl.gz": "8abfeaf4956b94ba1770428eeb60b7ee2020034e0ac48885cf7ea85176a7bc85",
+    "build/opu-mode00-program-load-20261019/observations.jsonl.gz": "43ebc3ee18a7152a0ac8191abb6f8313c553c27b9c531ac907021d79137f6de5",
+    "build/opu-mode00-program-load-20261019/serial-caller-result.json": "34d03c2bbd977f8bf094e6d7041a9fe02111660bfc2a23f09ea98f687b8ed246",
+    "Reference/Prototypes/mode00-program-load-20261019/program_loader.py": "a5e5d3eb033da8996a719daa2c4a5078ff77770d1207ce00f5b6fc606bd35d16",
+    "Reference/Prototypes/mode00-program-load-20261019/firmware_allocator.py": "82d3077477da5dd38d96107391123eea5615b24468be65b30631d961e60a1439",
+    "Reference/Prototypes/mode00-program-load-20261019/state_fixture.json": "fe847803c819980f9415d8df2b39c8383f8d73888f6076fcc806731f8a4a8794",
+    "Reference/Research/mode00-program-command-validation-20261019.json": "a81fbce01204e146d596bfd2e716e3978810073f18bb0301c8ea42451d1d34c2"
+  },
+  "api": {
+    "header": "prototype/Mode00ProgramCommands.h",
+    "dependency": "Unchanged copied FirmwareAllocation.h only; never compile or call Engine.",
+    "state": "Own full12-slot Mode00Allocator, resolved32byte WorkingPatch, current internalprogram/effects, sharedFFcachetags and three auxiliary byte arrays. Snapshot restore validates scope atomically; no original boot implied.",
+    "commands": "Fixedcapacity204 RegisterWrite(addressuint16,valueuint8) plan: atmost12 oldrelease triples +168 reload writes; allocation event exposes only existing Decision/pitchslot and pairedkey subset, service count explicit.",
+    "selectProgram": "780 descends pitches96..36, uses ordinary source0 noteOff for heldedges, leaves cachednotes intact, uses oldpatch andoldeffects RR/SRR.680 doesnotclearstate. Both then replaceworkingmetadata/effectseed, writeall12slot plans incl24TL127,no replacementactuallevels.",
+    "events": "noteOn/noteOff with36..96 only, source notexposed; manual service0..65535 invocations withpending0/1 only; no immediate service onnoteOn, no assigned period.",
+    "reject": "unsupported target, pool!=12, invalidslotcache flags, source!=0, source1heldbits, held/cachednotes outside36..96 exceptunusedcached0, pending>1. No host CV/firstN adaptation. Allrejections preserve state.",
+    "otherstates": "Rankbytes unchanged native eightbit semantics; cachetagsFF stay; envelope/audio/hostheld64bitcounts/stealfades absent.",
+    "modelboundary": "NativeEngine::allNotesOff ascendsnotes and clears hostownership; Engine::allSoundOff alsoresetsoutputhistory; neithercalled. NativeEngine immediate allocator.service(1) staysunmodified andisnot timing evidence."
+  },
+  "prospective_tests": {
+    "original_fixture": "All60 previous original cases. Feed prestate/resolvedpatch and sameevents; exactcomplete selectionIO and pairedkeys/ranks/cache/pending/heldstate.60full10422selectionwords retained, no newCPU/audio.",
+    "python_differential": "Replay originalfixture through independently expressed frozenPython adapter as an additional command oracle, not replace rawtrace comparison.",
+    "synthetic": [
+      "Both targets empty/samepatch/fullheld/pending/mixed/shuffled/cachereuse/stolen13inputs",
+      "OldRR/SRR fromoldpatch while newpatchdifferent; pairedkeypreservation",
+      "All256 controlbyte masks, all12registeraddresses and rawoperatorbyte transfer",
+      "Effectseedflags frombyte23 witholdReverbpreservation",
+      "Inputboundary36/96, rejected0/35/97/127; invalidsnapshot/pool/source/pending/cache and atomicfailure",
+      "Manualservicecounter semantics, no time or implicitkeyon",
+      "Snapshot replay and deterministicplans; maximum204words",
+      "No new/new[] allocations in frontend operations, fixedsizeofreported"
+    ],
+    "toolchain": "C++17 clang release-Wall-Wextra-Wpedantic-Werror and ASan/UBSan with identicalfixtures; platform nativeonly,no SDK/Reason/AOT claim.",
+    "pass": "Every exactcomparison and stateinvariant, no sanitize diagnostics. Preserve firstfailure andsourcebeforefix.",
+    "audio": false
+  },
+  "roadmap_only": [
+    "Verifiedpitch commandcompiler can later feed same register sink; no new pitch law here.",
+    "Verifiedlevel commandcompiler and Reverb-level bit can later feed sink; no assumed dB transfer here.",
+    "VerifiedCC64 allnonzero RR/SRR updates need separate livecommandAPI; no change to analytical envelope rates.",
+    "A DSPbackend would separately implement/registervalidate key/phase/envelope/level effects andscheduler; currentfuture-onlypatchsnapshots cannotbe relabeled recoveredhardwareprogramloading."
+  ],
+  "limits": [
+    "Only normal12slot declaredMode00 serial domain, no physicalkeyscan/accompaniment/rhythm/Mode99 loader.",
+    "Caller supplies resolvedworkingbyte23 factoryeffectflags andinternalprogram; no factorybank/ROM/media export.",
+    "No silence/phase/retimbre/reset serviceperiod or DSP fidelityclaim.",
+    "Original60cases are reuseddevelopment evidence, no freshholdout orhardwaremeasurement."
+  ]
+}

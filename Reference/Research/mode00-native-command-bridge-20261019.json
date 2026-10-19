@@ -1,0 +1,238 @@
+{
+  "schema": "press78.mode00-native-command-bridge-report.v1",
+  "created_utc": "2026-10-19T15:19:39.960136+00:00",
+  "passed": true,
+  "implementation": "Firmware-free C++17 command frontend with unchanged frozen native allocator helper; complete program-load plans only, no Engine or native host integration.",
+  "design_sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+  "source_binding_sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+  "validation": {
+    "schema": "press78.mode00-native-command-validation.v1",
+    "passed": true,
+    "binding_sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+    "input_design_sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+    "fixture_counts": {
+      "original_cases": 60,
+      "native_rows": 1344,
+      "python_command_checks": 2268,
+      "ram_prior_byte_checks": 49816,
+      "program_plans": 120,
+      "program_words": 20844
+    },
+    "rows": [
+      {
+        "mode": "release",
+        "source": "CommandProbe.cpp",
+        "returncode": 0,
+        "executable_sha256": "f1fe66ca541c403cca9756900ffff3ed223095d6ad84af9f203fbbb557a676fb",
+        "allocations": 0,
+        "passed": true,
+        "rows": 1344,
+        "exact_fields": 18696,
+        "stdout_sha256": "881ec4e4d6f564666acdd2413d1ebf3573a79a37d0d0a0ba0b657ed53e1c17d2",
+        "allocation_measurement": "new/new[] hooks enabled only around frontend operations; zero observed; not a malloc/aligned-allocation/Reason-host audit"
+      },
+      {
+        "mode": "release",
+        "source": "SyntheticTests.cpp",
+        "returncode": 0,
+        "executable_sha256": "d0e053fbbf54a0b840eb8fd88a487e7f6cf73a6a880de4771821f1cb99de96f6",
+        "passed": true,
+        "assertions": 81361,
+        "frontend_bytes": 280,
+        "snapshot_bytes": 232,
+        "plan_bytes": 856,
+        "allocator_bytes": 184,
+        "allocation_measurement": "not instrumented in the synthetic binary"
+      },
+      {
+        "mode": "sanitized",
+        "source": "CommandProbe.cpp",
+        "returncode": 0,
+        "executable_sha256": "c0267c1bb6418cd5120465ce68f07f5a29aa7d6e2f09e7713e1817ee92c8dc05",
+        "allocations": 0,
+        "passed": true,
+        "rows": 1344,
+        "exact_fields": 18696,
+        "stdout_sha256": "881ec4e4d6f564666acdd2413d1ebf3573a79a37d0d0a0ba0b657ed53e1c17d2",
+        "allocation_measurement": "new/new[] hooks enabled only around frontend operations; zero observed; not a malloc/aligned-allocation/Reason-host audit"
+      },
+      {
+        "mode": "sanitized",
+        "source": "SyntheticTests.cpp",
+        "returncode": 0,
+        "executable_sha256": "a434b222c25df384e86e2ff0c4a80a8b3f1e3de24badadeb17440d0ba5e53dac",
+        "passed": true,
+        "assertions": 81361,
+        "frontend_bytes": 280,
+        "snapshot_bytes": 232,
+        "plan_bytes": 856,
+        "allocator_bytes": 184,
+        "allocation_measurement": "not instrumented in the synthetic binary"
+      }
+    ],
+    "errors": [],
+    "source_hashes_unchanged": true,
+    "limits": [
+      "Only normal12slot declaredMode00 serial domain, no physicalkeyscan/accompaniment/rhythm/Mode99 loader.",
+      "Caller supplies resolvedworkingbyte23 factoryeffectflags andinternalprogram; no factorybank/ROM/media export.",
+      "No silence/phase/retimbre/reset serviceperiod or DSP fidelityclaim.",
+      "Original60cases are reuseddevelopment evidence, no freshholdout orhardwaremeasurement."
+    ],
+    "no_audio": true,
+    "no_production_edits": true,
+    "scope_correction": {
+      "original_validation_sha256": "a758a0e7ffa75ae082b30afe26738228842ba6d6b4409483bc118c3fb4d59769",
+      "reason": "Runner initializes row.allocations=0 for both binaries, but only CommandProbe instruments allocations. Synthetic placeholder zero was not a measurement; remove it without changing source/tests/results.",
+      "test_execution_repeated": false,
+      "source_or_output_commands_changed": false
+    }
+  },
+  "independent_review": {
+    "path": "build/mode00-native-command-independent-20261019/receipt.json",
+    "sha256": "0d51000f407a51dc0e51b4ccb954411f726f0f4849429943314c221a639b476a",
+    "checks": 126751,
+    "native_rows_per_mode": 1344,
+    "complete_program_plans_per_mode": 120,
+    "complete_program_words_per_mode": 20844,
+    "scope": "Read-only source/result/raw-trace audit; no new native/originalCPU/audio execution."
+  },
+  "api": {
+    "header": "prototype/Mode00ProgramCommands.h",
+    "dependency": "Unchanged copied FirmwareAllocation.h only; never compile or call Engine.",
+    "state": "Own full12-slot Mode00Allocator, resolved32byte WorkingPatch, current internalprogram/effects, sharedFFcachetags and three auxiliary byte arrays. Snapshot restore validates scope atomically; no original boot implied.",
+    "commands": "Fixedcapacity204 RegisterWrite(addressuint16,valueuint8) plan: atmost12 oldrelease triples +168 reload writes; allocation event exposes only existing Decision/pitchslot and pairedkey subset, service count explicit.",
+    "selectProgram": "780 descends pitches96..36, uses ordinary source0 noteOff for heldedges, leaves cachednotes intact, uses oldpatch andoldeffects RR/SRR.680 doesnotclearstate. Both then replaceworkingmetadata/effectseed, writeall12slot plans incl24TL127,no replacementactuallevels.",
+    "events": "noteOn/noteOff with36..96 only, source notexposed; manual service0..65535 invocations withpending0/1 only; no immediate service onnoteOn, no assigned period.",
+    "reject": "unsupported target, pool!=12, invalidslotcache flags, source!=0, source1heldbits, held/cachednotes outside36..96 exceptunusedcached0, pending>1. No host CV/firstN adaptation. Allrejections preserve state.",
+    "otherstates": "Rankbytes unchanged native eightbit semantics; cachetagsFF stay; envelope/audio/hostheld64bitcounts/stealfades absent.",
+    "modelboundary": "NativeEngine::allNotesOff ascendsnotes and clears hostownership; Engine::allSoundOff alsoresetsoutputhistory; neithercalled. NativeEngine immediate allocator.service(1) staysunmodified andisnot timing evidence."
+  },
+  "roadmap_only": [
+    "Verifiedpitch commandcompiler can later feed same register sink; no new pitch law here.",
+    "Verifiedlevel commandcompiler and Reverb-level bit can later feed sink; no assumed dB transfer here.",
+    "VerifiedCC64 allnonzero RR/SRR updates need separate livecommandAPI; no change to analytical envelope rates.",
+    "A DSPbackend would separately implement/registervalidate key/phase/envelope/level effects andscheduler; currentfuture-onlypatchsnapshots cannotbe relabeled recoveredhardwareprogramloading."
+  ],
+  "auxiliary_state_limit": "Three auxiliary cache arrays reproduce copied reload fields; later vibrato-service/main-loop evolution is excluded. Raw auxiliary comparisons apply at program reload.",
+  "ordinary_event_limit": "Selectedslot/edge/pairedkey/state subset only. OrdinarynoteOffRR writes, pitch/level payloads and servicecarrierRR restoration are not returned by partial note/service events.",
+  "resources": {
+    "measured_platform": "Native64bit compiler in sourcebinding; not SDK/Reason",
+    "frontend_bytes": 280,
+    "snapshot_bytes": 232,
+    "program_plan_bytes": 856,
+    "allocator_bytes": 184,
+    "maximum_register_writes": 204,
+    "new_new_array_calls_in_1344_stream_operations_per_build": 0,
+    "other_allocation_mechanisms_instrumented": false,
+    "synthetic_allocation_count_measured": false
+  },
+  "retained_reporting_correction": {
+    "original_validation_sha256": "a758a0e7ffa75ae082b30afe26738228842ba6d6b4409483bc118c3fb4d59769",
+    "reason": "Runner initializes row.allocations=0 for both binaries, but only CommandProbe instruments allocations. Synthetic placeholder zero was not a measurement; remove it without changing source/tests/results.",
+    "test_execution_repeated": false,
+    "source_or_output_commands_changed": false
+  },
+  "no_audio": true,
+  "production_or_native_host_changed": false,
+  "original_program_executed_in_this_native_task": false,
+  "original_media_or_factory_payload_exported": false,
+  "fresh_holdout": false,
+  "limits": [
+    "Only normal12slot declaredMode00 serial domain, no physicalkeyscan/accompaniment/rhythm/Mode99 loader.",
+    "Caller supplies resolvedworkingbyte23 factoryeffectflags andinternalprogram; no factorybank/ROM/media export.",
+    "No silence/phase/retimbre/reset serviceperiod or DSP fidelityclaim.",
+    "Original60cases are reuseddevelopment evidence, no freshholdout orhardwaremeasurement."
+  ],
+  "artifacts": {
+    "build/mode00-native-command-bridge-20261019/design-frozen.json": {
+      "sha256": "0712ac255a7d069fe26061e3af4e50a21e654c1d98292dac155f73f2ebc98688",
+      "bytes": 6669
+    },
+    "build/mode00-native-command-bridge-20261019/source-test-bound.json": {
+      "sha256": "f0d7ef4265aaf25d5bfea63048b117ae12f3d405352dcfeeb480625a40ef7f60",
+      "bytes": 1702
+    },
+    "build/mode00-native-command-bridge-20261019/run.py": {
+      "sha256": "1903bd5a28b1a1d58018db2fb48a103a3ccaf4d3b61a938bcf52e7041394d9b2",
+      "bytes": 12091
+    },
+    "build/mode00-native-command-bridge-20261019/fixture.txt": {
+      "sha256": "c83bc7592962ab0a53fc0df542ec57d02f0736658444d3da054b8962e27eba3f",
+      "bytes": 45152
+    },
+    "build/mode00-native-command-bridge-20261019/expected.jsonl": {
+      "sha256": "2d5be173780655648cc75083e12f8ebdd4e0b9ebcc61e8f56e1c733d49f6425a",
+      "bytes": 811601
+    },
+    "build/mode00-native-command-bridge-20261019/validation.json": {
+      "sha256": "a758a0e7ffa75ae082b30afe26738228842ba6d6b4409483bc118c3fb4d59769",
+      "bytes": 2511
+    },
+    "build/mode00-native-command-bridge-20261019/validation-scoped.json": {
+      "sha256": "8dd83571563098c0d5212743508825f7db1a32ba8b7526e281b384bfa496c969",
+      "bytes": 3364
+    },
+    "Reference/Prototypes/mode00-native-command-20261019/manifest.json": {
+      "sha256": "e8221648ca2782b320188e7dbd018c7f54f927616a942043f663bd9ef6e415e1",
+      "bytes": 3192
+    },
+    "build/mode00-native-command-independent-20261019/receipt.json": {
+      "sha256": "0d51000f407a51dc0e51b4ccb954411f726f0f4849429943314c221a639b476a",
+      "bytes": 30536
+    },
+    "build/mode00-native-command-bridge-20261019/release/CommandProbe-build.json": {
+      "sha256": "b904400bd071ba08a9ca863d682fe2031db9b947962a96af934bc945e05f6cef",
+      "bytes": 540
+    },
+    "build/mode00-native-command-bridge-20261019/release/SyntheticTests-build.json": {
+      "sha256": "0ff214fe01c0e4d6e9e05a6a47544a7f89533739a3e0b54221911921c31eaefc",
+      "bytes": 544
+    },
+    "build/mode00-native-command-bridge-20261019/release/CommandProbe-stdout.jsonl": {
+      "sha256": "881ec4e4d6f564666acdd2413d1ebf3573a79a37d0d0a0ba0b657ed53e1c17d2",
+      "bytes": 803479
+    },
+    "build/mode00-native-command-bridge-20261019/release/SyntheticTests-stdout.jsonl": {
+      "sha256": "e3e26d19573907e80b375ee1b9c10faea32a45691972fcf8293f808bc1976461",
+      "bytes": 116
+    },
+    "build/mode00-native-command-bridge-20261019/release/CommandProbe-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "build/mode00-native-command-bridge-20261019/release/SyntheticTests-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "build/mode00-native-command-bridge-20261019/sanitized/CommandProbe-build.json": {
+      "sha256": "856f803b33bc8363fdc91b50a3bfefeb7873780596f5686843687c07ed2a831c",
+      "bytes": 619
+    },
+    "build/mode00-native-command-bridge-20261019/sanitized/SyntheticTests-build.json": {
+      "sha256": "678b6d9074a7a9553425ce481821a60cd716e0873685aa82401e1a483aa537bf",
+      "bytes": 623
+    },
+    "build/mode00-native-command-bridge-20261019/sanitized/CommandProbe-stdout.jsonl": {
+      "sha256": "881ec4e4d6f564666acdd2413d1ebf3573a79a37d0d0a0ba0b657ed53e1c17d2",
+      "bytes": 803479
+    },
+    "build/mode00-native-command-bridge-20261019/sanitized/SyntheticTests-stdout.jsonl": {
+      "sha256": "e3e26d19573907e80b375ee1b9c10faea32a45691972fcf8293f808bc1976461",
+      "bytes": 116
+    },
+    "build/mode00-native-command-bridge-20261019/sanitized/CommandProbe-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "build/mode00-native-command-bridge-20261019/sanitized/SyntheticTests-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "exported_sources": {
+    "Reference/Prototypes/mode00-native-command-20261019/Mode00ProgramCommands.h": "9276dc248bd71fa4fa97b170ec4b4c200ce8035e4a9d12717589697def90c68f",
+    "Reference/Prototypes/mode00-native-command-20261019/FirmwareAllocation.h": "6a243abba235f2d9162a653e092d566a2434caa90250a4451aa39aa9a7d24a3a",
+    "Reference/Prototypes/mode00-native-command-20261019/SyntheticTests.cpp": "526d723a14bb609367d504b176e0d2f335b0fb09a3d01f01bce26f3f624b8948",
+    "Reference/Prototypes/mode00-native-command-20261019/CommandProbe.cpp": "6d02210b10f2993cd59c2e5010f7ff25ba8cbeacf3b7c2a19069a6d1eec27b5c"
+  }
+}
