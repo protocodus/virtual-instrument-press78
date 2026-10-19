@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "total_cases": 1480,
+  "counts": {
+    "raw_display": 256,
+    "value_button": 768,
+    "normal_traversal": 400,
+    "factory_witness": 2,
+    "volume_buttons": 54
+  },
+  "models": {
+    "pss780": {
+      "rom_sha1": "33cc3f4ab27cf6e5068627625f6ab236209ad776",
+      "rom_sha256": "ce0a69d143deacdb52eb28a1f5de80584ce7576ba94488fa4b035dfc6f0a76a7",
+      "bank2_sha256": "66a5857e82da1b194c971b76559a06b44f41b4a480038505828b6eb7f0d8672b",
+      "factory_entry": "0xd936",
+      "total_level_key_scanner": "0xdcdd",
+      "value_button_handler": "0xdd2c",
+      "digit_writer": "0xb259",
+      "carrier_level_builder": "0xcb7f"
+    },
+    "pss680": {
+      "rom_sha1": "d578324cfae73cd5f6c628eb3044be07684bc5d0",
+      "rom_sha256": "52f19aa8eae1730a8f00b43672b911cf5cfa7e5a2af324b9dd377249e2a995f1",
+      "bank2_sha256": "66a5857e82da1b194c971b76559a06b44f41b4a480038505828b6eb7f0d8672b",
+      "factory_entry": "0xd831",
+      "total_level_key_scanner": "0xdb7b",
+      "value_button_handler": "0xdbca",
+      "digit_writer": "0xb172",
+      "carrier_level_builder": "0xca7a"
+    }
+  },
+  "method": "Original65C02 routine execution, mirrored stack/read-only ROM/bank switching; explicit neutral RAM, not full boot or hardware/audio simulation",
+  "design_sha256": "d4821cbcae8f596fba25759253f93cd673e0695417071ab5fa10ef92ad8a0d3c",
+  "source_and_previous_reports_unchanged": true,
+  "preserved_sha256": {
+    "Source/DSP/Press78Engine.cpp": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f",
+    "Source/DSP/Press78Engine.h": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0",
+    "Reference/Research/front-panel-envelope-map-20261019.md": "36c9b594b4be56ba1bda3048b43383c773f5120c71673c02d48954190c348013",
+    "Reference/Research/front-panel-envelope-map-20261019.json": "7493791cb5158ea0a3ab41a25cb87bff63ea571f44c85e1e3ae63b33b9c442df",
+    "Reference/Research/opu-level-command-path-20261019.md": "fe44f2a42c11374b9b4cffe187aa1048f78ce1998267b61e5374301d6eca1163",
+    "Reference/Research/opu-level-command-path-20261019.json": "775c1a763cb58245c059e56c0df738c09cf926b043217bc4b86595f7e3d08d69",
+    "Reference/Research/opu-release-command-path-20261019.md": "b2c54eba98e82e21908f6885272568e0a678bf4e735d6b60195418ab72836778",
+    "Reference/Research/opu-release-command-path-20261019.json": "8d0603033eab325f8a9ed61bbd530752a65d45566a343c67aa64a1dafbef6fa9"
+  },
+  "schema": "press78.front-panel-level-map.v1",
+  "date": "2026-10-19",
+  "status": "Original firmware execution complete; no production change",
+  "findings": {
+    "carrier_parameter": 8,
+    "working_payload_carrier_TL_offset": 3,
+    "raw_range_verified": [
+      0,
+      127
+    ],
+    "display": "max(99-(rawTL&127),0)",
+    "display_ge90_raw_range": [
+      0,
+      9
+    ],
+    "manual_literal_over90_raw_range": [
+      0,
+      8
+    ],
+    "normal_panel_raw_states": "0..98 plus127",
+    "raw99_to126": "display zero; not normal stepping states",
+    "up": "raw0 stays0; otherwise min(raw-1,98)",
+    "down": "raw<98 becomesraw+1; otherwise127",
+    "both_value_buttons": "restore factory raw carrierTL",
+    "factory99": {
+      "carrier_TL": 13,
+      "display": "8.86"
+    },
+    "melody_volume": {
+      "state": "$3F7C",
+      "explicit_function_selector": "$2587=12",
+      "normal_range": [
+        1,
+        9
+      ],
+      "reset": 8,
+      "display_to_carrier_addend": {
+        "1": 32,
+        "2": 28,
+        "3": 24,
+        "4": 20,
+        "5": 16,
+        "6": 12,
+        "7": 8,
+        "8": 4,
+        "9": 0
+      },
+      "index0_addend": 32,
+      "index0_not_normal_panel_range": true
+    }
+  },
+  "common_bank2_entries": {
+    "TL_display": "$6DE8",
+    "carrier_TL_editor": "$709C",
+    "parameter_dispatcher": "$72F9",
+    "volume_table": "$4008"
+  },
+  "pss780_volume_update": "$E6DE",
+  "asserted_scope": [
+    "all32 working voice bytes compared after TL edits",
+    "original digit writer inputs",
+    "original OPU level-port writes",
+    "12 slot level builder arguments after updates",
+    "clamped endpoints do not refresh levels",
+    "both ROM source identities and unchanged prior reports"
+  ],
+  "limits": [
+    "explicit neutral RAM, not a booted instrument",
+    "Melody Volume function selection supplied explicitly before physical Value handler",
+    "no hardware audio or overload stage identification",
+    "no exact attenuation dB law or clipping threshold recovered",
+    "no audio fitting or production code changes"
+  ],
+  "sources": [
+    {
+      "title": "Yamaha PSS780 owner manual, printed29",
+      "url": "https://usa.yamaha.com/files/download/other_assets/1/317511/PSS780E.PDF",
+      "local_visual": "build/lofi-signal-path-audit-20261019/pss780-owner-p32.png",
+      "sha256": "025d91757408e86b528deaaf120e72387a89f6770fde3725195ca488e51c3913"
+    },
+    {
+      "title": "Pinned MAME driver identities/memory map",
+      "url": "https://github.com/mamedev/mame/blob/983e76f8cd84f8da8d14241c9f07a5ee138cc3eb/src/mame/yamaha/ympsr16.cpp"
+    }
+  ],
+  "artifacts": {
+    "design-frozen.json": {
+      "path": "build/front-panel-level-map-20261019/design-frozen.json",
+      "sha256": "d4821cbcae8f596fba25759253f93cd673e0695417071ab5fa10ef92ad8a0d3c",
+      "size": 1075
+    },
+    "probe.py": {
+      "path": "build/front-panel-level-map-20261019/probe.py",
+      "sha256": "5b5dfb298420e953acbdc40fcd4eff4497c03c31498526e7749393509066b175",
+      "size": 2136
+    },
+    "verify.py": {
+      "path": "build/front-panel-level-map-20261019/verify.py",
+      "sha256": "857f4de420baf959e79fbdce66bed835a7151337993f3d20b9277f95cb6369ba",
+      "size": 4531
+    },
+    "execution-results.json": {
+      "path": "build/front-panel-level-map-20261019/execution-results.json",
+      "sha256": "1bb98962a33718d051fda2cd3fd6b601efab04315604c3a84c4af69752c95e61",
+      "size": 1884216
+    },
+    "first-run-syntax-error.txt": {
+      "path": "build/front-panel-level-map-20261019/first-run-syntax-error.txt",
+      "sha256": "edb1db7e09bcbdadacf363e06cbd5ccdedca0b8ec7a1b4ff46c4f54b2d042acc",
+      "size": 180
+    }
+  },
+  "report_sha256": "1b44334cde72f7cba1b96f02b7d2d59099399525b4340e3e909be3c7aba50204"
+}

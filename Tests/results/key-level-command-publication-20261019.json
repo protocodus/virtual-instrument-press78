@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "original_report_sha256": "f6cb940e3497c5757587fc481561cf06ef4290da0cc2b05e5f69104c5e52bd18",
+  "published_report_sha256": "fe44f2a42c11374b9b4cffe187aa1048f78ce1998267b61e5374301d6eca1163",
+  "original_report_preserved": "/Users/vojta/Dev/virtual-instrument-press78/build/opu-level-command-path-20261019/report-before-publication.md",
+  "changes": [
+    "Narrow original non-redistribution wording to program images, unused ROM padding, full disassembly and executable research probes",
+    "Identify separately published functional numerical reconstruction and its nonproduction status"
+  ],
+  "scientific_inputs_or_results_changed": false,
+  "original_command_json_unchanged_sha256": "775c1a763cb58245c059e56c0df738c09cf926b043217bc4b86595f7e3d08d69"
+}

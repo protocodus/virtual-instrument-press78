@@ -1,0 +1,127 @@
+{
+  "schema": "press78.opu-release-independent-audit.v1",
+  "passed": true,
+  "findings": [],
+  "reviewed_report": [
+    {
+      "path": "Reference/Research/opu-release-command-path-20261019.md",
+      "bytes": 7996,
+      "sha256": "b2c54eba98e82e21908f6885272568e0a678bf4e735d6b60195418ab72836778"
+    },
+    {
+      "path": "Reference/Research/opu-release-command-path-20261019.json",
+      "bytes": 25405,
+      "sha256": "8d0603033eab325f8a9ed61bbd530752a65d45566a343c67aa64a1dafbef6fa9"
+    }
+  ],
+  "independent_bus": "Written independently from raw ROM mapping/disassembly, py65 CPU, mirrored zeropage/stack RAM, read-only ROM, bank writes and always-ready peripheral. No imports of peer probe/bus/expected-results code.",
+  "primary_matrix": {
+    "direct_rr": 768,
+    "serial_events": 128,
+    "cc64": 512,
+    "early_off": 128,
+    "counter7": 24
+  },
+  "primary_cases": 1560,
+  "additional": {
+    "polyphonic_sequences": 4,
+    "key_events": 96,
+    "live_transitions": 24
+  },
+  "corrections_preserved": [
+    "Initial human Mode99 label accidentally written as decimal99 instead of hexadecimal0x99 (153). Original files retained. Correct-mode-byte complete repeat passes; all original/corrected per-case traces and results are exactly equal.",
+    "First report-binding check compared raw ROM lookup bytes with report factory-loaded working-payload hashes. Correct field is RAM$2659..$2678 after factory load; all16 hashes and fields verified. No source report changed."
+  ],
+  "report_checks": {
+    "artifact_sizes_and_sha256": 19,
+    "factory_loaded_payloads_and_internal_ids_and_all_fields": 16,
+    "exact_human_voice_note74_command_examples": 4,
+    "asserted_peer_case_arithmetic": 1280,
+    "peer_initial_failed_256_cases_preserved": true,
+    "production_difference_statement_verified": true
+  },
+  "scheduler": "PSS780$C944 directly called by normal loop at$F97A and another loop at$FAA2. Decrements all12 nonzero counters; reaching6 writes carrier D1L|15,4 writes13,2 writes15,0 restores rawcarrierRR thenkeyon. Synthetic counter7 witnesses pass all12slots/twoROMs. No real-time period inferred; full main loop/interrupt timing not executed.",
+  "source_invariants": [
+    {
+      "path": "Source/DSP/Press78Engine.cpp",
+      "bytes": 26257,
+      "sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f"
+    },
+    {
+      "path": "Source/DSP/Press78Engine.h",
+      "bytes": 9170,
+      "sha256": "8c1514445ed8d51332fe4c043481f8185de093a390dc5b59343b569eea9f50b0"
+    }
+  ],
+  "limits": [
+    "Constructed state, not full boot or hardware emulation.",
+    "Normal ready peripheral, no measured busy latency.",
+    "No internal envelope rate law, Reverb threshold or timing recovered.",
+    "No audio fit or hardware recording.",
+    "Independent primary serial events use CC64 and direct button handler; peer additionally executes physical effect scanner edges.",
+    "Additional counter7 starts are synthetic, not measured naturally occurring steal/retrigger timings.",
+    "Report working-payload SHA binds the factory-loaded RAM copy, not necessarily identical unmodified ROM bytes."
+  ],
+  "artifacts": [
+    {
+      "path": "build/opu-release-independent-20261019/correct-mode-byte/probe_independent.py",
+      "bytes": 2999,
+      "sha256": "2636c61a31fb474197bd2704afee682b723d4d26e022a8321fdb593f5584c05f"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/correct-mode-byte/protocol-frozen.json",
+      "bytes": 3362,
+      "sha256": "3694320e9e43caf2d3159909cdec17cd6e219fc23efb99a34fd43e0e4cc3c020"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/correct-mode-byte/transitions.json",
+      "bytes": 71653,
+      "sha256": "0cdad89d13c7683fea5388a059ce196eb3ceb9abdc8a35f90b82bd4c92e314ed"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/correct-mode-byte/validation.json",
+      "bytes": 2963728,
+      "sha256": "0dbbde9a5227810fa0886c75bb75db8a73b9aa1184e32776fc9f13d17f999a61"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/correct-mode-byte/verify_independent.py",
+      "bytes": 6646,
+      "sha256": "2ad92c37936213595a09c078d79677107cc808b8d7d8d8f7a744595e70458033"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/correct-mode-byte/verify_transitions_independent.py",
+      "bytes": 2962,
+      "sha256": "24c884a8c559d1786ea172b97987116e1f94ffb99e6cc4e78b84b9d929253199"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/probe_independent.py",
+      "bytes": 2997,
+      "sha256": "8539eb2b8a0e6c5cc80856ac74d14b632c8b3cb5f67d3470f5b0b800519dcffc"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/protocol-frozen.json",
+      "bytes": 3147,
+      "sha256": "d2618c74cae2d06c39946c9a5db23c049a632bac724c3f019bb83ce91e7eb300"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/transitions.json",
+      "bytes": 71653,
+      "sha256": "243e3f62a9670d9287c68f09ffa15448d794223c102001adc75248fe484b6062"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/validation.json",
+      "bytes": 2963728,
+      "sha256": "33809c8bf0fb6267c8c009dda538554438f185fc6f71837942ef4182568bd0bf"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/verify_independent.py",
+      "bytes": 6433,
+      "sha256": "90f9e9aa6b925c906e2d298d36682622b4cd894e03d2776225697504c6f0a1df"
+    },
+    {
+      "path": "build/opu-release-independent-20261019/verify_transitions_independent.py",
+      "bytes": 2962,
+      "sha256": "24c884a8c559d1786ea172b97987116e1f94ffb99e6cc4e78b84b9d929253199"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "scope": "Independent parent rerun of six raw focus comparisons/24 metrics from unchanged source/model WAV slices and frozen metric snapshot. Does not rerun all800 scores or identify hardware transfer.",
+  "rows": [
+    {
+      "patch": 65,
+      "map": "unchanged",
+      "law": "Legacy",
+      "scores": {
+        "joint_lr_band_rmse_db": 5.068848395632292,
+        "mid_band_rmse_db": 5.028535983356645,
+        "stereo_stft_convergence": 0.5106774857979223,
+        "stereo_stft_log_error_db": 4.430618561270607
+      },
+      "recompute_minus_report": {
+        "joint_lr_band_rmse_db": 0.0,
+        "mid_band_rmse_db": 0.0,
+        "stereo_stft_convergence": 0.0,
+        "stereo_stft_log_error_db": 0.0
+      }
+    },
+    {
+      "patch": 65,
+      "map": "unchanged",
+      "law": "Firmware",
+      "scores": {
+        "joint_lr_band_rmse_db": 5.277907598194689,
+        "mid_band_rmse_db": 5.192100533002365,
+        "stereo_stft_convergence": 0.5141630459081603,
+        "stereo_stft_log_error_db": 4.450194445092926
+      },
+      "recompute_minus_report": {
+        "joint_lr_band_rmse_db": 0.0,
+        "mid_band_rmse_db": 0.0,
+        "stereo_stft_convergence": 0.0,
+        "stereo_stft_log_error_db": 0.0
+      }
+    },
+    {
+      "patch": 93,
+      "map": "unchanged",
+      "law": "Legacy",
+      "scores": {
+        "joint_lr_band_rmse_db": 5.261237291198353,
+        "mid_band_rmse_db": 5.122219583618216,
+        "stereo_stft_convergence": 0.6612962315222389,
+        "stereo_stft_log_error_db": 3.5070812009350463
+      },
+      "recompute_minus_report": {
+        "joint_lr_band_rmse_db": 0.0,
+        "mid_band_rmse_db": 0.0,
+        "stereo_stft_convergence": 0.0,
+        "stereo_stft_log_error_db": 0.0
+      }
+    },
+    {
+      "patch": 93,
+      "map": "unchanged",
+      "law": "Firmware",
+      "scores": {
+        "joint_lr_band_rmse_db": 5.292174632402038,
+        "mid_band_rmse_db": 5.201016894656365,
+        "stereo_stft_convergence": 0.6528197530186575,
+        "stereo_stft_log_error_db": 3.461104270968034
+      },
+      "recompute_minus_report": {
+        "joint_lr_band_rmse_db": 0.0,
+        "mid_band_rmse_db": 0.0,
+        "stereo_stft_convergence": 0.0,
+        "stereo_stft_log_error_db": 0.0
+      }
+    },
+    {
+      "patch": 97,
+      "map": "unchanged",
+      "law": "Legacy",
+      "scores": {
+        "joint_lr_band_rmse_db": 3.1643151316475286,
+        "mid_band_rmse_db": 2.9615425983277994,
+        "stereo_stft_convergence": 0.69347950863135,
+        "stereo_stft_log_error_db": 2.8412020453711015
+      },
+      "recompute_minus_report": {
+        "joint_lr_band_rmse_db": 0.0,
+        "mid_band_rmse_db": 0.0,
+        "stereo_stft_convergence": 0.0,
+        "stereo_stft_log_error_db": 0.0
+      }
+    },
+    {
+      "patch": 97,
+      "map": "unchanged",
+      "law": "Firmware",
+      "scores": {
+        "joint_lr_band_rmse_db": 3.233245568425963,
+        "mid_band_rmse_db": 3.04093952871552,
+        "stereo_stft_convergence": 0.6905451258305928,
+        "stereo_stft_log_error_db": 2.9153856911061866
+      },
+      "recompute_minus_report": {
+        "joint_lr_band_rmse_db": 0.0,
+        "mid_band_rmse_db": 0.0,
+        "stereo_stft_convergence": 0.0,
+        "stereo_stft_log_error_db": 0.0
+      }
+    }
+  ],
+  "max_absolute_metric_error": 0.0,
+  "result_sha256": "04dc1044e9ac1a6d885921f9813c467f5eef8e884e8a29e293ca7d924f806bf9",
+  "metric_snapshot_sha256": "ca3f5ae3751f13c39590e5d1c1c9b708a54bfcd75ad0a5fd5b0e1bd1971cf1c1",
+  "retained_adoption_gate": {
+    "legacy_all4_whole_WAVs_identical": true,
+    "unchanged_map_band_improvement": true,
+    "other_maps_band_bounds": true,
+    "each_focus_each_map_band_bounds": false,
+    "all_maps_STFT_log_bounds": true
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "schema": "press78.keylevel-native-independent-integration-review.v1",
+  "passed": true,
+  "findings": [],
+  "candidate_sources": {
+    "build/key-level-b13-20261019/prototype/Source/DSP/Press78Engine.cpp": "06d1daef13efcce1ba4c3970e5485c75e77c6757ae1f960309a3f4ec93e2f71c",
+    "build/key-level-b13-20261019/prototype/Source/DSP/Press78Engine.h": "42047e65d40d7635f2d7be413882a2abc041f3a360e15c4c2e133011a852d63a",
+    "build/key-level-b13-20261019/prototype/Source/DSP/FirmwareLevel.h": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283"
+  },
+  "command_audit_sha256": "2d507b5235476f79c6941cc2ce351ce93e4cc420bee581391199161f19f0f372",
+  "core_validation_receipt_sha256": "51c898e562c602596afc28482e627e642bb72a5d159d222345bd5dc0d67ab2ac",
+  "reviewed_behavior": [
+    "keyLevelModel defaults0 and is clamped0..1; Legacy level calculation is text-identical to baseline.",
+    "Firmware mode constructs valid signed/saturatedcommand first; current0.75dB and final99silence remain explicitly labeled downstream hypotheses.",
+    "Both modulator andcarrier use the same verifiedhelper ontheir ownfields; carrier0.8 factor remainsunchanged.",
+    "noteOn tests finalcarriercommand rather thanrawTLonly underFirmware mode, supporting99\u219280 legalcase.",
+    "Mode requests commit onlywhenvoices and48tick steal tails areidle, orreset/allSoundOff; activeedits useeffective law.",
+    "setPatch changes coefficients using existingphase/envelope-preserving behavior; no new phase reset or envelope law.",
+    "Continuousvelocity,pitch,bend,LFO,feedback,envelope,Sustain,analog,chorus,clock,resamplingandoutput functions remainoutsidechangedlaw.",
+    "No inferredReverbbit,carrier velocitytable,Mode00volumeaddend,firmwareprogramtranslationorartificialnoise wasadded."
+  ],
+  "unchanged_function_bodies": [
+    {
+      "signature": "double level(",
+      "source_sha256": "3ae3d0ac2c1cd08c46a28194187ab045cfa4f59f86c5aeadc5a926c235dcd451"
+    },
+    {
+      "signature": "double step(",
+      "source_sha256": "2bb9588d7eefbdf313ea32eee17f73b058b3ae641d03710fc7ed170c0a51d162"
+    },
+    {
+      "signature": "double originalStep(",
+      "source_sha256": "3cc67ea1a94be48b935d345f2711555bcba15d24288d324fa64fe8ba360d1c79"
+    },
+    {
+      "signature": "double wave(",
+      "source_sha256": "ea6f62ee1eba6a5bba4c1884640addad1703e1e94e6270b2b6920c7fddaa15b8"
+    },
+    {
+      "signature": "void Press78Engine::Envelope::configure(",
+      "source_sha256": "e190673a677392754939be3c154dcda30a033b7e23cb1a789341f194cad2f1ab"
+    },
+    {
+      "signature": "double Press78Engine::Envelope::next(",
+      "source_sha256": "4091ee79222c8aa1ebe5da0b8798fc9c54534fb16eab9402252b095a4887f385"
+    },
+    {
+      "signature": "void Press78Engine::Voice::updateOriginalPitch(",
+      "source_sha256": "ba39f7b814319bb293c372da90aa23c155966f7afd890ff374164da021d19f21"
+    },
+    {
+      "signature": "double Press78Engine::Voice::next(",
+      "source_sha256": "6e6c1a9d5e353bfee9063dc077bed9dcddab3ef2cbdd625a898e6f5bf751cda0"
+    },
+    {
+      "signature": "void Press78Engine::noteOff(",
+      "source_sha256": "07d51df62a8ffe045db3c8ae723851d838443e647a18275cca2778259ea7e7e4"
+    },
+    {
+      "signature": "void Press78Engine::sustainPedal(",
+      "source_sha256": "2c983e6f1333cd534c7cb80bbe6b9d9d470ac401f24ffadbc0e5cf5ce770f597"
+    },
+    {
+      "signature": "void Press78Engine::allNotesOff(",
+      "source_sha256": "a5a10d325c9eb1ed1ffe8d2c50cf69e2044a3fea152ad24bd60ed4072f573d0d"
+    },
+    {
+      "signature": "bool Press78Engine::pitchIdle(",
+      "source_sha256": "67f50954c5810b52a5ed7a9f4867d7f07f071d24cdae81da7817f339f2b6ed59"
+    },
+    {
+      "signature": "void Press78Engine::applyPendingPitchModel(",
+      "source_sha256": "58d462099c7295cfc69acfd99140e4b735a63de59f7c4176273b4d22ae92466d"
+    },
+    {
+      "signature": "void Press78Engine::updatePitchControls(",
+      "source_sha256": "16f438a4545987f98249b3f5b05a577aa2eb49564721f5a695dbd9a2b3fb5345"
+    },
+    {
+      "signature": "int Press78Engine::latencySamples(",
+      "source_sha256": "ff8e04978e78cfd7a4a9c6ee0e494abf09f9570e09a6d9250d6ea8b10d1f4021"
+    },
+    {
+      "signature": "void Press78Engine::buildResampler(",
+      "source_sha256": "53724cebbf17c4052419ecf20eae7fc66fb2d3150f72295d2b3c96dd973cb364"
+    },
+    {
+      "signature": "double Press78Engine::resampled(",
+      "source_sha256": "110f1b59ebdde3fb65edbda97152c6b64d134ba4ce64e82a2e7622705a1a7346"
+    },
+    {
+      "signature": "double Press78Engine::readDelay(",
+      "source_sha256": "5addc5ad441d108fa19068eff0d755f55d4d704c5420fb685d509efaec626e60"
+    },
+    {
+      "signature": "void Press78Engine::output(",
+      "source_sha256": "e1258faa26bfe0715aa7c39b46ebbcbd0075a8eafb6d6bfcc71e61bbc9225211"
+    },
+    {
+      "signature": "void Press78Engine::process(",
+      "source_sha256": "11288dea6208ca55a7fa6c8c3cbd253051b12f4a0c51e918d391cb75f10d382d"
+    }
+  ],
+  "checked_test_evidence": {
+    "release_targets": 8,
+    "sanitized_targets": 8,
+    "new_contract_groups": 12,
+    "legacy_exact_float_bytes": 39321600,
+    "source_and_log_hashes_verified": 14,
+    "scope": "Implementation agent executed fullengine tests; independently inspected test coverage/log/sourcebindings here. Independent exhaustivehelper Release/sanitizer runs are in separate commandreceipt."
+  },
+  "limits": [
+    "No hardware amplitude/silence threshold claim; no full YM3420emulation claim.",
+    "All audioadoption gates and currentprototypebench must pass separately.",
+    "Review doesnot authorize productiondefaults or schema changes."
+  ],
+  "review_script_sha256": "2491445d03c74f6d839fc025ba6d7ba5f436fe55bb8fe5d8e758c9f962d520fd"
+}

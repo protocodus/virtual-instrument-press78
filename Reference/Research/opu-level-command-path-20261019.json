@@ -1,0 +1,710 @@
+{
+  "schema": "press78.opu-level-command-path.v1",
+  "date": "2026-10-19",
+  "status": "ready_for_independent_audit",
+  "scope": "Original firmware command-domain research only. No audiofit, production/native/UI/preset/default edits, or pitchModelpolicy expansion.",
+  "source_provenance": {
+    "identity_authority": "https://github.com/mamedev/mame/blob/983e76f8cd84f8da8d14241c9f07a5ee138cc3eb/src/mame/yamaha/ympsr16.cpp",
+    "manual": "https://usa.yamaha.com/files/download/other_assets/1/317511/PSS780E.PDF",
+    "roms": [
+      {
+        "model": "pss680",
+        "public_page": "https://mdk.cab/game/pss680",
+        "ordinary_linked_download": "https://mdk.cab/download/split/pss680.zip",
+        "rom_file": "xe416d0-093.ic4",
+        "rom_sha1": "d578324cfae73cd5f6c628eb3044be07684bc5d0",
+        "rom_sha256": "52f19aa8eae1730a8f00b43672b911cf5cfa7e5a2af324b9dd377249e2a995f1",
+        "rom_size_bytes": 262144,
+        "rom_crc32": "150d1392"
+      },
+      {
+        "model": "pss780",
+        "public_page": "https://mdk.cab/game/pss780",
+        "ordinary_linked_download": "https://mdk.cab/download/split/pss780.zip",
+        "rom_file": "xg503b0-132.ic4",
+        "rom_sha1": "33cc3f4ab27cf6e5068627625f6ab236209ad776",
+        "rom_sha256": "ce0a69d143deacdb52eb28a1f5de80584ce7576ba94488fa4b035dfc6f0a76a7",
+        "rom_size_bytes": 262144,
+        "rom_crc32": "0c055206"
+      }
+    ],
+    "distribution": "ROMbytes, fulltables/disassembly, probes and source-derived artifacts remain ignored. Trackedreport contains functionalfindings and identities only."
+  },
+  "design_sha256": "fb6bd88576728e53698f55ecd1813d4f42ac6d17429e24baeddd5aba6031d5fb",
+  "routines": {
+    "PSS780": {
+      "lookup": "0xcacc",
+      "signed_saturate": "0xcb57",
+      "level_builder": "0xcb7f"
+    },
+    "PSS680": {
+      "lookup": "0xc9c7",
+      "signed_saturate": "0xca52",
+      "level_builder": "0xca7a"
+    },
+    "builder_inputs": {
+      "03": "voice slot",
+      "04": "mapped note",
+      "05": "internalprogram,255workingvoice",
+      "06": "nonnegativecarrieraddend"
+    }
+  },
+  "data_identity": [
+    {
+      "model": "PSS780",
+      "name": "lower",
+      "bank": 2,
+      "cpu_address": "0x69b5",
+      "file_offset": "0xa9b5",
+      "stride_region_bytes": 512,
+      "stride_region_sha256": "2dfaa578bbb613ff76bf2cd05bcc5ca3386c40f4dbece4d4c7fd877e429d0207",
+      "used_bytes": 288,
+      "used_sha256": "29b809af9c589338adf828d352b01ffe365439139bf0b43c1236c6f3dfeffe8c"
+    },
+    {
+      "model": "PSS780",
+      "name": "upper",
+      "bank": 2,
+      "cpu_address": "0x6bb5",
+      "file_offset": "0xabb5",
+      "stride_region_bytes": 512,
+      "stride_region_sha256": "f700753ac934eda02f92b8ed0f5fe9db0085b1a8f97cd8c2bc630641233ab7a3",
+      "used_bytes": 352,
+      "used_sha256": "c72340fadb97ab1ede605e8d5a2a74b5c3c28e471b490d4fbb2b39ab76f7c8b6"
+    },
+    {
+      "model": "PSS780",
+      "name": "velocity",
+      "bank": 2,
+      "cpu_address": "0x7890",
+      "file_offset": "0xb890",
+      "stride_region_bytes": 128,
+      "stride_region_sha256": "bba9048cfdeb8d25ca7dfa0056eb379446a8593f01a0e6b7d5250bb0ce1223c8",
+      "used_bytes": 128,
+      "used_sha256": "bba9048cfdeb8d25ca7dfa0056eb379446a8593f01a0e6b7d5250bb0ce1223c8"
+    },
+    {
+      "model": "PSS780",
+      "name": "volume",
+      "bank": 2,
+      "cpu_address": "0x4008",
+      "file_offset": "0x8008",
+      "stride_region_bytes": 10,
+      "stride_region_sha256": "806c76034358446fbbd58491de89a9f9e1a53b87d6ac87d7641ef85a65e3cc16",
+      "used_bytes": 10,
+      "used_sha256": "806c76034358446fbbd58491de89a9f9e1a53b87d6ac87d7641ef85a65e3cc16"
+    },
+    {
+      "model": "PSS680",
+      "name": "lower",
+      "bank": 2,
+      "cpu_address": "0x69b5",
+      "file_offset": "0xa9b5",
+      "stride_region_bytes": 512,
+      "stride_region_sha256": "2dfaa578bbb613ff76bf2cd05bcc5ca3386c40f4dbece4d4c7fd877e429d0207",
+      "used_bytes": 288,
+      "used_sha256": "29b809af9c589338adf828d352b01ffe365439139bf0b43c1236c6f3dfeffe8c"
+    },
+    {
+      "model": "PSS680",
+      "name": "upper",
+      "bank": 2,
+      "cpu_address": "0x6bb5",
+      "file_offset": "0xabb5",
+      "stride_region_bytes": 512,
+      "stride_region_sha256": "f700753ac934eda02f92b8ed0f5fe9db0085b1a8f97cd8c2bc630641233ab7a3",
+      "used_bytes": 352,
+      "used_sha256": "c72340fadb97ab1ede605e8d5a2a74b5c3c28e471b490d4fbb2b39ab76f7c8b6"
+    },
+    {
+      "model": "PSS680",
+      "name": "velocity",
+      "bank": 2,
+      "cpu_address": "0x7890",
+      "file_offset": "0xb890",
+      "stride_region_bytes": 128,
+      "stride_region_sha256": "bba9048cfdeb8d25ca7dfa0056eb379446a8593f01a0e6b7d5250bb0ce1223c8",
+      "used_bytes": 128,
+      "used_sha256": "bba9048cfdeb8d25ca7dfa0056eb379446a8593f01a0e6b7d5250bb0ce1223c8"
+    },
+    {
+      "model": "PSS680",
+      "name": "volume",
+      "bank": 2,
+      "cpu_address": "0x4008",
+      "file_offset": "0x8008",
+      "stride_region_bytes": 10,
+      "stride_region_sha256": "806c76034358446fbbd58491de89a9f9e1a53b87d6ac87d7641ef85a65e3cc16",
+      "used_bytes": 10,
+      "used_sha256": "806c76034358446fbbd58491de89a9f9e1a53b87d6ac87d7641ef85a65e3cc16"
+    }
+  ],
+  "functional_model": {
+    "note_pair": "p=max(note-24,0)//2",
+    "lower": "ifp<18: signed(lower[LKS&15][p])",
+    "upper": "otherwise: signed(upper[LKS>>4][min(p-18,21)])",
+    "signed_byte": "x ifx<128 elsex-256",
+    "operator_base": "clamp(rawTL+signed_LKS_offset,0,127), fordocumentedrawTL0..127",
+    "modulator_command": "operator_base+128*reverb_enabled",
+    "carrier_command": "min(127,operator_base+carrier_addend)+128*reverb_enabled",
+    "note_domain_tested": "0..127",
+    "addend_domain_tested": "0..127",
+    "endpoint_behavior": "Allnotes0..25usefirstlowerentry;60/61useupperentry0(allzero);notes102..127useupperentry21.",
+    "separate_controls": "LKS high/low nibbles independently select curves for eachoperator; same lookup routine butdifferent fields. Carrieraddend is separate fromLKS and doesnotaffectmodulator."
+  },
+  "caller_findings": {
+    "Mode00": "Originalinputvelocity1..127 ignored; carrieraddend usesbank2table4008 indexedbyRAM3f7c. Testedexplicitindices0..9yield32,32,28,24,20,16,12,8,4,0. This isnotabootdefaultclaim.",
+    "Mode99": "Incomingvelocity usesbank2table7890; velocity1\u219231,16\u219221,32\u219215,64\u21928,96\u21923,120/127\u21920. Modulatorcommand unaffectedbythisaddend.",
+    "program_change": "Replacing a cachedMode99program emits127/127 temporarylevelwrites beforethecomputedbuilderwrites.",
+    "program_numbering": "PSS780panel\u2192internal mapping retained fromoriginalfactoryroutine; Mode99actualC0usesinternalnumber. PSS680hasdifferentdisplayordering.",
+    "note_eligibility": "Mode00both36..96; PSS680Mode99rejectsoutside24..108; PSS780Mode99wraps throughits program/note mapper. Mappednote isrecordedbeforelevelcalculation.",
+    "all_factory_TLbit7_clear": true
+  },
+  "mathematical_reconstruction": {
+    "exact": "A functional signed-table lookup plus saturatingarithmetic matchesoriginalcommands. The twoROMs tables and allfourcoreoutputdigests agree.",
+    "simple_rows": [
+      "Lowerrow0=0. Upperrow0=0.",
+      "Lowerrow15[j]=35-2*j, j0..17.",
+      "Upperrow8[j]=j, j0..21."
+    ],
+    "general_curve_law": "No universalexacttable-generationformula recovered. Do notreplaceirregularentries withsmoothedcurves.",
+    "straight_line_probe": "Perrow feasibility underone nearest-integeraffineline withstrict\u00b1(0.5\u22121e\u22126) margins:20 of32rows infeasible. Thisisamathematical shapecheck, notproofagainst everyother roundingrule or Yamaha sourcealgorithm.",
+    "infeasible_rows": [
+      {
+        "side": "lower",
+        "curve": 1
+      },
+      {
+        "side": "lower",
+        "curve": 2
+      },
+      {
+        "side": "lower",
+        "curve": 3
+      },
+      {
+        "side": "lower",
+        "curve": 4
+      },
+      {
+        "side": "lower",
+        "curve": 5
+      },
+      {
+        "side": "lower",
+        "curve": 6
+      },
+      {
+        "side": "lower",
+        "curve": 7
+      },
+      {
+        "side": "lower",
+        "curve": 10
+      },
+      {
+        "side": "lower",
+        "curve": 13
+      },
+      {
+        "side": "upper",
+        "curve": 1
+      },
+      {
+        "side": "upper",
+        "curve": 2
+      },
+      {
+        "side": "upper",
+        "curve": 3
+      },
+      {
+        "side": "upper",
+        "curve": 4
+      },
+      {
+        "side": "upper",
+        "curve": 6
+      },
+      {
+        "side": "upper",
+        "curve": 11
+      },
+      {
+        "side": "upper",
+        "curve": 12
+      },
+      {
+        "side": "upper",
+        "curve": 13
+      },
+      {
+        "side": "upper",
+        "curve": 14
+      },
+      {
+        "side": "upper",
+        "curve": 15
+      }
+    ]
+  },
+  "validation": {
+    "passed": true,
+    "core_cases": 393216,
+    "core_groups": {
+      "PSS780": {
+        "lookup": {
+          "cases": 32768,
+          "sha256": "188d126530dfc535f55a4a651aadf1267f4c643b8bff6cae8ee0926c133a260c"
+        },
+        "saturate": {
+          "cases": 32768,
+          "sha256": "3961045c93ce4ee475873d76cd255f5abfdfca95c660f8d83ec74e6b3e209d58"
+        },
+        "builder": {
+          "cases": 114688,
+          "sha256": "9843cf5d29363d83f7dcffc5167d2ee38fd71ad56558173daad0d3110df7bbba"
+        },
+        "carrier_addend": {
+          "cases": 16384,
+          "sha256": "88ce50beb204f5d0202d46fd6c4a5ae5bfc96ea62cb881c696e513b78630dc5f"
+        }
+      },
+      "PSS680": {
+        "lookup": {
+          "cases": 32768,
+          "sha256": "188d126530dfc535f55a4a651aadf1267f4c643b8bff6cae8ee0926c133a260c"
+        },
+        "saturate": {
+          "cases": 32768,
+          "sha256": "3961045c93ce4ee475873d76cd255f5abfdfca95c660f8d83ec74e6b3e209d58"
+        },
+        "builder": {
+          "cases": 114688,
+          "sha256": "9843cf5d29363d83f7dcffc5167d2ee38fd71ad56558173daad0d3110df7bbba"
+        },
+        "carrier_addend": {
+          "cases": 16384,
+          "sha256": "88ce50beb204f5d0202d46fd6c4a5ae5bfc96ea62cb881c696e513b78630dc5f"
+        }
+      }
+    },
+    "serial_cases": 16592,
+    "serial_groups": {
+      "PSS780": {
+        "program_cases": 7200,
+        "velocity_cases": 1016,
+        "volume_cases": 80
+      },
+      "PSS680": {
+        "program_cases": 7200,
+        "velocity_cases": 1016,
+        "volume_cases": 80
+      }
+    },
+    "valid_serial_boundary_cases": 72,
+    "asserted_total": 409880,
+    "outside_documented_domain_observations": 16,
+    "all_factory_payloads_examined": 200,
+    "firstpass_errors_preserved": 7137,
+    "current_errors": 0,
+    "audio_fits": 0
+  },
+  "legal_TL_boundary_examples": [
+    {
+      "model": "PSS780",
+      "mode": 0,
+      "source_working_voice": 99,
+      "constructed_documented_TL": 99,
+      "constructed_LKS": 17,
+      "volume_index": 9,
+      "input_note": 36,
+      "calls": [
+        {
+          "pc": 52095,
+          "slot": 0,
+          "note": 36,
+          "program": 255,
+          "extra": 0,
+          "kind": 0,
+          "bank": 2
+        }
+      ],
+      "level_writes": [
+        [
+          608,
+          80
+        ],
+        [
+          616,
+          80
+        ]
+      ]
+    },
+    {
+      "model": "PSS780",
+      "mode": 0,
+      "source_working_voice": 99,
+      "constructed_documented_TL": 99,
+      "constructed_LKS": 17,
+      "volume_index": 9,
+      "input_note": 60,
+      "calls": [
+        {
+          "pc": 52095,
+          "slot": 0,
+          "note": 60,
+          "program": 255,
+          "extra": 0,
+          "kind": 0,
+          "bank": 2
+        }
+      ],
+      "level_writes": [
+        [
+          608,
+          99
+        ],
+        [
+          616,
+          99
+        ]
+      ]
+    },
+    {
+      "model": "PSS780",
+      "mode": 0,
+      "source_working_voice": 99,
+      "constructed_documented_TL": 99,
+      "constructed_LKS": 17,
+      "volume_index": 9,
+      "input_note": 84,
+      "calls": [
+        {
+          "pc": 52095,
+          "slot": 0,
+          "note": 84,
+          "program": 255,
+          "extra": 0,
+          "kind": 0,
+          "bank": 2
+        }
+      ],
+      "level_writes": [
+        [
+          608,
+          93
+        ],
+        [
+          616,
+          93
+        ]
+      ]
+    },
+    {
+      "model": "PSS780",
+      "mode": 0,
+      "source_working_voice": 99,
+      "constructed_documented_TL": 127,
+      "constructed_LKS": 17,
+      "volume_index": 9,
+      "input_note": 36,
+      "calls": [
+        {
+          "pc": 52095,
+          "slot": 0,
+          "note": 36,
+          "program": 255,
+          "extra": 0,
+          "kind": 0,
+          "bank": 2
+        }
+      ],
+      "level_writes": [
+        [
+          608,
+          108
+        ],
+        [
+          616,
+          108
+        ]
+      ]
+    },
+    {
+      "model": "PSS780",
+      "mode": 0,
+      "source_working_voice": 99,
+      "constructed_documented_TL": 127,
+      "constructed_LKS": 17,
+      "volume_index": 9,
+      "input_note": 60,
+      "calls": [
+        {
+          "pc": 52095,
+          "slot": 0,
+          "note": 60,
+          "program": 255,
+          "extra": 0,
+          "kind": 0,
+          "bank": 2
+        }
+      ],
+      "level_writes": [
+        [
+          608,
+          127
+        ],
+        [
+          616,
+          127
+        ]
+      ]
+    },
+    {
+      "model": "PSS780",
+      "mode": 0,
+      "source_working_voice": 99,
+      "constructed_documented_TL": 127,
+      "constructed_LKS": 17,
+      "volume_index": 9,
+      "input_note": 84,
+      "calls": [
+        {
+          "pc": 52095,
+          "slot": 0,
+          "note": 84,
+          "program": 255,
+          "extra": 0,
+          "kind": 0,
+          "bank": 2
+        }
+      ],
+      "level_writes": [
+        [
+          608,
+          121
+        ],
+        [
+          616,
+          121
+        ]
+      ]
+    }
+  ],
+  "raw_bit7": {
+    "documented_domain": "TL0..127; nofactorypayloadof200hasbit7set.",
+    "finding": "Out-of-domain rawMSB probes haveasymmetric modulo/saturation behavior: modulation raw128\u2192128withoutReverb/0withReverb; carrier\u2192127/255. No semanticflagmeaning assigned.",
+    "production_guidance": "KeepReverbexplicitlyseparate; do not infer supportedrawTLbit7behavior fromout-of-domainarithmetic."
+  },
+  "current_engine_comparison": {
+    "engine_cpp_sha256": "67c2217f8706ed47d678378942ea321237a86a047a4b63349d5d9984a2823d9f",
+    "summary": {
+      "cases": 25600,
+      "finite_legacy_cases": 25472,
+      "equivalent_count_absolute_mean": 1.2725381121983874,
+      "equivalent_count_absolute_max": 44.97771770850375,
+      "legacy_premute_but_firmware_command_below99_cases": 0,
+      "legacy_gain_above1_cases": 82,
+      "scope": "Descriptive currentcode comparison: convert its stated0.75dB/TL assumption back to equivalentcount. This is not measured OPU attenuation, not audiofit, and does not include carrier0.8/globalgain/velocity/reverb."
+    },
+    "focus_carriers_note74_zeroaddend": [
+      {
+        "panel": 65,
+        "note": 74,
+        "operator": "carrier",
+        "raw_TL": 19,
+        "LKS_byte": 181,
+        "firmware_signed_offset": 1,
+        "firmware_command_without_addend_or_reverb": 20,
+        "legacy": {
+          "muted_before_keyscale": false,
+          "equivalent_command_count": 21.182633475618132,
+          "gain": 0.16056513347744086
+        },
+        "legacy_minus_firmware_equivalent_counts": 1.1826334756181325
+      },
+      {
+        "panel": 93,
+        "note": 74,
+        "operator": "carrier",
+        "raw_TL": 19,
+        "LKS_byte": 208,
+        "firmware_signed_offset": 3,
+        "firmware_command_without_addend_or_reverb": 22,
+        "legacy": {
+          "muted_before_keyscale": false,
+          "equivalent_command_count": 23.72903919717262,
+          "gain": 0.12887273045416334
+        },
+        "legacy_minus_firmware_equivalent_counts": 1.7290391971726216
+      },
+      {
+        "panel": 97,
+        "note": 74,
+        "operator": "carrier",
+        "raw_TL": 16,
+        "LKS_byte": 176,
+        "firmware_signed_offset": 1,
+        "firmware_command_without_addend_or_reverb": 17,
+        "legacy": {
+          "muted_before_keyscale": false,
+          "equivalent_command_count": 18.182633475618132,
+          "gain": 0.20804210753176475
+        },
+        "legacy_minus_firmware_equivalent_counts": 1.1826334756181325
+      },
+      {
+        "panel": 99,
+        "note": 74,
+        "operator": "carrier",
+        "raw_TL": 13,
+        "LKS_byte": 185,
+        "firmware_signed_offset": 1,
+        "firmware_command_without_addend_or_reverb": 14,
+        "legacy": {
+          "muted_before_keyscale": false,
+          "equivalent_command_count": 15.182633475618132,
+          "gain": 0.26955739125231293
+        },
+        "legacy_minus_firmware_equivalent_counts": 1.1826334756181325
+      }
+    ],
+    "differences": [
+      "Currentlevel() usescontinuousnote distance andcurvedapproximations; firmwareusesquantizedpairs andexacttables.",
+      "CurrenthighsidecontinuesbeyondMIDI102; softwarecommand lookupclamps.",
+      "CurrentearlyrawTL>=99mute canmasklegaldocumentednegativeLKSchanges. Constructedlegalserialwitnesses TL99\u219280 and127\u2192108 atnote36.",
+      "CurrentnegativeLKS mayproducegain>1; recoveredcommand saturatesat0. Audibletransfer isstillunknown.",
+      "Currentvelocityhandling isseparatecontinuous gain; firmwarecaller addsquantizedcarrier-onlycommandvalue."
+    ],
+    "not_changed": "CurrentpitchModel remainsfrequency-only. No newmode, default orcompatibilitypolicy implemented."
+  },
+  "unknowns": [
+    "TheOPU conversionfromTLcommand toattenuation/amplitude, includingexact0.75dB assumption, silencefloor, internalquantization.",
+    "Originaltablegeneration formulas and undocumentedrawTLbit7semantics.",
+    "Fullhardwarebootdefaultvolume, sourcechain gain andloudness.",
+    "Chip-leveldynamicresponse tocommandchanges andanyregisterlatency."
+  ],
+  "reproduction": {
+    "python": "build/opu-digital-primary-leads-20261019/venv/bin/python",
+    "scripts": [
+      "verify_level.py",
+      "verify_serial_level.py",
+      "verify_boundaries.py",
+      "compare_legacy.py"
+    ],
+    "directory": "build/opu-level-command-path-20261019",
+    "requires": "Localoriginalhash-matchingprogramfiles andrecordedfixturedependencies; nodistributedROMbytes."
+  },
+  "artifacts": [
+    {
+      "path": "build/opu-level-command-path-20261019/design-frozen.json",
+      "sha256": "fb6bd88576728e53698f55ecd1813d4f42ac6d17429e24baeddd5aba6031d5fb",
+      "bytes": 2203
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/fixture-amendments.json",
+      "sha256": "24a1a68b57d5a171c5b1ff381884d35e2de6ed9d2211e6a9e72041888ce0b38a",
+      "bytes": 1247
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/probe_level.py",
+      "sha256": "878f50278ae3c86475eb92ff9711123a4af0d7946520a3bb7ffd5b11c5c464a0",
+      "bytes": 1372
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/verify_level.py",
+      "sha256": "76743e79f53a8876211887845042c37abeb719d6b833234ebc15bdedba9ec6fe",
+      "bytes": 4741
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/verify_serial_level.py",
+      "sha256": "aa1a7a559920d06b0bcbe129339d3bd2568c60917fe00f84a6c3195220afe766",
+      "bytes": 4842
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/verify_serial_level-firstpass.py",
+      "sha256": "2c8240b5af9bc60fb9dfbbb37da466384f52f8c1eeb474c91222cd7b40185e31",
+      "bytes": 4606
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/verify_boundaries.py",
+      "sha256": "c21281dc31cd3fae94f357de47134adab668a24d6ec197f7c4bded24a20c3e11",
+      "bytes": 2151
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/compare_legacy.py",
+      "sha256": "8625cf7d1c2ad4b0cfeaf920d4cab1cc08a6a1bbd6788fefe4b1bf9e5f0095e5",
+      "bytes": 2545
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/core-validation.json",
+      "sha256": "c0a0b0052a68f9dcd69331e01fbbbddc50795dd533728873bd80ef76c858e783",
+      "bytes": 61441
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/serial-validation.json",
+      "sha256": "561200a956cda6de1e9fccf99aae96fa2f3df2b1012be8720f9b88b598d4a5d5",
+      "bytes": 8357781
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/serial-validation-firstpass.json",
+      "sha256": "1fac73319ebd01337bb5347bae89d54e84d75fa1747f9fd0d674153abc0ee2e3",
+      "bytes": 11656862
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/boundary-validation.json",
+      "sha256": "b51b1c4183f4b8269b76f45ead2fc32c62c097fc902994d68446510521ea6695",
+      "bytes": 44509
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/legacy-comparison.json",
+      "sha256": "a8c85516cbcee6c871a00dcc6e4c62b307104a496c2166677c079aef7103e44a",
+      "bytes": 10768413
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/analytic-shape-check.json",
+      "sha256": "6fdb199307d0b9fe46fa374c1ad088c2093b0a90d3f8a5dd679e3d9b24a5db01",
+      "bytes": 4609
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/data-identity.json",
+      "sha256": "89bf384bae597ec62c6ebb397ea7ff6b6d922d5dd9ce104eb92b0dbdfa5b8b63",
+      "bytes": 2911
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/table-exploration.json",
+      "sha256": "0dd1588b5f668d28166e70f4f83313a2ee85f2c2f9c7a5f384dbf508fb87a57d",
+      "bytes": 16588
+    },
+    {
+      "path": "build/opu-level-command-path-20261019/velocity-volume-exploration.json",
+      "sha256": "d9dae3281c3053166ea9fa99c8ee5afb387091cac3297600cdd6da1460666371",
+      "bytes": 1324
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/probe_release.py",
+      "sha256": "0f7300dad9e37356f9db56a2f14ffaa1afeedd414c6bd4ae2525b06785e8dfc2",
+      "bytes": 2164,
+      "kind": "fixture dependency"
+    },
+    {
+      "path": "build/opu-release-command-path-20261019/verify_release.py",
+      "sha256": "f252a598ebdcd99e716210cf4185732817e02fb384621d28507d060a85b7e981",
+      "bytes": 5692,
+      "kind": "fixture dependency"
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/probe_midi.py",
+      "sha256": "41ae883eabd3e212cdb3755185c46c549252b37c96dd4147330058a6521368ca",
+      "bytes": 1373,
+      "kind": "fixture dependency"
+    },
+    {
+      "path": "build/opu-pitch-command-path-20261019/verify_pitch_path.py",
+      "sha256": "414c8646b61365b95afdff1fbe5805f4970e8dd9b25d165d010873c205550a0e",
+      "bytes": 4244,
+      "kind": "fixture dependency"
+    }
+  ]
+}

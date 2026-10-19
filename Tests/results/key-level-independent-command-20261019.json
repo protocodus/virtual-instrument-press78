@@ -1,0 +1,202 @@
+{
+  "schema": "press78.keylevel-native-independent-command-audit.v1",
+  "passed": true,
+  "scope": "Native helper command arithmetic only, with actual original-ROM primitive outputs and full-builder receipt comparison. Engine integration/audio/defaultadoption require separate gates.",
+  "candidate": {
+    "header": "build/key-level-b13-20261019/prototype/Source/DSP/FirmwareLevel.h",
+    "header_sha256": "e2c5ad02b54aeaf03b1e7c88092af78903ea5b808b54eae2b2cefa8cda057283",
+    "generator": "build/key-level-b13-20261019/prototype/Tools/generate_firmware_level.py",
+    "generator_sha256": "a2fe39632c632037d2680c6114e63ab71dbbe5b1422917e92d8710e5776498b2"
+  },
+  "original_execution": {
+    "fresh_primitive_cases": 131072,
+    "models": [
+      "PSS780",
+      "PSS680"
+    ],
+    "original_truth_receipt_sha256": "f8eefc00e0b492cc8c1c81a2cd191d7acfb2d1a7c3b2545f8d6d8790cc21687a",
+    "prior_core_receipt_sha256": "c0a0b0052a68f9dcd69331e01fbbbddc50795dd533728873bd80ef76c858e783"
+  },
+  "native_coverage": {
+    "table_entries": 640,
+    "all_lks_note_offsets": 32768,
+    "all_valid_tl_lks_note_commands": 4194304,
+    "combined_commands_method": "Composition of two freshly executed original primitive-output matrices, not4194304 full-ROM-builder invocations.",
+    "prior_complete_builder_matrix_commands": 114688,
+    "prior_complete_builder_digest": "9843cf5d29363d83f7dcffc5167d2ee38fd71ad56558173daad0d3110df7bbba",
+    "boundary_witnesses": 288,
+    "invalid_input_bounding_cases": 343,
+    "valid_models_identical": true
+  },
+  "compiled_runs": {
+    "release": {
+      "binary_sha256": "2981d4980f5fd096fac4f0867dbffa2429d7e1b572c74a8df37d0440aed40522",
+      "stdout": "4194304 combined commands,32768 offsets,640 table entries,288 boundary witnesses,343 bounded-input cases",
+      "stderr": "",
+      "outputs": {
+        "tables": "ad9d35e327b40411496cb2482de812ccbdca4d7db758126d1a00fa3705328712",
+        "offsets": "8fea27a6ca84a4e7f6c0e9ffd69de140cd0f3a9e41006847dde94cad574ddf74",
+        "commands": "16c19bc3712db33520e119688a6d2908f4ad68f7bad3999fa3e810276090349b"
+      }
+    },
+    "sanitized": {
+      "binary_sha256": "f9c8f2688adf5f35364191de52ec8be5f1f01a3ac372f62b109094eb75cc29ad",
+      "stdout": "4194304 combined commands,32768 offsets,640 table entries,288 boundary witnesses,343 bounded-input cases",
+      "stderr": "",
+      "outputs": {
+        "tables": "ad9d35e327b40411496cb2482de812ccbdca4d7db758126d1a00fa3705328712",
+        "offsets": "8fea27a6ca84a4e7f6c0e9ffd69de140cd0f3a9e41006847dde94cad574ddf74",
+        "commands": "16c19bc3712db33520e119688a6d2908f4ad68f7bad3999fa3e810276090349b"
+      }
+    }
+  },
+  "boundary_examples": [
+    {
+      "tl": 99,
+      "note": 0,
+      "lks": 17,
+      "original_offset": -22,
+      "native_command": 77
+    },
+    {
+      "tl": 99,
+      "note": 23,
+      "lks": 17,
+      "original_offset": -22,
+      "native_command": 77
+    },
+    {
+      "tl": 99,
+      "note": 24,
+      "lks": 17,
+      "original_offset": -22,
+      "native_command": 77
+    },
+    {
+      "tl": 99,
+      "note": 59,
+      "lks": 17,
+      "original_offset": -2,
+      "native_command": 97
+    },
+    {
+      "tl": 99,
+      "note": 60,
+      "lks": 17,
+      "original_offset": 0,
+      "native_command": 99
+    },
+    {
+      "tl": 99,
+      "note": 101,
+      "lks": 17,
+      "original_offset": -10,
+      "native_command": 89
+    },
+    {
+      "tl": 99,
+      "note": 102,
+      "lks": 17,
+      "original_offset": -11,
+      "native_command": 88
+    },
+    {
+      "tl": 99,
+      "note": 127,
+      "lks": 17,
+      "original_offset": -11,
+      "native_command": 88
+    },
+    {
+      "tl": 127,
+      "note": 0,
+      "lks": 17,
+      "original_offset": -22,
+      "native_command": 105
+    },
+    {
+      "tl": 127,
+      "note": 23,
+      "lks": 17,
+      "original_offset": -22,
+      "native_command": 105
+    },
+    {
+      "tl": 127,
+      "note": 24,
+      "lks": 17,
+      "original_offset": -22,
+      "native_command": 105
+    },
+    {
+      "tl": 127,
+      "note": 59,
+      "lks": 17,
+      "original_offset": -2,
+      "native_command": 125
+    },
+    {
+      "tl": 127,
+      "note": 60,
+      "lks": 17,
+      "original_offset": 0,
+      "native_command": 127
+    },
+    {
+      "tl": 127,
+      "note": 101,
+      "lks": 17,
+      "original_offset": -10,
+      "native_command": 117
+    },
+    {
+      "tl": 127,
+      "note": 102,
+      "lks": 17,
+      "original_offset": -11,
+      "native_command": 116
+    },
+    {
+      "tl": 127,
+      "note": 127,
+      "lks": 17,
+      "original_offset": -11,
+      "native_command": 116
+    }
+  ],
+  "explicit_unmute_witness": {
+    "raw_tl": 99,
+    "note": 36,
+    "lks": 17,
+    "command": 80,
+    "scope": "Command80, not measuredhardwareamplitude."
+  },
+  "unchanged_production_source": {
+    "AnalogOutput.h": true,
+    "CircuitNoise.h": true,
+    "FactoryVoices.h": true,
+    "FirmwarePitch.h": true,
+    "OversampledAnalogOutput.h": true,
+    "Press78Engine.cpp": true,
+    "Press78Engine.h": true,
+    "RecordedChorus.h": true,
+    "RecordedChorusProfile.h": true
+  },
+  "errors": [],
+  "harness_corrections": [
+    "Initial probe compile failed because -Werror rejected an unusedcasecounter. Added exactcounter assertion; candidate source was unchanged. No native measurement was produced by the failed compile."
+  ],
+  "limits": [
+    "No sourceROMbytes or fulltables outsideignored research area.",
+    "No audiofit, hardwaredBtransfer, Reverb/Sustainimplementation or policyapproval inferred.",
+    "Carrieraddend/Reverb arithmetic in builderdigestcheck is an audit wrapper; prototype runtime scope remains keyscalingonly."
+  ],
+  "artifacts": {
+    "build/key-level-b13-20261019/independent-command-audit/prepare_original_truth.py": "436fa9ff300b0266442a3965fb8640d02c3d97658f2b5247b40b886fd043bdcf",
+    "build/key-level-b13-20261019/independent-command-audit/NativeCommandProbe.cpp": "b2229f9b71bb23695c9c1974aaf772709c2c5cfd90c73d10da6834c6462b2b96",
+    "build/key-level-b13-20261019/independent-command-audit/verify_native.py": "093f3a5d096dd3a7ba88f0e31b38ffb95e9fd24dd59e7304972a18f5fbbfeec8",
+    "build/key-level-b13-20261019/independent-command-audit/original-truth.json": "f8eefc00e0b492cc8c1c81a2cd191d7acfb2d1a7c3b2545f8d6d8790cc21687a",
+    "build/key-level-b13-20261019/independent-command-audit/release-run.log": "3c17f77a148107af5c39a2bffdcaac1115c1259fffde7a87bae3b1a9d282cc27",
+    "build/key-level-b13-20261019/independent-command-audit/sanitized-run.log": "3c17f77a148107af5c39a2bffdcaac1115c1259fffde7a87bae3b1a9d282cc27"
+  }
+}

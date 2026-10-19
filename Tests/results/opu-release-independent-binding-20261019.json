@@ -1,0 +1,31 @@
+{
+  "schema": "press78.opu-release-audit-appendix-receipt.v1",
+  "recorded_at_utc": "2026-10-19T07:03:43.008256+00:00",
+  "status": "independently_audited_no_blocker",
+  "frozen_original_reports": [
+    {
+      "path": "Reference/Research/opu-release-command-path-20261019.md",
+      "bytes": 7996,
+      "sha256": "b2c54eba98e82e21908f6885272568e0a678bf4e735d6b60195418ab72836778"
+    },
+    {
+      "path": "Reference/Research/opu-release-command-path-20261019.json",
+      "bytes": 25405,
+      "sha256": "8d0603033eab325f8a9ed61bbd530752a65d45566a343c67aa64a1dafbef6fa9"
+    }
+  ],
+  "independent_audit": {
+    "path": "build/opu-release-independent-20261019/report.json",
+    "sha256": "e6cc24505283034b415f51f46bc7242ff2c739cbe2d8743d6403b91aece31919",
+    "passed": true,
+    "findings": [],
+    "primary_cases": 1560,
+    "additional": {
+      "polyphonic_sequences": 4,
+      "key_events": 96,
+      "live_transitions": 24
+    }
+  },
+  "policy": "This separate receipt records audit completion without editing the frozen originalMD/JSON. The original statusready_for_independent_audit remains as historical freeze state. Root owns any tracked appendix copy.",
+  "scope": "Software command evidence only; no new audiofit, OPU envelope law, productionchange or timebase claim."
+}
