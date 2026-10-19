@@ -37,7 +37,7 @@ body{margin:0;background:#20292b;color:#eeeadd;font:16px/1.55 system-ui,sans-ser
 <div class="grid">CARDS</div>
 <p>The Noise control scales the electrical output against one fixed 11.96866768 µVrms continuous 20–20 kHz reference. At 48 kHz, numerical frequency warping gives about 0.9228 times that in-band level, before the 0.25 master gain. It is not corrected per clip or sample rate. Shared and private circuit noise sources preserve the modeled relationship between left and right.</p>
 SPECTRUM
-<footer><a href="manifest.json">Exact render settings, levels and source hashes</a> · <a href="../../Reference/Research/hardware-pass-20261018.md">Circuit research</a><p>The boosted noise-only file is exactly ten times the quiet waveform. All other files retain native output level. Reference recordings are not used in these auditions.</p></footer></main></html>'''
+<footer><a href="manifest.json">Exact render settings, levels and source hashes</a> · <a href="../../Docs/research/hardware-pass-2026-10-18.md">Circuit research</a><p>The boosted noise-only file is exactly ten times the quiet waveform. All other files retain native output level. Reference recordings are not used in these auditions.</p></footer></main></html>'''
     (args.directory/'report.html').write_text(page.replace('CARDS', ''.join(cards)).replace('SPECTRUM', spectrum))
     print(args.directory/'report.html')
 

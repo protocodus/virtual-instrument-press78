@@ -16,7 +16,7 @@ def main():
     parser.add_argument('--renderer',type=Path,default=ROOT/'build/press78_render')
     parser.add_argument('--out',type=Path,default=ROOT/'build/noise-demos')
     args=parser.parse_args();args.out.mkdir(parents=True,exist_ok=True)
-    bank=json.loads((ROOT/'Resources/FactoryBank/press78-factory.json').read_text())['voices']
+    bank=json.loads((ROOT/'Assets/FactoryBank/press78-factory.json').read_text())['voices']
     rows=[]
     for number in (65,93,97):
         voice=bank[number];raw=bytes(voice['raw_data']).hex()

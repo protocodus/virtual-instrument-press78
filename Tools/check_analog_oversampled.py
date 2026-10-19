@@ -19,7 +19,7 @@ from scipy import linalg, signal
 import scipy
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "Reference/Python"))
+sys.path.insert(0, str(ROOT / "Tools/reference"))
 sys.path.insert(0, str(ROOT / "Tools"))
 from circuit.model import build_circuit
 from generate_analog import retarget
@@ -197,7 +197,7 @@ def run(probe, work):
     sources = ("Source/DSP/OversampledAnalogOutput.h", "Source/DSP/AnalogOutput.h",
                "Tools/generate_analog_oversampling.py", "Tools/generate_analog.py",
                "Tools/OversampledAnalogProbe.cpp", "Tools/check_analog_oversampled.py",
-               "Reference/Python/circuit/model.py")
+               "Tools/reference/circuit/model.py")
     return {
         "passed": True,
         "scope": "Complete causal 4x integration of documented PSS480 volume-pot-top surrogate; not identified PSS780 AUX circuit or YM3420 converter.",

@@ -293,8 +293,8 @@ def main():
     parser.add_argument('action', choices=['freeze', 'measure'])
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--reference-root', type=Path)
-    parser.add_argument('--calibration-report', type=Path, default=ROOT / 'Reference/Research/midi-alignment-audit-20261018.json')
-    parser.add_argument('--bank', type=Path, default=ROOT / 'Resources/FactoryBank/press78-factory.json')
+    parser.add_argument('--calibration-report', type=Path, default=ROOT / 'Docs/research/midi-alignment-audit-2026-10-18.json')
+    parser.add_argument('--bank', type=Path, default=ROOT / 'Assets/FactoryBank/press78-factory.json')
     args = parser.parse_args()
     if args.action == 'freeze':
         if args.reference_root is None:

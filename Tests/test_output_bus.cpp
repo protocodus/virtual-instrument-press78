@@ -2,7 +2,7 @@
 #include "FactoryVoices.h"
 #include "output_bus_latency_cases.h"
 #include "RecordedChorusProfile.h"
-#include "../Reference/Prototypes/fixed-output-bus-20261019/GuardedOutputBus.h"
+#include "../Tools/prototypes/fixed-output-bus-20261019/GuardedOutputBus.h"
 #include <array>
 #include <cmath>
 #include <cstdlib>

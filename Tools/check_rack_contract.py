@@ -21,7 +21,7 @@ def main():
     parser.add_argument('device', type=Path)
     args = parser.parse_args()
     device = args.device.resolve()
-    schema = json.loads((ROOT/'Resources/controls.json').read_text())
+    schema = json.loads((ROOT/'Assets/controls.json').read_text())
     rows = {row['id']: row for row in schema['controls']}
     assert len(rows) == len(schema['controls']) == 67
     hidden={name for name,row in rows.items() if row.get('hidden')}
@@ -53,7 +53,7 @@ def main():
     remote=mother.split('remote_implementation_chart = {',1)[1].split('midi_implementation_chart =',1)[0]
     assert set(re.findall(r'\["/custom_properties/([^"]+)"\]',remote)) == visible
     # All panel parameters need explicit, stable host automation mappings.
-    registry = json.loads((ROOT/'Resources/rack-automation.json').read_text())
+    registry = json.loads((ROOT/'Assets/rack-automation.json').read_text())
     assert registry['product'] == schema['product']
     automation = re.findall(r'\[(\d+)\]\s*=\s*"/custom_properties/([^\"]+)"',
                             mother.split('midi_implementation_chart =',1)[1].split('ui_groups =',1)[0])
@@ -74,12 +74,12 @@ def main():
 
     # Execute only the unchanged pure decoder function, avoiding the reference
     # renderer's NumPy/SciPy dependency for this metadata-only check.
-    source = ROOT/'Reference/Python/src/pss780.py'
+    source = ROOT/'Tools/reference/src/pss780.py'
     tree = ast.parse(source.read_text())
     decoder = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == 'read_sysex')
     namespace = {}
     exec(compile(ast.Module(body=[decoder], type_ignores=[]), str(source), 'exec'), namespace)
-    bank = json.loads((ROOT/'Resources/FactoryBank/press78-factory.json').read_text())
+    bank = json.loads((ROOT/'Assets/FactoryBank/press78-factory.json').read_text())
     expected = {'Init': {'pitchModel': 1, 'sustainMode': 1}}
     aliases = {'lks_hi': 'lksHi', 'lks_lo': 'lksLo', 'am_enable': 'amEnable'}
     for voice in bank['voices']:

@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'Reference/Python'))
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'Tools/reference'))
 from circuit.output_stage import noise_spectrum
 f=np.geomspace(20,20000,600)
 fig,(top,bottom)=plt.subplots(2,1,figsize=(10,7),sharex=True,gridspec_kw={'height_ratios':[2,1]})

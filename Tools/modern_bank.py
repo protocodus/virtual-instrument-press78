@@ -13,11 +13,11 @@ def preset_relative_path(voice):
     return Path('Modern') / voice['category'] / (voice['name'] + '.repatch')
 
 def load_modern():
-    schema = json.loads((ROOT / 'Resources/controls.json').read_text())
+    schema = json.loads((ROOT / 'Assets/controls.json').read_text())
     specs = {row['id']: row for row in schema['controls']}
     voices = []
     for name in FRAGMENTS:
-        doc = json.loads((ROOT / 'Resources/FactoryBank' / name).read_text())
+        doc = json.loads((ROOT / 'Assets/FactoryBank' / name).read_text())
         if doc['schema'] != 'press78.modern-fragment.v1':
             raise ValueError('Unexpected modern bank schema: ' + name)
         voices.extend(doc['voices'])

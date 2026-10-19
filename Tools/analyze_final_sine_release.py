@@ -87,7 +87,7 @@ def main():
     align_path = ref / 'references/v2/alignment.json'
     events_path = ref / 'references/v2/eugenia-events.json'
     timeline_path = ref / 'references/v3_program_timeline.json'
-    bank_path = ROOT / 'Resources/FactoryBank/press78-factory.json'
+    bank_path = ROOT / 'Assets/FactoryBank/press78-factory.json'
     fs, original = wavfile.read(source, mmap=True)
     assert fs == 48000 and original.dtype == np.int16 and original.shape[1] == 2
     alignment = read(align_path)

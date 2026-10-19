@@ -131,16 +131,16 @@ def main():
     voices=[v for v in all_voices if args.ids is None or v['id'] in args.ids]
     if not voices or (args.ids and set(args.ids)!={v['id'] for v in voices}):
         raise ValueError('Empty or unknown preset selection')
-    controls={r['id']:r for r in json.loads((ROOT/'Resources/controls.json').read_text())['controls']}
+    controls={r['id']:r for r in json.loads((ROOT/'Assets/controls.json').read_text())['controls']}
     patch_paths={v['id']:device/'Resources/Public'/helper.preset_relative_path(v) for v in voices}
     versions={v['id']:validate_patch(patch_paths[v['id']],v,controls) for v in voices}
     stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     dest=(args.output or ROOT/'build'/f'modern-preset-audition-{stamp}').resolve()
     dest.mkdir(parents=True,exist_ok=False)
-    source_files=[Path(__file__).resolve(), ROOT/'Tools/modern_bank.py', ROOT/'Tools/generate_rack.py',ROOT/'Resources/controls.json',
+    source_files=[Path(__file__).resolve(), ROOT/'Tools/modern_bank.py', ROOT/'Tools/generate_rack.py',ROOT/'Assets/controls.json',
                   device/'Tests/FactoryPresetAudition.cpp',device/'Tests/WrapperHostContract.cpp',device/'Press78.cpp',device/'Press78.h',
                   device/'Parameters.h',device/'ApplyParameters.inc',device/'DSP/Press78Engine.cpp',
-                  *sorted((device/'DSP').glob('*.h')), *sorted((ROOT/'Resources/FactoryBank').glob('modern-*.json')),
+                  *sorted((device/'DSP').glob('*.h')), *sorted((ROOT/'Assets/FactoryBank').glob('modern-*.json')),
                   sdk/'version.txt',sdk/'API/Jukebox.h',sdk/'API/JukeboxTypes.h',*patch_paths.values()]
     source_hashes={str(p):sha(p) for p in source_files}
     protocol=dict(schema='press78.modern-preset-audition.v1',created_utc=datetime.now(timezone.utc).isoformat(),

@@ -351,7 +351,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("action", choices=("freeze", "run"))
     parser.add_argument("--out", type=Path, required=True)
-    parser.add_argument("--ledger", type=Path, default=ROOT / "Reference/Research/midi-event-order-audit-20261019.json")
+    parser.add_argument("--ledger", type=Path, default=ROOT / "Docs/research/midi-event-order-audit-2026-10-19.json")
     args = parser.parse_args()
     (freeze if args.action == "freeze" else run)(args)
 

@@ -3,7 +3,7 @@
 
 The tracked research ledger contains every input observation needed for scoring:
   python3 Tools/audit_opu_frequency.py \
-    --report Reference/Research/opu-frequency-hypothesis-20261019.json \
+    --report Docs/research/opu-frequency-hypothesis-2026-10-19.json \
     --out build/opu-frequency-reproduction
 
 Alternatively supply --protocol, --producer, --pitch-result and --pitch-protocol

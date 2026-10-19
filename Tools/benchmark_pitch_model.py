@@ -61,8 +61,8 @@ def freeze(args):
     inputs.update({
         'prior_mode00_protocol':record(prior/'protocol-frozen.json'),
         'prior_mode00_result':record(prior/'result.json'),
-        'pitch_frequency_report':record(ROOT/'Reference/Research/opu-frequency-hypothesis-20261019.json'),
-        'pitch_command_report':record(ROOT/'Reference/Research/opu-pitch-command-path-20261019.json'),
+        'pitch_frequency_report':record(ROOT/'Docs/research/opu-frequency-hypothesis-2026-10-19.json'),
+        'pitch_command_report':record(ROOT/'Docs/research/opu-pitch-command-path-2026-10-19.json'),
         'baseline_source_manifest':record(args.baseline/'source-frozen.json')})
     for item in inputs.values(): verify(item)
     maps=[]

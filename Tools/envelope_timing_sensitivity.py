@@ -68,7 +68,7 @@ def freeze(args):
         raise RuntimeError("Refusing to overwrite any existing experiment directory")
     law, reverb = args.prior_law.resolve(), args.prior_reverb.resolve()
     old_law, old_reverb = read(law / "result.json"), read(reverb / "result.json")
-    mapping_path = ROOT / "Reference/Research/global-event-mapping-20261019.json"
+    mapping_path = ROOT / "Docs/research/global-event-mapping-2026-10-19.json"
     mapping_report = read(mapping_path)
     maps = mapping_report["protocol"]["candidate_maps"]
     assert len(maps) == 4 and maps[0]["id"] == "unchanged"
@@ -79,7 +79,7 @@ def freeze(args):
               "notes": reference / "v2/eugenia-events.json",
               "timeline": reference / "v3_program_timeline.json",
               "alignment": reference / "v2/alignment.json",
-              "bank": ROOT / "Resources/FactoryBank/press78-factory.json",
+              "bank": ROOT / "Assets/FactoryBank/press78-factory.json",
               "production_cpp": ROOT / "Source/DSP/Press78Engine.cpp",
               "production_header": ROOT / "Source/DSP/Press78Engine.h"}
     for name in ("recording", "notes", "timeline", "alignment", "bank"):

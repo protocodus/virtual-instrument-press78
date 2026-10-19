@@ -6,7 +6,7 @@ import sys
 import argparse
 
 ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'Reference/Python'))
+sys.path.insert(0,str(ROOT/'Tools/reference'))
 import numpy as np
 from scipy import signal
 from circuit.model import build_circuit
@@ -93,7 +93,7 @@ COEFFICIENTS
         rows.append({'sample_rate':rate,'max_complex_transfer_error':error})
     result={'passed':True,'scope':'Frozen MNA transfer and analytic sample-rate conversion; circuit transfer to PSS780 remains unverified.',
             'rows':rows,'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
-                for p in [ROOT/'Reference/Python/circuit/model.py',Path(__file__),target]}}
+                for p in [ROOT/'Tools/reference/circuit/model.py',Path(__file__),target]}}
     out=ROOT/'Tests/results';out.mkdir(parents=True,exist_ok=True)
     (out/'analog-coefficients.json').write_text(json.dumps(result,indent=2)+'\n')
     print('12 rates: frozen analog transfer and sample-rate mapping passed')

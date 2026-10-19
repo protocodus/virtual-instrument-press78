@@ -1,51 +1,235 @@
 # Press78
 
-Press78 is an editable two-operator FM instrument derived from the PSS-780 research experiment. It has an independent C++17 engine, an eight-unit Reason Rack Extension prototype, and an interactive panel design. It uses original Press78 branding and focuses on synthesis; it does not reproduce the keyboard, rhythms or accompaniment system.
+Press78 is an editable two-operator FM synthesizer derived from the PSS-780 research experiment, as a VST3, CLAP and Standalone plug-in on macOS, Windows and Linux, plus an Audio Unit on macOS. Its independent C++17 engine also drives an eight-unit Reason Rack Extension prototype. It uses original Press78 branding and focuses on synthesis; it does not reproduce the keyboard, rhythms or accompaniment system. It is a behavioral model, not a bit-exact YM3420 emulator, and commercial redistribution of the imported factory bank has not been cleared.
 
-This is an early development version, **0.1.0b15**. It is a behavioral model, not a bit-exact YM3420 emulator. Commercial redistribution of the imported factory bank has not been cleared.
+![Press78 editor](Docs/screenshots/press78.png)
 
-[Product metadata](SHOP.md) follows the same shop format as the other Protocodus synths. It is generated from the Rack adapter’s authored `SHOP.md`; its front, rear and thumbnail images show the current native panel.
+## Audio demos
 
-Open [the interactive design preview](Design/index.html). Layout study 11 uses an eight-rack-unit panel with consistent section padding and puts 34 main sound/performance controls on the front, with 30 detailed sound, calibration and configuration controls on the rear. It combines the canonical Protocodus logo, YouKnow's DIN lettering and recessed groups with charcoal ABS, cyan, lavender, coral and ivory inspired by the PSS-780 moodboard. Doubled pointer arrows remain clear of the knob number wells. The preview has editable operator controls, all 100 PSS originals and 50 modern sounds. It demonstrates layout and parameter relationships, without audio. [Design notes](Design/README.md) describe the front, rear and folded panels. Both native GUI asset sets and the native local/universal builds carry this styling. Level increases clockwise while preserving the original raw attenuation values; clearer envelope/unit labels and value arcs improve editing. The current layout follows the photographic recesses, shares vertical centres within each row and aligns the header controls.
+One demo per factory voice, rendered by the main build from the phrases in `Docs/audio/midi` through the plug-in's default controls (the Real startup profile, Volume 0.25). Levels are the bank's own; nothing is normalised.
 
-## Repository layout
+<!-- audio-demos-begin -->
 
-The layout follows the sibling Protocodus instrument repositories: portable engine code in `Source/DSP`, independent native contracts in `Tests`, standalone utilities in `Tools`, and parameter/preset data in `Resources`. The core has no JUCE or Jukebox dependency. No VST/AU wrapper is included in this initial Rack-focused port.
+| # | Preset | Demo | Length | Peak |
+| --- | --- | --- | --- | --- |
+| 1 | PSS 00 Piano 1 | [001-pss-00-piano-1.mp3](Docs/audio/001-pss-00-piano-1.mp3) | 12.9 s | -12.9 dBFS |
+| 2 | PSS 01 Piano 2 | [002-pss-01-piano-2.mp3](Docs/audio/002-pss-01-piano-2.mp3) | 12.9 s | -14.8 dBFS |
+| 3 | PSS 02 Electric Piano 1 | [003-pss-02-electric-piano-1.mp3](Docs/audio/003-pss-02-electric-piano-1.mp3) | 13.9 s | -10.9 dBFS |
+| 4 | PSS 03 Electric Piano 2 | [004-pss-03-electric-piano-2.mp3](Docs/audio/004-pss-03-electric-piano-2.mp3) | 13.9 s | -13.8 dBFS |
+| 5 | PSS 04 Honky-Tonk Piano | [005-pss-04-honky-tonk-piano.mp3](Docs/audio/005-pss-04-honky-tonk-piano.mp3) | 11.0 s | -14.3 dBFS |
+| 6 | PSS 05 Toy Piano | [006-pss-05-toy-piano.mp3](Docs/audio/006-pss-05-toy-piano.mp3) | 11.4 s | -21.1 dBFS |
+| 7 | PSS 06 Reed Organ | [007-pss-06-reed-organ.mp3](Docs/audio/007-pss-06-reed-organ.mp3) | 14.0 s | -9.6 dBFS |
+| 8 | PSS 07 Pipe Organ 1 | [008-pss-07-pipe-organ-1.mp3](Docs/audio/008-pss-07-pipe-organ-1.mp3) | 15.9 s | -8.3 dBFS |
+| 9 | PSS 08 Pipe Organ 2 | [009-pss-08-pipe-organ-2.mp3](Docs/audio/009-pss-08-pipe-organ-2.mp3) | 15.9 s | -10.7 dBFS |
+| 10 | PSS 09 Small Church Organ | [010-pss-09-small-church-organ.mp3](Docs/audio/010-pss-09-small-church-organ.mp3) | 15.9 s | -7.2 dBFS |
+| 11 | PSS 10 Electronic Organ | [011-pss-10-electronic-organ.mp3](Docs/audio/011-pss-10-electronic-organ.mp3) | 12.5 s | -6.8 dBFS |
+| 12 | PSS 11 Transistor Organ | [012-pss-11-transistor-organ.mp3](Docs/audio/012-pss-11-transistor-organ.mp3) | 11.8 s | -6.3 dBFS |
+| 13 | PSS 12 Tremolo Organ | [013-pss-12-tremolo-organ.mp3](Docs/audio/013-pss-12-tremolo-organ.mp3) | 13.4 s | -11.1 dBFS |
+| 14 | PSS 13 Jazz Organ | [014-pss-13-jazz-organ.mp3](Docs/audio/014-pss-13-jazz-organ.mp3) | 11.1 s | -12.8 dBFS |
+| 15 | PSS 14 Street Organ | [015-pss-14-street-organ.mp3](Docs/audio/015-pss-14-street-organ.mp3) | 11.0 s | -16.4 dBFS |
+| 16 | PSS 15 Harpsichord 1 | [016-pss-15-harpsichord-1.mp3](Docs/audio/016-pss-15-harpsichord-1.mp3) | 12.0 s | -15.4 dBFS |
+| 17 | PSS 16 Harpsichord 2 | [017-pss-16-harpsichord-2.mp3](Docs/audio/017-pss-16-harpsichord-2.mp3) | 12.9 s | -16.9 dBFS |
+| 18 | PSS 17 Funky Clavi | [018-pss-17-funky-clavi.mp3](Docs/audio/018-pss-17-funky-clavi.mp3) | 14.9 s | -19.0 dBFS |
+| 19 | PSS 18 Celesta | [019-pss-18-celesta.mp3](Docs/audio/019-pss-18-celesta.mp3) | 13.4 s | -20.0 dBFS |
+| 20 | PSS 19 Glass Celesta | [020-pss-19-glass-celesta.mp3](Docs/audio/020-pss-19-glass-celesta.mp3) | 14.4 s | -23.2 dBFS |
+| 21 | PSS 20 Accordion | [021-pss-20-accordion.mp3](Docs/audio/021-pss-20-accordion.mp3) | 12.0 s | -17.6 dBFS |
+| 22 | PSS 21 Bandoneon | [022-pss-21-bandoneon.mp3](Docs/audio/022-pss-21-bandoneon.mp3) | 13.3 s | -17.8 dBFS |
+| 23 | PSS 22 Trumpet | [023-pss-22-trumpet.mp3](Docs/audio/023-pss-22-trumpet.mp3) | 13.9 s | -21.5 dBFS |
+| 24 | PSS 23 Mute Trumpet | [024-pss-23-mute-trumpet.mp3](Docs/audio/024-pss-23-mute-trumpet.mp3) | 15.3 s | -27.4 dBFS |
+| 25 | PSS 24 Wow Trumpet | [025-pss-24-wow-trumpet.mp3](Docs/audio/025-pss-24-wow-trumpet.mp3) | 15.0 s | -26.0 dBFS |
+| 26 | PSS 25 Electric Trumpet | [026-pss-25-electric-trumpet.mp3](Docs/audio/026-pss-25-electric-trumpet.mp3) | 13.1 s | -20.2 dBFS |
+| 27 | PSS 26 Horn | [027-pss-26-horn.mp3](Docs/audio/027-pss-26-horn.mp3) | 16.5 s | -21.7 dBFS |
+| 28 | PSS 27 Alpenhorn | [028-pss-27-alpenhorn.mp3](Docs/audio/028-pss-27-alpenhorn.mp3) | 17.1 s | -19.7 dBFS |
+| 29 | PSS 28 Trombone | [029-pss-28-trombone.mp3](Docs/audio/029-pss-28-trombone.mp3) | 15.3 s | -22.0 dBFS |
+| 30 | PSS 29 Tuba | [030-pss-29-tuba.mp3](Docs/audio/030-pss-29-tuba.mp3) | 17.1 s | -16.9 dBFS |
+| 31 | PSS 30 Brass Ensemble | [031-pss-30-brass-ensemble.mp3](Docs/audio/031-pss-30-brass-ensemble.mp3) | 14.4 s | -15.2 dBFS |
+| 32 | PSS 31 Soprano Sax | [032-pss-31-soprano-sax.mp3](Docs/audio/032-pss-31-soprano-sax.mp3) | 12.4 s | -30.4 dBFS |
+| 33 | PSS 32 Alto Sax | [033-pss-32-alto-sax.mp3](Docs/audio/033-pss-32-alto-sax.mp3) | 15.0 s | -19.1 dBFS |
+| 34 | PSS 33 Tenor Sax | [034-pss-33-tenor-sax.mp3](Docs/audio/034-pss-33-tenor-sax.mp3) | 15.0 s | -24.1 dBFS |
+| 35 | PSS 34 Clarinet | [035-pss-34-clarinet.mp3](Docs/audio/035-pss-34-clarinet.mp3) | 12.4 s | -26.3 dBFS |
+| 36 | PSS 35 Bass Clarinet | [036-pss-35-bass-clarinet.mp3](Docs/audio/036-pss-35-bass-clarinet.mp3) | 13.4 s | -20.6 dBFS |
+| 37 | PSS 36 Oboe | [037-pss-36-oboe.mp3](Docs/audio/037-pss-36-oboe.mp3) | 12.4 s | -29.1 dBFS |
+| 38 | PSS 37 Basson | [038-pss-37-basson.mp3](Docs/audio/038-pss-37-basson.mp3) | 12.9 s | -26.8 dBFS |
+| 39 | PSS 38 Piccolo | [039-pss-38-piccolo.mp3](Docs/audio/039-pss-38-piccolo.mp3) | 14.6 s | -31.0 dBFS |
+| 40 | PSS 39 Flute | [040-pss-39-flute.mp3](Docs/audio/040-pss-39-flute.mp3) | 12.4 s | -28.0 dBFS |
+| 41 | PSS 40 Panflute | [041-pss-40-panflute.mp3](Docs/audio/041-pss-40-panflute.mp3) | 13.9 s | -22.5 dBFS |
+| 42 | PSS 41 Recorder | [042-pss-41-recorder.mp3](Docs/audio/042-pss-41-recorder.mp3) | 11.6 s | -28.1 dBFS |
+| 43 | PSS 42 Ocarina | [043-pss-42-ocarina.mp3](Docs/audio/043-pss-42-ocarina.mp3) | 13.4 s | -28.2 dBFS |
+| 44 | PSS 43 Woodwind Ensemble | [044-pss-43-woodwind-ensemble.mp3](Docs/audio/044-pss-43-woodwind-ensemble.mp3) | 15.5 s | -18.1 dBFS |
+| 45 | PSS 44 Bagpipe | [045-pss-44-bagpipe.mp3](Docs/audio/045-pss-44-bagpipe.mp3) | 11.2 s | -27.3 dBFS |
+| 46 | PSS 45 Harmonica | [046-pss-45-harmonica.mp3](Docs/audio/046-pss-45-harmonica.mp3) | 15.0 s | -23.9 dBFS |
+| 47 | PSS 46 Jug | [047-pss-46-jug.mp3](Docs/audio/047-pss-46-jug.mp3) | 12.8 s | -17.8 dBFS |
+| 48 | PSS 47 Kazoo | [048-pss-47-kazoo.mp3](Docs/audio/048-pss-47-kazoo.mp3) | 15.7 s | -26.4 dBFS |
+| 49 | PSS 48 Samba Whistle | [049-pss-48-samba-whistle.mp3](Docs/audio/049-pss-48-samba-whistle.mp3) | 13.4 s | -28.6 dBFS |
+| 50 | PSS 49 Acoustic Guitar | [050-pss-49-acoustic-guitar.mp3](Docs/audio/050-pss-49-acoustic-guitar.mp3) | 15.0 s | -7.6 dBFS |
+| 51 | PSS 50 Classic Guitar | [051-pss-50-classic-guitar.mp3](Docs/audio/051-pss-50-classic-guitar.mp3) | 18.0 s | -11.1 dBFS |
+| 52 | PSS 51 Hawaiian Guitar | [052-pss-51-hawaiian-guitar.mp3](Docs/audio/052-pss-51-hawaiian-guitar.mp3) | 12.1 s | -19.2 dBFS |
+| 53 | PSS 52 Jazz Guitar | [053-pss-52-jazz-guitar.mp3](Docs/audio/053-pss-52-jazz-guitar.mp3) | 11.5 s | -11.3 dBFS |
+| 54 | PSS 53 Rock Guitar 1 | [054-pss-53-rock-guitar-1.mp3](Docs/audio/054-pss-53-rock-guitar-1.mp3) | 12.7 s | -26.4 dBFS |
+| 55 | PSS 54 Rock Guitar 2 | [055-pss-54-rock-guitar-2.mp3](Docs/audio/055-pss-54-rock-guitar-2.mp3) | 11.6 s | -18.2 dBFS |
+| 56 | PSS 55 Rock Guitar 3 | [056-pss-55-rock-guitar-3.mp3](Docs/audio/056-pss-55-rock-guitar-3.mp3) | 13.1 s | -22.5 dBFS |
+| 57 | PSS 56 Pedal Steel Guitar | [057-pss-56-pedal-steel-guitar.mp3](Docs/audio/057-pss-56-pedal-steel-guitar.mp3) | 12.4 s | -24.7 dBFS |
+| 58 | PSS 57 Tremolo Guitar | [058-pss-57-tremolo-guitar.mp3](Docs/audio/058-pss-57-tremolo-guitar.mp3) | 16.8 s | -12.3 dBFS |
+| 59 | PSS 58 12String Guitar | [059-pss-58-12string-guitar.mp3](Docs/audio/059-pss-58-12string-guitar.mp3) | 14.0 s | -12.7 dBFS |
+| 60 | PSS 59 Electric Bass | [060-pss-59-electric-bass.mp3](Docs/audio/060-pss-59-electric-bass.mp3) | 12.0 s | -14.8 dBFS |
+| 61 | PSS 60 Mute Bass | [061-pss-60-mute-bass.mp3](Docs/audio/061-pss-60-mute-bass.mp3) | 12.8 s | -14.2 dBFS |
+| 62 | PSS 61 Picked Bass | [062-pss-61-picked-bass.mp3](Docs/audio/062-pss-61-picked-bass.mp3) | 11.3 s | -16.4 dBFS |
+| 63 | PSS 62 Slap Bass | [063-pss-62-slap-bass.mp3](Docs/audio/063-pss-62-slap-bass.mp3) | 13.0 s | -23.1 dBFS |
+| 64 | PSS 63 Wood Bass 1 | [064-pss-63-wood-bass-1.mp3](Docs/audio/064-pss-63-wood-bass-1.mp3) | 13.2 s | -15.1 dBFS |
+| 65 | PSS 64 Wood Bass 2 | [065-pss-64-wood-bass-2.mp3](Docs/audio/065-pss-64-wood-bass-2.mp3) | 12.3 s | -13.2 dBFS |
+| 66 | PSS 65 Bowed Bass | [066-pss-65-bowed-bass.mp3](Docs/audio/066-pss-65-bowed-bass.mp3) | 14.5 s | -17.8 dBFS |
+| 67 | PSS 66 Banjo | [067-pss-66-banjo.mp3](Docs/audio/067-pss-66-banjo.mp3) | 15.6 s | -18.0 dBFS |
+| 68 | PSS 67 Ukulele | [068-pss-67-ukulele.mp3](Docs/audio/068-pss-67-ukulele.mp3) | 13.2 s | -10.8 dBFS |
+| 69 | PSS 68 Mandolin | [069-pss-68-mandolin.mp3](Docs/audio/069-pss-68-mandolin.mp3) | 12.7 s | -12.9 dBFS |
+| 70 | PSS 69 Harp | [070-pss-69-harp.mp3](Docs/audio/070-pss-69-harp.mp3) | 13.0 s | -10.7 dBFS |
+| 71 | PSS 70 Sitar | [071-pss-70-sitar.mp3](Docs/audio/071-pss-70-sitar.mp3) | 12.1 s | -24.8 dBFS |
+| 72 | PSS 71 Shamisen | [072-pss-71-shamisen.mp3](Docs/audio/072-pss-71-shamisen.mp3) | 10.9 s | -19.1 dBFS |
+| 73 | PSS 72 Jamisen | [073-pss-72-jamisen.mp3](Docs/audio/073-pss-72-jamisen.mp3) | 11.5 s | -22.1 dBFS |
+| 74 | PSS 73 Koto | [074-pss-73-koto.mp3](Docs/audio/074-pss-73-koto.mp3) | 12.8 s | -18.9 dBFS |
+| 75 | PSS 74 Violin 1 | [075-pss-74-violin-1.mp3](Docs/audio/075-pss-74-violin-1.mp3) | 12.5 s | -26.6 dBFS |
+| 76 | PSS 75 Violin 2 | [076-pss-75-violin-2.mp3](Docs/audio/076-pss-75-violin-2.mp3) | 11.5 s | -26.5 dBFS |
+| 77 | PSS 76 Cello | [077-pss-76-cello.mp3](Docs/audio/077-pss-76-cello.mp3) | 13.4 s | -19.5 dBFS |
+| 78 | PSS 77 Strings | [078-pss-77-strings.mp3](Docs/audio/078-pss-77-strings.mp3) | 14.2 s | -13.1 dBFS |
+| 79 | PSS 78 Synth Brass | [079-pss-78-synth-brass.mp3](Docs/audio/079-pss-78-synth-brass.mp3) | 13.9 s | -18.1 dBFS |
+| 80 | PSS 79 Synth Bass | [080-pss-79-synth-bass.mp3](Docs/audio/080-pss-79-synth-bass.mp3) | 10.5 s | -22.4 dBFS |
+| 81 | PSS 80 Synth Tom | [081-pss-80-synth-tom.mp3](Docs/audio/081-pss-80-synth-tom.mp3) | 12.9 s | -16.1 dBFS |
+| 82 | PSS 81 Carillon | [082-pss-81-carillon.mp3](Docs/audio/082-pss-81-carillon.mp3) | 17.1 s | -22.9 dBFS |
+| 83 | PSS 82 Chimes | [083-pss-82-chimes.mp3](Docs/audio/083-pss-82-chimes.mp3) | 17.1 s | -23.0 dBFS |
+| 84 | PSS 83 Hand Bell | [084-pss-83-hand-bell.mp3](Docs/audio/084-pss-83-hand-bell.mp3) | 15.6 s | -28.6 dBFS |
+| 85 | PSS 84 Tubular Bells | [085-pss-84-tubular-bells.mp3](Docs/audio/085-pss-84-tubular-bells.mp3) | 18.4 s | -25.7 dBFS |
+| 86 | PSS 85 Timpani | [086-pss-85-timpani.mp3](Docs/audio/086-pss-85-timpani.mp3) | 14.8 s | -10.1 dBFS |
+| 87 | PSS 86 Steel Drum 1 | [087-pss-86-steel-drum-1.mp3](Docs/audio/087-pss-86-steel-drum-1.mp3) | 13.3 s | -22.5 dBFS |
+| 88 | PSS 87 Steel Drum 2 | [088-pss-87-steel-drum-2.mp3](Docs/audio/088-pss-87-steel-drum-2.mp3) | 12.5 s | -16.7 dBFS |
+| 89 | PSS 88 Glockenspiel | [089-pss-88-glockenspiel.mp3](Docs/audio/089-pss-88-glockenspiel.mp3) | 14.6 s | -19.7 dBFS |
+| 90 | PSS 89 Marimba 1 | [090-pss-89-marimba-1.mp3](Docs/audio/090-pss-89-marimba-1.mp3) | 14.6 s | -8.3 dBFS |
+| 91 | PSS 90 Marimba 2 | [091-pss-90-marimba-2.mp3](Docs/audio/091-pss-90-marimba-2.mp3) | 15.8 s | -9.4 dBFS |
+| 92 | PSS 91 Vibraphone | [092-pss-91-vibraphone.mp3](Docs/audio/092-pss-91-vibraphone.mp3) | 11.9 s | -14.3 dBFS |
+| 93 | PSS 92 Human Chorus | [093-pss-92-human-chorus.mp3](Docs/audio/093-pss-92-human-chorus.mp3) | 13.5 s | -14.9 dBFS |
+| 94 | PSS 93 Human Voice 1 | [094-pss-93-human-voice-1.mp3](Docs/audio/094-pss-93-human-voice-1.mp3) | 15.5 s | -26.4 dBFS |
+| 95 | PSS 94 Human Voice 2 | [095-pss-94-human-voice-2.mp3](Docs/audio/095-pss-94-human-voice-2.mp3) | 16.6 s | -28.4 dBFS |
+| 96 | PSS 95 Whistle | [096-pss-95-whistle.mp3](Docs/audio/096-pss-95-whistle.mp3) | 16.2 s | -22.1 dBFS |
+| 97 | PSS 96 Ice Block | [097-pss-96-ice-block.mp3](Docs/audio/097-pss-96-ice-block.mp3) | 12.7 s | -26.8 dBFS |
+| 98 | PSS 97 Musical Saw | [098-pss-97-musical-saw.mp3](Docs/audio/098-pss-97-musical-saw.mp3) | 12.4 s | -24.4 dBFS |
+| 99 | PSS 98 Music Box | [099-pss-98-music-box.mp3](Docs/audio/099-pss-98-music-box.mp3) | 11.6 s | -28.6 dBFS |
+| 100 | PSS 99 Sine Wave | [100-pss-99-sine-wave.mp3](Docs/audio/100-pss-99-sine-wave.mp3) | 11.1 s | -17.8 dBFS |
+
+<!-- audio-demos-end -->
+
+## Version history
+
+### Unreleased — 0.1.0 — engine, Rack prototype and plug-in front end
+
+- Two-operator FM engine with the 100 `PSS` factory voices and an Init sine, sibling-circuit output stage, Studio and Recorded chorus, and clock variation.
+- b11: the D1 endpoint correction and a 5.24 Hz triangle LFO with recording-supported vibrato depths; additive noise removed (its two controls stay as inert, hidden ids).
+- b12: a **Pitch model** selector, Original (the firmware pitch-command table, the new default) or Equal (the earlier continuous law).
+- b13: the Original release-pedal policy (the pedal selects the release rate; key-up releases at once), a hidden setting that new patches turn on.
+- b14: a fixed output bus and final converter keep the 48 kHz output character at every host rate; other rates change audio and latency.
+- b15: 50 modern Rack presets (basses, donks, plucks, leads, pads and FX) beside the 100 `PSS` voices; the plug-in does not include them yet.
+- Reason Rack Extension prototype 0.1.0b15, built outside this repository.
+- First JUCE plug-in: every control as a parameter, Init plus the 100 voices as programs, and a working editor; the Rack panel design is not yet ported to it.
+
+## Downloads
+
+<!-- build-download-begin -->
+<!-- build-download-end -->
+
+---
+
+## How it works
+
+### Engine
+
+Both operators expose ratio, fine/coarse detune, four waveform families, raw envelope rates, key scaling and AM. Additional controls cover feedback, velocity, LFO phase/depth/delay, twelve-voice allocation, pitch bend, mod wheel, clock variation, analog output, tone, drive, chorus and stereo width. The Rack adapter adds separate MIDI/CV note ownership and Note/Gate/FM/Level CV inputs. All 64 active controls have explicit Reason automation mappings. The two former noise properties and their IDs remain reserved for compatibility; they are hidden and inert. The registry stays frozen in `Assets/rack-automation.json`; Volume/Tone retain MIDI CC7/74.
+
+The initial port preserved the frozen Python raw-FM behavior. Starting with b11, a documented D1 endpoint correction and recording-supported modulation replace those corresponding hypotheses; the Python files remain frozen historical references. It adds fixed-storage voice management, short voice-stealing tails, continuous-control smoothing and host-rate conversion. The internal 48 kHz timebase, floating-point operators, envelope laws and detune mappings are modeling choices, not recovered chip internals. The legacy core has 32 internal samples of nominal reconstruction latency. The b14 instrument adds a final host converter outside 48k; its declared Rack latency is 126/32/236/256/512 frames at 44.1/48/88.2/96/192k. Clock controls also scale that physical delay; upward clock shifts can alias near-Nyquist energy. Clock drift is a controllable scenario, not a measurement of aged hardware. Memory faults and random digital bit corruption are not introduced as normal vintage behavior.
+
+The b12 rear **Pitch model** selector offers **Original** and **Equal**. New Init/PSS patches explicitly select Original; older patches missing the new property retain Equal. Original uses the independently reconstructed 384-word firmware pitch-command table, including its nonmonotonic A-flat fractional entry and high-seven-bit MIDI bend behavior. Device Tune rounds to 3.125-cent steps; host master tuning and internal vibrato stay continuous. The downstream command-to-frequency floor/grid remains a recording-supported behavioral hypothesis, not identified silicon arithmetic. Extended keyboard/tuning ranges are plugin extensions. The selector displays the requested model; changes wait until held notes, releases and steal fades finish, or reset/all-sound-off. [Firmware evidence](Docs/research/opu-pitch-command-path-2026-10-19.md), [physical panel mapping](Docs/research/front-panel-envelope-map-2026-10-19.md) and [frozen comparison](Docs/research/hardware-pitch-b12-2026-10-19.md) separate verified commands from inferred synthesis behavior.
+
+The b11 modulation profile uses a continuous 5.24 Hz triangle and a binary PMS depth hypothesis: 0,3.125,6.25,12.5,25,50,100,200 cents. The original PSS-780 recording directly supports roughly 12.5 cents at PMS3 and 100 cents at PMS6; unobserved levels remain a modeled interpolation. New PSS-580 recordings independently corroborate the approximately 5.24–5.25Hz triangle motion, with raw patch-depth and global-phase qualifications. The existing 10 ms/VDT delay law remains uncertain. D1 now tests whether its endpoint is already reached before applying a decay increment, eliminating unwanted attenuation from a zero-height stage. See the [FM audit](Docs/research/fm-fidelity-audit-2026-10-18.md), [pitch audit](Docs/research/lfo-pitch-audit-2026-10-18.md) and [independent recordings](Docs/research/recording-holdout-audit-2026-10-18.md).
+
+### Output circuit
+
+The enabled-by-default output circuit is the six-section small-signal transfer from the researched **PSS-480** circuit, used explicitly as a sibling surrogate. It is not a recovered PSS-780 board, a verified YM3420 DAC transfer, or a transistor-level model. Drive is a separate creative saturation control.
+
+Authentic signal-dependent distortion, DAC behavior, component tolerances and power sensitivity remain fidelity requirements despite removal of artificial noise. A new [research supply component](Docs/research/local-supply-model-2026-10-19.md) implements the documented sibling local rail filter with independent circuit checks. Its load and voltage-to-audio coupling remain unknown; it does not change b13 audio or imply a calibrated nonlinear output model.
+
+B14 preserves the established 48k output character across host rates through a fixed output bus and a final stereo converter. It intentionally changes non-48k audio and latency in existing documents; all 48k renders remain unchanged. [Adoption and A/B evidence](Docs/research/output-bus-b14-2026-10-19.md) separates improved host-rate consistency from still-unidentified DAC, BBD nonlinear and voltage-to-audio behavior.
+
+### Sustain pedal
+
+B13 adds the [Original release-pedal policy](Docs/research/sustain-policy-2026-10-19.md): the pedal selects RR/SRR while keyoff releases immediately, including live rate updates on released notes. New Init/PSS files select it; older documents retain conventional pedal holding. The hidden compatibility setting leaves the panel unchanged. All eight no-pedal full-performance WAVs match b12 exactly, so existing recording scores are unchanged. The authored Sustain button does not display the temporary pedal override, and the plugin does not emulate complete keyboard program-change behavior.
+
+### Chorus
+
+Two realtime chorus modes are available. **Studio** preserves the original creative delay effect. **Recorded** implements the frozen v3 effective stereo transfer from the PSS-780 recording: roughly 0.49–1.51 ms delay, a continuous 0.954647 Hz LFO, second-harmonic motion and direct mid leakage. It adds no whole-output latency. The rate and depth remain editable. This is a recording-derived approximation, not an identified MN3206 circuit. The offline v4 branch correction remains a reference because an exact causal port would need about 21.83 ms lookahead compensation at 48 kHz.
+
+### Noise
+
+The standalone PSS-480 resistor/opamp noise model and earlier noise research remain as historical reference tools. They are not connected to the instrument engine; no additive PRNG, circuit-noise generator or noise controls remain in the unit. The [b11 audit](Tests/results/noise-removal-b11-audit.json) preserves the initial verification; the [b12 noise-removal audit](Tests/results/noise-removal-b12-audit.json) verifies current source, source-bound normal/sanitized wrapper tests, absent GUI controls and all 101 packaged patches.
+
+### Startup profile and factory bank
+
+The Rack Init and all 100 factory patches use the **Real** startup profile: related-hardware output circuit on, Recorded chorus at its captured rate/depth and full reference side level, and a slow ±20 ppm clock excursion at 0.1 Hz (about ±0.035 cents). Clock offset and creative Drive stay zero. Clock excursion is an explicit modeling choice, not recovered PSS-780 calibration. Additive noise has been removed from the runtime, including both White and Circuit paths. Old patches and automation may still contain the former noise properties; their values are ignored and cannot restore hiss. Other values remain editable and persist with patches. The portable constructor also uses the new 5.24 Hz shared triangle LFO; its effect defaults remain independent of the Rack Real profile. Model selectors and fine calibration are on the rear.
+
+Init is an independently defined sine patch. The public development bank contains the 100 original parameter presets as `PSS 00 …` through `PSS 99 …`. The Rack bank also carries 50 modern presets (12 basses, 8 donks, 12 plucks, 8 leads, 6 pads and 4 FX) under `Modern`, defined in `Assets/FactoryBank/modern-*.json`; the [factory presets guide](Docs/guide/factory-presets.md) lists them, and [the modern audition page](Docs/guide/modern-presets.html) plays each one. Loading/editing a Rack patch retimbres held voices while preserving their oscillator/envelope state. The standalone engine also offers future-voices-only program snapshots.
+
+### Plug-in front end
+
+The plug-in's parameter IDs are the control ids in `Assets/controls.json`, the same names as the Rack properties; `Source/PluginControls.h` is generated from that file by `Tools/generate_plugin_controls.py`. `Source/ControlMapping.h` maps the controls to the engine's patch and controls for both the plug-in and the demo renderer. Program 0 is Init and programs 1–100 are the factory voices; a program change sets the 36 sound controls and leaves performance and output controls, including Pitch model, alone, and editing a sound control retimbres held voices, as the Rack does. Pitch bend scales by Pitch bend range, and Original receives the raw 14-bit wheel as the firmware does; the mod wheel adds its position times Wheel to vibrato to Pitch depth (this mapping is the plug-in's own choice; the Rack adapter's is not in this repository). A new instance starts with Pitch model and the Original release policy on, as the Rack Init does, and CC64 reaches the engine as its raw value because Original treats any nonzero value as down. The release policy and the two inert noise ids stay as parameters so saved sessions load, but like the Rack panel the editor omits them. The programs are Init and the 100 `PSS` voices; the 50 modern presets are Rack patches only for now. The editor is a working one-control-per-parameter layout; the designed Rack panel below is not yet ported to it.
+
+### Panel design
+
+Open [the interactive design preview](Assets/Design/index.html). Layout study 11 uses an eight-rack-unit panel with consistent section padding and puts 34 main sound/performance controls on the front, with 30 detailed sound, calibration and configuration controls on the rear. It combines the canonical Protocodus logo, YouKnow's DIN lettering and recessed groups with charcoal ABS, cyan, lavender, coral and ivory inspired by the PSS-780 moodboard. Doubled pointer arrows remain clear of the knob number wells. The preview has editable operator controls, all 100 PSS originals and 50 modern sounds. It demonstrates layout and parameter relationships, without audio. [Design notes](Assets/Design/README.md) describe the front, rear and folded panels. Both native GUI asset sets and the native local/universal builds carry this styling. Level increases clockwise while preserving the original raw attenuation values; clearer envelope/unit labels and value arcs improve editing. The current layout follows the photographic recesses, shares vertical centres within each row and aligns the header controls.
+
+### Repository layout
 
 | Path | Purpose |
 | --- | --- |
-| `Source/DSP` | Fixed-storage polyphonic engine and generated circuit/preset tables |
-| `Resources/controls.json` | Rack contract:64 controls, two inert legacy noise properties and hidden release compatibility |
-| `Resources/FactoryBank` | 100 original `PSS` parameter patches plus 50 original modern sounds and provenance |
-| `Design` | Shared geometry, SVG/PNG panels and interactive HTML wireframe |
-| `Reference/Python` | Frozen research implementation used as the comparison oracle |
-| `Reference/migration.json` | Original source location and file hashes |
+| `Source/DSP` | Fixed-storage polyphonic engine and generated circuit/preset tables (JUCE-free, C++17) |
+| `Source/Plugin*`, `Source/ControlMapping.h` | JUCE plug-in front end and its control mapping |
+| `Assets/controls.json` | Parameter contract shared with the Rack adapter: 64 controls, two inert legacy noise properties and the hidden release policy |
+| `Assets/rack-automation.json` | Frozen Reason automation IDs |
+| `Assets/FactoryBank` | 100 original `PSS` parameter patches, 50 modern Rack presets and provenance |
+| `Assets/Design` | Panel geometry, SVG/PNG panels and the interactive HTML wireframe |
+| `Tools/reference` | Frozen research implementation used as the comparison oracle |
+| `Tools/prototypes` | Unadopted candidate patches and their checks, kept with their evidence |
+| `Docs/research/migration.json` | Original source location and file hashes |
 | `Tests/results` | Native validation, Python parity, circuit and timing evidence |
 
-The Rack adapter is developed separately, matching the existing SDK workspace arrangement:
+## Known gaps
 
-```
-/Users/vojta/Dev/reason-rack-extension/press78-20261018/Examples/Press78
-```
+A focused [Human Voice 1 release audit](Docs/research/human-voice1-release-audit.md) finds a tail deficit under the original inferred timing. At 150–220 ms after the clearest inferred note-off, its tracked carrier component falls about 16 dB in the recording versus 60 dB in the model. The preset import is correct and the baseline has no target-voice steals. The separate [Reverb performance effect](Docs/research/reverb-release-evidence.md) is not modeled; its exact envelope behavior remains unidentified. The [release A/B report](build/release-analysis-20261018T0905/report.html) includes carrier-only RR6/RR5 experiments, with timing, overlap and allocation caveats. A subsequent [timing sensitivity test](Docs/research/timing-sensitivity-2026-10-19.md) reverses Human Voice 1's joint-band preference under all three alternative maps, so the original score does not select a replacement release law. These are diagnostic candidates, not factory or DSP changes.
 
-The b5 Rack patch exporter uses the SDK’s canonical XML declaration after Recon rejected the earlier declaration during default Init loading. All 101 patch sound parameter maps are preserved. The b6 native display formatter also fixes a subsequent Recon drawing crash caused by concatenating host-formatted text; independent regression tests cover all 50 numeric readouts, with 444 passing cases and an explicit reproduction of the prior failure.
+- The plug-in has only passed the checks CI runs; it has not been tried in a DAW. Its editor is a plain control grid, not the designed panel.
+- The Rack adapter lives in a local SDK workspace, not in `protocodus/reason-rack-extensions`, and its DSP directory is a generated snapshot of this repository (`Tools/sync_rack_dsp.py`) rather than the pinned submodule the portfolio standard asks for. The b5 Rack patch exporter uses the SDK’s canonical XML declaration after Recon rejected the earlier declaration during default Init loading. All 101 patch sound parameter maps are preserved. The b6 native display formatter also fixes a subsequent Recon drawing crash caused by concatenating host-formatted text; independent regression tests cover all 50 numeric readouts, with 444 passing cases and an explicit reproduction of the prior failure.
+- The b11–b15 fidelity work, its rejected candidates and the open fidelity requirements are in [fidelity status, 2026-10-19](Docs/research/fidelity-status-2026-10-19.md); no superlative accuracy claim follows from it.
+- The native evidence, sanitizer runs, hardware comparison and Rack prototype validation are recorded in [native evidence, 2026-10-18](Docs/validation/native-evidence-2026-10-18.md) for b9 and in the fidelity status above for b11 and b12. They establish agreement with the research model, not with Yamaha hardware.
+- The preset source is recorded in [bank provenance](Assets/FactoryBank/provenance.json). Public availability of a SysEx archive and the editor project's license do not establish permission to distribute Yamaha's factory bank commercially. No research videos, recordings, manual scans or executable Yamaha firmware are shipped in this repository. `Press78` has not received trademark clearance; development names and source availability are not legal clearance.
 
-Its DSP directory is a generated snapshot of this repository. Its README records the verified SDK, build commands and validation limits. The proprietary SDK is not bundled here.
+## Build
 
-## Build and render
+The engine, tools and unit, fuzz and audio tiers build without JUCE:
 
 ```sh
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --config Release --parallel
-ctest --test-dir build -C Release --output-on-failure
-build/press78_render --output /tmp/press78-init.wav --note 60 --seconds 3 --gate 1.5
+cmake -S . -B build-dsp -DCMAKE_BUILD_TYPE=Release -DPRESS78_BUILD_PLUGIN=OFF -DBUILD_TESTING=ON
+cmake --build build-dsp --parallel
+ctest --test-dir build-dsp -L unit --output-on-failure
+build-dsp/press78_render --output /tmp/press78-init.wav --note 60 --seconds 3 --gate 1.5
 ```
 
-On multi-configuration generators the executable is under `build/Release`. Enable `PRESS78_ENABLE_SANITIZERS=ON` for AddressSanitizer and UndefinedBehaviorSanitizer on supported Clang/GCC toolchains. Hosted CI is configured for macOS, Linux and Windows; configuration is not evidence that those hosted runs have occurred.
+The plug-in build fetches the pinned JUCE 8.0.14 and clap-juce-extensions unless `PRESS78_JUCE_PATH` and `PRESS78_CLAP_JUCE_EXTENSIONS_PATH` point to local checkouts. On Linux, install JUCE's ALSA, FreeType, fontconfig and X11 development packages first (the list is in `.github/workflows/ci.yml`); on macOS, `scripts/build-macos.sh` builds universal binaries and runs every test.
+
+```sh
+cmake -S . -B build-plugin -DCMAKE_BUILD_TYPE=Release -DPRESS78_BUILD_PLUGIN=ON -DBUILD_TESTING=ON
+cmake --build build-plugin --parallel
+ctest --test-dir build-plugin --output-on-failure
+```
+
+Every test is `Press78.<Suite>` with one tier label: `unit`, `audio` (`Press78.AudioDemos` renders every voice's demo twice and compares the bits), `render` (`Press78.EditorRender`, the editor screenshot) or `fuzz` (`Press78.DspFuzz`, and `Press78.ParameterMatrix` in the plug-in build). `-DPRESS78_ENABLE_SANITIZERS=ON` builds everything under ASan + UBSan, and `-DPRESS78_BUILD_LIBFUZZER=ON` with Clang builds the libFuzzer target.
 
 `press78_render --raw <66 hexadecimal digits>` renders a decoded 33-byte voice. `--transparent` disables the output circuit, creative tone filter, DC removal and output protection and sets unity gain for reference comparisons. Other options include gain, chorus mix, drive, clock offset and clock drift. See `Tools/NativeRender.cpp` for the complete bounded CLI.
 
-The normal build requires only CMake, a C++17 compiler and optional Python for the factory-data check. Numerical comparison tools additionally require NumPy and SciPy; Numba accelerates the frozen Python renderer when available.
+Numerical comparison tools additionally require NumPy and SciPy; Numba accelerates the frozen Python renderer when available.
 
 ```sh
 python3 Tools/generate_factory.py --check
@@ -64,88 +248,8 @@ python3 Tools/sync_rack_dsp.py /path/to/SDK-worktree/Examples/Press78
 python3 Tools/check_rack_contract.py /path/to/SDK-worktree/Examples/Press78
 ```
 
-## Engine behavior and limits
+[Shop copy](Docs/release/shop-copy.md) and its [metadata](Docs/release/shop-metadata.json) follow the same format as the other Protocodus synths; they are generated from the Rack adapter's authored `SHOP.md`.
 
-Both operators expose ratio, fine/coarse detune, four waveform families, raw envelope rates, key scaling and AM. Additional controls cover feedback, velocity, LFO phase/depth/delay, twelve-voice allocation, pitch bend, mod wheel, clock variation, analog output, tone, drive, chorus and stereo width. The Rack adapter adds separate MIDI/CV note ownership and Note/Gate/FM/Level CV inputs. All 64 active controls have explicit Reason automation mappings. The two former noise properties and their IDs remain reserved for compatibility; they are hidden and inert. The registry stays frozen in `Resources/rack-automation.json`; Volume/Tone retain MIDI CC7/74.
+## Licensing
 
-The initial port preserved the frozen Python raw-FM behavior. Starting with b11, a documented D1 endpoint correction and recording-supported modulation replace those corresponding hypotheses; the Python files remain frozen historical references. It adds fixed-storage voice management, short voice-stealing tails, continuous-control smoothing and host-rate conversion. The internal 48 kHz timebase, floating-point operators, envelope laws and detune mappings are modeling choices, not recovered chip internals. The legacy core has32 internal samples of nominal reconstruction latency. The b14 instrument adds a final host converter outside48k; its declared Rack latency is126/32/236/256/512 frames at44.1/48/88.2/96/192k. Clock controls also scale that physical delay; upward clock shifts can alias near-Nyquist energy. Clock drift is a controllable scenario, not a measurement of aged hardware. Memory faults and random digital bit corruption are not introduced as normal vintage behavior.
-
-The b12 rear **Pitch model** selector offers **Original** and **Equal**. New Init/PSS patches explicitly select Original; older patches missing the new property retain Equal. Original uses the independently reconstructed 384-word firmware pitch-command table, including its nonmonotonic A-flat fractional entry and high-seven-bit MIDI bend behavior. Device Tune rounds to 3.125-cent steps; host master tuning and internal vibrato stay continuous. The downstream command-to-frequency floor/grid remains a recording-supported behavioral hypothesis, not identified silicon arithmetic. Extended keyboard/tuning ranges are plugin extensions. The selector displays the requested model; changes wait until held notes, releases and steal fades finish, or reset/all-sound-off. [Firmware evidence](Reference/Research/opu-pitch-command-path-20261019.md), [physical panel mapping](Reference/Research/front-panel-envelope-map-20261019.md) and [frozen comparison](Reference/Research/hardware-pitch-b12-20261019.md) separate verified commands from inferred synthesis behavior.
-
-The b11 modulation profile uses a continuous 5.24 Hz triangle and a binary PMS depth hypothesis: 0,3.125,6.25,12.5,25,50,100,200 cents. The original PSS-780 recording directly supports roughly 12.5 cents at PMS3 and 100 cents at PMS6; unobserved levels remain a modeled interpolation. New PSS-580 recordings independently corroborate the approximately 5.24–5.25Hz triangle motion, with raw patch-depth and global-phase qualifications. The existing 10 ms/VDT delay law remains uncertain. D1 now tests whether its endpoint is already reached before applying a decay increment, eliminating unwanted attenuation from a zero-height stage. See the [FM audit](Reference/Research/fm-fidelity-audit-20261018.md), [pitch audit](Reference/Research/lfo-pitch-audit-20261018.md) and [independent recordings](Reference/Research/recording-holdout-audit-20261018.md).
-
-A focused [Human Voice 1 release audit](Reference/Research/human-voice1-release-audit.md) finds a tail deficit under the original inferred timing. At 150–220 ms after the clearest inferred note-off, its tracked carrier component falls about 16 dB in the recording versus 60 dB in the model. The preset import is correct and the baseline has no target-voice steals. The separate [Reverb performance effect](Reference/Research/reverb-release-evidence.md) is not modeled; its exact envelope behavior remains unidentified. The [release A/B report](build/release-analysis-20261018T0905/report.html) includes carrier-only RR6/RR5 experiments, with timing, overlap and allocation caveats. A subsequent [timing sensitivity test](Reference/Research/timing-sensitivity-20261019.md) reverses Human Voice 1's joint-band preference under all three alternative maps, so the original score does not select a replacement release law. These are diagnostic candidates, not factory or DSP changes.
-
-The enabled-by-default output circuit is the six-section small-signal transfer from the researched **PSS-480** circuit, used explicitly as a sibling surrogate. It is not a recovered PSS-780 board, a verified YM3420 DAC transfer, or a transistor-level model. Drive is a separate creative saturation control.
-
-Authentic signal-dependent distortion, DAC behavior, component tolerances and power sensitivity remain fidelity requirements despite removal of artificial noise. A new [research supply component](Reference/Research/local-supply-model-20261019.md) implements the documented sibling local rail filter with independent circuit checks. Its load and voltage-to-audio coupling remain unknown; it does not change b13 audio or imply a calibrated nonlinear output model.
-
-Two realtime chorus modes are available. **Studio** preserves the original creative delay effect. **Recorded** implements the frozen v3 effective stereo transfer from the PSS-780 recording: roughly 0.49–1.51 ms delay, a continuous 0.954647 Hz LFO, second-harmonic motion and direct mid leakage. It adds no whole-output latency. The rate and depth remain editable. This is a recording-derived approximation, not an identified MN3206 circuit. The offline v4 branch correction remains a reference because an exact causal port would need about 21.83 ms lookahead compensation at 48 kHz.
-
-The Rack Init and all 100 factory patches use the **Real** startup profile: related-hardware output circuit on, Recorded chorus at its captured rate/depth and full reference side level, and a slow ±20 ppm clock excursion at 0.1 Hz (about ±0.035 cents). Clock offset and creative Drive stay zero. Clock excursion is an explicit modeling choice, not recovered PSS-780 calibration. Additive noise has been removed from the runtime, including both White and Circuit paths. Old patches and automation may still contain the former noise properties; their values are ignored and cannot restore hiss. Other values remain editable and persist with patches. The portable constructor also uses the new 5.24 Hz shared triangle LFO; its effect defaults remain independent of the Rack Real profile. Model selectors and fine calibration are on the rear.
-
-The standalone PSS-480 resistor/opamp noise model and earlier noise research remain as historical reference tools. They are not connected to the instrument engine; no additive PRNG, circuit-noise generator or noise controls remain in the unit. The [b11 audit](Tests/results/noise-removal-b11-audit.json) preserves the initial verification; the [b12 noise-removal audit](Tests/results/noise-removal-b12-audit.json) verifies current source, source-bound normal/sanitized wrapper tests, absent GUI controls and all 101 packaged patches.
-
-Init is an independently defined sine patch. The public development bank contains the 100 original parameter presets as `PSS 00 …` through `PSS 99 …`. Loading/editing a Rack patch retimbres held voices while preserving their oscillator/envelope state. The standalone engine also offers future-voices-only program snapshots.
-
-## Evidence and release status
-
-The original native run passed 42 contracts with address/undefined-behavior sanitizers. In that historical version, all 100 raw-FM presets matched the frozen Python renderer at 48 kHz, with worst absolute float-output error below `1.5e-8` after nominal delay alignment. The b11 engine intentionally differs at the corrected D1 endpoint and modulation laws; those old parity results do not validate the new behavior. The compiled analog circuit matched independent Python MNA impulses at six sample rates with maximum absolute error below `2.7e-12`. These establish implementation agreement with a model, not agreement with Yamaha hardware.
-
-The earlier Recorded-chorus comparison is preserved in [the hardware benchmark note](Reference/Research/native-hardware-benchmark.md) and `Tests/results/hardware-recorded-chorus.json`. On the reused recording, the three target voices improve from 5.573 to 5.110 dB mean joint stereo band error with Recorded chorus; their log-STFT score slightly worsens from 3.614 to 3.643 dB. All 100 presets improve on the joint-band metric. The observed-mid→side diagnostic improves from 1.583 to 0.404 NRMSE; this isolates the effect and does not validate the synthesized source. No new fit or independent holdout was used. The frozen baseline/candidate sources, local audition WAVs and [playable report](build/hardware-benchmarks/recorded-20261018T084000Z/report.html) are retained under ignored `build/hardware-benchmarks`. The earlier noise-integrated source rendered byte-identical raw, dry and Recorded full performances with noise disabled; see its historical `Tests/results/final-hardware-compatibility.json`. Earlier synthetic circuit-noise auditions under `build/noise-demos` describe that removed feature and are not current instrument demos.
-
-The native performance report identifies its compiler, source hashes and six workloads. It excludes Rack scheduling, target translation and actual Reason CPU use. Consult the Rack adapter's build evidence for device-specific results; native tests alone do not establish host compatibility or release readiness.
-
-The current b12 engine passes six CTest targets in both Release and ASan/UBSan, including twelve pitch contract groups. The command helper matches 49,152 converter cases, and Equal matches the b11 audio baseline byte for byte. The Rack wrapper passes 23 host-mock contracts in each mode; 9,005 static GUI checks, 437 numeric-readout cases and the five-rate latency contract pass. Intel/Apple Silicon local45 and universal45 builds, archive integrity, all 101 patches and source-aligned installed payload checks pass. Fresh protected Recon 14.0.2d7 (build 20275) CLI validation passes three b12 creations/native arm64 loads and nonlinear data conversions with exit 0. All fifteen containment probes pass; 4,900 production files, original scratch identity/content and installed payload are preserved. This establishes those CLI stages; native GUI gestures, named default-patch loading, interactive playback, song persistence and Reason CPU behavior remain unverified. Prior evidence and failed host attempts remain preserved in the Rack checkout.
-
-The preset source is recorded in [bank provenance](Resources/FactoryBank/provenance.json). Public availability of a SysEx archive and the editor project's license do not establish permission to distribute Yamaha's factory bank commercially. No research videos, recordings, manual scans or executable Yamaha firmware are shipped in this repository. `Press78` has not received trademark clearance; development names and source availability are not legal clearance.
-
-## Current fidelity pass
-
-The b12 engine preserves the existing analog path and b11 envelope/modulation laws. A validated 4x component reduces numerical error against the PSS-480 continuous circuit, but worsens the reused PSS-780 joint-band score on 75/100 presets. It remains a research component and is not used by the instrument. The selected D1+LFO correction improves Musical Saw joint-band error 4.932→3.195dB and the three-target mean 5.110→4.510dB, with small regressions and worse STFT convergence recorded explicitly. All100 results and local A/B provenance are in [the b11 benchmark](Reference/Research/hardware-fidelity-b11.md). This is descriptive reuse of the original tour, not a hardware-fidelity percentage. The new sibling recordings provide separate waveform and modulation constraints.
-
-[The fidelity requirements ledger](Reference/Research/fidelity-roadmap-20261018.md) retains the open full-objective requirements: exact envelope/Reverb behavior, detune/scaling/velocity, OPU timing/arithmetic, the missing exact-board output circuit, independent exact-device testing and any market-leading comparison. No superlative accuracy claim follows from the current evidence.
-
-An [optional hardware capture kit](Reference/Research/hardware-capture-protocol-20261018.md) prepares controlled envelope and Reverb/Sustain measurements using independent test voices. It generates six MIDI files without playback. Deliberate hardware playback replaces user bank 5; follow its backup and recording instructions. Its file validation is not a hardware measurement.
-
-The follow-up envelope investigation measures a [two-stage tail in the final Sine Wave chord](Reference/Research/exact-sine-release-20261018.md). [Fixed timing](Reference/Research/envelope-law-benchmark-20261018.md) and [Reverb-cap experiments](Reference/Research/reverb-envelope-benchmark-20261018.md) improve some target/tail scores but cause large regressions elsewhere and change voice pressure. They remain research snapshots; production keeps the b11 envelope/modulation laws with the selectable b12 pitch path. [Held-note controls](Reference/Research/envelope-capture-forensics-20261018.md), [AAC/Opus comparison](Reference/Research/codec-tail-audit-20261018.md) and an [audible-event timing audit](Reference/Research/midi-alignment-audit-20261018.md) narrow the remaining capture, cutoff and alignment questions. The [OPU evidence review](Reference/Research/opu-envelope-evidence-20261018.md) separates timing, compression and unverified chip-family analogies.
-
-The [independent timing validation](Reference/Research/global-event-mapping-20261019.md) finds patch-dependent residuals: Jazz Guitar transitions arrive earlier than the old map, while other examined patches arrive later. All three global correction candidates fail their frozen adoption criteria. A [four-map × three-model comparison](Reference/Research/timing-sensitivity-20261019.md) keeps every outcome and local A/B demo; timing changes reverse 22–26 per-patch RR×3/b11 joint-band rankings and Human Voice 1's preference. No map or release/Reverb candidate is adopted.
-
-The [recorded mode/effect audit](Reference/Research/recording-mode-effects-audit-20261019.md) identifies Keyboard Assign `c.00` and Reverb/Chorus on in the sampled frames, with Vibrato/Sustain matching the factory flags. The manual's Mode 00 receive range excludes 18 of the published MIDI's 1,779 notes. A separate [Mode 00 benchmark](Reference/Research/mode00-benchmark-20261019.md) therefore retains 1,761 notes and all 100 program commands. Under the unchanged timing map, b11's all-preset joint-band mean changes from 3.1735 to 3.1450 dB, while log-STFT slightly worsens. Bowed Bass, Human Voice 1 and Musical Saw results are effectively unchanged. This corrects a conditional source-input fixture; it neither limits the plugin's playing range nor selects a release law or timing map. The sampled display and published MIDI are not a continuous state trace or MIDI wire log.
-
-Further source controls constrain the next engine changes. [RKS0 slope measurements](Reference/Research/rks0-release-slopes-20261019.md) find a repeatable higher-note decay difference in the recorded composite, while the [manual/editor audit](Reference/Research/opu-rks-evidence-20261019.md) leaves the core RKS0 law unresolved. A [retrigger audit](Reference/Research/retrigger-allocation-audit-20261019.md) rejects a restricted instantaneous phase-step explanation of one deep dip without identifying voice reuse or stealing. [Selective partial losses](Reference/Research/dac-endpoint-evidence-20261019.md) rule out one common scalar gate as their sole cause; they do not recover DAC bit depth or an internal envelope cutoff. A [firsthand early-note-off account](Reference/Research/early-noteoff-leads-20261019.md) adds a separating test requirement, not an envelope-freeze rule. Artificial noise remains excluded throughout.
-
-The [captured pitch-interval audit](Reference/Research/pitch-grid-audit-20261019.md) finds repeated compression of about 0.48 cents in the sine recording's long G/E-flat interval; b11's corresponding mid control remains within 0.0005 cents of equal temperament. A [broader pitch-pattern test](Reference/Research/pitch-pattern-audit-20261019.md) remains inconclusive under its frozen control/codec gates, rather than establishing a complete tuning table. Separately, [three author-published PSS-680 WAV packs](Reference/Research/isolated-source-search-20261019.md) provide 62 qualified stationary-note measurements across C/E-flat/G/B-flat and several octaves. They are an independent source, but may share one instrument and capture chain. A [frozen cross-source tail prediction](Reference/Research/cross-source-pitch-prediction-20261019.md) agrees closely on the upper G/E-flat contrast; its low-E-flat comparisons pass only the expanded 0.10-cent envelope and retain a systematic mismatch.
-
-These measurements motivate a stronger [frequency-law candidate](Reference/Research/opu-frequency-hypothesis-20261019.md): one formula generates twelve rounded base values and an octave-dependent truncation, with no fitted per-note offsets. Allowing one shared tuning offset per pack, frequency RMS falls from about 0.274 to 0.003 cents across all 62 qualified samples. On the older 19 PSS-780 windows, with only two long G notes setting the common offset, RMS falls from 0.315 to 0.041 cents; the unfitted D/A-flat classes improve overall, with outliers retained. This is a posthoc candidate derived from four observed classes and evaluated on reused data, not a fresh holdout or recovered OPU arithmetic. Its copied-engine tests pass, but **b11 remains unchanged: no frequency-law selector or fitted clock offset is in the instrument, and additive noise remains absent**.
-
-The [standalone frequency audit tool](Tools/audit_opu_frequency.py) reproduces the complete candidate table and scores from the tracked numerical ledger without recordings. Its optional prototype generation writes only to a separate research directory.
-
-A later [fixed F77 prediction diagnostic](Reference/Research/f77-frequency-prediction-20261019.md) qualifies no estimator: every method fails the known-pitch finite-tail composition control. The unqualified captured estimates are all closer to equal temperament, an adverse result retained alongside the failed gates. It supplies no precise F correction and reinforces keeping the candidate outside production until isolated chromatic measurements can test the remaining classes. Its [reproduction tool](Tools/audit_f77_frequency.py) requires the original protocol-bound local media and preserves the failed gates.
-
-The [sibling oscillator drawing audit](Reference/Research/opu-sibling-clock-circuit-20261019.md) verifies a nominal 5.5 MHz quartz hookup on PSS-480 and a 5.5 MHz ceramic resonator in the exact PSS-780 parts list. It supplies no FM divider, phase width or numerical aging/jitter law. The [digital-interface review](Reference/Research/opu-digital-primary-leads-20261019.md) likewise verifies a posted status-poll/write routine without identifying synthesis timing or arithmetic. The candidate's mathematical frequency word must not be presented as a recovered hardware register.
-
-B11 passes 44 core and 5 rendered-modulation contracts, with address/undefined-behavior sanitizer coverage. The native Real profile records no deadline misses in six 48/96 kHz workloads; compiled-source hashes and the rejected stale-build preliminary run are identified in `Tests/results/performance-real-b11.json`. Native timing excludes Reason scheduling. The Rack b11 package has passed source-aligned local/universal checks and protected Recon creation/conversion tests; interactive playback and persistence remain separate gates.
-
-The b12 [pitch comparison](Reference/Research/hardware-pitch-b12-20261019.md) passes its predeclared regression limits and retains twelve hardware/Equal/Original auditions. Mean joint-band gains are below 0.003 dB, both STFT aggregates worsen slightly, and roughly half the patches regress; this is a bounded command-model update, not a broad sonic-fidelity claim. The newly verified [panel decay mapping](Reference/Research/front-panel-envelope-map-20261019.md) and [independent envelope constraints](Reference/Research/opu-envelope-independent-20261019.md) do not yet identify a replacement envelope law. The complete [PSS-560 circuit comparison](Reference/Research/exact-circuit-source-search-20261019.md) also does not identify the missing target board.
-
-The subsequent [lo-fi signal-path audit](Reference/Research/lofi-signal-path-audit-20261019.md) preserves the distinction between removed additive hiss and required signal-dependent hardware character. It identifies the sibling's separate regulated/preamp and power-amplifier domains, local supply filters, an exact-manual overload warning and unresolved low-voltage amplifier/DAC behavior. The current linear output circuit is not a recovered nonlinear DAC or supply model; creative Drive must not be used as proof of one.
-
-Original-program execution now verifies [release/effect commands](Reference/Research/opu-release-command-path-20261019.md) and [integer key-level scaling](Reference/Research/opu-level-command-path-20261019.md). The separately tested [key-level prototype](Reference/Prototypes/key-level-20261019/README.md) improves the all-preset recording mean but fails its Bowed Bass regression gate, so no production DSP, default or package changes follow. Its [full comparison](Reference/Research/hardware-key-level-b13-20261019.md), preserved source patch and twelve local auditions retain the adverse results. That prototype was not adopted; later documented updates retain no additive noise.
-
-The [physical level-control mapping](Reference/Research/front-panel-level-map-20261019.md) confirms that the manual's “over 90” display warning means raw carrier TL 0–8, with Melody Volume 9 adding zero attenuation; it does not locate the overload stage. A separate [component diagnostic](Reference/Research/key-level-decomposition-20261019.md) traces more of Bowed Bass's current regression to the carrier-level change than the modulator change, while retaining all 100 results and adopting neither hybrid. Its whole-performance scores do not identify a hardware DAC or amplitude law.
-
-B13 adds the [Original release-pedal policy](Reference/Research/sustain-policy-20261019.md): the pedal selects RR/SRR while keyoff releases immediately, including live rate updates on released notes. New Init/PSS files select it; older documents retain conventional pedal holding. The hidden compatibility setting leaves the panel unchanged. All eight no-pedal full-performance WAVs match b12 exactly, so existing recording scores are unchanged. The authored Sustain button does not display the temporary pedal override, and the plugin does not emulate complete keyboard program-change behavior.
-
-The [conditional FM test](Reference/Research/fm-level-conditional-20261019.md) corrects the independent Saw recipe to Feedback 07. The current FM/feedback primitive is already close under that conditional recipe; the fitted replacement fails validation and numerical controls, so no amplitude law changes. New local pedal demonstrations compare software policies at identical levels and events; their [receipt](Tests/results/sustain-b13-demos.json) retains the source, audio and level checks. They are not controlled hardware recordings.
-
-The subsequent b13 [Rack validation](Tests/results/sustain-b13-rack-validation.json) passes local/universal builds, source-aligned installed modules, all 101 patches and fresh protected Recon creation/conversion tests. All 15 containment checks pass and 4,900 production files are preserved. This establishes the tested loading stages; named patch loading, interactive playback, persistence and host CPU remain unverified. The [final preset comparison](Tests/results/sustain-b13-patch-compatibility.json) binds immutable b12/b13 archives and current source, preserving every prior value; its earlier pre-version receipt is retained separately.
-
-B14 preserves the established48k output character across host rates through a fixed output bus and a final stereo converter. It intentionally changes non48k audio and latency in existing documents; all48k renders remain unchanged. [Adoption and A/B evidence](Reference/Research/output-bus-b14-20261019.md) separates improved host-rate consistency from still-unidentified DAC, BBD nonlinear and voltage-to-audio behavior. No noise generator or new sound-control property is added.
-
-The [b14 Rack receipt](Tests/results/output-b14-rack-validation.json) records the final source-aligned package and protected Recon creation/conversion checks. All36 wrapper contracts pass normally/under ASan/UBSan; the actual Lua latency agrees at all five native rates. Interactive playback, persistence and host CPU remain separate.
-
-B15 bundles 100 original `PSS` sounds plus 50 new modern presets: 12 basses, 8 donks, 12 plucks, 8 leads, 6 pads and 4 FX. The new sounds have authored velocity-to-level/FM and mod-wheel response, with category folders in Reason’s standard patch browser. [Playing guide](Docs/FactoryPresets.md) lists every sound and suggested register. Init and all 100 original parameter maps remain unchanged; no DSP or control changes are made.
-
-[Audition all 50 new sounds](Docs/ModernPresets.html). The [b15 validation](Tests/results/modern-b15-delivery.json) records 450 native-wrapper renders, original-bank preservation, final 151-patch packaging and fresh protected Recon creation/conversion checks. Only preset data, metadata and preview/catalog support change; shipping native/DSP sources match b14 exactly.
+Press78's source code is MIT-licensed; see [LICENSE](LICENSE). The plug-in builds with JUCE (AGPLv3 or a commercial JUCE licence) and clap-juce-extensions; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The factory voice parameters are not covered by the MIT licence and their redistribution rights are unresolved; the notices file explains why.

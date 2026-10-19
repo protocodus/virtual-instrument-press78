@@ -131,7 +131,7 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('device',type=Path);args=parser.parse_args()
     device=args.device.resolve();device.mkdir(parents=True,exist_ok=True)
     rows=specs()
-    (ROOT/'Resources/controls.json').write_text(json.dumps({'product':PRODUCT,'version':VERSION,'startup_profile':{'name':'Real','values':REAL_DEFAULTS},'controls':rows},indent=2)+'\n')
+    (ROOT/'Assets/controls.json').write_text(json.dumps({'product':PRODUCT,'version':VERSION,'startup_profile':{'name':'Real','values':REAL_DEFAULTS},'controls':rows},indent=2)+'\n')
     lua=['format_version = "4.0"','custom_properties = jbox.property_set{',
          ' document_owner = { properties = {']
     for row in rows:
@@ -155,7 +155,7 @@ def main():
         lua.append(f' ["/custom_properties/{row["id"]}"] = {{internal_name="{row["label"]}",short_ui_name=jbox.ui_text("short {row["id"]}"),shortest_ui_name=jbox.ui_text("tiny {row["id"]}")}},')
     # Fixed registry: adding or reordering controls must never renumber existing
     # Reason automation lanes. SDK5 reserves 256..10039 for automation-only IDs.
-    automation=json.loads((ROOT/'Resources/rack-automation.json').read_text())
+    automation=json.loads((ROOT/'Assets/rack-automation.json').read_text())
     assert automation['product']==PRODUCT
     ids=automation['ids']
     assert set(ids)=={row['id'] for row in rows}
@@ -189,7 +189,7 @@ def main():
     (locale/'texts.lua').write_text('format_version = "1.0"\ntexts = {\n'+''.join(f' [{json.dumps(k)}] = {json.dumps(v)},\n' for k,v in texts.items())+'}\n')
     public=device/'Resources/Public';public.mkdir(parents=True,exist_ok=True)
     write_patch(public/'Init.repatch',rows,FACTORY_CHARACTER)
-    bank=json.loads((ROOT/'Resources/FactoryBank/press78-factory.json').read_text())
+    bank=json.loads((ROOT/'Assets/FactoryBank/press78-factory.json').read_text())
     for voice in bank['voices']:
         write_patch(public/(voice['name'].replace('/','-')+'.repatch'),rows,{**decode(voice['raw_data']),**FACTORY_CHARACTER})
     modern=load_modern()

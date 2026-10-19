@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def generate():
-    bank=json.loads((ROOT/'Resources/FactoryBank/pss780-source.json').read_text())
+    bank=json.loads((ROOT/'Assets/FactoryBank/pss780-source.json').read_text())
     rows=[]
     assert len(bank['voices'])==100
     for i,voice in enumerate(bank['voices']):
@@ -20,7 +20,7 @@ def generate():
         rows.append({'number':i,'name':name,'raw_data':raw,'sysex_hex':voice['sysex_hex']})
     lines=['#pragma once','#include <array>','#include <cstdint>',
            '#include "Press78Engine.h"','namespace press78 {',
-           '// Factory parameter provenance and unresolved distribution rights: Resources/FactoryBank/provenance.json.',
+           '// Factory parameter provenance and unresolved distribution rights: Assets/FactoryBank/provenance.json.',
            'struct FactoryVoice { int number; const char* name; std::array<std::uint8_t,33> bytes; };',
            'inline constexpr std::array<FactoryVoice,100> kFactoryVoices{{']
     for row in rows:
@@ -29,7 +29,7 @@ def generate():
             '  return decodeVoice(kFactoryVoices[index < kFactoryVoices.size() ? index : 0].bytes);','}',
             '} // namespace press78','']
     return {'Source/DSP/FactoryVoices.h':'\n'.join(lines),
-            'Resources/FactoryBank/press78-factory.json':json.dumps({'voices':rows},indent=2)+'\n'}
+            'Assets/FactoryBank/press78-factory.json':json.dumps({'voices':rows},indent=2)+'\n'}
 
 
 def main():

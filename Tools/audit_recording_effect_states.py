@@ -79,7 +79,7 @@ def freeze(args):
     ref = args.reference_root.resolve()
     inputs = {"video": ref / "references/v2/user-ONfIvtDOog0.mkv",
               "timeline": ref / "references/v3_program_timeline.json",
-              "bank": ROOT / "Resources/FactoryBank/press78-factory.json",
+              "bank": ROOT / "Assets/FactoryBank/press78-factory.json",
               "manual_effect_page": ref / "research/v3-owner-effects-p9.png"}
     timeline = read(inputs["timeline"])["intervals"]
     if [x["patch"] for x in timeline] != list(range(100)):

@@ -21,7 +21,7 @@ def main():
     parser.add_argument("--report", type=Path, required=True)
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
-    sys.path.insert(0, str(root / "Reference/Python"))
+    sys.path.insert(0, str(root / "Tools/reference"))
     from circuit.model import build_circuit
 
     circuit, output = build_circuit(model="pss480")
@@ -41,7 +41,7 @@ def main():
                          "relative_rms_error": relative,
                          "passed": bool(np.all(np.isfinite(actual)) and max_error < 1e-7 and relative < 1e-6)})
     paths = [root / "Source/DSP/AnalogOutput.h", root / "Tools/AnalogProbe.cpp",
-             Path(__file__), root / "Reference/Python/circuit/model.py"]
+             Path(__file__), root / "Tools/reference/circuit/model.py"]
     report = {"scope": "C++ circuit runtime vs frozen PSS480 MNA; not original PSS780 hardware verification",
               "passed": all(r["passed"] for r in rows), "rows": rows,
               "probe_sha256": hashlib.sha256(args.probe.read_bytes()).hexdigest(),

@@ -13,7 +13,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 # Import this dependency-free component directly, without the research
 # package's NumPy/SciPy audio imports. The check also runs in standard CI.
-sys.path.insert(0, str(ROOT / 'Reference' / 'Python' / 'circuit'))
+sys.path.insert(0, str(ROOT / 'Tools' / 'reference' / 'circuit'))
 from supply import LocalSupply
 
 
@@ -121,9 +121,9 @@ def main():
         'frequency_response': rows,
         'unit_response_1mA_extra_load': unit_load,
         'unit_response_limit': 'Specified1mA sensitivity probe, not measured instrument current or default audio sag.',
-        'bindings': [binding('Reference/Python/circuit/supply.py'),
+        'bindings': [binding('Tools/reference/circuit/supply.py'),
                      binding('Tools/check_supply.py'),
-                     binding('Reference/Research/lofi-signal-path-audit-20261019.json')],
+                     binding('Docs/research/lofi-signal-path-audit-2026-10-19.json')],
         'excluded': ['noise/excitation generation', 'actual operating point',
                      'DAC/headroom/pitch voltage coupling', 'regulator/input battery model',
                      'capacitor ESR/aging or tolerance distribution',

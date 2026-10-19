@@ -10,7 +10,7 @@ import sys,json,hashlib
 import numpy as np
 from scipy import linalg,signal
 ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'Reference/Python'))
+sys.path.insert(0,str(ROOT/'Tools/reference'))
 from circuit.model import build_pss480_circuit
 from circuit.output_stage import KB,noise_spectrum
 
@@ -143,7 +143,7 @@ private:
 '''
  head+=arr('continuousA_',A)+arr('continuousB_',B)+arr('continuousC_',C)+arr('continuousD_',D)+'};\n} // namespace press78\n'
  source.write_text(head)
- report={'kind':'Exact reduced MNA PSS480 white-noise network; related hardware only','temperature_kelvin':300,'opamp_en_v_per_sqrt_hz':1e-8,'states':12,'sources':names,'fixed_normalization_rms_v':reference,'reference_band_hz':[20,20000],'discretization':'bilinear; unit-variance innovations scaled sqrt(fs/2) for one-sided physical PSD; no per-rate gain correction','source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'Reference/Python/circuit/model.py',ROOT/'Reference/Python/circuit/output_stage.py',Path(__file__),source]},'rates':{}}
+ report={'kind':'Exact reduced MNA PSS480 white-noise network; related hardware only','temperature_kelvin':300,'opamp_en_v_per_sqrt_hz':1e-8,'states':12,'sources':names,'fixed_normalization_rms_v':reference,'reference_band_hz':[20,20000],'discretization':'bilinear; unit-variance innovations scaled sqrt(fs/2) for one-sided physical PSD; no per-rate gain correction','source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'Tools/reference/circuit/model.py',ROOT/'Tools/reference/circuit/output_stage.py',Path(__file__),source]},'rates':{}}
  for fs in [8000,44100,48000,96000,192000]:
   ad,bd,cd,dd,_=signal.cont2discrete((A,B,C,D),1/fs,method='bilinear')
   f=np.geomspace(20,min(20000,fs*.49),1000);fa=fs/np.pi*np.tan(np.pi*f/fs);target,_=noise_spectrum(fa)

@@ -4,7 +4,7 @@ from pathlib import Path
 import sys,json,subprocess,tempfile,hashlib
 import numpy as np
 from scipy import signal
-ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'Reference/Python'));sys.path.insert(0,str(ROOT/'Tools'))
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'Tools/reference'));sys.path.insert(0,str(ROOT/'Tools'))
 from generate_circuit_noise import matrices
 from circuit.output_stage import noise_spectrum
 A,B,C,D,_=matrices()
