@@ -1,6 +1,6 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.0b15",
+  "version": "0.1.0b16",
   "startup_profile": {
     "name": "Real",
     "values": {
@@ -23,6 +23,11 @@
       "pitchModel": 1,
       "sustainMode": 1
     }
+  },
+  "rack_startup": {
+    "preset_id": "bass-04",
+    "name": "BASS - Vowel Engine",
+    "default_patch": "/Public/Modern/Bass/BASS - Vowel Engine.repatch"
   },
   "controls": [
     {

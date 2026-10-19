@@ -127,6 +127,11 @@ def main():
     sdk_version=(sdk/'version.txt').read_text()
     if 'JukeboxSDK_500_' not in sdk_version or 'TargetVersion=5.0' not in sdk_version:
         raise RuntimeError('Requires verified Jukebox SDK5')
+    dsp=device/'Instrument/Source/DSP'
+    if not (dsp/'Press78Engine.cpp').is_file():
+        dsp=device/'DSP'  # Retained pre-submodule development trees.
+    if not (dsp/'Press78Engine.cpp').is_file():
+        raise ValueError('Initialize the canonical Instrument submodule before rendering')
     helper=load_helper(); all_voices=helper.load_modern()
     voices=[v for v in all_voices if args.ids is None or v['id'] in args.ids]
     if not voices or (args.ids and set(args.ids)!={v['id'] for v in voices}):
@@ -139,8 +144,8 @@ def main():
     dest.mkdir(parents=True,exist_ok=False)
     source_files=[Path(__file__).resolve(), ROOT/'Tools/modern_bank.py', ROOT/'Tools/generate_rack.py',ROOT/'Assets/controls.json',
                   device/'Tests/FactoryPresetAudition.cpp',device/'Tests/WrapperHostContract.cpp',device/'Press78.cpp',device/'Press78.h',
-                  device/'Parameters.h',device/'ApplyParameters.inc',device/'DSP/Press78Engine.cpp',
-                  *sorted((device/'DSP').glob('*.h')), *sorted((ROOT/'Assets/FactoryBank').glob('modern-*.json')),
+                  device/'Parameters.h',device/'ApplyParameters.inc',dsp/'Press78Engine.cpp',
+                  *sorted(dsp.glob('*.h')), *sorted((ROOT/'Assets/FactoryBank').glob('modern-*.json')),
                   sdk/'version.txt',sdk/'API/Jukebox.h',sdk/'API/JukeboxTypes.h',*patch_paths.values()]
     source_hashes={str(p):sha(p) for p in source_files}
     protocol=dict(schema='press78.modern-preset-audition.v1',created_utc=datetime.now(timezone.utc).isoformat(),
@@ -159,8 +164,8 @@ def main():
         output_policy='Raw float32 WAV, original patch gain, no normalization. Each run is a new directory; failed metrics retained before any tuning.')
     write_json(dest/'protocol-frozen.json',protocol)
     binary=dest/'FactoryPresetAudition'
-    command=[args.compiler,'-std=c++17','-O2','-Wall','-Wextra','-Werror','-pedantic','-I'+str(sdk/'API'),'-I'+str(device),
-             str(device/'Tests/FactoryPresetAudition.cpp'),str(device/'Press78.cpp'),str(device/'DSP/Press78Engine.cpp'),'-o',str(binary)]
+    command=[args.compiler,'-std=c++17','-O2','-Wall','-Wextra','-Werror','-pedantic','-I'+str(sdk/'API'),'-I'+str(device),'-I'+str(dsp.parent),
+             str(device/'Tests/FactoryPresetAudition.cpp'),str(device/'Press78.cpp'),str(dsp/'Press78Engine.cpp'),'-o',str(binary)]
     compile_result=subprocess.run(command,text=True,capture_output=True)
     (dest/'compile.log').write_text(compile_result.stdout+compile_result.stderr)
     write_json(dest/'compile.json',dict(command=command,returncode=compile_result.returncode,protocol_sha256=sha(dest/'protocol-frozen.json')))

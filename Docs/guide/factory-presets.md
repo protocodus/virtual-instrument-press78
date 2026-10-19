@@ -4,6 +4,8 @@ The factory bank contains 100 original sounds named `PSS 00` through `PSS 99`, 5
 
 Use Reason’s standard patch browser. Original `PSS` sounds remain at the bank root; the new sounds are under `Modern`, grouped by Bass, Donk, Pluck, Lead, Pad and FX. All patches retain the output-circuit model and output protection; no added noise is used.
 
+New Reason devices open **BASS - Vowel Engine**, a throaty, rhythmic low bass. Start around MIDI notes 30–42; harder hits add growl, and the mod wheel adds slow pitch wobble. The same unchanged preset is available under `Modern → Bass`. Choose `Init` at the bank root for a clean sine starting point. Existing saved sounds retain their settings. This default selection applies to the Rack Extension; the JUCE plug-in still starts with Init.
+
 The mod wheel adds pitch vibrato. Velocity shapes level and, on these modern sounds, the FM intensity. Pitch bend is configured per patch. LFO rates are free running; they do not follow the project tempo automatically.
 
 The ranges below use MIDI note numbers to avoid octave-name differences between hosts. Most sounds work outside them, but these are the intended playing registers.
