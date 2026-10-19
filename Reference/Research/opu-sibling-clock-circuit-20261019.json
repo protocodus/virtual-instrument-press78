@@ -1,0 +1,452 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "inspected_at_utc": "2026-10-19T01:50:46Z",
+  "purpose": "Bounded primary-source search for an additional exact-OPU sibling clock/output circuit; preserve observed board differences without importing another Yamaha family.",
+  "authorized_mutations": [
+    "This new research Markdown and JSON ledger",
+    "Ignored build/opu-sibling-clock-circuit-20261019 evidence"
+  ],
+  "runtime_changes": false,
+  "added_noise": false,
+  "prior_ledgers": [
+    "Reference/Research/output-schematic-audit-20261018.md",
+    "Reference/Research/opu-digital-primary-leads-20261019.md"
+  ],
+  "principal_result": {
+    "status": "new_component_type_constraint_from_existing_primary_drawings",
+    "pss480": "Documented 5.5MHz quartz CR1 connected between YM3420BF XI93/XO94 with22pF to ground from each node.",
+    "pss780": "Exact parts page lists5.5MHz ceramic resonator VH766700; its pin hookup and load network are not present.",
+    "consequence": "Nominal frequency equality does not establish oscillator type/stability equivalence; no quantitative drift, jitter or internal divider inferred."
+  },
+  "sources": [
+    {
+      "id": "pss480_foldout",
+      "kind": "manufacturer_circuit_drawing_scanned_by_investigator",
+      "model": "PSS-480",
+      "drawing": "KEC-11861",
+      "board": "M(VF344300) XE42020 FCC F mark",
+      "posted_by": "jbevren",
+      "post_date": "2024-11-01",
+      "post_url": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017#p2862",
+      "image_url": "https://forum.mamedev.org/download/file.php?id=323",
+      "source_original_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/hardware-pss480-full-schematic.png",
+      "retained_path": "build/opu-sibling-clock-circuit-20261019/pss480-full-schematic.png",
+      "sha256": "3f92f921e12e75aad9ea5d31e28d026a42ad690473d05a6e61406c16c76226b2",
+      "visually_inspected": true,
+      "chip": "YM3420BF",
+      "chip_yamaha_part": "XF032A00",
+      "complete_drawing": true
+    },
+    {
+      "id": "pss780_parts",
+      "kind": "manufacturer_service_supplement_parts_page",
+      "model": "PSS-780",
+      "printed_page": 12,
+      "url": "https://www.manualslib.com/manual/4045165/Yamaha-Portasound-Pss-780.html?page=12#manual",
+      "source_original_path": "/Users/vojta/Dev/reason-rack-extension/experiments/pss780-20261017/research/hardware-pss780-parts-p12.jpg",
+      "retained_path": "build/opu-sibling-clock-circuit-20261019/pss780-parts-p12.jpg",
+      "sha256": "d1ce3745ca331699bee59222cca159d4239a8b5bc3b1157a5d8589a21376ed5f",
+      "visually_inspected": true,
+      "chip_alternatives": [
+        {
+          "chip": "YM3420BF",
+          "yamaha_part": "XF032A00"
+        },
+        {
+          "chip": "YM3420C",
+          "yamaha_part": "XF193A00"
+        }
+      ],
+      "fresh_web_fetch": "web tool unable to access page in this pass; inspection uses retained primary raster",
+      "does_not_contain_overall_foldout": true
+    },
+    {
+      "id": "jbevren_psr36_report",
+      "kind": "first_hand_investigator_text_without_acquired_psr_drawing",
+      "author": "jbevren",
+      "date": "2024-11-01",
+      "url": "https://forum.mamedev.org/viewtopic.php?start=10&t=1017#p2862",
+      "observed_text_location": "post2862, web extracted lines65..70",
+      "reported_route": "PSR-36 CHA/CHB stereo versus PSS-480 TB mono",
+      "reported_acquisition_state": "PSR-16/36 paper diagrams held but not yet scanned/stitched",
+      "classification": "Reported observation only; no visually verified PSR-36 schematic acquired."
+    },
+    {
+      "id": "transanalog",
+      "kind": "seller_catalogue_not_circuit",
+      "url": "https://www.transanalog.com/manuals/Yamaha/",
+      "relevant_models_found": [
+        "PSR-36",
+        "PSS-680"
+      ],
+      "delivery": "Mailed copies only, explicitly no scanned documents.",
+      "no_purchase": true
+    }
+  ],
+  "crop_manifest": [
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-components.png",
+      "source": "pss480-full-schematic.png",
+      "box_xyxy": [
+        6100,
+        4650,
+        8100,
+        5750
+      ],
+      "purpose": "Exact chip identity, board identity, CR1 quartz classification and part."
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-opu-oscillator.png",
+      "source": "pss480-full-schematic.png",
+      "box_xyxy": [
+        800,
+        1950,
+        2200,
+        3100
+      ],
+      "purpose": "OPU pin labels and CT1 grounded strap."
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-opu-output.png",
+      "source": "pss480-full-schematic.png",
+      "box_xyxy": [
+        1850,
+        1950,
+        3000,
+        2900
+      ],
+      "purpose": "TB buffer/filter, unused channel stubs, AVDD/AGND supply."
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-crystal-hookup.png",
+      "source": "pss480-full-schematic.png",
+      "box_xyxy": [
+        350,
+        2450,
+        1500,
+        3000
+      ],
+      "purpose": "XI93/XO94, CR1,22pF caps, CT2ground."
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss780-parts-clock.png",
+      "source": "pss780-parts-p12.jpg",
+      "box_xyxy": [
+        70,
+        300,
+        925,
+        900
+      ],
+      "output_dimensions": [
+        1710,
+        1200
+      ],
+      "resampling": "PIL default resize",
+      "purpose": "OPU alternatives and exact resonator row."
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss780-resonator-rows-nearest.png",
+      "source": "pss780-parts-p12.jpg",
+      "box_xyxy": [
+        65,
+        570,
+        805,
+        640
+      ],
+      "output_dimensions": [
+        2220,
+        210
+      ],
+      "resampling": "nearest",
+      "purpose": "Resolve VH766700 transcription."
+    }
+  ],
+  "observations": [
+    {
+      "id": "cr1",
+      "source": "pss480_foldout",
+      "component": "CR1",
+      "nominal_frequency_hz": 5500000,
+      "classification_as_printed": "Quartz Crystal Unit",
+      "part_as_printed": "5.5M AD6496CA (VE760300)",
+      "connections": [
+        "XI pin93",
+        "XO pin94"
+      ],
+      "loads": [
+        {
+          "node": "XI93",
+          "to": "ground",
+          "capacitance_pf": 22
+        },
+        {
+          "node": "XO94",
+          "to": "ground",
+          "capacitance_pf": 22
+        }
+      ],
+      "confidence": "direct visual drawing"
+    },
+    {
+      "id": "target_resonator",
+      "source": "pss780_parts",
+      "classification_as_printed": "Ceramic Resonator",
+      "yamaha_part": "VH766700",
+      "nominal_frequency_hz": 5500000,
+      "pin_connections": null,
+      "load_capacitances": null,
+      "transcription_correction": "Earlier progress message read VI766700; retained image resolves VH766700.",
+      "confidence": "direct visual parts page"
+    },
+    {
+      "id": "mode_straps",
+      "source": "pss480_foldout",
+      "connections": [
+        {
+          "pin": 56,
+          "label": "CT1",
+          "to": "ground"
+        },
+        {
+          "pin": 92,
+          "label": "CT2",
+          "to": "ground"
+        }
+      ],
+      "internal_function_or_clock_division": null,
+      "confidence": "direct visual drawing; semantics not inferred"
+    },
+    {
+      "id": "tb_route",
+      "source": "pss480_foldout",
+      "connections": [
+        "TB42 ->47kohm ->IC13pin5",
+        "IC13pin6 tied to pin7",
+        "IC13pin7 ->2.2kohm ->IC13pin3",
+        "IC13pin3 ->0.01uF ->ground",
+        "IC13pin2 tied to pin1"
+      ],
+      "unused_stubs": [
+        "CHA",
+        "CHB",
+        "CHC",
+        "CHD",
+        "FB"
+      ],
+      "confidence": "direct visual drawing"
+    },
+    {
+      "id": "analog_supply",
+      "source": "pss480_foldout",
+      "connections": [
+        "+5A ->47ohm ->AVDD41",
+        "AVDD41 ->470uF6.3V ->AGND43"
+      ],
+      "confidence": "direct visual drawing"
+    }
+  ],
+  "search": {
+    "models": [
+      "PSR-16",
+      "PSR-36",
+      "PSS-680",
+      "PSS-780",
+      "DSR-500"
+    ],
+    "query_families": [
+      "Exact model + service manual / schematic / circuit diagram / overall circuit",
+      "Filename forms yamaha_psr-16 and yamaha_psr-36",
+      "YM3420 or OPU paired with exact model",
+      "Site-limited ElektroTanya, archive.org, Manualslib",
+      "Seller/owner-manual exclusions to separate new diagrams from repeated catalogue results"
+    ],
+    "new_psr_or_exact780_schematic_acquired": false,
+    "leads": [
+      {
+        "url": "https://www.ebay.com/itm/306226126485",
+        "model": "PSR-16",
+        "outcome": "Original paper service manual sale; no readable circuit acquired."
+      },
+      {
+        "url": "https://reverb.com/en-se/item/56740194-yamaha-portatone-psr-16-service-manual-three-wave-music",
+        "model": "PSR-16",
+        "outcome": "Ended paper-manual listing; no circuit acquired."
+      },
+      {
+        "url": "https://electronicsrepair.net/rec23psr.shtml",
+        "model": "PSR-36",
+        "outcome": "Sales index; no readable schematic acquired. Certificate-verified curl failed with self-signed-certificate error; no bypass attempted."
+      },
+      {
+        "url": "https://www.deepsonic.ch/deep/docs_manuals/yamaha_psr-36_anleitung_manual.pdf",
+        "model": "PSR-36",
+        "outcome": "Owner manual rather than service circuit."
+      },
+      {
+        "url": "https://www.transanalog.com/manuals/Yamaha/",
+        "model": "PSR-36/PSS-680",
+        "outcome": "Mailed paper service manuals; seller explicitly excludes scanned delivery."
+      },
+      {
+        "url": "https://www.ebay.com/itm/227264794608",
+        "model": "PSS-680",
+        "outcome": "Paper service-manual listing; no readable overall foldout acquired."
+      },
+      {
+        "url": "https://www.ebay.com/itm/366559737055",
+        "model": "PSS-680",
+        "outcome": "Previously known overall-foldout paper listing; no readable network acquired."
+      },
+      {
+        "url": "https://reverb.com/uk/item/87916690-yamaha-dsr-500-service-manual",
+        "model": "DSR-500",
+        "outcome": "Paper listing, no circuit acquired."
+      },
+      {
+        "url": "https://www.sequencer.de/synthesizer/threads/yamaha-psr36-rackversion.117279/",
+        "model": "PSR-36",
+        "outcome": "PSS-560 substitute was acknowledged as differing; not accepted as same-chip evidence."
+      },
+      {
+        "url": "https://www.circuitbenders.co.uk/forum/index.php?topic=2409.0",
+        "model": "PSR-36/16",
+        "outcome": "Qualitative owner discussion and unverified pin/chip claims; no drawing or measured encoding recovered."
+      }
+    ],
+    "prohibited_or_unneeded_actions_taken": [],
+    "boundedness": "Failure to acquire in these public searches, not a claim no public drawing exists."
+  },
+  "explicit_unknowns": [
+    "Exact PSS-780 overall circuit and AUX route",
+    "PSS-7805.5MHz resonator pin hookup and load network",
+    "Readable original PSR-16/36 circuit",
+    "PSR-36 oscillator type/frequency/hookup",
+    "CPU clock divider",
+    "FM sample or operator update divider",
+    "EG and LFO dividers",
+    "CT1/CT2 internal semantics",
+    "Oscillator tolerance,temperaturecoefficient,aging,jitter and phase noise",
+    "YM3420 DAC bit depth,transferlaw,channel multiplexing and arithmetic wordlength",
+    "Equivalence of TB versus CHA/CHB audio encoding"
+  ],
+  "rejected_inferences": [
+    "Do not adopt MAME guessed CPUdivider as measured synthesis clock.",
+    "Do not derive clockdivision from grounded CT1/CT2 without mode definition.",
+    "Do not transfer quartz stability specifications to the target ceramic resonator.",
+    "Do not add random pitch modulation or noise from nominal component type.",
+    "Do not infer DAC bits from outputvoltage or envelope endpoint.",
+    "Do not substitute PSS560/OPL/OPJ circuitry for YM3420."
+  ],
+  "artifacts": [
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/mamedev-page2.html",
+      "sha256": "0fa59ab098cac40fd6a9fa730c3c1fef889690054a1edb0103490ff4758ddfba",
+      "bytes": 35214
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/mamedev-page2.txt",
+      "sha256": "a138b020cf7f4828d224322e341b9abbc83f628f305b6619df63543cd03c9bdd",
+      "bytes": 7101
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-components.png",
+      "sha256": "e5073d384676f9aab15685e58fbec7d1fb4792fa56a611913c61a05e5c867c8d",
+      "bytes": 141922,
+      "dimensions_px": [
+        2000,
+        1100
+      ]
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-crystal-hookup.png",
+      "sha256": "520c172f38ec51c54857220fd3fa668444334959517e0be34823ccc5f31cbfba",
+      "bytes": 37837,
+      "dimensions_px": [
+        1150,
+        550
+      ]
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-full-schematic.png",
+      "sha256": "3f92f921e12e75aad9ea5d31e28d026a42ad690473d05a6e61406c16c76226b2",
+      "bytes": 2112423,
+      "dimensions_px": [
+        8864,
+        6512
+      ]
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-opu-oscillator.png",
+      "sha256": "100538fcc1177fbf77a54da18ad033c75c92d55735f10ccda8f57f9090e590b2",
+      "bytes": 130486,
+      "dimensions_px": [
+        1400,
+        1150
+      ]
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-opu-output.png",
+      "sha256": "2838c85d9e06218b5046e4d09a5ceb5b63ca836883946cffb4bb34c701bf7cc9",
+      "bytes": 70141,
+      "dimensions_px": [
+        1150,
+        950
+      ]
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss480-tb-resistor-label.png",
+      "sha256": "cf21abda8b52b5f9c093bb831a27f067d783386f2700001fcb9f6d2b3147b5cd",
+      "bytes": 2584,
+      "dimensions_px": [
+        468,
+        414
+      ]
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss780-parts-clock.png",
+      "sha256": "df6fbd2201792f02338c473ee5ded5456eae57d1810662d5b6b96d81fcf6f813",
+      "bytes": 615730,
+      "dimensions_px": [
+        1710,
+        1200
+      ]
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss780-parts-p12.jpg",
+      "sha256": "d1ce3745ca331699bee59222cca159d4239a8b5bc3b1157a5d8589a21376ed5f",
+      "bytes": 170902,
+      "dimensions_px": [
+        950,
+        1238
+      ]
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/pss780-resonator-rows-nearest.png",
+      "sha256": "eda0f086623cc75c58f645f4f3c29030d86a82aaf1b88bb69a713c397451592c",
+      "bytes": 38323,
+      "dimensions_px": [
+        2220,
+        210
+      ]
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/transanalog-yamaha.html",
+      "sha256": "1985753d09f322d5818fcbabfe963ada857670141a9aa9ba41f2c18c85d1ff3f",
+      "bytes": 133321
+    },
+    {
+      "path": "build/opu-sibling-clock-circuit-20261019/transanalog-yamaha.txt",
+      "sha256": "b12ecad86754e8d50e590907b50542be5a96c414bd623f682e53862b152dc3ae",
+      "bytes": 21368
+    }
+  ],
+  "validation": {
+    "primary_images_reinspected": true,
+    "source480_sha256_matches_prior_ledger": true,
+    "source780_sha256_matches_prior_ledger": true,
+    "source_audio_acquired": false,
+    "production_changed": false,
+    "runtime_tests_required": false
+  }
+}
