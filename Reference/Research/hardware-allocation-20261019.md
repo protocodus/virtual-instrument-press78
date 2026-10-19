@@ -45,6 +45,10 @@ In particular, removing stacked release voices could expose an envelope/Reverb m
 
 The next investigation traces exact original MIDI ticks and message order through the note-pairing/frame exporter, without altering this completed experiment. Chip-phase, same-note retrigger and envelope measurements remain distinct requirements. A joint verified-command candidate may be studied separately; none is selected by these scores.
 
+That [subsequent MIDI audit](midi-event-order-audit-20261019.md) now establishes the fixture artifact directly. The retained file has 193 same-channel contiguous retriggers with explicit OFF-before-ON order and no same-channel overlaps. Separate onset/gate rounding introduces 16/16/10/35 one-frame overlaps across the maps; pitch-sorted note lists also reverse 492 within-track chord ON/ON pairs in each map. All eight old event files reproduce exactly. The [independent validation](midi-event-order-validation-20261019.json) checks the raw file and metadata without rerendering or revising this completed experiment. A new fixture must preserve raw tick/message order rather than fitting boundaries to improve these scores; actual sender delivery remains unknown.
+
+Four new metadata fixtures from the [reference-event exporter](midi-reference-export-20261019.md) have since passed 41,553 independent checks. They preserve source order and all contiguous boundaries while retaining the old onset times and inferred program rows. They have not been rendered in an audio comparison. The results and promotion failure in this report still refer exclusively to the original frozen fixtures.
+
 ## Reproducibility and decision
 
 An independent audit passes 34,341 checks: all source/fixture and eight complete identity targets; 1,224 score objects, 3,264 deltas and 144 aggregate values; every gate/regression list; 30 fresh metric computations with zero difference; and 20 exact float32 four-part audition reconstructions. The reconstructed auditions are finite and stay at or below 0.900001 peak. New WAV storage peaks at 652,449,832 bytes, below the prospective 800 MB limit.

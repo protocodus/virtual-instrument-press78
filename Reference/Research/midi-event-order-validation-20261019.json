@@ -1,0 +1,37 @@
+{
+  "schema": "press78.midi-event-provenance-validation.v1",
+  "passed": true,
+  "scope": "Post-benchmark raw MIDI/metadata audit only, no audio or event repair. Negative prior audio gates remain unchanged.",
+  "report": {
+    "path": "Reference/Research/midi-event-order-audit-20261019.md",
+    "sha256": "82746d0a8abc537e577f89576529976aa452a0d7890032d5b26bd801f57c4cea"
+  },
+  "data": {
+    "path": "Reference/Research/midi-event-order-audit-20261019.json",
+    "sha256": "dcdc48366abd4092cafcf16152cac13fb5f0414ae229cfad63c775c5122cecd7"
+  },
+  "independent_review": {
+    "path": "build/midi-event-order-independent-20261019/receipt.json",
+    "sha256": "fb489725cb662ef6344c484e982a35a8e219e85bf6eb020cbbde9418bbdea749",
+    "checks": 75839
+  },
+  "root_verified_report_provenance_files": 37,
+  "retained_root_metadata_reader_failure": {
+    "path": "build/midi-event-order-audit-20261019/root-validation-attempt1.json",
+    "sha256": "1ac38be6c1c64a2c1eb4b2368b2eb8794ad5438214af02d6701f60064596b35d"
+  },
+  "observations": {
+    "all_notes": 1779,
+    "mode00_notes": 1761,
+    "source_same_channel_contiguous_off_before_on": 193,
+    "source_same_channel_overlaps": 0,
+    "one_frame_exported_same_channel_overlaps": [
+      16,
+      16,
+      10,
+      35
+    ],
+    "within_track_on_on_pair_inversions_per_map": 492
+  },
+  "limits": "Source-file order is verified; actual sender intertrack merge, filtering and wire timing are not."
+}
