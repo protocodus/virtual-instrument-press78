@@ -1,0 +1,2597 @@
+{
+  "schema": "press78.pm-envelope-v2-design.v1",
+  "date": "2026-10-19",
+  "status": "FROZEN case/rule design before v2 implementation or new numerical extraction; execution additionally requires exact code/input binding",
+  "scope": "Separate empirical set estimator addressing heteroscedastic weak-line error and finite-window extraction bias. V1 remains a completed failed method. Relative captured carrier A and beta intervals only, not intrinsic hardware EG rates.",
+  "old_protocol": {
+    "path": "Reference/Research/pm-envelope-separation-protocol-20261019.json",
+    "sha256": "7ccda95528886cf06021ff5c2e2dd04938b59918f7224574b976128e917db80a"
+  },
+  "external_prediction": {
+    "path": "build/envelope-rate-family-20261019/protocol-frozen.json",
+    "sha256": "5ddd188eac35c968a0c538d77522b43a896ae6a5adbcc95bd48a93c6e1eebcca",
+    "role": "Posthoc prediction fromOLDpublishedH1 medians, frozenBEFOREnew\u03b2 measurements. Never a fit prior, branchselector or windowchoice."
+  },
+  "preserved_source_selection": {
+    "windows": [
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 0,
+        "audio_active_entry_seconds": 0.5,
+        "audio_active_exit_seconds": 1.96,
+        "inferred_musical_midi": 36,
+        "kind": "body",
+        "start_seconds": 0.65,
+        "end_seconds": 1.05,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 0,
+        "audio_active_entry_seconds": 0.5,
+        "audio_active_exit_seconds": 1.96,
+        "inferred_musical_midi": 36,
+        "kind": "late",
+        "start_seconds": 1.15,
+        "end_seconds": 1.55,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 1,
+        "audio_active_entry_seconds": 2.7600000000000002,
+        "audio_active_exit_seconds": 4.22,
+        "inferred_musical_midi": 39,
+        "kind": "body",
+        "start_seconds": 2.91,
+        "end_seconds": 3.3100000000000005,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 1,
+        "audio_active_entry_seconds": 2.7600000000000002,
+        "audio_active_exit_seconds": 4.22,
+        "inferred_musical_midi": 39,
+        "kind": "late",
+        "start_seconds": 3.41,
+        "end_seconds": 3.8100000000000005,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 2,
+        "audio_active_entry_seconds": 4.98,
+        "audio_active_exit_seconds": 6.48,
+        "inferred_musical_midi": 43,
+        "kind": "body",
+        "start_seconds": 5.130000000000001,
+        "end_seconds": 5.53,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 2,
+        "audio_active_entry_seconds": 4.98,
+        "audio_active_exit_seconds": 6.48,
+        "inferred_musical_midi": 43,
+        "kind": "late",
+        "start_seconds": 5.630000000000001,
+        "end_seconds": 6.03,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 3,
+        "audio_active_entry_seconds": 7.22,
+        "audio_active_exit_seconds": 8.76,
+        "inferred_musical_midi": 46,
+        "kind": "body",
+        "start_seconds": 7.37,
+        "end_seconds": 7.77,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 3,
+        "audio_active_entry_seconds": 7.22,
+        "audio_active_exit_seconds": 8.76,
+        "inferred_musical_midi": 46,
+        "kind": "late",
+        "start_seconds": 7.87,
+        "end_seconds": 8.27,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 4,
+        "audio_active_entry_seconds": 9.48,
+        "audio_active_exit_seconds": 11.040000000000001,
+        "inferred_musical_midi": 48,
+        "kind": "body",
+        "start_seconds": 9.63,
+        "end_seconds": 10.030000000000001,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 4,
+        "audio_active_entry_seconds": 9.48,
+        "audio_active_exit_seconds": 11.040000000000001,
+        "inferred_musical_midi": 48,
+        "kind": "late",
+        "start_seconds": 10.13,
+        "end_seconds": 10.530000000000001,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 5,
+        "audio_active_entry_seconds": 11.74,
+        "audio_active_exit_seconds": 13.3,
+        "inferred_musical_midi": 51,
+        "kind": "body",
+        "start_seconds": 11.89,
+        "end_seconds": 12.290000000000001,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 5,
+        "audio_active_entry_seconds": 11.74,
+        "audio_active_exit_seconds": 13.3,
+        "inferred_musical_midi": 51,
+        "kind": "late",
+        "start_seconds": 12.39,
+        "end_seconds": 12.790000000000001,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 6,
+        "audio_active_entry_seconds": 14.02,
+        "audio_active_exit_seconds": 15.6,
+        "inferred_musical_midi": 55,
+        "kind": "body",
+        "start_seconds": 14.17,
+        "end_seconds": 14.57,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 6,
+        "audio_active_entry_seconds": 14.02,
+        "audio_active_exit_seconds": 15.6,
+        "inferred_musical_midi": 55,
+        "kind": "late",
+        "start_seconds": 14.67,
+        "end_seconds": 15.07,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 7,
+        "audio_active_entry_seconds": 16.3,
+        "audio_active_exit_seconds": 17.900000000000002,
+        "inferred_musical_midi": 58,
+        "kind": "body",
+        "start_seconds": 16.45,
+        "end_seconds": 16.85,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 7,
+        "audio_active_entry_seconds": 16.3,
+        "audio_active_exit_seconds": 17.900000000000002,
+        "inferred_musical_midi": 58,
+        "kind": "late",
+        "start_seconds": 16.95,
+        "end_seconds": 17.35,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 8,
+        "audio_active_entry_seconds": 18.66,
+        "audio_active_exit_seconds": 20.06,
+        "inferred_musical_midi": 60,
+        "kind": "body",
+        "start_seconds": 18.81,
+        "end_seconds": 19.21,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 8,
+        "audio_active_entry_seconds": 18.66,
+        "audio_active_exit_seconds": 20.06,
+        "inferred_musical_midi": 60,
+        "kind": "late",
+        "start_seconds": 19.31,
+        "end_seconds": 19.71,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 9,
+        "audio_active_entry_seconds": 20.8,
+        "audio_active_exit_seconds": 22.2,
+        "inferred_musical_midi": 63,
+        "kind": "body",
+        "start_seconds": 20.95,
+        "end_seconds": 21.35,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 9,
+        "audio_active_entry_seconds": 20.8,
+        "audio_active_exit_seconds": 22.2,
+        "inferred_musical_midi": 63,
+        "kind": "late",
+        "start_seconds": 21.45,
+        "end_seconds": 21.85,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 10,
+        "audio_active_entry_seconds": 22.96,
+        "audio_active_exit_seconds": 24.36,
+        "inferred_musical_midi": 67,
+        "kind": "body",
+        "start_seconds": 23.11,
+        "end_seconds": 23.51,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 10,
+        "audio_active_entry_seconds": 22.96,
+        "audio_active_exit_seconds": 24.36,
+        "inferred_musical_midi": 67,
+        "kind": "late",
+        "start_seconds": 23.61,
+        "end_seconds": 24.01,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 11,
+        "audio_active_entry_seconds": 25.080000000000002,
+        "audio_active_exit_seconds": 26.46,
+        "inferred_musical_midi": 70,
+        "kind": "body",
+        "start_seconds": 25.23,
+        "end_seconds": 25.630000000000003,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 11,
+        "audio_active_entry_seconds": 25.080000000000002,
+        "audio_active_exit_seconds": 26.46,
+        "inferred_musical_midi": 70,
+        "kind": "late",
+        "start_seconds": 25.73,
+        "end_seconds": 26.130000000000003,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 12,
+        "audio_active_entry_seconds": 27.2,
+        "audio_active_exit_seconds": 28.580000000000002,
+        "inferred_musical_midi": 72,
+        "kind": "body",
+        "start_seconds": 27.349999999999998,
+        "end_seconds": 27.75,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 12,
+        "audio_active_entry_seconds": 27.2,
+        "audio_active_exit_seconds": 28.580000000000002,
+        "inferred_musical_midi": 72,
+        "kind": "late",
+        "start_seconds": 27.849999999999998,
+        "end_seconds": 28.25,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 13,
+        "audio_active_entry_seconds": 29.26,
+        "audio_active_exit_seconds": 30.64,
+        "inferred_musical_midi": 75,
+        "kind": "body",
+        "start_seconds": 29.41,
+        "end_seconds": 29.810000000000002,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 13,
+        "audio_active_entry_seconds": 29.26,
+        "audio_active_exit_seconds": 30.64,
+        "inferred_musical_midi": 75,
+        "kind": "late",
+        "start_seconds": 29.91,
+        "end_seconds": 30.310000000000002,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 14,
+        "audio_active_entry_seconds": 31.36,
+        "audio_active_exit_seconds": 32.72,
+        "inferred_musical_midi": 79,
+        "kind": "body",
+        "start_seconds": 31.509999999999998,
+        "end_seconds": 31.91,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 14,
+        "audio_active_entry_seconds": 31.36,
+        "audio_active_exit_seconds": 32.72,
+        "inferred_musical_midi": 79,
+        "kind": "late",
+        "start_seconds": 32.01,
+        "end_seconds": 32.41,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 15,
+        "audio_active_entry_seconds": 33.4,
+        "audio_active_exit_seconds": 34.76,
+        "inferred_musical_midi": 82,
+        "kind": "body",
+        "start_seconds": 33.55,
+        "end_seconds": 33.949999999999996,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 15,
+        "audio_active_entry_seconds": 33.4,
+        "audio_active_exit_seconds": 34.76,
+        "inferred_musical_midi": 82,
+        "kind": "late",
+        "start_seconds": 34.05,
+        "end_seconds": 34.449999999999996,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 16,
+        "audio_active_entry_seconds": 35.58,
+        "audio_active_exit_seconds": 36.64,
+        "inferred_musical_midi": 84,
+        "kind": "body",
+        "start_seconds": 35.73,
+        "end_seconds": 36.129999999999995,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 16,
+        "audio_active_entry_seconds": 35.58,
+        "audio_active_exit_seconds": 36.64,
+        "inferred_musical_midi": 84,
+        "kind": "late",
+        "start_seconds": 36.23,
+        "end_seconds": 36.629999999999995,
+        "metadata_eligible": false,
+        "reason_if_ineligible": "Fixed analysis end plus100ms exceeds previous RMS-active interval; no window move/shortening"
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 17,
+        "audio_active_entry_seconds": 37.300000000000004,
+        "audio_active_exit_seconds": 38.36,
+        "inferred_musical_midi": 87,
+        "kind": "body",
+        "start_seconds": 37.45,
+        "end_seconds": 37.85,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 17,
+        "audio_active_entry_seconds": 37.300000000000004,
+        "audio_active_exit_seconds": 38.36,
+        "inferred_musical_midi": 87,
+        "kind": "late",
+        "start_seconds": 37.95,
+        "end_seconds": 38.35,
+        "metadata_eligible": false,
+        "reason_if_ineligible": "Fixed analysis end plus100ms exceeds previous RMS-active interval; no window move/shortening"
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 18,
+        "audio_active_entry_seconds": 39.0,
+        "audio_active_exit_seconds": 40.04,
+        "inferred_musical_midi": 91,
+        "kind": "body",
+        "start_seconds": 39.15,
+        "end_seconds": 39.55,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 18,
+        "audio_active_entry_seconds": 39.0,
+        "audio_active_exit_seconds": 40.04,
+        "inferred_musical_midi": 91,
+        "kind": "late",
+        "start_seconds": 39.65,
+        "end_seconds": 40.05,
+        "metadata_eligible": false,
+        "reason_if_ineligible": "Fixed analysis end plus100ms exceeds previous RMS-active interval; no window move/shortening"
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 19,
+        "audio_active_entry_seconds": 40.78,
+        "audio_active_exit_seconds": 41.76,
+        "inferred_musical_midi": 94,
+        "kind": "body",
+        "start_seconds": 40.93,
+        "end_seconds": 41.33,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 19,
+        "audio_active_entry_seconds": 40.78,
+        "audio_active_exit_seconds": 41.76,
+        "inferred_musical_midi": 94,
+        "kind": "late",
+        "start_seconds": 41.43,
+        "end_seconds": 41.83,
+        "metadata_eligible": false,
+        "reason_if_ineligible": "Fixed analysis end plus100ms exceeds previous RMS-active interval; no window move/shortening"
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 20,
+        "audio_active_entry_seconds": 42.44,
+        "audio_active_exit_seconds": 43.4,
+        "inferred_musical_midi": 96,
+        "kind": "body",
+        "start_seconds": 42.589999999999996,
+        "end_seconds": 42.989999999999995,
+        "metadata_eligible": true,
+        "reason_if_ineligible": null
+      },
+      {
+        "source": "synth_bass_1.wav",
+        "segment_index": 20,
+        "audio_active_entry_seconds": 42.44,
+        "audio_active_exit_seconds": 43.4,
+        "inferred_musical_midi": 96,
+        "kind": "late",
+        "start_seconds": 43.089999999999996,
+        "end_seconds": 43.489999999999995,
+        "metadata_eligible": false,
+        "reason_if_ineligible": "Fixed analysis end plus100ms exceeds previous RMS-active interval; no window move/shortening"
+      }
+    ],
+    "prior_note_frequencies": [
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 0,
+        "expected_musical_midi_under_authored_sequence": 36,
+        "nearest_midi_fft": 36,
+        "window_start_seconds": 1.0110000000000001,
+        "window_end_seconds": 1.4489999999999998,
+        "fft_frequency_hz": 65.39067723939613,
+        "phase_frequency_hz": 65.39046837989603,
+        "phase_fft_difference_cents": -0.005529614782188616,
+        "three_subwindow_cents_range": 0.06539832027503227,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 1,
+        "expected_musical_midi_under_authored_sequence": 39,
+        "nearest_midi_fft": 39,
+        "window_start_seconds": 3.2710000000000004,
+        "window_end_seconds": 3.709,
+        "fft_frequency_hz": 77.73720700220491,
+        "phase_frequency_hz": 77.73667380860486,
+        "phase_fft_difference_cents": -0.011874443608598184,
+        "three_subwindow_cents_range": 0.11087991589451321,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 2,
+        "expected_musical_midi_under_authored_sequence": 43,
+        "nearest_midi_fft": 43,
+        "window_start_seconds": 5.505000000000001,
+        "window_end_seconds": 5.955,
+        "fft_frequency_hz": 98.00436068956665,
+        "phase_frequency_hz": 98.00423080345314,
+        "phase_fft_difference_cents": -0.0022944225096966915,
+        "three_subwindow_cents_range": 0.02313276704864963,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 3,
+        "expected_musical_midi_under_authored_sequence": 46,
+        "nearest_midi_fft": 46,
+        "window_start_seconds": 7.7589999999999995,
+        "window_end_seconds": 8.221,
+        "fft_frequency_hz": 116.52301108830478,
+        "phase_frequency_hz": 116.52296781328211,
+        "phase_fft_difference_cents": -0.0006429563220283794,
+        "three_subwindow_cents_range": 0.0352849757735582,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 4,
+        "expected_musical_midi_under_authored_sequence": 48,
+        "nearest_midi_fft": 48,
+        "window_start_seconds": 10.026,
+        "window_end_seconds": 10.494,
+        "fft_frequency_hz": 130.7810997062368,
+        "phase_frequency_hz": 130.78106313440477,
+        "phase_fft_difference_cents": -0.0004841250748443141,
+        "three_subwindow_cents_range": 0.017041987460899723,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 5,
+        "expected_musical_midi_under_authored_sequence": 51,
+        "nearest_midi_fft": 51,
+        "window_start_seconds": 12.286,
+        "window_end_seconds": 12.754,
+        "fft_frequency_hz": 155.52783326601542,
+        "phase_frequency_hz": 155.52787680730566,
+        "phase_fft_difference_cents": 0.00048467307793887847,
+        "three_subwindow_cents_range": 0.016812820911334694,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 6,
+        "expected_musical_midi_under_authored_sequence": 55,
+        "nearest_midi_fft": 55,
+        "window_start_seconds": 14.573,
+        "window_end_seconds": 15.047,
+        "fft_frequency_hz": 196.00800092253303,
+        "phase_frequency_hz": 196.00808738444485,
+        "phase_fft_difference_cents": 0.0007636717480799869,
+        "three_subwindow_cents_range": 0.009354658724398286,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 7,
+        "expected_musical_midi_under_authored_sequence": 58,
+        "nearest_midi_fft": 58,
+        "window_start_seconds": 16.86,
+        "window_end_seconds": 17.34,
+        "fft_frequency_hz": 233.0467889032081,
+        "phase_frequency_hz": 233.04667307379341,
+        "phase_fft_difference_cents": -0.0008604618726621735,
+        "three_subwindow_cents_range": 0.005425480674420085,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 8,
+        "expected_musical_midi_under_authored_sequence": 60,
+        "nearest_midi_fft": 60,
+        "window_start_seconds": 19.15,
+        "window_end_seconds": 19.57,
+        "fft_frequency_hz": 261.5631773126773,
+        "phase_frequency_hz": 261.5633322385704,
+        "phase_fft_difference_cents": 0.0010254230148150872,
+        "three_subwindow_cents_range": 0.012828763400106798,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 9,
+        "expected_musical_midi_under_authored_sequence": 63,
+        "nearest_midi_fft": 63,
+        "window_start_seconds": 21.29,
+        "window_end_seconds": 21.71,
+        "fft_frequency_hz": 311.0568922689189,
+        "phase_frequency_hz": 311.0570127599551,
+        "phase_fft_difference_cents": 0.00067061090522654,
+        "three_subwindow_cents_range": 0.014551643918173832,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 10,
+        "expected_musical_midi_under_authored_sequence": 67,
+        "nearest_midi_fft": 67,
+        "window_start_seconds": 23.45,
+        "window_end_seconds": 23.87,
+        "fft_frequency_hz": 392.01721569556383,
+        "phase_frequency_hz": 392.01717172361293,
+        "phase_fft_difference_cents": -0.00019418979535963597,
+        "three_subwindow_cents_range": 0.009681406903433018,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 11,
+        "expected_musical_midi_under_authored_sequence": 70,
+        "nearest_midi_fft": 70,
+        "window_start_seconds": 25.563000000000002,
+        "window_end_seconds": 25.977,
+        "fft_frequency_hz": 466.09401457895575,
+        "phase_frequency_hz": 466.0939994463992,
+        "phase_fft_difference_cents": -5.620753909221178e-05,
+        "three_subwindow_cents_range": 0.008307316590931526,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 12,
+        "expected_musical_midi_under_authored_sequence": 72,
+        "nearest_midi_fft": 72,
+        "window_start_seconds": 27.683,
+        "window_end_seconds": 28.096999999999998,
+        "fft_frequency_hz": 523.1259172033435,
+        "phase_frequency_hz": 523.1260780855715,
+        "phase_fft_difference_cents": 0.0005324239134320046,
+        "three_subwindow_cents_range": 0.005176118619973599,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 13,
+        "expected_musical_midi_under_authored_sequence": 75,
+        "nearest_midi_fft": 75,
+        "window_start_seconds": 29.743000000000002,
+        "window_end_seconds": 30.157,
+        "fft_frequency_hz": 622.1144587129946,
+        "phase_frequency_hz": 622.1144190244427,
+        "phase_fft_difference_cents": -0.00011044619481807468,
+        "three_subwindow_cents_range": 0.00537701902722187,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 14,
+        "expected_musical_midi_under_authored_sequence": 79,
+        "nearest_midi_fft": 79,
+        "window_start_seconds": 31.836,
+        "window_end_seconds": 32.244,
+        "fft_frequency_hz": 784.0344915079819,
+        "phase_frequency_hz": 784.0345362041859,
+        "phase_fft_difference_cents": 9.869411191285053e-05,
+        "three_subwindow_cents_range": 0.0022241727740475786,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 15,
+        "expected_musical_midi_under_authored_sequence": 82,
+        "nearest_midi_fft": 82,
+        "window_start_seconds": 33.876,
+        "window_end_seconds": 34.284,
+        "fft_frequency_hz": 932.1866772217629,
+        "phase_frequency_hz": 932.1866811885392,
+        "phase_fft_difference_cents": 7.366998847577658e-06,
+        "three_subwindow_cents_range": 0.0017811503260167132,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 16,
+        "expected_musical_midi_under_authored_sequence": 84,
+        "nearest_midi_fft": 84,
+        "window_start_seconds": 35.951,
+        "window_end_seconds": 36.269,
+        "fft_frequency_hz": 1046.250644603135,
+        "phase_frequency_hz": 1046.2504827679854,
+        "phase_fft_difference_cents": -0.00026778912346850803,
+        "three_subwindow_cents_range": 0.008023849087926613,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 17,
+        "expected_musical_midi_under_authored_sequence": 87,
+        "nearest_midi_fft": 87,
+        "window_start_seconds": 37.67100000000001,
+        "window_end_seconds": 37.989000000000004,
+        "fft_frequency_hz": 1244.2256669651024,
+        "phase_frequency_hz": 1244.2253203100695,
+        "phase_fft_difference_cents": -0.0004823410220578334,
+        "three_subwindow_cents_range": 0.009248204863231933,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 18,
+        "expected_musical_midi_under_authored_sequence": 91,
+        "nearest_midi_fft": 91,
+        "window_start_seconds": 39.364,
+        "window_end_seconds": 39.676,
+        "fft_frequency_hz": 1568.064070314531,
+        "phase_frequency_hz": 1568.0639874254402,
+        "phase_fft_difference_cents": -9.151438553353316e-05,
+        "three_subwindow_cents_range": 0.011463162233183114,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 19,
+        "expected_musical_midi_under_authored_sequence": 94,
+        "nearest_midi_fft": 94,
+        "window_start_seconds": 41.123000000000005,
+        "window_end_seconds": 41.417,
+        "fft_frequency_hz": 1864.3700524630044,
+        "phase_frequency_hz": 1864.3693463116344,
+        "phase_fft_difference_cents": -0.000655724718122434,
+        "three_subwindow_cents_range": 0.013602325700267443,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      },
+      {
+        "file": "synth_bass_1.wav",
+        "segment_index": 20,
+        "expected_musical_midi_under_authored_sequence": 96,
+        "nearest_midi_fft": 96,
+        "window_start_seconds": 42.775999999999996,
+        "window_end_seconds": 43.064,
+        "fft_frequency_hz": 2092.5064031773627,
+        "phase_frequency_hz": 2092.5066613471054,
+        "phase_fft_difference_cents": 0.00021359658464349852,
+        "three_subwindow_cents_range": 0.001568097538590175,
+        "interval_fixture_accepted": true,
+        "classification": "conditional_stationary_pitch_reference"
+      }
+    ],
+    "selection": {
+      "all21Bassnotes": true,
+      "body_centers": "entry+.15..+.55 inclusive every25ms:17epochs",
+      "late_centers": "entry+.65..+1.05 inclusive every25ms:17epochs",
+      "metadata": "Retain5 prior late failures without shortening; require50ms support inside active interval. Active edges are not MIDI gates.",
+      "anchor": "Same first-body entry+.15 for body+late. Never replace weak/null anchor."
+    },
+    "sources": {
+      "build/isolated-source-search-20261019/synth_bass_1.wav": {
+        "bytes": 3918178,
+        "sha256": "d8200250a990f5dc56fe3898b7ef2a3420bbce26b12310b254a6f94819f6a7dc"
+      },
+      "build/isolated-source-search-20261019/fixture-notes.json": {
+        "bytes": 33401,
+        "sha256": "b9e56d5fdcf140ac7a8d838423403eade79d19cecfc1a35477b8ebadbf156961"
+      },
+      "build/isolated-source-search-20261019/pss680-patches.html": {
+        "bytes": 6981,
+        "sha256": "acbd67667a129fbbe83251087a876a8df29de21fdf98bdf939c09109ca067c0b"
+      },
+      "build/opu-envelope-independent-20261019/protocol-frozen.json": {
+        "bytes": 39082,
+        "sha256": "c009354ad30af119ec368087c728910e4d6b19ca28504f55b4bdfd3978c23cc3"
+      },
+      "Reference/Research/opu-envelope-independent-20261019.json": {
+        "bytes": 771818,
+        "sha256": "cfe77490c69bb317d5a4b0c9054d0d7ff4c505508bac3824e2ee730a58b36412"
+      },
+      "build/envelope-rate-family-20261019/protocol-frozen.json": {
+        "bytes": 3203,
+        "sha256": "5ddd188eac35c968a0c538d77522b43a896ae6a5adbcc95bd48a93c6e1eebcca"
+      },
+      "build/pm-envelope-method-review-20261019/pm-identity-result.json": {
+        "bytes": 8457,
+        "sha256": "9a6e90d9afce2da8f122d8f9856ef8e8546c5d9edc2f0941629f2d133de2c1a6"
+      }
+    },
+    "note": "All original21 notes and42 supports retained, five old late metadata failures retained; same first-body anchor and no source decoding before method gates pass."
+  },
+  "extraction": {
+    "rate": 44100,
+    "centers_seconds": [
+      0.15,
+      0.175,
+      0.2,
+      0.225,
+      0.25,
+      0.275,
+      0.3,
+      0.325,
+      0.35,
+      0.375,
+      0.4,
+      0.425,
+      0.45,
+      0.475,
+      0.5,
+      0.525,
+      0.55,
+      0.65,
+      0.675,
+      0.7,
+      0.725,
+      0.75,
+      0.775,
+      0.8,
+      0.825,
+      0.85,
+      0.875,
+      0.9,
+      0.925,
+      0.95,
+      0.975,
+      1.0,
+      1.025,
+      1.05
+    ],
+    "outer_seconds": 0.05,
+    "fits": [
+      {
+        "name": "central",
+        "seconds": 0.05,
+        "envelope_degree": 2
+      },
+      {
+        "name": "outer_comparison",
+        "seconds": 0.05,
+        "envelope_degree": 1
+      },
+      {
+        "name": "nested_comparison",
+        "seconds": 0.035,
+        "envelope_degree": 1
+      }
+    ],
+    "basis": "DC/trend plus real sin/cos h1..10 times local envelope polynomial of stated degree; normalized centered time, Hann weights; QR/SVD, no normal equations. Evaluate every center at the same integer source-frame time, including even-length nested supports. Fixed prior f0 only; no per-note frequency fit.",
+    "conditioning": "Full column rank and design condition number<=1e8; otherwise affected cell is unknown, not a pseudoinverse precision claim.",
+    "complex_definition": "Z_h=(c_cos_h - i*c_sin_h)/2 at the common center frame.",
+    "quantization_bound": "All old and new controls are converted to deterministic nearest PCM16 identically to v1, including reused native float WAVs. q_h=(1/(2*32768))*sum_n abs(p_h[n]), p_h=(P_cos_h-i*P_sin_h)/2. Triangle bound for deterministic nearest rounding, NOT a white-noise standard error. Require old reconstructed quantized waveform hashes match v1 exactly before extraction.",
+    "radius": "r_h=2*max(abs(Zcentral-Zouter_comparison),abs(Zcentral-Znested_comparison))+qcentral_h+quiet_h, where quiet_h=abs(Zquiet_h)+qquiet_h from unchanged entry-.15..-.05 reference.",
+    "radius_limit": "The2x disagreement factor is a prospective empirical approximation-bias allowance, not a proved arbitrary-envelope/filter bound. The fixed quiet-reference allowance is not a bound on later nonstationary interference. Must pass all fixed clean synthetic coverage; no post-result multiplier changes.",
+    "cell_diagnostics": "Preserve original peak<.98, finite and weighted residual<=.1 / H1 power fraction>=.005 diagnostics; failures produce explicit unknown intervals. All H1..6 complex disks are kept; weak harmonics are not exact constraints or silently deleted.",
+    "quiet_definition": "Fit the same central degree2 harmonic basis over unchanged entry-.15..-.05 reference. Its |Zquiet|+qquiet term is a fixed reference allowance. It is not a proved bound on later contamination, noise power or white residuals."
+  },
+  "set_propagation": {
+    "amplitude": "Complex disk maps to [max(absZ-r,0),absZ+r]. Denominator interval containing0 yields unbounded ratios. Anchor H1 containing0 makes entire note unknown; never floor, replace anchor or discard that branch.",
+    "phase": "If disk includes0 phase is full circle; else argZ +/- asin(r/absZ). Circular Minkowski sums with h-times anchor/H1 intervals retain wraparound/full-circle sets.",
+    "comparison": "Use all15 fixed pairwise temporal amplitude double ratios among harmonics1..6, plus each pair phase invariant j*arg(Z_h(t)/Z_h(anchor))-h*arg(Z_j(t)/Z_j(anchor)), with full PM coefficient/canonical delta/conjugate branches. Same first-body anchor, no new harmonic bins or windows. Interval intersections per pair, not independent statistical tests. Non-H1 pairs retain constraints when a MODEL H1 cell spans a null; all unconstrained/null branches remain, and A can stay unbounded even if beta is constrained.",
+    "model_domain": "beta .001..8; canonical delta0..pi/2; all signs/compatible branches. Bounds remain conditional finite-domain sets, not global identification or confidence intervals. No exponential/monotonicity/rate-family prior.",
+    "grid_proposal": "2401 logarithmic beta nodes in[.001,8] and33 canonical delta nodes in[0,pi/2]. Each represents its geometric beta half-cell and midpoint delta half-cell, clipped at stated domain endpoints. Outward bounds use full cell edges; any compatible endpoint-touching cell makes precision unknown. Nested4801x65 repeats fixed controls. Never choose a better source grid.",
+    "A_beta_slopes": "Same34 latent epochs; conservative OLS extrema for each original17-point body/late interval across ALL compatible nuisance and per-time branches. Report A/beta separately, with broad/unbounded and endpoint-touching status. Body A need not be precise.",
+    "grid_enclosure": {
+      "Bessel": "Let e=max(abs(betaLow-betaCenter),abs(betaHigh-betaCenter)); enclose each needed integer J_n by J_n(center) +/- [abs(Jprime_n(center))*e+.5*e^2]. Jprime=(J_(n-1)-J_(n+1))/2. This is a Taylor enclosure because |Jdoubleprime_n|<=1 for real arguments/integer order (recurrence and |J_n|<=1).",
+      "magnitude_squared": "With m=J_(h-1),p=J_(h+1),s=(-1)^(h+1), interval-evaluate absB_h^2=(m^2+p^2-2*s*m*p*cos(2delta))/4 and clip lower at0. All square/product dependencies conservatively enclosed; optional intersection with rectangle-magnitude enclosure is valid only if both individually contain the cell.",
+      "phase": "Interval-evaluate realB=sin(delta)*(m+s*p)/2 and imagB=-cos(delta)*(m-s*p)/2; a rectangle containing the origin gives full circle, otherwise the circular hull of all corner directions. Retain both conjugate signs. Numerical roundoff margin is prospective64*float64eps*max(1,abs intermediates) per interval operation; no measured dB floor.",
+      "ratios": "Define Q_h=abs(Z_h)^2 and M_h=abs(B_h)^2. Compare squared amplitude double-ratio sets [Q_h(t)*Q_j(anchor)]/[Q_j(t)*Q_h(anchor)] and the corresponding M interval expression for every pair1<=j<h<=6; 10log10 of a Q ratio is an amplitude-ratio dB value. Zero numerator permits lower0; zero denominator permits upperinfinity;0/0 permits fullnonnegative set. A pair lacking information imposes no constraint. Circular phase sets as declared. Shared-variable dependencies may only be widened. Actual observed anchorH1 disk containing0 still makes note unknown and is never replaced.",
+      "conditional_scope": "Enclosures cover all continuous points in represented finite cells if implementation passes independent scalar/analytic tests. They do not cover beta outside[.001,8] or changing relative phase/capture transfer. Correlations may be discarded only to widen sets, never tighten.",
+      "floating_limit": "64epsilon padding/outward nextafter operations are a numerical safety convention, NOT a formally certified special-function error bound. Test fixed grid/boundary/null cells against independent high-precision Bessel evaluation and wrapped phases before any source inference. Preserve any enclosure failure as a failed qualification."
+    },
+    "incompatibility": "Distinguish no-information from incompatibility: a missing/zero-containing measurement yields a broad/unknown result; an empty compatible set on a well-observed clean case is a qualification failure and may not be relabeled unknown.",
+    "survival_limit": "Surviving grid cells mean NOT EXCLUDED by the conservative interval checks, not proof of an exact common-delta trajectory. Discarded dependencies can admit incompatible point assignments; use outer bounds only, never a best-fit or statistical weight.",
+    "endpoint_policy": "If ANY surviving anchor cell or candidate epoch cell touches beta domain endpoint.001 or8, the full note has an endpoint warning; all A/beta precision flags are false. Report its finite/extended sets anyway. This deliberately conservative global policy is not weakened by choosing an interval after results."
+  },
+  "controls": {
+    "reused_cases": [
+      {
+        "id": "analytic-00",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 32.439821,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 0,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-01",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 34.407626,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-02",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-03",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.917794,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-04",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.7853981633974483,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 32.439821,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 0,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-05",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.7853981633974483,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 34.407626,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-06",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 1.1780972450961724,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-07",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 1.1780972450961724,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.917794,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-08",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 1.5707963267948966,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 32.439821,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 0,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-09",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 1.5707963267948966,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 34.407626,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-10",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.3141592653589793,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-11",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.3141592653589793,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.917794,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-12",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 0,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 32.439821,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 0,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-13",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 0,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 34.407626,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-14",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-15",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.917794,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-16",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 0.7853981633974483,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 32.439821,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 0,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-17",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 0.7853981633974483,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 34.407626,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-18",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 1.1780972450961724,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-19",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 1.1780972450961724,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.917794,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-20",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 1.5707963267948966,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 32.439821,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 0,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-21",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 1.5707963267948966,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 34.407626,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-22",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 0.3141592653589793,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-23",
+        "kind": "analytic",
+        "frequency_hz": 261.5652,
+        "relative_phase": 0.3141592653589793,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.917794,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-24",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 0,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 32.439821,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 0,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-25",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 0,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 34.407626,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-26",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-27",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.917794,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-28",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 0.7853981633974483,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 32.439821,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 0,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-29",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 0.7853981633974483,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 34.407626,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-30",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 1.1780972450961724,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-31",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 1.1780972450961724,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.917794,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-32",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 1.5707963267948966,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 32.439821,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 0,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-33",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 1.5707963267948966,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 24.329866,
+        "beta_db_per_second": 34.407626,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-34",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 0.3141592653589793,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "analytic-35",
+        "kind": "analytic",
+        "frequency_hz": 932.1959,
+        "relative_phase": 0.3141592653589793,
+        "initial_beta": 2.0,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.917794,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0.37,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "none"
+      },
+      {
+        "id": "lowpass",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "butterworth4 lowpass3000Hz"
+      },
+      {
+        "id": "highpass",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "butterworth2 highpass30Hz"
+      },
+      {
+        "id": "fractionaldelay",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "recovery",
+        "processing": "0.3sample linear fractional delay"
+      },
+      {
+        "id": "delayedcopy",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "confound",
+        "processing": "dry+.6*dry delayed80ms"
+      },
+      {
+        "id": "compressor",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "confound",
+        "processing": "3to1 peak-envelope VCA,10msattack200msrelease"
+      },
+      {
+        "id": "two-tone",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "confound",
+        "processing": "add .15*initialA*carrierEnvelope*sin(1.013*theta)"
+      },
+      {
+        "id": "constant-beta",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0,
+        "initial_beta": 0.6,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 0,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "no-absolute-beta-information",
+        "processing": "none"
+      },
+      {
+        "id": "sine-no-beta",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0,
+        "initial_beta": 0,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 0,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "no-absolute-beta-information",
+        "processing": "none"
+      },
+      {
+        "id": "H1-null",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0,
+        "initial_beta": 1.8411837813406593,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 0,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "no-absolute-beta-information",
+        "processing": "none"
+      },
+      {
+        "id": "dynamic-gain-nonidentifiability",
+        "kind": "analytic",
+        "frequency_hz": 65.3913,
+        "relative_phase": 0.39269908169872414,
+        "initial_beta": 1.5,
+        "carrier_db_per_second": 28.463828,
+        "beta_db_per_second": 40.549777,
+        "initial_carrier_peak": 0.6,
+        "initial_modulator_phase_cycles": 0,
+        "clock_ppm": 20,
+        "classification": "exact capturedA/hardwareA nonidentifiability",
+        "processing": "multiplyby10^(+12*time_since_on/20)"
+      },
+      {
+        "id": "native-dry-36-0",
+        "kind": "native",
+        "note": 36,
+        "mod_TL": 30,
+        "carrier_TL": 13,
+        "mod_D2R": 16,
+        "carrier_D2R": 14,
+        "clock_ppm": 0,
+        "profile": "transparent",
+        "classification": "recovery"
+      },
+      {
+        "id": "native-dry-36-20",
+        "kind": "native",
+        "note": 36,
+        "mod_TL": 30,
+        "carrier_TL": 13,
+        "mod_D2R": 16,
+        "carrier_D2R": 14,
+        "clock_ppm": 20,
+        "profile": "transparent",
+        "classification": "recovery"
+      },
+      {
+        "id": "native-dry-60-0",
+        "kind": "native",
+        "note": 60,
+        "mod_TL": 30,
+        "carrier_TL": 13,
+        "mod_D2R": 16,
+        "carrier_D2R": 14,
+        "clock_ppm": 0,
+        "profile": "transparent",
+        "classification": "recovery"
+      },
+      {
+        "id": "native-dry-60-20",
+        "kind": "native",
+        "note": 60,
+        "mod_TL": 30,
+        "carrier_TL": 13,
+        "mod_D2R": 16,
+        "carrier_D2R": 14,
+        "clock_ppm": 20,
+        "profile": "transparent",
+        "classification": "recovery"
+      },
+      {
+        "id": "native-dry-82-0",
+        "kind": "native",
+        "note": 82,
+        "mod_TL": 30,
+        "carrier_TL": 13,
+        "mod_D2R": 16,
+        "carrier_D2R": 14,
+        "clock_ppm": 0,
+        "profile": "transparent",
+        "classification": "recovery"
+      },
+      {
+        "id": "native-dry-82-20",
+        "kind": "native",
+        "note": 82,
+        "mod_TL": 30,
+        "carrier_TL": 13,
+        "mod_D2R": 16,
+        "carrier_D2R": 14,
+        "clock_ppm": 20,
+        "profile": "transparent",
+        "classification": "recovery"
+      },
+      {
+        "id": "native-recipe-36",
+        "kind": "native",
+        "note": 36,
+        "mod_TL": 22,
+        "carrier_TL": 13,
+        "mod_D2R": 24,
+        "carrier_D2R": 22,
+        "clock_ppm": 0,
+        "profile": "transparent",
+        "classification": "floor/weak-harmonic expected limitation"
+      },
+      {
+        "id": "native-recipe-60",
+        "kind": "native",
+        "note": 60,
+        "mod_TL": 22,
+        "carrier_TL": 13,
+        "mod_D2R": 24,
+        "carrier_D2R": 22,
+        "clock_ppm": 0,
+        "profile": "transparent",
+        "classification": "floor/weak-harmonic expected limitation"
+      },
+      {
+        "id": "native-Real-mid",
+        "kind": "native",
+        "note": 60,
+        "mod_TL": 30,
+        "carrier_TL": 13,
+        "mod_D2R": 16,
+        "carrier_D2R": 14,
+        "clock_ppm": 20,
+        "profile": "Real",
+        "channel": "mid",
+        "classification": "processing diagnostic; no hardware claim"
+      },
+      {
+        "id": "native-Real-left",
+        "kind": "native",
+        "note": 60,
+        "mod_TL": 30,
+        "carrier_TL": 13,
+        "mod_D2R": 16,
+        "carrier_D2R": 14,
+        "clock_ppm": 20,
+        "profile": "Real",
+        "channel": "left",
+        "classification": "processing diagnostic; no hardware claim"
+      }
+    ],
+    "reused_note": "All56 v1 cases retained;45 recovery cases retain their original classification, but are disclosed development/regression controls, not fresh holdouts. Reuse saved10 native WAVs and frozen source/render receipt; no native changes or rerender needed.",
+    "prospective_clean_cases": [
+      {
+        "id": "new-informative-00",
+        "role": "prospective clean late-informativeness and coverage",
+        "frequency_hz": 82.4068892282175,
+        "relative_phase": 0.2617993877991494,
+        "initial_beta": 0.7,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-informative-01",
+        "role": "prospective clean late-informativeness and coverage",
+        "frequency_hz": 82.4068892282175,
+        "relative_phase": 0.2617993877991494,
+        "initial_beta": 1.1,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-informative-02",
+        "role": "prospective clean late-informativeness and coverage",
+        "frequency_hz": 82.4068892282175,
+        "relative_phase": 0.6544984694978736,
+        "initial_beta": 0.7,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-informative-03",
+        "role": "prospective clean late-informativeness and coverage",
+        "frequency_hz": 82.4068892282175,
+        "relative_phase": 0.6544984694978736,
+        "initial_beta": 1.1,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-informative-04",
+        "role": "prospective clean late-informativeness and coverage",
+        "frequency_hz": 329.6275569128699,
+        "relative_phase": 0.2617993877991494,
+        "initial_beta": 0.7,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-informative-05",
+        "role": "prospective clean late-informativeness and coverage",
+        "frequency_hz": 329.6275569128699,
+        "relative_phase": 0.2617993877991494,
+        "initial_beta": 1.1,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-informative-06",
+        "role": "prospective clean late-informativeness and coverage",
+        "frequency_hz": 329.6275569128699,
+        "relative_phase": 0.6544984694978736,
+        "initial_beta": 0.7,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-informative-07",
+        "role": "prospective clean late-informativeness and coverage",
+        "frequency_hz": 329.6275569128699,
+        "relative_phase": 0.6544984694978736,
+        "initial_beta": 1.1,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-00",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 98.0,
+        "relative_phase": 0.19,
+        "initial_beta": 0.65,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          11.0,
+          4.0,
+          -3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          19.0,
+          7.0,
+          -5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-01",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 98.0,
+        "relative_phase": 0.19,
+        "initial_beta": 0.65,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          11.0,
+          -4.0,
+          3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          19.0,
+          -7.0,
+          5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-02",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 98.0,
+        "relative_phase": 0.19,
+        "initial_beta": 1.8,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          26.0,
+          4.0,
+          -3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          37.0,
+          7.0,
+          -5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-03",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 98.0,
+        "relative_phase": 0.19,
+        "initial_beta": 1.8,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          26.0,
+          -4.0,
+          3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          37.0,
+          -7.0,
+          5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-04",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 98.0,
+        "relative_phase": 0.83,
+        "initial_beta": 0.65,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          11.0,
+          4.0,
+          -3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          19.0,
+          7.0,
+          -5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-05",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 98.0,
+        "relative_phase": 0.83,
+        "initial_beta": 0.65,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          11.0,
+          -4.0,
+          3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          19.0,
+          -7.0,
+          5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-06",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 98.0,
+        "relative_phase": 0.83,
+        "initial_beta": 1.8,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          26.0,
+          4.0,
+          -3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          37.0,
+          7.0,
+          -5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-07",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 98.0,
+        "relative_phase": 0.83,
+        "initial_beta": 1.8,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          26.0,
+          -4.0,
+          3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          37.0,
+          -7.0,
+          5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-08",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 493.8833012561241,
+        "relative_phase": 0.19,
+        "initial_beta": 0.65,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          11.0,
+          4.0,
+          -3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          19.0,
+          7.0,
+          -5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-09",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 493.8833012561241,
+        "relative_phase": 0.19,
+        "initial_beta": 0.65,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          11.0,
+          -4.0,
+          3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          19.0,
+          -7.0,
+          5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-10",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 493.8833012561241,
+        "relative_phase": 0.19,
+        "initial_beta": 1.8,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          26.0,
+          4.0,
+          -3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          37.0,
+          7.0,
+          -5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-11",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 493.8833012561241,
+        "relative_phase": 0.19,
+        "initial_beta": 1.8,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          26.0,
+          -4.0,
+          3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          37.0,
+          -7.0,
+          5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-12",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 493.8833012561241,
+        "relative_phase": 0.83,
+        "initial_beta": 0.65,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          11.0,
+          4.0,
+          -3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          19.0,
+          7.0,
+          -5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-13",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 493.8833012561241,
+        "relative_phase": 0.83,
+        "initial_beta": 0.65,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          11.0,
+          -4.0,
+          3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          19.0,
+          -7.0,
+          5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-14",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 493.8833012561241,
+        "relative_phase": 0.83,
+        "initial_beta": 1.8,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": -17.0,
+        "carrier_attenuation_polynomial_db": [
+          26.0,
+          4.0,
+          -3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          37.0,
+          7.0,
+          -5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-curvature-15",
+        "role": "prospective clean coverage; no mandatory useful width",
+        "frequency_hz": 493.8833012561241,
+        "relative_phase": 0.83,
+        "initial_beta": 1.8,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.731,
+        "clock_ppm": 31.0,
+        "carrier_attenuation_polynomial_db": [
+          26.0,
+          -4.0,
+          3.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          37.0,
+          -7.0,
+          5.0
+        ],
+        "processing": "none",
+        "pcm16": true
+      },
+      {
+        "id": "new-nullcross-00",
+        "role": "prospective clean coverage and zero-crossing handling; unknown permitted",
+        "frequency_hz": 82.4068892282175,
+        "relative_phase": 0.0,
+        "initial_beta": 3.5083033698956587,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": 0.0,
+        "carrier_attenuation_polynomial_db": [
+          22.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          16.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true,
+        "designed_H1_null_time_seconds_after_entry": 0.35
+      },
+      {
+        "id": "new-nullcross-01",
+        "role": "prospective clean coverage and zero-crossing handling; unknown permitted",
+        "frequency_hz": 329.6275569128699,
+        "relative_phase": 0.003,
+        "initial_beta": 3.5083033698956587,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": 0.0,
+        "carrier_attenuation_polynomial_db": [
+          22.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          16.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true,
+        "designed_H1_null_time_seconds_after_entry": 0.35
+      },
+      {
+        "id": "new-nullcross-02",
+        "role": "prospective clean coverage and zero-crossing handling; unknown permitted",
+        "frequency_hz": 82.4068892282175,
+        "relative_phase": 0.0,
+        "initial_beta": 7.675331477830614,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": 0.0,
+        "carrier_attenuation_polynomial_db": [
+          22.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          16.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true,
+        "designed_H1_null_time_seconds_after_entry": 0.775
+      },
+      {
+        "id": "new-nullcross-03",
+        "role": "prospective clean coverage and zero-crossing handling; unknown permitted",
+        "frequency_hz": 329.6275569128699,
+        "relative_phase": 0.003,
+        "initial_beta": 7.675331477830614,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.113,
+        "clock_ppm": 0.0,
+        "carrier_attenuation_polynomial_db": [
+          22.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          16.0,
+          0.0,
+          0.0
+        ],
+        "processing": "none",
+        "pcm16": true,
+        "designed_H1_null_time_seconds_after_entry": 0.775
+      }
+    ],
+    "signal": "Entry.3s,2s44100Hz; tau=max(t-.3,0)*(1+ppm*1e-6); theta=2*pi*(f*tau+initial_phase_cycles); attenuation polynomials a1*tau+a2*tau^2+a3*tau^3 dB. A=A0*10^(-attenA/20), beta=beta0*10^(-attenBeta/20); y=A*sin(theta+delta+beta*sin(theta)), zero beforeentry; PCM16 nearest/no dither. Truth slopes are exact OLS of the latent dB sequences at actual rounded centers, not polynomial linear coefficients.",
+    "prospective_null_confusion_cases": [
+      {
+        "frequency_hz": 174.61411571650194,
+        "relative_phase": 0.37,
+        "initial_beta": 0.0,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.271,
+        "clock_ppm": 13.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "pcm16": true,
+        "expected": "No beta-slope precision; beta undefined.",
+        "id": "new-null-pure-sine",
+        "role": "prospective null/confusion diagnostic",
+        "processing": "none"
+      },
+      {
+        "frequency_hz": 174.61411571650194,
+        "relative_phase": 0.37,
+        "initial_beta": 0.72,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.271,
+        "clock_ppm": 13.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "pcm16": true,
+        "expected": "Relative beta slope0 must be covered; anchor beta remains nonunique (at leastfactor4 or endpoint reach); A may qualify.",
+        "id": "new-null-constant-beta",
+        "role": "prospective null/confusion diagnostic",
+        "processing": "none"
+      },
+      {
+        "frequency_hz": 174.61411571650194,
+        "relative_phase": 0.0,
+        "initial_beta": 2.7390322175092,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.271,
+        "clock_ppm": 13.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "pcm16": true,
+        "expected": "Null anchor is never replaced; note must be unknown if disk includes0.",
+        "id": "new-null-anchor-H1",
+        "role": "prospective null/confusion diagnostic",
+        "processing": "none"
+      },
+      {
+        "frequency_hz": 82.4068892282175,
+        "relative_phase": 0.37,
+        "initial_beta": 1.1,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.271,
+        "clock_ppm": 13.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "pcm16": true,
+        "interferer_frequency_offset_hz": 0.7,
+        "interferer_relative_peak": 0.3,
+        "interferer_phase_cycles": 0.0,
+        "expected": "Coherent interference diagnostic; explicitly tabulate any admitted informative result and bias.",
+        "id": "new-nearby07-inphase",
+        "role": "prospective null/confusion diagnostic",
+        "processing": "nearby_tone"
+      },
+      {
+        "frequency_hz": 82.4068892282175,
+        "relative_phase": 0.37,
+        "initial_beta": 1.1,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.271,
+        "clock_ppm": 13.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "pcm16": true,
+        "interferer_frequency_offset_hz": 0.7,
+        "interferer_relative_peak": 0.3,
+        "interferer_phase_cycles": 0.25,
+        "expected": "Same nearby tone with independent beat phase; not a universal interference bound.",
+        "id": "new-nearby07-quadrature",
+        "role": "prospective null/confusion diagnostic",
+        "processing": "nearby_tone"
+      },
+      {
+        "frequency_hz": 174.61411571650194,
+        "relative_phase": 0.37,
+        "initial_beta": 1.1,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.271,
+        "clock_ppm": 13.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "pcm16": true,
+        "harmonic_relative_peak": 0.25,
+        "phase_mod_depth_radians": 0.5,
+        "phase_mod_frequency_hz": 3.0,
+        "expected": "An independent evolving harmonic cannot be presumed fixed-phase PM; retain any admission.",
+        "id": "new-independent-H2-phase",
+        "role": "prospective null/confusion diagnostic",
+        "processing": "independent_H2"
+      },
+      {
+        "frequency_hz": 174.61411571650194,
+        "relative_phase": 0.37,
+        "initial_beta": 1.1,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.271,
+        "clock_ppm": 13.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "pcm16": true,
+        "delay_seconds": 0.025,
+        "wet_gain": 0.6,
+        "expected": "Fixed LTI delayed path violates exact instantaneous-bin cancellation; admission does not establish dry capture.",
+        "id": "new-delayedcopy25",
+        "role": "prospective null/confusion diagnostic",
+        "processing": "delayedcopy"
+      },
+      {
+        "frequency_hz": 174.61411571650194,
+        "relative_phase": 0.37,
+        "initial_beta": 1.1,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.271,
+        "clock_ppm": 13.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "pcm16": true,
+        "delay_seconds": 0.02,
+        "depth_seconds": 0.004,
+        "rate_hz": 0.8,
+        "dry_gain": 0.5,
+        "wet_gain": 0.5,
+        "expected": "Time-varying delay; explicitly tabulate compatibility and all apparent slopes.",
+        "id": "new-chorus20-4",
+        "role": "prospective null/confusion diagnostic",
+        "processing": "chorus"
+      },
+      {
+        "frequency_hz": 174.61411571650194,
+        "relative_phase": 0.37,
+        "initial_beta": 1.1,
+        "initial_carrier_peak": 0.45,
+        "initial_modulator_phase_cycles": 0.271,
+        "clock_ppm": 13.0,
+        "carrier_attenuation_polynomial_db": [
+          17.0,
+          0.0,
+          0.0
+        ],
+        "beta_attenuation_polynomial_db": [
+          23.0,
+          0.0,
+          0.0
+        ],
+        "pcm16": true,
+        "gain_polynomial_db": [
+          12.0,
+          0.0,
+          0.0
+        ],
+        "expected": "Observationally identical to captured carrier slope5dB/s with no external gain. Must cover captured5, not label intrinsic17 as recovered.",
+        "id": "new-dynamicgain-pair",
+        "role": "prospective null/confusion diagnostic",
+        "processing": "dynamic_gain"
+      }
+    ],
+    "processors": "nearby_tone adds0.3*A(t)*sin(2pi*((f+.7)*tau+declaredphase)) to the base waveform; independent_H2 adds.25*A*sin(2theta+.5*sin(2pi*3*tau)); delayedcopy adds.6*y(t-.025); chorus=.5*y(t)+.5*y(t-[.020+.004*sin(2pi*.8*tau)]) using linear sample interpolation and zero out-of-range; dynamic_gain multiplies10^(12*tau/20). Processing precedes deterministic PCM16 nearest rounding. NativeWAVs reused, no rerender.",
+    "reused_waveform_policy": "Read the existing10 native float WAVs and render metadata; verify file hashes, then quantize identically to v1. Reconstruct analytic oldcases using their original exact equations/order. Require ALL56 quantized_float64 waveform hashes equal the original frozen run before any v2 extraction; no native rebuild or production-source dependence is introduced."
+  },
+  "prospective_qualification": {
+    "coverage": "Every A/beta body/late interval for ALL45 reused recovery and28 prospective clean cases must contain unexpanded generating truth OR be explicitly unknown/unbounded and noninformative because information is missing. Empty compatible sets on well-observed clean data FAIL. Every analytic case additionally requires retention of the represented true anchor-beta/delta/sign cell and containment of true per-epoch relative A/beta whenever informative. No additive error allowance. Native cases retain slope-truth checks; their unrecorded exact relative phase is not invented.",
+    "nonvacuity": "ALL8 new-informative cases must produce finite late A width<=3dB/s and beta width<=4dB/s, contain truth unexpanded, exclude zero decay, and avoid beta endpoint hits. Body A is reported even when broad; no forced body-A precision.",
+    "source_status": "After whole-method gates pass, report all42 original source intervals as conditional sets. A and beta precision flags are independent: width<=3dB/s A,<=4dB/s beta, finite, no accepted model-domain endpoint touch for that observable, compatible model and no bad anchor. Broad/unbounded A is not silently dropped and does not disqualify a separately informative beta interval. No claim of dry effects, clean capture, known noteoff or intrinsic operator rate.",
+    "false_claims": "No unique beta on sine, no anchor replacement for nulls, no invented intrinsic-A on dynamic gain pair. Processed confound admissions are explicitly tabulated and prevent any claim that model compatibility proves a dry or unprocessed original recording.",
+    "grid": "Nested4801x65 checks ALL8 new-informative fixtures plus oldanalytic00/11/24 andconstant-beta. For informative controls, both interval endpoints change<=.5dB/s A,<=1dB/s beta; truth must remain covered on bothgrids and endpoint-status agree. Constantbeta remains nonunique. Failure stops source inference, with no posthoc grid/radius rescue.",
+    "null_gate": "Pure sine: no beta-slope precision. Constant beta: include0 slope and retain absolute anchor beta spanningfactor4 or endpoint-reach. Anchor null: no reanchoring, unknown if H1 disk contains0. All broad/unknown outcomes explicitly retained; none treated as useful information.",
+    "confound_gate": "Every old/new processing-confound admission and resulting slope bias must be tabulated. There is no unjustified promise to detect every coherent or observationally equivalent processor. Any admitted interference prohibits a claim that these empirical disks bound arbitrary contamination; all source results remain conditional on the PM/static-transfer class. The dynamic-gain pair must report the captured-A interpretation and never an intrinsic hardware-A claim.",
+    "enclosure_test": "Before source inference, verify interval primitives/phase wrap/zero denominators and grid Taylor cells at deterministic nested-grid boundaries, near each low-order Bessel null within[.001,8], and a fixed seeded stratified set against80decimal mpmath Bessel values. Minimum1000cells x7samplepoints x6harmonics. Any miss or non-outward primitive FAILS. This is numerical validation, not a global formal proof."
+  },
+  "policy": "No Source/native/preset/noise changes, media downloads, physicalrate fitting, source-window changes or forecast changes. All new numerical controls wait for independently reviewed final design, frozen case/rule document and exact implementation binding before run. Any frozen failure stops source inference; preserve v1 unchanged.",
+  "prior_proposal": {
+    "path": "build/pm-envelope-v2-20261019/proposal-v2.json",
+    "sha256": "d3153ed98f8cd1b936cd0af9936c05e8b4ef7f0b3730590d31ac279f8ac7c4ff"
+  },
+  "source_interpretation": "All42 source intervals reported if method qualifies; corresponding A or beta numeric rate only when finite, within width3/4dB/s respectively, no endpoint reach and model-compatible. If body A is broad but beta is informative, report this separately. No comparison to candidate physicalrate families unless that observable has qualified conditional precision; report overlapping predictions as unresolved. Never infer dry hardware/capture or known MIDI gate from this sample.",
+  "frozen_utc": "2026-10-19T09:31:03.228517+00:00",
+  "reviewed_proposal": {
+    "path": "build/pm-envelope-v2-20261019/proposal-v3.json",
+    "sha256": "c7db74c48ac17309ec99ff4812744ec87ddb3d72552e5f28dd224c4ded2ea99e"
+  },
+  "numerical_conventions": {
+    "dtype": "float64;64machine-epsilon padding at interval operation boundaries and outward nextafter. No claim of formally certified special-function implementation.",
+    "unknown_vs_failure": "Metadata-ineligible/missing support, bad/rank-deficient fit, clipped/nonfinite observation, observedH1 disk containing0 => explicit unobserved/unknown. A well-observed clean case with zero surviving profiles => incompatible and method failure. Broad surviving sets can be unbounded/noninformative but never hidden.",
+    "reuse_order": "Old analytic signals call the original hash-bound analytic_signal() function unchanged; old native float WAV read/channel mean and deterministic PCM16 conversion identical to original loop. Verify all56 old quantized float64 waveform hashes before v2 extraction.",
+    "processing_order": "Generate new full dynamic waveform; apply fixed declared processor; deterministic PCM16 nearest/clipping exactly as v1. No dithering/additive noise. Clipping in clean cases invalidates their useful precision and is recorded, not normalized away.",
+    "truth": "Evaluate analytic latent logA/logbeta at actual integerframe centers and use exact same OLS functional. Dynamic-gain truth is capturedA including gain. Native nominal slopes are originalfrozen truths, no new engine fit.",
+    "control_result_order": "Run all56 old and37 prospective cases, all12nested-grid checks and mathematical enclosure tests; retain failures. Only then whole-method gate; no early-abort discarding adverse controls, except a fatal binding/output error.",
+    "code_binding": "Before any numerical test/extraction, produce a fresh ignored execution binding containing this protocol hash, exact v2 and importedv1 tool hashes, originalresult hash, all10nativeWAV+render metadata hashes, dependencies/platform and no source-read status. New run refuses changed binding, reused output or output outsideignored build."
+  }
+}
