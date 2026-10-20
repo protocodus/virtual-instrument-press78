@@ -117,34 +117,15 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 
 ## Version history
 
-### Unreleased — 0.1.7 — BBD chorus filters
+### Unreleased — 0.1.7 — PSS-780 firmware laws, chorus filters and output character
 
-- New instances, Init, the 100 `PSS` patches and the modern presets pass the Recorded chorus's delayed signal through the bucket-brigade chorus's analog filters, with values borrowed from the PSS-270 schematic. The chorus shimmer loses its fizz: the stereo difference signal is about 12 dB lower from 5 to 8 kHz and about 2 dB higher from 1.5 to 3 kHz, and each channel changes by 1 to 2 dB in those bands. Studio chorus and patches without chorus are unchanged. Older songs that lack the setting keep the unfiltered delay.
-
-### Unreleased — 0.1.6 — PSS-780 voice allocation
-
-- New instances, Init, the 100 `PSS` patches and the modern presets allocate voices as the PSS-780 does in its normal keyboard mode. Replaying a note cuts that note's own release instead of stacking a second copy on it, so fast repeats on long-release sounds no longer build up or phase; a held key sent again is ignored; and a new note takes a released voice before stealing a held one. Older songs that lack the setting keep the previous free-voice-then-oldest policy.
-
-### Unreleased — 0.1.5 — PSS-780 key scaling
-
-- New instances, Init, the 100 `PSS` patches and the modern presets scale each operator's level across the keyboard with the PSS-780 program's own per-key tables. Most patches change by under 1 dB; Human Chorus, Human Voice 1, Strings and Soprano Sax are up to 4.3 dB different at the ends of the keyboard, and modulator changes of up to 5.8 dB alter brightness from low to high notes. Older songs that lack the setting keep the earlier curves.
-
-### Unreleased — 0.1.4 — PSS-780 velocity curve
-
-- New instances, Init, the 100 `PSS` patches and the modern presets follow the PSS-780's own MIDI velocity curve: soft notes are louder than before (velocity 16 sits 15.75 dB below full instead of 18 dB, velocity 1 at 23.25 dB instead of 42 dB), and velocities from 32 up change by under 1 dB. Older songs that lack the setting keep the linear curve.
-
-### Unreleased — 0.1.3 — Portamento
-
-- Adds the PSS-780's **Portamento** effect with its five speeds (1 slow … 5 fast, default 3), switchable from the panel or MIDI CC65. Each new note glides from the previous note in a fixed time per speed, whatever the interval, as the keyboard's own program does. The glide's absolute timing is an estimate.
-
-### Unreleased — 0.1.2 — hardware pitch-bend range
-
-- New instances, Init and the 100 `PSS` patches start with a ±1 semitone pitch wheel, the PSS-780's own reset value (owner's manual, printed pp. 10 and 39). Older songs that lack the setting keep ±2, and the modern presets keep their own ranges.
-
-### Unreleased — 0.1.1 — selected release and output character
-
-- Applies the selected B listening options: a longer envelope-Reverb tail and shared asymmetric output headroom, enabled by default. No artificial noise is added.
-- Existing patches acquire the selected character when their models are enabled. The values are chosen assumptions, not recovered PSS-780 calibration. See the [decision](Docs/decisions.md) and [adoption note](Docs/release/assumed-hardware-adoption-2026-10-19.md).
+- 0.1.7: New instances, Init, the 100 `PSS` patches and the modern presets pass the Recorded chorus's delayed signal through the bucket-brigade chorus's analog filters, with values borrowed from the PSS-270 schematic. The chorus shimmer loses its fizz: the stereo difference signal is about 12 dB lower from 5 to 8 kHz and about 2 dB higher from 1.5 to 3 kHz, and each channel changes by 1 to 2 dB in those bands. Studio chorus and patches without chorus are unchanged. Older songs that lack the setting keep the unfiltered delay.
+- 0.1.6: New instances, Init, the 100 `PSS` patches and the modern presets allocate voices as the PSS-780 does in its normal keyboard mode. Replaying a note cuts that note's own release instead of stacking a second copy on it, so fast repeats on long-release sounds no longer build up or phase; a held key sent again is ignored; and a new note takes a released voice before stealing a held one. Older songs that lack the setting keep the previous free-voice-then-oldest policy.
+- 0.1.5: New instances, Init, the 100 `PSS` patches and the modern presets scale each operator's level across the keyboard with the PSS-780 program's own per-key tables. Most patches change by under 1 dB; Human Chorus, Human Voice 1, Strings and Soprano Sax are up to 4.3 dB different at the ends of the keyboard, and modulator changes of up to 5.8 dB alter brightness from low to high notes. Older songs that lack the setting keep the earlier curves.
+- 0.1.4: New instances, Init, the 100 `PSS` patches and the modern presets follow the PSS-780's own MIDI velocity curve: soft notes are louder than before (velocity 16 sits 15.75 dB below full instead of 18 dB, velocity 1 at 23.25 dB instead of 42 dB), and velocities from 32 up change by under 1 dB. Older songs that lack the setting keep the linear curve.
+- 0.1.3: Adds the PSS-780's **Portamento** effect with its five speeds (1 slow … 5 fast, default 3), switchable from the panel or MIDI CC65. Each new note glides from the previous note in a fixed time per speed, whatever the interval, as the keyboard's own program does. The glide's absolute timing is an estimate.
+- 0.1.2: New instances, Init and the 100 `PSS` patches start with a ±1 semitone pitch wheel, the PSS-780's own reset value (owner's manual, printed pp. 10 and 39). Older songs that lack the setting keep ±2, and the modern presets keep their own ranges.
+- 0.1.1: Applies the selected B listening options: a longer envelope-Reverb tail and shared asymmetric output headroom, enabled by default. No artificial noise is added. Existing patches acquire the selected character when their models are enabled. The values are chosen assumptions, not recovered PSS-780 calibration. See the [decision](Docs/decisions.md) and [adoption note](Docs/release/assumed-hardware-adoption-2026-10-19.md).
 
 ### 0.1.0 — engine, Rack prototype and plug-in front end
 
