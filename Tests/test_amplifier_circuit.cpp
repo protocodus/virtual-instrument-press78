@@ -55,14 +55,26 @@ std::vector<float> render(int jack, bool right, int switchTo = -1) {
 } // namespace
 
 int main() {
-    test("AUX follows the amplifier into the 4 ohm speaker node", [] {
-        // 1000 uF into 4 ohm accounts for the datasheet curve's low end, read
-        // as -1 dB at 80 Hz and -3.7 dB at 33 Hz to graph precision.
+    test("AUX follows the amplifier into the speaker node", [] {
+        // 1000 uF into the datasheet's resistive 4 ohm accounts for its
+        // curve's low end, read as -1 dB at 80 Hz and -3.7 dB at 33 Hz.
         const double speakerHz = 1.0 / (tau * 4e-3);
         REQUIRE(std::abs(pole(speakerHz, 80.0) + 1.0) < 0.1 && std::abs(pole(speakerHz, 33.0) + 3.7) < 0.25);
+        // The instrument's node holds the stand-in driver instead: Re in
+        // series with its motional R, L and C in parallel.
+        const auto speaker = [](double hz) {
+            const double re = 3.4, ws = tau * 110.0, qms = 5.61, qes = 2.8;
+            const std::complex<double> jw(0.0, tau * hz);
+            const auto z = re + 1.0 / (qes / (re * qms) + 1.0 / (jw * re / (ws * qes)) + jw * qes / (ws * re));
+            return 20.0 * std::log10(std::abs(z / (z + 1.0 / (jw * 1000e-6))));
+        };
+        // With its 0.1 mH coil, which the model leaves out, the driver's AUX
+        // curve is -7.85, -1.59, +0.83 and -1.00 dB at 20, 50, 80 and 150 Hz.
+        REQUIRE(std::abs(speaker(20.0) + 7.85) < 0.07 && std::abs(speaker(50.0) + 1.59) < 0.07);
+        REQUIRE(std::abs(speaker(80.0) - 0.83) < 0.07 && std::abs(speaker(150.0) + 1.00) < 0.07);
         for (double rate : {44100.0, 48000.0, 96000.0})
-            for (double hz : {25.0, 40.0, 80.0, 200.0, 1000.0, 5000.0, 10000.0, 15000.0, 18000.0, 20000.0}) {
-                const double expected = pole(speakerHz, hz) + treble(hz);
+            for (double hz : {20.0, 25.0, 40.0, 60.0, 80.0, 100.0, 120.0, 150.0, 200.0, 1000.0, 5000.0, 10000.0, 15000.0, 18000.0, 20000.0}) {
+                const double expected = speaker(hz) + treble(hz);
                 REQUIRE(std::abs(gainDb(hz, 1.0, 0.0, 1.0, false, rate) - expected) < 0.4);
                 REQUIRE(std::abs(gainDb(hz, 1.0, 0.0, -1.0, true, rate) - expected) < 0.4);
             }
