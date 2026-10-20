@@ -20,7 +20,7 @@ constexpr double tau = 6.283185307179586476925286766559;
 
 // Steady-state gain in dB from a sine on the left input (and on the right,
 // scaled by rightSign) to the chosen output channel.
-double gainDb(double hz, double auxMix, double phonesMix, double rightSign, bool rightOut, double rate = 48000.0) {
+double gainDb(double hz, double auxMix, double phonesMix, double rightSign, bool rightOut, double rate = 48000.0, double wiper = 0.0) {
     press78::AmplifierCircuit a;
     a.prepare(rate);
     const int settle = static_cast<int>(rate), span = static_cast<int>(rate);
@@ -28,7 +28,7 @@ double gainDb(double hz, double auxMix, double phonesMix, double rightSign, bool
     for (int n = 0; n < settle + span; ++n) {
         const double x = std::sin(tau * hz * n / rate);
         double l = x, r = rightSign * x;
-        a.process(l, r, auxMix, phonesMix);
+        a.process(l, r, auxMix, phonesMix, wiper);
         if (n >= settle) { in += x * x; out += (rightOut ? r * r : l * l); }
     }
     return 10.0 * std::log10(out / in);
@@ -67,6 +67,31 @@ int main() {
                 REQUIRE(std::abs(gainDb(hz, 1.0, 0.0, -1.0, true, rate) - expected) < 0.4);
             }
     });
+    test("the amplifier's input loads the slider", [] {
+        // The pot top's 1 uF sees the pot's upper part in series with its
+        // lower part in parallel with the wiper's 10k + 1k. Its loaded share
+        // is found here by bisection on the resistance below the wiper.
+        const auto share = [](double below) {
+            const double lower = below * 11e3 / (below + 11e3);
+            return lower / (10e3 - below + lower);
+        };
+        for (double wiper : {0.125, 0.5, 1.0}) {
+            double lo = 0.0, hi = 10e3;
+            for (int i = 0; i < 100; ++i) (share(0.5 * (lo + hi)) < wiper ? lo : hi) = 0.5 * (lo + hi);
+            const double below = 0.5 * (lo + hi), top = 10e3 - below + below * 11e3 / (below + 11e3);
+            const double cornerHz = 1.0 / (tau * top * 1e-6), unloadedHz = 1.0 / (tau * 10e3 * 1e-6);
+            if (wiper == 1.0) REQUIRE(std::abs(cornerHz - 30.38) < 0.01);
+            for (double hz : {10.0, 20.0, 30.0, 50.0, 100.0, 1000.0}) {
+                // Relative to the unloaded slider, the loaded high-pass replaces
+                // the unloaded one; the passband stays at unity.
+                const double expected = pole(cornerHz, hz) - pole(unloadedHz, hz);
+                for (double aux : {1.0, 0.0}) {
+                    const double change = gainDb(hz, aux, 1.0 - aux, 1.0, false, 48000.0, wiper) - gainDb(hz, aux, 1.0 - aux, 1.0, false);
+                    REQUIRE(std::abs(change - expected) < 0.01);
+                }
+            }
+        }
+    });
     test("headphones high-pass the mid through the shared 47 uF return", [] {
         // 100 ohm + 32 ohm; 1000 uF in series with half of the shared 47 uF.
         const double midHz = (1.0 / 1000e-6 + 2.0 / 47e-6) / (tau * 132.0);
@@ -94,7 +119,7 @@ int main() {
         for (int n = 0; n < 4800; ++n) {
             const double x = std::sin(0.01 * n);
             double l = x, r = -0.5 * x;
-            a.process(l, r, 0.0, 0.0);
+            a.process(l, r, 0.0, 0.0, 0.01 * (n % 100));
             REQUIRE(l == x && r == -0.5 * x);
         }
     });

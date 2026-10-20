@@ -802,8 +802,8 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     } else { dcInputL_ = left; dcInputR_ = right; dcOutputL_ = dcOutputR_ = 0.0; }
     auxMix_ += ((controls_.outputJack == 1 ? 1.0 : 0.0) - auxMix_) * gainSmoothing_;
     phonesMix_ += ((controls_.outputJack == 2 ? 1.0 : 0.0) - phonesMix_) * gainSmoothing_;
-    amplifier_.process(left, right, auxMix_, phonesMix_);
     gain_ += (controls_.masterGain - gain_) * gainSmoothing_;
+    amplifier_.process(left, right, auxMix_, phonesMix_, 0.5 * gain_);
     left *= gain_; right *= gain_;
     if (controls_.outputLimit) { left = softBound(left); right = softBound(right); }
     // Parameter clamps already bound the model. This last guard protects the

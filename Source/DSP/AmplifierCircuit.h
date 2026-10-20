@@ -31,8 +31,17 @@ namespace press78 {
 // it, while the side keeps the output capacitor's 1.2 Hz. The coils and the
 // shunt change the level by under 0.01 dB below 20 kHz and are left out.
 //
+// Slider loading: the wiper's 10 kOhm and 1 kOhm, 11 kOhm in all below the
+// input pole, hang below the wiper, so the 1 uF that couples the mixer to the
+// pot top (AnalogOutput, which leaves the wiper unloaded) sees less than the
+// pot's own 10 kOhm as the slider rises: its 15.9 Hz corner moves to 30.4 Hz
+// at the top. The AN7148's own input resistance is not given; next to the
+// 1 kOhm shunt it would move these figures little.
+//
 // Level is a convention, not a circuit value: every path has unity gain in
-// its passband, so Volume sets the level as before.
+// its passband, so Volume sets the level as before. Volume is twice the
+// wiper's loaded share of the pot-top voltage, so its top, 2, is the slider's
+// top; the slider's taper then does not matter.
 class AmplifierCircuit {
 public:
     void prepare(double sampleRate) noexcept {
@@ -63,18 +72,23 @@ public:
         const double sideTau = (series + headphone) * output;
         phonesMid_.design({0.0, midTau}, {1.0, midTau}, sampleRate, 1.0 / (2.0 * pi * midTau));
         phonesSide_.design({0.0, sideTau}, {1.0, sideTau}, sampleRate, 1.0 / (2.0 * pi * sideTau));
+        twiceRate_ = 2.0 * sampleRate;
+        loadSlider(wiper_);
         reset();
     }
     void reset() noexcept {
+        for (auto& t : slider_) t.x1 = t.y1 = 0.0;
         for (auto& t : treble_) t.x1 = t.y1 = 0.0;
         for (auto& f : speaker_) f.reset();
         phonesMid_.reset(); phonesSide_.reset();
     }
     // Moves left and right from the slider towards the AUX and headphone
     // outputs by their mix weights. Every path runs at all times, so a jack
-    // change never replays stale filter memory.
-    void process(double& left, double& right, double auxMix, double phonesMix) noexcept {
-        const double l = treble_[0].process(left), r = treble_[1].process(right);
+    // change never replays stale filter memory. wiper is the slider's loaded
+    // share of the pot-top voltage, 0 to 1.
+    void process(double& left, double& right, double auxMix, double phonesMix, double wiper) noexcept {
+        if (wiper != wiper_) loadSlider(wiper);
+        const double l = treble_[0].process(slider_[0].process(left)), r = treble_[1].process(slider_[1].process(right));
         const double auxLeft = speaker_[0].process(l), auxRight = speaker_[1].process(r);
         const double mid = phonesMid_.process(0.5 * (l + r)), side = phonesSide_.process(0.5 * (l - r));
         left += auxMix * (auxLeft - left) + phonesMix * (mid + side - left);
@@ -82,6 +96,23 @@ public:
     }
 
 private:
+    // (top / pot)(1 + s pot C)/(1 + s top C) turns the unloaded pot's high-pass
+    // into the loaded one; top is the resistance the coupling capacitor sees.
+    // Both corners sit far below the sample rate, so the bilinear transform
+    // needs no prewarping.
+    void loadSlider(double wiper) noexcept {
+        constexpr double pot = 10e3, load = 11e3, coupling = 1e-6;
+        wiper_ = wiper;
+        const double r = std::clamp(wiper, 0.0, 1.0);
+        // The resistance below the wiper whose loaded divider gives r solves
+        // r a^2 - (r pot - load) a - r pot load = 0; this root form stays exact
+        // as r goes to 0.
+        const double b = r * pot - load;
+        const double below = 2.0 * r * pot * load / (std::sqrt(b * b + 4.0 * r * r * pot * load) - b);
+        const double top = pot - below + below * load / (below + load);
+        const double ratio = top / pot, k = twiceRate_ * top * coupling;
+        for (auto& t : slider_) { t.b0 = (ratio + k) / (1.0 + k); t.b1 = (ratio - k) / (1.0 + k); t.a = (1.0 - k) / (1.0 + k); }
+    }
     struct FirstOrder {
         double b0 = 1.0, b1 = 0.0, a = 0.0, x1 = 0.0, y1 = 0.0;
         double process(double x) noexcept {
@@ -90,7 +121,8 @@ private:
             return y;
         }
     };
-    std::array<FirstOrder, 2> treble_{};
+    std::array<FirstOrder, 2> slider_{}, treble_{};
+    double twiceRate_ = 96000.0, wiper_ = 0.0;
     std::array<AnalogFilter<1>, 2> speaker_{};
     AnalogFilter<1> phonesMid_{}, phonesSide_{};
 };
