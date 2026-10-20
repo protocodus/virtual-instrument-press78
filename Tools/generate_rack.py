@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from modern_bank import load_modern, load_rack_startup, preset_relative_path
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.2b1'
+VERSION='0.1.3b1'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -92,6 +92,10 @@ def specs():
     add('sustainMode','Original release policy',0,1,0,True)
     rows[-1].update(options=['Legacy','Original'],startup_default=1,hidden=True,
                    description='Compatibility policy: Original pedal selects release rate; Legacy pedal holds notes.')
+    # PSS-780 owner's manual, printed p.9: the Portamento effect button and
+    # its speed 1 (slow)..5 (fast), default 3. Off, as the button powers up.
+    add('portamento','Portamento',0,1,0,True)
+    add('portamentoSpeed','Portamento speed',1,5,3,True)
     for row in rows:
         if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange'): row['default']=REAL_DEFAULTS[row['id']]
         if row['id'] in LEGACY_NOISE:
@@ -188,7 +192,7 @@ def main():
     lua += [f' [{value}]="/custom_properties/{name}",' for name,value in ids.items()]
     lua.append('} }')
     output={'masterGain','toneCutoffHz','drive','chorusMix','chorusMode','chorusRateHz','chorusDepthMs','stereoWidth','noiseRms','noiseModel','outputCircuit','dcBlock','outputLimit'}
-    performance={'masterTuneCents','velocitySensitivity','velocityToModulation','polyphony','bendRange','modWheelDepth'}
+    performance={'masterTuneCents','velocitySensitivity','velocityToModulation','polyphony','bendRange','modWheelDepth','portamento','portamentoSpeed'}
     groups={'Modulator':[], 'Carrier':[], 'FM and LFO':[], 'Performance':[], 'Output and effects':[], 'Clock':[]}
     for row in rows:
         if row.get('hidden'): continue

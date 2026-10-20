@@ -16,6 +16,17 @@ constexpr double tau = 2.0 * pi;
 constexpr double pmDepth[8] = {0.0, 3.125, 6.25, 12.5, 25.0, 50.0, 100.0, 200.0};
 constexpr double amDepth[4] = {0.0, 1.4, 5.9, 11.8};
 constexpr double rateScaling[4] = {0.0, 0.0625, 0.125, 0.25};
+// PSS-780 program (xg503b0-132, read 2026-10-20): Portamento starts a slot at
+// the previous note-on's pitch, offset (previous-new)*256 in 1/256 semitone,
+// and each main-loop pass adds (new-previous)<<speed until the offset crosses
+// zero. Every glide thus takes 2^(8-speed) passes whatever the interval:
+// 128, 64, 32, 16, 8 for speeds 1..5. The pass is not timer-paced and was not
+// measured; 2.5 ms (speed 3 = 80 ms) is an estimate, the one unrecovered value.
+constexpr int kPortamentoServiceTicks = 120; // 2.5 ms at the 48 kHz internal rate.
+
+// The firmware shifts the glide offset right three times into the
+// 1/32-semitone pitch coordinate, rounding toward minus infinity.
+int heardGlideSteps(int offset) noexcept { return offset >= 0 ? offset / 8 : -((7 - offset) / 8); }
 
 double bounded(double x, double low, double high, double fallback) noexcept {
     return std::isfinite(x) ? std::clamp(x, low, high) : fallback;
@@ -127,6 +138,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.modulationAmount = bounded(c.modulationAmount, 0, 2, 1);
     c.polyphony = std::clamp(c.polyphony, 1, 12);
     c.sustainMode = std::clamp(c.sustainMode, 0, 1);
+    c.portamentoSpeed = std::clamp(c.portamentoSpeed, 1, 5);
     c.lfoRateHz = bounded(c.lfoRateHz, 0, 30, 5.24);
     c.vibratoDepth = bounded(c.vibratoDepth, 0, 4, 1);
     c.tremoloDepth = bounded(c.tremoloDepth, 0, 4, 1);
@@ -213,8 +225,8 @@ void Press78Engine::Voice::updatePatch(const Patch& p) noexcept {
 void Press78Engine::Voice::updateOriginalPitch(int steps) noexcept {
     // Only coefficients change: oscillator phase, feedback, envelope and age
     // survive bends/fine edits, including voices in the steal fade.
-    modStep = originalStep(patch.modulator, note, steps);
-    carrierStep = originalStep(patch.carrier, note, steps);
+    modStep = originalStep(patch.modulator, note, steps + glideSteps);
+    carrierStep = originalStep(patch.carrier, note, steps + glideSteps);
 }
 
 void Press78Engine::Voice::updateRelease(bool sustain) noexcept {
@@ -238,7 +250,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     if (c.triangleLfo) lfo = 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0));
     const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * kInternalRate);
     const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
-    const double pitch = pitchMultiplier * std::pow(2.0, cents / 1200.0);
+    const double pitch = pitchMultiplier * glideMultiplier * std::pow(2.0, cents / 1200.0);
     modPhase = std::fmod(modPhase + modStep * pitch, tau);
     carrierPhase = std::fmod(carrierPhase + carrierStep * pitch, tau);
     const double am = amDepth[patch.ams] * c.tremoloDepth;
@@ -275,6 +287,7 @@ void Press78Engine::reset() noexcept {
     analog_.reset();
     position_ = 0.0; nextTick_ = 0; hostTime_ = 0.0;
     globalLfoPhase_ = 0.0; chorusPhase_ = 0.0;
+    lastNote_ = {}; portamentoCountdown_ = 0;
     effectivePitchModel_ = controls_.pitchModel;
     effectiveSustainMode_ = controls_.sustainMode;
     originalSustain_ = patch_.sustain;
@@ -358,6 +371,13 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
         tail->voice = *target; tail->remaining = 48;
     }
     target->configure(patch_, note, velocity, ++serial_);
+    auto& previous = lastNote_[source == 1 ? 1 : 0];
+    if (controls_.portamento && previous != 0) {
+        target->glideOffset = (previous - note) * 256;
+        target->glideStep = (note - previous) * (1 << controls_.portamentoSpeed);
+        applyGlide(*target);
+    }
+    previous = note;
     if (effectivePitchModel_ == 1) target->updateOriginalPitch(pitchSteps_);
     if (effectiveSustainMode_ == 1) target->updateRelease(originalSustain_);
     target->source = source;
@@ -405,6 +425,22 @@ void Press78Engine::allSoundOff() noexcept {
     originalSustain_ = patch_.sustain;
     applyPendingPitchModel();
     applyPendingSustainMode();
+}
+
+void Press78Engine::applyGlide(Voice& voice) noexcept {
+    voice.glideSteps = heardGlideSteps(voice.glideOffset);
+    if (effectivePitchModel_ == 1) voice.updateOriginalPitch(pitchSteps_);
+    else voice.glideMultiplier = std::pow(2.0, voice.glideSteps / 384.0);
+}
+
+void Press78Engine::servicePortamento() noexcept {
+    for (auto& voice : voices_) {
+        if (!voice.active || voice.glideStep == 0) continue;
+        const int before = voice.glideOffset;
+        voice.glideOffset += voice.glideStep;
+        if ((before < 0) != (voice.glideOffset < 0)) voice.glideOffset = voice.glideStep = 0;
+        if (heardGlideSteps(voice.glideOffset) != voice.glideSteps) applyGlide(voice);
+    }
 }
 
 bool Press78Engine::pitchIdle() const noexcept {
@@ -499,6 +535,10 @@ double Press78Engine::synthesizeTick() noexcept {
     voiceControls_.triangleLfo = controls_.triangleLfo;
     voiceControls_.globalLfo = controls_.globalLfo;
     voiceControls_.envelopeReverb = controls_.envelopeReverb;
+    if (--portamentoCountdown_ <= 0) {
+        portamentoCountdown_ = kPortamentoServiceTicks;
+        servicePortamento();
+    }
     const double global = std::sin(globalLfoPhase_);
     double sum = 0.0;
     for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global);

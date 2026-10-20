@@ -51,6 +51,10 @@ struct Controls {
     // Legacy0 holds released keys under the pedal. Original1 selects RR/SRR
     // immediately; it uses the existing approximate envelope timing law.
     int sustainMode = 0;
+    // PSS-780 Portamento effect: speed 1 (slow)..5 (fast), panel default 3.
+    // The glide law is the keyboard program's; its service period is estimated.
+    bool portamento = false;
+    int portamentoSpeed = 3;
     // User-selected envelope-Reverb estimate, default on in both hosts.
     // Native reference callers may disable it; this is not a new host parameter.
     // Carrier EG >=18dB during release caps both operators at native RR4/RKS.
@@ -125,6 +129,7 @@ public:
 
 private:
     friend struct Press78SustainTestAccess;
+    friend struct Press78PortamentoTestAccess;
     struct Envelope {
         double attenuation = 96.0, attackMul = 0.0, decay1 = 0.0;
         double decay2 = 0.0, release = 0.0, reverbRelease = 0.0, target = 0.0;
@@ -142,6 +147,10 @@ private:
         double modStep = 0.0, carrierStep = 0.0;
         double modGain = 0.0, carrierGain = 0.0, feedback = 0.0;
         double velocity = 1.0;
+        // Portamento offset and per-service step in 1/256 semitone, as the
+        // firmware keeps them; the oscillators hear offset>>3 (1/32 semitone).
+        int glideOffset = 0, glideStep = 0, glideSteps = 0;
+        double glideMultiplier = 1.0; // Equal model only.
         std::uint64_t age = 0, ticks = 0;
         int note = 60, source = 0;
         bool active = false, held = false, released = false;
@@ -182,6 +191,11 @@ private:
     bool originalSustain_ = false;
     int effectivePitchModel_ = 0, pitchSteps_ = 0;
     int effectiveSustainMode_ = 0;
+    // Last note-on per source (0 = none yet: the firmware does not glide then).
+    std::array<int, 2> lastNote_{};
+    int portamentoCountdown_ = 0;
+    void servicePortamento() noexcept;
+    void applyGlide(Voice& voice) noexcept;
     bool pitchIdle() const noexcept;
     void applyPendingPitchModel() noexcept;
     void applyPendingSustainMode() noexcept;

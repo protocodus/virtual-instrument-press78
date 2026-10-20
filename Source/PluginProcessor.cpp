@@ -83,7 +83,7 @@ void Press78AudioProcessor::applyValues (const Values& v) noexcept
 {
     if (! appliedValid || ! std::equal (v.begin(), v.begin() + press78::kFirstNonPatchControl, applied.begin()))
         engine->setPatch (press78::patchFromValues (v), true); // retimbre held voices, as the Rack does
-    engine->setControls (press78::controlsFromValues (v, bend, wheel));
+    engine->setControls (press78::controlsFromValues (v, bend, wheel, portamentoSwitch));
     applied = v;
     appliedValid = true;
 }
@@ -105,6 +105,12 @@ bool Press78AudioProcessor::handleMidi (const juce::MidiMessage& m) noexcept
         engine->sustainPedal (false);
         bend = press78::kBendCentre;
         wheel = 0.0;
+        portamentoSwitch = -1;
+        return true;
+    }
+    else if (m.isController() && m.getControllerNumber() == 65)
+    {
+        portamentoSwitch = m.getControllerValue();
         return true;
     }
     else if (m.isPitchWheel())

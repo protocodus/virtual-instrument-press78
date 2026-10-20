@@ -66,6 +66,7 @@ private:
     bool appliedValid = false;
     int bend = press78::kBendCentre; // raw 14-bit wheel, from MIDI
     double wheel = 0.0;              // 0..1, from MIDI
+    int portamentoSwitch = -1;       // last CC65 value; -1 follows the control
     // Written on the host thread, polled by the editor timer.
     std::atomic<int> currentProgram { 0 };
 };

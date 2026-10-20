@@ -89,7 +89,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.35,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -178,7 +180,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.5,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -267,7 +271,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.4,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -356,7 +362,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.65,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -445,7 +453,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.6,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -534,7 +544,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.4,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -623,7 +635,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.5,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -712,7 +726,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.45,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -801,7 +817,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.4,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -890,7 +908,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.35,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -979,7 +999,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.45,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -1068,7 +1090,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.55,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -1157,7 +1181,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.45,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -1246,7 +1272,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.55,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -1335,7 +1363,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.4,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -1424,7 +1454,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.5,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -1513,7 +1545,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.35,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -1602,7 +1636,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.4,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -1691,7 +1727,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.5,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     },
     {
@@ -1780,7 +1818,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.45,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       }
     }
   ]

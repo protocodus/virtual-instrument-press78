@@ -117,6 +117,10 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 
 ## Version history
 
+### Unreleased — 0.1.3 — Portamento
+
+- Adds the PSS-780's **Portamento** effect with its five speeds (1 slow … 5 fast, default 3), switchable from the panel or MIDI CC65. Each new note glides from the previous note in a fixed time per speed, whatever the interval, as the keyboard's own program does. The glide's absolute timing is an estimate.
+
 ### Unreleased — 0.1.2 — hardware pitch-bend range
 
 - New instances, Init and the 100 `PSS` patches start with a ±1 semitone pitch wheel, the PSS-780's own reset value (owner's manual, printed pp. 10 and 39). Older songs that lack the setting keep ±2, and the modern presets keep their own ranges.
@@ -149,7 +153,7 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 
 ### Engine
 
-Both operators expose ratio, fine/coarse detune, four waveform families, raw envelope rates, key scaling and AM. Additional controls cover feedback, velocity, LFO phase/depth/delay, twelve-voice allocation, pitch bend, mod wheel, clock variation, analog output, tone, drive, chorus and stereo width. The Rack adapter adds separate MIDI/CV note ownership and Note/Gate/FM/Level CV inputs. All 64 active controls have explicit Reason automation mappings. The two former noise properties and their IDs remain reserved for compatibility; they are hidden and inert. The registry stays frozen in `Assets/rack-automation.json`; Volume/Tone retain MIDI CC7/74.
+Both operators expose ratio, fine/coarse detune, four waveform families, raw envelope rates, key scaling and AM. Additional controls cover feedback, velocity, LFO phase/depth/delay, twelve-voice allocation, pitch bend, mod wheel, clock variation, analog output, tone, drive, chorus and stereo width. The Rack adapter adds separate MIDI/CV note ownership and Note/Gate/FM/Level CV inputs. All 66 active controls have explicit Reason automation mappings. The two former noise properties and their IDs remain reserved for compatibility; they are hidden and inert. The registry stays frozen in `Assets/rack-automation.json`; Volume/Tone retain MIDI CC7/74.
 
 The initial port preserved the frozen Python raw-FM behavior. Starting with b11, a documented D1 endpoint correction and recording-supported modulation replace those corresponding hypotheses; the Python files remain frozen historical references. It adds fixed-storage voice management, short voice-stealing tails, continuous-control smoothing and host-rate conversion. The internal 48 kHz timebase, floating-point operators, envelope laws and detune mappings are modeling choices, not recovered chip internals. The legacy core has 32 internal samples of nominal reconstruction latency. The b14 instrument adds a final host converter outside 48k; its declared Rack latency is 126/32/236/256/512 frames at 44.1/48/88.2/96/192k. Clock controls also scale that physical delay; upward clock shifts can alias near-Nyquist energy. Clock drift is a controllable scenario, not a measurement of aged hardware. Memory faults and random digital bit corruption are not introduced as normal vintage behavior.
 
@@ -164,6 +168,10 @@ The enabled-by-default output circuit combines the selected shared asymmetric he
 Authentic DAC behavior, component tolerances and power sensitivity remain fidelity requirements despite removal of artificial noise. The selected output curve supplies deterministic signal-dependent color; its constants do not establish physical operating levels. A [research supply component](Docs/research/local-supply-model-2026-10-19.md) implements the documented sibling local rail filter with independent circuit checks. Its load and voltage-to-audio coupling remain unknown and are not connected to the audio engine.
 
 B14 preserves the established 48k output character across host rates through a fixed output bus and a final stereo converter. It intentionally changes non-48k audio and latency in existing documents; all 48k renders remain unchanged. [Adoption and A/B evidence](Docs/research/output-bus-b14-2026-10-19.md) separates improved host-rate consistency from still-unidentified DAC, BBD nonlinear and voltage-to-audio behavior.
+
+### Portamento
+
+The glide follows the PSS-780 program (`xg503b0-132`, read 2026-10-20; nothing from it is included). A note-on glides from the most recent note-on, held or released, when Portamento is on; the first note after reset does not glide. Its slot starts at the previous pitch and moves linearly in 1/256-semitone steps of `interval × 2^speed` per pass of the program's main loop, heard as 1/32-semitone pitch commands, until it reaches the new note. Every glide therefore takes `2^(8 − speed)` passes: 128, 64, 32, 16 and 8 for speeds 1–5. Chords glide note by note from the note played just before. The main loop is not paced by a timer and was not measured; Press78 assumes 2.5 ms per pass, giving 320/160/80/40/20 ms. CC65 values of 64 and above switch it on and lower values off, overriding the panel control until Reset All Controllers.
 
 ### Sustain pedal
 

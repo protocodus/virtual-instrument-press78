@@ -81,7 +81,9 @@ inline void writePatchValues(const Patch& p, ControlValues& v) noexcept {
 inline constexpr int kBendCentre = 8192;
 
 // bend is the raw 14-bit pitch wheel (0..16383) and wheel the mod wheel (0..1).
-inline Controls controlsFromValues(const ControlValues& v, int bend, double wheel) noexcept {
+// portamentoSwitch is the last CC65 value, or -1 to follow the Portamento control.
+inline Controls controlsFromValues(const ControlValues& v, int bend, double wheel,
+                                   int portamentoSwitch = -1) noexcept {
     const auto value = [&v](std::string_view id) { return v[controlIndex(id)]; };
     const auto integer = [&value](std::string_view id) { return static_cast<int>(std::lround(value(id))); };
     Controls c;
@@ -92,6 +94,9 @@ inline Controls controlsFromValues(const ControlValues& v, int bend, double whee
     c.modulationAmount = value("modulationAmount");
     c.polyphony = integer("polyphony");
     c.sustainMode = integer("sustainMode");
+    // The PSS-780 receives CC65 as the Portamento switch (Mode 00 MIDI chart).
+    c.portamento = portamentoSwitch < 0 ? integer("portamento") != 0 : portamentoSwitch >= 64;
+    c.portamentoSpeed = integer("portamentoSpeed");
     c.lfoRateHz = value("lfoRateHz");
     // The mod wheel adds Wheel to vibrato times its position to Pitch depth.
     c.vibratoDepth = std::min(4.0, value("vibratoDepth") + wheel * value("modWheelDepth"));

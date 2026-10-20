@@ -68,6 +68,8 @@
     "bendRange": 317,
     "modWheelDepth": 318,
     "pitchModel": 319,
-    "sustainMode": 320
+    "sustainMode": 320,
+    "portamento": 321,
+    "portamentoSpeed": 322
   }
 }

@@ -83,7 +83,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.8,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -174,7 +176,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.7,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -265,7 +269,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.7,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -356,7 +362,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.8,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -447,7 +455,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.8,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -538,7 +548,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.8,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -629,7 +641,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.8,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -720,7 +734,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.75,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -811,7 +827,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.8,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -902,7 +920,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.8,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -993,7 +1013,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.75,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -1084,7 +1106,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.8,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "pluck",
@@ -1175,7 +1199,9 @@
         "bendRange": 2,
         "modWheelDepth": 1.1,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "lead",
@@ -1266,7 +1292,9 @@
         "bendRange": 2,
         "modWheelDepth": 0.9,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "lead",
@@ -1357,7 +1385,9 @@
         "bendRange": 2,
         "modWheelDepth": 1.2,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "lead",
@@ -1448,7 +1478,9 @@
         "bendRange": 2,
         "modWheelDepth": 1.1,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "lead",
@@ -1539,7 +1571,9 @@
         "bendRange": 12,
         "modWheelDepth": 1.2,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "lead",
@@ -1630,7 +1664,9 @@
         "bendRange": 2,
         "modWheelDepth": 1,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "lead",
@@ -1721,7 +1757,9 @@
         "bendRange": 2,
         "modWheelDepth": 1,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "lead",
@@ -1812,7 +1850,9 @@
         "bendRange": 2,
         "modWheelDepth": 1,
         "pitchModel": 1,
-        "sustainMode": 1
+        "sustainMode": 1,
+        "portamento": 0,
+        "portamentoSpeed": 3
       },
       "tags": [
         "lead",

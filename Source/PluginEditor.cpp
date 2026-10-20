@@ -16,7 +16,7 @@ const std::vector<std::pair<juce::String, juce::StringArray>>& layout()
                        "car_rr", "car_srr", "car_lksHi", "car_lksLo", "car_rks", "car_amEnable", "car_dt2" } },
         { "Voice", { "feedback", "pms", "ams", "vibratoDelay", "vibrato", "sustain", "velocitySensitivity",
                      "velocityToModulation", "modulationAmount", "polyphony", "masterTuneCents", "bendRange",
-                     "modWheelDepth", "pitchModel" } },
+                     "modWheelDepth", "pitchModel", "portamento", "portamentoSpeed" } },
         { "LFO and clock", { "lfoRateHz", "vibratoDepth", "tremoloDepth", "lfoDelayScale", "triangleLfo",
                              "globalLfo", "clockOffsetPpm", "clockDriftPpm", "clockDriftRateHz" } },
         { "Output", { "toneCutoffHz", "drive", "chorusMode", "chorusMix", "chorusRateHz", "chorusDepthMs",

@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
+#include <memory>
 #include <set>
 #include <vector>
 
@@ -39,7 +40,8 @@ void setValue (Press78AudioProcessor& p, const char* id, float v)
 }
 
 // Plays a two-note phrase with a bend and wheel move, `block` frames at a time.
-std::vector<float> render (Press78AudioProcessor& p, int block, double rate = 48000.0)
+std::vector<float> render (Press78AudioProcessor& p, int block, double rate = 48000.0,
+                           std::vector<std::pair<int, juce::MidiMessage>> extra = {})
 {
     constexpr int total = 24000;
     p.setRateAndBufferSizeDetails (rate, block);
@@ -52,6 +54,7 @@ std::vector<float> render (Press78AudioProcessor& p, int block, double rate = 48
         { 15013, juce::MidiMessage::noteOff (1, 60) },
         { 15013, juce::MidiMessage::noteOff (1, 67) },
     };
+    events.insert (events.begin(), extra.begin(), extra.end());
     std::vector<float> out;
     juce::AudioBuffer<float> buffer (2, block);
     for (int start = 0; start < total; start += block)
@@ -217,6 +220,26 @@ void editorContract()
 }
 } // namespace
 
+void portamentoContract()
+{
+    const auto play = [] (float control, int cc)
+    {
+        Press78AudioProcessor p;
+        setValue (p, "portamento", control);
+        std::vector<std::pair<int, juce::MidiMessage>> extra;
+        if (cc >= 0)
+            extra.push_back ({ 0, juce::MidiMessage::controllerEvent (1, 65, cc) });
+        return render (p, 512, 48000.0, extra);
+    };
+    const auto off = play (0.0f, -1), on = play (1.0f, -1);
+    check (value (*std::make_unique<Press78AudioProcessor>(), "portamento") == 0.0f
+               && value (*std::make_unique<Press78AudioProcessor>(), "portamentoSpeed") == 3.0f,
+           "Portamento starts off at speed 3, as the PSS-780 resets");
+    check (on != off, "the Portamento control glides the second note");
+    check (play (0.0f, 127) == on, "CC65 on switches Portamento on");
+    check (play (1.0f, 0) == off, "CC65 off switches Portamento off");
+}
+
 int main()
 {
     juce::ScopedJuceInitialiser_GUI juce;
@@ -224,6 +247,7 @@ int main()
     programContract();
     stateContract();
     renderContract();
+    portamentoContract();
     editorContract();
     std::printf ("Press78 processor contracts: %d failure(s)\n", failures);
     return failures == 0 ? 0 : 1;

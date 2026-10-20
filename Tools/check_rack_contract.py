@@ -23,7 +23,7 @@ def main():
     device = args.device.resolve()
     schema = json.loads((ROOT/'Assets/controls.json').read_text())
     rows = {row['id']: row for row in schema['controls']}
-    assert len(rows) == len(schema['controls']) == 67
+    assert len(rows) == len(schema['controls']) == 69
     hidden={name for name,row in rows.items() if row.get('hidden')}
     assert hidden == {'noiseRms','noiseModel','sustainMode'}
     visible=set(rows)-hidden
