@@ -12,7 +12,7 @@ namespace press78 {
 struct Operator {
     int mul = 1;       // 0 means 1/2; otherwise integer ratio 1..15.
     int dt1 = 0;       // -7..7; behavioral law: 1.5 cents/step.
-    int tl = 0;        // 0..127 attenuation; values >=99 mute the operator.
+    int tl = 0;        // 0..127; the selected key-level law precedes the final 99 mute.
     int lksHi = 0, lksLo = 0, rks = 0;
     int ar = 63, d1r = 0, d2r = 0, d1l = 0;
     int rr = 10, srr = 5;
@@ -39,6 +39,10 @@ struct Controls {
     // Equal0 preserves the legacy continuous pitch law. Original1 uses the
     // verified firmware command table plus an empirical downstream grid law.
     int pitchModel = 0;
+    // Legacy0 keeps the earlier key-level curves. Original1 uses the PSS-780
+    // program's signed per-key TL offsets and saturation; 0.75 dB per code and
+    // the final 99 mute remain the existing model.
+    int keyLevelModel = 0;
     int midiPitchBend = -1;            // -1: standalone semitones; else14-bit raw.
     int midiBendRange = 2;             // 0..24; original positive spans1..12.
     // Original: masterTune rounds to3.125c before lookup (hardware +/-50c;
@@ -130,6 +134,7 @@ public:
     // A requested law change waits until voices and steal tails are idle.
     int effectivePitchModel() const noexcept { return effectivePitchModel_; }
     int effectiveSustainMode() const noexcept { return effectiveSustainMode_; }
+    int effectiveKeyLevelModel() const noexcept { return effectiveKeyLevelModel_; }
 
 private:
     friend struct Press78SustainTestAccess;
@@ -159,8 +164,8 @@ private:
         std::uint64_t age = 0, ticks = 0;
         int note = 60, source = 0;
         bool active = false, held = false, released = false;
-        void configure(const Patch&, int midi, int vel, std::uint64_t serial) noexcept;
-        void updatePatch(const Patch&) noexcept;
+        void configure(const Patch&, int midi, int vel, std::uint64_t serial, int keyLevelModel) noexcept;
+        void updatePatch(const Patch&, int keyLevelModel) noexcept;
         void updateRelease(bool sustain) noexcept;
         void updateOriginalPitch(int steps) noexcept;
         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
@@ -195,7 +200,7 @@ private:
     bool pedal_ = false, hasProcessed_ = false;
     bool originalSustain_ = false;
     int effectivePitchModel_ = 0, pitchSteps_ = 0;
-    int effectiveSustainMode_ = 0;
+    int effectiveSustainMode_ = 0, effectiveKeyLevelModel_ = 0;
     // Last note-on per source (0 = none yet: the firmware does not glide then).
     std::array<int, 2> lastNote_{};
     int portamentoCountdown_ = 0;
@@ -204,6 +209,7 @@ private:
     bool pitchIdle() const noexcept;
     void applyPendingPitchModel() noexcept;
     void applyPendingSustainMode() noexcept;
+    void applyPendingKeyLevelModel() noexcept;
     void refreshOriginalRelease() noexcept;
     void updatePitchControls() noexcept;
     void buildResampler() noexcept;

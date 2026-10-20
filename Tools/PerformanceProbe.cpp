@@ -15,7 +15,7 @@
 int main(int argc, char** argv) {
     bool realOnly = false;
     int pitchModel = -1;
-    int sustainMode = -1;
+    int sustainMode = -1, keyLevelModel = -1;
     for (int i = 1; i < argc; ++i) {
         const std::string arg = argv[i];
         if (arg == "--real-only") realOnly = true;
@@ -28,6 +28,11 @@ int main(int argc, char** argv) {
             const std::string value = argv[++i];
             if (value == "legacy" || value == "0") sustainMode = 0;
             else if (value == "original" || value == "1") sustainMode = 1;
+            else return 2;
+        } else if (arg == "--key-level-model" && i + 1 < argc) {
+            const std::string value = argv[++i];
+            if (value == "legacy" || value == "0") keyLevelModel = 0;
+            else if (value == "original" || value == "1") keyLevelModel = 1;
             else return 2;
         } else return 2;
     }
@@ -59,10 +64,11 @@ int main(int argc, char** argv) {
             c.chorusDepthMs=press78::RecordedChorusProfile::depthMs;
             c.drive=0;
             c.pitchModel=1;
-            c.sustainMode=1;
+            c.sustainMode=1; c.keyLevelModel=1;
         }
         if (pitchModel >= 0) c.pitchModel = pitchModel;
         if (sustainMode >= 0) c.sustainMode = sustainMode;
+        if (keyLevelModel >= 0) c.keyLevelModel = keyLevelModel;
         e->setPatch(p); e->setControls(c);
         for (int v = 0; v < voices; ++v) e->noteOn(48 + v, 100);
         std::array<float, 64> left{}, right{};
@@ -92,6 +98,7 @@ int main(int argc, char** argv) {
                   << "\",\"sample_rate\":" << sr << ",\"voices\":" << voices << ",\"blocks\":" << blocks
                   << ",\"pitch_model\":" << e->effectivePitchModel()
                   << ",\"sustain_mode\":" << e->effectiveSustainMode()
+                  << ",\"key_level_model\":" << e->effectiveKeyLevelModel()
                   << ",\"audio_seconds\":" << blocks * 64.0 / sr << ",\"wall_seconds\":" << seconds
                   << ",\"wall_fraction_of_realtime\":" << seconds / (blocks * 64.0 / sr)
                   << ",\"block_median_us\":" << percentile(.5) << ",\"block_p99_us\":" << percentile(.99)

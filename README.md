@@ -117,6 +117,10 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 
 ## Version history
 
+### Unreleased — 0.1.5 — PSS-780 key scaling
+
+- New instances, Init, the 100 `PSS` patches and the modern presets scale each operator's level across the keyboard with the PSS-780 program's own per-key tables. Most patches change by under 1 dB; Human Chorus, Human Voice 1, Strings and Soprano Sax are up to 4.3 dB different at the ends of the keyboard, and modulator changes of up to 5.8 dB alter brightness from low to high notes. Older songs that lack the setting keep the earlier curves.
+
 ### Unreleased — 0.1.4 — PSS-780 velocity curve
 
 - New instances, Init, the 100 `PSS` patches and the modern presets follow the PSS-780's own MIDI velocity curve: soft notes are louder than before (velocity 16 sits 15.75 dB below full instead of 18 dB, velocity 1 at 23.25 dB instead of 42 dB), and velocities from 32 up change by under 1 dB. Older songs that lack the setting keep the linear curve.
@@ -180,6 +184,10 @@ The glide follows the PSS-780 program (`xg503b0-132`, read 2026-10-20; nothing f
 ### Velocity
 
 With the Original velocity curve, a note's carrier level follows the table the PSS-780 program (`xg503b0-132`, bank 2 `$7890`) applies in its MIDI sound-source mode (Mode 99): a carrier attenuation of 31 TL codes below velocity 3, falling by one code at each of velocities 3, 4, 5, 6, 7, 9, 10, 12, 13, 15, 17, 19, 22, 24, 27, 30, 34, 37, 41, 46, 51, 56, 62, 68, 74, 80, 87, 94, 102, 111 and 118, where it reaches zero. A TL code is taken as 0.75 dB, the engine's existing TL law. **Velocity to level** scales that attenuation in dB, so 1 is the hardware's curve and 0 is the keyboard mode (Mode 00), which ignores velocity. **Velocity to FM** is Press78's own and keeps its linear law. The firmware's saturation of TL plus addend at 127 is more than 95 dB down and is not modelled. The hidden **Original velocity curve** setting keeps the linear `(velocity/127)^sensitivity` law for older songs.
+
+### Key scaling
+
+With Original key scaling, each operator's level follows the per-key TL offsets the PSS-780 program adds before it sends a level to the sound chip. Its 16 lower and 16 upper tables, chosen by the patch's low and high key-level settings, give a signed offset per pair of keys: lower tables run from key 24 up to middle C, where every table is zero, and upper tables from middle C to key 102, holding their end values beyond. The sum saturates at 0 and 127, so a negative offset never lifts an operator above full level, and the result mutes the operator at 99 and above, as a raw TL of 99 does. The tables (`Source/DSP/FirmwareLevel.h`, from `Tools/generate_firmware_level.py`) are re-expressed from the program's results; no ROM bytes or code are included. A code is taken as 0.75 dB, the engine's existing TL law. The [b13 comparison](Docs/research/hardware-key-level-b13-2026-10-19.md) against an old recording failed its adoption gate on Bowed Bass by about 0.2 dB while improving the 100-patch average; the owner chose to ship the keyboard's own tables regardless. The hidden **Original key scaling** setting keeps the earlier fitted curves for older songs, and a change waits until held notes, releases and steal fades finish.
 
 ### Sustain pedal
 

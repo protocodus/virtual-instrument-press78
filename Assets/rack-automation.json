@@ -71,6 +71,7 @@
     "sustainMode": 320,
     "portamento": 321,
     "portamentoSpeed": 322,
-    "velocityCurve": 323
+    "velocityCurve": 323,
+    "keyLevelModel": 324
   }
 }

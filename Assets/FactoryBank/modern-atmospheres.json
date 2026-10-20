@@ -91,7 +91,8 @@
         "sustainMode": 1,
         "portamento": 0,
         "portamentoSpeed": 3,
-        "velocityCurve": 1
+        "velocityCurve": 1,
+        "keyLevelModel": 1
       }
     },
     {
@@ -183,7 +184,8 @@
         "sustainMode": 1,
         "portamento": 0,
         "portamentoSpeed": 3,
-        "velocityCurve": 1
+        "velocityCurve": 1,
+        "keyLevelModel": 1
       }
     },
     {
@@ -275,7 +277,8 @@
         "sustainMode": 1,
         "portamento": 0,
         "portamentoSpeed": 3,
-        "velocityCurve": 1
+        "velocityCurve": 1,
+        "keyLevelModel": 1
       }
     },
     {
@@ -367,7 +370,8 @@
         "sustainMode": 1,
         "portamento": 0,
         "portamentoSpeed": 3,
-        "velocityCurve": 1
+        "velocityCurve": 1,
+        "keyLevelModel": 1
       }
     },
     {
@@ -459,7 +463,8 @@
         "sustainMode": 1,
         "portamento": 0,
         "portamentoSpeed": 3,
-        "velocityCurve": 1
+        "velocityCurve": 1,
+        "keyLevelModel": 1
       }
     },
     {
@@ -551,7 +556,8 @@
         "sustainMode": 1,
         "portamento": 0,
         "portamentoSpeed": 3,
-        "velocityCurve": 1
+        "velocityCurve": 1,
+        "keyLevelModel": 1
       }
     },
     {
@@ -643,7 +649,8 @@
         "sustainMode": 1,
         "portamento": 0,
         "portamentoSpeed": 3,
-        "velocityCurve": 1
+        "velocityCurve": 1,
+        "keyLevelModel": 1
       }
     },
     {
@@ -735,7 +742,8 @@
         "sustainMode": 1,
         "portamento": 0,
         "portamentoSpeed": 3,
-        "velocityCurve": 1
+        "velocityCurve": 1,
+        "keyLevelModel": 1
       }
     },
     {
@@ -827,7 +835,8 @@
         "sustainMode": 1,
         "portamento": 0,
         "portamentoSpeed": 3,
-        "velocityCurve": 1
+        "velocityCurve": 1,
+        "keyLevelModel": 1
       }
     },
     {
@@ -919,7 +928,8 @@
         "sustainMode": 1,
         "portamento": 0,
         "portamentoSpeed": 3,
-        "velocityCurve": 1
+        "velocityCurve": 1,
+        "keyLevelModel": 1
       }
     }
   ]

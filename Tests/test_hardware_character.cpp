@@ -37,7 +37,7 @@ struct Press78SustainTestAccess {
     }
     static auto voice(const Patch& patch, int note) {
         Press78Engine::Voice v;
-        v.configure(patch, note, 127, 1);
+        v.configure(patch, note, 127, 1, 0);
         return v;
     }
     static auto voice(const Press78Engine& e, std::size_t slot = 0) {

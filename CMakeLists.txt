@@ -22,7 +22,7 @@ endif()
 
 # C is required in addition to C++: JUCE's macOS plug-in wrappers (AU and
 # Standalone) compile C/Objective-C sources with non-Xcode generators too.
-project(Press78 VERSION 0.1.4 LANGUAGES C CXX)
+project(Press78 VERSION 0.1.5 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -240,6 +240,9 @@ if(BUILD_TESTING)
     add_executable(Press78PortamentoTests Tests/test_portamento.cpp)
     target_link_libraries(Press78PortamentoTests PRIVATE Press78DSP)
     add_test(NAME Press78.Portamento COMMAND Press78PortamentoTests)
+    add_executable(Press78KeyLevelTests Tests/test_key_level.cpp)
+    target_link_libraries(Press78KeyLevelTests PRIVATE Press78DSP)
+    add_test(NAME Press78.KeyLevel COMMAND Press78KeyLevelTests)
     add_executable(Press78HardwareCharacterTests Tests/test_hardware_character.cpp)
     target_link_libraries(Press78HardwareCharacterTests PRIVATE Press78DSP)
     add_test(NAME Press78.HardwareCharacter COMMAND Press78HardwareCharacterTests)
@@ -286,6 +289,8 @@ if(BUILD_TESTING)
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_factory.py --check)
         add_test(NAME Press78.ChorusProfile COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_chorus_profile.py --check)
+        add_test(NAME Press78.FirmwareLevel COMMAND ${Python3_EXECUTABLE}
+            ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_firmware_level.py --check)
         add_test(NAME Press78.FirmwarePitch COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_firmware_pitch.py --check)
         add_test(NAME Press78.LocalSupply COMMAND ${Python3_EXECUTABLE}

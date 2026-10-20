@@ -1,6 +1,7 @@
 #include "Press78Engine.h"
 #include "RecordedChorus.h"
 #include "FirmwarePitch.h"
+#include "FirmwareLevel.h"
 #include "HardwareCharacter.h"
 
 #include <algorithm>
@@ -61,6 +62,12 @@ double level(const Operator& op, int midi) noexcept {
         slope = value == 0 ? 0.0 : (value < 8 ? value - 8 : value - 7);
     }
     return std::min(4.0, std::pow(10.0, -(op.tl * 0.75 + slope * distance * 0.0625) / 20.0));
+}
+double firmwareLevel(const Operator& op, int midi) noexcept {
+    const int command = firmware_level::command(op.tl, midi, (op.lksHi << 4) | op.lksLo);
+    // The signed lookup and saturation are the keyboard program's.
+    // This decibel transfer and silence boundary remain the existing model.
+    return command >= 99 ? 0.0 : std::pow(10.0, -(command * 0.75) / 20.0);
 }
 double step(const Operator& op, int note) noexcept {
     const double base = 440.0 * std::pow(2.0, (note - 69) / 12.0);
@@ -145,6 +152,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.masterTuneCents = bounded(c.masterTuneCents, -1200, 1200, 0);
     c.hostTuneCents = bounded(c.hostTuneCents, -1200, 1200, 0);
     c.pitchModel = std::clamp(c.pitchModel, 0, 1);
+    c.keyLevelModel = std::clamp(c.keyLevelModel, 0, 1);
     c.midiPitchBend = std::clamp(c.midiPitchBend, -1, 16383);
     c.midiBendRange = std::clamp(c.midiBendRange, 0, 24);
     c.velocitySensitivity = bounded(c.velocitySensitivity, 0, 2, 1);
@@ -221,19 +229,24 @@ double Press78Engine::Envelope::next(bool released, bool reverbKnee) noexcept {
     return std::pow(10.0, -std::max(0.0, attenuation) / 20.0);
 }
 
-void Press78Engine::Voice::configure(const Patch& p, int midi, int vel, std::uint64_t serial) noexcept {
+void Press78Engine::Voice::configure(const Patch& p, int midi, int vel, std::uint64_t serial, int keyLevelModel) noexcept {
     *this = Voice{};
     note = midi; velocity = vel / 127.0; age = serial;
     active = true; held = true;
-    updatePatch(p);
+    updatePatch(p, keyLevelModel);
 }
 
-void Press78Engine::Voice::updatePatch(const Patch& p) noexcept {
+void Press78Engine::Voice::updatePatch(const Patch& p, int keyLevelModel) noexcept {
     patch = p;
     modEnvelope.configure(p.modulator, note, p.sustain);
     carrierEnvelope.configure(p.carrier, note, p.sustain);
     modStep = step(p.modulator, note); carrierStep = step(p.carrier, note);
-    modGain = level(p.modulator, note); carrierGain = level(p.carrier, note) * 0.8;
+    if (keyLevelModel == 1) {
+        modGain = firmwareLevel(p.modulator, note);
+        carrierGain = firmwareLevel(p.carrier, note) * 0.8;
+    } else {
+        modGain = level(p.modulator, note); carrierGain = level(p.carrier, note) * 0.8;
+    }
     feedback = p.feedback == 0 ? 0.0 : 4.0 * pi * std::pow(2.0, p.feedback - 7);
 }
 
@@ -305,6 +318,7 @@ void Press78Engine::reset() noexcept {
     lastNote_ = {}; portamentoCountdown_ = 0;
     effectivePitchModel_ = controls_.pitchModel;
     effectiveSustainMode_ = controls_.sustainMode;
+    effectiveKeyLevelModel_ = controls_.keyLevelModel;
     originalSustain_ = patch_.sustain;
     updatePitchControls();
     gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_;
@@ -326,7 +340,7 @@ void Press78Engine::setPatch(const Patch& patch, bool updateActive) noexcept {
     patch_ = sanitizePatch(patch);
     if (!updateActive || flagChanged) originalSustain_ = patch_.sustain;
     if (updateActive) for (auto& voice : voices_) if (voice.active) {
-        voice.updatePatch(patch_);
+        voice.updatePatch(patch_, effectiveKeyLevelModel_);
         if (effectivePitchModel_ == 1) voice.updateOriginalPitch(pitchSteps_);
         if (effectiveSustainMode_ == 1) voice.updateRelease(originalSustain_);
     }
@@ -343,6 +357,7 @@ void Press78Engine::setChorusTime(double seconds) noexcept {
 
 void Press78Engine::setControls(const Controls& controls) noexcept {
     controls_ = sanitizeControls(controls);
+    applyPendingKeyLevelModel();
     applyPendingPitchModel();
     applyPendingSustainMode();
     updatePitchControls();
@@ -371,7 +386,11 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
     note = std::clamp(note, 0, 127);
     if (velocity <= 0) { noteOff(note, source); return; }
     velocity = std::min(velocity, 127);
-    if (patch_.carrier.tl >= 99 || patch_.carrier.ar == 0) return;
+    applyPendingKeyLevelModel();
+    const bool muted = effectiveKeyLevelModel_ == 0 ? patch_.carrier.tl >= 99
+        : firmware_level::command(patch_.carrier.tl, note,
+            (patch_.carrier.lksHi << 4) | patch_.carrier.lksLo) >= 99;
+    if (muted || patch_.carrier.ar == 0) return;
     applyPendingPitchModel();
     applyPendingSustainMode();
     Voice* target = nullptr;
@@ -385,7 +404,7 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
         for (auto& t : tails_) if (t.remaining < tail->remaining) tail = &t;
         tail->voice = *target; tail->remaining = 48;
     }
-    target->configure(patch_, note, velocity, ++serial_);
+    target->configure(patch_, note, velocity, ++serial_, effectiveKeyLevelModel_);
     target->velocityLevel = controls_.velocityCurve == 1 ? mode99VelocityLevel(velocity) : target->velocity;
     auto& previous = lastNote_[source == 1 ? 1 : 0];
     if (controls_.portamento && previous != 0) {
@@ -439,6 +458,7 @@ void Press78Engine::allSoundOff() noexcept {
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
     pedal_ = false;
     originalSustain_ = patch_.sustain;
+    applyPendingKeyLevelModel();
     applyPendingPitchModel();
     applyPendingSustainMode();
 }
@@ -472,6 +492,11 @@ void Press78Engine::applyPendingPitchModel() noexcept {
     // There are no oscillators to glide between laws. Starting the next voice
     // with the previous law's bend multiplier would otherwise double bend it.
     pitchMultiplier_ = targetPitch_;
+}
+
+void Press78Engine::applyPendingKeyLevelModel() noexcept {
+    if (effectiveKeyLevelModel_ != controls_.keyLevelModel && pitchIdle())
+        effectiveKeyLevelModel_ = controls_.keyLevelModel;
 }
 
 void Press78Engine::applyPendingSustainMode() noexcept {
@@ -535,6 +560,7 @@ void Press78Engine::buildResampler() noexcept {
 }
 
 double Press78Engine::synthesizeTick() noexcept {
+    applyPendingKeyLevelModel();
     applyPendingPitchModel();
     applyPendingSustainMode();
     // Tune smoothing is clocked with the envelopes/operators. Clock offset
