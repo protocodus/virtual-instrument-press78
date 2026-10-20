@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from modern_bank import load_modern, load_rack_startup, preset_relative_path
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.1b1'
+VERSION='0.1.2b1'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -19,7 +19,8 @@ REAL_DEFAULTS={'outputCircuit':1,'noiseModel':0,'noiseRms':0,
                'chorusDepthMs':math.hypot(0.0495126833338911,0.4943632948117077),
                'clockOffsetPpm':0,'clockDriftPpm':20,'clockDriftRateHz':.1,
                'lfoRateHz':5.24,'triangleLfo':1,'globalLfo':1,
-               'drive':0,'dcBlock':1,'outputLimit':1,'pitchModel':1,'sustainMode':1}
+               'drive':0,'dcBlock':1,'outputLimit':1,'pitchModel':1,'sustainMode':1,
+               'bendRange':1}
 FACTORY_CHARACTER=REAL_DEFAULTS
 
 
@@ -78,6 +79,9 @@ def specs():
         add(name,label,lo,hi,default,integer)
         if name=='chorusMode': rows[-1]['options']=['Studio','Recorded']
         if name=='noiseModel': rows[-1]['options']=['White','Circuit']
+        # PSS-780 owner's manual, printed pp.10 and 39: the wheel range is
+        # +/-1..12 semitones and ALL RESET sets 1. Older songs keep 2.
+        if name=='bendRange': rows[-1]['startup_default']=1
     # Missing properties in pre-b12 songs retain equal-tempered playback.
     # New Init/factory files explicitly select the Original pitch model.
     add('pitchModel','Pitch model',0,1,0,True)

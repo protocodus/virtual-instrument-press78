@@ -117,6 +117,10 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 
 ## Version history
 
+### Unreleased — 0.1.2 — hardware pitch-bend range
+
+- New instances, Init and the 100 `PSS` patches start with a ±1 semitone pitch wheel, the PSS-780's own reset value (owner's manual, printed pp. 10 and 39). Older songs that lack the setting keep ±2, and the modern presets keep their own ranges.
+
 ### Unreleased — 0.1.1 — selected release and output character
 
 - Applies the selected B listening options: a longer envelope-Reverb tail and shared asymmetric output headroom, enabled by default. No artificial noise is added.
@@ -183,7 +187,7 @@ The public development bank contains the 100 original parameter presets as `PSS 
 
 ### Plug-in front end
 
-The plug-in's parameter IDs are the control ids in `Assets/controls.json`, the same names as the Rack properties; `Source/PluginControls.h` is generated from that file by `Tools/generate_plugin_controls.py`. `Source/ControlMapping.h` maps the controls to the engine's patch and controls for both the plug-in and the demo renderer. Program 0 is Init and programs 1–100 are the factory voices; a program change sets the 36 sound controls and leaves performance and output controls, including Pitch model, alone, and editing a sound control retimbres held voices, as the Rack does. Pitch bend scales by Pitch bend range, and Original receives the raw 14-bit wheel as the firmware does; the mod wheel adds its position times Wheel to vibrato to Pitch depth (this mapping is the plug-in's own choice; the Rack adapter's is not in this repository). A new instance starts with Pitch model and the Original release policy on, as the Rack Init does, and CC64 reaches the engine as its raw value because Original treats any nonzero value as down. The release policy and the two inert noise ids stay as parameters so saved sessions load, but like the Rack panel the editor omits them. The programs are Init and the 100 `PSS` voices; the 50 modern presets are Rack patches only for now. The editor is a working one-control-per-parameter layout; the designed Rack panel below is not yet ported to it.
+The plug-in's parameter IDs are the control ids in `Assets/controls.json`, the same names as the Rack properties; `Source/PluginControls.h` is generated from that file by `Tools/generate_plugin_controls.py`. `Source/ControlMapping.h` maps the controls to the engine's patch and controls for both the plug-in and the demo renderer. Program 0 is Init and programs 1–100 are the factory voices; a program change sets the 36 sound controls and leaves performance and output controls, including Pitch model, alone, and editing a sound control retimbres held voices, as the Rack does. Pitch bend scales by Pitch bend range, which starts at ±1 semitone as on the PSS-780 after ALL RESET, and Original receives the raw 14-bit wheel as the firmware does; the mod wheel adds its position times Wheel to vibrato to Pitch depth (this mapping is the plug-in's own choice; the Rack adapter's is not in this repository). A new instance starts with Pitch model and the Original release policy on, as the Rack Init does, and CC64 reaches the engine as its raw value because Original treats any nonzero value as down. The release policy and the two inert noise ids stay as parameters so saved sessions load, but like the Rack panel the editor omits them. The programs are Init and the 100 `PSS` voices; the 50 modern presets are Rack patches only for now. The editor is a working one-control-per-parameter layout; the designed Rack panel below is not yet ported to it.
 
 ### Panel design
 

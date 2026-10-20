@@ -77,7 +77,7 @@ inline constexpr std::array<PluginControl, 67> kPluginControls{{
     {"outputCircuit", "Output circuit", 0.0, 1.0, 1.0, true, false, false, ""},
     {"dcBlock", "DC filter", 0.0, 1.0, 1.0, true, false, false, ""},
     {"outputLimit", "Output protection", 0.0, 1.0, 1.0, true, false, false, ""},
-    {"bendRange", "Pitch bend range", 0.0, 24.0, 2.0, true, false, false, ""},
+    {"bendRange", "Pitch bend range", 0.0, 24.0, 1.0, true, false, false, ""},
     {"modWheelDepth", "Wheel to vibrato", 0.0, 4.0, 1.0, false, false, false, ""},
     {"pitchModel", "Pitch model", 0.0, 1.0, 1.0, true, false, false, "Equal|Original"},
     {"sustainMode", "Original release policy", 0.0, 1.0, 1.0, true, false, true, "Legacy|Original"},

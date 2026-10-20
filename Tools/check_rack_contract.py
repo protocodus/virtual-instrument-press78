@@ -33,6 +33,8 @@ def main():
     assert schema['startup_profile']['values']['pitchModel']==1
     assert rows['sustainMode']['default']==0 and rows['sustainMode']['startup_default']==1
     assert schema['startup_profile']['values']['sustainMode']==1
+    assert rows['bendRange']['default']==2 and rows['bendRange']['startup_default']==1
+    assert schema['startup_profile']['values']['bendRange']==1
     info = (device/'info.lua').read_text()
     startup=load_rack_startup()
     assert schema['rack_startup']==startup
