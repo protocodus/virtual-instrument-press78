@@ -88,7 +88,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -184,7 +185,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -280,7 +282,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -376,7 +379,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -472,7 +476,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -568,7 +573,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -664,7 +670,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -760,7 +767,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -856,7 +864,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -952,7 +961,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -1048,7 +1058,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -1144,7 +1155,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "pluck",
@@ -1240,7 +1252,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "lead",
@@ -1336,7 +1349,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "lead",
@@ -1432,7 +1446,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "lead",
@@ -1528,7 +1543,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "lead",
@@ -1624,7 +1640,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "lead",
@@ -1720,7 +1737,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "lead",
@@ -1816,7 +1834,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "lead",
@@ -1912,7 +1931,8 @@
         "portamentoSpeed": 3,
         "velocityCurve": 1,
         "keyLevelModel": 1,
-        "allocationModel": 1
+        "allocationModel": 1,
+        "chorusCircuit": 1
       },
       "tags": [
         "lead",

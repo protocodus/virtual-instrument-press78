@@ -69,7 +69,7 @@ int main(int argc, char** argv) {
             c.chorusDepthMs=press78::RecordedChorusProfile::depthMs;
             c.drive=0;
             c.pitchModel=1;
-            c.sustainMode=1; c.keyLevelModel=1; c.allocationModel=1;
+            c.sustainMode=1; c.keyLevelModel=1; c.allocationModel=1; c.chorusCircuit=1;
         }
         if (pitchModel >= 0) c.pitchModel = pitchModel;
         if (sustainMode >= 0) c.sustainMode = sustainMode;

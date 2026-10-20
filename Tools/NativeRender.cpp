@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
             const std::string arg = argv[i];
             if (arg == "--real") {
                 controls.pitchModel = 1; controls.sustainMode = 1; controls.keyLevelModel = 1;
-                controls.allocationModel = 1;
+                controls.allocationModel = 1; controls.chorusCircuit = 1;
                 controls.clockOffsetPpm = 0; controls.clockDriftPpm = 20;
                 controls.clockDriftRateHz = 0.1; controls.outputCircuit = true;
                 controls.envelopeReverb = true;
@@ -106,6 +106,11 @@ int main(int argc, char** argv) {
                 else if (value == "original" || value == "1") controls.allocationModel = 1;
                 else throw std::runtime_error("--allocation-model requires legacy|original|0|1");
             }
+            else if (arg == "--chorus-circuit") {
+                if (value == "legacy" || value == "0") controls.chorusCircuit = 0;
+                else if (value == "pss270" || value == "1") controls.chorusCircuit = 1;
+                else throw std::runtime_error("--chorus-circuit requires legacy|pss270|0|1");
+            }
             else if (arg == "--bend") controls.pitchBendSemitones = std::stod(value);
             else if (arg == "--midi-bend") controls.midiPitchBend = std::stoi(value);
             else if (arg == "--bend-range") controls.midiBendRange = std::stoi(value);
@@ -126,7 +131,7 @@ int main(int argc, char** argv) {
         }
         if (output.empty() || rate < 8000 || rate > 192000 || !std::isfinite(duration) || duration <= 0 || duration > 120
             || !std::isfinite(gate) || gate < 0 || note < 0 || note > 127 || velocity < 0 || velocity > 127)
-            throw std::runtime_error("Usage: press78_render --output file.wav [--raw 66hex] [--real] [--transparent] [--rate 48000] [--note 60] [--velocity 100] [--seconds 3] [--gate 1.5] [--pitch-model equal|original] [--sustain-mode legacy|original] [--key-level-model legacy|original] [--allocation-model legacy|original] [--bend semitones] [--midi-bend -1..16383] [--bend-range 0..24] [--fine-cents cents] [--host-tune-cents cents] [--envelope-reverb 0|1]");
+            throw std::runtime_error("Usage: press78_render --output file.wav [--raw 66hex] [--real] [--transparent] [--rate 48000] [--note 60] [--velocity 100] [--seconds 3] [--gate 1.5] [--pitch-model equal|original] [--sustain-mode legacy|original] [--key-level-model legacy|original] [--allocation-model legacy|original] [--chorus-circuit legacy|pss270] [--bend semitones] [--midi-bend -1..16383] [--bend-range 0..24] [--fine-cents cents] [--host-tune-cents cents] [--envelope-reverb 0|1]");
         const auto frames = static_cast<std::size_t>(std::llround(duration * rate));
         if (!frames) throw std::runtime_error("Duration rounds to zero samples");
         const auto gateFrame = gate >= duration ? frames : static_cast<std::size_t>(std::llround(gate * rate));

@@ -117,6 +117,10 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 
 ## Version history
 
+### Unreleased — 0.1.7 — BBD chorus filters
+
+- New instances, Init, the 100 `PSS` patches and the modern presets pass the Recorded chorus's delayed signal through the bucket-brigade chorus's analog filters, with values borrowed from the PSS-270 schematic. The chorus shimmer loses its fizz: the stereo difference signal is about 12 dB lower from 5 to 8 kHz and about 2 dB higher from 1.5 to 3 kHz, and each channel changes by 1 to 2 dB in those bands. Studio chorus and patches without chorus are unchanged. Older songs that lack the setting keep the unfiltered delay.
+
 ### Unreleased — 0.1.6 — PSS-780 voice allocation
 
 - New instances, Init, the 100 `PSS` patches and the modern presets allocate voices as the PSS-780 does in its normal keyboard mode. Replaying a note cuts that note's own release instead of stacking a second copy on it, so fast repeats on long-release sounds no longer build up or phase; a held key sent again is ignored; and a new note takes a released voice before stealing a held one. Older songs that lack the setting keep the previous free-voice-then-oldest policy.
@@ -204,6 +208,8 @@ B13 adds the [Original release-pedal policy](Docs/research/sustain-policy-2026-1
 ### Chorus
 
 Two realtime chorus modes are available. **Studio** preserves the original creative delay effect. **Recorded** implements the frozen v3 effective stereo transfer from the PSS-780 recording: roughly 0.49–1.51 ms delay, a continuous 0.954647 Hz LFO, second-harmonic motion and direct mid leakage. It adds no whole-output latency. The rate and depth remain editable. This is a recording-derived approximation, not an identified MN3206 circuit. The offline v4 branch correction remains a reference because an exact causal port would need about 21.83 ms lookahead compensation at 48 kHz.
+
+With the PSS-270 chorus circuit (`Source/DSP/ChorusCircuit.h`), Recorded mode's delayed signal also passes the BBD's analog wet path, with values read from the PSS-270 schematic (KEC-11463). The PSS-780 uses the same MN3206/MN3102 pair and carries the PSS-270's clock and inverter parts, but its own filter values are not documented, so these are borrowed. Before the delay, a 0.1 µF / 1.5 kΩ / 33 nF network into the 50 kΩ bias puts poles at 23.5 Hz and 4.35 kHz. After it, a 0.1 µF coupling into 50 kΩ feeds a unity-gain Sallen-Key low-pass (22 kΩ + 22 kΩ, 12 nF, 680 pF; 2.53 kHz, Q 2.1). Together they give −1.6 dB at 100 Hz, +4.1 dB at 2.39 kHz, −8.2 dB at 4 kHz and −19 dB at 6 kHz relative to 1 kHz. The right channel's inverted copy also passes the inverter's 47 kΩ / 220 pF pole at 15.4 kHz. Two conventions, not circuit values, keep the recorded fit intact: the filters are normalised to unity at 1 kHz, where the fit's wet gain was identified, and their 0.092 ms group delay at 1 kHz comes off the recorded delay. The pre-delay filter runs after the delay read; at the recorded depth the delay's motion shifts pitch by at most 0.4 %, so the order is inaudible. The hidden **Chorus wet-path circuit** setting keeps the unfiltered delay for older songs.
 
 ### Noise
 

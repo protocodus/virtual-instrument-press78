@@ -160,6 +160,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.modulationAmount = bounded(c.modulationAmount, 0, 2, 1);
     c.polyphony = std::clamp(c.polyphony, 1, 12);
     c.allocationModel = std::clamp(c.allocationModel, 0, 1);
+    c.chorusCircuit = std::clamp(c.chorusCircuit, 0, 1);
     c.sustainMode = std::clamp(c.sustainMode, 0, 1);
     c.velocityCurve = std::clamp(c.velocityCurve, 0, 1);
     c.portamentoSpeed = std::clamp(c.portamentoSpeed, 1, 5);
@@ -303,6 +304,7 @@ void Press78Engine::prepare(double sampleRate) noexcept {
     sampleRate_ = bounded(sampleRate, 8000.0, 192000.0, 48000.0);
     buildResampler();
     analog_.prepare(sampleRate_);
+    chorusCircuit_.prepare(sampleRate_);
     gainSmoothing_ = 1.0 - std::exp(-1.0 / (sampleRate_ * 0.005));
     dcCoefficient_ = std::exp(-tau * 10.0 / sampleRate_);
     setControls(controls_);
@@ -314,6 +316,7 @@ void Press78Engine::reset() noexcept {
     for (auto& t : tails_) t = Tail{};
     history_.fill(0.0); delay_.fill(0.0);
     analog_.reset();
+    chorusCircuit_.reset();
     position_ = 0.0; nextTick_ = 0; hostTime_ = 0.0;
     globalLfoPhase_ = 0.0; chorusPhase_ = 0.0;
     lastNote_ = {}; portamentoCountdown_ = 0;
@@ -328,6 +331,7 @@ void Press78Engine::reset() noexcept {
     voiceControls_ = controls_;
     currentToneCoefficient_ = toneCoefficient_;
     circuitMix_ = controls_.outputCircuit ? 1.0 : 0.0;
+    chorusCircuitMix_ = static_cast<double>(controls_.chorusCircuit);
     recordedChorusMix_ = static_cast<double>(controls_.chorusMode);
     drive_ = controls_.drive; chorusMix_ = controls_.chorusMix;
     chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
@@ -371,6 +375,7 @@ void Press78Engine::setControls(const Controls& controls) noexcept {
         gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_; voiceControls_ = controls_;
         currentToneCoefficient_ = toneCoefficient_;
         circuitMix_ = controls_.outputCircuit ? 1.0 : 0.0;
+        chorusCircuitMix_ = static_cast<double>(controls_.chorusCircuit);
         recordedChorusMix_ = static_cast<double>(controls_.chorusMode);
         drive_ = controls_.drive; chorusMix_ = controls_.chorusMix;
         chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
@@ -518,6 +523,7 @@ void Press78Engine::allSoundOff() noexcept {
     for (auto& t : tails_) t.remaining = 0;
     history_.fill(0.0); delay_.fill(0.0);
     analog_.reset();
+    chorusCircuit_.reset();
     tone1_ = tone2_ = 0.0;
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
     pedal_ = false;
@@ -718,6 +724,7 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     chorusRate_ += (controls_.chorusRateHz - chorusRate_) * gainSmoothing_;
     chorusDepth_ += (controls_.chorusDepthMs - chorusDepth_) * gainSmoothing_;
     recordedChorusMix_ += (static_cast<double>(controls_.chorusMode) - recordedChorusMix_) * gainSmoothing_;
+    chorusCircuitMix_ += (static_cast<double>(controls_.chorusCircuit) - chorusCircuitMix_) * gainSmoothing_;
     width_ += (controls_.stereoWidth - width_) * gainSmoothing_;
     if (controls_.toneCutoffHz != 0.0) {
         tone1_ += currentToneCoefficient_ * (mono - tone1_);
@@ -735,15 +742,25 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     const double base = 0.012 * sampleRate_;
     const double a = readDelay(base + depth * std::sin(chorusPhase_));
     const double b = readDelay(base + depth * std::sin(chorusPhase_ + pi * 0.5));
-    double side = 0.5 * (a - b) * chorusMix_ * width_;
+    double side = 0.5 * (a - b) * chorusMix_ * width_, sideRight = side;
+    // The sibling wet-path filters always run, so switching them or the mode
+    // never replays stale filter memory.
+    const double recordedMs = RecordedChorus::delayMilliseconds(chorusPhase_, chorusDepth_);
+    double filteredRight = 0.0;
+    const double filtered = chorusCircuit_.process(
+        readDelay((recordedMs * 0.001 - chorusCircuit_.delaySeconds()) * sampleRate_), filteredRight);
     // Mode0 retains the original arithmetic path exactly. The recorded mode
     // is an effective transfer, not the physical BBD or the acausal v4 FIR.
     if (recordedChorusMix_ > 0.0) {
-        const double delay = RecordedChorus::delayMilliseconds(chorusPhase_, chorusDepth_) * 0.001 * sampleRate_;
-        const double recorded = RecordedChorus::side(mono, readDelay(delay)) * chorusMix_ * width_;
+        const double plain = readDelay(recordedMs * 0.001 * sampleRate_);
+        const double wet = plain + chorusCircuitMix_ * (filtered - plain);
+        const double wetRight = plain + chorusCircuitMix_ * (filteredRight - plain);
+        const double recorded = RecordedChorus::side(mono, wet) * chorusMix_ * width_;
+        const double recordedRight = RecordedChorus::side(mono, wetRight) * chorusMix_ * width_;
+        sideRight += recordedChorusMix_ * (recordedRight - sideRight);
         side += recordedChorusMix_ * (recorded - side);
     }
-    left = mono + side; right = mono - side;
+    left = mono + side; right = mono - sideRight;
     delayWrite_ = (delayWrite_ + 1) % kDelaySize;
     chorusPhase_ = std::fmod(chorusPhase_ + tau * chorusRate_ / sampleRate_, tau);
     if (controls_.dcBlock) {

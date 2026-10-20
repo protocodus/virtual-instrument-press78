@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 #include "AnalogOutput.h"
+#include "ChorusCircuit.h"
 #include "FirmwareAllocation.h"
 
 // Independently written port of the documented PSS-780 behavioral experiment.
@@ -86,6 +87,9 @@ struct Controls {
     double toneCutoffHz = 14000.0;     // 20..0.9*Nyquist; 0 bypasses filter.
     double drive = 0.0;               // 0..1 creative tanh saturation; 0 bypass.
     int chorusMode = 0;              // 0 Studio legacy;1 recorded effective v3.
+    // Legacy0 keeps the recorded fit's full-band wet signal. Sibling1 band-
+    // limits it through the PSS-270 BBD wet-path filters (ChorusCircuit.h).
+    int chorusCircuit = 0;
     double chorusMix = 0.0;           // 0..1, scales the selected stereo side.
     double chorusRateHz = 0.65;       // 0.05..8.
     double chorusDepthMs = 2.0;       // 0..8. Studio12ms; recorded measured harmonic law.
@@ -198,7 +202,8 @@ private:
     double gain_ = 0.25, pitchMultiplier_ = 1.0, targetPitch_ = 1.0;
     double tone1_ = 0.0, tone2_ = 0.0, toneCoefficient_ = 0.0;
     double currentToneCoefficient_ = 0.0, drive_ = 0.0, chorusMix_ = 0.0;
-    double circuitMix_ = 1.0;
+    double circuitMix_ = 1.0, chorusCircuitMix_ = 0.0;
+    ChorusCircuit chorusCircuit_{};
     double recordedChorusMix_ = 0.0;  // Smoothed mode blend; no history reset.
     double chorusRate_ = 0.65, chorusDepth_ = 2.0, width_ = 1.0;
     double dcInputL_ = 0.0, dcInputR_ = 0.0, dcOutputL_ = 0.0, dcOutputR_ = 0.0;

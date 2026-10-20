@@ -1,6 +1,6 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.6b1",
+  "version": "0.1.7b1",
   "startup_profile": {
     "name": "Real",
     "values": {
@@ -25,7 +25,8 @@
       "bendRange": 1,
       "velocityCurve": 1,
       "keyLevelModel": 1,
-      "allocationModel": 1
+      "allocationModel": 1,
+      "chorusCircuit": 1
     }
   },
   "rack_startup": {
@@ -727,6 +728,22 @@
       "startup_default": 1,
       "hidden": true,
       "description": "Compatibility policy: Original follows the PSS-780 Mode 00 voice allocation; Legacy takes free voices, then steals the oldest."
+    },
+    {
+      "id": "chorusCircuit",
+      "label": "Chorus wet-path circuit",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "controls",
+      "options": [
+        "Legacy",
+        "PSS-270"
+      ],
+      "startup_default": 1,
+      "hidden": true,
+      "description": "Compatibility policy: PSS-270 filters the Recorded chorus wet signal through the sibling BBD wet-path circuit; Legacy keeps the full-band fit."
     }
   ]
 }
