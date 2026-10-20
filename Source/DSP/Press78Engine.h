@@ -98,6 +98,10 @@ struct Controls {
     // 0 Preamp keeps the signal at the top of the volume slider, as before;
     // 1 AUX and 2 Phones add the amplifier and that jack (AmplifierCircuit.h).
     int outputJack = 0;
+    // Legacy0 ticks the chip core at 48 kHz, a modelling choice. YM3420_1
+    // ticks it at the chip's own rate, so FM partials above its Nyquist fold
+    // back where the hardware's do. Applied once voices are idle.
+    int chipRate = 0;
     // Deprecated compatibility fields for old patches/callers. Sanitization
     // always sets both to zero; the instrument generates no additive noise.
     int noiseModel = 0;
@@ -111,8 +115,16 @@ Controls sanitizeControls(Controls controls) noexcept;
 class Press78Engine {
 public:
     static constexpr std::size_t kMaxVoices = 12;
-    static constexpr double kInternalRate = 48000.0; // Modeling choice, not OPU fact.
-    static constexpr int kResamplerDelay = 32;       // Internal samples.
+    static constexpr double kInternalRate = 48000.0; // Legacy chip rate: a modeling choice, not OPU fact.
+    // The PSS-780's 5.5 MHz OPU clock over 96. PSS-680 recordings (the same
+    // YM3420) place 205 alias lines in 63 notes at 96 x fs = 5.4992 MHz, within
+    // 150 ppm of that clock; dividers 95 or 97 would need a 1 % clock error.
+    // At this rate 2^20 x f0/fs falls within 0.2 of an integer for the
+    // measured notes: a 20-bit phase step per sample (research 2026-10-20).
+    static constexpr double kYm3420Rate = 5.5e6 / 96.0;
+    // Legacy ticks. Either chip rate delays by this time, 32/48000 s, so the
+    // reported latency does not depend on Controls::chipRate.
+    static constexpr int kResamplerDelay = 32;
 
     Press78Engine() noexcept;
     void prepare(double sampleRate) noexcept; // 8000..192000; resets state.
@@ -139,8 +151,9 @@ public:
     std::size_t activeVoices() const noexcept;
     double sampleRate() const noexcept { return sampleRate_; }
     // Nominal-clock resampler latency; effects add their own wet-only delay.
-    // Clock variation also scales the32-tick delay (less than3.1% at limits).
+    // Clock variation also scales the 32/48000 s delay (less than 3.1% at limits).
     int latencySamples() const noexcept;
+    double chipRate() const noexcept { return chipRate_; }
     const Patch& patch() const noexcept { return patch_; }
     const Controls& controls() const noexcept { return controls_; }
     // A requested law change waits until voices and steal tails are idle.
@@ -148,18 +161,20 @@ public:
     int effectiveSustainMode() const noexcept { return effectiveSustainMode_; }
     int effectiveKeyLevelModel() const noexcept { return effectiveKeyLevelModel_; }
     int effectiveAllocationModel() const noexcept { return effectiveAllocationModel_; }
+    int effectiveChipRate() const noexcept { return effectiveChipRate_; }
 
 private:
     friend struct Press78SustainTestAccess;
     friend struct Press78PortamentoTestAccess;
     friend struct Press78AllocationTestAccess;
+    friend struct Press78ChipRateTestAccess;
     struct Envelope {
         double attenuation = 96.0, attackMul = 0.0, decay1 = 0.0;
         double decay2 = 0.0, release = 0.0, reverbRelease = 0.0, target = 0.0;
         int stage = 0;
         bool instantAttack = false, disabled = true, finished = false;
-        void configure(const Operator&, int midi, bool sustain) noexcept;
-        void updateRelease(const Operator&, int midi, bool sustain) noexcept;
+        void configure(const Operator&, int midi, bool sustain, double tickRate) noexcept;
+        void updateRelease(const Operator&, int midi, bool sustain, double tickRate) noexcept;
         double next(bool released, bool reverbKnee = false) noexcept;
     };
     struct Voice {
@@ -176,9 +191,10 @@ private:
         int glideOffset = 0, glideStep = 0, glideSteps = 0;
         double glideMultiplier = 1.0; // Equal model only.
         std::uint64_t age = 0, ticks = 0;
+        double tickRate = kInternalRate; // Fixed while the voice sounds.
         int note = 60, source = 0;
         bool active = false, held = false, released = false;
-        void configure(const Patch&, int midi, int vel, std::uint64_t serial, int keyLevelModel) noexcept;
+        void configure(const Patch&, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept;
         void updatePatch(const Patch&, int keyLevelModel) noexcept;
         void updateRelease(bool sustain) noexcept;
         void updateOriginalPitch(int steps) noexcept;
@@ -191,7 +207,7 @@ private:
     static constexpr std::size_t kDelaySize = 4096;
     static constexpr int kSincTaps = 64;
     static constexpr int kSincPhases = 256;
-    static_assert(kHistory >= kResamplerDelay + 32, "History must retain every causal sinc tap");
+    static_assert(kHistory >= kResamplerDelay * kYm3420Rate / kInternalRate + 34, "History must retain every causal sinc tap");
     std::array<Voice, kMaxVoices> voices_{};
     std::array<Tail, kMaxVoices> tails_{};
     std::array<double, kHistory> history_{};
@@ -202,6 +218,8 @@ private:
     Controls voiceControls_{};
     AnalogOutput analog_{};
     double sampleRate_ = 48000.0, position_ = 0.0, hostTime_ = 0.0;
+    double chipRate_ = kInternalRate, resamplerDelay_ = kResamplerDelay, tickSmoothing_ = 0.0;
+    int portamentoServiceTicks_ = 0, fadeTicks_ = 48, effectiveChipRate_ = 0;
     double globalLfoPhase_ = 0.0, chorusPhase_ = 0.0;
     double gain_ = 0.25, pitchMultiplier_ = 1.0, targetPitch_ = 1.0;
     double tone1_ = 0.0, tone2_ = 0.0, toneCoefficient_ = 0.0;
@@ -243,6 +261,8 @@ private:
     void applyPendingPitchModel() noexcept;
     void applyPendingSustainMode() noexcept;
     void applyPendingKeyLevelModel() noexcept;
+    void applyPendingChipRate() noexcept;
+    void setChipRate(int model) noexcept;
     void refreshOriginalRelease() noexcept;
     void updatePitchControls() noexcept;
     void buildResampler() noexcept;

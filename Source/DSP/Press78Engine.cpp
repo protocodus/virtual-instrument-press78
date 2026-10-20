@@ -23,7 +23,7 @@ constexpr double rateScaling[4] = {0.0, 0.0625, 0.125, 0.25};
 // zero. Every glide thus takes 2^(8-speed) passes whatever the interval:
 // 128, 64, 32, 16, 8 for speeds 1..5. The pass is not timer-paced and was not
 // measured; 2.5 ms (speed 3 = 80 ms) is an estimate, the one unrecovered value.
-constexpr int kPortamentoServiceTicks = 120; // 2.5 ms at the 48 kHz internal rate.
+constexpr double kPortamentoServiceSeconds = 0.0025;
 
 // PSS-780 program (xg503b0-132, bank2 $7890, read 2026-10-20): in Mode 99 a
 // note's carrier TL gains a velocity addend of 31 codes below velocity 3,
@@ -69,17 +69,17 @@ double firmwareLevel(const Operator& op, int midi) noexcept {
     // This decibel transfer and silence boundary remain the existing model.
     return command >= 99 ? 0.0 : std::pow(10.0, -(command * 0.75) / 20.0);
 }
-double step(const Operator& op, int note) noexcept {
+double step(const Operator& op, int note, double rate) noexcept {
     const double base = 440.0 * std::pow(2.0, (note - 69) / 12.0);
     const double ratio = op.mul == 0 ? 0.5 : static_cast<double>(op.mul);
     const double cents = (op.dt2 ? 600.0 : 0.0) + op.dt1 * 1.5;
-    return tau * base * ratio * std::pow(2.0, cents / 1200.0) / Press78Engine::kInternalRate;
+    return tau * base * ratio * std::pow(2.0, cents / 1200.0) / rate;
 }
-double originalStep(const Operator& op, int note, int steps) noexcept {
+double originalStep(const Operator& op, int note, int steps, double rate) noexcept {
     const double base = firmware_pitch::frequency(note, steps);
     const double ratio = op.mul == 0 ? 0.5 : static_cast<double>(op.mul);
     const double cents = (op.dt2 ? 600.0 : 0.0) + op.dt1 * 1.5;
-    return tau * base * ratio * std::pow(2.0, cents / 1200.0) / Press78Engine::kInternalRate;
+    return tau * base * ratio * std::pow(2.0, cents / 1200.0) / rate;
 }
 double wave(double phase, int shape) noexcept {
     const double s = std::sin(phase);
@@ -162,6 +162,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.allocationModel = std::clamp(c.allocationModel, 0, 1);
     c.chorusCircuit = std::clamp(c.chorusCircuit, 0, 1);
     c.outputJack = std::clamp(c.outputJack, 0, 2);
+    c.chipRate = std::clamp(c.chipRate, 0, 1);
     c.sustainMode = std::clamp(c.sustainMode, 0, 1);
     c.velocityCurve = std::clamp(c.velocityCurve, 0, 1);
     c.portamentoSpeed = std::clamp(c.portamentoSpeed, 1, 5);
@@ -187,25 +188,25 @@ Controls sanitizeControls(Controls c) noexcept {
     return c;
 }
 
-void Press78Engine::Envelope::configure(const Operator& op, int midi, bool sustain) noexcept {
+void Press78Engine::Envelope::configure(const Operator& op, int midi, bool sustain, double tickRate) noexcept {
     const double ar = rate(op.ar, op.rks, midi);
     const double d1r = rate(op.d1r, op.rks, midi), d2r = rate(op.d2r, op.rks, midi);
     disabled = ar == 0.0;
     instantAttack = ar >= 63.0;
-    attackMul = std::exp(-std::log(1000.0) / std::max(1.0, kInternalRate * 8.0 * std::pow(2.0, -ar / 4.0)));
-    decay1 = d1r == 0.0 ? 0.0 : 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -d1r / 4.0));
-    decay2 = d2r == 0.0 ? 0.0 : 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -d2r / 4.0));
-    updateRelease(op, midi, sustain);
+    attackMul = std::exp(-std::log(1000.0) / std::max(1.0, tickRate * 8.0 * std::pow(2.0, -ar / 4.0)));
+    decay1 = d1r == 0.0 ? 0.0 : 96.0 / (tickRate * 48.0 * std::pow(2.0, -d1r / 4.0));
+    decay2 = d2r == 0.0 ? 0.0 : 96.0 / (tickRate * 48.0 * std::pow(2.0, -d2r / 4.0));
+    updateRelease(op, midi, sustain, tickRate);
     target = op.d1l == 15 ? 93.0 : op.d1l * 3.0;
 }
 
-void Press78Engine::Envelope::updateRelease(const Operator& op, int midi, bool sustain) noexcept {
+void Press78Engine::Envelope::updateRelease(const Operator& op, int midi, bool sustain, double tickRate) noexcept {
     const double rr = rate(4 * (sustain ? op.srr : op.rr) + 2, op.rks, midi);
-    release = 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -rr / 4.0));
+    release = 96.0 / (tickRate * 48.0 * std::pow(2.0, -rr / 4.0));
     // Selected B uses each operator's unchanged native RR4/RKS transform.
     // Precompute at configuration/rate edits, not with pow/copies every tick.
     const double capRate = rate(4 * 4 + 2, op.rks, midi);
-    reverbRelease = 96.0 / (kInternalRate * 48.0 * std::pow(2.0, -capRate / 4.0));
+    reverbRelease = 96.0 / (tickRate * 48.0 * std::pow(2.0, -capRate / 4.0));
 }
 
 double Press78Engine::Envelope::next(bool released, bool reverbKnee) noexcept {
@@ -232,18 +233,18 @@ double Press78Engine::Envelope::next(bool released, bool reverbKnee) noexcept {
     return std::pow(10.0, -std::max(0.0, attenuation) / 20.0);
 }
 
-void Press78Engine::Voice::configure(const Patch& p, int midi, int vel, std::uint64_t serial, int keyLevelModel) noexcept {
+void Press78Engine::Voice::configure(const Patch& p, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept {
     *this = Voice{};
-    note = midi; velocity = vel / 127.0; age = serial;
+    note = midi; velocity = vel / 127.0; age = serial; tickRate = rate;
     active = true; held = true;
     updatePatch(p, keyLevelModel);
 }
 
 void Press78Engine::Voice::updatePatch(const Patch& p, int keyLevelModel) noexcept {
     patch = p;
-    modEnvelope.configure(p.modulator, note, p.sustain);
-    carrierEnvelope.configure(p.carrier, note, p.sustain);
-    modStep = step(p.modulator, note); carrierStep = step(p.carrier, note);
+    modEnvelope.configure(p.modulator, note, p.sustain, tickRate);
+    carrierEnvelope.configure(p.carrier, note, p.sustain, tickRate);
+    modStep = step(p.modulator, note, tickRate); carrierStep = step(p.carrier, note, tickRate);
     if (keyLevelModel == 1) {
         modGain = firmwareLevel(p.modulator, note);
         carrierGain = firmwareLevel(p.carrier, note) * 0.8;
@@ -256,13 +257,13 @@ void Press78Engine::Voice::updatePatch(const Patch& p, int keyLevelModel) noexce
 void Press78Engine::Voice::updateOriginalPitch(int steps) noexcept {
     // Only coefficients change: oscillator phase, feedback, envelope and age
     // survive bends/fine edits, including voices in the steal fade.
-    modStep = originalStep(patch.modulator, note, steps + glideSteps);
-    carrierStep = originalStep(patch.carrier, note, steps + glideSteps);
+    modStep = originalStep(patch.modulator, note, steps + glideSteps, tickRate);
+    carrierStep = originalStep(patch.carrier, note, steps + glideSteps, tickRate);
 }
 
 void Press78Engine::Voice::updateRelease(bool sustain) noexcept {
-    modEnvelope.updateRelease(patch.modulator, note, sustain);
-    carrierEnvelope.updateRelease(patch.carrier, note, sustain);
+    modEnvelope.updateRelease(patch.modulator, note, sustain, tickRate);
+    carrierEnvelope.updateRelease(patch.carrier, note, sustain, tickRate);
 }
 
 double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo) noexcept {
@@ -279,7 +280,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     }
     double lfo = c.globalLfo ? globalLfo : std::sin(lfoPhase);
     if (c.triangleLfo) lfo = 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0));
-    const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * kInternalRate);
+    const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
     const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
     const double pitch = pitchMultiplier * glideMultiplier * std::pow(2.0, cents / 1200.0);
     modPhase = std::fmod(modPhase + modStep * pitch, tau);
@@ -294,7 +295,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     prev2 = prev1; prev1 = mod;
     const double y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
         * ec * carrierGain * std::pow(velocityLevel, c.velocitySensitivity) * amC;
-    lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / kInternalRate, tau);
+    lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / tickRate, tau);
     ++ticks;
     return y;
 }
@@ -303,7 +304,7 @@ Press78Engine::Press78Engine() noexcept : patch_(initPatch()) { prepare(48000.0)
 
 void Press78Engine::prepare(double sampleRate) noexcept {
     sampleRate_ = bounded(sampleRate, 8000.0, 192000.0, 48000.0);
-    buildResampler();
+    setChipRate(controls_.chipRate);
     analog_.prepare(sampleRate_);
     chorusCircuit_.prepare(sampleRate_);
     amplifier_.prepare(sampleRate_);
@@ -327,6 +328,7 @@ void Press78Engine::reset() noexcept {
     effectiveSustainMode_ = controls_.sustainMode;
     effectiveKeyLevelModel_ = controls_.keyLevelModel;
     effectiveAllocationModel_ = controls_.allocationModel;
+    if (effectiveChipRate_ != controls_.chipRate) setChipRate(controls_.chipRate);
     clearAllocationState();
     originalSustain_ = patch_.sustain;
     updatePitchControls();
@@ -369,6 +371,7 @@ void Press78Engine::setChorusTime(double seconds) noexcept {
 
 void Press78Engine::setControls(const Controls& controls) noexcept {
     controls_ = sanitizeControls(controls);
+    applyPendingChipRate();
     applyPendingAllocationModel();
     applyPendingKeyLevelModel();
     applyPendingPitchModel();
@@ -434,9 +437,10 @@ bool Press78Engine::silent(int note) const noexcept {
 }
 
 void Press78Engine::startVoice(Voice& target, int note, int velocity, int source) noexcept {
+    applyPendingChipRate();
     applyPendingPitchModel();
     applyPendingSustainMode();
-    target.configure(patch_, note, velocity, ++serial_, effectiveKeyLevelModel_);
+    target.configure(patch_, note, velocity, ++serial_, effectiveKeyLevelModel_, chipRate_);
     target.velocityLevel = controls_.velocityCurve == 1 ? mode99VelocityLevel(velocity) : target.velocity;
     auto& previous = lastNote_[source == 1 ? 1 : 0];
     if (controls_.portamento && previous != 0) {
@@ -453,7 +457,7 @@ void Press78Engine::startVoice(Voice& target, int note, int velocity, int source
 void Press78Engine::fadeVoice(Voice& voice) noexcept {
     auto* tail = &tails_[0];
     for (auto& t : tails_) if (t.remaining < tail->remaining) tail = &t;
-    tail->voice = voice; tail->remaining = 48; voice.active = false;
+    tail->voice = voice; tail->remaining = fadeTicks_; voice.active = false;
 }
 
 void Press78Engine::originalNoteOn(int note, int velocity, int source) noexcept {
@@ -537,6 +541,7 @@ void Press78Engine::allSoundOff() noexcept {
     pedal_ = false;
     originalSustain_ = patch_.sustain;
     clearAllocationState();
+    applyPendingChipRate();
     applyPendingAllocationModel();
     applyPendingKeyLevelModel();
     applyPendingPitchModel();
@@ -596,6 +601,23 @@ void Press78Engine::applyPendingKeyLevelModel() noexcept {
         effectiveKeyLevelModel_ = controls_.keyLevelModel;
 }
 
+void Press78Engine::applyPendingChipRate() noexcept {
+    if (effectiveChipRate_ != controls_.chipRate && pitchIdle()) setChipRate(controls_.chipRate);
+}
+
+void Press78Engine::setChipRate(int model) noexcept {
+    effectiveChipRate_ = model;
+    chipRate_ = model == 1 ? kYm3420Rate : kInternalRate;
+    resamplerDelay_ = kResamplerDelay * chipRate_ / kInternalRate;
+    // 5 ms control smoothing; the legacy literal (5 ms to 1 ppm) stays bit for bit.
+    tickSmoothing_ = model == 1 ? 1.0 - std::exp(-1.0 / (chipRate_ * 0.005)) : 0.00415800184511004;
+    portamentoServiceTicks_ = static_cast<int>(std::lround(kPortamentoServiceSeconds * chipRate_));
+    fadeTicks_ = static_cast<int>(std::lround(0.001 * chipRate_)); // 1 ms steal fade.
+    // A switch waits for silence, so the history the new table reads is
+    // near zero and the delay's 6.2-tick jump cannot be heard.
+    buildResampler();
+}
+
 void Press78Engine::applyPendingSustainMode() noexcept {
     if (effectiveSustainMode_ != controls_.sustainMode && pitchIdle())
         effectiveSustainMode_ = controls_.sustainMode;
@@ -637,10 +659,10 @@ int Press78Engine::latencySamples() const noexcept {
 }
 
 void Press78Engine::buildResampler() noexcept {
-    // A causal, normalized Blackman-windowed sinc. Nominal48k integer samples
-    // are passed exactly (apart from the explicit32-tick delay). Downsampling
+    // A causal, normalized Blackman-windowed sinc. Legacy 48k integer samples
+    // are passed exactly (apart from the explicit 32-tick delay). Downsampling
     // rolls off before the host Nyquist; it is not the Python offline FIR.
-    const double cutoff = sampleRate_ >= kInternalRate ? 1.0 : sampleRate_ / kInternalRate * 0.94;
+    const double cutoff = sampleRate_ >= chipRate_ ? 1.0 : sampleRate_ / chipRate_ * 0.94;
     for (int p = 0; p <= kSincPhases; ++p) {
         const double frac = static_cast<double>(p) / kSincPhases;
         double sum = 0.0;
@@ -657,13 +679,14 @@ void Press78Engine::buildResampler() noexcept {
 }
 
 double Press78Engine::synthesizeTick() noexcept {
+    applyPendingChipRate();
     applyPendingAllocationModel();
     applyPendingKeyLevelModel();
     applyPendingPitchModel();
     applyPendingSustainMode();
     // Tune smoothing is clocked with the envelopes/operators. Clock offset
     // changes the arrival of these ticks, including feedback and the LFO.
-    constexpr double smooth = 0.00415800184511004; // 1-exp(-1/(48000*.005)).
+    const double smooth = tickSmoothing_;
     pitchMultiplier_ += (targetPitch_ - pitchMultiplier_) * smooth;
     voiceControls_.modulationAmount += (controls_.modulationAmount - voiceControls_.modulationAmount) * smooth;
     voiceControls_.velocitySensitivity += (controls_.velocitySensitivity - voiceControls_.velocitySensitivity) * smooth;
@@ -676,17 +699,17 @@ double Press78Engine::synthesizeTick() noexcept {
     voiceControls_.globalLfo = controls_.globalLfo;
     voiceControls_.envelopeReverb = controls_.envelopeReverb;
     if (--portamentoCountdown_ <= 0) {
-        portamentoCountdown_ = kPortamentoServiceTicks;
+        portamentoCountdown_ = portamentoServiceTicks_;
         servicePortamento();
     }
     const double global = std::sin(globalLfoPhase_);
     double sum = 0.0;
     for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global);
     for (auto& tail : tails_) if (tail.remaining > 0) {
-        sum += tail.voice.next(voiceControls_, pitchMultiplier_, global) * (tail.remaining - 1) / 47.0;
+        sum += tail.voice.next(voiceControls_, pitchMultiplier_, global) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
         --tail.remaining;
     }
-    globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / kInternalRate, tau);
+    globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_, tau);
     return sum;
 }
 
@@ -696,10 +719,10 @@ double Press78Engine::historyAt(std::int64_t tick) const noexcept {
 }
 
 double Press78Engine::resampled(double position) const noexcept {
-    const double center = position - kResamplerDelay;
+    const double center = position - resamplerDelay_;
     const auto base = static_cast<std::int64_t>(std::floor(center));
     const double fraction = center - std::floor(center);
-    if (sampleRate_ >= kInternalRate && fraction < 1e-12) return historyAt(base);
+    if (sampleRate_ >= chipRate_ && fraction < 1e-12) return historyAt(base);
     const double phase = fraction * kSincPhases;
     const int p = std::min(kSincPhases - 1, static_cast<int>(phase));
     const double mix = phase - p;
@@ -801,7 +824,7 @@ void Press78Engine::process(float* left, float* right, std::size_t frames) noexc
         if (left) left[i] = static_cast<float>(l);
         if (right) right[i] = static_cast<float>(r);
         const double ppm = controls_.clockOffsetPpm + controls_.clockDriftPpm * std::sin(tau * controls_.clockDriftRateHz * hostTime_);
-        position_ += kInternalRate / sampleRate_ * (1.0 + ppm * 1e-6);
+        position_ += chipRate_ / sampleRate_ * (1.0 + ppm * 1e-6);
         hostTime_ += 1.0 / sampleRate_;
     }
     hasProcessed_ = true;

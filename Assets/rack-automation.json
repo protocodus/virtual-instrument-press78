@@ -75,6 +75,7 @@
     "keyLevelModel": 324,
     "allocationModel": 325,
     "chorusCircuit": 326,
-    "outputJack": 327
+    "outputJack": 327,
+    "chipRate": 328
   }
 }

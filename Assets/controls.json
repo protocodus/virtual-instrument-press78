@@ -1,6 +1,6 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.8b1",
+  "version": "0.1.9b1",
   "startup_profile": {
     "name": "Real",
     "values": {
@@ -27,7 +27,8 @@
       "keyLevelModel": 1,
       "allocationModel": 1,
       "chorusCircuit": 1,
-      "outputJack": 1
+      "outputJack": 1,
+      "chipRate": 1
     }
   },
   "rack_startup": {
@@ -760,6 +761,22 @@
         "Phones"
       ],
       "startup_default": 1
+    },
+    {
+      "id": "chipRate",
+      "label": "Chip sample rate",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "controls",
+      "options": [
+        "Legacy",
+        "YM3420"
+      ],
+      "startup_default": 1,
+      "hidden": true,
+      "description": "Compatibility policy: YM3420 runs the chip core at the PSS-780 OPU rate, 5.5 MHz / 96, so FM aliases fall where the hardware's do; Legacy runs it at 48 kHz."
     }
   ]
 }

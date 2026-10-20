@@ -61,6 +61,7 @@ int main(int argc, char** argv) {
             if (arg == "--real") {
                 controls.pitchModel = 1; controls.sustainMode = 1; controls.keyLevelModel = 1;
                 controls.allocationModel = 1; controls.chorusCircuit = 1; controls.outputJack = 1;
+                controls.chipRate = 1;
                 controls.clockOffsetPpm = 0; controls.clockDriftPpm = 20;
                 controls.clockDriftRateHz = 0.1; controls.outputCircuit = true;
                 controls.envelopeReverb = true;
@@ -116,6 +117,11 @@ int main(int argc, char** argv) {
                 else if (value == "aux" || value == "1") controls.outputJack = 1;
                 else if (value == "phones" || value == "2") controls.outputJack = 2;
                 else throw std::runtime_error("--output-jack requires preamp|aux|phones|0|1|2");
+            }
+            else if (arg == "--chip-rate") {
+                if (value == "legacy" || value == "0") controls.chipRate = 0;
+                else if (value == "ym3420" || value == "1") controls.chipRate = 1;
+                else throw std::runtime_error("--chip-rate requires legacy|ym3420|0|1");
             }
             else if (arg == "--bend") controls.pitchBendSemitones = std::stod(value);
             else if (arg == "--midi-bend") controls.midiPitchBend = std::stoi(value);

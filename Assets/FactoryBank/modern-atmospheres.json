@@ -95,7 +95,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       }
     },
     {
@@ -191,7 +192,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       }
     },
     {
@@ -287,7 +289,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       }
     },
     {
@@ -383,7 +386,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       }
     },
     {
@@ -479,7 +483,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       }
     },
     {
@@ -575,7 +580,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       }
     },
     {
@@ -671,7 +677,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       }
     },
     {
@@ -767,7 +774,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       }
     },
     {
@@ -863,7 +871,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       }
     },
     {
@@ -959,7 +968,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       }
     }
   ]

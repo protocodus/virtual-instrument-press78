@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from modern_bank import load_modern, load_rack_startup, preset_relative_path
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.8b1'
+VERSION='0.1.9b1'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -20,7 +20,7 @@ REAL_DEFAULTS={'outputCircuit':1,'noiseModel':0,'noiseRms':0,
                'clockOffsetPpm':0,'clockDriftPpm':20,'clockDriftRateHz':.1,
                'lfoRateHz':5.24,'triangleLfo':1,'globalLfo':1,
                'drive':0,'dcBlock':1,'outputLimit':1,'pitchModel':1,'sustainMode':1,
-               'bendRange':1,'velocityCurve':1,'keyLevelModel':1,'allocationModel':1,'chorusCircuit':1,'outputJack':1}
+               'bendRange':1,'velocityCurve':1,'keyLevelModel':1,'allocationModel':1,'chorusCircuit':1,'outputJack':1,'chipRate':1}
 FACTORY_CHARACTER=REAL_DEFAULTS
 
 
@@ -120,8 +120,13 @@ def specs():
     # volume slider; new instances take AUX OUT after the PSS-480 amplifier.
     add('outputJack','Output jack',0,2,0,True)
     rows[-1].update(options=['Preamp','AUX','Phones'],startup_default=1)
+    # Older songs keep the 48 kHz chip core. The current factory bank ticks
+    # it at the YM3420's own rate, where its aliases fall.
+    add('chipRate','Chip sample rate',0,1,0,True)
+    rows[-1].update(options=['Legacy','YM3420'],startup_default=1,hidden=True,
+                   description='Compatibility policy: YM3420 runs the chip core at the PSS-780 OPU rate, 5.5 MHz / 96, so FM aliases fall where the hardware\'s do; Legacy runs it at 48 kHz.')
     for row in rows:
-        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange','velocityCurve','keyLevelModel','allocationModel','chorusCircuit','outputJack'): row['default']=REAL_DEFAULTS[row['id']]
+        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange','velocityCurve','keyLevelModel','allocationModel','chorusCircuit','outputJack','chipRate'): row['default']=REAL_DEFAULTS[row['id']]
         if row['id'] in LEGACY_NOISE:
             row.update(hidden=True,deprecated='Inert compatibility property; additive noise has been removed.')
     return rows
@@ -263,7 +268,7 @@ def main():
          if row['id'].startswith(('mod_','car_')) else
          f'patch.{row["id"]} = static_cast<{"bool" if row["id"] in ("vibrato","sustain") else "int"}>(physical(k_{row["id"]}));'
          if row['target']=='patch' else
-         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode","velocityCurve","keyLevelModel","allocationModel","chorusCircuit","outputJack") else "double"}>(physical(k_{row["id"]}));'
+         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode","velocityCurve","keyLevelModel","allocationModel","chorusCircuit","outputJack","chipRate") else "double"}>(physical(k_{row["id"]}));'
          for row in rows if row['id'] not in ('bendRange','modWheelDepth')])+'\n')
     print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS +{len(modern)} modern patches at {device}; startup: {startup["name"]}')
 

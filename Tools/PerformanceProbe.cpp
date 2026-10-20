@@ -15,7 +15,7 @@
 int main(int argc, char** argv) {
     bool realOnly = false;
     int pitchModel = -1;
-    int sustainMode = -1, keyLevelModel = -1, allocationModel = -1;
+    int sustainMode = -1, keyLevelModel = -1, allocationModel = -1, chipRate = -1;
     for (int i = 1; i < argc; ++i) {
         const std::string arg = argv[i];
         if (arg == "--real-only") realOnly = true;
@@ -38,6 +38,11 @@ int main(int argc, char** argv) {
             const std::string value = argv[++i];
             if (value == "legacy" || value == "0") allocationModel = 0;
             else if (value == "original" || value == "1") allocationModel = 1;
+            else return 2;
+        } else if (arg == "--chip-rate" && i + 1 < argc) {
+            const std::string value = argv[++i];
+            if (value == "legacy" || value == "0") chipRate = 0;
+            else if (value == "ym3420" || value == "1") chipRate = 1;
             else return 2;
         } else return 2;
     }
@@ -70,11 +75,13 @@ int main(int argc, char** argv) {
             c.drive=0;
             c.pitchModel=1;
             c.sustainMode=1; c.keyLevelModel=1; c.allocationModel=1; c.chorusCircuit=1; c.outputJack=1;
+            c.chipRate=1;
         }
         if (pitchModel >= 0) c.pitchModel = pitchModel;
         if (sustainMode >= 0) c.sustainMode = sustainMode;
         if (keyLevelModel >= 0) c.keyLevelModel = keyLevelModel;
         if (allocationModel >= 0) c.allocationModel = allocationModel;
+        if (chipRate >= 0) c.chipRate = chipRate;
         e->setPatch(p); e->setControls(c);
         for (int v = 0; v < voices; ++v) e->noteOn(48 + v, 100);
         std::array<float, 64> left{}, right{};
@@ -106,6 +113,7 @@ int main(int argc, char** argv) {
                   << ",\"sustain_mode\":" << e->effectiveSustainMode()
                   << ",\"key_level_model\":" << e->effectiveKeyLevelModel()
                   << ",\"allocation_model\":" << e->effectiveAllocationModel()
+                  << ",\"chip_rate\":" << e->chipRate()
                   << ",\"audio_seconds\":" << blocks * 64.0 / sr << ",\"wall_seconds\":" << seconds
                   << ",\"wall_fraction_of_realtime\":" << seconds / (blocks * 64.0 / sr)
                   << ",\"block_median_us\":" << percentile(.5) << ",\"block_p99_us\":" << percentile(.99)

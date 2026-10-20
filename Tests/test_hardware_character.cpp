@@ -32,12 +32,12 @@ namespace press78 {
 struct Press78SustainTestAccess {
     static auto envelope(const Operator& op, int note, bool sustain) {
         Press78Engine::Envelope e;
-        e.configure(op, note, sustain);
+        e.configure(op, note, sustain, Press78Engine::kInternalRate);
         return e;
     }
     static auto voice(const Patch& patch, int note) {
         Press78Engine::Voice v;
-        v.configure(patch, note, 127, 1, 0);
+        v.configure(patch, note, 127, 1, 0, Press78Engine::kInternalRate);
         return v;
     }
     static auto voice(const Press78Engine& e, std::size_t slot = 0) {
@@ -210,7 +210,7 @@ int main() {
         press78::Operator op; op.rr = 10; op.srr = 3; op.rks = 0;
         auto e = A::envelope(op, 36, false); e.attenuation = 18; e.stage = 3;
         op.rks = 3; op.srr = 1;
-        e.updateRelease(op, 96, true);
+        e.updateRelease(op, 96, true, press78::Press78Engine::kInternalRate);
         CHECK(e.attenuation == 18 && e.stage == 3);
         near(e.reverbRelease, capFor(op, 96));
         const double ordinary = e.release;

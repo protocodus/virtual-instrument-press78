@@ -90,7 +90,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -188,7 +189,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -286,7 +288,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -384,7 +387,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -482,7 +486,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -580,7 +585,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -678,7 +684,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -776,7 +783,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -874,7 +882,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -972,7 +981,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -1070,7 +1080,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -1168,7 +1179,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "pluck",
@@ -1266,7 +1278,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "lead",
@@ -1364,7 +1377,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "lead",
@@ -1462,7 +1476,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "lead",
@@ -1560,7 +1575,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "lead",
@@ -1658,7 +1674,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "lead",
@@ -1756,7 +1773,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "lead",
@@ -1854,7 +1872,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "lead",
@@ -1952,7 +1971,8 @@
         "keyLevelModel": 1,
         "allocationModel": 1,
         "chorusCircuit": 1,
-        "outputJack": 1
+        "outputJack": 1,
+        "chipRate": 1
       },
       "tags": [
         "lead",
