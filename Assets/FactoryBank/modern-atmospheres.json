@@ -90,7 +90,8 @@
         "pitchModel": 1,
         "sustainMode": 1,
         "portamento": 0,
-        "portamentoSpeed": 3
+        "portamentoSpeed": 3,
+        "velocityCurve": 1
       }
     },
     {
@@ -181,7 +182,8 @@
         "pitchModel": 1,
         "sustainMode": 1,
         "portamento": 0,
-        "portamentoSpeed": 3
+        "portamentoSpeed": 3,
+        "velocityCurve": 1
       }
     },
     {
@@ -272,7 +274,8 @@
         "pitchModel": 1,
         "sustainMode": 1,
         "portamento": 0,
-        "portamentoSpeed": 3
+        "portamentoSpeed": 3,
+        "velocityCurve": 1
       }
     },
     {
@@ -363,7 +366,8 @@
         "pitchModel": 1,
         "sustainMode": 1,
         "portamento": 0,
-        "portamentoSpeed": 3
+        "portamentoSpeed": 3,
+        "velocityCurve": 1
       }
     },
     {
@@ -454,7 +458,8 @@
         "pitchModel": 1,
         "sustainMode": 1,
         "portamento": 0,
-        "portamentoSpeed": 3
+        "portamentoSpeed": 3,
+        "velocityCurve": 1
       }
     },
     {
@@ -545,7 +550,8 @@
         "pitchModel": 1,
         "sustainMode": 1,
         "portamento": 0,
-        "portamentoSpeed": 3
+        "portamentoSpeed": 3,
+        "velocityCurve": 1
       }
     },
     {
@@ -636,7 +642,8 @@
         "pitchModel": 1,
         "sustainMode": 1,
         "portamento": 0,
-        "portamentoSpeed": 3
+        "portamentoSpeed": 3,
+        "velocityCurve": 1
       }
     },
     {
@@ -727,7 +734,8 @@
         "pitchModel": 1,
         "sustainMode": 1,
         "portamento": 0,
-        "portamentoSpeed": 3
+        "portamentoSpeed": 3,
+        "velocityCurve": 1
       }
     },
     {
@@ -818,7 +826,8 @@
         "pitchModel": 1,
         "sustainMode": 1,
         "portamento": 0,
-        "portamentoSpeed": 3
+        "portamentoSpeed": 3,
+        "velocityCurve": 1
       }
     },
     {
@@ -909,7 +918,8 @@
         "pitchModel": 1,
         "sustainMode": 1,
         "portamento": 0,
-        "portamentoSpeed": 3
+        "portamentoSpeed": 3,
+        "velocityCurve": 1
       }
     }
   ]

@@ -49,14 +49,14 @@ def load_modern():
             raise ValueError('Duplicate patch identity: ' + name)
         names.add(name.casefold()); ids.add(identity)
         if set(p) != set(specs):
-            raise ValueError('Patch must explicitly define all67 controls: ' + name)
+            raise ValueError(f'Patch must explicitly define all {len(specs)} controls: ' + name)
         for key, value in p.items():
             row = specs[key]
             if not isinstance(value, (int, float)) or not math.isfinite(value):
                 raise ValueError('Nonfinite parameter: ' + name + '/' + key)
             if not row['min'] <= value <= row['max'] or (row['integer'] and value != round(value)):
                 raise ValueError('Out-of-range physical value: ' + name + '/' + key)
-        for key, value in {'noiseRms': 0, 'noiseModel': 0, 'pitchModel': 1, 'sustainMode': 1,
+        for key, value in {'noiseRms': 0, 'noiseModel': 0, 'pitchModel': 1, 'sustainMode': 1, 'velocityCurve': 1,
                            'outputCircuit': 1, 'outputLimit': 1}.items():
             if p[key] != value:
                 raise ValueError('Modern character/noise policy mismatch: ' + name + '/' + key)
@@ -77,7 +77,7 @@ def main():
     voices = load_modern()
     print(json.dumps({'passed': True, 'presets': len(voices),
                       'categories': dict(Counter(v['category'] for v in voices)),
-                      'all_parameters_explicit': 67, 'added_noise': False}))
+                      'all_parameters_explicit': len(voices[0]['parameters']), 'added_noise': False}))
 
 if __name__ == '__main__':
     main()

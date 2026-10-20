@@ -24,6 +24,20 @@ constexpr double rateScaling[4] = {0.0, 0.0625, 0.125, 0.25};
 // measured; 2.5 ms (speed 3 = 80 ms) is an estimate, the one unrecovered value.
 constexpr int kPortamentoServiceTicks = 120; // 2.5 ms at the 48 kHz internal rate.
 
+// PSS-780 program (xg503b0-132, bank2 $7890, read 2026-10-20): in Mode 99 a
+// note's carrier TL gains a velocity addend of 31 codes below velocity 3,
+// falling by one code at each of these velocities to 0 from 118. The
+// keyboard's own Mode 00 ignores velocity. A TL code is 0.75 dB, as level()
+// assumes. The firmware saturates TL+addend at 127, >95 dB down; not modeled.
+constexpr int kMode99VelocitySteps[31] = {3, 4, 5, 6, 7, 9, 10, 12, 13, 15, 17, 19, 22, 24, 27, 30,
+                                          34, 37, 41, 46, 51, 56, 62, 68, 74, 80, 87, 94, 102, 111, 118};
+
+double mode99VelocityLevel(int velocity) noexcept {
+    int addend = 31;
+    for (const int step : kMode99VelocitySteps) if (velocity >= step) --addend;
+    return std::pow(10.0, -addend * 0.75 / 20.0);
+}
+
 // The firmware shifts the glide offset right three times into the
 // 1/32-semitone pitch coordinate, rounding toward minus infinity.
 int heardGlideSteps(int offset) noexcept { return offset >= 0 ? offset / 8 : -((7 - offset) / 8); }
@@ -138,6 +152,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.modulationAmount = bounded(c.modulationAmount, 0, 2, 1);
     c.polyphony = std::clamp(c.polyphony, 1, 12);
     c.sustainMode = std::clamp(c.sustainMode, 0, 1);
+    c.velocityCurve = std::clamp(c.velocityCurve, 0, 1);
     c.portamentoSpeed = std::clamp(c.portamentoSpeed, 1, 5);
     c.lfoRateHz = bounded(c.lfoRateHz, 0, 30, 5.24);
     c.vibratoDepth = bounded(c.vibratoDepth, 0, 4, 1);
@@ -262,7 +277,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
         * em * modGain * std::pow(velocity, c.velocityToModulation) * amM;
     prev2 = prev1; prev1 = mod;
     const double y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
-        * ec * carrierGain * std::pow(velocity, c.velocitySensitivity) * amC;
+        * ec * carrierGain * std::pow(velocityLevel, c.velocitySensitivity) * amC;
     lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / kInternalRate, tau);
     ++ticks;
     return y;
@@ -371,6 +386,7 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
         tail->voice = *target; tail->remaining = 48;
     }
     target->configure(patch_, note, velocity, ++serial_);
+    target->velocityLevel = controls_.velocityCurve == 1 ? mode99VelocityLevel(velocity) : target->velocity;
     auto& previous = lastNote_[source == 1 ? 1 : 0];
     if (controls_.portamento && previous != 0) {
         target->glideOffset = (previous - note) * 256;

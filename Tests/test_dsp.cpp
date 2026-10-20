@@ -261,6 +261,26 @@ int main() {
         a->reset(); b->reset(); a->setControls(c); b->setControls(c);
         a->noteOn(60, 127); b->noteOn(60, 1); CHECK(render(*a, 4000) == render(*b, 4000));
     });
+    test("Original velocity curve is the PSS-780 Mode 99 table, in dB times sensitivity", [] {
+        // Velocity -> carrier TL addend pairs read from the PSS-780 program.
+        constexpr int table[][2] = {{1, 31}, {2, 31}, {3, 30}, {8, 26}, {16, 21}, {32, 15},
+                                    {64, 8}, {96, 3}, {117, 1}, {118, 0}, {127, 0}};
+        for (const auto& row : table) for (const double sensitivity : {1.0, 0.5, 2.0}) {
+            auto c = transparent(); c.velocityCurve = 1; c.velocitySensitivity = sensitivity;
+            auto a = engine(), b = engine(); a->setControls(c); b->setControls(c);
+            a->noteOn(60, 127); b->noteOn(60, row[0]);
+            const double db = 20 * std::log10(rms(render(*b, 8000), 1000) / rms(render(*a, 8000), 1000));
+            CHECK(std::abs(db + 0.75 * row[1] * sensitivity) < 1e-6);
+        }
+        // Velocity to FM keeps its linear law: the modulator differs, the curve does not.
+        auto c = transparent(); c.velocitySensitivity = 0; c.velocityToModulation = 1;
+        auto legacy = engine(), original = engine(); c.velocityCurve = 1; original->setControls(c);
+        c.velocityCurve = 0; legacy->setControls(c);
+        auto p = press78::initPatch(); p.modulator.tl = 20; legacy->setPatch(p); original->setPatch(p);
+        legacy->noteOn(60, 40); original->noteOn(60, 40);
+        CHECK(render(*legacy, 4000) == render(*original, 4000));
+        c.velocityCurve = 9; CHECK(press78::sanitizeControls(c).velocityCurve == 1);
+    });
     test("ratio0 is half and coarse detune is600cents", [] {
         auto e = engine(); auto p = press78::initPatch(); p.carrier.mul = 0;
         e->setPatch(p); e->noteOn(69, 127);

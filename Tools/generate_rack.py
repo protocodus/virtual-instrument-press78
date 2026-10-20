@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from modern_bank import load_modern, load_rack_startup, preset_relative_path
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.3b1'
+VERSION='0.1.4b1'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -20,7 +20,7 @@ REAL_DEFAULTS={'outputCircuit':1,'noiseModel':0,'noiseRms':0,
                'clockOffsetPpm':0,'clockDriftPpm':20,'clockDriftRateHz':.1,
                'lfoRateHz':5.24,'triangleLfo':1,'globalLfo':1,
                'drive':0,'dcBlock':1,'outputLimit':1,'pitchModel':1,'sustainMode':1,
-               'bendRange':1}
+               'bendRange':1,'velocityCurve':1}
 FACTORY_CHARACTER=REAL_DEFAULTS
 
 
@@ -96,8 +96,13 @@ def specs():
     # its speed 1 (slow)..5 (fast), default 3. Off, as the button powers up.
     add('portamento','Portamento',0,1,0,True)
     add('portamentoSpeed','Portamento speed',1,5,3,True)
+    # Older songs keep the linear velocity law. The current factory bank
+    # selects the PSS-780's own Mode 99 velocity table.
+    add('velocityCurve','Original velocity curve',0,1,0,True)
+    rows[-1].update(options=['Legacy','Original'],startup_default=1,hidden=True,
+                   description='Compatibility policy: Original follows the PSS-780 Mode 99 velocity table; Legacy scales level linearly.')
     for row in rows:
-        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange'): row['default']=REAL_DEFAULTS[row['id']]
+        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange','velocityCurve'): row['default']=REAL_DEFAULTS[row['id']]
         if row['id'] in LEGACY_NOISE:
             row.update(hidden=True,deprecated='Inert compatibility property; additive noise has been removed.')
     return rows
@@ -239,7 +244,7 @@ def main():
          if row['id'].startswith(('mod_','car_')) else
          f'patch.{row["id"]} = static_cast<{"bool" if row["id"] in ("vibrato","sustain") else "int"}>(physical(k_{row["id"]}));'
          if row['target']=='patch' else
-         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode") else "double"}>(physical(k_{row["id"]}));'
+         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode","velocityCurve") else "double"}>(physical(k_{row["id"]}));'
          for row in rows if row['id'] not in ('bendRange','modWheelDepth')])+'\n')
     print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS +{len(modern)} modern patches at {device}; startup: {startup["name"]}')
 

@@ -117,6 +117,10 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 
 ## Version history
 
+### Unreleased — 0.1.4 — PSS-780 velocity curve
+
+- New instances, Init, the 100 `PSS` patches and the modern presets follow the PSS-780's own MIDI velocity curve: soft notes are louder than before (velocity 16 sits 15.75 dB below full instead of 18 dB, velocity 1 at 23.25 dB instead of 42 dB), and velocities from 32 up change by under 1 dB. Older songs that lack the setting keep the linear curve.
+
 ### Unreleased — 0.1.3 — Portamento
 
 - Adds the PSS-780's **Portamento** effect with its five speeds (1 slow … 5 fast, default 3), switchable from the panel or MIDI CC65. Each new note glides from the previous note in a fixed time per speed, whatever the interval, as the keyboard's own program does. The glide's absolute timing is an estimate.
@@ -172,6 +176,10 @@ B14 preserves the established 48k output character across host rates through a f
 ### Portamento
 
 The glide follows the PSS-780 program (`xg503b0-132`, read 2026-10-20; nothing from it is included). A note-on glides from the most recent note-on, held or released, when Portamento is on; the first note after reset does not glide. Its slot starts at the previous pitch and moves linearly in 1/256-semitone steps of `interval × 2^speed` per pass of the program's main loop, heard as 1/32-semitone pitch commands, until it reaches the new note. Every glide therefore takes `2^(8 − speed)` passes: 128, 64, 32, 16 and 8 for speeds 1–5. Chords glide note by note from the note played just before. The main loop is not paced by a timer and was not measured; Press78 assumes 2.5 ms per pass, giving 320/160/80/40/20 ms. CC65 values of 64 and above switch it on and lower values off, overriding the panel control until Reset All Controllers.
+
+### Velocity
+
+With the Original velocity curve, a note's carrier level follows the table the PSS-780 program (`xg503b0-132`, bank 2 `$7890`) applies in its MIDI sound-source mode (Mode 99): a carrier attenuation of 31 TL codes below velocity 3, falling by one code at each of velocities 3, 4, 5, 6, 7, 9, 10, 12, 13, 15, 17, 19, 22, 24, 27, 30, 34, 37, 41, 46, 51, 56, 62, 68, 74, 80, 87, 94, 102, 111 and 118, where it reaches zero. A TL code is taken as 0.75 dB, the engine's existing TL law. **Velocity to level** scales that attenuation in dB, so 1 is the hardware's curve and 0 is the keyboard mode (Mode 00), which ignores velocity. **Velocity to FM** is Press78's own and keeps its linear law. The firmware's saturation of TL plus addend at 127 is more than 95 dB down and is not modelled. The hidden **Original velocity curve** setting keeps the linear `(velocity/127)^sensitivity` law for older songs.
 
 ### Sustain pedal
 

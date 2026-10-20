@@ -70,6 +70,7 @@
     "pitchModel": 319,
     "sustainMode": 320,
     "portamento": 321,
-    "portamentoSpeed": 322
+    "portamentoSpeed": 322,
+    "velocityCurve": 323
   }
 }

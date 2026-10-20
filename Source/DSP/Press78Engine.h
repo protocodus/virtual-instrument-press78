@@ -51,6 +51,10 @@ struct Controls {
     // Legacy0 holds released keys under the pedal. Original1 selects RR/SRR
     // immediately; it uses the existing approximate envelope timing law.
     int sustainMode = 0;
+    // Legacy0 scales the carrier by (velocity/127)^velocitySensitivity.
+    // Original1 uses the PSS-780 Mode 99 carrier velocity table, its dB scaled
+    // by velocitySensitivity. Velocity to FM keeps the legacy law in both.
+    int velocityCurve = 0;
     // PSS-780 Portamento effect: speed 1 (slow)..5 (fast), panel default 3.
     // The glide law is the keyboard program's; its service period is estimated.
     bool portamento = false;
@@ -146,7 +150,8 @@ private:
         double prev1 = 0.0, prev2 = 0.0, lfoPhase = 0.0;
         double modStep = 0.0, carrierStep = 0.0;
         double modGain = 0.0, carrierGain = 0.0, feedback = 0.0;
-        double velocity = 1.0;
+        double velocity = 1.0;      // velocity/127, the modulator's law.
+        double velocityLevel = 1.0; // Carrier level at sensitivity 1.
         // Portamento offset and per-service step in 1/256 semitone, as the
         // firmware keeps them; the oscillators hear offset>>3 (1/32 semitone).
         int glideOffset = 0, glideStep = 0, glideSteps = 0;

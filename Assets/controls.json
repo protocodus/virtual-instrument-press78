@@ -1,6 +1,6 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.3b1",
+  "version": "0.1.4b1",
   "startup_profile": {
     "name": "Real",
     "values": {
@@ -22,7 +22,8 @@
       "outputLimit": 1,
       "pitchModel": 1,
       "sustainMode": 1,
-      "bendRange": 1
+      "bendRange": 1,
+      "velocityCurve": 1
     }
   },
   "rack_startup": {
@@ -676,6 +677,22 @@
       "default": 3,
       "integer": true,
       "target": "controls"
+    },
+    {
+      "id": "velocityCurve",
+      "label": "Original velocity curve",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "controls",
+      "options": [
+        "Legacy",
+        "Original"
+      ],
+      "startup_default": 1,
+      "hidden": true,
+      "description": "Compatibility policy: Original follows the PSS-780 Mode 99 velocity table; Legacy scales level linearly."
     }
   ]
 }
