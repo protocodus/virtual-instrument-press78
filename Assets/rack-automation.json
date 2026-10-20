@@ -74,6 +74,7 @@
     "velocityCurve": 323,
     "keyLevelModel": 324,
     "allocationModel": 325,
-    "chorusCircuit": 326
+    "chorusCircuit": 326,
+    "outputJack": 327
   }
 }

@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 #include "AnalogOutput.h"
+#include "AmplifierCircuit.h"
 #include "ChorusCircuit.h"
 #include "FirmwareAllocation.h"
 
@@ -94,6 +95,9 @@ struct Controls {
     double chorusRateHz = 0.65;       // 0.05..8.
     double chorusDepthMs = 2.0;       // 0..8. Studio12ms; recorded measured harmonic law.
     double stereoWidth = 1.0;         // 0..2; dry mono midpoint is preserved.
+    // 0 Preamp keeps the signal at the top of the volume slider, as before;
+    // 1 AUX and 2 Phones add the amplifier and that jack (AmplifierCircuit.h).
+    int outputJack = 0;
     // Deprecated compatibility fields for old patches/callers. Sanitization
     // always sets both to zero; the instrument generates no additive noise.
     int noiseModel = 0;
@@ -204,6 +208,8 @@ private:
     double currentToneCoefficient_ = 0.0, drive_ = 0.0, chorusMix_ = 0.0;
     double circuitMix_ = 1.0, chorusCircuitMix_ = 0.0;
     ChorusCircuit chorusCircuit_{};
+    double auxMix_ = 0.0, phonesMix_ = 0.0;
+    AmplifierCircuit amplifier_{};
     double recordedChorusMix_ = 0.0;  // Smoothed mode blend; no history reset.
     double chorusRate_ = 0.65, chorusDepth_ = 2.0, width_ = 1.0;
     double dcInputL_ = 0.0, dcInputR_ = 0.0, dcOutputL_ = 0.0, dcOutputR_ = 0.0;

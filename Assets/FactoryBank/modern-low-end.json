@@ -95,7 +95,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -190,7 +191,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -285,7 +287,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -380,7 +383,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -475,7 +479,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -570,7 +575,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -665,7 +671,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -760,7 +767,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -855,7 +863,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -950,7 +959,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -1045,7 +1055,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -1140,7 +1151,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -1235,7 +1247,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -1330,7 +1343,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -1425,7 +1439,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -1520,7 +1535,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -1615,7 +1631,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -1710,7 +1727,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -1805,7 +1823,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     },
     {
@@ -1900,7 +1919,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       }
     }
   ]

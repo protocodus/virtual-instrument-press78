@@ -1,6 +1,6 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.7b1",
+  "version": "0.1.8b1",
   "startup_profile": {
     "name": "Real",
     "values": {
@@ -26,7 +26,8 @@
       "velocityCurve": 1,
       "keyLevelModel": 1,
       "allocationModel": 1,
-      "chorusCircuit": 1
+      "chorusCircuit": 1,
+      "outputJack": 1
     }
   },
   "rack_startup": {
@@ -744,6 +745,21 @@
       "startup_default": 1,
       "hidden": true,
       "description": "Compatibility policy: PSS-270 filters the Recorded chorus wet signal through the sibling BBD wet-path circuit; Legacy keeps the full-band fit."
+    },
+    {
+      "id": "outputJack",
+      "label": "Output jack",
+      "min": 0,
+      "max": 2,
+      "default": 0,
+      "integer": true,
+      "target": "controls",
+      "options": [
+        "Preamp",
+        "AUX",
+        "Phones"
+      ],
+      "startup_default": 1
     }
   ]
 }

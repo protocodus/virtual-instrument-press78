@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from modern_bank import load_modern, load_rack_startup, preset_relative_path
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.7b1'
+VERSION='0.1.8b1'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -20,7 +20,7 @@ REAL_DEFAULTS={'outputCircuit':1,'noiseModel':0,'noiseRms':0,
                'clockOffsetPpm':0,'clockDriftPpm':20,'clockDriftRateHz':.1,
                'lfoRateHz':5.24,'triangleLfo':1,'globalLfo':1,
                'drive':0,'dcBlock':1,'outputLimit':1,'pitchModel':1,'sustainMode':1,
-               'bendRange':1,'velocityCurve':1,'keyLevelModel':1,'allocationModel':1,'chorusCircuit':1}
+               'bendRange':1,'velocityCurve':1,'keyLevelModel':1,'allocationModel':1,'chorusCircuit':1,'outputJack':1}
 FACTORY_CHARACTER=REAL_DEFAULTS
 
 
@@ -116,8 +116,12 @@ def specs():
     add('chorusCircuit','Chorus wet-path circuit',0,1,0,True)
     rows[-1].update(options=['Legacy','PSS-270'],startup_default=1,hidden=True,
                    description='Compatibility policy: PSS-270 filters the Recorded chorus wet signal through the sibling BBD wet-path circuit; Legacy keeps the full-band fit.')
+    # Which socket is heard. Older songs keep the signal at the top of the
+    # volume slider; new instances take AUX OUT after the PSS-480 amplifier.
+    add('outputJack','Output jack',0,2,0,True)
+    rows[-1].update(options=['Preamp','AUX','Phones'],startup_default=1)
     for row in rows:
-        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange','velocityCurve','keyLevelModel','allocationModel','chorusCircuit'): row['default']=REAL_DEFAULTS[row['id']]
+        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange','velocityCurve','keyLevelModel','allocationModel','chorusCircuit','outputJack'): row['default']=REAL_DEFAULTS[row['id']]
         if row['id'] in LEGACY_NOISE:
             row.update(hidden=True,deprecated='Inert compatibility property; additive noise has been removed.')
     return rows
@@ -211,7 +215,7 @@ def main():
     lua+=['}','midi_implementation_chart = { midi_cc_chart = {']
     lua += [f' [{value}]="/custom_properties/{name}",' for name,value in ids.items()]
     lua.append('} }')
-    output={'masterGain','toneCutoffHz','drive','chorusMix','chorusMode','chorusRateHz','chorusDepthMs','stereoWidth','noiseRms','noiseModel','outputCircuit','dcBlock','outputLimit'}
+    output={'masterGain','toneCutoffHz','drive','chorusMix','chorusMode','chorusRateHz','chorusDepthMs','stereoWidth','noiseRms','noiseModel','outputCircuit','outputJack','dcBlock','outputLimit'}
     performance={'masterTuneCents','velocitySensitivity','velocityToModulation','polyphony','bendRange','modWheelDepth','portamento','portamentoSpeed'}
     groups={'Modulator':[], 'Carrier':[], 'FM and LFO':[], 'Performance':[], 'Output and effects':[], 'Clock':[]}
     for row in rows:
@@ -259,7 +263,7 @@ def main():
          if row['id'].startswith(('mod_','car_')) else
          f'patch.{row["id"]} = static_cast<{"bool" if row["id"] in ("vibrato","sustain") else "int"}>(physical(k_{row["id"]}));'
          if row['target']=='patch' else
-         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode","velocityCurve","keyLevelModel","allocationModel","chorusCircuit") else "double"}>(physical(k_{row["id"]}));'
+         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode","velocityCurve","keyLevelModel","allocationModel","chorusCircuit","outputJack") else "double"}>(physical(k_{row["id"]}));'
          for row in rows if row['id'] not in ('bendRange','modWheelDepth')])+'\n')
     print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS +{len(modern)} modern patches at {device}; startup: {startup["name"]}')
 

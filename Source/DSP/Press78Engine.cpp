@@ -161,6 +161,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.polyphony = std::clamp(c.polyphony, 1, 12);
     c.allocationModel = std::clamp(c.allocationModel, 0, 1);
     c.chorusCircuit = std::clamp(c.chorusCircuit, 0, 1);
+    c.outputJack = std::clamp(c.outputJack, 0, 2);
     c.sustainMode = std::clamp(c.sustainMode, 0, 1);
     c.velocityCurve = std::clamp(c.velocityCurve, 0, 1);
     c.portamentoSpeed = std::clamp(c.portamentoSpeed, 1, 5);
@@ -305,6 +306,7 @@ void Press78Engine::prepare(double sampleRate) noexcept {
     buildResampler();
     analog_.prepare(sampleRate_);
     chorusCircuit_.prepare(sampleRate_);
+    amplifier_.prepare(sampleRate_);
     gainSmoothing_ = 1.0 - std::exp(-1.0 / (sampleRate_ * 0.005));
     dcCoefficient_ = std::exp(-tau * 10.0 / sampleRate_);
     setControls(controls_);
@@ -317,6 +319,7 @@ void Press78Engine::reset() noexcept {
     history_.fill(0.0); delay_.fill(0.0);
     analog_.reset();
     chorusCircuit_.reset();
+    amplifier_.reset();
     position_ = 0.0; nextTick_ = 0; hostTime_ = 0.0;
     globalLfoPhase_ = 0.0; chorusPhase_ = 0.0;
     lastNote_ = {}; portamentoCountdown_ = 0;
@@ -332,6 +335,8 @@ void Press78Engine::reset() noexcept {
     currentToneCoefficient_ = toneCoefficient_;
     circuitMix_ = controls_.outputCircuit ? 1.0 : 0.0;
     chorusCircuitMix_ = static_cast<double>(controls_.chorusCircuit);
+    auxMix_ = controls_.outputJack == 1 ? 1.0 : 0.0;
+    phonesMix_ = controls_.outputJack == 2 ? 1.0 : 0.0;
     recordedChorusMix_ = static_cast<double>(controls_.chorusMode);
     drive_ = controls_.drive; chorusMix_ = controls_.chorusMix;
     chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
@@ -376,6 +381,8 @@ void Press78Engine::setControls(const Controls& controls) noexcept {
         currentToneCoefficient_ = toneCoefficient_;
         circuitMix_ = controls_.outputCircuit ? 1.0 : 0.0;
         chorusCircuitMix_ = static_cast<double>(controls_.chorusCircuit);
+        auxMix_ = controls_.outputJack == 1 ? 1.0 : 0.0;
+        phonesMix_ = controls_.outputJack == 2 ? 1.0 : 0.0;
         recordedChorusMix_ = static_cast<double>(controls_.chorusMode);
         drive_ = controls_.drive; chorusMix_ = controls_.chorusMix;
         chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
@@ -524,6 +531,7 @@ void Press78Engine::allSoundOff() noexcept {
     history_.fill(0.0); delay_.fill(0.0);
     analog_.reset();
     chorusCircuit_.reset();
+    amplifier_.reset();
     tone1_ = tone2_ = 0.0;
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
     pedal_ = false;
@@ -769,6 +777,9 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
         dcInputL_ = left; dcInputR_ = right; dcOutputL_ = l; dcOutputR_ = r;
         left = l; right = r;
     } else { dcInputL_ = left; dcInputR_ = right; dcOutputL_ = dcOutputR_ = 0.0; }
+    auxMix_ += ((controls_.outputJack == 1 ? 1.0 : 0.0) - auxMix_) * gainSmoothing_;
+    phonesMix_ += ((controls_.outputJack == 2 ? 1.0 : 0.0) - phonesMix_) * gainSmoothing_;
+    amplifier_.process(left, right, auxMix_, phonesMix_);
     gain_ += (controls_.masterGain - gain_) * gainSmoothing_;
     left *= gain_; right *= gain_;
     if (controls_.outputLimit) { left = softBound(left); right = softBound(right); }

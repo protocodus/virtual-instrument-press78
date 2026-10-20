@@ -89,7 +89,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -186,7 +187,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -283,7 +285,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -380,7 +383,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -477,7 +481,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -574,7 +579,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -671,7 +677,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -768,7 +775,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -865,7 +873,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -962,7 +971,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -1059,7 +1069,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -1156,7 +1167,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "pluck",
@@ -1253,7 +1265,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "lead",
@@ -1350,7 +1363,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "lead",
@@ -1447,7 +1461,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "lead",
@@ -1544,7 +1559,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "lead",
@@ -1641,7 +1657,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "lead",
@@ -1738,7 +1755,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "lead",
@@ -1835,7 +1853,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "lead",
@@ -1932,7 +1951,8 @@
         "velocityCurve": 1,
         "keyLevelModel": 1,
         "allocationModel": 1,
-        "chorusCircuit": 1
+        "chorusCircuit": 1,
+        "outputJack": 1
       },
       "tags": [
         "lead",
