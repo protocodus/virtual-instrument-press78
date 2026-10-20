@@ -72,6 +72,7 @@
     "portamento": 321,
     "portamentoSpeed": 322,
     "velocityCurve": 323,
-    "keyLevelModel": 324
+    "keyLevelModel": 324,
+    "allocationModel": 325
   }
 }

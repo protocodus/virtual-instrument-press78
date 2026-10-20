@@ -92,7 +92,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       }
     },
     {
@@ -185,7 +186,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       }
     },
     {
@@ -278,7 +280,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       }
     },
     {
@@ -371,7 +374,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       }
     },
     {
@@ -464,7 +468,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       }
     },
     {
@@ -557,7 +562,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       }
     },
     {
@@ -650,7 +656,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       }
     },
     {
@@ -743,7 +750,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       }
     },
     {
@@ -836,7 +844,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       }
     },
     {
@@ -929,7 +938,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       }
     }
   ]

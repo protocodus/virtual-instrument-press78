@@ -159,6 +159,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.velocityToModulation = bounded(c.velocityToModulation, 0, 2, 0);
     c.modulationAmount = bounded(c.modulationAmount, 0, 2, 1);
     c.polyphony = std::clamp(c.polyphony, 1, 12);
+    c.allocationModel = std::clamp(c.allocationModel, 0, 1);
     c.sustainMode = std::clamp(c.sustainMode, 0, 1);
     c.velocityCurve = std::clamp(c.velocityCurve, 0, 1);
     c.portamentoSpeed = std::clamp(c.portamentoSpeed, 1, 5);
@@ -319,6 +320,8 @@ void Press78Engine::reset() noexcept {
     effectivePitchModel_ = controls_.pitchModel;
     effectiveSustainMode_ = controls_.sustainMode;
     effectiveKeyLevelModel_ = controls_.keyLevelModel;
+    effectiveAllocationModel_ = controls_.allocationModel;
+    clearAllocationState();
     originalSustain_ = patch_.sustain;
     updatePitchControls();
     gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_;
@@ -357,6 +360,7 @@ void Press78Engine::setChorusTime(double seconds) noexcept {
 
 void Press78Engine::setControls(const Controls& controls) noexcept {
     controls_ = sanitizeControls(controls);
+    applyPendingAllocationModel();
     applyPendingKeyLevelModel();
     applyPendingPitchModel();
     applyPendingSustainMode();
@@ -372,13 +376,17 @@ void Press78Engine::setControls(const Controls& controls) noexcept {
         chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
         width_ = controls_.stereoWidth;
     }
-    while (activeVoices() > static_cast<std::size_t>(controls_.polyphony)) {
+    if (effectiveAllocationModel_ == 1) {
+        if (allocator_.pool != controls_.polyphony) {
+            for (std::size_t i = static_cast<std::size_t>(controls_.polyphony); i < kMaxVoices; ++i)
+                if (voices_[i].active) fadeVoice(voices_[i]);
+            allocator_.setPolyphony(controls_.polyphony);
+        }
+    } else while (activeVoices() > static_cast<std::size_t>(controls_.polyphony)) {
         Voice* victim = nullptr;
         for (auto& v : voices_) if (v.active && (!victim || v.age < victim->age)) victim = &v;
         if (!victim) break;
-        auto* tail = &tails_[0];
-        for (auto& t : tails_) if (t.remaining < tail->remaining) tail = &t;
-        tail->voice = *victim; tail->remaining = 48; victim->active = false;
+        fadeVoice(*victim);
     }
 }
 
@@ -386,13 +394,14 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
     note = std::clamp(note, 0, 127);
     if (velocity <= 0) { noteOff(note, source); return; }
     velocity = std::min(velocity, 127);
+    applyPendingAllocationModel();
     applyPendingKeyLevelModel();
-    const bool muted = effectiveKeyLevelModel_ == 0 ? patch_.carrier.tl >= 99
-        : firmware_level::command(patch_.carrier.tl, note,
-            (patch_.carrier.lksHi << 4) | patch_.carrier.lksLo) >= 99;
-    if (muted || patch_.carrier.ar == 0) return;
-    applyPendingPitchModel();
-    applyPendingSustainMode();
+    if (effectiveAllocationModel_ == 1) { originalNoteOn(note, velocity, source); return; }
+    if (Mode00Allocator::validSource(source)) {
+        auto& count = heldInputCounts_[source][note];
+        if (count != std::numeric_limits<std::uint32_t>::max()) ++count;
+    }
+    if (silent(note)) return;
     Voice* target = nullptr;
     if (activeVoices() < static_cast<std::size_t>(controls_.polyphony)) {
         for (auto& v : voices_) if (!v.active) { target = &v; break; }
@@ -400,26 +409,77 @@ void Press78Engine::noteOn(int note, int velocity, int source) noexcept {
     if (!target) {
         for (auto& v : voices_) if (v.active && (!target || v.age < target->age)) target = &v;
         if (!target) target = &voices_[0];
-        auto* tail = &tails_[0];
-        for (auto& t : tails_) if (t.remaining < tail->remaining) tail = &t;
-        tail->voice = *target; tail->remaining = 48;
+        fadeVoice(*target);
     }
-    target->configure(patch_, note, velocity, ++serial_, effectiveKeyLevelModel_);
-    target->velocityLevel = controls_.velocityCurve == 1 ? mode99VelocityLevel(velocity) : target->velocity;
+    startVoice(*target, note, velocity, source);
+}
+
+bool Press78Engine::silent(int note) const noexcept {
+    const bool muted = effectiveKeyLevelModel_ == 0 ? patch_.carrier.tl >= 99
+        : firmware_level::command(patch_.carrier.tl, note,
+            (patch_.carrier.lksHi << 4) | patch_.carrier.lksLo) >= 99;
+    return muted || patch_.carrier.ar == 0;
+}
+
+void Press78Engine::startVoice(Voice& target, int note, int velocity, int source) noexcept {
+    applyPendingPitchModel();
+    applyPendingSustainMode();
+    target.configure(patch_, note, velocity, ++serial_, effectiveKeyLevelModel_);
+    target.velocityLevel = controls_.velocityCurve == 1 ? mode99VelocityLevel(velocity) : target.velocity;
     auto& previous = lastNote_[source == 1 ? 1 : 0];
     if (controls_.portamento && previous != 0) {
-        target->glideOffset = (previous - note) * 256;
-        target->glideStep = (note - previous) * (1 << controls_.portamentoSpeed);
-        applyGlide(*target);
+        target.glideOffset = (previous - note) * 256;
+        target.glideStep = (note - previous) * (1 << controls_.portamentoSpeed);
+        applyGlide(target);
     }
     previous = note;
-    if (effectivePitchModel_ == 1) target->updateOriginalPitch(pitchSteps_);
-    if (effectiveSustainMode_ == 1) target->updateRelease(originalSustain_);
-    target->source = source;
+    if (effectivePitchModel_ == 1) target.updateOriginalPitch(pitchSteps_);
+    if (effectiveSustainMode_ == 1) target.updateRelease(originalSustain_);
+    target.source = source;
+}
+
+void Press78Engine::fadeVoice(Voice& voice) noexcept {
+    auto* tail = &tails_[0];
+    for (auto& t : tails_) if (t.remaining < tail->remaining) tail = &t;
+    tail->voice = voice; tail->remaining = 48; voice.active = false;
+}
+
+void Press78Engine::originalNoteOn(int note, int velocity, int source) noexcept {
+    if (!Mode00Allocator::validSource(source)) return;
+    const auto event = allocator_.noteOn(note, source);
+    if (!event.edge) return;
+    heldInputCounts_[source][note] = 1;
+    if (event.slot < 0) return;
+    auto& target = voices_[static_cast<std::size_t>(event.slot)];
+    if (target.active) fadeVoice(target);
+    // A silent patch still owns its key, cache and rank. Do not start an
+    // inaudible voice or mistake envelope retirement for a free input.
+    if (!silent(note)) startVoice(target, note, velocity, source);
+    (void)allocator_.service(1); // Immediate delivery; no CPU timing is modelled.
+}
+
+void Press78Engine::originalNoteOff(int note, int source) noexcept {
+    if (!Mode00Allocator::validSource(source)) return;
+    const auto event = allocator_.noteOff(note, source);
+    if (!event.edge) return;
+    heldInputCounts_[source][note] = 0;
+    if (event.slot >= 0) {
+        auto& target = voices_[static_cast<std::size_t>(event.slot)];
+        if (target.active && target.note == note && target.source == source) {
+            target.held = false;
+            target.released = effectiveSustainMode_ == 1 || !pedal_;
+        }
+    }
+    applyPendingAllocationModel();
 }
 
 void Press78Engine::noteOff(int note, int source) noexcept {
     note = std::clamp(note, 0, 127);
+    if (effectiveAllocationModel_ == 1) { originalNoteOff(note, source); return; }
+    if (Mode00Allocator::validSource(source)) {
+        auto& count = heldInputCounts_[source][note];
+        if (count) --count;
+    }
     Voice* target = nullptr;
     for (auto& v : voices_) if (v.active && v.held && v.note == note && v.source == source && (!target || v.age < target->age)) target = &v;
     if (target) {
@@ -428,6 +488,7 @@ void Press78Engine::noteOff(int note, int source) noexcept {
         // cached selection until an actual CC or explicit live Sustain edit.
         target->released = effectiveSustainMode_ == 1 || !pedal_;
     }
+    applyPendingAllocationModel();
 }
 
 void Press78Engine::sustainPedal(bool down) noexcept {
@@ -443,10 +504,13 @@ void Press78Engine::sustainController(int rawValue) noexcept {
 }
 
 void Press78Engine::allNotesOff() noexcept {
+    if (effectiveAllocationModel_ == 1) allocator_.allNotesOff();
+    for (auto& source : heldInputCounts_) source.fill(0);
     for (auto& v : voices_) if (v.active) {
         v.held = false;
         v.released = effectiveSustainMode_ == 1 || !pedal_;
     }
+    applyPendingAllocationModel();
 }
 
 void Press78Engine::allSoundOff() noexcept {
@@ -458,9 +522,28 @@ void Press78Engine::allSoundOff() noexcept {
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
     pedal_ = false;
     originalSustain_ = patch_.sustain;
+    clearAllocationState();
+    applyPendingAllocationModel();
     applyPendingKeyLevelModel();
     applyPendingPitchModel();
     applyPendingSustainMode();
+}
+
+void Press78Engine::clearAllocationState() noexcept {
+    allocator_.reset(controls_.polyphony);
+    for (auto& source : heldInputCounts_) source.fill(0);
+}
+
+bool Press78Engine::allocationIdle() const noexcept {
+    if (!pitchIdle()) return false;
+    for (const auto& source : heldInputCounts_) for (auto count : source) if (count) return false;
+    return true;
+}
+
+void Press78Engine::applyPendingAllocationModel() noexcept {
+    if (effectiveAllocationModel_ == controls_.allocationModel || !allocationIdle()) return;
+    effectiveAllocationModel_ = controls_.allocationModel;
+    clearAllocationState();
 }
 
 void Press78Engine::applyGlide(Voice& voice) noexcept {
@@ -560,6 +643,7 @@ void Press78Engine::buildResampler() noexcept {
 }
 
 double Press78Engine::synthesizeTick() noexcept {
+    applyPendingAllocationModel();
     applyPendingKeyLevelModel();
     applyPendingPitchModel();
     applyPendingSustainMode();

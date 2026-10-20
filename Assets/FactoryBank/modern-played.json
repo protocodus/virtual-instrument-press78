@@ -87,7 +87,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -182,7 +183,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -277,7 +279,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -372,7 +375,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -467,7 +471,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -562,7 +567,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -657,7 +663,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -752,7 +759,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -847,7 +855,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -942,7 +951,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -1037,7 +1047,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -1132,7 +1143,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "pluck",
@@ -1227,7 +1239,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "lead",
@@ -1322,7 +1335,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "lead",
@@ -1417,7 +1431,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "lead",
@@ -1512,7 +1527,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "lead",
@@ -1607,7 +1623,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "lead",
@@ -1702,7 +1719,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "lead",
@@ -1797,7 +1815,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "lead",
@@ -1892,7 +1911,8 @@
         "portamento": 0,
         "portamentoSpeed": 3,
         "velocityCurve": 1,
-        "keyLevelModel": 1
+        "keyLevelModel": 1,
+        "allocationModel": 1
       },
       "tags": [
         "lead",

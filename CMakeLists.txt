@@ -22,7 +22,7 @@ endif()
 
 # C is required in addition to C++: JUCE's macOS plug-in wrappers (AU and
 # Standalone) compile C/Objective-C sources with non-Xcode generators too.
-project(Press78 VERSION 0.1.5 LANGUAGES C CXX)
+project(Press78 VERSION 0.1.6 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -243,6 +243,9 @@ if(BUILD_TESTING)
     add_executable(Press78KeyLevelTests Tests/test_key_level.cpp)
     target_link_libraries(Press78KeyLevelTests PRIVATE Press78DSP)
     add_test(NAME Press78.KeyLevel COMMAND Press78KeyLevelTests)
+    add_executable(Press78AllocationTests Tests/test_allocation.cpp)
+    target_link_libraries(Press78AllocationTests PRIVATE Press78DSP)
+    add_test(NAME Press78.Allocation COMMAND Press78AllocationTests)
     add_executable(Press78HardwareCharacterTests Tests/test_hardware_character.cpp)
     target_link_libraries(Press78HardwareCharacterTests PRIVATE Press78DSP)
     add_test(NAME Press78.HardwareCharacter COMMAND Press78HardwareCharacterTests)

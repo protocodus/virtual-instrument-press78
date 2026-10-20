@@ -117,6 +117,10 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 
 ## Version history
 
+### Unreleased — 0.1.6 — PSS-780 voice allocation
+
+- New instances, Init, the 100 `PSS` patches and the modern presets allocate voices as the PSS-780 does in its normal keyboard mode. Replaying a note cuts that note's own release instead of stacking a second copy on it, so fast repeats on long-release sounds no longer build up or phase; a held key sent again is ignored; and a new note takes a released voice before stealing a held one. Older songs that lack the setting keep the previous free-voice-then-oldest policy.
+
 ### Unreleased — 0.1.5 — PSS-780 key scaling
 
 - New instances, Init, the 100 `PSS` patches and the modern presets scale each operator's level across the keyboard with the PSS-780 program's own per-key tables. Most patches change by under 1 dB; Human Chorus, Human Voice 1, Strings and Soprano Sax are up to 4.3 dB different at the ends of the keyboard, and modulator changes of up to 5.8 dB alter brightness from low to high notes. Older songs that lack the setting keep the earlier curves.
@@ -188,6 +192,10 @@ With the Original velocity curve, a note's carrier level follows the table the P
 ### Key scaling
 
 With Original key scaling, each operator's level follows the per-key TL offsets the PSS-780 program adds before it sends a level to the sound chip. Its 16 lower and 16 upper tables, chosen by the patch's low and high key-level settings, give a signed offset per pair of keys: lower tables run from key 24 up to middle C, where every table is zero, and upper tables from middle C to key 102, holding their end values beyond. The sum saturates at 0 and 127, so a negative offset never lifts an operator above full level, and the result mutes the operator at 99 and above, as a raw TL of 99 does. The tables (`Source/DSP/FirmwareLevel.h`, from `Tools/generate_firmware_level.py`) are re-expressed from the program's results; no ROM bytes or code are included. A code is taken as 0.75 dB, the engine's existing TL law. The [b13 comparison](Docs/research/hardware-key-level-b13-2026-10-19.md) against an old recording failed its adoption gate on Bowed Bass by about 0.2 dB while improving the 100-patch average; the owner chose to ship the keyboard's own tables regardless. The hidden **Original key scaling** setting keeps the earlier fitted curves for older songs, and a change waits until held notes, releases and steal fades finish.
+
+### Voice allocation
+
+With Original voice allocation, notes follow the PSS-780 program's Mode 00 allocator (`Source/DSP/FirmwareAllocation.h`, re-expressed from the [recovered command path](Docs/research/opu-allocation-command-path-2026-10-19.md); no ROM bytes or code are included). A note-on for a key already held does nothing. A new key first reuses the slot that last played the same note, held or released, ending its old sound with the engine's short steal fade. Otherwise it takes the slot with the lowest saturating 8-bit rank: a held key is ranked 255 and a released one 127, and every key event ages the others by one, so released voices are always taken before held ones and the oldest within each class goes first. Reduced polyphony uses the first N slots. MIDI and CV are two separate key sources sharing the pool, a Press78 extension. When the chip's key-on resets oscillator phase and how fast the program services keys are not known; Press78 keys the slot immediately and keeps the oscillator and envelope laws it already had. The [recording comparison](Docs/research/hardware-allocation-2026-10-19.md) failed its adoption gate on a short sine passage while greatly improving Bowed Bass; the owner chose to ship the keyboard's own allocation. The hidden **Original voice allocation** setting keeps the earlier policy for older songs, and a change waits until every key is up and voices, releases and steal fades have finished.
 
 ### Sustain pedal
 

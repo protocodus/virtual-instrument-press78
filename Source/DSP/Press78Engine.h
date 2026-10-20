@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <cstdint>
 #include "AnalogOutput.h"
+#include "FirmwareAllocation.h"
 
 // Independently written port of the documented PSS-780 behavioral experiment.
 // This is not a bit-exact YM3420/OPU emulator. No Yamaha firmware is included.
@@ -51,7 +52,10 @@ struct Controls {
     double velocitySensitivity = 1.0; // carrier velocity exponent, 0..2.
     double velocityToModulation = 0.0;// modulator velocity exponent, 0..2.
     double modulationAmount = 1.0;    // 0..2 times the baseline FM index (8*pi).
-    int polyphony = 12;               // 1..12. Reductions fade the oldest voices.
+    int polyphony = 12;               // 1..12; Original uses a first-N slot pool.
+    // Legacy0 takes free voices, then steals the oldest. Original1 is the
+    // PSS-780 program's Mode 00 allocation, with MIDI and CV as two sources.
+    int allocationModel = 0;
     // Legacy0 holds released keys under the pedal. Original1 selects RR/SRR
     // immediately; it uses the existing approximate envelope timing law.
     int sustainMode = 0;
@@ -135,10 +139,12 @@ public:
     int effectivePitchModel() const noexcept { return effectivePitchModel_; }
     int effectiveSustainMode() const noexcept { return effectiveSustainMode_; }
     int effectiveKeyLevelModel() const noexcept { return effectiveKeyLevelModel_; }
+    int effectiveAllocationModel() const noexcept { return effectiveAllocationModel_; }
 
 private:
     friend struct Press78SustainTestAccess;
     friend struct Press78PortamentoTestAccess;
+    friend struct Press78AllocationTestAccess;
     struct Envelope {
         double attenuation = 96.0, attackMul = 0.0, decay1 = 0.0;
         double decay2 = 0.0, release = 0.0, reverbRelease = 0.0, target = 0.0;
@@ -171,10 +177,13 @@ private:
         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
     };
     struct Tail { Voice voice{}; int remaining = 0; };
-    static constexpr std::size_t kHistory = 256;
+    // The sinc reader needs at most the latest 64 ticks after fill; 128 keeps
+    // every one and leaves room for the allocator in the instance budget.
+    static constexpr std::size_t kHistory = 128;
     static constexpr std::size_t kDelaySize = 4096;
     static constexpr int kSincTaps = 64;
     static constexpr int kSincPhases = 256;
+    static_assert(kHistory >= kResamplerDelay + 32, "History must retain every causal sinc tap");
     std::array<Voice, kMaxVoices> voices_{};
     std::array<Tail, kMaxVoices> tails_{};
     std::array<double, kHistory> history_{};
@@ -201,6 +210,19 @@ private:
     bool originalSustain_ = false;
     int effectivePitchModel_ = 0, pitchSteps_ = 0;
     int effectiveSustainMode_ = 0, effectiveKeyLevelModel_ = 0;
+    int effectiveAllocationModel_ = 0;
+    Mode00Allocator allocator_{};
+    // Held inputs per source and note, so a law change waits for every key
+    // to lift even after its voice was stolen or its envelope finished.
+    std::array<std::array<std::uint32_t, 128>, 2> heldInputCounts_{};
+    bool allocationIdle() const noexcept;
+    void applyPendingAllocationModel() noexcept;
+    void clearAllocationState() noexcept;
+    bool silent(int note) const noexcept;
+    void startVoice(Voice&, int note, int velocity, int source) noexcept;
+    void fadeVoice(Voice&) noexcept;
+    void originalNoteOn(int note, int velocity, int source) noexcept;
+    void originalNoteOff(int note, int source) noexcept;
     // Last note-on per source (0 = none yet: the firmware does not glide then).
     std::array<int, 2> lastNote_{};
     int portamentoCountdown_ = 0;

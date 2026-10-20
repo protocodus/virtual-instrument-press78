@@ -147,6 +147,7 @@ public:
     int effectivePitchModel() const noexcept { return engine_.effectivePitchModel(); }
     int effectiveSustainMode() const noexcept { return engine_.effectiveSustainMode(); }
     int effectiveKeyLevelModel() const noexcept { return engine_.effectiveKeyLevelModel(); }
+    int effectiveAllocationModel() const noexcept { return engine_.effectiveAllocationModel(); }
     // Diagnostic counters: actual generated frames, not intended timestamps.
     std::uint64_t nextPhysicalFrame() const noexcept { return direct_?frame_:src_.nextIndex(); }
     std::uint64_t hostFrame() const noexcept { return frame_; }
