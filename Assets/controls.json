@@ -1,6 +1,6 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.1b1",
+  "version": "0.1.2b1",
   "startup_profile": {
     "name": "Real",
     "values": {
@@ -21,7 +21,8 @@
       "dcBlock": 1,
       "outputLimit": 1,
       "pitchModel": 1,
-      "sustainMode": 1
+      "sustainMode": 1,
+      "bendRange": 1
     }
   },
   "rack_startup": {
@@ -616,7 +617,8 @@
       "max": 24,
       "default": 2,
       "integer": true,
-      "target": "controls"
+      "target": "controls",
+      "startup_default": 1
     },
     {
       "id": "modWheelDepth",

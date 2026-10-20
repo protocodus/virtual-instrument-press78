@@ -33,6 +33,8 @@ def main():
     assert schema['startup_profile']['values']['pitchModel']==1
     assert rows['sustainMode']['default']==0 and rows['sustainMode']['startup_default']==1
     assert schema['startup_profile']['values']['sustainMode']==1
+    assert rows['bendRange']['default']==2 and rows['bendRange']['startup_default']==1
+    assert schema['startup_profile']['values']['bendRange']==1
     info = (device/'info.lua').read_text()
     startup=load_rack_startup()
     assert schema['rack_startup']==startup
@@ -85,7 +87,7 @@ def main():
     namespace = {}
     exec(compile(ast.Module(body=[decoder], type_ignores=[]), str(source), 'exec'), namespace)
     bank = json.loads((ROOT/'Assets/FactoryBank/press78-factory.json').read_text())
-    expected = {'Init': {'pitchModel': 1, 'sustainMode': 1}}
+    expected = {'Init': {'pitchModel': 1, 'sustainMode': 1, 'bendRange': 1}}
     aliases = {'lks_hi': 'lksHi', 'lks_lo': 'lksLo', 'am_enable': 'amEnable'}
     for voice in bank['voices']:
         patch = namespace['read_sysex'](bytes.fromhex(voice['sysex_hex']))
@@ -94,7 +96,7 @@ def main():
             values.update({prefix+'_'+aliases.get(key, key): value for key, value in patch[op].items()})
         for key in ('feedback', 'pms', 'ams', 'vibrato_delay', 'vibrato', 'sustain'):
             values['vibratoDelay' if key == 'vibrato_delay' else key] = int(patch[key])
-        values.update(pitchModel=1,sustainMode=1,chorusMode=1,chorusRateHz=0.9546467517767424,
+        values.update(pitchModel=1,sustainMode=1,bendRange=1,chorusMode=1,chorusRateHz=0.9546467517767424,
                       chorusDepthMs=math.hypot(0.0495126833338911,0.4943632948117077))
         assert voice['name'].startswith('PSS ')
         expected[voice['name'].replace('/', '-')] = values
