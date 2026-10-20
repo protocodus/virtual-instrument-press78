@@ -93,7 +93,7 @@ def specs():
     rows[-1].update(options=['Legacy','Original'],startup_default=1,hidden=True,
                    description='Compatibility policy: Original pedal selects release rate; Legacy pedal holds notes.')
     for row in rows:
-        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode'): row['default']=REAL_DEFAULTS[row['id']]
+        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange'): row['default']=REAL_DEFAULTS[row['id']]
         if row['id'] in LEGACY_NOISE:
             row.update(hidden=True,deprecated='Inert compatibility property; additive noise has been removed.')
     return rows
