@@ -1,6 +1,6 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.11b1",
+  "version": "0.1.12b1",
   "startup_profile": {
     "name": "Real",
     "values": {
@@ -28,7 +28,8 @@
       "allocationModel": 1,
       "chorusCircuit": 1,
       "outputJack": 1,
-      "chipRate": 1
+      "chipRate": 1,
+      "powerSupply": 1
     }
   },
   "rack_startup": {
@@ -777,6 +778,21 @@
       "startup_default": 1,
       "hidden": true,
       "description": "Compatibility policy: YM3420 runs the chip core at the PSS-780 OPU rate, 5.5 MHz / 96, so FM aliases fall where the hardware's do; Legacy runs it at 48 kHz."
+    },
+    {
+      "id": "powerSupply",
+      "label": "Power",
+      "min": 0,
+      "max": 2,
+      "default": 0,
+      "integer": true,
+      "target": "controls",
+      "options": [
+        "Ideal",
+        "Batteries",
+        "Adaptor"
+      ],
+      "startup_default": 1
     }
   ]
 }

@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from modern_bank import load_modern, load_rack_startup, preset_relative_path
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.11b1'
+VERSION='0.1.12b1'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -20,7 +20,7 @@ REAL_DEFAULTS={'outputCircuit':1,'noiseModel':0,'noiseRms':0,
                'clockOffsetPpm':0,'clockDriftPpm':20,'clockDriftRateHz':.1,
                'lfoRateHz':5.24,'triangleLfo':1,'globalLfo':1,
                'drive':0,'dcBlock':1,'outputLimit':1,'pitchModel':1,'sustainMode':1,
-               'bendRange':1,'velocityCurve':1,'keyLevelModel':1,'allocationModel':1,'chorusCircuit':1,'outputJack':1,'chipRate':1}
+               'bendRange':1,'velocityCurve':1,'keyLevelModel':1,'allocationModel':1,'chorusCircuit':1,'outputJack':1,'chipRate':1,'powerSupply':1}
 FACTORY_CHARACTER=REAL_DEFAULTS
 
 
@@ -125,8 +125,12 @@ def specs():
     add('chipRate','Chip sample rate',0,1,0,True)
     rows[-1].update(options=['Legacy','YM3420'],startup_default=1,hidden=True,
                    description='Compatibility policy: YM3420 runs the chip core at the PSS-780 OPU rate, 5.5 MHz / 96, so FM aliases fall where the hardware\'s do; Legacy runs it at 48 kHz.')
+    # What powers the amplifier. Older songs keep it linear; new instances
+    # clip it at the AN7148's swing on fresh batteries' sagging rail.
+    add('powerSupply','Power',0,2,0,True)
+    rows[-1].update(options=['Ideal','Batteries','Adaptor'],startup_default=1)
     for row in rows:
-        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange','velocityCurve','keyLevelModel','allocationModel','chorusCircuit','outputJack','chipRate'): row['default']=REAL_DEFAULTS[row['id']]
+        if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange','velocityCurve','keyLevelModel','allocationModel','chorusCircuit','outputJack','chipRate','powerSupply'): row['default']=REAL_DEFAULTS[row['id']]
         if row['id'] in LEGACY_NOISE:
             row.update(hidden=True,deprecated='Inert compatibility property; additive noise has been removed.')
     return rows
@@ -220,7 +224,7 @@ def main():
     lua+=['}','midi_implementation_chart = { midi_cc_chart = {']
     lua += [f' [{value}]="/custom_properties/{name}",' for name,value in ids.items()]
     lua.append('} }')
-    output={'masterGain','toneCutoffHz','drive','chorusMix','chorusMode','chorusRateHz','chorusDepthMs','stereoWidth','noiseRms','noiseModel','outputCircuit','outputJack','dcBlock','outputLimit'}
+    output={'masterGain','toneCutoffHz','drive','chorusMix','chorusMode','chorusRateHz','chorusDepthMs','stereoWidth','noiseRms','noiseModel','outputCircuit','outputJack','powerSupply','dcBlock','outputLimit'}
     performance={'masterTuneCents','velocitySensitivity','velocityToModulation','polyphony','bendRange','modWheelDepth','portamento','portamentoSpeed'}
     groups={'Modulator':[], 'Carrier':[], 'FM and LFO':[], 'Performance':[], 'Output and effects':[], 'Clock':[]}
     for row in rows:
@@ -268,7 +272,7 @@ def main():
          if row['id'].startswith(('mod_','car_')) else
          f'patch.{row["id"]} = static_cast<{"bool" if row["id"] in ("vibrato","sustain") else "int"}>(physical(k_{row["id"]}));'
          if row['target']=='patch' else
-         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode","velocityCurve","keyLevelModel","allocationModel","chorusCircuit","outputJack","chipRate") else "double"}>(physical(k_{row["id"]}));'
+         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode","velocityCurve","keyLevelModel","allocationModel","chorusCircuit","outputJack","chipRate","powerSupply") else "double"}>(physical(k_{row["id"]}));'
          for row in rows if row['id'] not in ('bendRange','modWheelDepth')])+'\n')
     print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS +{len(modern)} modern patches at {device}; startup: {startup["name"]}')
 

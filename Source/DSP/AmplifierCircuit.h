@@ -52,6 +52,35 @@ namespace press78 {
 // its passband, so Volume sets the level as before. Volume is twice the
 // wiper's loaded share of the pot-top voltage, so its top, 2, is the slider's
 // top; the slider's taper then does not matter.
+//
+// Clipping (Power, research 2026-10-20). One engine unit at the pot top is
+// taken as 1.0 V peak: the NJM4558 mixer before the pot, on its 5 V rail,
+// swings 0.72-1.72 V before it clips, and the owner's manual (pp. 11, 29) says
+// chords of loud voices "occasionally" overload it, which puts one unit
+// between 0.49 and 2.34 V. That mixer drives the pot top directly, as the
+// PSS-480's IC12 does and AnalogOutput assumes; the PSS-780 board's third
+// NJM4558 and its unassigned 47K/220P parts fit it. The PSS-270 and PSS-560
+// mix passively instead, which would leave 0.148 of that level at the pot
+// top. The AN7148 gains 44.5 dB (datasheet typical) over 1/11 of the wiper
+// voltage. Its output follows y = v (1 + |v/Vc|^10)^(-1/10),
+// fitted to the datasheet's THD-input curve at 9 V into 4 Ohm: Vc 3.66 V,
+// 10 % THD at 2.10 W as its table gives, THD within 2.7 dB of the curve from
+// 0.4 % to 22 %. Vc rises 0.376 V per supply volt (its output-power curves).
+// Into the 132 Ohm headphone load Vc is taken as half the supply less 0.51 V,
+// the least headroom the datasheet shows (8 Ohm at 9 V). Pin 3's capacitor
+// holds the output's midpoint, so a fast dip of the rail lowers only the
+// positive limit: 0.752 V per volt into the speakers, 1 V into headphones.
+//
+// Supply: the rail's 470 uF (PSS-480) is fed by the source and drawn by an
+// estimated 0.2 A idle plus each channel's positive output current, the
+// half the class B stage takes from the rail. Batteries are six fresh alkaline
+// C cells, 9.54 V behind 1.35 Ohm (Energizer EN93 and E93). The Adaptor is an
+// unregulated PA-3 class one, 16.5 V open-circuit as an owner measured a
+// "12 V" PA-3C, falling to the rated 12 V at 0.7 A (6.4 Ohm), then the
+// PSS-480's series 1SR35 diode, 0.969 + 0.171 log10(I/1 A) V (Sunmate
+// datasheet). The adaptor's own reservoir capacitor is unknown and left out,
+// so its sag on fast peaks is an upper bound. Ideal keeps the amplifier
+// linear, as before.
 class AmplifierCircuit {
 public:
     void prepare(double sampleRate) noexcept {
@@ -87,6 +116,12 @@ public:
         phonesSide_.design({0.0, sideTau}, {1.0, sideTau}, sampleRate, 1.0 / (2.0 * pi * sideTau));
         twiceRate_ = 2.0 * sampleRate;
         loadSlider(wiper_);
+        voltsPerUnit_ = std::pow(10.0, 44.5 / 20.0) / 11.0;
+        fadeStep_ = 1.0 / (0.005 * sampleRate);
+        idleSmoothing_ = 1.0 - std::exp(-1.0 / (0.005 * sampleRate));
+        batteryDecay_ = std::exp(-1.0 / (sampleRate * 1.35 * 470e-6));
+        adaptorDecay_ = std::exp(-1.0 / (sampleRate * 6.4 * 470e-6));
+        idleTarget_ = supplyVolts(kIdleAmps);
         reset();
     }
     void reset() noexcept {
@@ -94,6 +129,24 @@ public:
         for (auto& t : treble_) t.x1 = t.y1 = 0.0;
         for (auto& f : speaker_) f.reset();
         phonesMid_.reset(); phonesSide_.reset();
+        snapSupply();
+    }
+    // 0 Ideal, 1 Batteries, 2 Adaptor. A change fades the clipping in or out
+    // over 5 ms; the last supply powers it while it fades out.
+    void setSupply(int supply) noexcept {
+        target_ = supply == 0 ? 0.0 : 1.0;
+        if (supply == 0 || supply == source_) return;
+        source_ = supply;
+        idleTarget_ = supplyVolts(kIdleAmps);
+        if (clipMix_ == 0.0) idle_ = rail_ = idleTarget_;
+    }
+    void snapSupply() noexcept { clipMix_ = target_; idle_ = rail_ = idleTarget_; }
+    double railVolts() const noexcept { return rail_; }
+    // The share of v volts the output reaches, given its positive and
+    // negative limits.
+    static double swingShare(double v, double above, double below) noexcept {
+        const double u = v / (v > 0.0 ? above : below), u2 = u * u, u4 = u2 * u2;
+        return std::pow(1.0 + u4 * u4 * u2, -0.1);
     }
     // Moves left and right from the slider towards the AUX and headphone
     // outputs by their mix weights. Every path runs at all times, so a jack
@@ -102,13 +155,36 @@ public:
     void process(double& left, double& right, double auxMix, double phonesMix, double wiper) noexcept {
         if (wiper != wiper_) loadSlider(wiper);
         const double l = treble_[0].process(slider_[0].process(left)), r = treble_[1].process(slider_[1].process(right));
-        const double auxLeft = speaker_[0].process(l), auxRight = speaker_[1].process(r);
-        const double mid = phonesMid_.process(0.5 * (l + r)), side = phonesSide_.process(0.5 * (l - r));
+        double auxL = l, auxR = r, phonesL = l, phonesR = r;
+        clipMix_ = target_ > clipMix_ ? std::min(target_, clipMix_ + fadeStep_) : std::max(target_, clipMix_ - fadeStep_);
+        if (clipMix_ > 0.0) {
+            idle_ += (idleTarget_ - idle_) * idleSmoothing_;
+            const double volts = voltsPerUnit_ * wiper, dip = idle_ - rail_;
+            const double auxBelow = 3.66 + 0.376 * (idle_ - 9.0), auxAbove = std::max(0.1, auxBelow - 0.752 * dip);
+            const double phonesBelow = 0.5 * idle_ - 0.51, phonesAbove = std::max(0.1, phonesBelow - dip);
+            auxL *= swingShare(l * volts, auxAbove, auxBelow); auxR *= swingShare(r * volts, auxAbove, auxBelow);
+            phonesL *= swingShare(l * volts, phonesAbove, phonesBelow); phonesR *= swingShare(r * volts, phonesAbove, phonesBelow);
+            const double amps = kIdleAmps + volts * (auxMix * (std::max(auxL, 0.0) + std::max(auxR, 0.0)) / 4.0
+                + phonesMix * (std::max(phonesL, 0.0) + std::max(phonesR, 0.0)) / 132.0);
+            const double settled = supplyVolts(amps);
+            rail_ = settled + (rail_ - settled) * (source_ == 2 ? adaptorDecay_ : batteryDecay_);
+            if (clipMix_ < 1.0) {
+                auxL = l + clipMix_ * (auxL - l); auxR = r + clipMix_ * (auxR - r);
+                phonesL = l + clipMix_ * (phonesL - l); phonesR = r + clipMix_ * (phonesR - r);
+            }
+        }
+        const double auxLeft = speaker_[0].process(auxL), auxRight = speaker_[1].process(auxR);
+        const double mid = phonesMid_.process(0.5 * (phonesL + phonesR)), side = phonesSide_.process(0.5 * (phonesL - phonesR));
         left += auxMix * (auxLeft - left) + phonesMix * (mid + side - left);
         right += auxMix * (auxRight - right) + phonesMix * (mid - side - right);
     }
 
 private:
+    static constexpr double kIdleAmps = 0.2;
+    // The rail's source voltage while it delivers amps.
+    double supplyVolts(double amps) const noexcept {
+        return source_ == 2 ? 16.5 - 6.4 * amps - (0.969 + 0.171 * std::log10(amps)) : 9.54 - 1.35 * amps;
+    }
     // (top / pot)(1 + s pot C)/(1 + s top C) turns the unloaded pot's high-pass
     // into the loaded one; top is the resistance the coupling capacitor sees.
     // Both corners sit far below the sample rate, so the bilinear transform
@@ -136,6 +212,9 @@ private:
     };
     std::array<FirstOrder, 2> slider_{}, treble_{};
     double twiceRate_ = 96000.0, wiper_ = 0.0;
+    double voltsPerUnit_ = 0.0, fadeStep_ = 0.0, idleSmoothing_ = 0.0, batteryDecay_ = 0.0, adaptorDecay_ = 0.0;
+    int source_ = 1;
+    double target_ = 0.0, clipMix_ = 0.0, idleTarget_ = 0.0, idle_ = 0.0, rail_ = 0.0;
     std::array<AnalogFilter<3>, 2> speaker_{};
     AnalogFilter<1> phonesMid_{}, phonesSide_{};
 };

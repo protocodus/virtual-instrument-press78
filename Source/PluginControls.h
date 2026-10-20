@@ -13,7 +13,7 @@ struct PluginControl {
     std::string_view options; // '|'-separated choice names, empty for numbers
 };
 
-inline constexpr std::array<PluginControl, 75> kPluginControls{{
+inline constexpr std::array<PluginControl, 76> kPluginControls{{
     {"mod_mul", "Modulator Ratio", 0.0, 15.0, 1.0, true, true, false, ""},
     {"mod_dt1", "Modulator Fine detune", -7.0, 7.0, 0.0, true, true, false, ""},
     {"mod_tl", "Modulator Attenuation", 0.0, 127.0, 127.0, true, true, false, ""},
@@ -89,6 +89,7 @@ inline constexpr std::array<PluginControl, 75> kPluginControls{{
     {"chorusCircuit", "Chorus wet-path circuit", 0.0, 1.0, 1.0, true, false, true, "Legacy|PSS-270"},
     {"outputJack", "Output jack", 0.0, 2.0, 1.0, true, false, false, "Preamp|AUX|Phones"},
     {"chipRate", "Chip sample rate", 0.0, 1.0, 1.0, true, false, true, "Legacy|YM3420"},
+    {"powerSupply", "Power", 0.0, 2.0, 1.0, true, false, false, "Ideal|Batteries|Adaptor"},
 }};
 
 // Index of a control id; unknown ids are a compile-time error where constant-evaluated.

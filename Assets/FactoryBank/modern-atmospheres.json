@@ -96,7 +96,8 @@
         "allocationModel": 1,
         "chorusCircuit": 1,
         "outputJack": 1,
-        "chipRate": 1
+        "chipRate": 1,
+        "powerSupply": 1
       }
     },
     {
@@ -193,7 +194,8 @@
         "allocationModel": 1,
         "chorusCircuit": 1,
         "outputJack": 1,
-        "chipRate": 1
+        "chipRate": 1,
+        "powerSupply": 1
       }
     },
     {
@@ -290,7 +292,8 @@
         "allocationModel": 1,
         "chorusCircuit": 1,
         "outputJack": 1,
-        "chipRate": 1
+        "chipRate": 1,
+        "powerSupply": 1
       }
     },
     {
@@ -387,7 +390,8 @@
         "allocationModel": 1,
         "chorusCircuit": 1,
         "outputJack": 1,
-        "chipRate": 1
+        "chipRate": 1,
+        "powerSupply": 1
       }
     },
     {
@@ -484,7 +488,8 @@
         "allocationModel": 1,
         "chorusCircuit": 1,
         "outputJack": 1,
-        "chipRate": 1
+        "chipRate": 1,
+        "powerSupply": 1
       }
     },
     {
@@ -581,7 +586,8 @@
         "allocationModel": 1,
         "chorusCircuit": 1,
         "outputJack": 1,
-        "chipRate": 1
+        "chipRate": 1,
+        "powerSupply": 1
       }
     },
     {
@@ -678,7 +684,8 @@
         "allocationModel": 1,
         "chorusCircuit": 1,
         "outputJack": 1,
-        "chipRate": 1
+        "chipRate": 1,
+        "powerSupply": 1
       }
     },
     {
@@ -775,7 +782,8 @@
         "allocationModel": 1,
         "chorusCircuit": 1,
         "outputJack": 1,
-        "chipRate": 1
+        "chipRate": 1,
+        "powerSupply": 1
       }
     },
     {
@@ -872,7 +880,8 @@
         "allocationModel": 1,
         "chorusCircuit": 1,
         "outputJack": 1,
-        "chipRate": 1
+        "chipRate": 1,
+        "powerSupply": 1
       }
     },
     {
@@ -969,7 +978,8 @@
         "allocationModel": 1,
         "chorusCircuit": 1,
         "outputJack": 1,
-        "chipRate": 1
+        "chipRate": 1,
+        "powerSupply": 1
       }
     }
   ]

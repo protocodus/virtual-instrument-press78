@@ -56,7 +56,7 @@ def load_modern():
                 raise ValueError('Nonfinite parameter: ' + name + '/' + key)
             if not row['min'] <= value <= row['max'] or (row['integer'] and value != round(value)):
                 raise ValueError('Out-of-range physical value: ' + name + '/' + key)
-        for key, value in {'noiseRms': 0, 'noiseModel': 0, 'pitchModel': 1, 'sustainMode': 1, 'velocityCurve': 1, 'keyLevelModel': 1, 'allocationModel': 1, 'chorusCircuit': 1, 'outputJack': 1, 'chipRate': 1,
+        for key, value in {'noiseRms': 0, 'noiseModel': 0, 'pitchModel': 1, 'sustainMode': 1, 'velocityCurve': 1, 'keyLevelModel': 1, 'allocationModel': 1, 'chorusCircuit': 1, 'outputJack': 1, 'chipRate': 1, 'powerSupply': 1,
                            'outputCircuit': 1, 'outputLimit': 1}.items():
             if p[key] != value:
                 raise ValueError('Modern character/noise policy mismatch: ' + name + '/' + key)

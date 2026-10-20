@@ -23,7 +23,7 @@ def main():
     device = args.device.resolve()
     schema = json.loads((ROOT/'Assets/controls.json').read_text())
     rows = {row['id']: row for row in schema['controls']}
-    assert len(rows) == len(schema['controls']) == 75
+    assert len(rows) == len(schema['controls']) == 76
     hidden={name for name,row in rows.items() if row.get('hidden')}
     assert hidden == {'noiseRms','noiseModel','sustainMode','velocityCurve','keyLevelModel','allocationModel','chorusCircuit','chipRate'}
     visible=set(rows)-hidden
@@ -45,6 +45,8 @@ def main():
     assert schema['startup_profile']['values']['outputJack']==1
     assert rows['chipRate']['default']==0 and rows['chipRate']['startup_default']==1 and rows['chipRate']['hidden']
     assert schema['startup_profile']['values']['chipRate']==1
+    assert rows['powerSupply']['default']==0 and rows['powerSupply']['startup_default']==1 and not rows['powerSupply'].get('hidden')
+    assert schema['startup_profile']['values']['powerSupply']==1
     assert rows['bendRange']['default']==2 and rows['bendRange']['startup_default']==1
     assert schema['startup_profile']['values']['bendRange']==1
     info = (device/'info.lua').read_text()
@@ -86,6 +88,7 @@ def main():
     assert ids['chorusCircuit'] == 326
     assert ids['outputJack'] == 327
     assert ids['chipRate'] == 328
+    assert ids['powerSupply'] == 329
     assert all(number in (7,74) or 256 <= number <= 10039 for number in ids.values())
     locale = (device/'Resources/English/texts.lua').read_text()
     keys = set(re.findall(r'\["([^"]+)"\]\s*=', locale))
@@ -103,7 +106,7 @@ def main():
     namespace = {}
     exec(compile(ast.Module(body=[decoder], type_ignores=[]), str(source), 'exec'), namespace)
     bank = json.loads((ROOT/'Assets/FactoryBank/press78-factory.json').read_text())
-    expected = {'Init': {'pitchModel': 1, 'sustainMode': 1, 'bendRange': 1, 'velocityCurve': 1, 'keyLevelModel': 1, 'allocationModel': 1, 'chorusCircuit': 1, 'outputJack': 1, 'chipRate': 1}}
+    expected = {'Init': {'pitchModel': 1, 'sustainMode': 1, 'bendRange': 1, 'velocityCurve': 1, 'keyLevelModel': 1, 'allocationModel': 1, 'chorusCircuit': 1, 'outputJack': 1, 'chipRate': 1, 'powerSupply': 1}}
     aliases = {'lks_hi': 'lksHi', 'lks_lo': 'lksLo', 'am_enable': 'amEnable'}
     for voice in bank['voices']:
         patch = namespace['read_sysex'](bytes.fromhex(voice['sysex_hex']))
@@ -112,7 +115,7 @@ def main():
             values.update({prefix+'_'+aliases.get(key, key): value for key, value in patch[op].items()})
         for key in ('feedback', 'pms', 'ams', 'vibrato_delay', 'vibrato', 'sustain'):
             values['vibratoDelay' if key == 'vibrato_delay' else key] = int(patch[key])
-        values.update(pitchModel=1,sustainMode=1,bendRange=1,velocityCurve=1,keyLevelModel=1,allocationModel=1,chorusCircuit=1,outputJack=1,chipRate=1,chorusMode=1,chorusRateHz=0.9546467517767424,
+        values.update(pitchModel=1,sustainMode=1,bendRange=1,velocityCurve=1,keyLevelModel=1,allocationModel=1,chorusCircuit=1,outputJack=1,chipRate=1,powerSupply=1,chorusMode=1,chorusRateHz=0.9546467517767424,
                       chorusDepthMs=math.hypot(0.0495126833338911,0.4943632948117077))
         assert voice['name'].startswith('PSS ')
         expected[voice['name'].replace('/', '-')] = values

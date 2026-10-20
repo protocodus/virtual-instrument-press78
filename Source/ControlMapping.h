@@ -99,6 +99,7 @@ inline Controls controlsFromValues(const ControlValues& v, int bend, double whee
     c.allocationModel = integer("allocationModel");
     c.chorusCircuit = integer("chorusCircuit");
     c.outputJack = integer("outputJack");
+    c.powerSupply = integer("powerSupply");
     c.chipRate = integer("chipRate");
     // The PSS-780 receives CC65 as the Portamento switch (Mode 00 MIDI chart).
     c.portamento = portamentoSwitch < 0 ? integer("portamento") != 0 : portamentoSwitch >= 64;

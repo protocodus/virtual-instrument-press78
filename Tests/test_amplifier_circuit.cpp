@@ -1,6 +1,8 @@
 #include "AmplifierCircuit.h"
+#include "FactoryVoices.h"
 #include "Press78Engine.h"
 
+#include <algorithm>
 #include <cmath>
 #include <complex>
 #include <cstdio>
@@ -37,6 +39,34 @@ double pole(double hz, double cornerHz) { return -10.0 * std::log10(1.0 + (hz / 
 // The analog amplifier: the PSS-480 input network's 37.25 kHz pole and the
 // AN7148 datasheet's 29.48 kHz reading.
 double treble(double hz) { return pole(hz, 1.0 / (tau * (10e3 / 11.0) * 4.7e-9)) + pole(hz, 29.48e3); }
+
+// Total harmonic distortion of a sine through the amplifier, both channels
+// driven alike, read on the left output over its second second.
+double distortion(int supply, double amplitude, bool phones, double wiper, double* railMean = nullptr, double* railMin = nullptr, double* second = nullptr) {
+    press78::AmplifierCircuit a;
+    a.prepare(48000.0);
+    a.setSupply(supply); a.snapSupply();
+    constexpr int n = 48000;
+    constexpr double hz = 1000.0;
+    std::vector<double> out(n);
+    double sum = 0.0, lowest = 1e9;
+    for (int i = 0; i < 2 * n; ++i) {
+        double l = amplitude * std::sin(tau * hz * i / 48000.0), r = l;
+        a.process(l, r, phones ? 0.0 : 1.0, phones ? 1.0 : 0.0, wiper);
+        if (i >= n) { out[i - n] = l; sum += a.railVolts(); lowest = std::min(lowest, a.railVolts()); }
+    }
+    const auto harmonic = [&](int k) {
+        std::complex<double> c;
+        for (int i = 0; i < n; ++i) c += out[i] * std::polar(1.0, -tau * k * hz * i / 48000.0);
+        return std::abs(c);
+    };
+    double rest = 0.0;
+    for (int k = 2; k <= 9; ++k) rest += harmonic(k) * harmonic(k);
+    if (railMean) *railMean = sum / n;
+    if (railMin) *railMin = lowest;
+    if (second) *second = 20.0 * std::log10(harmonic(2) / harmonic(1));
+    return std::sqrt(rest) / harmonic(1);
+}
 
 std::vector<float> render(int jack, bool right, int switchTo = -1) {
     auto e = std::make_unique<press78::Press78Engine>();
@@ -152,6 +182,131 @@ int main() {
         REQUIRE(c.outputJack == 0);
         c.outputJack = 9; REQUIRE(press78::sanitizeControls(c).outputJack == 2);
         c.outputJack = -1; REQUIRE(press78::sanitizeControls(c).outputJack == 0);
+    });
+    test("the swing law follows the AN7148 datasheet", [] {
+        // Datasheet THD-input curve at 9 V into 4 Ohm (input mV rms, THD %),
+        // with the curve's own 44.92 dB gain and its 0.25 % crossover floor.
+        const auto thd = [](double volts, double* power = nullptr) {
+            constexpr int n = 4096;
+            std::vector<std::complex<double>> h(10);
+            for (int i = 0; i < n; ++i) {
+                const double v = volts * std::sin(tau * i / n), y = v * press78::AmplifierCircuit::swingShare(v, 3.66, 3.66);
+                for (int k = 1; k < 10; ++k) h[k] += y * std::polar(2.0 / n, -tau * k * i / n);
+            }
+            double rest = 0.0;
+            for (int k = 2; k < 10; ++k) rest += std::norm(h[k]);
+            if (power) *power = std::norm(h[1]) / 8.0;
+            return std::hypot(std::sqrt(rest) / std::abs(h[1]), 0.0025);
+        };
+        const double gain = std::sqrt(2.0) * std::pow(10.0, 44.92 / 20.0) * 1e-3;
+        for (const auto& [mv, percent] : std::vector<std::pair<double, double>>{{27.93, 22.5}, {19.56, 11.9}, {15.27, 2.7}, {13.81, 1.26}, {12.75, 0.82}, {10.45, 0.375}})
+            REQUIRE(std::abs(20.0 * std::log10(thd(mv * gain) / (0.01 * percent))) < 2.7);
+        // Its table gives 2.10 W at 10 % THD.
+        double lo = 3.0, hi = 6.0, power = 0.0;
+        for (int i = 0; i < 50; ++i) (thd(0.5 * (lo + hi)) < 0.1 ? lo : hi) = 0.5 * (lo + hi);
+        thd(lo, &power);
+        REQUIRE(std::abs(power - 2.10) < 0.05);
+    });
+    test("small signals pass every supply untouched", [] {
+        for (int supply : {1, 2}) for (double aux : {1.0, 0.0}) {
+            press78::AmplifierCircuit ideal, powered;
+            ideal.prepare(48000.0); powered.prepare(48000.0);
+            powered.setSupply(supply); powered.snapSupply();
+            for (int i = 0; i < 4800; ++i) {
+                double l = 0.01 * std::sin(0.05 * i), r = -l, pl = l, pr = r;
+                ideal.process(l, r, aux, 1.0 - aux, 0.5);
+                powered.process(pl, pr, aux, 1.0 - aux, 0.5);
+                REQUIRE(l == pl && r == pr);
+            }
+        }
+    });
+    test("headphones run out of swing near half the battery rail", [] {
+        // The AN7148 gives 44.5 dB over the wiper's 1/11, and one engine unit
+        // is 1 V at the pot top; into headphones it swings to half the idle
+        // rail, 9.54 V - 1.35 Ohm x 0.2 A, less 0.51 V. The law reaches 1 % THD
+        // at 0.891 of that limit and 10 % at 1.31; the little headphone current
+        // barely moves the rail.
+        const double voltsPerUnit = std::pow(10.0, 44.5 / 20.0) / 11.0, limit = 0.5 * (9.54 - 1.35 * 0.2) - 0.51;
+        for (double wiper : {1.0, 0.5}) {
+            REQUIRE(std::abs(distortion(1, 0.891 * limit / (voltsPerUnit * wiper), true, wiper) - 0.01) < 0.001);
+            REQUIRE(std::abs(distortion(1, 1.31 * limit / (voltsPerUnit * wiper), true, wiper) - 0.10) < 0.005);
+        }
+    });
+    test("speaker current sags the rail and flattens positive peaks", [] {
+        // Twice the AUX limit on both channels. Batteries idle at 9.27 V; the
+        // rail cannot fall below 7.59 V, where both channels held at their
+        // sagged positive limit would draw just what the rail can give.
+        double mean = 0.0, lowest = 0.0, second = 0.0;
+        const double voltsPerUnit = std::pow(10.0, 44.5 / 20.0) / 11.0;
+        distortion(1, 2.0 * 3.76 / voltsPerUnit, false, 1.0, &mean, &lowest, &second);
+        REQUIRE(lowest > 7.59 && mean < 9.27 - 0.5);
+        REQUIRE(second > -40.0);
+        // The headphones' 132 Ohm draws far less.
+        distortion(1, 2.0 * 4.125 / voltsPerUnit, true, 1.0, &mean, &lowest, &second);
+        REQUIRE(lowest > 9.27 - 0.1 && second < -45.0);
+        // The adaptor idles at 16.5 V - 6.4 Ohm x 0.2 A less the diode's
+        // 0.969 + 0.171 log10(0.2) V.
+        press78::AmplifierCircuit a;
+        a.prepare(48000.0); a.setSupply(2); a.snapSupply();
+        REQUIRE(std::abs(a.railVolts() - (16.5 - 1.28 - (0.969 + 0.171 * std::log10(0.2)))) < 1e-9);
+    });
+    test("the default Volume keeps a loud chord clean", [] {
+        // Jug's chord clips most at the default Volume of the 100 PSS voices.
+        unsigned jug = 0;
+        while (std::string(press78::kFactoryVoices[jug].name) != "PSS 46 Jug") ++jug;
+        const auto chord = [jug](int supply, double volume) {
+            auto e = std::make_unique<press78::Press78Engine>();
+            e->prepare(48000.0);
+            press78::Controls c;
+            c.outputJack = 1; c.chorusMode = 1; c.chorusMix = 1.0; c.outputCircuit = true; c.chipRate = 1;
+            c.powerSupply = supply; c.masterGain = volume;
+            e->setControls(c);
+            e->setPatch(press78::factoryPatch(jug));
+            for (int note : {48, 52, 55, 60}) e->noteOn(note, 127);
+            std::vector<float> l(48000), r(48000);
+            e->process(l.data(), r.data(), l.size());
+            return l;
+        };
+        const auto change = [](const std::vector<float>& a, const std::vector<float>& b) {
+            double signal = 0.0, difference = 0.0;
+            for (std::size_t i = 0; i < a.size(); ++i) { signal += a[i] * a[i]; difference += (a[i] - b[i]) * (a[i] - b[i]); }
+            return 10.0 * std::log10(difference / signal);
+        };
+        const auto peak = [](const std::vector<float>& a) { double p = 0.0; for (float x : a) p = std::max(p, std::abs(double(x))); return p; };
+        for (int supply : {1, 2}) REQUIRE(change(chord(0, 0.25), chord(supply, 0.25)) < -45.0);
+        const auto ideal = chord(0, 2.0), batteries = chord(1, 2.0);
+        REQUIRE(change(ideal, batteries) > -30.0 && peak(batteries) < peak(ideal));
+    });
+    test("a supply change fades without a step", [] {
+        // A loud 50 Hz sine clips hard; the change lands on a positive peak.
+        const auto play = [](int from, int to) {
+            press78::AmplifierCircuit a;
+            a.prepare(48000.0);
+            a.setSupply(from); a.snapSupply();
+            std::vector<double> out(14400);
+            for (int i = 0; i < 14400; ++i) {
+                if (i == 12720) a.setSupply(to);
+                double l = std::sin(tau * 50.0 * i / 48000.0), r = l;
+                a.process(l, r, 1.0, 0.0, 1.0);
+                out[i] = l;
+            }
+            return out;
+        };
+        double motion = 0.0;
+        for (int supply : {0, 1, 2}) {
+            const auto steady = play(supply, supply);
+            for (std::size_t i = 1; i < steady.size(); ++i) motion = std::max(motion, std::abs(steady[i] - steady[i - 1]));
+        }
+        for (const auto& [from, to] : std::vector<std::pair<int, int>>{{0, 1}, {1, 0}, {1, 2}, {2, 1}, {2, 0}}) {
+            const auto switched = play(from, to);
+            for (std::size_t i = 12700; i < switched.size(); ++i) REQUIRE(std::abs(switched[i] - switched[i - 1]) <= 1.5 * motion);
+        }
+    });
+    test("controls sanitize the supply", [] {
+        press78::Controls c;
+        REQUIRE(c.powerSupply == 0);
+        c.powerSupply = 7; REQUIRE(press78::sanitizeControls(c).powerSupply == 2);
+        c.powerSupply = -3; REQUIRE(press78::sanitizeControls(c).powerSupply == 0);
     });
     std::printf("%d passed, %d failed\n", passed, failed);
     return failed ? 1 : 0;

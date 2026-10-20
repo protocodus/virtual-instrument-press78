@@ -76,6 +76,7 @@
     "allocationModel": 325,
     "chorusCircuit": 326,
     "outputJack": 327,
-    "chipRate": 328
+    "chipRate": 328,
+    "powerSupply": 329
   }
 }

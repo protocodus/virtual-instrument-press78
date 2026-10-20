@@ -162,6 +162,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.allocationModel = std::clamp(c.allocationModel, 0, 1);
     c.chorusCircuit = std::clamp(c.chorusCircuit, 0, 1);
     c.outputJack = std::clamp(c.outputJack, 0, 2);
+    c.powerSupply = std::clamp(c.powerSupply, 0, 2);
     c.chipRate = std::clamp(c.chipRate, 0, 1);
     c.sustainMode = std::clamp(c.sustainMode, 0, 1);
     c.velocityCurve = std::clamp(c.velocityCurve, 0, 1);
@@ -379,6 +380,7 @@ void Press78Engine::setControls(const Controls& controls) noexcept {
     updatePitchControls();
     toneCoefficient_ = controls_.toneCutoffHz == 0.0 ? 0.0
         : 1.0 - std::exp(-tau * std::min(controls_.toneCutoffHz, sampleRate_ * 0.45) / sampleRate_);
+    amplifier_.setSupply(controls_.powerSupply);
     if (!hasProcessed_) {
         gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_; voiceControls_ = controls_;
         currentToneCoefficient_ = toneCoefficient_;
@@ -386,6 +388,7 @@ void Press78Engine::setControls(const Controls& controls) noexcept {
         chorusCircuitMix_ = static_cast<double>(controls_.chorusCircuit);
         auxMix_ = controls_.outputJack == 1 ? 1.0 : 0.0;
         phonesMix_ = controls_.outputJack == 2 ? 1.0 : 0.0;
+        amplifier_.snapSupply();
         recordedChorusMix_ = static_cast<double>(controls_.chorusMode);
         drive_ = controls_.drive; chorusMix_ = controls_.chorusMix;
         chorusRate_ = controls_.chorusRateHz; chorusDepth_ = controls_.chorusDepthMs;
