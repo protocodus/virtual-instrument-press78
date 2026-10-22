@@ -85,6 +85,11 @@ struct Controls {
     double clockDriftPpm = 0.0;        // 0..10000 sinusoidal excursion.
     double clockDriftRateHz = 0.1;     // 0.001..2; common digital timebase only.
     bool outputCircuit = true;        // Selected shared headroom + sibling filter.
+    // Explicit host gain staging around only the assumed headroom curve:
+    // divide its input by H, then restore H before the unchanged linear filter.
+    // Default 1 preserves the canonical core sound; Rack opts into +12 dB of
+    // headroom. This is a user-requested software adjustment, not hardware fit.
+    double circuitHeadroom = 1.0;     // 1..16, reciprocal pre/post gain.
     double toneCutoffHz = 14000.0;     // 20..0.9*Nyquist; 0 bypasses filter.
     double drive = 0.0;               // 0..1 creative tanh saturation; 0 bypass.
     int chorusMode = 0;              // 0 Studio legacy;1 recorded effective v3.
@@ -228,6 +233,7 @@ private:
     double tone1_ = 0.0, tone2_ = 0.0, toneCoefficient_ = 0.0;
     double currentToneCoefficient_ = 0.0, drive_ = 0.0, chorusMix_ = 0.0;
     double circuitMix_ = 1.0, chorusCircuitMix_ = 0.0;
+    double circuitHeadroom_ = 1.0;    // 5 ms control smoothing; startup snaps.
     ChorusCircuit chorusCircuit_{};
     double auxMix_ = 0.0, phonesMix_ = 0.0;
     AmplifierCircuit amplifier_{};
