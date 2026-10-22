@@ -174,6 +174,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.clockOffsetPpm = bounded(c.clockOffsetPpm, -20000, 20000, 0);
     c.clockDriftPpm = bounded(c.clockDriftPpm, 0, 10000, 0);
     c.clockDriftRateHz = bounded(c.clockDriftRateHz, 0.001, 2, 0.1);
+    c.circuitHeadroom = bounded(c.circuitHeadroom, 1, 16, 1);
     c.toneCutoffHz = bounded(c.toneCutoffHz, 0, 86400, 14000);
     if (c.toneCutoffHz > 0) c.toneCutoffHz = std::max(20.0, c.toneCutoffHz);
     c.drive = bounded(c.drive, 0, 1, 0);
@@ -337,6 +338,8 @@ void Press78Engine::reset() noexcept {
     voiceControls_ = controls_;
     currentToneCoefficient_ = toneCoefficient_;
     circuitMix_ = controls_.outputCircuit ? 1.0 : 0.0;
+    circuitHeadroom_ = controls_.circuitHeadroom;
+    circuitSaturationMix_ = controls_.circuitSaturation ? 1.0 : 0.0;
     chorusCircuitMix_ = static_cast<double>(controls_.chorusCircuit);
     auxMix_ = controls_.outputJack == 1 ? 1.0 : 0.0;
     phonesMix_ = controls_.outputJack == 2 ? 1.0 : 0.0;
@@ -385,6 +388,8 @@ void Press78Engine::setControls(const Controls& controls) noexcept {
         gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_; voiceControls_ = controls_;
         currentToneCoefficient_ = toneCoefficient_;
         circuitMix_ = controls_.outputCircuit ? 1.0 : 0.0;
+        circuitHeadroom_ = controls_.circuitHeadroom;
+        circuitSaturationMix_ = controls_.circuitSaturation ? 1.0 : 0.0;
         chorusCircuitMix_ = static_cast<double>(controls_.chorusCircuit);
         auxMix_ = controls_.outputJack == 1 ? 1.0 : 0.0;
         phonesMix_ = controls_.outputJack == 2 ? 1.0 : 0.0;
@@ -749,7 +754,17 @@ double Press78Engine::readDelay(double samples) const noexcept {
 void Press78Engine::output(double mono, double& left, double& right) noexcept {
     // Always advance the selected headroom and related-hardware small-signal
     // circuit, including during bypass, to avoid stale filter memory.
-    const double circuit = analog_.process(hardware_character::output(mono));
+    circuitHeadroom_ += (controls_.circuitHeadroom - circuitHeadroom_) * gainSmoothing_;
+    circuitSaturationMix_ += ((controls_.circuitSaturation ? 1.0 : 0.0) - circuitSaturationMix_) * gainSmoothing_;
+    double shaped = mono;
+    if (circuitSaturationMix_ > 0.0) {
+        const double colored = circuitHeadroom_ == 1.0 ? hardware_character::output(mono)
+            : circuitHeadroom_ * hardware_character::output(mono / circuitHeadroom_);
+        // Preserve the established arithmetic exactly for the legacy policy.
+        shaped = circuitSaturationMix_ == 1.0 ? colored
+            : mono + circuitSaturationMix_ * (colored - mono);
+    }
+    const double circuit = analog_.process(shaped);
     circuitMix_ += ((controls_.outputCircuit ? 1.0 : 0.0) - circuitMix_) * gainSmoothing_;
     mono += circuitMix_ * (circuit - mono);
     currentToneCoefficient_ += (toneCoefficient_ - currentToneCoefficient_) * gainSmoothing_;
