@@ -1,6 +1,6 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.12b1",
+  "version": "0.1.13b1",
   "startup_profile": {
     "name": "Real",
     "values": {
@@ -781,7 +781,7 @@
     },
     {
       "id": "powerSupply",
-      "label": "Power",
+      "label": "Power circuit",
       "min": 0,
       "max": 2,
       "default": 0,
@@ -792,7 +792,18 @@
         "Batteries",
         "Adaptor"
       ],
-      "startup_default": 1
+      "startup_default": 1,
+      "hidden": true,
+      "description": "Compatibility policy: Ideal keeps the supply and amplifier linear, as before 0.1.12; Batteries runs them from the source Power selects; Adaptor is 0.1.12's adaptor choice, the same as Power at AC."
+    },
+    {
+      "id": "power",
+      "label": "Power",
+      "min": 1,
+      "max": 101,
+      "default": 100,
+      "integer": true,
+      "target": "controls"
     }
   ]
 }

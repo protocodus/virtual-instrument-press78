@@ -42,10 +42,10 @@ double treble(double hz) { return pole(hz, 1.0 / (tau * (10e3 / 11.0) * 4.7e-9))
 
 // Total harmonic distortion of a sine through the amplifier, both channels
 // driven alike, read on the left output over its second second.
-double distortion(int supply, double amplitude, bool phones, double wiper, double* railMean = nullptr, double* railMin = nullptr, double* second = nullptr) {
+double distortion(int supply, double amplitude, bool phones, double wiper, double* railMean = nullptr, double* railMin = nullptr, double* second = nullptr, double depletion = 0.0) {
     press78::AmplifierCircuit a;
     a.prepare(48000.0);
-    a.setSupply(supply); a.snapSupply();
+    a.setSupply(supply, depletion); a.snapSupply();
     constexpr int n = 48000;
     constexpr double hz = 1000.0;
     std::vector<double> out(n);
@@ -279,13 +279,15 @@ int main() {
     });
     test("a supply change fades without a step", [] {
         // A loud 50 Hz sine clips hard; the change lands on a positive peak.
+        // Supplies 3 and 4 are fresh and spent batteries.
         const auto play = [](int from, int to) {
             press78::AmplifierCircuit a;
             a.prepare(48000.0);
-            a.setSupply(from); a.snapSupply();
+            const auto set = [&a](int s) { a.setSupply(s > 2 ? 1 : s, s == 4 ? 1.0 : 0.0); };
+            set(from); a.snapSupply();
             std::vector<double> out(14400);
             for (int i = 0; i < 14400; ++i) {
-                if (i == 12720) a.setSupply(to);
+                if (i == 12720) set(to);
                 double l = std::sin(tau * 50.0 * i / 48000.0), r = l;
                 a.process(l, r, 1.0, 0.0, 1.0);
                 out[i] = l;
@@ -293,20 +295,102 @@ int main() {
             return out;
         };
         double motion = 0.0;
-        for (int supply : {0, 1, 2}) {
+        for (int supply : {0, 1, 2, 4}) {
             const auto steady = play(supply, supply);
             for (std::size_t i = 1; i < steady.size(); ++i) motion = std::max(motion, std::abs(steady[i] - steady[i - 1]));
         }
-        for (const auto& [from, to] : std::vector<std::pair<int, int>>{{0, 1}, {1, 0}, {1, 2}, {2, 1}, {2, 0}}) {
+        for (const auto& [from, to] : std::vector<std::pair<int, int>>{{0, 1}, {1, 0}, {1, 2}, {2, 1}, {2, 0}, {3, 4}, {4, 3}, {4, 2}, {0, 4}}) {
             const auto switched = play(from, to);
             for (std::size_t i = 12700; i < switched.size(); ++i) REQUIRE(std::abs(switched[i] - switched[i - 1]) <= 1.5 * motion);
         }
+    });
+    test("spent cells follow the discharge curves", [] {
+        // Idle rails at 0.2 A: fresh, 9.54 V behind 1.35 Ohm; the 50 %-of-life
+        // row, 7.7493 V behind 2.214 Ohm, whose 6.7530 V at 0.45 A lies
+        // 0.5274 of the way from fresh (8.9325 V) to spent (4.79995 V); spent,
+        // 7.7767 V behind 6.615 Ohm.
+        const std::vector<std::pair<double, double>> rails{{0.0, 9.54 - 0.27}, {2.1795 / 4.13255, 7.7493 - 0.4428}, {1.0, 7.7767 - 1.323}};
+        for (const auto& [depletion, rail] : rails) {
+            press78::AmplifierCircuit a;
+            a.prepare(48000.0); a.setSupply(1, depletion); a.snapSupply();
+            REQUIRE(std::abs(a.railVolts() - rail) < 1e-9);
+        }
+        double last = 1e9;
+        for (int power = 100; power >= 1; --power) {
+            press78::AmplifierCircuit a;
+            a.prepare(48000.0); a.setSupply(1, (100 - power) / 99.0); a.snapSupply();
+            REQUIRE(a.railVolts() < last && a.mixerLossAbove() == 0.0 && a.mixerLossBelow() == 0.0);
+            last = a.railVolts();
+        }
+    });
+    test("spent cells clip AUX sooner and sag it further", [] {
+        // A sine at fresh cells' 1 % THD level.
+        const double voltsPerUnit = std::pow(10.0, 44.5 / 20.0) / 11.0, amplitude = 0.891 * 3.56 / voltsPerUnit;
+        double last = 0.0, lastMin = 1e9;
+        for (double depletion : {0.0, 0.5, 1.0}) {
+            double mean = 0.0, lowest = 0.0;
+            const double d = distortion(1, amplitude, false, 1.0, &mean, &lowest, nullptr, depletion);
+            REQUIRE(d > 2.0 * last && lowest < lastMin);
+            last = d; lastMin = lowest;
+        }
+        REQUIRE(last > 0.10);
+    });
+    test("+5 V holds until the rail falls to 6.2 V, then follows it", [] {
+        // The zener's 5.8 V knee plus 300 Ohm of 0.15 A / 111 base current.
+        const double onset = 5.8 + 300.0 * 0.15 / 111.0;
+        press78::FiveVoltSupply s;
+        s.prepare(48000.0);
+        for (double rail : {9.27, 7.0, 6.21, 6.1, 5.0, 4.0}) {
+            s.settle(9.27);
+            for (int i = 0; i < 48000; ++i) s.process(rail);
+            const double drop = std::max(0.0, onset - rail);
+            REQUIRE(std::abs(s.drop() - drop) < 1e-6 && std::abs(s.bias() - 0.5 * drop) < 1e-3);
+        }
+        // 50 ms after a fall to 5 V, +5 V has nearly followed, through the
+        // 100 uF node, while the mixer bias's 110 ms leaves it far behind.
+        s.settle(9.27);
+        for (int i = 0; i < 2400; ++i) s.process(5.0);
+        REQUIRE(s.drop() > 0.9 * (onset - 5.0) && s.bias() < 0.3 * 0.5 * (onset - 5.0));
+    });
+    test("spent cells distort loud chords at the default Volume", [] {
+        unsigned jug = 0;
+        while (std::string(press78::kFactoryVoices[jug].name) != "PSS 46 Jug") ++jug;
+        const auto chord = [](int jack, int supply, int power, unsigned voice) {
+            auto e = std::make_unique<press78::Press78Engine>();
+            e->prepare(48000.0);
+            press78::Controls c;
+            c.outputJack = jack; c.chorusMode = 1; c.chorusMix = 1.0; c.outputCircuit = true; c.chipRate = 1;
+            c.powerSupply = supply; c.power = power;
+            e->setControls(c);
+            e->setPatch(press78::factoryPatch(voice));
+            for (int note : {48, 52, 55, 60}) e->noteOn(note, 127);
+            std::vector<float> l(48000), r(48000);
+            e->process(l.data(), r.data(), l.size());
+            return l;
+        };
+        const auto change = [](const std::vector<float>& a, const std::vector<float>& b) {
+            double signal = 0.0, difference = 0.0;
+            for (std::size_t i = 0; i < a.size(); ++i) { signal += a[i] * a[i]; difference += (a[i] - b[i]) * (a[i] - b[i]); }
+            return 10.0 * std::log10(difference / signal);
+        };
+        const auto fresh = chord(1, 1, 100, jug);
+        const double most = change(fresh, chord(1, 1, 90, jug)), half = change(fresh, chord(1, 1, 50, jug)), spent = change(fresh, chord(1, 1, 1, jug));
+        REQUIRE(most < -45.0 && most < half && half < spent && spent > -20.0);
+        // Piano's chord stays inside fresh cells' swing; at 1 % most of its
+        // change comes from +5 V narrowing the mixer (-31 dB without it).
+        REQUIRE(change(chord(1, 1, 100, 0), chord(1, 1, 1, 0)) > -25.0);
+        // The preamp draws no speaker current; the AC step is the adaptor.
+        REQUIRE(chord(0, 1, 1, jug) == chord(0, 1, 100, jug));
+        REQUIRE(chord(1, 1, 101, jug) == chord(1, 2, 100, jug));
     });
     test("controls sanitize the supply", [] {
         press78::Controls c;
         REQUIRE(c.powerSupply == 0);
         c.powerSupply = 7; REQUIRE(press78::sanitizeControls(c).powerSupply == 2);
         c.powerSupply = -3; REQUIRE(press78::sanitizeControls(c).powerSupply == 0);
+        REQUIRE(c.power == 100);
+        c.power = 0; REQUIRE(press78::sanitizeControls(c).power == 1);
+        c.power = 200; REQUIRE(press78::sanitizeControls(c).power == 101);
     });
     std::printf("%d passed, %d failed\n", passed, failed);
     return failed ? 1 : 0;

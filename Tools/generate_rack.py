@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from modern_bank import load_modern, load_rack_startup, preset_relative_path
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.12b1'
+VERSION='0.1.13b1'
 PRODUCT='cz.protocodus.Press78'
 # Rack startup character: enable the existing physical/effective model paths.
 # Slow clock excursion is a conservative scenario, not a recovered PSS-780
@@ -125,10 +125,14 @@ def specs():
     add('chipRate','Chip sample rate',0,1,0,True)
     rows[-1].update(options=['Legacy','YM3420'],startup_default=1,hidden=True,
                    description='Compatibility policy: YM3420 runs the chip core at the PSS-780 OPU rate, 5.5 MHz / 96, so FM aliases fall where the hardware\'s do; Legacy runs it at 48 kHz.')
-    # What powers the amplifier. Older songs keep it linear; new instances
-    # clip it at the AN7148's swing on fresh batteries' sagging rail.
-    add('powerSupply','Power',0,2,0,True)
-    rows[-1].update(options=['Ideal','Batteries','Adaptor'],startup_default=1)
+    # Whether the supply is modelled. Older songs keep the amplifier linear;
+    # new instances run it from the source Power selects.
+    add('powerSupply','Power circuit',0,2,0,True)
+    rows[-1].update(options=['Ideal','Batteries','Adaptor'],startup_default=1,hidden=True,
+                   description='Compatibility policy: Ideal keeps the supply and amplifier linear, as before 0.1.12; Batteries runs them from the source Power selects; Adaptor is 0.1.12\'s adaptor choice, the same as Power at AC.')
+    # What powers the keyboard: six alkaline C cells from badly depleted (1)
+    # to fresh (100), or the adaptor (101).
+    add('power','Power',1,101,100,True)
     for row in rows:
         if row['id'] in REAL_DEFAULTS and row['id'] not in ('pitchModel','sustainMode','bendRange','velocityCurve','keyLevelModel','allocationModel','chorusCircuit','outputJack','chipRate','powerSupply'): row['default']=REAL_DEFAULTS[row['id']]
         if row['id'] in LEGACY_NOISE:
@@ -196,6 +200,8 @@ def main():
     for row in rows:
         step=f'steps = {int(row["max"]-row["min"]+1)}, ' if row['integer'] else ''
         ui='jbox.ui_selector{'+','.join('jbox.ui_text("value '+row['id']+' '+str(i)+'")' for i,_ in enumerate(row['options']))+'}' if row.get('options') else f'jbox.ui_linear{{min={row["min"]}, max={row["max"]}, units={{{{decimals={0 if row["integer"] else 2}}}}}}}'
+        # Power reads as a battery percentage up to its top step, the adaptor.
+        if row['id']=='power': ui='jbox.ui_linear{min=1, max=101, units={{decimals=0, unit={template=jbox.ui_text("unit percent")}}, {min_value=101, decimals=0, unit={template=jbox.ui_text("unit ac")}}}}'
         lua.append(f'  {row["id"]} = jbox.number{{ {step}default = {stored(row,row["default"]):.17g}, ui_name = jbox.ui_text("{row["id"]}"), ui_type = {ui}, persistence="patch" }},')
     lua+=['  pitchBend = jbox.performance_pitchbend{},','  modWheel = jbox.performance_modwheel{},',
           '  sustainPedal = jbox.performance_sustainpedal{},',' } },',
@@ -224,7 +230,7 @@ def main():
     lua+=['}','midi_implementation_chart = { midi_cc_chart = {']
     lua += [f' [{value}]="/custom_properties/{name}",' for name,value in ids.items()]
     lua.append('} }')
-    output={'masterGain','toneCutoffHz','drive','chorusMix','chorusMode','chorusRateHz','chorusDepthMs','stereoWidth','noiseRms','noiseModel','outputCircuit','outputJack','powerSupply','dcBlock','outputLimit'}
+    output={'masterGain','toneCutoffHz','drive','chorusMix','chorusMode','chorusRateHz','chorusDepthMs','stereoWidth','noiseRms','noiseModel','outputCircuit','outputJack','power','dcBlock','outputLimit'}
     performance={'masterTuneCents','velocitySensitivity','velocityToModulation','polyphony','bendRange','modWheelDepth','portamento','portamentoSpeed'}
     groups={'Modulator':[], 'Carrier':[], 'FM and LFO':[], 'Performance':[], 'Output and effects':[], 'Clock':[]}
     for row in rows:
@@ -242,6 +248,7 @@ def main():
     for row in rows:
         texts['short '+row['id']]=row['label'][:8];texts['tiny '+row['id']]=row['label'][:4]
         for i,label in enumerate(row.get('options',[])):texts['value '+row['id']+' '+str(i)]=label
+    texts.update({'unit percent':'^0 %','unit ac':'AC'})
     texts.update({'gesture mod_tl level':'Modulator Level','gesture car_tl level':'Carrier Level','property note on':'Note On'})
     texts.update({'audio left':'Left / Mono','audio right':'Right','cv note':'Note','cv gate':'Gate','cv fm':'FM amount','cv level':'Level'})
     locale=device/'Resources/English';locale.mkdir(parents=True,exist_ok=True)
@@ -272,7 +279,7 @@ def main():
          if row['id'].startswith(('mod_','car_')) else
          f'patch.{row["id"]} = static_cast<{"bool" if row["id"] in ("vibrato","sustain") else "int"}>(physical(k_{row["id"]}));'
          if row['target']=='patch' else
-         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode","velocityCurve","keyLevelModel","allocationModel","chorusCircuit","outputJack","chipRate","powerSupply") else "double"}>(physical(k_{row["id"]}));'
+         f'controls.{row["id"]} = static_cast<{"bool" if row["id"] in ("triangleLfo","globalLfo","dcBlock","outputLimit","outputCircuit") else "int" if row["id"] in ("polyphony","chorusMode","noiseModel","pitchModel","sustainMode","velocityCurve","keyLevelModel","allocationModel","chorusCircuit","outputJack","chipRate","powerSupply","power") else "double"}>(physical(k_{row["id"]}));'
          for row in rows if row['id'] not in ('bendRange','modWheelDepth')])+'\n')
     print(f'Generated {len(rows)} stored properties ({sum(not row.get("hidden",False) for row in rows)} visible controls), 3 performance inputs, Init +100 PSS +{len(modern)} modern patches at {device}; startup: {startup["name"]}')
 

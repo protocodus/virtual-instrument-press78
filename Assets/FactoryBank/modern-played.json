@@ -92,7 +92,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -192,7 +193,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -292,7 +294,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -392,7 +395,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -492,7 +496,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -592,7 +597,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -692,7 +698,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -792,7 +799,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -892,7 +900,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -992,7 +1001,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -1092,7 +1102,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -1192,7 +1203,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "pluck",
@@ -1292,7 +1304,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "lead",
@@ -1392,7 +1405,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "lead",
@@ -1492,7 +1506,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "lead",
@@ -1592,7 +1607,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "lead",
@@ -1692,7 +1708,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "lead",
@@ -1792,7 +1809,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "lead",
@@ -1892,7 +1910,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "lead",
@@ -1992,7 +2011,8 @@
         "chorusCircuit": 1,
         "outputJack": 1,
         "chipRate": 1,
-        "powerSupply": 1
+        "powerSupply": 1,
+        "power": 100
       },
       "tags": [
         "lead",

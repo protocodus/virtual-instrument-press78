@@ -163,6 +163,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.chorusCircuit = std::clamp(c.chorusCircuit, 0, 1);
     c.outputJack = std::clamp(c.outputJack, 0, 2);
     c.powerSupply = std::clamp(c.powerSupply, 0, 2);
+    c.power = std::clamp(c.power, 1, 101);
     c.chipRate = std::clamp(c.chipRate, 0, 1);
     c.sustainMode = std::clamp(c.sustainMode, 0, 1);
     c.velocityCurve = std::clamp(c.velocityCurve, 0, 1);
@@ -380,7 +381,8 @@ void Press78Engine::setControls(const Controls& controls) noexcept {
     updatePitchControls();
     toneCoefficient_ = controls_.toneCutoffHz == 0.0 ? 0.0
         : 1.0 - std::exp(-tau * std::min(controls_.toneCutoffHz, sampleRate_ * 0.45) / sampleRate_);
-    amplifier_.setSupply(controls_.powerSupply);
+    const int source = controls_.powerSupply == 0 ? 0 : controls_.powerSupply == 2 || controls_.power > 100 ? 2 : 1;
+    amplifier_.setSupply(source, (100 - std::min(controls_.power, 100)) / 99.0);
     if (!hasProcessed_) {
         gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_; voiceControls_ = controls_;
         currentToneCoefficient_ = toneCoefficient_;
@@ -749,7 +751,11 @@ double Press78Engine::readDelay(double samples) const noexcept {
 void Press78Engine::output(double mono, double& left, double& right) noexcept {
     // Always advance the selected headroom and related-hardware small-signal
     // circuit, including during bypass, to avoid stale filter memory.
-    const double circuit = analog_.process(hardware_character::output(mono));
+    // A sagging +5 V narrows the mixer's window (AmplifierCircuit.h). A tenth
+    // of it stays past the point where the keyboard would have reset.
+    const double above = std::max(0.1 * hardware_character::kHeadroom, hardware_character::kHeadroom - amplifier_.mixerLossAbove());
+    const double below = std::max(0.1 * hardware_character::kHeadroom, hardware_character::kHeadroom - amplifier_.mixerLossBelow());
+    const double circuit = analog_.process(hardware_character::output(mono, above, below));
     circuitMix_ += ((controls_.outputCircuit ? 1.0 : 0.0) - circuitMix_) * gainSmoothing_;
     mono += circuitMix_ * (circuit - mono);
     currentToneCoefficient_ += (toneCoefficient_ - currentToneCoefficient_) * gainSmoothing_;

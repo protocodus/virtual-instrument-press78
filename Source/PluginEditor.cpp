@@ -6,7 +6,7 @@ constexpr int kMargin = 12, kHeader = 44, kSectionTitle = 18, kCell = 64, kRow =
 
 // Sections and their parameter ids, in panel order; together they cover every
 // control in Assets/controls.json once, except the ones hidden from the Rack
-// panel: the inert noise ids and the Original release policy.
+// panel: the inert noise ids and the compatibility policies.
 const std::vector<std::pair<juce::String, juce::StringArray>>& layout()
 {
     static const std::vector<std::pair<juce::String, juce::StringArray>> sections {
@@ -20,7 +20,7 @@ const std::vector<std::pair<juce::String, juce::StringArray>>& layout()
         { "LFO and clock", { "lfoRateHz", "vibratoDepth", "tremoloDepth", "lfoDelayScale", "triangleLfo",
                              "globalLfo", "clockOffsetPpm", "clockDriftPpm", "clockDriftRateHz" } },
         { "Output", { "toneCutoffHz", "drive", "chorusMode", "chorusMix", "chorusRateHz", "chorusDepthMs",
-                      "stereoWidth", "outputCircuit", "outputJack", "powerSupply", "dcBlock", "outputLimit",
+                      "stereoWidth", "outputCircuit", "outputJack", "power", "dcBlock", "outputLimit",
                       "masterGain" } },
     };
     return sections;

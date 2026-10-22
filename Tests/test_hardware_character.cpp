@@ -233,6 +233,16 @@ int main() {
         CHECK(character::output(.5) + character::output(-.5) < -.01);
         CHECK(character::output(1) < 2 * character::output(.5));
     });
+    test("a narrowed window limits each side at its own headroom", [] {
+        // Above and below scale the curve on their side only; at the full
+        // headroom they are the curve itself.
+        for (double x : {-3.0, -.4, .4, 3.0}) {
+            CHECK(character::output(x, character::kHeadroom, character::kHeadroom) == character::output(x));
+            const double h = x > 0 ? .3 : .6, t = std::tanh(x / h);
+            near(character::output(x, .3, .6), h * t / (1 + std::tanh(.14) * t), 2e-15);
+        }
+        near((character::output(1e-7, .3, .6) - character::output(-1e-7, .3, .6)) / 2e-7, 1, 1e-6);
+    });
 
     test("actual output path applies the curve before the linear circuit and retains dry bypass", [] {
         auto wet = engine(controls(false, true)), dry = engine(controls(false, false));
