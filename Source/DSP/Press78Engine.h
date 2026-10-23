@@ -183,6 +183,14 @@ private:
         void updateRelease(const Operator&, int midi, bool sustain, double tickRate) noexcept;
         double next(bool released, bool reverbKnee = false) noexcept;
     };
+    // One pow(base, exponent) remembered for the rest of a tick: voices on
+    // the shared LFO ask for the same vibrato and tremolo factors. The key is
+    // bitwise, so the result is exactly the pow each voice would compute.
+    struct TickPow {
+        double base = 0.0, exponent = 0.0, value = 1.0;
+        bool valid = false;
+        double operator()(double b, double e) noexcept;
+    };
     struct Voice {
         Patch patch{};
         int source = 0; // Here, not by note, it fills the Patch's padding.
@@ -214,6 +222,10 @@ private:
         // default and re-evaluate both laws every call.
         double next(const Controls&, double pitchMultiplier, double globalLfo,
                     bool refreshVelocityGains = true) noexcept;
+        // next() with the global LFO already shaped (triangle or sine) and
+        // the tick's shared pow results, so voices on one tick reuse them.
+        double render(const Controls&, double pitchMultiplier, double shapedGlobalLfo,
+                      bool refreshVelocityGains, TickPow& vibrato, TickPow& tremolo) noexcept;
     };
     struct Tail { Voice voice{}; int remaining = 0; };
     // The sinc reader needs at most the latest 64 ticks after fill; 128 keeps

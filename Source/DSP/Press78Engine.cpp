@@ -274,8 +274,26 @@ void Press78Engine::Voice::updateRelease(bool sustain) noexcept {
     carrierEnvelope.updateRelease(patch.carrier, note, sustain, tickRate);
 }
 
+double Press78Engine::TickPow::operator()(double b, double e) noexcept {
+    if (!valid || !sameBits(b, base) || !sameBits(e, exponent)) {
+        base = b; exponent = e; value = std::pow(b, e); valid = true;
+    }
+    return value;
+}
+
+namespace {
+double triangleShape(double lfo) noexcept { return 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0)); }
+} // namespace
+
 double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo,
                                   bool refreshVelocityGains) noexcept {
+    TickPow vibrato{}, tremolo{};
+    return render(c, pitchMultiplier, c.triangleLfo ? triangleShape(globalLfo) : globalLfo,
+                  refreshVelocityGains, vibrato, tremolo);
+}
+
+double Press78Engine::Voice::render(const Controls& c, double pitchMultiplier, double shapedGlobalLfo,
+                                    bool refreshVelocityGains, TickPow& vibrato, TickPow& tremolo) noexcept {
     if (!active) return 0.0;
     // User-selected sibling-inspired pseudo-Reverb. One pre-step carrier
     // snapshot gates both operators; TL, velocity and gain do not move the knee.
@@ -287,11 +305,14 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     if (carrierEnvelope.finished || (carrierEnvelope.disabled && released)) {
         active = false; return 0.0;
     }
-    double lfo = c.globalLfo ? globalLfo : std::sin(lfoPhase);
-    if (c.triangleLfo) lfo = 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0));
+    double lfo = shapedGlobalLfo;
+    if (!c.globalLfo) {
+        lfo = std::sin(lfoPhase);
+        if (c.triangleLfo) lfo = triangleShape(lfo);
+    }
     const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
     const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
-    const double pitch = pitchMultiplier * glideMultiplier * std::pow(2.0, cents / 1200.0);
+    const double pitch = pitchMultiplier * glideMultiplier * vibrato(2.0, cents / 1200.0);
     modPhase = std::fmod(modPhase + modStep * pitch, tau);
     carrierPhase = std::fmod(carrierPhase + carrierStep * pitch, tau);
     if (refreshVelocityGains || !velocityGainsValid) {
@@ -300,8 +321,8 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
         velocityGainsValid = true;
     }
     const double am = amDepth[patch.ams] * c.tremoloDepth;
-    const double amM = patch.modulator.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
-    const double amC = patch.carrier.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
+    const double amM = patch.modulator.amEnable ? tremolo(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
+    const double amC = patch.carrier.amEnable ? tremolo(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
     // The two delayed modulator outputs include envelope, TL, and AM exactly
     // as in the Python hypothesis. No unverified fixed-point table is added.
     const double mod = wave(modPhase + feedback * (prev1 + prev2) * 0.5, patch.modulator.wave)
@@ -727,10 +748,15 @@ double Press78Engine::synthesizeTick() noexcept {
         || !sameBits(voiceControls_.velocitySensitivity, velocityExponents_[1]);
     velocityExponents_[0] = voiceControls_.velocityToModulation;
     velocityExponents_[1] = voiceControls_.velocitySensitivity;
+    // Shape the shared LFO once per tick, not once per voice.
+    const double shaped = voiceControls_.triangleLfo ? triangleShape(global) : global;
+    TickPow vibrato{}, tremolo{};
     double sum = 0.0;
-    for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global, refresh);
+    for (auto& voice : voices_) if (voice.active)
+        sum += voice.render(voiceControls_, pitchMultiplier_, shaped, refresh, vibrato, tremolo);
     for (auto& tail : tails_) if (tail.remaining > 0) {
-        sum += tail.voice.next(voiceControls_, pitchMultiplier_, global, refresh) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
+        sum += tail.voice.render(voiceControls_, pitchMultiplier_, shaped, refresh, vibrato, tremolo)
+            * (tail.remaining - 1) / (fadeTicks_ - 1.0);
         --tail.remaining;
     }
     globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_, tau);
