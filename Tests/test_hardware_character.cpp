@@ -107,11 +107,57 @@ template<class V> void sameHistory(const V& a, const V& b) {
 int main() {
     test("chosen character is enabled by default and diagnostic bypass is retained", [] {
         press78::Controls c;
-        CHECK(c.envelopeReverb && c.outputCircuit);
+        CHECK(c.envelopeReverb && c.outputCircuit && c.circuitSaturation);
         CHECK(character::kReleaseKneeDb == 18.0);
         c.envelopeReverb = false; c.outputCircuit = false;
         const auto clean = press78::sanitizeControls(c);
         CHECK(!clean.envelopeReverb && !clean.outputCircuit);
+    });
+
+    test("linear host policy adds no level-dependent harmonics and retains circuit filtering", [] {
+        for (double rate : {44100., 48000., 88200., 96000., 192000.}) {
+            auto c = controls(true, true);
+            c.circuitSaturation = false;
+            c.circuitHeadroom = 3.9810717055349722;
+            auto low = std::make_unique<E>(), high = std::make_unique<E>();
+            low->prepare(rate); high->prepare(rate);
+            low->setControls(c); high->setControls(c);
+            low->reset(); high->reset();
+            double signal = 0, difference = 0, filtered = 0;
+            for (int i = 0; i < 16384; ++i) {
+                const double x = .05 * (std::sin(i * .173) + .3 * std::sin(i * .731));
+                const auto a = A::output(*low, x), b = A::output(*high, 16 * x);
+                signal += b[0] * b[0];
+                difference += (b[0] - 16 * a[0]) * (b[0] - 16 * a[0]);
+                filtered += (a[0] - x) * (a[0] - x);
+                CHECK(a[0] == a[1] && b[0] == b[1]);
+            }
+            CHECK(difference < signal * 1e-24);
+            CHECK(filtered > 1e-3); // Bypassing the whole circuit would fail.
+        }
+    });
+
+    test("host color policy fades during playback and snaps on reset", [] {
+        auto c = controls(true, true);
+        c.circuitSaturation = false;
+        auto changed = engine(c), clean = engine(c);
+        // The production process call commits startup policy. Direct output
+        // probes alone deliberately leave the engine in its startup state.
+        changed->process(nullptr, nullptr, 1); clean->process(nullptr, nullptr, 1);
+        for (int i = 0; i < 4096; ++i) {
+            const double x = .7 * std::sin(i * .11);
+            near(A::output(*changed, x)[0], A::output(*clean, x)[0]);
+        }
+        c.circuitSaturation = true;
+        changed->setControls(c);
+        const double x = .7, a = A::output(*changed, x)[0], b = A::output(*clean, x)[0];
+        CHECK(std::abs(a - b) < .002); // A full-strength instant switch fails.
+        c.circuitSaturation = false;
+        changed->setControls(c); changed->reset(); clean->reset();
+        for (int i = 0; i < 4096; ++i) {
+            const double input = .9 * std::sin(i * .19);
+            near(A::output(*changed, input)[0], A::output(*clean, input)[0]);
+        }
     });
 
     test("native RR4 cap follows note RKS and preserves slower ordinary RR or SRR", [] {
