@@ -81,6 +81,62 @@ namespace press78 {
 // datasheet). The adaptor's own reservoir capacitor is unknown and left out,
 // so its sag on fast peaks is an upper bound. Ideal keeps the amplifier
 // linear, as before.
+//
+// Depletion (Power below 100 %, research 2026-10-22). Through their life at
+// the keyboard's 0.45 A, alkaline C cells lose voltage on load as Energizer
+// E93 and Duracell MN1400 curves give it, within 0.03 V of each other; their
+// resistance rises as Varta's AA pulse data does, 0.225 Ohm x 1 to 4.9 per
+// cell, with the EMF the rest of the loaded voltage. Pack values are in
+// kCells, from fresh to 0.80 V per cell on load, where every curve ends.
+// Power is linear in that loaded voltage, 8.93 V at 100 % to 4.80 V at 1 %,
+// so each step costs the same, not the same charge. The real keyboard blinks
+// its LEDs near 26 % and resets on loud notes below about 19 % (PST520-C and
+// -D on +5 V); Press78 plays on.
+//
+// +5 V (PSS-480 drawing; the PSS-780 lists the same 2SC3419 and MTZ6.2A):
+// the rail feeds the follower's base through 150 Ohm, then 100 uF to ground
+// and 150 Ohm to the zener. It holds +5 V while the 100 uF stays above the
+// zener's 5.8 V knee plus 150 Ohm of base current, an estimated 0.15 A load
+// over a gain of 110: a steady rail of 6.2 V (5.8-7.5 V). Below that, +5 V
+// follows the 100 uF down. The 1.9 mF on +5 V, which slows falls past
+// 80 V/s, is left out. Only the NJM4558 mixer's window is taken to follow
+// +5 V: its limits track their supply one to one (datasheet), around a bias
+// of half of +5 V held by 2.2k/2.2k and 100 uF, 110 ms. So a fast sag closes
+// the limit above the bias and a slow one closes both by half; one volt is
+// one engine unit, as for clipping. How the OPU's level and the chorus
+// clock follow +5 V is not documented, and they stay fixed.
+
+// +5 V behind its follower, and the NJM4558 mixer bias it feeds, as
+// described above; drop and bias are how far each sits below its rest.
+class FiveVoltSupply {
+public:
+    void prepare(double sampleRate) noexcept {
+        heldDecay_ = std::exp(-1.0 / (sampleRate * 75.0 * 100e-6));
+        freeDecay_ = std::exp(-1.0 / (sampleRate * 150.0 * 100e-6));
+        biasDecay_ = std::exp(-1.0 / (sampleRate * 1.1e3 * 100e-6));
+    }
+    void settle(double rail) noexcept {
+        node_ = rail - kBaseDrop > kKnee ? 0.5 * (rail + kZener) : rail - kBaseDrop;
+        drop_ = std::max(0.0, kKnee - node_);
+        bias_ = 0.5 * drop_;
+    }
+    void process(double rail) noexcept {
+        const bool held = node_ > kKnee;
+        const double node = held ? 0.5 * (rail + kZener) : rail - kBaseDrop;
+        node_ = node + (node_ - node) * (held ? heldDecay_ : freeDecay_);
+        drop_ = std::max(0.0, kKnee - node_);
+        bias_ = 0.5 * drop_ + (bias_ - 0.5 * drop_) * biasDecay_;
+    }
+    double drop() const noexcept { return drop_; }
+    double bias() const noexcept { return bias_; }
+
+private:
+    // The zener's knee, the base current's drop across 150 Ohm, and the
+    // 100 uF node's voltage where the zener lets go.
+    static constexpr double kZener = 5.8, kBaseDrop = 150.0 * 0.15 / 111.0, kKnee = kZener + kBaseDrop;
+    double heldDecay_ = 0.0, freeDecay_ = 0.0, biasDecay_ = 0.0, node_ = 0.0, drop_ = 0.0, bias_ = 0.0;
+};
+
 class AmplifierCircuit {
 public:
     void prepare(double sampleRate) noexcept {
@@ -119,8 +175,10 @@ public:
         voltsPerUnit_ = std::pow(10.0, 44.5 / 20.0) / 11.0;
         fadeStep_ = 1.0 / (0.005 * sampleRate);
         idleSmoothing_ = 1.0 - std::exp(-1.0 / (0.005 * sampleRate));
-        batteryDecay_ = std::exp(-1.0 / (sampleRate * 1.35 * 470e-6));
         adaptorDecay_ = std::exp(-1.0 / (sampleRate * 6.4 * 470e-6));
+        fiveVolt_.prepare(sampleRate);
+        rate_ = sampleRate;
+        setCells(depletion_);
         idleTarget_ = supplyVolts(kIdleAmps);
         reset();
     }
@@ -131,17 +189,23 @@ public:
         phonesMid_.reset(); phonesSide_.reset();
         snapSupply();
     }
-    // 0 Ideal, 1 Batteries, 2 Adaptor. A change fades the clipping in or out
+    // 0 Ideal, 1 Batteries, 2 Adaptor; depletion runs the batteries from
+    // fresh (0) to spent (1). A change of source fades the clipping in or out
     // over 5 ms; the last supply powers it while it fades out.
-    void setSupply(int supply) noexcept {
+    void setSupply(int supply, double depletion = 0.0) noexcept {
         target_ = supply == 0 ? 0.0 : 1.0;
-        if (supply == 0 || supply == source_) return;
+        if (supply == 0 || (supply == source_ && (supply == 2 || depletion == depletion_))) return;
         source_ = supply;
+        if (supply == 1) setCells(depletion);
         idleTarget_ = supplyVolts(kIdleAmps);
-        if (clipMix_ == 0.0) idle_ = rail_ = idleTarget_;
+        if (clipMix_ == 0.0) settle();
     }
-    void snapSupply() noexcept { clipMix_ = target_; idle_ = rail_ = idleTarget_; }
+    void snapSupply() noexcept { clipMix_ = target_; settle(); }
     double railVolts() const noexcept { return rail_; }
+    // How far the mixer's limits above and below its bias have closed, in
+    // engine units; above goes negative while the bias lags a recovery.
+    double mixerLossAbove() const noexcept { return clipMix_ * (fiveVolt_.drop() - fiveVolt_.bias()); }
+    double mixerLossBelow() const noexcept { return clipMix_ * fiveVolt_.bias(); }
     // The share of v volts the output reaches, given its positive and
     // negative limits.
     static double swingShare(double v, double above, double below) noexcept {
@@ -168,6 +232,7 @@ public:
                 + phonesMix * (std::max(phonesL, 0.0) + std::max(phonesR, 0.0)) / 132.0);
             const double settled = supplyVolts(amps);
             rail_ = settled + (rail_ - settled) * (source_ == 2 ? adaptorDecay_ : batteryDecay_);
+            fiveVolt_.process(rail_);
             if (clipMix_ < 1.0) {
                 auxL = l + clipMix_ * (auxL - l); auxR = r + clipMix_ * (auxR - r);
                 phonesL = l + clipMix_ * (phonesL - l); phonesR = r + clipMix_ * (phonesR - r);
@@ -181,9 +246,32 @@ public:
 
 private:
     static constexpr double kIdleAmps = 0.2;
+    // Six alkaline C cells through life: pack EMF and resistance, cell EMF
+    // the 0.45 A loaded voltage (mean of E93 and MN1400) plus 0.45 A x R, at
+    // 0, 10, 20, 30, 50, 70, 80, 90 and 100 % of life to 0.9 V per cell on
+    // load, then 0.80 V. Fresh is 9.54 V behind 1.35 Ohm, as before.
+    struct Cells { double volts, ohms; };
+    static constexpr std::array<Cells, 10> kCells{{{9.54, 1.35}, {8.5955, 1.674}, {8.273, 1.971}, {8.0305, 2.079},
+        {7.7493, 2.214}, {7.7509, 3.0375}, {7.7414, 3.51}, {7.724, 4.0905}, {7.8119, 5.3595}, {7.7767, 6.615}}};
+    static constexpr double loaded(const Cells& c) noexcept { return c.volts - 0.45 * c.ohms; }
+    void setCells(double depletion) noexcept {
+        depletion_ = std::clamp(depletion, 0.0, 1.0);
+        const double target = loaded(kCells.front()) + depletion_ * (loaded(kCells.back()) - loaded(kCells.front()));
+        std::size_t i = 0;
+        while (i + 2 < kCells.size() && loaded(kCells[i + 1]) > target) ++i;
+        const double t = (loaded(kCells[i]) - target) / (loaded(kCells[i]) - loaded(kCells[i + 1]));
+        cellVolts_ = kCells[i].volts + t * (kCells[i + 1].volts - kCells[i].volts);
+        cellOhms_ = kCells[i].ohms + t * (kCells[i + 1].ohms - kCells[i].ohms);
+        batteryDecay_ = std::exp(-1.0 / (rate_ * cellOhms_ * 470e-6));
+    }
+    // The rail, the +5 V node and the mixer bias at rest on the idle rail.
+    void settle() noexcept {
+        idle_ = rail_ = idleTarget_;
+        fiveVolt_.settle(rail_);
+    }
     // The rail's source voltage while it delivers amps.
     double supplyVolts(double amps) const noexcept {
-        return source_ == 2 ? 16.5 - 6.4 * amps - (0.969 + 0.171 * std::log10(amps)) : 9.54 - 1.35 * amps;
+        return source_ == 2 ? 16.5 - 6.4 * amps - (0.969 + 0.171 * std::log10(amps)) : cellVolts_ - cellOhms_ * amps;
     }
     // (top / pot)(1 + s pot C)/(1 + s top C) turns the unloaded pot's high-pass
     // into the loaded one; top is the resistance the coupling capacitor sees.
@@ -213,8 +301,11 @@ private:
     std::array<FirstOrder, 2> slider_{}, treble_{};
     double twiceRate_ = 96000.0, wiper_ = 0.0;
     double voltsPerUnit_ = 0.0, fadeStep_ = 0.0, idleSmoothing_ = 0.0, batteryDecay_ = 0.0, adaptorDecay_ = 0.0;
+    double rate_ = 48000.0;
     int source_ = 1;
+    double depletion_ = 0.0, cellVolts_ = 9.54, cellOhms_ = 1.35;
     double target_ = 0.0, clipMix_ = 0.0, idleTarget_ = 0.0, idle_ = 0.0, rail_ = 0.0;
+    FiveVoltSupply fiveVolt_{};
     std::array<AnalogFilter<3>, 2> speaker_{};
     AnalogFilter<1> phonesMid_{}, phonesSide_{};
 };

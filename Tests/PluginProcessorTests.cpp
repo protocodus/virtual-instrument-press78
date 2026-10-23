@@ -164,6 +164,23 @@ void stateContract()
     const char garbage[] = "not a Press78 state";
     b.setStateInformation (garbage, sizeof garbage);
     check (b.getCurrentProgram() == 42, "foreign state is ignored");
+
+    // 0.1.12 kept the adaptor on the Power circuit switch, before Power had
+    // its AC step; such a session comes back on that step.
+    Press78AudioProcessor old;
+    setValue (old, "powerSupply", 2.0f);
+    juce::MemoryBlock adaptor;
+    old.getStateInformation (adaptor);
+    auto xml = juce::AudioProcessor::getXmlFromBinary (adaptor.getData(), static_cast<int> (adaptor.getSize()));
+    for (auto* child = xml->getFirstChildElement(); child != nullptr; child = child->getNextElement())
+        if (child->getStringAttribute ("id") == "power") { xml->removeChildElement (child, true); break; }
+    juce::AudioProcessor::copyXmlToBinary (*xml, adaptor);
+    Press78AudioProcessor restored;
+    restored.setStateInformation (adaptor.getData(), static_cast<int> (adaptor.getSize()));
+    check (value (restored, "powerSupply") == 1.0f && value (restored, "power") == 101.0f, "a 0.1.12 adaptor session plays on AC");
+    auto* power = restored.state().getParameter ("power");
+    check (power->getText (power->convertTo0to1 (101.0f), 8) == "AC" && power->getText (power->convertTo0to1 (57.0f), 8) == "57 %",
+           "Power reads as a battery percentage, then AC");
 }
 
 void renderContract()

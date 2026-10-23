@@ -107,9 +107,12 @@ struct Controls {
     // 0 Preamp keeps the signal at the top of the volume slider, as before;
     // 1 AUX and 2 Phones add the amplifier and that jack (AmplifierCircuit.h).
     int outputJack = 0;
-    // 0 Ideal keeps the amplifier linear, as before; 1 Batteries and 2 Adaptor
-    // clip AUX and Phones at the AN7148's swing on that supply's rail.
+    // 0 Ideal keeps the supply and amplifier linear, as before; 1 runs them
+    // from the source power selects; 2 is 0.1.12's Adaptor, power's AC.
     int powerSupply = 0;
+    // 1..100 are six alkaline C cells from spent (1) to fresh (100); 101 is
+    // the adaptor (AmplifierCircuit.h).
+    int power = 100;
     // Legacy0 ticks the chip core at 48 kHz, a modelling choice. YM3420_1
     // ticks it at the chip's own rate, so FM partials above its Nyquist fold
     // back where the hardware's do. Applied once voices are idle.

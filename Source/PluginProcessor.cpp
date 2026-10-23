@@ -43,9 +43,16 @@ juce::AudioProcessorValueTreeState::ParameterLayout Press78AudioProcessor::creat
         else if (c.integer && c.minimum == 0.0 && c.maximum == 1.0)
             layout.add (std::make_unique<juce::AudioParameterBool> (id, label, c.defaultValue >= 0.5));
         else if (c.integer)
+        {
+            auto attributes = juce::AudioParameterIntAttributes();
+            // Power reads as the batteries' percentage up to its top step, the adaptor.
+            if (c.id == "power")
+                attributes = attributes.withStringFromValueFunction ([] (int v, int) { return v > 100 ? juce::String ("AC") : juce::String (v) + " %"; })
+                                       .withValueFromStringFunction ([] (const juce::String& text) { return text.trim().equalsIgnoreCase ("AC") ? 101 : text.getIntValue(); });
             layout.add (std::make_unique<juce::AudioParameterInt> (id, label, static_cast<int> (c.minimum),
                                                                    static_cast<int> (c.maximum),
-                                                                   static_cast<int> (c.defaultValue)));
+                                                                   static_cast<int> (c.defaultValue), attributes));
+        }
         else
         {
             juce::NormalisableRange<float> range (static_cast<float> (c.minimum), static_cast<float> (c.maximum));
@@ -192,6 +199,19 @@ void Press78AudioProcessor::setStateInformation (const void* data, int sizeInByt
         return;
     auto state = juce::ValueTree::fromXml (*xml);
     currentProgram = std::clamp (static_cast<int> (state.getProperty ("program", 0)), 0, kProgramCount - 1);
+    // 0.1.12 chose the adaptor on the Power switch; it is now Power's AC step.
+    if (auto supply = state.getChildWithProperty ("id", "powerSupply"); static_cast<int> (supply.getProperty ("value", 0)) == 2)
+    {
+        supply.setProperty ("value", 1, nullptr);
+        auto power = state.getChildWithProperty ("id", "power");
+        if (! power.isValid())
+        {
+            power = juce::ValueTree (supply.getType());
+            power.setProperty ("id", "power", nullptr);
+            state.appendChild (power, nullptr);
+        }
+        power.setProperty ("value", 101, nullptr);
+    }
     parameters.replaceState (state);
 }
 

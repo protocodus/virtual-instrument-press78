@@ -23,9 +23,9 @@ def main():
     device = args.device.resolve()
     schema = json.loads((ROOT/'Assets/controls.json').read_text())
     rows = {row['id']: row for row in schema['controls']}
-    assert len(rows) == len(schema['controls']) == 76
+    assert len(rows) == len(schema['controls']) == 77
     hidden={name for name,row in rows.items() if row.get('hidden')}
-    assert hidden == {'noiseRms','noiseModel','sustainMode','velocityCurve','keyLevelModel','allocationModel','chorusCircuit','chipRate'}
+    assert hidden == {'noiseRms','noiseModel','sustainMode','velocityCurve','keyLevelModel','allocationModel','chorusCircuit','chipRate','powerSupply'}
     visible=set(rows)-hidden
     assert all(rows[name]['default']==0 for name in hidden)
     # Old songs lack this property and must keep their original tuning.
@@ -45,7 +45,8 @@ def main():
     assert schema['startup_profile']['values']['outputJack']==1
     assert rows['chipRate']['default']==0 and rows['chipRate']['startup_default']==1 and rows['chipRate']['hidden']
     assert schema['startup_profile']['values']['chipRate']==1
-    assert rows['powerSupply']['default']==0 and rows['powerSupply']['startup_default']==1 and not rows['powerSupply'].get('hidden')
+    assert rows['powerSupply']['default']==0 and rows['powerSupply']['startup_default']==1 and rows['powerSupply']['hidden']
+    assert (rows['power']['min'],rows['power']['max'],rows['power']['default'])==(1,101,100) and rows['power']['integer'] and not rows['power'].get('hidden')
     assert schema['startup_profile']['values']['powerSupply']==1
     assert rows['bendRange']['default']==2 and rows['bendRange']['startup_default']==1
     assert schema['startup_profile']['values']['bendRange']==1
@@ -89,6 +90,7 @@ def main():
     assert ids['outputJack'] == 327
     assert ids['chipRate'] == 328
     assert ids['powerSupply'] == 329
+    assert ids['power'] == 330
     assert all(number in (7,74) or 256 <= number <= 10039 for number in ids.values())
     locale = (device/'Resources/English/texts.lua').read_text()
     keys = set(re.findall(r'\["([^"]+)"\]\s*=', locale))

@@ -17,9 +17,11 @@ constexpr double kBiasTanh = 0.13909244787845804;
 // y = H*tanh(x/H)/(1+tanh(b)*tanh(x/H)); unity small-signal slope, asymmetric
 // limits. H/b and placement were chosen by ear, not calibrated in volts.
 // Runs at the existing output rate: no claim of identified ASIC aliasing.
-inline double output(double input) noexcept {
-    const double t = std::tanh(input / kHeadroom);
-    return kHeadroom * t / (1.0 + kBiasTanh * t);
+// A sagging supply narrows H separately above and below zero.
+inline double output(double input, double above = kHeadroom, double below = kHeadroom) noexcept {
+    const double headroom = input > 0.0 ? above : below;
+    const double t = std::tanh(input / headroom);
+    return headroom * t / (1.0 + kBiasTanh * t);
 }
 
 } // namespace press78::hardware_character

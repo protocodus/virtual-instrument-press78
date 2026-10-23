@@ -163,6 +163,7 @@ Controls sanitizeControls(Controls c) noexcept {
     c.chorusCircuit = std::clamp(c.chorusCircuit, 0, 1);
     c.outputJack = std::clamp(c.outputJack, 0, 2);
     c.powerSupply = std::clamp(c.powerSupply, 0, 2);
+    c.power = std::clamp(c.power, 1, 101);
     c.chipRate = std::clamp(c.chipRate, 0, 1);
     c.sustainMode = std::clamp(c.sustainMode, 0, 1);
     c.velocityCurve = std::clamp(c.velocityCurve, 0, 1);
@@ -383,7 +384,8 @@ void Press78Engine::setControls(const Controls& controls) noexcept {
     updatePitchControls();
     toneCoefficient_ = controls_.toneCutoffHz == 0.0 ? 0.0
         : 1.0 - std::exp(-tau * std::min(controls_.toneCutoffHz, sampleRate_ * 0.45) / sampleRate_);
-    amplifier_.setSupply(controls_.powerSupply);
+    const int source = controls_.powerSupply == 0 ? 0 : controls_.powerSupply == 2 || controls_.power > 100 ? 2 : 1;
+    amplifier_.setSupply(source, (100 - std::min(controls_.power, 100)) / 99.0);
     if (!hasProcessed_) {
         gain_ = controls_.masterGain; pitchMultiplier_ = targetPitch_; voiceControls_ = controls_;
         currentToneCoefficient_ = toneCoefficient_;
@@ -758,9 +760,13 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     circuitSaturationMix_ += ((controls_.circuitSaturation ? 1.0 : 0.0) - circuitSaturationMix_) * gainSmoothing_;
     double shaped = mono;
     if (circuitSaturationMix_ > 0.0) {
-        const double colored = circuitHeadroom_ == 1.0 ? hardware_character::output(mono)
-            : circuitHeadroom_ * hardware_character::output(mono / circuitHeadroom_);
-        // Preserve the established arithmetic exactly for the legacy policy.
+        // Preserve the canonical depleted-rail mixer window inside the
+        // optional assumed saturation. The independent power amplifier still
+        // follows its selected supply when this unmeasured color is disabled.
+        const double above = std::max(0.1 * hardware_character::kHeadroom, hardware_character::kHeadroom - amplifier_.mixerLossAbove());
+        const double below = std::max(0.1 * hardware_character::kHeadroom, hardware_character::kHeadroom - amplifier_.mixerLossBelow());
+        const double colored = circuitHeadroom_ == 1.0 ? hardware_character::output(mono, above, below)
+            : circuitHeadroom_ * hardware_character::output(mono / circuitHeadroom_, above, below);
         shaped = circuitSaturationMix_ == 1.0 ? colored
             : mono + circuitSaturationMix_ * (colored - mono);
     }
