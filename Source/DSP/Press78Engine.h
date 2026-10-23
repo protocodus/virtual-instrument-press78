@@ -192,8 +192,17 @@ private:
         void updateRelease(const Operator&, int midi, bool sustain, double tickRate) noexcept;
         double next(bool released, bool reverbKnee = false) noexcept;
     };
+    // One pow(base, exponent) remembered for the rest of a tick: voices on
+    // the shared LFO ask for the same vibrato and tremolo factors. The key is
+    // bitwise, so the result is exactly the pow each voice would compute.
+    struct TickPow {
+        double base = 0.0, exponent = 0.0, value = 1.0;
+        bool valid = false;
+        double operator()(double b, double e) noexcept;
+    };
     struct Voice {
         Patch patch{};
+        int source = 0; // Here, not by note, it fills the Patch's padding.
         Envelope modEnvelope{}, carrierEnvelope{};
         double modPhase = 0.0, carrierPhase = 0.0;
         double prev1 = 0.0, prev2 = 0.0, lfoPhase = 0.0;
@@ -201,19 +210,31 @@ private:
         double modGain = 0.0, carrierGain = 0.0, feedback = 0.0;
         double velocity = 1.0;      // velocity/127, the modulator's law.
         double velocityLevel = 1.0; // Carrier level at sensitivity 1.
+        // pow(velocity, velocityToModulation) and pow(velocityLevel,
+        // velocitySensitivity), kept while the exponents hold still.
+        double modVelocityGain = 1.0, carrierVelocityGain = 1.0;
         // Portamento offset and per-service step in 1/256 semitone, as the
         // firmware keeps them; the oscillators hear offset>>3 (1/32 semitone).
         int glideOffset = 0, glideStep = 0, glideSteps = 0;
         double glideMultiplier = 1.0; // Equal model only.
         std::uint64_t age = 0, ticks = 0;
         double tickRate = kInternalRate; // Fixed while the voice sounds.
-        int note = 60, source = 0;
+        int note = 60;
         bool active = false, held = false, released = false;
+        bool velocityGainsValid = false;
         void configure(const Patch&, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept;
         void updatePatch(const Patch&, int keyLevelModel) noexcept;
         void updateRelease(bool sustain) noexcept;
         void updateOriginalPitch(int steps) noexcept;
-        double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
+        // The engine passes refreshVelocityGains only when a velocity
+        // exponent changed since its previous tick; other callers keep the
+        // default and re-evaluate both laws every call.
+        double next(const Controls&, double pitchMultiplier, double globalLfo,
+                    bool refreshVelocityGains = true) noexcept;
+        // next() with the global LFO already shaped (triangle or sine) and
+        // the tick's shared pow results, so voices on one tick reuse them.
+        double render(const Controls&, double pitchMultiplier, double shapedGlobalLfo,
+                      bool refreshVelocityGains, TickPow& vibrato, TickPow& tremolo) noexcept;
     };
     struct Tail { Voice voice{}; int remaining = 0; };
     // The sinc reader needs at most the latest 64 ticks after fill; 128 keeps
@@ -236,6 +257,8 @@ private:
     double chipRate_ = kInternalRate, resamplerDelay_ = kResamplerDelay, tickSmoothing_ = 0.0;
     int portamentoServiceTicks_ = 0, fadeTicks_ = 48, effectiveChipRate_ = 0;
     double globalLfoPhase_ = 0.0, chorusPhase_ = 0.0;
+    // The velocity exponents the voices' cached gains were computed with.
+    double velocityExponents_[2] = {0.0, 0.0};
     double gain_ = 0.25, pitchMultiplier_ = 1.0, targetPitch_ = 1.0;
     double tone1_ = 0.0, tone2_ = 0.0, toneCoefficient_ = 0.0;
     double currentToneCoefficient_ = 0.0, drive_ = 0.0, chorusMix_ = 0.0;
