@@ -103,6 +103,14 @@ Operator sanitize(Operator op) noexcept {
     op.wave = std::clamp(op.wave, 0, 3);
     return op;
 }
+// std::fmod(x, tau) for a phase that has just advanced. Below tau fmod
+// returns x itself, and on [tau, 2 tau) its exact result is x - tau, which
+// the subtraction gives exactly (Sterbenz); anything else still takes fmod.
+double wrapPhase(double x) noexcept {
+    if (x >= 0.0 && x < tau) return x;
+    if (x >= tau && x < 2.0 * tau) return x - tau;
+    return std::fmod(x, tau);
+}
 bool sameBits(double a, double b) noexcept {
     std::uint64_t x = 0, y = 0;
     std::memcpy(&x, &a, sizeof x); std::memcpy(&y, &b, sizeof y);
@@ -313,8 +321,8 @@ double Press78Engine::Voice::render(const Controls& c, double pitchMultiplier, d
     const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
     const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
     const double pitch = pitchMultiplier * glideMultiplier * vibrato(2.0, cents / 1200.0);
-    modPhase = std::fmod(modPhase + modStep * pitch, tau);
-    carrierPhase = std::fmod(carrierPhase + carrierStep * pitch, tau);
+    modPhase = wrapPhase(modPhase + modStep * pitch);
+    carrierPhase = wrapPhase(carrierPhase + carrierStep * pitch);
     if (refreshVelocityGains || !velocityGainsValid) {
         modVelocityGain = std::pow(velocity, c.velocityToModulation);
         carrierVelocityGain = std::pow(velocityLevel, c.velocitySensitivity);
@@ -330,7 +338,7 @@ double Press78Engine::Voice::render(const Controls& c, double pitchMultiplier, d
     prev2 = prev1; prev1 = mod;
     const double y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
         * ec * carrierGain * carrierVelocityGain * amC;
-    lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / tickRate, tau);
+    lfoPhase = wrapPhase(lfoPhase + tau * c.lfoRateHz / tickRate);
     ++ticks;
     return y;
 }
@@ -759,7 +767,7 @@ double Press78Engine::synthesizeTick() noexcept {
             * (tail.remaining - 1) / (fadeTicks_ - 1.0);
         --tail.remaining;
     }
-    globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_, tau);
+    globalLfoPhase_ = wrapPhase(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_);
     return sum;
 }
 
@@ -847,7 +855,7 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     }
     left = mono + side; right = mono - sideRight;
     delayWrite_ = (delayWrite_ + 1) % kDelaySize;
-    chorusPhase_ = std::fmod(chorusPhase_ + tau * chorusRate_ / sampleRate_, tau);
+    chorusPhase_ = wrapPhase(chorusPhase_ + tau * chorusRate_ / sampleRate_);
     if (controls_.dcBlock) {
         const double l = left - dcInputL_ + dcCoefficient_ * dcOutputL_;
         const double r = right - dcInputR_ + dcCoefficient_ * dcOutputR_;
