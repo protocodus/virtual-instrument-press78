@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 #include <limits>
 
 namespace press78 {
@@ -101,6 +102,11 @@ Operator sanitize(Operator op) noexcept {
     op.srr = std::clamp(op.srr, 0, 15);
     op.wave = std::clamp(op.wave, 0, 3);
     return op;
+}
+bool sameBits(double a, double b) noexcept {
+    std::uint64_t x = 0, y = 0;
+    std::memcpy(&x, &a, sizeof x); std::memcpy(&y, &b, sizeof y);
+    return x == y;
 }
 double softBound(double x) noexcept {
     const double a = std::abs(x);
@@ -268,7 +274,8 @@ void Press78Engine::Voice::updateRelease(bool sustain) noexcept {
     carrierEnvelope.updateRelease(patch.carrier, note, sustain, tickRate);
 }
 
-double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo) noexcept {
+double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo,
+                                  bool refreshVelocityGains) noexcept {
     if (!active) return 0.0;
     // User-selected sibling-inspired pseudo-Reverb. One pre-step carrier
     // snapshot gates both operators; TL, velocity and gain do not move the knee.
@@ -287,16 +294,21 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     const double pitch = pitchMultiplier * glideMultiplier * std::pow(2.0, cents / 1200.0);
     modPhase = std::fmod(modPhase + modStep * pitch, tau);
     carrierPhase = std::fmod(carrierPhase + carrierStep * pitch, tau);
+    if (refreshVelocityGains || !velocityGainsValid) {
+        modVelocityGain = std::pow(velocity, c.velocityToModulation);
+        carrierVelocityGain = std::pow(velocityLevel, c.velocitySensitivity);
+        velocityGainsValid = true;
+    }
     const double am = amDepth[patch.ams] * c.tremoloDepth;
     const double amM = patch.modulator.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
     const double amC = patch.carrier.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
     // The two delayed modulator outputs include envelope, TL, and AM exactly
     // as in the Python hypothesis. No unverified fixed-point table is added.
     const double mod = wave(modPhase + feedback * (prev1 + prev2) * 0.5, patch.modulator.wave)
-        * em * modGain * std::pow(velocity, c.velocityToModulation) * amM;
+        * em * modGain * modVelocityGain * amM;
     prev2 = prev1; prev1 = mod;
     const double y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
-        * ec * carrierGain * std::pow(velocityLevel, c.velocitySensitivity) * amC;
+        * ec * carrierGain * carrierVelocityGain * amC;
     lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / tickRate, tau);
     ++ticks;
     return y;
@@ -708,10 +720,17 @@ double Press78Engine::synthesizeTick() noexcept {
         servicePortamento();
     }
     const double global = std::sin(globalLfoPhase_);
+    // The smoothed exponents settle exactly on their targets, so a held
+    // control re-evaluates no velocity pow. Compared bitwise, so any change,
+    // even of a zero's sign, refreshes every voice and tail.
+    const bool refresh = !sameBits(voiceControls_.velocityToModulation, velocityExponents_[0])
+        || !sameBits(voiceControls_.velocitySensitivity, velocityExponents_[1]);
+    velocityExponents_[0] = voiceControls_.velocityToModulation;
+    velocityExponents_[1] = voiceControls_.velocitySensitivity;
     double sum = 0.0;
-    for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global);
+    for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global, refresh);
     for (auto& tail : tails_) if (tail.remaining > 0) {
-        sum += tail.voice.next(voiceControls_, pitchMultiplier_, global) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
+        sum += tail.voice.next(voiceControls_, pitchMultiplier_, global, refresh) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
         --tail.remaining;
     }
     globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_, tau);
