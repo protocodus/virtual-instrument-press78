@@ -43,6 +43,17 @@ double mode99VelocityLevel(int velocity) noexcept {
 // 1/32-semitone pitch coordinate, rounding toward minus infinity.
 int heardGlideSteps(int offset) noexcept { return offset >= 0 ? offset / 8 : -((7 - offset) / 8); }
 
+// std::pow without the call where its result is exact: x^0 is 1 for every x
+// (C17 F.10.4.4), and x^1 is x, which a correctly rounded pow returns (glibc's
+// does for every velocity level and a 10^8-value sweep). The defaults for
+// Velocity to FM (0) and Velocity to level (1), a voice without vibrato or
+// tremolo, and an envelope at full level all hit these, every tick.
+double power(double base, double exponent) noexcept {
+    if (exponent == 0.0) return 1.0;
+    if (exponent == 1.0) return base;
+    return std::pow(base, exponent);
+}
+
 double bounded(double x, double low, double high, double fallback) noexcept {
     return std::isfinite(x) ? std::clamp(x, low, high) : fallback;
 }
@@ -233,7 +244,7 @@ double Press78Engine::Envelope::next(bool released, bool reverbKnee) noexcept {
         if (stage != 0) finished = true;
         return 0.0;
     }
-    return std::pow(10.0, -std::max(0.0, attenuation) / 20.0);
+    return power(10.0, -std::max(0.0, attenuation) / 20.0);
 }
 
 void Press78Engine::Voice::configure(const Patch& p, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept {
@@ -285,19 +296,21 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     if (c.triangleLfo) lfo = 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0));
     const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
     const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
-    const double pitch = pitchMultiplier * glideMultiplier * std::pow(2.0, cents / 1200.0);
+    const double pitch = pitchMultiplier * glideMultiplier * power(2.0, cents / 1200.0);
     modPhase = std::fmod(modPhase + modStep * pitch, tau);
     carrierPhase = std::fmod(carrierPhase + carrierStep * pitch, tau);
     const double am = amDepth[patch.ams] * c.tremoloDepth;
-    const double amM = patch.modulator.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
-    const double amC = patch.carrier.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
+    // Both operators take the same tremolo gain; evaluate it once.
+    const double tremolo = patch.modulator.amEnable || patch.carrier.amEnable ? power(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
+    const double amM = patch.modulator.amEnable ? tremolo : 1.0;
+    const double amC = patch.carrier.amEnable ? tremolo : 1.0;
     // The two delayed modulator outputs include envelope, TL, and AM exactly
     // as in the Python hypothesis. No unverified fixed-point table is added.
     const double mod = wave(modPhase + feedback * (prev1 + prev2) * 0.5, patch.modulator.wave)
-        * em * modGain * std::pow(velocity, c.velocityToModulation) * amM;
+        * em * modGain * power(velocity, c.velocityToModulation) * amM;
     prev2 = prev1; prev1 = mod;
     const double y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
-        * ec * carrierGain * std::pow(velocityLevel, c.velocitySensitivity) * amC;
+        * ec * carrierGain * power(velocityLevel, c.velocitySensitivity) * amC;
     lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / tickRate, tau);
     ++ticks;
     return y;
