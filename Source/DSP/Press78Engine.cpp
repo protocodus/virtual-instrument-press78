@@ -54,6 +54,16 @@ double power(double base, double exponent) noexcept {
     return std::pow(base, exponent);
 }
 
+// std::fmod(x, tau) for a phase that has just advanced. fmod is exact, and
+// so is x - tau for tau <= x < 2 tau (Sterbenz), so a step of under a turn
+// wraps with one subtraction and the result is bit for bit fmod's. Larger
+// steps, negative phases and non-finite values still take fmod.
+double wrapPhase(double x) noexcept {
+    if (x >= 0.0 && x < tau) return x;
+    if (x >= tau && x < 2.0 * tau) return x - tau;
+    return std::fmod(x, tau);
+}
+
 double bounded(double x, double low, double high, double fallback) noexcept {
     return std::isfinite(x) ? std::clamp(x, low, high) : fallback;
 }
@@ -303,8 +313,8 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
     const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
     const double pitch = pitchMultiplier * glideMultiplier * power(2.0, cents / 1200.0);
-    modPhase = std::fmod(modPhase + modStep * pitch, tau);
-    carrierPhase = std::fmod(carrierPhase + carrierStep * pitch, tau);
+    modPhase = wrapPhase(modPhase + modStep * pitch);
+    carrierPhase = wrapPhase(carrierPhase + carrierStep * pitch);
     const double am = amDepth[patch.ams] * c.tremoloDepth;
     // Both operators take the same tremolo gain; evaluate it once.
     const double tremolo = patch.modulator.amEnable || patch.carrier.amEnable ? power(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
@@ -317,7 +327,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     prev2 = prev1; prev1 = mod;
     const double y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
         * ec * carrierGain * power(velocityLevel, c.velocitySensitivity) * amC;
-    lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / tickRate, tau);
+    lfoPhase = wrapPhase(lfoPhase + tau * c.lfoRateHz / tickRate);
     ++ticks;
     return y;
 }
@@ -745,7 +755,7 @@ double Press78Engine::synthesizeTick() noexcept {
         sum += tail.voice.next(voiceControls_, pitchMultiplier_, shared()) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
         --tail.remaining;
     }
-    globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_, tau);
+    globalLfoPhase_ = wrapPhase(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_);
     return sum;
 }
 
@@ -857,7 +867,7 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     }
     left = mono + side; right = mono - sideRight;
     delayWrite_ = (delayWrite_ + 1) % kDelaySize;
-    chorusPhase_ = std::fmod(chorusPhase_ + tau * chorusRate_ / sampleRate_, tau);
+    chorusPhase_ = wrapPhase(chorusPhase_ + tau * chorusRate_ / sampleRate_);
     if (controls_.dcBlock) {
         const double l = left - dcInputL_ + dcCoefficient_ * dcOutputL_;
         const double r = right - dcInputR_ + dcCoefficient_ * dcOutputR_;
