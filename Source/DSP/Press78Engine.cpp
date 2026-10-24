@@ -763,6 +763,20 @@ double Press78Engine::resampled(double position) const noexcept {
     const int p = std::min(kSincPhases - 1, static_cast<int>(phase));
     const double mix = phase - p;
     double value = 0.0;
+    // Every tap is normally in the retained history (only the first ticks
+    // after a reset reach before it), so read it without historyAt's bounds
+    // tests. The sum is the same, in the same order.
+    const std::int64_t first = base - 31;
+    if (first >= 0 && first >= nextTick_ - static_cast<std::int64_t>(kHistory) && first + kSincTaps <= nextTick_) {
+        const auto& lower = sinc_[static_cast<std::size_t>(p)];
+        const auto& upper = sinc_[static_cast<std::size_t>(p) + 1];
+        for (int j = 0; j < kSincTaps; ++j) {
+            const auto k = static_cast<std::size_t>(j);
+            const double coefficient = lower[k] + mix * (upper[k] - lower[k]);
+            value += history_[static_cast<std::size_t>(first + j) % kHistory] * coefficient;
+        }
+        return value;
+    }
     for (int j = 0; j < kSincTaps; ++j) {
         const double coefficient = sinc_[p][j] + mix * (sinc_[p + 1][j] - sinc_[p][j]);
         value += historyAt(base + j - 31) * coefficient;
