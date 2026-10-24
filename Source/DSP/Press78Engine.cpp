@@ -113,6 +113,8 @@ Operator sanitize(Operator op) noexcept {
     op.wave = std::clamp(op.wave, 0, 3);
     return op;
 }
+// The triangle LFO: the sine's phase read back through arcsine.
+double triangle(double sine) noexcept { return 2.0 / pi * std::asin(std::clamp(sine, -1.0, 1.0)); }
 double softBound(double x) noexcept {
     const double a = std::abs(x);
     return a <= 0.9 ? x : std::copysign(0.9 + 0.1 * std::tanh((a - 0.9) / 0.1), x);
@@ -292,8 +294,12 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     if (carrierEnvelope.finished || (carrierEnvelope.disabled && released)) {
         active = false; return 0.0;
     }
-    double lfo = c.globalLfo ? globalLfo : std::sin(lfoPhase);
-    if (c.triangleLfo) lfo = 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0));
+    // globalLfo arrives already shaped: the engine shapes it once per tick.
+    double lfo = globalLfo;
+    if (!c.globalLfo) {
+        lfo = std::sin(lfoPhase);
+        if (c.triangleLfo) lfo = triangle(lfo);
+    }
     const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
     const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
     const double pitch = pitchMultiplier * glideMultiplier * power(2.0, cents / 1200.0);
@@ -725,11 +731,18 @@ double Press78Engine::synthesizeTick() noexcept {
         portamentoCountdown_ = portamentoServiceTicks_;
         servicePortamento();
     }
-    const double global = std::sin(globalLfoPhase_);
+    // Shape the shared LFO once per tick, not in every voice, and only
+    // when a voice sounds.
+    double global = std::sin(globalLfoPhase_);
+    bool shaped = !voiceControls_.triangleLfo;
+    const auto shared = [&]() noexcept {
+        if (!shaped) { global = triangle(global); shaped = true; }
+        return global;
+    };
     double sum = 0.0;
-    for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global);
+    for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, shared());
     for (auto& tail : tails_) if (tail.remaining > 0) {
-        sum += tail.voice.next(voiceControls_, pitchMultiplier_, global) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
+        sum += tail.voice.next(voiceControls_, pitchMultiplier_, shared()) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
         --tail.remaining;
     }
     globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_, tau);

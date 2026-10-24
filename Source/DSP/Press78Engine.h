@@ -213,6 +213,7 @@ private:
         void updatePatch(const Patch&, int keyLevelModel) noexcept;
         void updateRelease(bool sustain) noexcept;
         void updateOriginalPitch(int steps) noexcept;
+        // globalLfo is the shared LFO, already triangle-shaped if selected.
         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
     };
     struct Tail { Voice voice{}; int remaining = 0; };
