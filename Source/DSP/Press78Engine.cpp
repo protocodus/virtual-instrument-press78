@@ -43,6 +43,27 @@ double mode99VelocityLevel(int velocity) noexcept {
 // 1/32-semitone pitch coordinate, rounding toward minus infinity.
 int heardGlideSteps(int offset) noexcept { return offset >= 0 ? offset / 8 : -((7 - offset) / 8); }
 
+// std::pow without the call where its result is exact: x^0 is 1 for every x
+// (C17 F.10.4.4), and x^1 is x, which a correctly rounded pow returns (glibc's
+// does for every velocity level and a 10^8-value sweep). The defaults for
+// Velocity to FM (0) and Velocity to level (1), a voice without vibrato or
+// tremolo, and an envelope at full level all hit these, every tick.
+double power(double base, double exponent) noexcept {
+    if (exponent == 0.0) return 1.0;
+    if (exponent == 1.0) return base;
+    return std::pow(base, exponent);
+}
+
+// std::fmod(x, tau) for a phase that has just advanced. fmod is exact, and
+// so is x - tau for tau <= x < 2 tau (Sterbenz), so a step of under a turn
+// wraps with one subtraction and the result is bit for bit fmod's. Larger
+// steps, negative phases and non-finite values still take fmod.
+double wrapPhase(double x) noexcept {
+    if (x >= 0.0 && x < tau) return x;
+    if (x >= tau && x < 2.0 * tau) return x - tau;
+    return std::fmod(x, tau);
+}
+
 double bounded(double x, double low, double high, double fallback) noexcept {
     return std::isfinite(x) ? std::clamp(x, low, high) : fallback;
 }
@@ -102,6 +123,8 @@ Operator sanitize(Operator op) noexcept {
     op.wave = std::clamp(op.wave, 0, 3);
     return op;
 }
+// The triangle LFO: the sine's phase read back through arcsine.
+double triangle(double sine) noexcept { return 2.0 / pi * std::asin(std::clamp(sine, -1.0, 1.0)); }
 double softBound(double x) noexcept {
     const double a = std::abs(x);
     return a <= 0.9 ? x : std::copysign(0.9 + 0.1 * std::tanh((a - 0.9) / 0.1), x);
@@ -233,7 +256,7 @@ double Press78Engine::Envelope::next(bool released, bool reverbKnee) noexcept {
         if (stage != 0) finished = true;
         return 0.0;
     }
-    return std::pow(10.0, -std::max(0.0, attenuation) / 20.0);
+    return power(10.0, -std::max(0.0, attenuation) / 20.0);
 }
 
 void Press78Engine::Voice::configure(const Patch& p, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept {
@@ -281,24 +304,30 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     if (carrierEnvelope.finished || (carrierEnvelope.disabled && released)) {
         active = false; return 0.0;
     }
-    double lfo = c.globalLfo ? globalLfo : std::sin(lfoPhase);
-    if (c.triangleLfo) lfo = 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0));
+    // globalLfo arrives already shaped: the engine shapes it once per tick.
+    double lfo = globalLfo;
+    if (!c.globalLfo) {
+        lfo = std::sin(lfoPhase);
+        if (c.triangleLfo) lfo = triangle(lfo);
+    }
     const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
     const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
-    const double pitch = pitchMultiplier * glideMultiplier * std::pow(2.0, cents / 1200.0);
-    modPhase = std::fmod(modPhase + modStep * pitch, tau);
-    carrierPhase = std::fmod(carrierPhase + carrierStep * pitch, tau);
+    const double pitch = pitchMultiplier * glideMultiplier * power(2.0, cents / 1200.0);
+    modPhase = wrapPhase(modPhase + modStep * pitch);
+    carrierPhase = wrapPhase(carrierPhase + carrierStep * pitch);
     const double am = amDepth[patch.ams] * c.tremoloDepth;
-    const double amM = patch.modulator.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
-    const double amC = patch.carrier.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
+    // Both operators take the same tremolo gain; evaluate it once.
+    const double tremolo = patch.modulator.amEnable || patch.carrier.amEnable ? power(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
+    const double amM = patch.modulator.amEnable ? tremolo : 1.0;
+    const double amC = patch.carrier.amEnable ? tremolo : 1.0;
     // The two delayed modulator outputs include envelope, TL, and AM exactly
     // as in the Python hypothesis. No unverified fixed-point table is added.
     const double mod = wave(modPhase + feedback * (prev1 + prev2) * 0.5, patch.modulator.wave)
-        * em * modGain * std::pow(velocity, c.velocityToModulation) * amM;
+        * em * modGain * power(velocity, c.velocityToModulation) * amM;
     prev2 = prev1; prev1 = mod;
     const double y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
-        * ec * carrierGain * std::pow(velocityLevel, c.velocitySensitivity) * amC;
-    lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / tickRate, tau);
+        * ec * carrierGain * power(velocityLevel, c.velocitySensitivity) * amC;
+    lfoPhase = wrapPhase(lfoPhase + tau * c.lfoRateHz / tickRate);
     ++ticks;
     return y;
 }
@@ -712,14 +741,21 @@ double Press78Engine::synthesizeTick() noexcept {
         portamentoCountdown_ = portamentoServiceTicks_;
         servicePortamento();
     }
-    const double global = std::sin(globalLfoPhase_);
+    // Shape the shared LFO once per tick, not in every voice, and only
+    // when a voice sounds.
+    double global = std::sin(globalLfoPhase_);
+    bool shaped = !voiceControls_.triangleLfo;
+    const auto shared = [&]() noexcept {
+        if (!shaped) { global = triangle(global); shaped = true; }
+        return global;
+    };
     double sum = 0.0;
-    for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global);
+    for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, shared());
     for (auto& tail : tails_) if (tail.remaining > 0) {
-        sum += tail.voice.next(voiceControls_, pitchMultiplier_, global) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
+        sum += tail.voice.next(voiceControls_, pitchMultiplier_, shared()) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
         --tail.remaining;
     }
-    globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_, tau);
+    globalLfoPhase_ = wrapPhase(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_);
     return sum;
 }
 
@@ -737,6 +773,20 @@ double Press78Engine::resampled(double position) const noexcept {
     const int p = std::min(kSincPhases - 1, static_cast<int>(phase));
     const double mix = phase - p;
     double value = 0.0;
+    // Every tap is normally in the retained history (only the first ticks
+    // after a reset reach before it), so read it without historyAt's bounds
+    // tests. The sum is the same, in the same order.
+    const std::int64_t first = base - 31;
+    if (first >= 0 && first >= nextTick_ - static_cast<std::int64_t>(kHistory) && first + kSincTaps <= nextTick_) {
+        const auto& lower = sinc_[static_cast<std::size_t>(p)];
+        const auto& upper = sinc_[static_cast<std::size_t>(p) + 1];
+        for (int j = 0; j < kSincTaps; ++j) {
+            const auto k = static_cast<std::size_t>(j);
+            const double coefficient = lower[k] + mix * (upper[k] - lower[k]);
+            value += history_[static_cast<std::size_t>(first + j) % kHistory] * coefficient;
+        }
+        return value;
+    }
     for (int j = 0; j < kSincTaps; ++j) {
         const double coefficient = sinc_[p][j] + mix * (sinc_[p + 1][j] - sinc_[p][j]);
         value += historyAt(base + j - 31) * coefficient;
@@ -817,7 +867,7 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     }
     left = mono + side; right = mono - sideRight;
     delayWrite_ = (delayWrite_ + 1) % kDelaySize;
-    chorusPhase_ = std::fmod(chorusPhase_ + tau * chorusRate_ / sampleRate_, tau);
+    chorusPhase_ = wrapPhase(chorusPhase_ + tau * chorusRate_ / sampleRate_);
     if (controls_.dcBlock) {
         const double l = left - dcInputL_ + dcCoefficient_ * dcOutputL_;
         const double r = right - dcInputR_ + dcCoefficient_ * dcOutputR_;
