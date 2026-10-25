@@ -210,7 +210,10 @@ public:
     // negative limits.
     static double swingShare(double v, double above, double below) noexcept {
         const double u = v / (v > 0.0 ? above : below), u2 = u * u, u4 = u2 * u2;
-        return std::pow(1.0 + u4 * u4 * u2, -0.1);
+        // Below about 2.5 % of the limit u^10 vanishes against 1, and
+        // pow(1, y) is exactly 1: the same result without the call.
+        const double base = 1.0 + u4 * u4 * u2;
+        return base == 1.0 ? 1.0 : std::pow(base, -0.1);
     }
     // Moves left and right from the slider towards the AUX and headphone
     // outputs by their mix weights. Every path runs at all times, so a jack
