@@ -2,7 +2,9 @@
 
 #include <array>
 #include <cstddef>
+#include <cmath>
 #include <cstdint>
+#include <limits>
 #include "AnalogOutput.h"
 #include "AmplifierCircuit.h"
 #include "ChorusCircuit.h"
@@ -11,6 +13,19 @@
 // Independently written port of the documented PSS-780 behavioral experiment.
 // This is not a bit-exact YM3420/OPU emulator. No Yamaha firmware is included.
 namespace press78 {
+
+// std::pow(base, e) for a base fixed over the cache's life, kept while the
+// exponent holds: an equal exponent gives the same IEEE result, so a hit
+// returns exactly what the call would (+0 and -0 both give 1). The NaN start
+// never compares equal, so the first call computes. The owner resets the
+// cache whenever the base may change.
+struct ExponentCachedPow {
+    double exponent = std::numeric_limits<double>::quiet_NaN(), value = 0.0;
+    double operator()(double base, double e) noexcept {
+        if (e != exponent) { exponent = e; value = std::pow(base, e); }
+        return value;
+    }
+};
 
 struct Operator {
     int mul = 1;       // 0 means 1/2; otherwise integer ratio 1..15.
@@ -221,6 +236,11 @@ private:
         double modGain = 0.0, carrierGain = 0.0, feedback = 0.0;
         double velocity = 1.0;      // velocity/127, the modulator's law.
         double velocityLevel = 1.0; // Carrier level at sensitivity 1.
+        // velocity^velocityToModulation and velocityLevel^velocitySensitivity.
+        // Both bases are set once per note, before its first tick, by
+        // configure() (which resets these) and startVoice(); the smoothed
+        // exponents settle, so these skip two pow calls per voice and tick.
+        ExponentCachedPow modVelocityPow{}, carrierVelocityPow{};
         double glideMultiplier = 1.0; // Equal model only.
         std::uint64_t age = 0, ticks = 0;
         double tickRate = kInternalRate; // Fixed while the voice sounds.

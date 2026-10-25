@@ -294,10 +294,10 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     // The two delayed modulator outputs include envelope, TL, and AM exactly
     // as in the Python hypothesis. No unverified fixed-point table is added.
     const double mod = wave(modPhase + feedback * (prev1 + prev2) * 0.5, patch.modulator.wave)
-        * em * modGain * std::pow(velocity, c.velocityToModulation) * amM;
+        * em * modGain * modVelocityPow(velocity, c.velocityToModulation) * amM;
     prev2 = prev1; prev1 = mod;
     const double y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
-        * ec * carrierGain * std::pow(velocityLevel, c.velocitySensitivity) * amC;
+        * ec * carrierGain * carrierVelocityPow(velocityLevel, c.velocitySensitivity) * amC;
     lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / tickRate, tau);
     ++ticks;
     return y;
