@@ -846,12 +846,13 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     delay_[delayWrite_] = mono;
     const double depth = chorusDepth_ * 0.001 * sampleRate_;
     const double base = 0.012 * sampleRate_;
-    const double a = readDelay(base + depth * std::sin(chorusPhase_));
+    const double chorusSine = std::sin(chorusPhase_);
+    const double a = readDelay(base + depth * chorusSine);
     const double b = readDelay(base + depth * std::sin(chorusPhase_ + pi * 0.5));
     double side = 0.5 * (a - b) * chorusMix_ * width_, sideRight = side;
     // The sibling wet-path filters always run, so switching them or the mode
     // never replays stale filter memory.
-    const double recordedMs = RecordedChorus::delayMilliseconds(chorusPhase_, chorusDepth_);
+    const double recordedMs = RecordedChorus::delayMilliseconds(chorusSine, std::cos(chorusPhase_), chorusDepth_);
     double filteredRight = 0.0;
     const double filtered = chorusCircuit_.process(
         readDelay((recordedMs * 0.001 - chorusCircuit_.delaySeconds()) * sampleRate_), filteredRight);
