@@ -208,6 +208,9 @@ if(PRESS78_BUILD_TOOLS)
     target_link_libraries(press78_circuit_noise_probe PRIVATE Press78DSP)
     add_executable(press78_performance_probe Tools/PerformanceProbe.cpp)
     target_link_libraries(press78_performance_probe PRIVATE Press78DSP)
+    # Instruction-count and output-parity workload; protocol at its head.
+    add_executable(press78_cpu_bench Tools/CpuParityBench.cpp)
+    target_link_libraries(press78_cpu_bench PRIVATE Press78DSP)
 
     # One README demo per factory voice from Docs/audio/midi (Tools/
     # PresetDemoRenderer.h is the shared portfolio copy; do not edit it here).
