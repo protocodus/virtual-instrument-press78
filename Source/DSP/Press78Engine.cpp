@@ -86,6 +86,15 @@ double wave(double phase, int shape) noexcept {
     if (shape >= 2 && s < 0.0) return 0.0;
     return shape == 1 || shape == 3 ? s * std::abs(s) : s;
 }
+// std::fmod(x, tau), bit for bit, without the call on the common paths: x
+// already in [0, tau) is its own remainder, and for x in [tau, 2 tau) the
+// remainder x - tau is exact (Sterbenz: tau/2 <= x <= 2 tau). Everything
+// else, negative, larger, infinite or NaN, still goes through fmod.
+double wrapPhase(double x) noexcept {
+    if (x >= 0.0 && x < tau) return x;
+    if (x >= tau && x < 2.0 * tau) return x - tau;
+    return std::fmod(x, tau);
+}
 // The LFO sine, or the triangle with the same phase and peak.
 double shapeLfo(double sine, bool triangle) noexcept {
     return triangle ? 2.0 / pi * std::asin(std::clamp(sine, -1.0, 1.0)) : sine;
@@ -306,8 +315,8 @@ double Press78Engine::Voice::tick(const Controls& c, double pitchMultiplier, dou
     // in the tremolo below) with the same result.
     const double pitchExponent = cents / 1200.0;
     const double pitch = pitchMultiplier * glideMultiplier * (pitchExponent == 0.0 ? 1.0 : std::pow(2.0, pitchExponent));
-    modPhase = std::fmod(modPhase + modStep * pitch, tau);
-    carrierPhase = std::fmod(carrierPhase + carrierStep * pitch, tau);
+    modPhase = wrapPhase(modPhase + modStep * pitch);
+    carrierPhase = wrapPhase(carrierPhase + carrierStep * pitch);
     // Both operators hear the same tremolo gain; it is computed once.
     double tremolo = 1.0;
     if (patch.modulator.amEnable || patch.carrier.amEnable) {
@@ -324,7 +333,7 @@ double Press78Engine::Voice::tick(const Controls& c, double pitchMultiplier, dou
     prev2 = prev1; prev1 = mod;
     const double y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
         * ec * carrierGain * carrierVelocityPow(velocityLevel, c.velocitySensitivity) * amC;
-    lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / tickRate, tau);
+    lfoPhase = wrapPhase(lfoPhase + tau * c.lfoRateHz / tickRate);
     ++ticks;
     return y;
 }
@@ -746,7 +755,7 @@ double Press78Engine::synthesizeTick() noexcept {
         sum += tail.voice.tick(voiceControls_, pitchMultiplier_, shaped) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
         --tail.remaining;
     }
-    globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_, tau);
+    globalLfoPhase_ = wrapPhase(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_);
     return sum;
 }
 
@@ -844,7 +853,7 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     }
     left = mono + side; right = mono - sideRight;
     delayWrite_ = (delayWrite_ + 1) % kDelaySize;
-    chorusPhase_ = std::fmod(chorusPhase_ + tau * chorusRate_ / sampleRate_, tau);
+    chorusPhase_ = wrapPhase(chorusPhase_ + tau * chorusRate_ / sampleRate_);
     if (controls_.dcBlock) {
         const double l = left - dcInputL_ + dcCoefficient_ * dcOutputL_;
         const double r = right - dcInputR_ + dcCoefficient_ * dcOutputR_;
