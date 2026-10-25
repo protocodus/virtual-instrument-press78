@@ -252,6 +252,9 @@ private:
         void updateRelease(bool sustain) noexcept;
         void updateOriginalPitch(int steps) noexcept;
         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
+        // The same tick, given the shared LFO already shaped by the selected
+        // waveform, so the engine shapes it once per tick, not once per voice.
+        double tick(const Controls&, double pitchMultiplier, double shapedGlobalLfo) noexcept;
     };
     struct Tail { Voice voice{}; int remaining = 0; };
     // The sinc reader needs at most the latest 64 ticks after fill; 128 keeps

@@ -86,6 +86,10 @@ double wave(double phase, int shape) noexcept {
     if (shape >= 2 && s < 0.0) return 0.0;
     return shape == 1 || shape == 3 ? s * std::abs(s) : s;
 }
+// The LFO sine, or the triangle with the same phase and peak.
+double shapeLfo(double sine, bool triangle) noexcept {
+    return triangle ? 2.0 / pi * std::asin(std::clamp(sine, -1.0, 1.0)) : sine;
+}
 Operator sanitize(Operator op) noexcept {
     op.mul = std::clamp(op.mul, 0, 15);
     op.dt1 = std::clamp(op.dt1, -7, 7);
@@ -278,6 +282,10 @@ void Press78Engine::Voice::updateRelease(bool sustain) noexcept {
 }
 
 double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo) noexcept {
+    return tick(c, pitchMultiplier, c.globalLfo ? shapeLfo(globalLfo, c.triangleLfo) : 0.0);
+}
+
+double Press78Engine::Voice::tick(const Controls& c, double pitchMultiplier, double shapedGlobalLfo) noexcept {
     if (!active) return 0.0;
     // User-selected sibling-inspired pseudo-Reverb. One pre-step carrier
     // snapshot gates both operators; TL, velocity and gain do not move the knee.
@@ -289,8 +297,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     if (carrierEnvelope.finished || (carrierEnvelope.disabled && released)) {
         active = false; return 0.0;
     }
-    double lfo = c.globalLfo ? globalLfo : std::sin(lfoPhase);
-    if (c.triangleLfo) lfo = 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0));
+    const double lfo = c.globalLfo ? shapedGlobalLfo : shapeLfo(std::sin(lfoPhase), c.triangleLfo);
     const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
     const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
     const double pitch = pitchMultiplier * glideMultiplier * std::pow(2.0, cents / 1200.0);
@@ -721,10 +728,11 @@ double Press78Engine::synthesizeTick() noexcept {
         servicePortamento();
     }
     const double global = std::sin(globalLfoPhase_);
+    const double shaped = voiceControls_.globalLfo ? shapeLfo(global, voiceControls_.triangleLfo) : 0.0;
     double sum = 0.0;
-    for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global);
+    for (auto& voice : voices_) if (voice.active) sum += voice.tick(voiceControls_, pitchMultiplier_, shaped);
     for (auto& tail : tails_) if (tail.remaining > 0) {
-        sum += tail.voice.next(voiceControls_, pitchMultiplier_, global) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
+        sum += tail.voice.tick(voiceControls_, pitchMultiplier_, shaped) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
         --tail.remaining;
     }
     globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_, tau);
