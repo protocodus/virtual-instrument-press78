@@ -192,8 +192,28 @@ private:
         void updateRelease(const Operator&, int midi, bool sustain, double tickRate) noexcept;
         double next(bool released, bool reverbKnee = false) noexcept;
     };
+    // A sounding voice's patch: every field the voice reads. The provenance
+    // bytes stay with the engine's patch_; leaving them out keeps each of the
+    // 24 voice and tail copies inside the instance budget.
+    struct VoicePatch {
+        Operator modulator{}, carrier{};
+        int feedback = 0, pms = 0, ams = 0, vibratoDelay = 0;
+        bool vibrato = false, sustain = false;
+        VoicePatch& operator=(const Patch& p) noexcept {
+            modulator = p.modulator; carrier = p.carrier;
+            feedback = p.feedback; pms = p.pms; ams = p.ams; vibratoDelay = p.vibratoDelay;
+            vibrato = p.vibrato; sustain = p.sustain;
+            return *this;
+        }
+    };
+    // Members are ordered by size so the 24 copies carry no padding holes.
     struct Voice {
-        Patch patch{};
+        VoicePatch patch{};
+        // Portamento offset and per-service step in 1/256 semitone, as the
+        // firmware keeps them; the oscillators hear offset>>3 (1/32 semitone).
+        int glideOffset = 0, glideStep = 0, glideSteps = 0;
+        int note = 60, source = 0;
+        bool active = false, held = false, released = false;
         Envelope modEnvelope{}, carrierEnvelope{};
         double modPhase = 0.0, carrierPhase = 0.0;
         double prev1 = 0.0, prev2 = 0.0, lfoPhase = 0.0;
@@ -201,14 +221,9 @@ private:
         double modGain = 0.0, carrierGain = 0.0, feedback = 0.0;
         double velocity = 1.0;      // velocity/127, the modulator's law.
         double velocityLevel = 1.0; // Carrier level at sensitivity 1.
-        // Portamento offset and per-service step in 1/256 semitone, as the
-        // firmware keeps them; the oscillators hear offset>>3 (1/32 semitone).
-        int glideOffset = 0, glideStep = 0, glideSteps = 0;
         double glideMultiplier = 1.0; // Equal model only.
         std::uint64_t age = 0, ticks = 0;
         double tickRate = kInternalRate; // Fixed while the voice sounds.
-        int note = 60, source = 0;
-        bool active = false, held = false, released = false;
         void configure(const Patch&, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept;
         void updatePatch(const Patch&, int keyLevelModel) noexcept;
         void updateRelease(bool sustain) noexcept;
