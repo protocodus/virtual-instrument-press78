@@ -201,8 +201,11 @@ private:
     struct Envelope {
         double attenuation = 96.0, attackMul = 0.0, decay1 = 0.0;
         double decay2 = 0.0, release = 0.0, reverbRelease = 0.0, target = 0.0;
+        // The last returned level, valid while attenuation, which next()
+        // alone writes, keeps the bits it was computed from.
+        double level = 0.0;
         int stage = 0;
-        bool instantAttack = false, disabled = true, finished = false;
+        bool instantAttack = false, disabled = true, finished = false, levelValid = false;
         void configure(const Operator&, int midi, bool sustain, double tickRate) noexcept;
         void updateRelease(const Operator&, int midi, bool sustain, double tickRate) noexcept;
         double next(bool released, bool reverbKnee = false) noexcept;

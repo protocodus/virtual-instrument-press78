@@ -214,6 +214,7 @@ void Press78Engine::Envelope::updateRelease(const Operator& op, int midi, bool s
 
 double Press78Engine::Envelope::next(bool released, bool reverbKnee) noexcept {
     if (disabled || finished) return 0.0;
+    const double before = attenuation;
     if (released) stage = 3;
     if (stage == 0) {
         attenuation = instantAttack ? 0.0 : attenuation * attackMul;
@@ -231,9 +232,16 @@ double Press78Engine::Envelope::next(bool released, bool reverbKnee) noexcept {
     }
     if (attenuation >= 96.0) {
         if (stage != 0) finished = true;
+        levelValid = false;
         return 0.0;
     }
-    return std::pow(10.0, -std::max(0.0, attenuation) / 20.0);
+    // A held sustain (D2R 0) or a finished attack leaves the attenuation
+    // unchanged; the same input gives the same pow result, so reuse it.
+    if (!levelValid || attenuation != before) {
+        level = std::pow(10.0, -std::max(0.0, attenuation) / 20.0);
+        levelValid = true;
+    }
+    return level;
 }
 
 void Press78Engine::Voice::configure(const Patch& p, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept {
