@@ -298,14 +298,25 @@ double Press78Engine::Voice::tick(const Controls& c, double pitchMultiplier, dou
         active = false; return 0.0;
     }
     const double lfo = c.globalLfo ? shapedGlobalLfo : shapeLfo(std::sin(lfoPhase), c.triangleLfo);
-    const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
-    const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
-    const double pitch = pitchMultiplier * glideMultiplier * std::pow(2.0, cents / 1200.0);
+    // The vibrato delay is only read when the patch has vibrato.
+    const bool vibrating = patch.vibrato
+        && static_cast<double>(ticks) >= std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
+    const double cents = vibrating ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
+    // pow(b, +-0) is exactly 1, so a zero exponent skips the call (here and
+    // in the tremolo below) with the same result.
+    const double pitchExponent = cents / 1200.0;
+    const double pitch = pitchMultiplier * glideMultiplier * (pitchExponent == 0.0 ? 1.0 : std::pow(2.0, pitchExponent));
     modPhase = std::fmod(modPhase + modStep * pitch, tau);
     carrierPhase = std::fmod(carrierPhase + carrierStep * pitch, tau);
-    const double am = amDepth[patch.ams] * c.tremoloDepth;
-    const double amM = patch.modulator.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
-    const double amC = patch.carrier.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
+    // Both operators hear the same tremolo gain; it is computed once.
+    double tremolo = 1.0;
+    if (patch.modulator.amEnable || patch.carrier.amEnable) {
+        const double am = amDepth[patch.ams] * c.tremoloDepth;
+        const double amExponent = -am * (lfo + 1.0) / 40.0;
+        tremolo = amExponent == 0.0 ? 1.0 : std::pow(10.0, amExponent);
+    }
+    const double amM = patch.modulator.amEnable ? tremolo : 1.0;
+    const double amC = patch.carrier.amEnable ? tremolo : 1.0;
     // The two delayed modulator outputs include envelope, TL, and AM exactly
     // as in the Python hypothesis. No unverified fixed-point table is added.
     const double mod = wave(modPhase + feedback * (prev1 + prev2) * 0.5, patch.modulator.wave)
