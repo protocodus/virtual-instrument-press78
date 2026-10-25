@@ -766,13 +766,28 @@ double Press78Engine::historyAt(std::int64_t tick) const noexcept {
 
 double Press78Engine::resampled(double position) const noexcept {
     const double center = position - resamplerDelay_;
-    const auto base = static_cast<std::int64_t>(std::floor(center));
-    const double fraction = center - std::floor(center);
+    const double whole = std::floor(center);
+    const auto base = static_cast<std::int64_t>(whole);
+    const double fraction = center - whole;
     if (sampleRate_ >= chipRate_ && fraction < 1e-12) return historyAt(base);
     const double phase = fraction * kSincPhases;
     const int p = std::min(kSincPhases - 1, static_cast<int>(phase));
     const double mix = phase - p;
+    const auto& lower = sinc_[static_cast<std::size_t>(p)];
+    const auto& upper = sinc_[static_cast<std::size_t>(p) + 1];
     double value = 0.0;
+    const std::int64_t first = base - 31;
+    if (first >= 0 && first >= nextTick_ - static_cast<std::int64_t>(kHistory) && first + kSincTaps <= nextTick_) {
+        // Every tap is a retained tick, so historyAt's bounds tests all pass:
+        // the same reads and products, in the same order, without them.
+        static_assert((kHistory & (kHistory - 1)) == 0, "the ring index is a mask");
+        const auto start = static_cast<std::size_t>(first);
+        for (std::size_t j = 0; j < static_cast<std::size_t>(kSincTaps); ++j) {
+            const double coefficient = lower[j] + mix * (upper[j] - lower[j]);
+            value += history_[(start + j) & (kHistory - 1)] * coefficient;
+        }
+        return value;
+    }
     for (int j = 0; j < kSincTaps; ++j) {
         const double coefficient = sinc_[p][j] + mix * (sinc_[p + 1][j] - sinc_[p][j]);
         value += historyAt(base + j - 31) * coefficient;
