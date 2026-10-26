@@ -920,9 +920,11 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     }
     delay_[delayWrite_] = mono;
     double side = 0.0, sideRight = 0.0;
-    if (mono == 0.0 && silentDelay_ >= kDelaySize) {
-        double filteredRight = 0.0;
-        (void)chorusCircuit_.process(0.0, filteredRight);
+    double recordedMs = 0.0, filtered = 0.0, filteredRight = 0.0;
+    const bool delaySilent = mono == 0.0 && silentDelay_ >= kDelaySize;
+    if (delaySilent) {
+        // An empty delay does not imply empty IIR state: retain the wet tail.
+        filtered = chorusCircuit_.process(0.0, filteredRight);
     } else {
         silentDelay_ = mono == 0.0 ? static_cast<std::uint16_t>(silentDelay_ + 1) : 0;
         const double sinPhase = std::sin(chorusPhase_);
@@ -937,21 +939,20 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
         }
         // The sibling wet-path filters always run, so switching them or the mode
         // never replays stale filter memory.
-        const double recordedMs = RecordedChorus::delayMillisecondsFromTrig(sinPhase, cosPhase, chorusDepth_);
-        double filteredRight = 0.0;
-        const double filtered = chorusCircuit_.process(
+        recordedMs = RecordedChorus::delayMillisecondsFromTrig(sinPhase, cosPhase, chorusDepth_);
+        filtered = chorusCircuit_.process(
             readDelay((recordedMs * 0.001 - chorusCircuit_.delaySeconds()) * sampleRate_), filteredRight);
-        // Mode0 retains the original arithmetic path exactly. The recorded mode
-        // is an effective transfer, not the physical BBD or the acausal v4 FIR.
-        if (recordedChorusMix_ > 0.0 && chorusMix_ != 0.0 && width_ != 0.0) {
-            const double plain = readDelay(recordedMs * 0.001 * sampleRate_);
-            const double wet = plain + chorusCircuitMix_ * (filtered - plain);
-            const double wetRight = plain + chorusCircuitMix_ * (filteredRight - plain);
-            const double recorded = RecordedChorus::side(mono, wet) * chorusMix_ * width_;
-            const double recordedRight = RecordedChorus::side(mono, wetRight) * chorusMix_ * width_;
-            sideRight += recordedChorusMix_ * (recordedRight - sideRight);
-            side += recordedChorusMix_ * (recorded - side);
-        }
+    }
+    // Mode0 retains the original arithmetic path exactly. The recorded mode
+    // is an effective transfer, not the physical BBD or the acausal v4 FIR.
+    if (recordedChorusMix_ > 0.0 && chorusMix_ != 0.0 && width_ != 0.0) {
+        const double plain = delaySilent ? 0.0 : readDelay(recordedMs * 0.001 * sampleRate_);
+        const double wet = plain + chorusCircuitMix_ * (filtered - plain);
+        const double wetRight = plain + chorusCircuitMix_ * (filteredRight - plain);
+        const double recorded = RecordedChorus::side(mono, wet) * chorusMix_ * width_;
+        const double recordedRight = RecordedChorus::side(mono, wetRight) * chorusMix_ * width_;
+        sideRight += recordedChorusMix_ * (recordedRight - sideRight);
+        side += recordedChorusMix_ * (recorded - side);
     }
     left = mono + side; right = mono - sideRight;
     delayWrite_ = (delayWrite_ + 1) & (kDelaySize - 1);
