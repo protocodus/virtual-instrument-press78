@@ -213,6 +213,13 @@ void Press78AudioProcessor::setStateInformation (const void* data, int sizeInByt
         power.setProperty ("value", 101, nullptr);
     }
     parameters.replaceState (state);
+    // JUCE keeps a switch's raw host value (0.18 reads as off), and
+    // replaceState skips values whose meaning is unchanged, so the stray
+    // value would survive the restore and be reported back to the host.
+    for (auto* parameter : getParameters())
+        if (auto* toggle = dynamic_cast<juce::AudioParameterBool*> (parameter))
+            if (const auto restored = toggle->get() ? 1.0f : 0.0f; parameter->getValue() != restored)
+                toggle->setValueNotifyingHost (restored);
 }
 
 juce::AudioProcessorEditor* Press78AudioProcessor::createEditor()
