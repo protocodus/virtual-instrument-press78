@@ -264,6 +264,9 @@ inline double Press78Engine::Envelope::next(bool released, bool reverbKnee, bool
             sharedAtten = attenuation;
             sharedGain = cachedGain;
         }
+    } else {
+        sharedAtten = attenuation;
+        sharedGain = cachedGain;
     }
     return cachedGain;
 }
