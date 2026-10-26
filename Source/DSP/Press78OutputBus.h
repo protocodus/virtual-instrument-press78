@@ -64,9 +64,10 @@ public:
         half_=static_cast<int>(std::ceil(96./ratio_)); reset();
     }
     void reset() noexcept { clearHistory(); next_=0; }
-    void clearHistory() noexcept { history_.fill({{0,0}}); }
+    void clearHistory() noexcept { history_.fill({{0,0}}); silent_=static_cast<std::uint16_t>(kHistory); }
     void push(float left,float right) noexcept {
-        history_[next_%kHistory]={{left,right}}; ++next_;
+        history_[next_&(kHistory-1)]={{left,right}}; ++next_;
+        silent_=(left==0.0f && right==0.0f)?static_cast<std::uint16_t>(std::min<std::size_t>(silent_+1,kHistory)):0;
     }
     std::uint64_t nextIndex() const noexcept { return next_; }
     int halfDelay() const noexcept { return half_; }
@@ -80,8 +81,24 @@ public:
         return ratio_*(static_cast<double>(kKernel[i])+(static_cast<double>(kKernel[i+1])-kKernel[i])*fraction);
     }
     std::array<float,2> read(GridPosition pos) const noexcept {
+        if(silent_>=kHistory)return {{0.0f,0.0f}};
         // pos - halfDelay is center; highest required index never exceeds floor(pos).
         double left=0,right=0,total=0;
+        const auto span=static_cast<std::uint64_t>(2*half_);
+        if(pos.floor>=span && pos.floor<next_ && next_-(pos.floor-span)<=kHistory) {
+            const auto base=pos.floor-static_cast<std::uint64_t>(half_);
+#if defined(__clang__)
+#pragma clang loop vectorize(disable) interleave(disable)
+#endif
+            for(int relative=-half_;relative<=half_;++relative) {
+                const double c=coefficient(static_cast<double>(relative)-pos.fraction);
+                total+=c;
+                const auto index=static_cast<std::size_t>(base+static_cast<std::int64_t>(relative))&(kHistory-1);
+                const auto& value=history_[index];
+                left+=c*value[0];right+=c*value[1];
+            }
+            return {{static_cast<float>(left/total),static_cast<float>(right/total)}};
+        }
         for(int relative=-half_;relative<=half_;++relative) {
             const double c=coefficient(static_cast<double>(relative)-pos.fraction);
             total+=c;
@@ -99,6 +116,7 @@ private:
     std::uint64_t next_=0;
     double rate_=48000.,ratio_=1.;
     int half_=96;
+    std::uint16_t silent_=static_cast<std::uint16_t>(kHistory);
 };
 
 class FixedOutputBus {

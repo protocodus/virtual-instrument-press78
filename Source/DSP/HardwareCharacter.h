@@ -19,6 +19,7 @@ constexpr double kBiasTanh = 0.13909244787845804;
 // Runs at the existing output rate: no claim of identified ASIC aliasing.
 // A sagging supply narrows H separately above and below zero.
 inline double output(double input, double above = kHeadroom, double below = kHeadroom) noexcept {
+    if (input == 0.0) return input;
     const double headroom = input > 0.0 ? above : below;
     const double t = std::tanh(input / headroom);
     return headroom * t / (1.0 + kBiasTanh * t);

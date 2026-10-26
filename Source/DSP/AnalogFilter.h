@@ -28,19 +28,21 @@ public:
             for (std::size_t m = 0; m <= N; ++m) { num[m] += b[i] * term[m]; den[m] += a[i] * term[m]; }
             power *= k;
         }
-        for (std::size_t m = 0; m <= N; ++m) { b_[m] = num[m] / den[0]; a_[m] = den[m] / den[0]; }
+        for (std::size_t m = 0; m <= N; ++m) b_[m] = num[m] / den[0];
+        for (std::size_t m = 1; m <= N; ++m) a_[m - 1] = den[m] / den[0];
         reset();
     }
     void reset() noexcept { state_.fill(0.0); }
+    void copyStateFrom(const AnalogFilter& other) noexcept { state_ = other.state_; }
     double process(double x) noexcept {
         const double y = b_[0] * x + state_[0];
-        for (std::size_t m = 1; m < N; ++m) state_[m - 1] = b_[m] * x - a_[m] * y + state_[m];
-        state_[N - 1] = b_[N] * x - a_[N] * y;
+        for (std::size_t m = 1; m < N; ++m) state_[m - 1] = b_[m] * x - a_[m - 1] * y + state_[m];
+        state_[N - 1] = b_[N] * x - a_[N - 1] * y;
         return y;
     }
 
 private:
-    Coefficients b_{}, a_{};
-    std::array<double, N> state_{};
+    Coefficients b_{};
+    std::array<double, N> a_{}, state_{};
 };
 } // namespace press78

@@ -79,6 +79,36 @@ int main() {
         REQUIRE(render(1, 0, 1.0, true) != render(1, 1, 1.0, true));
         for (float x : render(1, 1, 1.0, true)) REQUIRE(std::isfinite(x));
     });
+    test("Recorded circuit tails survive an empty delay buffer", [] {
+        for (double rate : {48000.0, 192000.0}) {
+            for (int circuit : {0, 1}) {
+                auto e = std::make_unique<press78::Press78Engine>();
+                e->prepare(rate);
+                press78::Controls c;
+                c.outputCircuit = false; c.toneCutoffHz = 0.0;
+                c.dcBlock = false; c.outputLimit = false; c.masterGain = 1.0;
+                c.chorusMode = 1; c.chorusCircuit = circuit; c.chorusMix = 1.0;
+                e->setControls(c);
+                auto patch = press78::initPatch();
+                patch.modulator.tl = 127;
+                patch.carrier.ar = 63; patch.carrier.d1r = 0; patch.carrier.tl = 0;
+                e->setPatch(patch);
+                e->noteOn(60, 127);
+                e->process(nullptr, nullptr, 2000);
+                // A live TL edit mutes the carrier without resetting the wet
+                // filters. After 5000 samples every delay entry is zero, but
+                // the circuit's IIR tail must still reach both output channels.
+                patch.carrier.tl = 127;
+                e->setPatch(patch, true);
+                e->process(nullptr, nullptr, 5000);
+                float left = 0.0f, right = 0.0f;
+                e->process(&left, &right, 1);
+                REQUIRE(std::isfinite(left) && std::isfinite(right));
+                if (circuit == 0) REQUIRE(left == 0.0f && right == 0.0f);
+                else REQUIRE(left != 0.0f && right != 0.0f);
+            }
+        }
+    });
     test("controls sanitize the circuit switch", [] {
         press78::Controls c;
         REQUIRE(c.chorusCircuit == 0);

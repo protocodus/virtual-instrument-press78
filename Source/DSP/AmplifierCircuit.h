@@ -165,7 +165,8 @@ public:
         constexpr double re = 3.4, fs = 110.0, qms = 5.61, qes = 2.8;
         constexpr double ws = 2.0 * pi * fs, res = re * qms / qes, lces = re / (ws * qes), cmes = qes / (ws * re);
         constexpr double b1 = output * re, b2 = output * lces * (re / res + 1.0), b3 = output * re * lces * cmes;
-        for (auto& f : speaker_) f.design({0.0, b1, b2, b3}, {1.0, lces / res + b1, lces * cmes + b2, b3}, sampleRate, fs);
+        speaker_[0].design({0.0, b1, b2, b3}, {1.0, lces / res + b1, lces * cmes + b2, b3}, sampleRate, fs);
+        speaker_[1] = speaker_[0];
         const double midTau = (series + headphone) / (1.0 / output + 2.0 / sleeve);
         const double sideTau = (series + headphone) * output;
         phonesMid_.design({0.0, midTau}, {1.0, midTau}, sampleRate, 1.0 / (2.0 * pi * midTau));
@@ -187,6 +188,7 @@ public:
         for (auto& t : treble_) t.x1 = t.y1 = 0.0;
         for (auto& f : speaker_) f.reset();
         phonesMid_.reset(); phonesSide_.reset();
+        silent_ = true; monoState_ = true;
         snapSupply();
     }
     // 0 Ideal, 1 Batteries, 2 Adaptor; depletion runs the batteries from
@@ -210,7 +212,8 @@ public:
     // negative limits.
     static double swingShare(double v, double above, double below) noexcept {
         const double u = v / (v > 0.0 ? above : below), u2 = u * u, u4 = u2 * u2;
-        return std::pow(1.0 + u4 * u4 * u2, -0.1);
+        const double s = 1.0 + u4 * u4 * u2;
+        return s == 1.0 ? 1.0 : std::pow(s, -0.1);
     }
     // Moves left and right from the slider towards the AUX and headphone
     // outputs by their mix weights. Every path runs at all times, so a jack
@@ -218,7 +221,20 @@ public:
     // share of the pot-top voltage, 0 to 1.
     void process(double& left, double& right, double auxMix, double phonesMix, double wiper) noexcept {
         if (wiper != wiper_) loadSlider(wiper);
-        const double l = treble_[0].process(slider_[0].process(left)), r = treble_[1].process(slider_[1].process(right));
+        if (silent_) {
+            if (left == 0.0 && right == 0.0 && clipMix_ == target_ && idle_ == idleTarget_ && rail_ == idleTarget_)
+                return;
+            silent_ = false;
+        }
+        if (monoState_ && left != right) monoState_ = false;
+        const double l = treble_[0].process(slider_[0].process(left));
+        double r = l;
+        if (monoState_) {
+            slider_[1].x1 = slider_[0].x1; slider_[1].y1 = slider_[0].y1;
+            treble_[1].x1 = treble_[0].x1; treble_[1].y1 = treble_[0].y1;
+        } else {
+            r = treble_[1].process(slider_[1].process(right));
+        }
         double auxL = l, auxR = r, phonesL = l, phonesR = r;
         clipMix_ = target_ > clipMix_ ? std::min(target_, clipMix_ + fadeStep_) : std::max(target_, clipMix_ - fadeStep_);
         if (clipMix_ > 0.0) {
@@ -226,11 +242,16 @@ public:
             const double volts = voltsPerUnit_ * wiper, dip = idle_ - rail_;
             const double auxBelow = 3.66 + 0.376 * (idle_ - 9.0), auxAbove = std::max(0.1, auxBelow - 0.752 * dip);
             const double phonesBelow = 0.5 * idle_ - 0.51, phonesAbove = std::max(0.1, phonesBelow - dip);
-            auxL *= swingShare(l * volts, auxAbove, auxBelow); auxR *= swingShare(r * volts, auxAbove, auxBelow);
-            phonesL *= swingShare(l * volts, phonesAbove, phonesBelow); phonesR *= swingShare(r * volts, phonesAbove, phonesBelow);
+            const double lv = l * volts, rv = r * volts;
+            const double auxShareL = swingShare(lv, auxAbove, auxBelow);
+            const double auxShareR = rv == lv ? auxShareL : swingShare(rv, auxAbove, auxBelow);
+            const double phonesShareL = swingShare(lv, phonesAbove, phonesBelow);
+            const double phonesShareR = rv == lv ? phonesShareL : swingShare(rv, phonesAbove, phonesBelow);
+            auxL *= auxShareL; auxR *= auxShareR;
+            phonesL *= phonesShareL; phonesR *= phonesShareR;
             const double amps = kIdleAmps + volts * (auxMix * (std::max(auxL, 0.0) + std::max(auxR, 0.0)) / 4.0
                 + phonesMix * (std::max(phonesL, 0.0) + std::max(phonesR, 0.0)) / 132.0);
-            const double settled = supplyVolts(amps);
+            const double settled = amps == kIdleAmps ? idleTarget_ : supplyVolts(amps);
             rail_ = settled + (rail_ - settled) * (source_ == 2 ? adaptorDecay_ : batteryDecay_);
             fiveVolt_.process(rail_);
             if (clipMix_ < 1.0) {
@@ -238,10 +259,14 @@ public:
                 phonesL = l + clipMix_ * (phonesL - l); phonesR = r + clipMix_ * (phonesR - r);
             }
         }
-        const double auxLeft = speaker_[0].process(auxL), auxRight = speaker_[1].process(auxR);
-        const double mid = phonesMid_.process(0.5 * (phonesL + phonesR)), side = phonesSide_.process(0.5 * (phonesL - phonesR));
+        const double auxLeft = speaker_[0].process(auxL);
+        double auxRight = auxLeft;
+        if (monoState_) speaker_[1].copyStateFrom(speaker_[0]);
+        else auxRight = speaker_[1].process(auxR);
+        const double mid = phonesMid_.process(0.5 * (phonesL + phonesR));
+        const double side = monoState_ ? 0.0 : phonesSide_.process(0.5 * (phonesL - phonesR));
         left += auxMix * (auxLeft - left) + phonesMix * (mid + side - left);
-        right += auxMix * (auxRight - right) + phonesMix * (mid - side - right);
+        right = monoState_ ? left : right + auxMix * (auxRight - right) + phonesMix * (mid - side - right);
     }
 
 private:
@@ -303,6 +328,7 @@ private:
     double voltsPerUnit_ = 0.0, fadeStep_ = 0.0, idleSmoothing_ = 0.0, batteryDecay_ = 0.0, adaptorDecay_ = 0.0;
     double rate_ = 48000.0;
     int source_ = 1;
+    bool silent_ = true, monoState_ = true;
     double depletion_ = 0.0, cellVolts_ = 9.54, cellOhms_ = 1.35;
     double target_ = 0.0, clipMix_ = 0.0, idleTarget_ = 0.0, idle_ = 0.0, rail_ = 0.0;
     FiveVoltSupply fiveVolt_{};

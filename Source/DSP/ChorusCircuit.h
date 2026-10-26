@@ -52,11 +52,15 @@ public:
         const double dw = 2.0 * kPi;
         delaySeconds_ = -std::arg(response(preB, preA, t, postA, 1001.0) / response(preB, preA, t, postA, 999.0)) / (2.0 * dw);
     }
-    void reset() noexcept { pre_.reset(); post_.reset(); inverter_.reset(); }
+    void reset() noexcept { pre_.reset(); post_.reset(); inverter_.reset(); silent_ = true; }
     double delaySeconds() const noexcept { return delaySeconds_; }
     // Returns the in-phase wet signal. antiPhase receives it through the
     // inverter's pole; the caller applies the inversion's sign.
     double process(double bbdOutput, double& antiPhase) noexcept {
+        if (silent_) {
+            if (bbdOutput == 0.0) { antiPhase = 0.0; return 0.0; }
+            silent_ = false;
+        }
         const double wet = post_.process(pre_.process(bbdOutput));
         antiPhase = inverter_.process(wet);
         return wet;
@@ -74,5 +78,6 @@ private:
     AnalogFilter<3> post_{};
     AnalogFilter<1> inverter_{};
     double delaySeconds_ = 0.0;
+    bool silent_ = true;
 };
 } // namespace press78
