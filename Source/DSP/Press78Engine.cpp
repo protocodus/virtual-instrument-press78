@@ -106,6 +106,11 @@ double softBound(double x) noexcept {
     const double a = std::abs(x);
     return a <= 0.9 ? x : std::copysign(0.9 + 0.1 * std::tanh((a - 0.9) / 0.1), x);
 }
+double wrapTau(double x) noexcept {
+    if (x >= 0.0 && x < tau) return x;
+    if (x >= tau && x < 2.0 * tau) return x - tau;
+    return std::fmod(x, tau);
+}
 } // namespace
 
 Patch decodeVoice(const std::array<std::uint8_t, 33>& b) noexcept {
@@ -201,6 +206,7 @@ void Press78Engine::Envelope::configure(const Operator& op, int midi, bool susta
     decay2 = d2r == 0.0 ? 0.0 : 96.0 / (tickRate * 48.0 * std::pow(2.0, -d2r / 4.0));
     updateRelease(op, midi, sustain, tickRate);
     target = op.d1l == 15 ? 93.0 : op.d1l * 3.0;
+    cachedGain = -1.0;
 }
 
 void Press78Engine::Envelope::updateRelease(const Operator& op, int midi, bool sustain, double tickRate) noexcept {
@@ -212,28 +218,54 @@ void Press78Engine::Envelope::updateRelease(const Operator& op, int midi, bool s
     reverbRelease = 96.0 / (tickRate * 48.0 * std::pow(2.0, -capRate / 4.0));
 }
 
-double Press78Engine::Envelope::next(bool released, bool reverbKnee) noexcept {
+double Press78Engine::Envelope::next(bool released, bool reverbKnee, bool needGain) noexcept {
+    double sharedAtten = -1.0, sharedGain = 0.0;
+    return next(released, reverbKnee, needGain, sharedAtten, sharedGain);
+}
+
+#if defined(__clang__) || defined(__GNUC__)
+__attribute__((always_inline))
+#endif
+inline double Press78Engine::Envelope::next(bool released, bool reverbKnee, bool needGain, double& sharedAtten, double& sharedGain) noexcept {
     if (disabled || finished) return 0.0;
     if (released) stage = 3;
+    bool changed = false;
     if (stage == 0) {
         attenuation = instantAttack ? 0.0 : attenuation * attackMul;
         if (attenuation <= 0.096) { attenuation = 0.0; stage = 1; }
+        changed = true;
     } else {
         // An already reached D1L has no D1 interval. Test it before stepping,
         // so a zero-height D1 neither adds attenuation nor delays D2. This is
         // a behavioral endpoint correction, not a recovered OPU tick law.
         if (stage == 1 && attenuation >= target) stage = 2;
         if (stage == 1) {
-            attenuation += decay1;
+            if (decay1 != 0.0) { attenuation += decay1; changed = true; }
             if (attenuation >= target) stage = 2;
-        } else if (stage == 2) attenuation += decay2;
-        else attenuation += reverbKnee ? std::min(release, reverbRelease) : release;
+        } else if (stage == 2) {
+            if (decay2 != 0.0) { attenuation += decay2; changed = true; }
+        } else {
+            const double step = reverbKnee ? std::min(release, reverbRelease) : release;
+            if (step != 0.0) { attenuation += step; changed = true; }
+        }
     }
     if (attenuation >= 96.0) {
         if (stage != 0) finished = true;
         return 0.0;
     }
-    return std::pow(10.0, -std::max(0.0, attenuation) / 20.0);
+    if (changed) cachedGain = -1.0;
+    if (!needGain) return 0.0;
+    if (attenuation <= 0.0) return 1.0;
+    if (cachedGain < 0.0) {
+        if (attenuation == sharedAtten) {
+            cachedGain = sharedGain;
+        } else {
+            cachedGain = std::pow(10.0, -std::max(0.0, attenuation) / 20.0);
+            sharedAtten = attenuation;
+            sharedGain = cachedGain;
+        }
+    }
+    return cachedGain;
 }
 
 void Press78Engine::Voice::configure(const Patch& p, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept {
@@ -270,6 +302,11 @@ void Press78Engine::Voice::updateRelease(bool sustain) noexcept {
 }
 
 double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo) noexcept {
+    TickContext ctx{};
+    return next(c, pitchMultiplier, globalLfo, ctx);
+}
+
+double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, double globalLfo, TickContext& ctx) noexcept {
     if (!active) return 0.0;
     // User-selected sibling-inspired pseudo-Reverb. One pre-step carrier
     // snapshot gates both operators; TL, velocity and gain do not move the knee.
@@ -277,28 +314,80 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     const bool knee = c.envelopeReverb && (released || carrierEnvelope.stage == 3)
         && std::isfinite(carrierEnvelope.attenuation)
         && carrierEnvelope.attenuation >= hardware_character::kReleaseKneeDb;
-    const double em = modEnvelope.next(released, knee), ec = carrierEnvelope.next(released, knee);
+    const double ec = carrierEnvelope.next(released, knee, carrierGain != 0.0, ctx.carAtten, ctx.carGain);
     if (carrierEnvelope.finished || (carrierEnvelope.disabled && released)) {
+        (void)modEnvelope.next(released, knee, false, ctx.modAtten, ctx.modGain);
         active = false; return 0.0;
     }
-    double lfo = c.globalLfo ? globalLfo : std::sin(lfoPhase);
-    if (c.triangleLfo) lfo = 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0));
-    const double delay = std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate);
-    const double cents = patch.vibrato && static_cast<double>(ticks) >= delay ? pmDepth[patch.pms] * c.vibratoDepth * lfo : 0.0;
-    const double pitch = pitchMultiplier * glideMultiplier * std::pow(2.0, cents / 1200.0);
-    modPhase = std::fmod(modPhase + modStep * pitch, tau);
-    carrierPhase = std::fmod(carrierPhase + carrierStep * pitch, tau);
-    const double am = amDepth[patch.ams] * c.tremoloDepth;
-    const double amM = patch.modulator.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
-    const double amC = patch.carrier.amEnable ? std::pow(10.0, -am * (lfo + 1.0) / 40.0) : 1.0;
+    const double em = modEnvelope.next(released, knee, modGain != 0.0, ctx.modAtten, ctx.modGain);
+    double lfo = 0.0;
+    if (c.globalLfo) {
+        if (!ctx.hasShapedGlobalLfo) {
+            ctx.shapedGlobalLfo = c.triangleLfo ? 2.0 / pi * std::asin(std::clamp(globalLfo, -1.0, 1.0)) : globalLfo;
+            ctx.hasShapedGlobalLfo = true;
+        }
+        lfo = ctx.shapedGlobalLfo;
+    } else {
+        lfo = std::sin(lfoPhase);
+        if (c.triangleLfo) lfo = 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0));
+    }
+    double vibratoPitch = 1.0;
+    if (patch.vibrato && pmDepth[patch.pms] != 0.0 && c.vibratoDepth != 0.0) {
+        if (patch.vibratoDelay == 0
+            || static_cast<double>(ticks) >= std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate)) {
+            if (c.globalLfo) {
+                if (ctx.cachedPms != patch.pms) {
+                    const double cents = pmDepth[patch.pms] * c.vibratoDepth * lfo;
+                    ctx.cachedVibratoPitch = cents == 0.0 ? 1.0 : std::pow(2.0, cents / 1200.0);
+                    ctx.cachedPms = patch.pms;
+                }
+                vibratoPitch = ctx.cachedVibratoPitch;
+            } else {
+                const double cents = pmDepth[patch.pms] * c.vibratoDepth * lfo;
+                if (cents != 0.0) vibratoPitch = std::pow(2.0, cents / 1200.0);
+            }
+        }
+    }
+    const double pitch = pitchMultiplier * glideMultiplier * vibratoPitch;
+    modPhase = wrapTau(modPhase + modStep * pitch);
+    carrierPhase = wrapTau(carrierPhase + carrierStep * pitch);
+    double amM = 1.0, amC = 1.0;
+    if (patch.modulator.amEnable || patch.carrier.amEnable) {
+        double amGain = 1.0;
+        if (c.globalLfo) {
+            if (ctx.cachedAms != patch.ams) {
+                const double am = amDepth[patch.ams] * c.tremoloDepth;
+                ctx.cachedAmGain = am == 0.0 ? 1.0 : std::pow(10.0, -am * (lfo + 1.0) / 40.0);
+                ctx.cachedAms = patch.ams;
+            }
+            amGain = ctx.cachedAmGain;
+        } else {
+            const double am = amDepth[patch.ams] * c.tremoloDepth;
+            if (am != 0.0) amGain = std::pow(10.0, -am * (lfo + 1.0) / 40.0);
+        }
+        if (patch.modulator.amEnable) amM = amGain;
+        if (patch.carrier.amEnable) amC = amGain;
+    }
     // The two delayed modulator outputs include envelope, TL, and AM exactly
     // as in the Python hypothesis. No unverified fixed-point table is added.
-    const double mod = wave(modPhase + feedback * (prev1 + prev2) * 0.5, patch.modulator.wave)
-        * em * modGain * std::pow(velocity, c.velocityToModulation) * amM;
+    double mod = 0.0;
+    if (em != 0.0 && modGain != 0.0) {
+        const double velMod = c.velocityToModulation == 0.0 ? 1.0
+            : c.velocityToModulation == 1.0 ? velocity
+            : std::pow(velocity, c.velocityToModulation);
+        mod = wave(modPhase + feedback * (prev1 + prev2) * 0.5, patch.modulator.wave)
+            * em * modGain * velMod * amM;
+    }
     prev2 = prev1; prev1 = mod;
-    const double y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
-        * ec * carrierGain * std::pow(velocityLevel, c.velocitySensitivity) * amC;
-    lfoPhase = std::fmod(lfoPhase + tau * c.lfoRateHz / tickRate, tau);
+    double y = 0.0;
+    if (ec != 0.0 && carrierGain != 0.0) {
+        const double velCar = c.velocitySensitivity == 1.0 ? velocityLevel
+            : c.velocitySensitivity == 0.0 ? 1.0
+            : std::pow(velocityLevel, c.velocitySensitivity);
+        y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
+            * ec * carrierGain * velCar * amC;
+    }
+    lfoPhase = wrapTau(lfoPhase + tau * c.lfoRateHz / tickRate);
     ++ticks;
     return y;
 }
@@ -351,6 +440,8 @@ void Press78Engine::reset() noexcept {
     tone1_ = tone2_ = 0.0;
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
     delayWrite_ = 0; serial_ = 0;
+    silentTicks_ = static_cast<std::uint16_t>(kHistory);
+    silentDelay_ = static_cast<std::uint16_t>(kDelaySize);
     pedal_ = false; hasProcessed_ = false;
 }
 
@@ -548,6 +639,8 @@ void Press78Engine::allSoundOff() noexcept {
     amplifier_.reset();
     tone1_ = tone2_ = 0.0;
     dcInputL_ = dcInputR_ = dcOutputL_ = dcOutputR_ = 0.0;
+    silentTicks_ = static_cast<std::uint16_t>(kHistory);
+    silentDelay_ = static_cast<std::uint16_t>(kDelaySize);
     pedal_ = false;
     originalSustain_ = patch_.sustain;
     clearAllocationState();
@@ -673,6 +766,8 @@ void Press78Engine::buildResampler() noexcept {
     // are passed exactly (apart from the explicit 32-tick delay). Downsampling
     // rolls off before the host Nyquist; it is not the Python offline FIR.
     const double cutoff = sampleRate_ >= chipRate_ ? 1.0 : sampleRate_ / chipRate_ * 0.94;
+    if (cutoff == resamplerCutoff_) return;
+    resamplerCutoff_ = cutoff;
     for (int p = 0; p <= kSincPhases; ++p) {
         const double frac = static_cast<double>(p) / kSincPhases;
         double sum = 0.0;
@@ -689,11 +784,18 @@ void Press78Engine::buildResampler() noexcept {
 }
 
 double Press78Engine::synthesizeTick() noexcept {
-    applyPendingChipRate();
-    applyPendingAllocationModel();
-    applyPendingKeyLevelModel();
-    applyPendingPitchModel();
-    applyPendingSustainMode();
+    const bool idle = pitchIdle();
+    if (idle) {
+        if (effectiveChipRate_ != controls_.chipRate) setChipRate(controls_.chipRate);
+        if (effectiveAllocationModel_ != controls_.allocationModel) applyPendingAllocationModel();
+        if (effectiveKeyLevelModel_ != controls_.keyLevelModel) effectiveKeyLevelModel_ = controls_.keyLevelModel;
+        if (effectivePitchModel_ != controls_.pitchModel) {
+            effectivePitchModel_ = controls_.pitchModel;
+            updatePitchControls();
+            pitchMultiplier_ = targetPitch_;
+        }
+        if (effectiveSustainMode_ != controls_.sustainMode) effectiveSustainMode_ = controls_.sustainMode;
+    }
     // Tune smoothing is clocked with the envelopes/operators. Clock offset
     // changes the arrival of these ticks, including feedback and the LFO.
     const double smooth = tickSmoothing_;
@@ -710,16 +812,19 @@ double Press78Engine::synthesizeTick() noexcept {
     voiceControls_.envelopeReverb = controls_.envelopeReverb;
     if (--portamentoCountdown_ <= 0) {
         portamentoCountdown_ = portamentoServiceTicks_;
-        servicePortamento();
+        if (!idle) servicePortamento();
     }
-    const double global = std::sin(globalLfoPhase_);
     double sum = 0.0;
-    for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global);
-    for (auto& tail : tails_) if (tail.remaining > 0) {
-        sum += tail.voice.next(voiceControls_, pitchMultiplier_, global) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
-        --tail.remaining;
+    if (!idle) {
+        const double global = voiceControls_.globalLfo ? std::sin(globalLfoPhase_) : 0.0;
+        TickContext ctx{};
+        for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global, ctx);
+        for (auto& tail : tails_) if (tail.remaining > 0) {
+            sum += tail.voice.next(voiceControls_, pitchMultiplier_, global, ctx) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
+            --tail.remaining;
+        }
     }
-    globalLfoPhase_ = std::fmod(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_, tau);
+    globalLfoPhase_ = wrapTau(globalLfoPhase_ + tau * voiceControls_.lfoRateHz / chipRate_);
     return sum;
 }
 
@@ -729,6 +834,7 @@ double Press78Engine::historyAt(std::int64_t tick) const noexcept {
 }
 
 double Press78Engine::resampled(double position) const noexcept {
+    if (silentTicks_ >= kHistory) return 0.0;
     const double center = position - resamplerDelay_;
     const auto base = static_cast<std::int64_t>(std::floor(center));
     const double fraction = center - std::floor(center);
@@ -736,6 +842,23 @@ double Press78Engine::resampled(double position) const noexcept {
     const double phase = fraction * kSincPhases;
     const int p = std::min(kSincPhases - 1, static_cast<int>(phase));
     const double mix = phase - p;
+    const auto firstTick = base - 31;
+    if (firstTick >= 0 && firstTick >= nextTick_ - static_cast<std::int64_t>(kHistory)
+        && firstTick + kSincTaps <= nextTick_) {
+        const auto* s0 = sinc_[p].data();
+        const auto* s1 = sinc_[p + 1].data();
+        double value = 0.0;
+#if defined(__clang__)
+#pragma clang loop vectorize(disable) interleave(disable)
+#endif
+        for (int j = 0; j < kSincTaps; j += 4) {
+            value += history_[static_cast<std::size_t>(firstTick + j) & (kHistory - 1)] * (s0[j] + mix * (s1[j] - s0[j]));
+            value += history_[static_cast<std::size_t>(firstTick + j + 1) & (kHistory - 1)] * (s0[j + 1] + mix * (s1[j + 1] - s0[j + 1]));
+            value += history_[static_cast<std::size_t>(firstTick + j + 2) & (kHistory - 1)] * (s0[j + 2] + mix * (s1[j + 2] - s0[j + 2]));
+            value += history_[static_cast<std::size_t>(firstTick + j + 3) & (kHistory - 1)] * (s0[j + 3] + mix * (s1[j + 3] - s0[j + 3]));
+        }
+        return value;
+    }
     double value = 0.0;
     for (int j = 0; j < kSincTaps; ++j) {
         const double coefficient = sinc_[p][j] + mix * (sinc_[p + 1][j] - sinc_[p][j]);
@@ -748,8 +871,8 @@ double Press78Engine::readDelay(double samples) const noexcept {
     samples = std::clamp(samples, 1.0, static_cast<double>(kDelaySize - 2));
     const auto whole = static_cast<std::size_t>(samples);
     const double fraction = samples - static_cast<double>(whole);
-    const auto a = (delayWrite_ + kDelaySize - whole) % kDelaySize;
-    const auto b = (a + kDelaySize - 1) % kDelaySize;
+    const auto a = (delayWrite_ + kDelaySize - whole) & (kDelaySize - 1);
+    const auto b = (a + kDelaySize - 1) & (kDelaySize - 1);
     return delay_[a] + fraction * (delay_[b] - delay_[a]);
 }
 
@@ -759,7 +882,7 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     circuitHeadroom_ += (controls_.circuitHeadroom - circuitHeadroom_) * gainSmoothing_;
     circuitSaturationMix_ += ((controls_.circuitSaturation ? 1.0 : 0.0) - circuitSaturationMix_) * gainSmoothing_;
     double shaped = mono;
-    if (circuitSaturationMix_ > 0.0) {
+    if (circuitSaturationMix_ > 0.0 && mono != 0.0) {
         // Preserve the canonical depleted-rail mixer window inside the
         // optional assumed saturation. The independent power amplifier still
         // follows its selected supply when this unmeasured color is disabled.
@@ -786,41 +909,54 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
         tone2_ += currentToneCoefficient_ * (tone1_ - tone2_);
         mono = tone2_;
     } else { tone1_ = tone2_ = mono; }
-    if (drive_ > 0.0) {
+    if (drive_ > 0.0 && mono != 0.0) {
         // Crossfade from the exact bypass to saturation so tiny drive values
         // approach the dry signal continuously instead of a hard tanh switch.
         const double amount = 1.0 + 15.0 * drive_;
         mono += drive_ * (std::tanh(mono * amount) / amount - mono);
     }
     delay_[delayWrite_] = mono;
-    const double depth = chorusDepth_ * 0.001 * sampleRate_;
-    const double base = 0.012 * sampleRate_;
-    const double a = readDelay(base + depth * std::sin(chorusPhase_));
-    const double b = readDelay(base + depth * std::sin(chorusPhase_ + pi * 0.5));
-    double side = 0.5 * (a - b) * chorusMix_ * width_, sideRight = side;
-    // The sibling wet-path filters always run, so switching them or the mode
-    // never replays stale filter memory.
-    const double recordedMs = RecordedChorus::delayMilliseconds(chorusPhase_, chorusDepth_);
-    double filteredRight = 0.0;
-    const double filtered = chorusCircuit_.process(
-        readDelay((recordedMs * 0.001 - chorusCircuit_.delaySeconds()) * sampleRate_), filteredRight);
-    // Mode0 retains the original arithmetic path exactly. The recorded mode
-    // is an effective transfer, not the physical BBD or the acausal v4 FIR.
-    if (recordedChorusMix_ > 0.0) {
-        const double plain = readDelay(recordedMs * 0.001 * sampleRate_);
-        const double wet = plain + chorusCircuitMix_ * (filtered - plain);
-        const double wetRight = plain + chorusCircuitMix_ * (filteredRight - plain);
-        const double recorded = RecordedChorus::side(mono, wet) * chorusMix_ * width_;
-        const double recordedRight = RecordedChorus::side(mono, wetRight) * chorusMix_ * width_;
-        sideRight += recordedChorusMix_ * (recordedRight - sideRight);
-        side += recordedChorusMix_ * (recorded - side);
+    double side = 0.0, sideRight = 0.0;
+    if (mono == 0.0 && silentDelay_ >= kDelaySize) {
+        double filteredRight = 0.0;
+        (void)chorusCircuit_.process(0.0, filteredRight);
+    } else {
+        silentDelay_ = mono == 0.0 ? static_cast<std::uint16_t>(silentDelay_ + 1) : 0;
+        const double sinPhase = std::sin(chorusPhase_);
+        const double cosPhase = std::cos(chorusPhase_);
+        if (chorusMix_ != 0.0 && width_ != 0.0) {
+            const double depth = chorusDepth_ * 0.001 * sampleRate_;
+            const double base = 0.012 * sampleRate_;
+            const double a = readDelay(base + depth * sinPhase);
+            const double b = readDelay(base + depth * std::sin(chorusPhase_ + pi * 0.5));
+            side = 0.5 * (a - b) * chorusMix_ * width_;
+            sideRight = side;
+        }
+        // The sibling wet-path filters always run, so switching them or the mode
+        // never replays stale filter memory.
+        const double recordedMs = RecordedChorus::delayMillisecondsFromTrig(sinPhase, cosPhase, chorusDepth_);
+        double filteredRight = 0.0;
+        const double filtered = chorusCircuit_.process(
+            readDelay((recordedMs * 0.001 - chorusCircuit_.delaySeconds()) * sampleRate_), filteredRight);
+        // Mode0 retains the original arithmetic path exactly. The recorded mode
+        // is an effective transfer, not the physical BBD or the acausal v4 FIR.
+        if (recordedChorusMix_ > 0.0 && chorusMix_ != 0.0 && width_ != 0.0) {
+            const double plain = readDelay(recordedMs * 0.001 * sampleRate_);
+            const double wet = plain + chorusCircuitMix_ * (filtered - plain);
+            const double wetRight = plain + chorusCircuitMix_ * (filteredRight - plain);
+            const double recorded = RecordedChorus::side(mono, wet) * chorusMix_ * width_;
+            const double recordedRight = RecordedChorus::side(mono, wetRight) * chorusMix_ * width_;
+            sideRight += recordedChorusMix_ * (recordedRight - sideRight);
+            side += recordedChorusMix_ * (recorded - side);
+        }
     }
     left = mono + side; right = mono - sideRight;
-    delayWrite_ = (delayWrite_ + 1) % kDelaySize;
-    chorusPhase_ = std::fmod(chorusPhase_ + tau * chorusRate_ / sampleRate_, tau);
+    delayWrite_ = (delayWrite_ + 1) & (kDelaySize - 1);
+    chorusPhase_ = wrapTau(chorusPhase_ + tau * chorusRate_ / sampleRate_);
     if (controls_.dcBlock) {
         const double l = left - dcInputL_ + dcCoefficient_ * dcOutputL_;
-        const double r = right - dcInputR_ + dcCoefficient_ * dcOutputR_;
+        const double r = (left == right && dcInputL_ == dcInputR_ && dcOutputL_ == dcOutputR_)
+            ? l : right - dcInputR_ + dcCoefficient_ * dcOutputR_;
         dcInputL_ = left; dcInputR_ = right; dcOutputL_ = l; dcOutputR_ = r;
         left = l; right = r;
     } else { dcInputL_ = left; dcInputR_ = right; dcOutputL_ = dcOutputR_ = 0.0; }
@@ -829,7 +965,10 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     gain_ += (controls_.masterGain - gain_) * gainSmoothing_;
     amplifier_.process(left, right, auxMix_, phonesMix_, 0.5 * gain_);
     left *= gain_; right *= gain_;
-    if (controls_.outputLimit) { left = softBound(left); right = softBound(right); }
+    if (controls_.outputLimit) {
+        if (left == right) left = right = softBound(left);
+        else { left = softBound(left); right = softBound(right); }
+    }
     // Parameter clamps already bound the model. This last guard protects the
     // host if an unforeseen numerical fault occurs; it is not per-patch gain.
     if (!std::isfinite(left)) left = 0.0;
@@ -840,14 +979,17 @@ void Press78Engine::process(float* left, float* right, std::size_t frames) noexc
     if (frames == 0) return;
     for (std::size_t i = 0; i < frames; ++i) {
         while (static_cast<double>(nextTick_) <= position_) {
-            history_[static_cast<std::size_t>(nextTick_) % kHistory] = synthesizeTick();
+            const double tickSample = synthesizeTick();
+            history_[static_cast<std::size_t>(nextTick_) & (kHistory - 1)] = tickSample;
+            silentTicks_ = tickSample == 0.0 ? static_cast<std::uint16_t>(std::min<std::size_t>(silentTicks_ + 1, kHistory)) : 0;
             ++nextTick_;
         }
         double l, r;
         output(resampled(position_), l, r);
         if (left) left[i] = static_cast<float>(l);
         if (right) right[i] = static_cast<float>(r);
-        const double ppm = controls_.clockOffsetPpm + controls_.clockDriftPpm * std::sin(tau * controls_.clockDriftRateHz * hostTime_);
+        const double ppm = controls_.clockDriftPpm == 0.0 ? controls_.clockOffsetPpm
+            : controls_.clockOffsetPpm + controls_.clockDriftPpm * std::sin(tau * controls_.clockDriftRateHz * hostTime_);
         position_ += chipRate_ / sampleRate_ * (1.0 + ppm * 1e-6);
         hostTime_ += 1.0 / sampleRate_;
     }

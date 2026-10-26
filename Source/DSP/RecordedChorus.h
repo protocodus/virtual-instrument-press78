@@ -30,13 +30,15 @@ public:
         depth_ = finiteClamp(fundamentalDepthMs, 0.0, 8.0, RecordedChorusProfile::depthMs);
     }
     static double delayMilliseconds(double phase, double fundamentalDepthMs) noexcept {
+        return delayMillisecondsFromTrig(std::sin(phase), std::cos(phase), fundamentalDepthMs);
+    }
+    static double delayMillisecondsFromTrig(double s, double c, double fundamentalDepthMs) noexcept {
         using P = RecordedChorusProfile;
         const double scale = fundamentalDepthMs / P::depthMs;
         // Deep settings are a documented creative extension: increase the mean
         // enough to retain the profile's conservative positive-delay bound.
         // At/below reference depth the measured mean remains unchanged.
         const double mean = P::meanMs + std::max(0.0, scale - 1.0) * P::excursionBoundMs;
-        const double s = std::sin(phase), c = std::cos(phase);
         return mean + scale * (P::sin1Ms*s + P::cos1Ms*c
                               + P::sin2Ms*(2.0*s*c) + P::cos2Ms*(c*c-s*s));
     }

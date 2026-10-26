@@ -186,11 +186,23 @@ private:
     struct Envelope {
         double attenuation = 96.0, attackMul = 0.0, decay1 = 0.0;
         double decay2 = 0.0, release = 0.0, reverbRelease = 0.0, target = 0.0;
+        double cachedGain = -1.0;
         int stage = 0;
         bool instantAttack = false, disabled = true, finished = false;
         void configure(const Operator&, int midi, bool sustain, double tickRate) noexcept;
         void updateRelease(const Operator&, int midi, bool sustain, double tickRate) noexcept;
-        double next(bool released, bool reverbKnee = false) noexcept;
+        double next(bool released, bool reverbKnee = false, bool needGain = true) noexcept;
+        double next(bool released, bool reverbKnee, bool needGain, double& sharedAtten, double& sharedGain) noexcept;
+    };
+    struct TickContext {
+        double shapedGlobalLfo = 0.0;
+        bool hasShapedGlobalLfo = false;
+        int cachedPms = -1;
+        double cachedVibratoPitch = 1.0;
+        int cachedAms = -1;
+        double cachedAmGain = 1.0;
+        double modAtten = -1.0, modGain = 0.0;
+        double carAtten = -1.0, carGain = 0.0;
     };
     struct Voice {
         Patch patch{};
@@ -204,16 +216,17 @@ private:
         // Portamento offset and per-service step in 1/256 semitone, as the
         // firmware keeps them; the oscillators hear offset>>3 (1/32 semitone).
         int glideOffset = 0, glideStep = 0, glideSteps = 0;
+        int note = 60, source = 0;
+        bool active = false, held = false, released = false;
         double glideMultiplier = 1.0; // Equal model only.
         std::uint64_t age = 0, ticks = 0;
         double tickRate = kInternalRate; // Fixed while the voice sounds.
-        int note = 60, source = 0;
-        bool active = false, held = false, released = false;
         void configure(const Patch&, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept;
         void updatePatch(const Patch&, int keyLevelModel) noexcept;
         void updateRelease(bool sustain) noexcept;
         void updateOriginalPitch(int steps) noexcept;
         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
+        double next(const Controls&, double pitchMultiplier, double globalLfo, TickContext&) noexcept;
     };
     struct Tail { Voice voice{}; int remaining = 0; };
     // The sinc reader needs at most the latest 64 ticks after fill; 128 keeps
@@ -234,6 +247,7 @@ private:
     AnalogOutput analog_{};
     double sampleRate_ = 48000.0, position_ = 0.0, hostTime_ = 0.0;
     double chipRate_ = kInternalRate, resamplerDelay_ = kResamplerDelay, tickSmoothing_ = 0.0;
+    double resamplerCutoff_ = 0.0;
     int portamentoServiceTicks_ = 0, fadeTicks_ = 48, effectiveChipRate_ = 0;
     double globalLfoPhase_ = 0.0, chorusPhase_ = 0.0;
     double gain_ = 0.25, pitchMultiplier_ = 1.0, targetPitch_ = 1.0;
@@ -252,6 +266,8 @@ private:
     std::int64_t nextTick_ = 0;
     std::uint64_t serial_ = 0;
     std::size_t delayWrite_ = 0;
+    std::uint16_t silentTicks_ = static_cast<std::uint16_t>(kHistory);
+    std::uint16_t silentDelay_ = static_cast<std::uint16_t>(kDelaySize);
     bool pedal_ = false, hasProcessed_ = false;
     bool originalSustain_ = false;
     int effectivePitchModel_ = 0, pitchSteps_ = 0;
