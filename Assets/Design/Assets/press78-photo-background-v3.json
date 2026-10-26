@@ -1,8 +1,0 @@
-{
-  "tool": "built-in image_gen",
-  "intent": "precise-object-edit",
-  "source_asset": "press78-photo-background-v2.png",
-  "source_sha256": "a23d3144201bd9b8c0a3ad571b6c50705d20e2887b58401207a3d8dd8b5f891a",
-  "output_sha256": "edb9489aa0a7775a714960ceec750c45b63d9e9c4f99c5ed6a735300b4faaf91",
-  "change": "Move upper screws below fixed Reason fold-control region; preserve faceplate layout. Generated edit is not pixel-identical to input."
-}

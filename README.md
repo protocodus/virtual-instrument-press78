@@ -231,7 +231,7 @@ The plug-in's parameter IDs are the control ids in `Assets/controls.json`, the s
 
 ### Panel design
 
-Open [the interactive design preview](Assets/Design/index.html). Layout study 11 uses an eight-rack-unit panel with consistent section padding and puts 34 main sound/performance controls on the front, with 30 detailed sound, calibration and configuration controls on the rear. It combines the canonical Protocodus logo, YouKnow's DIN lettering and recessed groups with charcoal ABS, cyan, lavender, coral and ivory inspired by the PSS-780 moodboard. Doubled pointer arrows remain clear of the knob number wells. The preview has editable operator controls, all 100 PSS originals and 50 modern sounds. It demonstrates layout and parameter relationships, without audio. [Design notes](Assets/Design/README.md) describe the front, rear and folded panels. Both native GUI asset sets and the native local/universal builds carry this styling. Level increases clockwise while preserving the original raw attenuation values; clearer envelope/unit labels and value arcs improve editing. The current layout follows the photographic recesses, shares vertical centres within each row and aligns the header controls.
+The Rack panel and its interactive layout prototype belong to the Reason adapter in the private `protocodus/reason-rack-extensions` repository (`Examples/Press78/Design/`). The plug-in editor here is the plain control grid described above.
 
 ### Repository layout
 
@@ -242,7 +242,6 @@ Open [the interactive design preview](Assets/Design/index.html). Layout study 11
 | `Assets/controls.json` | Parameter contract shared with the Rack adapter: 64 controls, two inert legacy noise properties and the hidden release policy |
 | `Assets/rack-automation.json` | Frozen Reason automation IDs |
 | `Assets/FactoryBank` | 100 original `PSS` parameter patches, 50 modern Rack presets and provenance |
-| `Assets/Design` | Panel geometry, SVG/PNG panels and the interactive HTML wireframe |
 | `Tools/reference` | Frozen research implementation used as the comparison oracle |
 | `Tools/prototypes` | Unadopted candidate patches and their checks, kept with their evidence |
 | `Docs/research/migration.json` | Original source location and file hashes |
@@ -259,7 +258,6 @@ A focused [Human Voice 1 release audit](Docs/research/human-voice1-release-audit
 - Where the amplifier starts to clip rests on an estimated level: one engine unit at the top of the volume slider is taken as 1.0 V, inside the 0.5 to 2.3 V the mixer's swing and the manual's overload warning allow, so the **Volume** at which clipping sets in is uncertain by about ±6 dB. It also assumes an active mixer drives the slider, as in the PSS-480 and the output circuit above; if the PSS-780 mixed passively like the PSS-270, the slider would carry 0.148 of that level and the amplifier would not clip below full scale. The idle current, the adaptor's rating and reservoir, and the PSS-780's own supply circuit are estimates or borrowed from the PSS-480.
 - Worn cells borrow their resistance through life from AA pulse data; no C-cell figures exist. The +5 V load, the follower's gain and the zener's knee are estimates, which place the rail where +5 V gives way anywhere from 5.8 to 7.5 V. How the YM3420's output level and the chorus clock change as +5 V falls is not documented, so both stay fixed; so does the 1.9 mF on +5 V, which would slow its fastest falls.
 - The plug-in has only passed the checks CI runs; it has not been tried in a DAW. Its editor is a plain control grid, not the designed panel.
-- The Rack adapter lives in a local SDK workspace, not in `protocodus/reason-rack-extensions`, and its DSP directory is a generated snapshot of this repository (`Tools/sync_rack_dsp.py`) rather than the pinned submodule the portfolio standard asks for. The b5 Rack patch exporter uses the SDK’s canonical XML declaration after Recon rejected the earlier declaration during default Init loading. All 101 patch sound parameter maps are preserved. The b6 native display formatter also fixes a subsequent Recon drawing crash caused by concatenating host-formatted text; independent regression tests cover all 50 numeric readouts, with 444 passing cases and an explicit reproduction of the prior failure.
 - The b11–b15 fidelity work, its rejected candidates and the open fidelity requirements are in [fidelity status, 2026-10-19](Docs/research/fidelity-status-2026-10-19.md); no superlative accuracy claim follows from it.
 - The native evidence, sanitizer runs, hardware comparison and Rack prototype validation are recorded in [native evidence, 2026-10-18](Docs/validation/native-evidence-2026-10-18.md) for b9 and in the fidelity status above for b11 and b12. They establish agreement with the research model, not with Yamaha hardware.
 - The preset source is recorded in [bank provenance](Assets/FactoryBank/provenance.json). Public availability of a SysEx archive and the editor project's license do not establish permission to distribute Yamaha's factory bank commercially. No research videos, recordings, manual scans or executable Yamaha firmware are shipped in this repository. `Press78` has not received trademark clearance; development names and source availability are not legal clearance.
@@ -302,11 +300,8 @@ To regenerate the Rack parameter declarations, mappings and 151 local developmen
 
 ```sh
 python3 Tools/generate_rack.py /path/to/SDK-worktree/Examples/Press78
-python3 Tools/sync_rack_dsp.py /path/to/SDK-worktree/Examples/Press78
 python3 Tools/check_rack_contract.py /path/to/SDK-worktree/Examples/Press78
 ```
-
-[Shop copy](Docs/release/shop-copy.md) and its [metadata](Docs/release/shop-metadata.json) follow the same format as the other Protocodus synths; they are generated from the Rack adapter's authored `SHOP.md`.
 
 ## Licensing
 

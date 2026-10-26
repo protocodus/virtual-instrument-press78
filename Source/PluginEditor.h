@@ -7,9 +7,9 @@
 #include <memory>
 #include <vector>
 
-// One control per parameter, grouped in rows by section. The Rack panel in
-// Assets/Design is the device's designed face; this editor is the plug-in's
-// working one until a matching design is ported.
+// One control per parameter, grouped in rows by section. The Rack adapter's
+// panel is the device's designed face; this editor is the plug-in's working
+// one until a matching design is ported.
 class Press78AudioProcessorEditor final : public juce::AudioProcessorEditor, private juce::Timer
 {
 public:

@@ -4,10 +4,10 @@
 
 This is Press78's canonical repository: it owns the DSP engine in
 `Source/DSP/` and the JUCE plug-in (VST3, AU, CLAP, Standalone) that wraps it.
-A Reason Rack Extension prototype exists as a thin adapter over this engine.
-In the portfolio it belongs in the private `protocodus/reason-rack-extensions`
-repository, mounting this repository as the pinned submodule
-`Examples/Press78/Instrument` and compiling `Source/DSP/*.cpp` directly. DSP and
+The Reason Rack Extension in the private `protocodus/reason-rack-extensions`
+repository is a thin adapter that mounts this repository as the pinned
+submodule `Examples/Press78/Instrument` and compiles `Source/DSP/*.cpp`
+directly. DSP and
 playing-model changes land here first; the Rack pin then advances. Reason
 property mapping, MIDI/CV, routing, host latency, patches and panels stay in
 the adapter.
@@ -182,6 +182,3 @@ assumption was stale.
 - `Tools/reference/` is the frozen Python research implementation the native
   engine is compared against; `Tests/results/` holds the receipts the
   comparison tools write. Receipts keep the paths they were written with.
-- `Assets/Design/` is the Rack panel design (geometry, SVG/PNG panels and the
-  HTML wireframe); it moves to the Rack device's `Design/` when the adapter
-  joins `reason-rack-extensions`.
