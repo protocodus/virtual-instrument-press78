@@ -280,6 +280,9 @@ def main() -> int:
         print(f"{len(expected)} demo phrases match {Path(__file__).name}")
         return 0
     args.output.mkdir(parents=True, exist_ok=True)
+    for path in args.output.glob("*.mid"):
+        if path.name not in expected:
+            path.unlink()
     for name, data in expected.items():
         (args.output / name).write_bytes(data)
     print(f"wrote {len(expected)} phrases to {args.output}")

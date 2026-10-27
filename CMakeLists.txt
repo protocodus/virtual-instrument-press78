@@ -283,7 +283,7 @@ if(BUILD_TESTING)
     set_tests_properties(Press78.DspFuzz PROPERTIES TIMEOUT 600 LABELS fuzz)
 
     if(PRESS78_BUILD_TOOLS)
-        # Every preset demo renders finite, audible, under the ceiling, 10-20 s
+        # Every preset demo renders finite, audible, under the ceiling, 8-12 s
         # long and bit-identical on a second render.
         add_test(NAME Press78.AudioDemos
                  COMMAND RenderPress78PresetDemos --jobs 4 --check
