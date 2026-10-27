@@ -2,7 +2,9 @@
 
 #include <array>
 #include <cstddef>
+#include <cmath>
 #include <cstdint>
+#include <limits>
 #include "AnalogOutput.h"
 #include "AmplifierCircuit.h"
 #include "ChorusCircuit.h"
@@ -11,6 +13,19 @@
 // Independently written port of the documented PSS-780 behavioral experiment.
 // This is not a bit-exact YM3420/OPU emulator. No Yamaha firmware is included.
 namespace press78 {
+
+// std::pow(base, e) for a base fixed over the cache's life, kept while the
+// exponent holds: an equal exponent gives the same IEEE result, so a hit
+// returns exactly what the call would (+0 and -0 both give 1). The NaN start
+// never compares equal, so the first call computes. The owner resets the
+// cache whenever the base may change.
+struct ExponentCachedPow {
+    double exponent = std::numeric_limits<double>::quiet_NaN(), value = 0.0;
+    double operator()(double base, double e) noexcept {
+        if (e != exponent) { exponent = e; value = std::pow(base, e); }
+        return value;
+    }
+};
 
 struct Operator {
     int mul = 1;       // 0 means 1/2; otherwise integer ratio 1..15.
@@ -205,8 +220,28 @@ private:
         double modAtten = -1.0, modGain = 0.0;
         double carAtten = -1.0, carGain = 0.0;
     };
+    // A sounding voice's patch: every field the voice reads. The provenance
+    // bytes stay with the engine's patch_; leaving them out keeps each of the
+    // 24 voice and tail copies inside the instance budget.
+    struct VoicePatch {
+        Operator modulator{}, carrier{};
+        int feedback = 0, pms = 0, ams = 0, vibratoDelay = 0;
+        bool vibrato = false, sustain = false;
+        VoicePatch& operator=(const Patch& p) noexcept {
+            modulator = p.modulator; carrier = p.carrier;
+            feedback = p.feedback; pms = p.pms; ams = p.ams; vibratoDelay = p.vibratoDelay;
+            vibrato = p.vibrato; sustain = p.sustain;
+            return *this;
+        }
+    };
+    // Members are ordered by size so the 24 copies carry no padding holes.
     struct Voice {
-        Patch patch{};
+        VoicePatch patch{};
+        // Portamento offset and per-service step in 1/256 semitone, as the
+        // firmware keeps them; the oscillators hear offset>>3 (1/32 semitone).
+        int glideOffset = 0, glideStep = 0, glideSteps = 0;
+        int note = 60, source = 0;
+        bool active = false, held = false, released = false, velocityGainsValid = false;
         Envelope modEnvelope{}, carrierEnvelope{};
         double modPhase = 0.0, carrierPhase = 0.0;
         double prev1 = 0.0, prev2 = 0.0, lfoPhase = 0.0;
@@ -216,11 +251,6 @@ private:
         double velocityLevel = 1.0; // Carrier level at sensitivity 1.
         // Cached while the shared live exponents hold; reset for every new voice.
         double modVelocityGain = 1.0, carrierVelocityGain = 1.0;
-        // Portamento offset and per-service step in 1/256 semitone, as the
-        // firmware keeps them; the oscillators hear offset>>3 (1/32 semitone).
-        int glideOffset = 0, glideStep = 0, glideSteps = 0;
-        int note = 60, source = 0;
-        bool active = false, held = false, released = false, velocityGainsValid = false;
         double glideMultiplier = 1.0; // Equal model only.
         std::uint64_t age = 0, ticks = 0;
         double tickRate = kInternalRate; // Fixed while the voice sounds.
@@ -228,16 +258,12 @@ private:
         void updatePatch(const Patch&, int keyLevelModel) noexcept;
         void updateRelease(bool sustain) noexcept;
         void updateOriginalPitch(int steps) noexcept;
-        // globalLfo is the shared LFO, already triangle-shaped if selected.
         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
         double next(const Controls&, double pitchMultiplier, double globalLfo, TickContext&) noexcept;
     };
     struct Tail { Voice voice{}; int remaining = 0; };
-    // The sinc reader needs at most the latest 64 ticks after fill; 128 keeps
-    // every one with at least 23 spare ticks at the fastest chip clock.
-    // Modulo addressing permits 96 entries and keeps the velocity caches
-    // inside the existing 192 KiB output-bus budget.
-    static constexpr std::size_t kHistory = 96;
+    // Keep every causal resampler tap, including the fastest chip clock.
+    static constexpr std::size_t kHistory = 128;
     static constexpr std::size_t kDelaySize = 4096;
     static constexpr int kSincTaps = 64;
     static constexpr int kSincPhases = 256;

@@ -108,6 +108,15 @@ double wave(double phase, int shape) noexcept {
     if (shape >= 2 && s < 0.0) return 0.0;
     return shape == 1 || shape == 3 ? s * std::abs(s) : s;
 }
+// std::fmod(x, tau), bit for bit, without the call on the common paths: x
+// already in [0, tau) is its own remainder, and for x in [tau, 2 tau) the
+// remainder x - tau is exact (Sterbenz: tau/2 <= x <= 2 tau). Everything
+// else, negative, larger, infinite or NaN, still goes through fmod.
+
+// The LFO sine, or the triangle with the same phase and peak.
+double shapeLfo(double sine, bool triangle) noexcept {
+    return triangle ? 2.0 / pi * std::asin(std::clamp(sine, -1.0, 1.0)) : sine;
+}
 Operator sanitize(Operator op) noexcept {
     op.mul = std::clamp(op.mul, 0, 15);
     op.dt1 = std::clamp(op.dt1, -7, 7);
@@ -366,7 +375,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     double lfo = 0.0;
     if (c.globalLfo) {
         if (!ctx.hasShapedGlobalLfo) {
-            ctx.shapedGlobalLfo = c.triangleLfo ? 2.0 / pi * std::asin(std::clamp(globalLfo, -1.0, 1.0)) : globalLfo;
+            ctx.shapedGlobalLfo = shapeLfo(globalLfo, c.triangleLfo);
             ctx.hasShapedGlobalLfo = true;
         }
         lfo = ctx.shapedGlobalLfo;
@@ -879,8 +888,9 @@ double Press78Engine::historyAt(std::int64_t tick) const noexcept {
 double Press78Engine::resampled(double position) const noexcept {
     if (silentTicks_ >= kHistory) return 0.0;
     const double center = position - resamplerDelay_;
-    const auto base = static_cast<std::int64_t>(std::floor(center));
-    const double fraction = center - std::floor(center);
+    const double whole = std::floor(center);
+    const auto base = static_cast<std::int64_t>(whole);
+    const double fraction = center - whole;
     if (sampleRate_ >= chipRate_ && fraction < 1e-12) return historyAt(base);
     const double phase = fraction * kSincPhases;
     const int p = std::min(kSincPhases - 1, static_cast<int>(phase));
