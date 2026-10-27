@@ -6,112 +6,20 @@ Press78 is an editable two-operator FM synthesizer derived from the PSS-780 rese
 
 ## Audio demos
 
-One demo per factory voice, rendered by the main build from the phrases in `Docs/audio/midi` through the plug-in's default controls (the Real startup profile, Volume 0.25). Levels are the bank's own; nothing is normalised.
+Eight of the 100 factory voices, one from each of eight families, rendered by the main build from the phrases in `Docs/audio/midi` through the plug-in's default controls (the Real startup profile, Volume 0.25). Levels are the bank's own; nothing is normalised.
 
 <!-- audio-demos-begin -->
 
 | # | Preset | Demo | Length | Peak |
 | --- | --- | --- | --- | --- |
-| 1 | PSS 00 Piano 1 | [001-pss-00-piano-1.mp3](Docs/audio/001-pss-00-piano-1.mp3) | 12.9 s | -12.9 dBFS |
-| 2 | PSS 01 Piano 2 | [002-pss-01-piano-2.mp3](Docs/audio/002-pss-01-piano-2.mp3) | 12.9 s | -14.8 dBFS |
-| 3 | PSS 02 Electric Piano 1 | [003-pss-02-electric-piano-1.mp3](Docs/audio/003-pss-02-electric-piano-1.mp3) | 13.9 s | -10.9 dBFS |
-| 4 | PSS 03 Electric Piano 2 | [004-pss-03-electric-piano-2.mp3](Docs/audio/004-pss-03-electric-piano-2.mp3) | 13.9 s | -13.8 dBFS |
-| 5 | PSS 04 Honky-Tonk Piano | [005-pss-04-honky-tonk-piano.mp3](Docs/audio/005-pss-04-honky-tonk-piano.mp3) | 11.0 s | -14.3 dBFS |
-| 6 | PSS 05 Toy Piano | [006-pss-05-toy-piano.mp3](Docs/audio/006-pss-05-toy-piano.mp3) | 11.4 s | -21.1 dBFS |
-| 7 | PSS 06 Reed Organ | [007-pss-06-reed-organ.mp3](Docs/audio/007-pss-06-reed-organ.mp3) | 14.0 s | -9.6 dBFS |
-| 8 | PSS 07 Pipe Organ 1 | [008-pss-07-pipe-organ-1.mp3](Docs/audio/008-pss-07-pipe-organ-1.mp3) | 15.9 s | -8.3 dBFS |
-| 9 | PSS 08 Pipe Organ 2 | [009-pss-08-pipe-organ-2.mp3](Docs/audio/009-pss-08-pipe-organ-2.mp3) | 15.9 s | -10.7 dBFS |
-| 10 | PSS 09 Small Church Organ | [010-pss-09-small-church-organ.mp3](Docs/audio/010-pss-09-small-church-organ.mp3) | 15.9 s | -7.2 dBFS |
-| 11 | PSS 10 Electronic Organ | [011-pss-10-electronic-organ.mp3](Docs/audio/011-pss-10-electronic-organ.mp3) | 12.5 s | -6.8 dBFS |
-| 12 | PSS 11 Transistor Organ | [012-pss-11-transistor-organ.mp3](Docs/audio/012-pss-11-transistor-organ.mp3) | 11.8 s | -6.3 dBFS |
-| 13 | PSS 12 Tremolo Organ | [013-pss-12-tremolo-organ.mp3](Docs/audio/013-pss-12-tremolo-organ.mp3) | 13.4 s | -11.1 dBFS |
-| 14 | PSS 13 Jazz Organ | [014-pss-13-jazz-organ.mp3](Docs/audio/014-pss-13-jazz-organ.mp3) | 11.1 s | -12.8 dBFS |
-| 15 | PSS 14 Street Organ | [015-pss-14-street-organ.mp3](Docs/audio/015-pss-14-street-organ.mp3) | 11.0 s | -16.4 dBFS |
-| 16 | PSS 15 Harpsichord 1 | [016-pss-15-harpsichord-1.mp3](Docs/audio/016-pss-15-harpsichord-1.mp3) | 12.0 s | -15.4 dBFS |
-| 17 | PSS 16 Harpsichord 2 | [017-pss-16-harpsichord-2.mp3](Docs/audio/017-pss-16-harpsichord-2.mp3) | 12.9 s | -16.9 dBFS |
-| 18 | PSS 17 Funky Clavi | [018-pss-17-funky-clavi.mp3](Docs/audio/018-pss-17-funky-clavi.mp3) | 14.9 s | -19.0 dBFS |
-| 19 | PSS 18 Celesta | [019-pss-18-celesta.mp3](Docs/audio/019-pss-18-celesta.mp3) | 13.4 s | -20.0 dBFS |
-| 20 | PSS 19 Glass Celesta | [020-pss-19-glass-celesta.mp3](Docs/audio/020-pss-19-glass-celesta.mp3) | 14.4 s | -23.2 dBFS |
-| 21 | PSS 20 Accordion | [021-pss-20-accordion.mp3](Docs/audio/021-pss-20-accordion.mp3) | 12.0 s | -17.6 dBFS |
-| 22 | PSS 21 Bandoneon | [022-pss-21-bandoneon.mp3](Docs/audio/022-pss-21-bandoneon.mp3) | 13.3 s | -17.8 dBFS |
-| 23 | PSS 22 Trumpet | [023-pss-22-trumpet.mp3](Docs/audio/023-pss-22-trumpet.mp3) | 13.9 s | -21.5 dBFS |
-| 24 | PSS 23 Mute Trumpet | [024-pss-23-mute-trumpet.mp3](Docs/audio/024-pss-23-mute-trumpet.mp3) | 15.3 s | -27.4 dBFS |
-| 25 | PSS 24 Wow Trumpet | [025-pss-24-wow-trumpet.mp3](Docs/audio/025-pss-24-wow-trumpet.mp3) | 15.0 s | -26.0 dBFS |
-| 26 | PSS 25 Electric Trumpet | [026-pss-25-electric-trumpet.mp3](Docs/audio/026-pss-25-electric-trumpet.mp3) | 13.1 s | -20.2 dBFS |
-| 27 | PSS 26 Horn | [027-pss-26-horn.mp3](Docs/audio/027-pss-26-horn.mp3) | 16.5 s | -21.7 dBFS |
-| 28 | PSS 27 Alpenhorn | [028-pss-27-alpenhorn.mp3](Docs/audio/028-pss-27-alpenhorn.mp3) | 17.1 s | -19.7 dBFS |
-| 29 | PSS 28 Trombone | [029-pss-28-trombone.mp3](Docs/audio/029-pss-28-trombone.mp3) | 15.3 s | -22.0 dBFS |
-| 30 | PSS 29 Tuba | [030-pss-29-tuba.mp3](Docs/audio/030-pss-29-tuba.mp3) | 17.1 s | -16.9 dBFS |
-| 31 | PSS 30 Brass Ensemble | [031-pss-30-brass-ensemble.mp3](Docs/audio/031-pss-30-brass-ensemble.mp3) | 14.4 s | -15.2 dBFS |
-| 32 | PSS 31 Soprano Sax | [032-pss-31-soprano-sax.mp3](Docs/audio/032-pss-31-soprano-sax.mp3) | 12.4 s | -30.4 dBFS |
-| 33 | PSS 32 Alto Sax | [033-pss-32-alto-sax.mp3](Docs/audio/033-pss-32-alto-sax.mp3) | 15.0 s | -19.1 dBFS |
-| 34 | PSS 33 Tenor Sax | [034-pss-33-tenor-sax.mp3](Docs/audio/034-pss-33-tenor-sax.mp3) | 15.0 s | -24.1 dBFS |
-| 35 | PSS 34 Clarinet | [035-pss-34-clarinet.mp3](Docs/audio/035-pss-34-clarinet.mp3) | 12.4 s | -26.3 dBFS |
-| 36 | PSS 35 Bass Clarinet | [036-pss-35-bass-clarinet.mp3](Docs/audio/036-pss-35-bass-clarinet.mp3) | 13.4 s | -20.6 dBFS |
-| 37 | PSS 36 Oboe | [037-pss-36-oboe.mp3](Docs/audio/037-pss-36-oboe.mp3) | 12.4 s | -29.1 dBFS |
-| 38 | PSS 37 Basson | [038-pss-37-basson.mp3](Docs/audio/038-pss-37-basson.mp3) | 12.9 s | -26.8 dBFS |
-| 39 | PSS 38 Piccolo | [039-pss-38-piccolo.mp3](Docs/audio/039-pss-38-piccolo.mp3) | 14.6 s | -31.0 dBFS |
-| 40 | PSS 39 Flute | [040-pss-39-flute.mp3](Docs/audio/040-pss-39-flute.mp3) | 12.4 s | -28.0 dBFS |
-| 41 | PSS 40 Panflute | [041-pss-40-panflute.mp3](Docs/audio/041-pss-40-panflute.mp3) | 13.9 s | -22.5 dBFS |
-| 42 | PSS 41 Recorder | [042-pss-41-recorder.mp3](Docs/audio/042-pss-41-recorder.mp3) | 11.6 s | -28.1 dBFS |
-| 43 | PSS 42 Ocarina | [043-pss-42-ocarina.mp3](Docs/audio/043-pss-42-ocarina.mp3) | 13.4 s | -28.2 dBFS |
-| 44 | PSS 43 Woodwind Ensemble | [044-pss-43-woodwind-ensemble.mp3](Docs/audio/044-pss-43-woodwind-ensemble.mp3) | 15.5 s | -18.1 dBFS |
-| 45 | PSS 44 Bagpipe | [045-pss-44-bagpipe.mp3](Docs/audio/045-pss-44-bagpipe.mp3) | 11.2 s | -27.3 dBFS |
-| 46 | PSS 45 Harmonica | [046-pss-45-harmonica.mp3](Docs/audio/046-pss-45-harmonica.mp3) | 15.0 s | -23.9 dBFS |
-| 47 | PSS 46 Jug | [047-pss-46-jug.mp3](Docs/audio/047-pss-46-jug.mp3) | 12.8 s | -17.8 dBFS |
-| 48 | PSS 47 Kazoo | [048-pss-47-kazoo.mp3](Docs/audio/048-pss-47-kazoo.mp3) | 15.7 s | -26.4 dBFS |
-| 49 | PSS 48 Samba Whistle | [049-pss-48-samba-whistle.mp3](Docs/audio/049-pss-48-samba-whistle.mp3) | 13.4 s | -28.6 dBFS |
-| 50 | PSS 49 Acoustic Guitar | [050-pss-49-acoustic-guitar.mp3](Docs/audio/050-pss-49-acoustic-guitar.mp3) | 15.0 s | -7.6 dBFS |
-| 51 | PSS 50 Classic Guitar | [051-pss-50-classic-guitar.mp3](Docs/audio/051-pss-50-classic-guitar.mp3) | 18.0 s | -11.1 dBFS |
-| 52 | PSS 51 Hawaiian Guitar | [052-pss-51-hawaiian-guitar.mp3](Docs/audio/052-pss-51-hawaiian-guitar.mp3) | 12.1 s | -19.2 dBFS |
-| 53 | PSS 52 Jazz Guitar | [053-pss-52-jazz-guitar.mp3](Docs/audio/053-pss-52-jazz-guitar.mp3) | 11.5 s | -11.3 dBFS |
-| 54 | PSS 53 Rock Guitar 1 | [054-pss-53-rock-guitar-1.mp3](Docs/audio/054-pss-53-rock-guitar-1.mp3) | 12.7 s | -26.4 dBFS |
-| 55 | PSS 54 Rock Guitar 2 | [055-pss-54-rock-guitar-2.mp3](Docs/audio/055-pss-54-rock-guitar-2.mp3) | 11.6 s | -18.2 dBFS |
-| 56 | PSS 55 Rock Guitar 3 | [056-pss-55-rock-guitar-3.mp3](Docs/audio/056-pss-55-rock-guitar-3.mp3) | 13.1 s | -22.5 dBFS |
-| 57 | PSS 56 Pedal Steel Guitar | [057-pss-56-pedal-steel-guitar.mp3](Docs/audio/057-pss-56-pedal-steel-guitar.mp3) | 12.4 s | -24.7 dBFS |
-| 58 | PSS 57 Tremolo Guitar | [058-pss-57-tremolo-guitar.mp3](Docs/audio/058-pss-57-tremolo-guitar.mp3) | 16.8 s | -12.3 dBFS |
-| 59 | PSS 58 12String Guitar | [059-pss-58-12string-guitar.mp3](Docs/audio/059-pss-58-12string-guitar.mp3) | 14.0 s | -12.7 dBFS |
-| 60 | PSS 59 Electric Bass | [060-pss-59-electric-bass.mp3](Docs/audio/060-pss-59-electric-bass.mp3) | 12.0 s | -14.8 dBFS |
-| 61 | PSS 60 Mute Bass | [061-pss-60-mute-bass.mp3](Docs/audio/061-pss-60-mute-bass.mp3) | 12.8 s | -14.2 dBFS |
-| 62 | PSS 61 Picked Bass | [062-pss-61-picked-bass.mp3](Docs/audio/062-pss-61-picked-bass.mp3) | 11.3 s | -16.4 dBFS |
-| 63 | PSS 62 Slap Bass | [063-pss-62-slap-bass.mp3](Docs/audio/063-pss-62-slap-bass.mp3) | 13.0 s | -23.1 dBFS |
-| 64 | PSS 63 Wood Bass 1 | [064-pss-63-wood-bass-1.mp3](Docs/audio/064-pss-63-wood-bass-1.mp3) | 13.2 s | -15.1 dBFS |
-| 65 | PSS 64 Wood Bass 2 | [065-pss-64-wood-bass-2.mp3](Docs/audio/065-pss-64-wood-bass-2.mp3) | 12.3 s | -13.2 dBFS |
-| 66 | PSS 65 Bowed Bass | [066-pss-65-bowed-bass.mp3](Docs/audio/066-pss-65-bowed-bass.mp3) | 14.5 s | -17.8 dBFS |
-| 67 | PSS 66 Banjo | [067-pss-66-banjo.mp3](Docs/audio/067-pss-66-banjo.mp3) | 15.6 s | -18.0 dBFS |
-| 68 | PSS 67 Ukulele | [068-pss-67-ukulele.mp3](Docs/audio/068-pss-67-ukulele.mp3) | 13.2 s | -10.8 dBFS |
-| 69 | PSS 68 Mandolin | [069-pss-68-mandolin.mp3](Docs/audio/069-pss-68-mandolin.mp3) | 12.7 s | -12.9 dBFS |
-| 70 | PSS 69 Harp | [070-pss-69-harp.mp3](Docs/audio/070-pss-69-harp.mp3) | 13.0 s | -10.7 dBFS |
-| 71 | PSS 70 Sitar | [071-pss-70-sitar.mp3](Docs/audio/071-pss-70-sitar.mp3) | 12.1 s | -24.8 dBFS |
-| 72 | PSS 71 Shamisen | [072-pss-71-shamisen.mp3](Docs/audio/072-pss-71-shamisen.mp3) | 10.9 s | -19.1 dBFS |
-| 73 | PSS 72 Jamisen | [073-pss-72-jamisen.mp3](Docs/audio/073-pss-72-jamisen.mp3) | 11.5 s | -22.1 dBFS |
-| 74 | PSS 73 Koto | [074-pss-73-koto.mp3](Docs/audio/074-pss-73-koto.mp3) | 12.8 s | -18.9 dBFS |
-| 75 | PSS 74 Violin 1 | [075-pss-74-violin-1.mp3](Docs/audio/075-pss-74-violin-1.mp3) | 12.5 s | -26.6 dBFS |
-| 76 | PSS 75 Violin 2 | [076-pss-75-violin-2.mp3](Docs/audio/076-pss-75-violin-2.mp3) | 11.5 s | -26.5 dBFS |
-| 77 | PSS 76 Cello | [077-pss-76-cello.mp3](Docs/audio/077-pss-76-cello.mp3) | 13.4 s | -19.5 dBFS |
-| 78 | PSS 77 Strings | [078-pss-77-strings.mp3](Docs/audio/078-pss-77-strings.mp3) | 14.2 s | -13.1 dBFS |
-| 79 | PSS 78 Synth Brass | [079-pss-78-synth-brass.mp3](Docs/audio/079-pss-78-synth-brass.mp3) | 13.9 s | -18.1 dBFS |
-| 80 | PSS 79 Synth Bass | [080-pss-79-synth-bass.mp3](Docs/audio/080-pss-79-synth-bass.mp3) | 10.5 s | -22.4 dBFS |
-| 81 | PSS 80 Synth Tom | [081-pss-80-synth-tom.mp3](Docs/audio/081-pss-80-synth-tom.mp3) | 12.9 s | -16.1 dBFS |
-| 82 | PSS 81 Carillon | [082-pss-81-carillon.mp3](Docs/audio/082-pss-81-carillon.mp3) | 17.1 s | -22.9 dBFS |
-| 83 | PSS 82 Chimes | [083-pss-82-chimes.mp3](Docs/audio/083-pss-82-chimes.mp3) | 17.1 s | -23.0 dBFS |
-| 84 | PSS 83 Hand Bell | [084-pss-83-hand-bell.mp3](Docs/audio/084-pss-83-hand-bell.mp3) | 15.6 s | -28.6 dBFS |
-| 85 | PSS 84 Tubular Bells | [085-pss-84-tubular-bells.mp3](Docs/audio/085-pss-84-tubular-bells.mp3) | 18.4 s | -25.7 dBFS |
-| 86 | PSS 85 Timpani | [086-pss-85-timpani.mp3](Docs/audio/086-pss-85-timpani.mp3) | 14.8 s | -10.1 dBFS |
-| 87 | PSS 86 Steel Drum 1 | [087-pss-86-steel-drum-1.mp3](Docs/audio/087-pss-86-steel-drum-1.mp3) | 13.3 s | -22.5 dBFS |
-| 88 | PSS 87 Steel Drum 2 | [088-pss-87-steel-drum-2.mp3](Docs/audio/088-pss-87-steel-drum-2.mp3) | 12.5 s | -16.7 dBFS |
-| 89 | PSS 88 Glockenspiel | [089-pss-88-glockenspiel.mp3](Docs/audio/089-pss-88-glockenspiel.mp3) | 14.6 s | -19.7 dBFS |
-| 90 | PSS 89 Marimba 1 | [090-pss-89-marimba-1.mp3](Docs/audio/090-pss-89-marimba-1.mp3) | 14.6 s | -8.3 dBFS |
-| 91 | PSS 90 Marimba 2 | [091-pss-90-marimba-2.mp3](Docs/audio/091-pss-90-marimba-2.mp3) | 15.8 s | -9.4 dBFS |
-| 92 | PSS 91 Vibraphone | [092-pss-91-vibraphone.mp3](Docs/audio/092-pss-91-vibraphone.mp3) | 11.9 s | -14.3 dBFS |
-| 93 | PSS 92 Human Chorus | [093-pss-92-human-chorus.mp3](Docs/audio/093-pss-92-human-chorus.mp3) | 13.5 s | -14.9 dBFS |
-| 94 | PSS 93 Human Voice 1 | [094-pss-93-human-voice-1.mp3](Docs/audio/094-pss-93-human-voice-1.mp3) | 15.5 s | -26.4 dBFS |
-| 95 | PSS 94 Human Voice 2 | [095-pss-94-human-voice-2.mp3](Docs/audio/095-pss-94-human-voice-2.mp3) | 16.6 s | -28.4 dBFS |
-| 96 | PSS 95 Whistle | [096-pss-95-whistle.mp3](Docs/audio/096-pss-95-whistle.mp3) | 16.2 s | -22.1 dBFS |
-| 97 | PSS 96 Ice Block | [097-pss-96-ice-block.mp3](Docs/audio/097-pss-96-ice-block.mp3) | 12.7 s | -26.8 dBFS |
-| 98 | PSS 97 Musical Saw | [098-pss-97-musical-saw.mp3](Docs/audio/098-pss-97-musical-saw.mp3) | 12.4 s | -24.4 dBFS |
-| 99 | PSS 98 Music Box | [099-pss-98-music-box.mp3](Docs/audio/099-pss-98-music-box.mp3) | 11.6 s | -28.6 dBFS |
-| 100 | PSS 99 Sine Wave | [100-pss-99-sine-wave.mp3](Docs/audio/100-pss-99-sine-wave.mp3) | 11.1 s | -17.8 dBFS |
+| 3 | PSS 02 Electric Piano 1 | [003-pss-02-electric-piano-1.wav](Docs/audio/003-pss-02-electric-piano-1.wav) | 11.7 s | -12.1 dBFS |
+| 14 | PSS 13 Jazz Organ | [014-pss-13-jazz-organ.wav](Docs/audio/014-pss-13-jazz-organ.wav) | 11.1 s | -14.3 dBFS |
+| 23 | PSS 22 Trumpet | [023-pss-22-trumpet.wav](Docs/audio/023-pss-22-trumpet.wav) | 11.8 s | -23.3 dBFS |
+| 33 | PSS 32 Alto Sax | [033-pss-32-alto-sax.wav](Docs/audio/033-pss-32-alto-sax.wav) | 11.9 s | -19.8 dBFS |
+| 54 | PSS 53 Rock Guitar 1 | [054-pss-53-rock-guitar-1.wav](Docs/audio/054-pss-53-rock-guitar-1.wav) | 11.8 s | -25.2 dBFS |
+| 63 | PSS 62 Slap Bass | [063-pss-62-slap-bass.wav](Docs/audio/063-pss-62-slap-bass.wav) | 11.9 s | -22.4 dBFS |
+| 85 | PSS 84 Tubular Bells | [085-pss-84-tubular-bells.wav](Docs/audio/085-pss-84-tubular-bells.wav) | 11.9 s | -25.1 dBFS |
+| 93 | PSS 92 Human Chorus | [093-pss-92-human-chorus.wav](Docs/audio/093-pss-92-human-chorus.wav) | 11.6 s | -15.7 dBFS |
 
 <!-- audio-demos-end -->
 
@@ -134,7 +42,7 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 - 0.1.2: New instances, Init and the 100 `PSS` patches start with a ±1 semitone pitch wheel, the PSS-780's own reset value (owner's manual, printed pp. 10 and 39). Older songs that lack the setting keep ±2, and the modern presets keep their own ranges.
 - 0.1.1: Applies the selected B listening options: a longer envelope-Reverb tail and shared asymmetric output headroom, enabled by default. No artificial noise is added. Existing patches acquire the selected character when their models are enabled. The values are chosen assumptions, not recovered PSS-780 calibration. See the [decision](Docs/decisions.md) and [adoption note](Docs/release/assumed-hardware-adoption-2026-10-19.md).
 
-### 0.1.0 — engine, Rack prototype and plug-in front end
+### 0.1.0 — 2026-10-18 to 2026-10-19 — engine, Rack prototype and plug-in front end
 
 - Two-operator FM engine with the 100 `PSS` factory voices and an Init sine, sibling-circuit output stage, Studio and Recorded chorus, and clock variation.
 - b11: the D1 endpoint correction and a 5.24 Hz triangle LFO with recording-supported vibrato depths; additive noise removed (its two controls stay as inert, hidden ids).
@@ -149,6 +57,7 @@ One demo per factory voice, rendered by the main build from the phrases in `Docs
 ## Downloads
 
 <!-- build-download-begin -->
+**[Download main build 28](https://github.com/protocodus/virtual-instrument-press78/actions/runs/40446152000/artifacts/12711541358)**, built from [`d36f111ebc52`](https://github.com/protocodus/virtual-instrument-press78/commit/d36f111ebc52c377facf6fc69ca263899783d13d). It holds the macOS, Windows and Linux packages, `SHA256SUMS` and `BUILD.txt`.
 <!-- build-download-end -->
 
 ---
@@ -232,7 +141,7 @@ The plug-in's parameter IDs are the control ids in `Assets/controls.json`, the s
 
 ### Panel design
 
-Open [the interactive design preview](Assets/Design/index.html). Layout study 11 uses an eight-rack-unit panel with consistent section padding and puts 34 main sound/performance controls on the front, with 30 detailed sound, calibration and configuration controls on the rear. It combines the canonical Protocodus logo, YouKnow's DIN lettering and recessed groups with charcoal ABS, cyan, lavender, coral and ivory inspired by the PSS-780 moodboard. Doubled pointer arrows remain clear of the knob number wells. The preview has editable operator controls, all 100 PSS originals and 50 modern sounds. It demonstrates layout and parameter relationships, without audio. [Design notes](Assets/Design/README.md) describe the front, rear and folded panels. Both native GUI asset sets and the native local/universal builds carry this styling. Level increases clockwise while preserving the original raw attenuation values; clearer envelope/unit labels and value arcs improve editing. The current layout follows the photographic recesses, shares vertical centres within each row and aligns the header controls.
+The Rack panel and its interactive layout prototype belong to the Reason adapter in the private `protocodus/reason-rack-extensions` repository (`Examples/Press78/Design/`). The plug-in editor here is the plain control grid described above.
 
 ### Repository layout
 
@@ -243,7 +152,6 @@ Open [the interactive design preview](Assets/Design/index.html). Layout study 11
 | `Assets/controls.json` | Parameter contract shared with the Rack adapter: 64 controls, two inert legacy noise properties and the hidden release policy |
 | `Assets/rack-automation.json` | Frozen Reason automation IDs |
 | `Assets/FactoryBank` | 100 original `PSS` parameter patches, 50 modern Rack presets and provenance |
-| `Assets/Design` | Panel geometry, SVG/PNG panels and the interactive HTML wireframe |
 | `Tools/reference` | Frozen research implementation used as the comparison oracle |
 | `Tools/prototypes` | Unadopted candidate patches and their checks, kept with their evidence |
 | `Docs/research/migration.json` | Original source location and file hashes |
@@ -260,7 +168,6 @@ A focused [Human Voice 1 release audit](Docs/research/human-voice1-release-audit
 - Where the amplifier starts to clip rests on an estimated level: one engine unit at the top of the volume slider is taken as 1.0 V, inside the 0.5 to 2.3 V the mixer's swing and the manual's overload warning allow, so the **Volume** at which clipping sets in is uncertain by about ±6 dB. It also assumes an active mixer drives the slider, as in the PSS-480 and the output circuit above; if the PSS-780 mixed passively like the PSS-270, the slider would carry 0.148 of that level and the amplifier would not clip below full scale. The idle current, the adaptor's rating and reservoir, and the PSS-780's own supply circuit are estimates or borrowed from the PSS-480.
 - Worn cells borrow their resistance through life from AA pulse data; no C-cell figures exist. The +5 V load, the follower's gain and the zener's knee are estimates, which place the rail where +5 V gives way anywhere from 5.8 to 7.5 V. How the YM3420's output level and the chorus clock change as +5 V falls is not documented, so both stay fixed; so does the 1.9 mF on +5 V, which would slow its fastest falls.
 - The plug-in has only passed the checks CI runs; it has not been tried in a DAW. Its editor is a plain control grid, not the designed panel.
-- The Rack adapter lives in a local SDK workspace, not in `protocodus/reason-rack-extensions`, and its DSP directory is a generated snapshot of this repository (`Tools/sync_rack_dsp.py`) rather than the pinned submodule the portfolio standard asks for. The b5 Rack patch exporter uses the SDK’s canonical XML declaration after Recon rejected the earlier declaration during default Init loading. All 101 patch sound parameter maps are preserved. The b6 native display formatter also fixes a subsequent Recon drawing crash caused by concatenating host-formatted text; independent regression tests cover all 50 numeric readouts, with 444 passing cases and an explicit reproduction of the prior failure.
 - The b11–b15 fidelity work, its rejected candidates and the open fidelity requirements are in [fidelity status, 2026-10-19](Docs/research/fidelity-status-2026-10-19.md); no superlative accuracy claim follows from it.
 - The native evidence, sanitizer runs, hardware comparison and Rack prototype validation are recorded in [native evidence, 2026-10-18](Docs/validation/native-evidence-2026-10-18.md) for b9 and in the fidelity status above for b11 and b12. They establish agreement with the research model, not with Yamaha hardware.
 - The preset source is recorded in [bank provenance](Assets/FactoryBank/provenance.json). Public availability of a SysEx archive and the editor project's license do not establish permission to distribute Yamaha's factory bank commercially. No research videos, recordings, manual scans or executable Yamaha firmware are shipped in this repository. `Press78` has not received trademark clearance; development names and source availability are not legal clearance.
@@ -284,7 +191,7 @@ cmake --build build-plugin --parallel
 ctest --test-dir build-plugin --output-on-failure
 ```
 
-Every test is `Press78.<Suite>` with one tier label: `unit`, `audio` (`Press78.AudioDemos` renders every voice's demo twice and compares the bits), `render` (`Press78.EditorRender`, the editor screenshot) or `fuzz` (`Press78.DspFuzz`, and `Press78.ParameterMatrix` in the plug-in build). `-DPRESS78_ENABLE_SANITIZERS=ON` builds everything under ASan + UBSan, and `-DPRESS78_BUILD_LIBFUZZER=ON` with Clang builds the libFuzzer target.
+Every test is `Press78.<Suite>` with one tier label: `unit`, `audio` (`Press78.AudioDemos` renders every demo twice and compares the bits), `render` (`Press78.EditorRender`, the editor screenshot) or `fuzz` (`Press78.DspFuzz`, and `Press78.ParameterMatrix` in the plug-in build). `-DPRESS78_ENABLE_SANITIZERS=ON` builds everything under ASan + UBSan, and `-DPRESS78_BUILD_LIBFUZZER=ON` with Clang builds the libFuzzer target.
 
 `press78_render --raw <66 hexadecimal digits>` renders a decoded 33-byte voice. `--transparent` disables the output circuit, envelope-Reverb estimate, creative tone filter, DC removal and output protection and sets unity gain for reference comparisons. Native diagnostic callers can select `--envelope-reverb 0|1` independently; this is not a new host parameter. Other options include gain, chorus mix, drive, clock offset and clock drift. See `Tools/NativeRender.cpp` for the complete bounded CLI.
 
@@ -303,11 +210,8 @@ To regenerate the Rack parameter declarations, mappings and 151 local developmen
 
 ```sh
 python3 Tools/generate_rack.py /path/to/SDK-worktree/Examples/Press78
-python3 Tools/sync_rack_dsp.py /path/to/SDK-worktree/Examples/Press78
 python3 Tools/check_rack_contract.py /path/to/SDK-worktree/Examples/Press78
 ```
-
-[Shop copy](Docs/release/shop-copy.md) and its [metadata](Docs/release/shop-metadata.json) follow the same format as the other Protocodus synths; they are generated from the Rack adapter's authored `SHOP.md`.
 
 ## Licensing
 

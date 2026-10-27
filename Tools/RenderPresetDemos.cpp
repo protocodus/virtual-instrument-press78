@@ -1,5 +1,5 @@
-// Renders one README demo per factory voice (README G3) from the committed
-// phrases in Docs/audio/midi, through the same JUCE-free engine and control
+// Renders the README's voice demos (README G3), one for each committed phrase
+// in Docs/audio/midi, through the same JUCE-free engine and control
 // mapping the plug-in uses. The contract and the fixed rate, block size and
 // seed live in the shared PresetDemoRenderer.h.
 

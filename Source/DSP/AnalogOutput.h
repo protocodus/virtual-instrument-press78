@@ -21,17 +21,23 @@ public:
                 const double r=(s[k]-s[k+1]+s[k+2])*ratio*ratio;
                 t[k]=p+q+r;t[k+1]=2.0*(p-r);t[k+2]=p-q+r;
             }
-            for(unsigned j=0;j<6;++j)sections_[n][j]=t[j]/t[3];
+            for(unsigned j=0;j<3;++j)sections_[n][j]=t[j]/t[3];
+            sections_[n][3]=t[4]/t[3];
+            sections_[n][4]=t[5]/t[3];
         }
         reset();
     }
-    void reset() noexcept {for(auto& pair:state_)pair={0.0,0.0};}
+    void reset() noexcept {for(auto& pair:state_)pair={0.0,0.0};silent_=true;}
     double process(double input) noexcept {
+        if(silent_) {
+            if(input==0.0)return 0.0;
+            silent_=false;
+        }
         for(unsigned n=0;n<6;++n) {
             const auto& s=sections_[n];auto& z=state_[n];
             const double output=s[0]*input+z[0];
-            z[0]=s[1]*input-s[4]*output+z[1];
-            z[1]=s[2]*input-s[5]*output;
+            z[0]=s[1]*input-s[3]*output+z[1];
+            z[1]=s[2]*input-s[4]*output;
             input=output;
         }
         return input;
@@ -45,7 +51,8 @@ private:
         {{1,-1.0087161022968898,0.010774701674926697,1,-1.9958390522814606,0.99584338065338618}},
         {{1,-2.0000000000002078,1.0000000000002078,1,-0.0092480660558986738,-0.98898866376056971}}
     }};
-    std::array<std::array<double,6>,6> sections_{};
+    std::array<std::array<double,5>,6> sections_{};
     std::array<std::array<double,2>,6> state_{};
+    bool silent_=true;
 };
 } // namespace press78

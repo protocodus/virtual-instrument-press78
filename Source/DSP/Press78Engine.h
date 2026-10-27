@@ -85,6 +85,15 @@ struct Controls {
     double clockDriftPpm = 0.0;        // 0..10000 sinusoidal excursion.
     double clockDriftRateHz = 0.1;     // 0.001..2; common digital timebase only.
     bool outputCircuit = true;        // Selected shared headroom + sibling filter.
+    // Host policy: retain the selected B saturation by default for existing
+    // callers. A Rack host can keep the linear sibling circuit while removing
+    // this uncalibrated color; this does not bypass the battery amplifier.
+    bool circuitSaturation = true;
+    // Explicit host gain staging around only the assumed headroom curve:
+    // divide its input by H, then restore H before the unchanged linear filter.
+    // Default 1 preserves the canonical core sound; Rack opts into +12 dB of
+    // headroom. This is a user-requested software adjustment, not hardware fit.
+    double circuitHeadroom = 1.0;     // 1..16, reciprocal pre/post gain.
     double toneCutoffHz = 14000.0;     // 20..0.9*Nyquist; 0 bypasses filter.
     double drive = 0.0;               // 0..1 creative tanh saturation; 0 bypass.
     int chorusMode = 0;              // 0 Studio legacy;1 recorded effective v3.
@@ -177,23 +186,27 @@ private:
     struct Envelope {
         double attenuation = 96.0, attackMul = 0.0, decay1 = 0.0;
         double decay2 = 0.0, release = 0.0, reverbRelease = 0.0, target = 0.0;
+        double cachedGain = -1.0;
         int stage = 0;
         bool instantAttack = false, disabled = true, finished = false;
         void configure(const Operator&, int midi, bool sustain, double tickRate) noexcept;
         void updateRelease(const Operator&, int midi, bool sustain, double tickRate) noexcept;
-        double next(bool released, bool reverbKnee = false) noexcept;
+        double next(bool released, bool reverbKnee = false, bool needGain = true) noexcept;
+        double next(bool released, bool reverbKnee, bool needGain, double& sharedAtten, double& sharedGain) noexcept;
     };
-    // One pow(base, exponent) remembered for the rest of a tick: voices on
-    // the shared LFO ask for the same vibrato and tremolo factors. The key is
-    // bitwise, so the result is exactly the pow each voice would compute.
-    struct TickPow {
-        double base = 0.0, exponent = 0.0, value = 1.0;
-        bool valid = false;
-        double operator()(double b, double e) noexcept;
+    struct TickContext {
+        double shapedGlobalLfo = 0.0;
+        bool hasShapedGlobalLfo = false;
+        bool refreshVelocityGains = true;
+        int cachedPms = -1;
+        double cachedVibratoPitch = 1.0;
+        int cachedAms = -1;
+        double cachedAmGain = 1.0;
+        double modAtten = -1.0, modGain = 0.0;
+        double carAtten = -1.0, carGain = 0.0;
     };
     struct Voice {
         Patch patch{};
-        int source = 0; // Here, not by note, it fills the Patch's padding.
         Envelope modEnvelope{}, carrierEnvelope{};
         double modPhase = 0.0, carrierPhase = 0.0;
         double prev1 = 0.0, prev2 = 0.0, lfoPhase = 0.0;
@@ -201,36 +214,29 @@ private:
         double modGain = 0.0, carrierGain = 0.0, feedback = 0.0;
         double velocity = 1.0;      // velocity/127, the modulator's law.
         double velocityLevel = 1.0; // Carrier level at sensitivity 1.
-        // pow(velocity, velocityToModulation) and pow(velocityLevel,
-        // velocitySensitivity), kept while the exponents hold still.
+        // Cached while the shared live exponents hold; reset for every new voice.
         double modVelocityGain = 1.0, carrierVelocityGain = 1.0;
         // Portamento offset and per-service step in 1/256 semitone, as the
         // firmware keeps them; the oscillators hear offset>>3 (1/32 semitone).
         int glideOffset = 0, glideStep = 0, glideSteps = 0;
+        int note = 60, source = 0;
+        bool active = false, held = false, released = false, velocityGainsValid = false;
         double glideMultiplier = 1.0; // Equal model only.
         std::uint64_t age = 0, ticks = 0;
         double tickRate = kInternalRate; // Fixed while the voice sounds.
-        int note = 60;
-        bool active = false, held = false, released = false;
-        bool velocityGainsValid = false;
         void configure(const Patch&, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept;
         void updatePatch(const Patch&, int keyLevelModel) noexcept;
         void updateRelease(bool sustain) noexcept;
         void updateOriginalPitch(int steps) noexcept;
-        // The engine passes refreshVelocityGains only when a velocity
-        // exponent changed since its previous tick; other callers keep the
-        // default and re-evaluate both laws every call.
-        double next(const Controls&, double pitchMultiplier, double globalLfo,
-                    bool refreshVelocityGains = true) noexcept;
-        // next() with the global LFO already shaped (triangle or sine) and
-        // the tick's shared pow results, so voices on one tick reuse them.
-        double render(const Controls&, double pitchMultiplier, double shapedGlobalLfo,
-                      bool refreshVelocityGains, TickPow& vibrato, TickPow& tremolo) noexcept;
+        double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
+        double next(const Controls&, double pitchMultiplier, double globalLfo, TickContext&) noexcept;
     };
     struct Tail { Voice voice{}; int remaining = 0; };
     // The sinc reader needs at most the latest 64 ticks after fill; 128 keeps
-    // every one and leaves room for the allocator in the instance budget.
-    static constexpr std::size_t kHistory = 128;
+    // every one with at least 23 spare ticks at the fastest chip clock.
+    // Modulo addressing permits 96 entries and keeps the velocity caches
+    // inside the existing 192 KiB output-bus budget.
+    static constexpr std::size_t kHistory = 96;
     static constexpr std::size_t kDelaySize = 4096;
     static constexpr int kSincTaps = 64;
     static constexpr int kSincPhases = 256;
@@ -246,6 +252,7 @@ private:
     AnalogOutput analog_{};
     double sampleRate_ = 48000.0, position_ = 0.0, hostTime_ = 0.0;
     double chipRate_ = kInternalRate, resamplerDelay_ = kResamplerDelay, tickSmoothing_ = 0.0;
+    double resamplerCutoff_ = 0.0;
     int portamentoServiceTicks_ = 0, fadeTicks_ = 48, effectiveChipRate_ = 0;
     double globalLfoPhase_ = 0.0, chorusPhase_ = 0.0;
     // The velocity exponents the voices' cached gains were computed with.
@@ -254,6 +261,8 @@ private:
     double tone1_ = 0.0, tone2_ = 0.0, toneCoefficient_ = 0.0;
     double currentToneCoefficient_ = 0.0, drive_ = 0.0, chorusMix_ = 0.0;
     double circuitMix_ = 1.0, chorusCircuitMix_ = 0.0;
+    double circuitHeadroom_ = 1.0;    // 5 ms control smoothing; startup snaps.
+    double circuitSaturationMix_ = 1.0;
     ChorusCircuit chorusCircuit_{};
     double auxMix_ = 0.0, phonesMix_ = 0.0;
     AmplifierCircuit amplifier_{};
@@ -264,6 +273,8 @@ private:
     std::int64_t nextTick_ = 0;
     std::uint64_t serial_ = 0;
     std::size_t delayWrite_ = 0;
+    std::uint16_t silentTicks_ = static_cast<std::uint16_t>(kHistory);
+    std::uint16_t silentDelay_ = static_cast<std::uint16_t>(kDelaySize);
     bool pedal_ = false, hasProcessed_ = false;
     bool originalSustain_ = false;
     int effectivePitchModel_ = 0, pitchSteps_ = 0;

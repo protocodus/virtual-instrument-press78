@@ -4,10 +4,10 @@
 
 This is Press78's canonical repository: it owns the DSP engine in
 `Source/DSP/` and the JUCE plug-in (VST3, AU, CLAP, Standalone) that wraps it.
-A Reason Rack Extension prototype exists as a thin adapter over this engine.
-In the portfolio it belongs in the private `protocodus/reason-rack-extensions`
-repository, mounting this repository as the pinned submodule
-`Examples/Press78/Instrument` and compiling `Source/DSP/*.cpp` directly. DSP and
+The Reason Rack Extension in the private `protocodus/reason-rack-extensions`
+repository is a thin adapter that mounts this repository as the pinned
+submodule `Examples/Press78/Instrument` and compiles `Source/DSP/*.cpp`
+directly. DSP and
 playing-model changes land here first; the Rack pin then advances. Reason
 property mapping, MIDI/CV, routing, host latency, patches and panels stay in
 the adapter.
@@ -72,9 +72,11 @@ These README parts are written by the build, never by hand:
 
 - The demo table between `<!-- audio-demos-begin -->` and
   `<!-- audio-demos-end -->`, rendered from one
-  `Docs/audio/midi/<NN>-<preset-slug>.mid` per factory preset (change a source
-  only on purpose, in its own commit) and committed by the main build as
-  `Docs/audio/<NN>-<preset-slug>.mp3`.
+  `Docs/audio/midi/<NN>-<preset-slug>.mid` per curated preset demo (at most 8,
+  each preset showing a different side of the instrument, or every preset of a
+  bank of 8 or fewer; change a source only on purpose, in its own commit) and
+  committed by the main build as `Docs/audio/<NN>-<preset-slug>.wav`, 8–12 s
+  of 48 kHz 24-bit audio.
 - The block between `<!-- build-download-begin -->` and
   `<!-- build-download-end -->`, rewritten by the main build, which also
   commits the README screenshot under `Docs/screenshots/`.
@@ -157,7 +159,7 @@ ctest --test-dir build-dsp -L unit --output-on-failure
 Use a separate `build-plugin` directory (`-DPRESS78_BUILD_PLUGIN=ON`, the
 default) for the processor, editor and packaging. Every test is
 `Press78.<Suite>` with one tier label: `unit`, `audio` (`Press78.AudioDemos`,
-every voice's demo rendered twice), `render` (`Press78.EditorRender`, the
+every demo rendered twice), `render` (`Press78.EditorRender`, the
 editor screenshot) or `fuzz` (`Press78.DspFuzz`; `Press78.ParameterMatrix` in
 the plug-in build). Select the suites that cover a change with `-R`, then run
 the full suite before a substantive DSP change is called done.
@@ -182,6 +184,3 @@ assumption was stale.
 - `Tools/reference/` is the frozen Python research implementation the native
   engine is compared against; `Tests/results/` holds the receipts the
   comparison tools write. Receipts keep the paths they were written with.
-- `Assets/Design/` is the Rack panel design (geometry, SVG/PNG panels and the
-  HTML wireframe); it moves to the Rack device's `Design/` when the adapter
-  joins `reason-rack-extensions`.

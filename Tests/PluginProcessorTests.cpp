@@ -161,6 +161,16 @@ void stateContract()
         check (b.state().getParameter (ranged->paramID)->getValue() == ranged->getValue(),
                "state restores " + ranged->paramID);
     }
+    // pluginval sets each parameter to a random 0..1 value, restores the
+    // saved state and reads the value back through the host.
+    for (const auto* id : { "mod_amEnable", "mod_dt2" })
+    {
+        auto* parameter = b.state().getParameter (id);
+        const float stored = parameter->getValue();
+        parameter->setValueNotifyingHost (stored < 0.5f ? 0.3f : 0.7f);
+        b.setStateInformation (saved.getData(), static_cast<int> (saved.getSize()));
+        check (parameter->getValue() == stored, juce::String (id) + " keeps a host's in-between value through a restore");
+    }
     const char garbage[] = "not a Press78 state";
     b.setStateInformation (garbage, sizeof garbage);
     check (b.getCurrentProgram() == 42, "foreign state is ignored");
