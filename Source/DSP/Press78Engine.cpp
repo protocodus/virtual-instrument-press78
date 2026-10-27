@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 #include <limits>
 
 namespace press78 {
@@ -42,6 +43,27 @@ double mode99VelocityLevel(int velocity) noexcept {
 // The firmware shifts the glide offset right three times into the
 // 1/32-semitone pitch coordinate, rounding toward minus infinity.
 int heardGlideSteps(int offset) noexcept { return offset >= 0 ? offset / 8 : -((7 - offset) / 8); }
+
+// std::pow without the call where its result is exact: x^0 is 1 for every x
+// (C17 F.10.4.4), and x^1 is x, which a correctly rounded pow returns (glibc's
+// does for every velocity level and a 10^8-value sweep). The defaults for
+// Velocity to FM (0) and Velocity to level (1), a voice without vibrato or
+// tremolo, and an envelope at full level all hit these, every tick.
+double power(double base, double exponent) noexcept {
+    if (exponent == 0.0) return 1.0;
+    if (exponent == 1.0) return base;
+    return std::pow(base, exponent);
+}
+
+// std::fmod(x, tau) for a phase that has just advanced. fmod is exact, and
+// so is x - tau for tau <= x < 2 tau (Sterbenz), so a step of under a turn
+// wraps with one subtraction and the result is bit for bit fmod's. Larger
+// steps, negative phases and non-finite values still take fmod.
+double wrapPhase(double x) noexcept {
+    if (x >= 0.0 && x < tau) return x;
+    if (x >= tau && x < 2.0 * tau) return x - tau;
+    return std::fmod(x, tau);
+}
 
 double bounded(double x, double low, double high, double fallback) noexcept {
     return std::isfinite(x) ? std::clamp(x, low, high) : fallback;
@@ -86,6 +108,15 @@ double wave(double phase, int shape) noexcept {
     if (shape >= 2 && s < 0.0) return 0.0;
     return shape == 1 || shape == 3 ? s * std::abs(s) : s;
 }
+// std::fmod(x, tau), bit for bit, without the call on the common paths: x
+// already in [0, tau) is its own remainder, and for x in [tau, 2 tau) the
+// remainder x - tau is exact (Sterbenz: tau/2 <= x <= 2 tau). Everything
+// else, negative, larger, infinite or NaN, still goes through fmod.
+
+// The LFO sine, or the triangle with the same phase and peak.
+double shapeLfo(double sine, bool triangle) noexcept {
+    return triangle ? 2.0 / pi * std::asin(std::clamp(sine, -1.0, 1.0)) : sine;
+}
 Operator sanitize(Operator op) noexcept {
     op.mul = std::clamp(op.mul, 0, 15);
     op.dt1 = std::clamp(op.dt1, -7, 7);
@@ -101,6 +132,15 @@ Operator sanitize(Operator op) noexcept {
     op.srr = std::clamp(op.srr, 0, 15);
     op.wave = std::clamp(op.wave, 0, 3);
     return op;
+}
+// std::fmod(x, tau) for a phase that has just advanced. Below tau fmod
+// returns x itself, and on [tau, 2 tau) its exact result is x - tau, which
+// the subtraction gives exactly (Sterbenz); anything else still takes fmod.
+
+bool sameBits(double a, double b) noexcept {
+    std::uint64_t x = 0, y = 0;
+    std::memcpy(&x, &a, sizeof x); std::memcpy(&y, &b, sizeof y);
+    return x == y;
 }
 double softBound(double x) noexcept {
     const double a = std::abs(x);
@@ -323,10 +363,19 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
         active = false; return 0.0;
     }
     const double em = modEnvelope.next(released, knee, modGain != 0.0, ctx.modAtten, ctx.modGain);
+    if (ctx.refreshVelocityGains || !velocityGainsValid) {
+        modVelocityGain = c.velocityToModulation == 0.0 ? 1.0
+            : c.velocityToModulation == 1.0 ? velocity
+            : std::pow(velocity, c.velocityToModulation);
+        carrierVelocityGain = c.velocitySensitivity == 1.0 ? velocityLevel
+            : c.velocitySensitivity == 0.0 ? 1.0
+            : std::pow(velocityLevel, c.velocitySensitivity);
+        velocityGainsValid = true;
+    }
     double lfo = 0.0;
     if (c.globalLfo) {
         if (!ctx.hasShapedGlobalLfo) {
-            ctx.shapedGlobalLfo = c.triangleLfo ? 2.0 / pi * std::asin(std::clamp(globalLfo, -1.0, 1.0)) : globalLfo;
+            ctx.shapedGlobalLfo = shapeLfo(globalLfo, c.triangleLfo);
             ctx.hasShapedGlobalLfo = true;
         }
         lfo = ctx.shapedGlobalLfo;
@@ -375,18 +424,14 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     // as in the Python hypothesis. No unverified fixed-point table is added.
     double mod = 0.0;
     if (em != 0.0 && modGain != 0.0) {
-        const double velMod = c.velocityToModulation == 0.0 ? 1.0
-            : c.velocityToModulation == 1.0 ? velocity
-            : std::pow(velocity, c.velocityToModulation);
+        const double velMod = modVelocityGain;
         mod = wave(modPhase + feedback * (prev1 + prev2) * 0.5, patch.modulator.wave)
             * em * modGain * velMod * amM;
     }
     prev2 = prev1; prev1 = mod;
     double y = 0.0;
     if (ec != 0.0 && carrierGain != 0.0) {
-        const double velCar = c.velocitySensitivity == 1.0 ? velocityLevel
-            : c.velocitySensitivity == 0.0 ? 1.0
-            : std::pow(velocityLevel, c.velocitySensitivity);
+        const double velCar = carrierVelocityGain;
         y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
             * ec * carrierGain * velCar * amC;
     }
@@ -821,6 +866,10 @@ double Press78Engine::synthesizeTick() noexcept {
     if (!idle) {
         const double global = voiceControls_.globalLfo ? std::sin(globalLfoPhase_) : 0.0;
         TickContext ctx{};
+        ctx.refreshVelocityGains = !sameBits(voiceControls_.velocityToModulation, velocityExponents_[0])
+            || !sameBits(voiceControls_.velocitySensitivity, velocityExponents_[1]);
+        velocityExponents_[0] = voiceControls_.velocityToModulation;
+        velocityExponents_[1] = voiceControls_.velocitySensitivity;
         for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global, ctx);
         for (auto& tail : tails_) if (tail.remaining > 0) {
             sum += tail.voice.next(voiceControls_, pitchMultiplier_, global, ctx) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
@@ -839,8 +888,9 @@ double Press78Engine::historyAt(std::int64_t tick) const noexcept {
 double Press78Engine::resampled(double position) const noexcept {
     if (silentTicks_ >= kHistory) return 0.0;
     const double center = position - resamplerDelay_;
-    const auto base = static_cast<std::int64_t>(std::floor(center));
-    const double fraction = center - std::floor(center);
+    const double whole = std::floor(center);
+    const auto base = static_cast<std::int64_t>(whole);
+    const double fraction = center - whole;
     if (sampleRate_ >= chipRate_ && fraction < 1e-12) return historyAt(base);
     const double phase = fraction * kSincPhases;
     const int p = std::min(kSincPhases - 1, static_cast<int>(phase));
@@ -855,14 +905,28 @@ double Press78Engine::resampled(double position) const noexcept {
 #pragma clang loop vectorize(disable) interleave(disable)
 #endif
         for (int j = 0; j < kSincTaps; j += 4) {
-            value += history_[static_cast<std::size_t>(firstTick + j) & (kHistory - 1)] * (s0[j] + mix * (s1[j] - s0[j]));
-            value += history_[static_cast<std::size_t>(firstTick + j + 1) & (kHistory - 1)] * (s0[j + 1] + mix * (s1[j + 1] - s0[j + 1]));
-            value += history_[static_cast<std::size_t>(firstTick + j + 2) & (kHistory - 1)] * (s0[j + 2] + mix * (s1[j + 2] - s0[j + 2]));
-            value += history_[static_cast<std::size_t>(firstTick + j + 3) & (kHistory - 1)] * (s0[j + 3] + mix * (s1[j + 3] - s0[j + 3]));
+            value += history_[static_cast<std::size_t>(firstTick + j) % kHistory] * (s0[j] + mix * (s1[j] - s0[j]));
+            value += history_[static_cast<std::size_t>(firstTick + j + 1) % kHistory] * (s0[j + 1] + mix * (s1[j + 1] - s0[j + 1]));
+            value += history_[static_cast<std::size_t>(firstTick + j + 2) % kHistory] * (s0[j + 2] + mix * (s1[j + 2] - s0[j + 2]));
+            value += history_[static_cast<std::size_t>(firstTick + j + 3) % kHistory] * (s0[j + 3] + mix * (s1[j + 3] - s0[j + 3]));
         }
         return value;
     }
     double value = 0.0;
+    // Every tap is normally in the retained history (only the first ticks
+    // after a reset reach before it), so read it without historyAt's bounds
+    // tests. The sum is the same, in the same order.
+    const std::int64_t first = base - 31;
+    if (first >= 0 && first >= nextTick_ - static_cast<std::int64_t>(kHistory) && first + kSincTaps <= nextTick_) {
+        const auto& lower = sinc_[static_cast<std::size_t>(p)];
+        const auto& upper = sinc_[static_cast<std::size_t>(p) + 1];
+        for (int j = 0; j < kSincTaps; ++j) {
+            const auto k = static_cast<std::size_t>(j);
+            const double coefficient = lower[k] + mix * (upper[k] - lower[k]);
+            value += history_[static_cast<std::size_t>(first + j) % kHistory] * coefficient;
+        }
+        return value;
+    }
     for (int j = 0; j < kSincTaps; ++j) {
         const double coefficient = sinc_[p][j] + mix * (sinc_[p + 1][j] - sinc_[p][j]);
         value += historyAt(base + j - 31) * coefficient;
@@ -984,7 +1048,7 @@ void Press78Engine::process(float* left, float* right, std::size_t frames) noexc
     for (std::size_t i = 0; i < frames; ++i) {
         while (static_cast<double>(nextTick_) <= position_) {
             const double tickSample = synthesizeTick();
-            history_[static_cast<std::size_t>(nextTick_) & (kHistory - 1)] = tickSample;
+            history_[static_cast<std::size_t>(nextTick_) % kHistory] = tickSample;
             silentTicks_ = tickSample == 0.0 ? static_cast<std::uint16_t>(std::min<std::size_t>(silentTicks_ + 1, kHistory)) : 0;
             ++nextTick_;
         }

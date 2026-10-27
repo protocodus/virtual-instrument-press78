@@ -22,7 +22,7 @@ endif()
 
 # C is required in addition to C++: JUCE's macOS plug-in wrappers (AU and
 # Standalone) compile C/Objective-C sources with non-Xcode generators too.
-project(Press78 VERSION 0.1.13 LANGUAGES C CXX)
+project(Press78 VERSION 0.1.14 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -208,6 +208,9 @@ if(PRESS78_BUILD_TOOLS)
     target_link_libraries(press78_circuit_noise_probe PRIVATE Press78DSP)
     add_executable(press78_performance_probe Tools/PerformanceProbe.cpp)
     target_link_libraries(press78_performance_probe PRIVATE Press78DSP)
+    # Instruction-count and output-parity workload; protocol at its head.
+    add_executable(press78_cpu_bench Tools/CpuParityBench.cpp)
+    target_link_libraries(press78_cpu_bench PRIVATE Press78DSP)
 
     # One README demo per factory voice from Docs/audio/midi (Tools/
     # PresetDemoRenderer.h is the shared portfolio copy; do not edit it here).
