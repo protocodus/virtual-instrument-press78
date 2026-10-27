@@ -67,6 +67,9 @@ int main (int argc, char** argv)
     instrument.ceiling = 1.0f;
     for (const auto& voice : press78::kFactoryVoices)
         instrument.presets.push_back (voice.name);
+    // U7 perf budget: 0 reports without failing until the CI runner's median
+    // is measured.
+    instrument.cpuBudget = 0.0;
     instrument.open = [] (std::size_t preset, double sampleRate, int, std::uint32_t)
     {
         // The engine's noise and clock-drift sources start from fixed states

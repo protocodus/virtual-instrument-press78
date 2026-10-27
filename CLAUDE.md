@@ -148,6 +148,26 @@ defensible on their own physics. It does not license drawing a constant, fitting
 a curve, or keeping a formulation the measurements reject. If every candidate
 needs an invented number, the answer is still that none of them ships.
 
+## Testing
+
+Tests follow the portfolio testing standard (U1–U10); the `portfolio-testing`
+skill has the procedures. These hold in every session:
+
+- Every CTest test is `<Name>.<Suite>` with exactly one tier label: `unit`,
+  `audio`, `render`, `fuzz` or `perf`.
+- A test is never skipped, disabled, loosened or given a longer timeout to
+  get green. Diagnose a failure against the baseline first; when a fixture or
+  limit was wrong, fix it and say why beside it, in the same commit.
+- Checks run in Release builds: use the file's always-on helper, never a bare
+  `assert()`. Seeds, rates and block sizes are fixed.
+- No test outside the `perf` tier passes or fails on time, and `perf` never
+  runs in a Debug or sanitized build. CPU figures are development-machine
+  figures, never Reason or DAW CPU.
+- A fixed fuzz crash's input goes in `Tests/Fixtures/fuzz/`, which
+  `<Name>.DspFuzzReplay` replays in the `unit` tier.
+- A DSP change is done when the suites it touches, the `unit`, `audio` and
+  `perf` tiers and `<Name>DSPCxx17` pass.
+
 ## Build and verify
 
 ```sh
@@ -157,16 +177,16 @@ ctest --test-dir build-dsp -L unit --output-on-failure
 ```
 
 Use a separate `build-plugin` directory (`-DPRESS78_BUILD_PLUGIN=ON`, the
-default) for the processor, editor and packaging. Every test is
-`Press78.<Suite>` with one tier label: `unit`, `audio` (`Press78.AudioDemos`,
-every demo rendered twice), `render` (`Press78.EditorRender`, the
-editor screenshot) or `fuzz` (`Press78.DspFuzz`; `Press78.ParameterMatrix` in
-the plug-in build). Select the suites that cover a change with `-R`, then run
-the full suite before a substantive DSP change is called done.
-
-A test is never skipped, disabled or loosened to get green. Diagnose a failed
-contract against the baseline before changing a fixture, and document why an
-assumption was stale.
+default) for the processor, editor and packaging. Press78's suites by tier:
+`unit` (including `Press78.DspFuzzReplay`), `audio` (`Press78.AudioDemos`,
+every demo rendered twice), `render` (`Press78.EditorRender`, the editor
+screenshot), `fuzz` (`Press78.DspFuzz` with `-DPRESS78_BUILD_FUZZER=ON` and
+Clang; `Press78.ParameterMatrix` in the plug-in build, one rotation shard of
+the matrix the main build runs in full across sixteen) and `perf`
+(`Press78.CpuBudget`, Release builds without sanitizers). Select the suites
+that cover a change with `-R`. `scripts/validate-plugins.sh build-plugin
+Press78 aumu P781 Pr78 0x50373830` runs the host validators on a plug-in
+build.
 
 ## Generated files and shared tools
 
@@ -177,8 +197,9 @@ assumption was stale.
   `Tools/write_preset_midi.py`, and `Press78.DemoMidiSources` checks the
   committed files match it. Renaming a voice renames its files.
 - `Tools/PresetDemoRenderer.h`, `Tools/update_readme_blocks.py`,
-  `Tests/ParameterMatrix.h`, `Tests/FuzzHarness.h` and the Documentation
-  layout and A–Z listening tests sections above are byte-identical copies of
+  `Tests/ParameterMatrix.h`, `Tests/FuzzHarness.h`,
+  `scripts/validate-plugins.sh` and the Documentation layout, A–Z listening
+  tests and Testing sections above are byte-identical copies of
   the portfolio masters in `reason-rack-extensions/Tools/portfolio/`. Change
   them there, never here.
 - `Tools/reference/` is the frozen Python research implementation the native

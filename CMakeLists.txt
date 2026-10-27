@@ -43,7 +43,8 @@ set(PRESS78_CLAP_JUCE_EXTENSIONS_PATH "" CACHE PATH
 include(CTest)
 
 option(PRESS78_ENABLE_SANITIZERS "Instrument development builds with ASan and UBSan" OFF)
-option(PRESS78_BUILD_LIBFUZZER "Build Press78DspFuzz as a Clang libFuzzer target" OFF)
+option(PRESS78_BUILD_FUZZER "Build Press78DspFuzz as a Clang libFuzzer target" OFF)
+option(PRESS78_REQUIRE_PYTHON_TESTS "Fail to configure without the interpreter the Python checks need" OFF)
 if(PRESS78_ENABLE_SANITIZERS)
     if(NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
         message(FATAL_ERROR "PRESS78_ENABLE_SANITIZERS requires Clang or GCC")
@@ -259,28 +260,34 @@ if(BUILD_TESTING)
     target_link_libraries(Press78HardwareCharacterTests PRIVATE Press78DSP)
     add_test(NAME Press78.HardwareCharacter COMMAND Press78HardwareCharacterTests)
 
-    # U4 input fuzzing. With PRESS78_BUILD_LIBFUZZER (Clang) it is a libFuzzer
-    # target over coverage-instrumented DSP; otherwise FuzzHarness.h supplies
-    # a main that replays Tests/fuzz-regressions/ and then seeded inputs.
-    add_executable(Press78DspFuzz Tests/DspFuzz.cpp)
-    target_include_directories(Press78DspFuzz PRIVATE Source Source/DSP)
-    if(PRESS78_BUILD_LIBFUZZER)
+    # U4/U8 input fuzzing, one harness built twice. Press78DspFuzzReplay (any
+    # compiler, FuzzHarness.h's main) replays the fixed crashes committed in
+    # Tests/Fixtures/fuzz/ and then seeded inputs as a unit test;
+    # Press78DspFuzz (PRESS78_BUILD_FUZZER, Clang) is the libFuzzer target over
+    # coverage-instrumented DSP.
+    add_executable(Press78DspFuzzReplay Tests/DspFuzz.cpp)
+    target_include_directories(Press78DspFuzzReplay PRIVATE Source Source/DSP)
+    target_link_libraries(Press78DspFuzzReplay PRIVATE Press78DSP)
+    target_compile_definitions(Press78DspFuzzReplay PRIVATE PROTOCODUS_FUZZ_MAIN)
+    file(GLOB PRESS78_FUZZ_REPRODUCERS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/Tests/Fixtures/fuzz/*")
+    add_test(NAME Press78.DspFuzzReplay
+             COMMAND Press78DspFuzzReplay -seed=1 -runs=300 ${PRESS78_FUZZ_REPRODUCERS})
+    set_tests_properties(Press78.DspFuzzReplay PROPERTIES TIMEOUT 600 LABELS unit)
+    if(PRESS78_BUILD_FUZZER)
         if(NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-            message(FATAL_ERROR "PRESS78_BUILD_LIBFUZZER requires Clang")
+            message(FATAL_ERROR "PRESS78_BUILD_FUZZER requires Clang")
         endif()
-        target_sources(Press78DspFuzz PRIVATE ${PRESS78_DSP_SOURCES})
+        add_executable(Press78DspFuzz Tests/DspFuzz.cpp ${PRESS78_DSP_SOURCES})
+        target_include_directories(Press78DspFuzz PRIVATE Source Source/DSP)
         target_compile_options(Press78DspFuzz PRIVATE
             -fsanitize=fuzzer,address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer)
         target_link_options(Press78DspFuzz PRIVATE -fsanitize=fuzzer,address,undefined)
-    else()
-        target_link_libraries(Press78DspFuzz PRIVATE Press78DSP)
-        target_compile_definitions(Press78DspFuzz PRIVATE PROTOCODUS_FUZZ_MAIN)
+        file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/fuzz-corpus")
+        add_test(NAME Press78.DspFuzz
+                 COMMAND Press78DspFuzz -seed=1 -max_total_time=120 -max_len=4096 -timeout=30 -rss_limit_mb=2048
+                         "${CMAKE_CURRENT_BINARY_DIR}/fuzz-corpus")
+        set_tests_properties(Press78.DspFuzz PROPERTIES TIMEOUT 600 LABELS fuzz)
     endif()
-    file(GLOB PRESS78_FUZZ_REGRESSIONS CONFIGURE_DEPENDS
-         "${CMAKE_CURRENT_SOURCE_DIR}/Tests/fuzz-regressions/*")
-    add_test(NAME Press78.DspFuzz
-             COMMAND Press78DspFuzz -seed=1 -runs=300 ${PRESS78_FUZZ_REGRESSIONS})
-    set_tests_properties(Press78.DspFuzz PROPERTIES TIMEOUT 600 LABELS fuzz)
 
     if(PRESS78_BUILD_TOOLS)
         # Every preset demo renders finite, audible, under the ceiling, 10-20 s
@@ -289,9 +296,23 @@ if(BUILD_TESTING)
                  COMMAND RenderPress78PresetDemos --jobs 4 --check
                          "${CMAKE_CURRENT_SOURCE_DIR}/Docs/audio/midi")
         set_tests_properties(Press78.AudioDemos PROPERTIES TIMEOUT 900 LABELS audio)
+        # U7: the preset demos timed on one thread against the budget in
+        # Tools/RenderPresetDemos.cpp. Timing means nothing instrumented.
+        if(CMAKE_BUILD_TYPE STREQUAL "Release" AND NOT PRESS78_ENABLE_SANITIZERS)
+            add_test(NAME Press78.CpuBudget
+                     COMMAND RenderPress78PresetDemos --cpu --json "${CMAKE_BINARY_DIR}/cpu.json"
+                             "${CMAKE_CURRENT_SOURCE_DIR}/Docs/audio/midi")
+            set_tests_properties(Press78.CpuBudget PROPERTIES LABELS perf RUN_SERIAL TRUE TIMEOUT 1800)
+        endif()
     endif()
 
-    find_package(Python3 COMPONENTS Interpreter)
+    # CI requires the interpreter, so a missing one cannot silently register
+    # fewer tests.
+    if(PRESS78_REQUIRE_PYTHON_TESTS)
+        find_package(Python3 COMPONENTS Interpreter REQUIRED)
+    else()
+        find_package(Python3 COMPONENTS Interpreter)
+    endif()
     if(Python3_Interpreter_FOUND)
         add_test(NAME Press78.ModernFactoryBank COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/modern_bank.py)
@@ -329,7 +350,7 @@ if(BUILD_TESTING)
         # A fixed sample of the U4 matrix at one rate and block size per case;
         # the main build's nightly shards cover every case at all nine.
         add_test(NAME Press78.ParameterMatrix
-                 COMMAND Press78ParameterMatrixTests --rotation --shard 1/50 --jobs 4)
+                 COMMAND Press78ParameterMatrixTests --rotation --shard 0/50 --jobs 4)
         set_tests_properties(Press78.ParameterMatrix PROPERTIES TIMEOUT 1800 LABELS fuzz)
 
         if(Python3_Interpreter_FOUND)
