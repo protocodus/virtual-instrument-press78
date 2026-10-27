@@ -44,6 +44,27 @@ double mode99VelocityLevel(int velocity) noexcept {
 // 1/32-semitone pitch coordinate, rounding toward minus infinity.
 int heardGlideSteps(int offset) noexcept { return offset >= 0 ? offset / 8 : -((7 - offset) / 8); }
 
+// std::pow without the call where its result is exact: x^0 is 1 for every x
+// (C17 F.10.4.4), and x^1 is x, which a correctly rounded pow returns (glibc's
+// does for every velocity level and a 10^8-value sweep). The defaults for
+// Velocity to FM (0) and Velocity to level (1), a voice without vibrato or
+// tremolo, and an envelope at full level all hit these, every tick.
+double power(double base, double exponent) noexcept {
+    if (exponent == 0.0) return 1.0;
+    if (exponent == 1.0) return base;
+    return std::pow(base, exponent);
+}
+
+// std::fmod(x, tau) for a phase that has just advanced. fmod is exact, and
+// so is x - tau for tau <= x < 2 tau (Sterbenz), so a step of under a turn
+// wraps with one subtraction and the result is bit for bit fmod's. Larger
+// steps, negative phases and non-finite values still take fmod.
+double wrapPhase(double x) noexcept {
+    if (x >= 0.0 && x < tau) return x;
+    if (x >= tau && x < 2.0 * tau) return x - tau;
+    return std::fmod(x, tau);
+}
+
 double bounded(double x, double low, double high, double fallback) noexcept {
     return std::isfinite(x) ? std::clamp(x, low, high) : fallback;
 }
@@ -106,11 +127,7 @@ Operator sanitize(Operator op) noexcept {
 // std::fmod(x, tau) for a phase that has just advanced. Below tau fmod
 // returns x itself, and on [tau, 2 tau) its exact result is x - tau, which
 // the subtraction gives exactly (Sterbenz); anything else still takes fmod.
-double wrapPhase(double x) noexcept {
-    if (x >= 0.0 && x < tau) return x;
-    if (x >= tau && x < 2.0 * tau) return x - tau;
-    return std::fmod(x, tau);
-}
+
 bool sameBits(double a, double b) noexcept {
     std::uint64_t x = 0, y = 0;
     std::memcpy(&x, &a, sizeof x); std::memcpy(&y, &b, sizeof y);
@@ -886,6 +903,20 @@ double Press78Engine::resampled(double position) const noexcept {
         return value;
     }
     double value = 0.0;
+    // Every tap is normally in the retained history (only the first ticks
+    // after a reset reach before it), so read it without historyAt's bounds
+    // tests. The sum is the same, in the same order.
+    const std::int64_t first = base - 31;
+    if (first >= 0 && first >= nextTick_ - static_cast<std::int64_t>(kHistory) && first + kSincTaps <= nextTick_) {
+        const auto& lower = sinc_[static_cast<std::size_t>(p)];
+        const auto& upper = sinc_[static_cast<std::size_t>(p) + 1];
+        for (int j = 0; j < kSincTaps; ++j) {
+            const auto k = static_cast<std::size_t>(j);
+            const double coefficient = lower[k] + mix * (upper[k] - lower[k]);
+            value += history_[static_cast<std::size_t>(first + j) % kHistory] * coefficient;
+        }
+        return value;
+    }
     for (int j = 0; j < kSincTaps; ++j) {
         const double coefficient = sinc_[p][j] + mix * (sinc_[p + 1][j] - sinc_[p][j]);
         value += historyAt(base + j - 31) * coefficient;

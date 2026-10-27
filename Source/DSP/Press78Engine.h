@@ -228,6 +228,7 @@ private:
         void updatePatch(const Patch&, int keyLevelModel) noexcept;
         void updateRelease(bool sustain) noexcept;
         void updateOriginalPitch(int steps) noexcept;
+        // globalLfo is the shared LFO, already triangle-shaped if selected.
         double next(const Controls&, double pitchMultiplier, double globalLfo) noexcept;
         double next(const Controls&, double pitchMultiplier, double globalLfo, TickContext&) noexcept;
     };
