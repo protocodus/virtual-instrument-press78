@@ -168,6 +168,30 @@ skill has the procedures. These hold in every session:
 - A DSP change is done when the suites it touches, the `unit`, `audio` and
   `perf` tiers and `<Name>DSPCxx17` pass.
 
+## Demo songs
+
+The README demos play the committed MIDI in `Docs/audio/midi/` (More demos in
+`more/`), written only by `Tools/write_preset_midi.py`; `<Name>.DemoMidiSources`
+fails when the files and the script differ. Change a phrase in the script, on
+purpose, and commit it with its regenerated `.mid` files on their own. Never
+edit a `.mid` by hand or rewrite a phrase because the DSP changed. The demos
+play each preset as a freshly loaded plug-in does, with no per-demo trims.
+The WAVs and the README table come only from the main build. Use the
+`portfolio-demo-songs` skill when choosing presets, writing phrases or changing
+the renderer.
+
+## Promotion and Shop material
+
+Promo videos, Shorts, their music, stems and thumbnails are review
+deliverables: render them to a dated folder outside the checkout, hand them
+over, and never commit them. Their sound comes from the shipping engine
+playing original MIDI, and every claim on screen or in the copy is one How it
+works supports. Use the `portfolio-youtube-promo` skill for a 16:9 YouTube
+promo and `portfolio-shorts` for YouTube Shorts and TikTok. Reason Shop copy
+and images belong to the Rack repository's `rack-shop-content` skill, and
+panel artwork to its `rack-panel-design` skill. Uploading or publishing any of
+it is the owner's step.
+
 ## Build and verify
 
 ```sh
@@ -193,15 +217,14 @@ build.
 - `Source/DSP/FactoryVoices.h` and `Assets/FactoryBank/press78-factory.json`
   come from `Tools/generate_factory.py`; the analog, noise and chorus tables
   from their `Tools/generate_*.py`. Change them only through the generator.
-- The demo phrases `Docs/audio/midi/<NNN>-<slug>.mid` are written by
-  `Tools/write_preset_midi.py`, and `Press78.DemoMidiSources` checks the
-  committed files match it. Renaming a voice renames its files.
+- The demo phrases are `Docs/audio/midi/<NNN>-<slug>.mid`, numbered with the
+  three-digit program number. Renaming a voice renames its files.
 - `Tools/PresetDemoRenderer.h`, `Tools/update_readme_blocks.py`,
   `Tests/ParameterMatrix.h`, `Tests/FuzzHarness.h`,
   `scripts/validate-plugins.sh` and the Documentation layout, A–Z listening
-  tests and Testing sections above are byte-identical copies of
-  the portfolio masters in `reason-rack-extensions/Tools/portfolio/`. Change
-  them there, never here.
+  tests, Testing, Demo songs and Promotion and Shop material sections above
+  are byte-identical copies of the portfolio masters in
+  `reason-rack-extensions/Tools/portfolio/`. Change them there, never here.
 - `Tools/reference/` is the frozen Python research implementation the native
   engine is compared against; `Tests/results/` holds the receipts the
   comparison tools write. Receipts keep the paths they were written with.
