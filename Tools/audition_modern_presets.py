@@ -142,7 +142,7 @@ def main():
     stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     dest=(args.output or ROOT/'build'/f'modern-preset-audition-{stamp}').resolve()
     dest.mkdir(parents=True,exist_ok=False)
-    source_files=[Path(__file__).resolve(), ROOT/'Tools/modern_bank.py', ROOT/'Tools/generate_rack.py',ROOT/'Assets/controls.json',
+    source_files=[Path(__file__).resolve(), ROOT/'Tools/modern_bank.py',ROOT/'Assets/controls.json',
                   device/'Tests/FactoryPresetAudition.cpp',device/'Tests/WrapperHostContract.cpp',device/'Press78.cpp',device/'Press78.h',
                   device/'Parameters.h',device/'ApplyParameters.inc',dsp/'Press78Engine.cpp',
                   *sorted(dsp.glob('*.h')), *sorted((ROOT/'Assets/FactoryBank').glob('modern-*.json')),

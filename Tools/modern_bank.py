@@ -12,23 +12,6 @@ CATEGORY_COUNTS = {'Bass': 12, 'Donk': 8, 'Pluck': 12, 'Lead': 8, 'Pad': 6, 'FX'
 def preset_relative_path(voice):
     return Path('Modern') / voice['category'] / (voice['name'] + '.repatch')
 
-def load_rack_startup(voices=None):
-    """Resolve the Rack default patch without duplicating its sound parameters.
-
-    This selects an existing factory sound for new Reason devices only; control
-    defaults remain the compatibility values used by old songs and the plug-in.
-    """
-    config = json.loads((ROOT / 'Assets/FactoryBank/rack-startup.json').read_text())
-    if set(config) != {'schema', 'preset_id'} or config['schema'] != 'press78.rack-startup.v1':
-        raise ValueError('Unexpected Rack startup selection schema')
-    matches = [v for v in (load_modern() if voices is None else voices)
-               if v['id'] == config['preset_id']]
-    if len(matches) != 1:
-        raise ValueError('Rack startup must select exactly one modern factory sound')
-    voice = matches[0]
-    return {'preset_id': voice['id'], 'name': voice['name'],
-            'default_patch': '/Public/' + preset_relative_path(voice).as_posix()}
-
 def load_modern():
     schema = json.loads((ROOT / 'Assets/controls.json').read_text())
     specs = {row['id']: row for row in schema['controls']}
