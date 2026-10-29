@@ -3,6 +3,7 @@
 #include "FirmwarePitch.h"
 #include "FirmwareLevel.h"
 #include "HardwareCharacter.h"
+#include "FastMath.h"
 
 #include <algorithm>
 #include <cmath>
@@ -82,7 +83,7 @@ double originalStep(const Operator& op, int note, int steps, double rate) noexce
     return tau * base * ratio * std::pow(2.0, cents / 1200.0) / rate;
 }
 double wave(double phase, int shape) noexcept {
-    const double s = std::sin(phase);
+    const double s = fast_math::sin(phase);
     if (shape >= 2 && s < 0.0) return 0.0;
     return shape == 1 || shape == 3 ? s * std::abs(s) : s;
 }
