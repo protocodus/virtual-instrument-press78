@@ -300,8 +300,14 @@ private:
     void updatePitchControls() noexcept;
     void buildResampler() noexcept;
     double synthesizeTick() noexcept;
-    double resampled(double position) const noexcept;
-    double historyAt(std::int64_t tick) const noexcept;
+    // Output samples resampled together. A group spans at most 4 x 7.4 ticks
+    // (8 kHz host, +3 % clock), so with the 72-tick reach of each sample's
+    // taps every one is still in the 128-tick history when it is read.
+    static constexpr std::size_t kResampleGroup = 4;
+    double resampled(double position, std::uint16_t silentTicks, std::int64_t nextTick) const noexcept;
+    void resampledGroup(const double* position, const std::uint16_t* silentTicks,
+                        const std::int64_t* nextTick, double* out) const noexcept;
+    double historyAt(std::int64_t tick, std::int64_t nextTick) const noexcept;
     double readDelay(double samples) const noexcept;
     void output(double mono, double& left, double& right) noexcept;
 };

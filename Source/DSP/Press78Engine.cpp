@@ -831,23 +831,25 @@ double Press78Engine::synthesizeTick() noexcept {
     return sum;
 }
 
-double Press78Engine::historyAt(std::int64_t tick) const noexcept {
-    if (tick < 0 || tick >= nextTick_ || tick < nextTick_ - static_cast<std::int64_t>(kHistory)) return 0.0;
+double Press78Engine::historyAt(std::int64_t tick, std::int64_t nextTick) const noexcept {
+    if (tick < 0 || tick >= nextTick || tick < nextTick - static_cast<std::int64_t>(kHistory)) return 0.0;
     return history_[static_cast<std::size_t>(tick) % kHistory];
 }
 
-double Press78Engine::resampled(double position) const noexcept {
-    if (silentTicks_ >= kHistory) return 0.0;
+// nextTick and silentTicks are the tick clock as it stood when this output
+// sample's ticks were complete; later ticks of a group do not change the value.
+double Press78Engine::resampled(double position, std::uint16_t silentTicks, std::int64_t nextTick) const noexcept {
+    if (silentTicks >= kHistory) return 0.0;
     const double center = position - resamplerDelay_;
     const auto base = static_cast<std::int64_t>(std::floor(center));
     const double fraction = center - std::floor(center);
-    if (sampleRate_ >= chipRate_ && fraction < 1e-12) return historyAt(base);
+    if (sampleRate_ >= chipRate_ && fraction < 1e-12) return historyAt(base, nextTick);
     const double phase = fraction * kSincPhases;
     const int p = std::min(kSincPhases - 1, static_cast<int>(phase));
     const double mix = phase - p;
     const auto firstTick = base - 31;
-    if (firstTick >= 0 && firstTick >= nextTick_ - static_cast<std::int64_t>(kHistory)
-        && firstTick + kSincTaps <= nextTick_) {
+    if (firstTick >= 0 && firstTick >= nextTick - static_cast<std::int64_t>(kHistory)
+        && firstTick + kSincTaps <= nextTick) {
         const auto* s0 = sinc_[p].data();
         const auto* s1 = sinc_[p + 1].data();
         double value = 0.0;
@@ -865,9 +867,47 @@ double Press78Engine::resampled(double position) const noexcept {
     double value = 0.0;
     for (int j = 0; j < kSincTaps; ++j) {
         const double coefficient = sinc_[p][j] + mix * (sinc_[p + 1][j] - sinc_[p][j]);
-        value += historyAt(base + j - 31) * coefficient;
+        value += historyAt(base + j - 31, nextTick) * coefficient;
     }
     return value;
+}
+
+void Press78Engine::resampledGroup(const double* position, const std::uint16_t* silentTicks,
+                                   const std::int64_t* nextTick, double* out) const noexcept {
+    // Each sample's sum is one serial chain of kSincTaps dependent additions,
+    // so a lone sample waits on adder latency. Four samples' chains run side
+    // by side here, each with the very operations, in the very order, of
+    // resampled(): only the interleaving between samples changes.
+    std::int64_t first[kResampleGroup];
+    const double* s0[kResampleGroup];
+    const double* s1[kResampleGroup];
+    double mix[kResampleGroup];
+    for (std::size_t k = 0; k < kResampleGroup; ++k) {
+        const double center = position[k] - resamplerDelay_;
+        const auto base = static_cast<std::int64_t>(std::floor(center));
+        const double fraction = center - std::floor(center);
+        first[k] = base - 31;
+        const bool sinc = silentTicks[k] < kHistory && !(sampleRate_ >= chipRate_ && fraction < 1e-12)
+            && first[k] >= 0 && first[k] >= nextTick[k] - static_cast<std::int64_t>(kHistory)
+            && first[k] + kSincTaps <= nextTick[k];
+        if (!sinc) {
+            for (std::size_t m = 0; m < kResampleGroup; ++m) out[m] = resampled(position[m], silentTicks[m], nextTick[m]);
+            return;
+        }
+        const double phase = fraction * kSincPhases;
+        const int p = std::min(kSincPhases - 1, static_cast<int>(phase));
+        mix[k] = phase - p;
+        s0[k] = sinc_[p].data();
+        s1[k] = sinc_[p + 1].data();
+    }
+    double v0 = 0.0, v1 = 0.0, v2 = 0.0, v3 = 0.0;
+    for (int j = 0; j < kSincTaps; ++j) {
+        v0 += history_[static_cast<std::size_t>(first[0] + j) & (kHistory - 1)] * (s0[0][j] + mix[0] * (s1[0][j] - s0[0][j]));
+        v1 += history_[static_cast<std::size_t>(first[1] + j) & (kHistory - 1)] * (s0[1][j] + mix[1] * (s1[1][j] - s0[1][j]));
+        v2 += history_[static_cast<std::size_t>(first[2] + j) & (kHistory - 1)] * (s0[2][j] + mix[2] * (s1[2][j] - s0[2][j]));
+        v3 += history_[static_cast<std::size_t>(first[3] + j) & (kHistory - 1)] * (s0[3][j] + mix[3] * (s1[3][j] - s0[3][j]));
+    }
+    out[0] = v0; out[1] = v1; out[2] = v2; out[3] = v3;
 }
 
 double Press78Engine::readDelay(double samples) const noexcept {
@@ -981,21 +1021,38 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
 
 void Press78Engine::process(float* left, float* right, std::size_t frames) noexcept {
     if (frames == 0) return;
-    for (std::size_t i = 0; i < frames; ++i) {
-        while (static_cast<double>(nextTick_) <= position_) {
-            const double tickSample = synthesizeTick();
-            history_[static_cast<std::size_t>(nextTick_) & (kHistory - 1)] = tickSample;
-            silentTicks_ = tickSample == 0.0 ? static_cast<std::uint16_t>(std::min<std::size_t>(silentTicks_ + 1, kHistory)) : 0;
-            ++nextTick_;
+    std::size_t i = 0;
+    while (i < frames) {
+        // Ticks never read the output stage, so a group's ticks can all run
+        // before its samples are resampled. Only a pending chip-rate switch,
+        // applied inside a tick, would change what an earlier sample reads.
+        const std::size_t group = effectiveChipRate_ == controls_.chipRate && frames - i >= kResampleGroup
+            ? kResampleGroup : 1;
+        double position[kResampleGroup];
+        std::uint16_t silent[kResampleGroup];
+        std::int64_t next[kResampleGroup];
+        for (std::size_t k = 0; k < group; ++k) {
+            while (static_cast<double>(nextTick_) <= position_) {
+                const double tickSample = synthesizeTick();
+                history_[static_cast<std::size_t>(nextTick_) & (kHistory - 1)] = tickSample;
+                silentTicks_ = tickSample == 0.0 ? static_cast<std::uint16_t>(std::min<std::size_t>(silentTicks_ + 1, kHistory)) : 0;
+                ++nextTick_;
+            }
+            position[k] = position_; silent[k] = silentTicks_; next[k] = nextTick_;
+            const double ppm = controls_.clockDriftPpm == 0.0 ? controls_.clockOffsetPpm
+                : controls_.clockOffsetPpm + controls_.clockDriftPpm * std::sin(tau * controls_.clockDriftRateHz * hostTime_);
+            position_ += chipRate_ / sampleRate_ * (1.0 + ppm * 1e-6);
+            hostTime_ += 1.0 / sampleRate_;
         }
-        double l, r;
-        output(resampled(position_), l, r);
-        if (left) left[i] = static_cast<float>(l);
-        if (right) right[i] = static_cast<float>(r);
-        const double ppm = controls_.clockDriftPpm == 0.0 ? controls_.clockOffsetPpm
-            : controls_.clockOffsetPpm + controls_.clockDriftPpm * std::sin(tau * controls_.clockDriftRateHz * hostTime_);
-        position_ += chipRate_ / sampleRate_ * (1.0 + ppm * 1e-6);
-        hostTime_ += 1.0 / sampleRate_;
+        double mono[kResampleGroup];
+        if (group == kResampleGroup) resampledGroup(position, silent, next, mono);
+        else mono[0] = resampled(position[0], silent[0], next[0]);
+        for (std::size_t k = 0; k < group; ++k, ++i) {
+            double l, r;
+            output(mono[k], l, r);
+            if (left) left[i] = static_cast<float>(l);
+            if (right) right[i] = static_cast<float>(r);
+        }
     }
     hasProcessed_ = true;
 }
