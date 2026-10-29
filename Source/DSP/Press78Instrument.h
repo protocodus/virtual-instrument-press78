@@ -33,6 +33,8 @@ public:
     static constexpr std::size_t kMaxVoices = Press78Engine::kMaxVoices;
 
     void prepare(double sampleRate) noexcept;
+    // Silences both units and forgets Double; call apply() again before the
+    // next process().
     void reset() noexcept;
     // patchChanged retimbres held notes with the patch (and the wheel's
     // effect on it); otherwise only the controls change.

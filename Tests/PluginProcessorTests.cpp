@@ -219,6 +219,43 @@ void renderContract()
     check (whole.getLatencySamples() >= 0, "latency is reported");
 }
 
+// A host reset between songs must not drop Double: after a block and a reset
+// the processor plays exactly as one that was just prepared.
+void resetContract()
+{
+    const auto play = [] (bool resetFirst)
+    {
+        Press78AudioProcessor p;
+        p.setCurrentProgram (1);
+        setValue (p, "doubleMode", 1.0f);
+        setValue (p, "doubleDetune", 20.0f);
+        p.setRateAndBufferSizeDetails (48000.0, 256);
+        p.prepareToPlay (48000.0, 256);
+        juce::AudioBuffer<float> buffer (2, 256);
+        juce::MidiBuffer none;
+        if (resetFirst)
+        {
+            p.processBlock (buffer, none);
+            p.reset();
+        }
+        std::vector<float> out;
+        for (int block = 0; block < 40; ++block)
+        {
+            buffer.clear();
+            juce::MidiBuffer midi;
+            if (block == 0)
+                midi.addEvent (juce::MidiMessage::noteOn (1, 60, (juce::uint8) 100), 0);
+            p.processBlock (buffer, midi);
+            for (int i = 0; i < buffer.getNumSamples(); ++i)
+                out.push_back (buffer.getSample (0, i) - buffer.getSample (1, i));
+        }
+        return out;
+    };
+    const auto kept = play (true), fresh = play (false);
+    check (kept == fresh && std::any_of (kept.begin(), kept.end(), [] (float x) { return std::abs (x) > 1.0e-4f; }),
+           "Double survives a host reset");
+}
+
 void editorContract()
 {
     Press78AudioProcessor p;
@@ -282,6 +319,7 @@ int main()
     programContract();
     stateContract();
     renderContract();
+    resetContract();
     portamentoContract();
     editorContract();
     std::printf ("Press78 processor contracts: %d failure(s)\n", failures);
