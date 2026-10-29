@@ -3,6 +3,7 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
+#include <limits>
 #include "AnalogOutput.h"
 #include "AmplifierCircuit.h"
 #include "ChorusCircuit.h"
@@ -204,6 +205,9 @@ private:
         double cachedAmGain = 1.0;
         double modAtten = -1.0, modGain = 0.0;
         double carAtten = -1.0, carGain = 0.0;
+        // The exponents the voices' cached velocity powers hold (NaN: none).
+        double velModExponent = std::numeric_limits<double>::quiet_NaN();
+        double velCarExponent = std::numeric_limits<double>::quiet_NaN();
     };
     struct Voice {
         Patch patch{};
@@ -214,6 +218,11 @@ private:
         double modGain = 0.0, carrierGain = 0.0, feedback = 0.0;
         double velocity = 1.0;      // velocity/127, the modulator's law.
         double velocityLevel = 1.0; // Carrier level at sensitivity 1.
+        // pow(velocity, Press78Engine::velModExponent_) and
+        // pow(velocityLevel, velCarExponent_): the exponents are smoothed
+        // controls that settle, so the pow per tick is usually a repeat.
+        double velModPower = 1.0, velCarPower = 1.0;
+        void updateVelocityPowers(double modExponent, double carExponent) noexcept;
         // Portamento offset and per-service step in 1/256 semitone, as the
         // firmware keeps them; the oscillators hear offset>>3 (1/32 semitone).
         int glideOffset = 0, glideStep = 0, glideSteps = 0;
@@ -272,6 +281,8 @@ private:
     double dcCoefficient_ = 0.0, gainSmoothing_ = 0.0;
     std::int64_t nextTick_ = 0;
     std::uint64_t serial_ = 0;
+    double velModExponent_ = std::numeric_limits<double>::quiet_NaN();
+    double velCarExponent_ = std::numeric_limits<double>::quiet_NaN();
     std::size_t delayWrite_ = 0;
     std::uint16_t silentTicks_ = static_cast<std::uint16_t>(kHistory);
     std::uint16_t silentDelay_ = static_cast<std::uint16_t>(kDelaySize);

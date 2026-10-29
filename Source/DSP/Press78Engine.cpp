@@ -299,6 +299,12 @@ void Press78Engine::Voice::updateOriginalPitch(int steps) noexcept {
     carrierStep = originalStep(patch.carrier, note, steps + glideSteps, tickRate);
 }
 
+void Press78Engine::Voice::updateVelocityPowers(double modExponent, double carExponent) noexcept {
+    // Exponents 0 and 1 never read the cache, so they cost no pow.
+    if (modExponent != 0.0 && modExponent != 1.0) velModPower = std::pow(velocity, modExponent);
+    if (carExponent != 0.0 && carExponent != 1.0) velCarPower = std::pow(velocityLevel, carExponent);
+}
+
 void Press78Engine::Voice::updateRelease(bool sustain) noexcept {
     modEnvelope.updateRelease(patch.modulator, note, sustain, tickRate);
     carrierEnvelope.updateRelease(patch.carrier, note, sustain, tickRate);
@@ -377,6 +383,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     if (em != 0.0 && modGain != 0.0) {
         const double velMod = c.velocityToModulation == 0.0 ? 1.0
             : c.velocityToModulation == 1.0 ? velocity
+            : c.velocityToModulation == ctx.velModExponent ? velModPower
             : std::pow(velocity, c.velocityToModulation);
         mod = wave(modPhase + feedback * (prev1 + prev2) * 0.5, patch.modulator.wave)
             * em * modGain * velMod * amM;
@@ -386,6 +393,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     if (ec != 0.0 && carrierGain != 0.0) {
         const double velCar = c.velocitySensitivity == 1.0 ? velocityLevel
             : c.velocitySensitivity == 0.0 ? 1.0
+            : c.velocitySensitivity == ctx.velCarExponent ? velCarPower
             : std::pow(velocityLevel, c.velocitySensitivity);
         y = wave(carrierPhase + 8.0 * pi * c.modulationAmount * mod, patch.carrier.wave)
             * ec * carrierGain * velCar * amC;
@@ -546,6 +554,7 @@ void Press78Engine::startVoice(Voice& target, int note, int velocity, int source
     applyPendingSustainMode();
     target.configure(patch_, note, velocity, ++serial_, effectiveKeyLevelModel_, chipRate_);
     target.velocityLevel = controls_.velocityCurve == 1 ? mode99VelocityLevel(velocity) : target.velocity;
+    target.updateVelocityPowers(velModExponent_, velCarExponent_);
     auto& previous = lastNote_[source == 1 ? 1 : 0];
     if (controls_.portamento && previous != 0) {
         target.glideOffset = (previous - note) * 256;
@@ -826,7 +835,18 @@ double Press78Engine::synthesizeTick() noexcept {
     double sum = 0.0;
     if (!idle) {
         const double global = voiceControls_.globalLfo ? std::sin(globalLfoPhase_) : 0.0;
+        // While an exponent moves, every voice repowers once per tick, as
+        // Voice::next used to; once it settles the cached powers are exact.
+        if (voiceControls_.velocityToModulation != velModExponent_
+            || voiceControls_.velocitySensitivity != velCarExponent_) {
+            velModExponent_ = voiceControls_.velocityToModulation;
+            velCarExponent_ = voiceControls_.velocitySensitivity;
+            for (auto& voice : voices_) if (voice.active) voice.updateVelocityPowers(velModExponent_, velCarExponent_);
+            for (auto& tail : tails_) if (tail.remaining > 0) tail.voice.updateVelocityPowers(velModExponent_, velCarExponent_);
+        }
         TickContext ctx{};
+        ctx.velModExponent = velModExponent_;
+        ctx.velCarExponent = velCarExponent_;
         for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global, ctx);
         for (auto& tail : tails_) if (tail.remaining > 0) {
             sum += tail.voice.next(voiceControls_, pitchMultiplier_, global, ctx) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
