@@ -54,7 +54,7 @@ if(PRESS78_ENABLE_SANITIZERS)
     add_link_options(-fsanitize=address,undefined,float-cast-overflow)
 endif()
 
-set(PRESS78_DSP_SOURCES Source/DSP/Press78Engine.cpp)
+set(PRESS78_DSP_SOURCES Source/DSP/Press78Engine.cpp Source/DSP/Press78Instrument.cpp)
 
 add_library(Press78DSP STATIC ${PRESS78_DSP_SOURCES})
 target_include_directories(Press78DSP PUBLIC Source Source/DSP)
@@ -259,6 +259,9 @@ if(BUILD_TESTING)
     add_executable(Press78HardwareCharacterTests Tests/test_hardware_character.cpp)
     target_link_libraries(Press78HardwareCharacterTests PRIVATE Press78DSP)
     add_test(NAME Press78.HardwareCharacter COMMAND Press78HardwareCharacterTests)
+    add_executable(Press78InstrumentTests Tests/test_instrument.cpp)
+    target_link_libraries(Press78InstrumentTests PRIVATE Press78DSP)
+    add_test(NAME Press78.Instrument COMMAND Press78InstrumentTests)
 
     # U4/U8 input fuzzing, one harness built twice. Press78DspFuzzReplay (any
     # compiler, FuzzHarness.h's main) replays the fixed crashes committed in
