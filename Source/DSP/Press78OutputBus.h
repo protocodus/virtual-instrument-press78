@@ -75,7 +75,9 @@ public:
     double coefficient(double distance) const noexcept {
         const double u=std::abs(ratio_*distance)*1024.;
         if(u>98304.)return 0.;
-        const auto i=static_cast<std::size_t>(u);
+        // 0<=u<=98304 fits int: x86 converts int in one instruction each way,
+        // size_t in a branchy sequence (a third of this loop's cost).
+        const int i=static_cast<int>(u);
         if(i>=98304)return ratio_*static_cast<double>(kKernel[98304]);
         const double fraction=u-static_cast<double>(i);
         return ratio_*(static_cast<double>(kKernel[i])+(static_cast<double>(kKernel[i+1])-kKernel[i])*fraction);
