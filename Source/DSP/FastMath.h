@@ -1,5 +1,7 @@
 #pragma once
 #include <cmath>
+#include <cstdint>
+#include <cstring>
 
 // Inline kernels for the engine's per-tick transcendentals. They replace a
 // libm call (out of line, and in the Rack's -fno-builtin build the SDK's own
@@ -46,6 +48,26 @@ inline double sin(double x) noexcept {
     case 2: return -sinKernel(r);
     default: return -cosKernel(r);
     }
+}
+
+// 10^(-db/20) for 0 <= db <= 96, the envelope's attenuation in decibels:
+// 2^(db * -log2(10)/20) as Cephes exp2 (a rational on [-1/2, 1/2]) times an
+// exact power of two. Within 18 ulp (4e-15 relative) of glibc's
+// pow(10, -db/20) over the range; rounding db * k, not the kernel, dominates.
+inline double dbToGain(double db) noexcept {
+    constexpr double k = -0.16609640474436811739; // -log2(10)/20
+    const double y = db * k; // in [-15.95, 0]
+    const int e = -static_cast<int>(0.5 - y);
+    const double f = y - static_cast<double>(e); // exact, in [-1/2, 1/2]
+    const double f2 = f * f;
+    const double p = f * ((2.30933477057345225087e-2 * f2 + 2.02020656693165307700e1) * f2 + 1.51390680115615096133e3);
+    const double q = (f2 + 2.33184211722314911771e2) * f2 + 4.36821166879210612817e3;
+    const double r = 1.0 + 2.0 * (p / (q - p));
+    // 2^e, e in [-16, 0], built exactly from its exponent bits.
+    const auto bits = static_cast<std::uint64_t>(1023 + e) << 52;
+    double scale;
+    std::memcpy(&scale, &bits, sizeof scale);
+    return r * scale;
 }
 
 } // namespace press78::fast_math

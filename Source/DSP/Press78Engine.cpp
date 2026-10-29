@@ -261,7 +261,7 @@ inline double Press78Engine::Envelope::next(bool released, bool reverbKnee, bool
         if (attenuation == sharedAtten) {
             cachedGain = sharedGain;
         } else {
-            cachedGain = std::pow(10.0, -std::max(0.0, attenuation) / 20.0);
+            cachedGain = fast_math::dbToGain(std::max(0.0, attenuation));
             sharedAtten = attenuation;
             sharedGain = cachedGain;
         }
