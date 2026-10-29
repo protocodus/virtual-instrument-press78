@@ -105,9 +105,9 @@ template<class V> void sameHistory(const V& a, const V& b) {
 } // namespace
 
 int main() {
-    test("chosen character is enabled by default and diagnostic bypass is retained", [] {
+    test("chosen character is enabled by default, the release knee off, and diagnostic bypass is retained", [] {
         press78::Controls c;
-        CHECK(c.envelopeReverb && c.outputCircuit && c.circuitSaturation);
+        CHECK(!c.envelopeReverb && c.outputCircuit && c.circuitSaturation);
         CHECK(character::kReleaseKneeDb == 18.0);
         c.envelopeReverb = false; c.outputCircuit = false;
         const auto clean = press78::sanitizeControls(c);

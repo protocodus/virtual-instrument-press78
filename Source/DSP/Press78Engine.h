@@ -69,10 +69,11 @@ struct Controls {
     // The glide law is the keyboard program's; its service period is estimated.
     bool portamento = false;
     int portamentoSpeed = 3;
-    // User-selected envelope-Reverb estimate, default on in both hosts.
-    // Native reference callers may disable it; this is not a new host parameter.
+    // Envelope-Reverb estimate, off in both hosts since 1.0.1: the owner heard
+    // its tail as reverb on every patch (Docs/decisions.md, 2026-10-29). The
+    // research --real profile still enables it; not a host parameter.
     // Carrier EG >=18dB during release caps both operators at native RR4/RKS.
-    bool envelopeReverb = true;
+    bool envelopeReverb = false;
     double lfoRateHz = 5.24;            // 0..30, shared by AM and PM.
     double vibratoDepth = 1.0;         // 0..4 multiplier of the patch PMS law.
     double tremoloDepth = 1.0;         // 0..4 multiplier of the patch AMS law.
