@@ -3,6 +3,7 @@
 #pragma once
 #include "Press78Engine.h"
 #include "OutputKernelTable.h"
+#include "OutputPhaseTable.h"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -61,7 +62,9 @@ public:
     static constexpr std::size_t kHistory=2048;
     void prepare(double fs) noexcept {
         rate_=validRate(fs); ratio_=std::min(1.,rate_/48000.);
-        half_=static_cast<int>(std::ceil(96./ratio_)); reset();
+        half_=static_cast<int>(std::ceil(96./ratio_));
+        phases_=rate_==kPhaseTable44100.rate?&kPhaseTable44100:nullptr;
+        reset();
     }
     void reset() noexcept { clearHistory(); next_=0; }
     void clearHistory() noexcept { history_.fill({{0,0}}); silent_=static_cast<std::uint16_t>(kHistory); }
@@ -86,6 +89,9 @@ public:
         if(silent_>=kHistory)return {{0.0f,0.0f}};
         // pos - halfDelay is center; highest required index never exceeds floor(pos).
         double left=0,right=0,total=0;
+        // At a tabulated rate the row for this grid phase holds exactly the
+        // coefficients the loop would compute (Tools/generate_output_phases.py).
+        const double* row=phases_?phases_->rows+static_cast<std::size_t>(pos.fraction*phases_->phases+.5)*phases_->taps+half_:nullptr;
         const auto span=static_cast<std::uint64_t>(2*half_);
         if(pos.floor>=span && pos.floor<next_ && next_-(pos.floor-span)<=kHistory) {
             const auto base=pos.floor-static_cast<std::uint64_t>(half_);
@@ -93,7 +99,7 @@ public:
 #pragma clang loop vectorize(disable) interleave(disable)
 #endif
             for(int relative=-half_;relative<=half_;++relative) {
-                const double c=coefficient(static_cast<double>(relative)-pos.fraction);
+                const double c=row?row[relative]:coefficient(static_cast<double>(relative)-pos.fraction);
                 total+=c;
                 const auto index=static_cast<std::size_t>(base+static_cast<std::int64_t>(relative))&(kHistory-1);
                 const auto& value=history_[index];
@@ -118,6 +124,7 @@ private:
     std::uint64_t next_=0;
     double rate_=48000.,ratio_=1.;
     int half_=96;
+    const PhaseTable* phases_=nullptr;
     std::uint16_t silent_=static_cast<std::uint16_t>(kHistory);
 };
 

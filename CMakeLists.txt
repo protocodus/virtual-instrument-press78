@@ -321,6 +321,8 @@ if(BUILD_TESTING)
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/modern_bank.py)
         add_test(NAME Press78.OutputKernel COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_output_kernel.py --check)
+        add_test(NAME Press78.OutputPhases COMMAND ${Python3_EXECUTABLE}
+            ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_output_phases.py --check)
         add_test(NAME Press78.FactoryBank COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_CURRENT_SOURCE_DIR}/Tools/generate_factory.py --check)
         add_test(NAME Press78.ChorusProfile COMMAND ${Python3_EXECUTABLE}
