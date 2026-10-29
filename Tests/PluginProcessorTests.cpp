@@ -184,10 +184,18 @@ void stateContract()
     auto xml = juce::AudioProcessor::getXmlFromBinary (adaptor.getData(), static_cast<int> (adaptor.getSize()));
     for (auto* child = xml->getFirstChildElement(); child != nullptr; child = child->getNextElement())
         if (child->getStringAttribute ("id") == "power") { xml->removeChildElement (child, true); break; }
+    xml->setAttribute ("stateVersion", 1);
     juce::AudioProcessor::copyXmlToBinary (*xml, adaptor);
     Press78AudioProcessor restored;
     restored.setStateInformation (adaptor.getData(), static_cast<int> (adaptor.getSize()));
     check (value (restored, "powerSupply") == 1.0f && value (restored, "power") == 101.0f, "a 0.1.12 adaptor session plays on AC");
+    // From 1.0.0 the Adaptor step is a saved choice and survives a restore.
+    setValue (old, "powerSupply", 2.0f);
+    juce::MemoryBlock current;
+    old.getStateInformation (current);
+    Press78AudioProcessor reloaded;
+    reloaded.setStateInformation (current.getData(), static_cast<int> (current.getSize()));
+    check (value (reloaded, "powerSupply") == 2.0f, "a 1.0.0 Adaptor session keeps its Adaptor");
     auto* power = restored.state().getParameter ("power");
     check (power->getText (power->convertTo0to1 (101.0f), 8) == "AC" && power->getText (power->convertTo0to1 (57.0f), 8) == "57 %",
            "Power reads as a battery percentage, then AC");

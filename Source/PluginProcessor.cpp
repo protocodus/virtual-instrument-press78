@@ -10,7 +10,8 @@ namespace
 {
 using press78::kPluginControls;
 
-constexpr int kStateVersion = 1;
+// 2 (1.0.0): Power circuit's Adaptor is kept as saved; 1 (0.1.x) migrates it.
+constexpr int kStateVersion = 2;
 
 press78::Patch programPatch (int program) noexcept
 {
@@ -205,7 +206,10 @@ void Press78AudioProcessor::setStateInformation (const void* data, int sizeInByt
     auto state = juce::ValueTree::fromXml (*xml);
     currentProgram = std::clamp (static_cast<int> (state.getProperty ("program", 0)), 0, kProgramCount - 1);
     // 0.1.12 chose the adaptor on the Power switch; it is now Power's AC step.
-    if (auto supply = state.getChildWithProperty ("id", "powerSupply"); static_cast<int> (supply.getProperty ("value", 0)) == 2)
+    // A current state keeps whatever it saved, so saving it again is identical.
+    const bool beforePowerSlider = static_cast<int> (state.getProperty ("stateVersion", 1)) < 2;
+    if (auto supply = state.getChildWithProperty ("id", "powerSupply");
+        beforePowerSlider && static_cast<int> (supply.getProperty ("value", 0)) == 2)
     {
         supply.setProperty ("value", 1, nullptr);
         auto power = state.getChildWithProperty ("id", "power");

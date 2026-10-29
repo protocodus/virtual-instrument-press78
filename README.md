@@ -25,7 +25,14 @@ Eight of the 100 factory voices, one from each of eight families, rendered by th
 
 ## Version history
 
-### Unreleased — 0.1.13 — PSS-780 firmware laws, chip rate, analog chorus and amplifier
+### 1.0.0 — 2026-10-29 — final candidate: one playing layer for every front end (not yet released)
+
+- The plug-in plays through the same playing layer as the Rack Extension. At host rates other than 48 kHz it now runs the engine at 48 kHz and converts, as the Rack always has, so it sounds the same at every rate; its reported latency at those rates includes the converter: 126 frames at 44.1 kHz and 256 at 96 kHz.
+- The mod wheel brings in vibrato on every voice. Before, it only deepened voices that already had vibrato and did nothing on the others; now a voice without vibrato gets its Pitch depth scaled by the wheel, and every voice's PMS is at least 3 while the wheel is up. This is the law the Rack already used.
+- **Double** (a second detuned unit, spread across the stereo field) and **Stage drive** (more level into the AUX/Phones amplifier, taken off after it) join the plug-in. They default to off and 0 dB, so earlier sessions sound as they did.
+- A plug-in session saved with **Power circuit** on Adaptor reopens on Adaptor. Since 0.1.13 every restore treated it as a 0.1.12 session and reopened it as Batteries at AC, which sounds the same but overwrote the saved Power; only sessions saved before 1.0.0 are migrated now.
+
+### 0.1.1 to 0.1.13 — 2026-10-19 to 2026-10-28 — PSS-780 firmware laws, chip rate, analog chorus and amplifier
 
 - 0.1.13: **Power** becomes a slider. 100 % is six fresh alkaline C cells, as 0.1.12's **Batteries**; each step down moves the same cells nearer the end of their life, and the top step, **AC**, is the adaptor. Worn cells sag further under the speakers' current, so **AUX** clips sooner and pumps; near the end the sagging rail also pulls the keyboard's +5 V down, which narrows the mixer's headroom before the volume slider. At the default Volume a four-note PSS 46 Jug chord at full velocity changes by −50.5 dB at 90 %, −28.5 dB at 50 % and −12.9 dB at 1 %, and PSS 00 Piano 1's by −56.5, −42.4 and −18.9 dB at 50, 26 and 1 %. The real keyboard would blink its LEDs near 26 % and reset on loud notes below about 19 %; Press78 plays on, so the lowest steps exaggerate. **Phones** change less and **Preamp** not at all. Fresh cells and **AC** sound exactly as 0.1.12's **Batteries** and **Adaptor**, and a 0.1.12 song on the adaptor opens at **AC**.
 - 0.1.12: Adds a **Power** choice. New instances, Init, the 100 `PSS` patches and the modern presets run the amplifier from fresh **Batteries**, so **AUX** and **Phones** clip as the AN7148 does when **Volume** is pushed. A four-note chord at full velocity changes by less than −50 dB at the default Volume on every `PSS` voice; at twice the default, 38 of the 100 chords change by more than −40 dB, and at Volume 1 half of them by more than −20 dB. Loud speaker bass sags the battery rail, so positive peaks flatten first. **Adaptor** idles with more headroom but sags further under load. **Ideal** keeps the earlier linear amplifier, and older songs that lack the setting use it. **Preamp** is unchanged.
@@ -65,7 +72,7 @@ Eight of the 100 factory voices, one from each of eight families, rendered by th
 
 ### Engine
 
-Both operators expose ratio, fine/coarse detune, four waveform families, raw envelope rates, key scaling and AM. Additional controls cover feedback, velocity, LFO phase/depth/delay, twelve-voice allocation, pitch bend, mod wheel, clock variation, analog output, tone, drive, chorus and stereo width. The Rack adapter adds separate MIDI/CV note ownership and Note/Gate/FM/Level CV inputs. All 68 visible controls have explicit Reason automation mappings. The two former noise properties and their IDs remain reserved for compatibility; they are hidden and inert. The registry stays frozen in `Assets/rack-automation.json`; Volume/Tone retain MIDI CC7/74.
+Both operators expose ratio, fine/coarse detune, four waveform families, raw envelope rates, key scaling and AM. Additional controls cover feedback, velocity, LFO phase/depth/delay, twelve-voice allocation, pitch bend, mod wheel, clock variation, analog output, tone, drive, chorus and stereo width. The Rack adapter adds separate MIDI/CV note ownership and Note/Gate/FM/Level CV inputs, and owns its Reason property, automation and Remote mapping. The two former noise properties remain reserved for compatibility; they are hidden and inert.
 
 The initial port preserved the frozen Python raw-FM behavior. Starting with b11, a documented D1 endpoint correction and recording-supported modulation replace those corresponding hypotheses; the Python files remain frozen historical references. It adds fixed-storage voice management, short voice-stealing tails, continuous-control smoothing and host-rate conversion. The floating-point operators, envelope laws and detune mappings are modeling choices, not recovered chip internals; so is the legacy 48 kHz timebase, which the YM3420 rate below replaces. The core has 0.67 ms (32 legacy samples) of nominal reconstruction latency at either rate. The b14 instrument adds a final host converter outside 48k; its declared Rack latency is 126/32/236/256/512 frames at 44.1/48/88.2/96/192k. Clock controls also scale that physical delay; upward clock shifts can alias near-Nyquist energy. Clock drift is a controllable scenario, not a measurement of aged hardware. Memory faults and random digital bit corruption are not introduced as normal vintage behavior.
 
@@ -130,13 +137,21 @@ The standalone PSS-480 resistor/opamp noise model and earlier noise research rem
 
 The Rack Init and all 100 factory patches use the **Real** startup profile: related-hardware output circuit on, Recorded chorus at its captured rate/depth and full reference side level, and a slow ±20 ppm clock excursion at 0.1 Hz (about ±0.035 cents). Clock offset and creative Drive stay zero. Clock excursion is an explicit modeling choice, not recovered PSS-780 calibration. Additive noise has been removed from the runtime, including both White and Circuit paths. Old patches and automation may still contain the former noise properties; their values are ignored and cannot restore hiss. Other values remain editable and persist with patches. The portable constructor also uses the new 5.24 Hz shared triangle LFO; its effect defaults remain independent of the Rack Real profile. Model selectors and fine calibration are on the rear.
 
-New Reason devices open **BASS - Vowel Engine**, the existing modern preset selected by `Assets/FactoryBank/rack-startup.json`. Play MIDI notes 30–54 for its throaty, rhythmic growl; velocity adds bite and the wheel adds slow pitch wobble. Its sound parameters are unchanged. Init remains an independently defined sine patch in the standard patch browser. This Rack startup selection does not change saved patches, compatibility defaults or the JUCE plug-in's Init startup.
-
 The public development bank contains the 100 original parameter presets as `PSS 00 …` through `PSS 99 …`. The Rack bank also carries 50 modern presets (12 basses, 8 donks, 12 plucks, 8 leads, 6 pads and 4 FX) under `Modern`, defined in `Assets/FactoryBank/modern-*.json`; the [factory presets guide](Docs/guide/factory-presets.md) lists them, and [the modern audition page](Docs/guide/modern-presets.html) plays each one. Loading/editing a Rack patch retimbres held voices while preserving their oscillator/envelope state. The standalone engine also offers future-voices-only program snapshots.
 
 ### Plug-in front end
 
-The plug-in's parameter IDs are the control ids in `Assets/controls.json`, the same names as the Rack properties; `Source/PluginControls.h` is generated from that file by `Tools/generate_plugin_controls.py`. `Source/ControlMapping.h` maps the controls to the engine's patch and controls for both the plug-in and the demo renderer. Program 0 is Init and programs 1–100 are the factory voices; a program change sets the 36 sound controls and leaves performance and output controls, including Pitch model, alone, and editing a sound control retimbres held voices, as the Rack does. Pitch bend scales by Pitch bend range, which starts at ±1 semitone as on the PSS-780 after ALL RESET, and Original receives the raw 14-bit wheel as the firmware does; the mod wheel adds its position times Wheel to vibrato to Pitch depth (this mapping is the plug-in's own choice; the Rack adapter's is not in this repository). A new instance starts with Pitch model and the Original release policy on, as the Rack Init does, and CC64 reaches the engine as its raw value because Original treats any nonzero value as down. The release policy and the two inert noise ids stay as parameters so saved sessions load, but like the Rack panel the editor omits them. The programs are Init and the 100 `PSS` voices; the 50 modern presets are Rack patches only for now. The editor is a working one-control-per-parameter layout; the designed Rack panel below is not yet ported to it.
+The plug-in's parameter IDs are the control ids in `Assets/controls.json`, the same names as the Rack properties; `Source/PluginControls.h` is generated from that file by `Tools/generate_plugin_controls.py`. `Source/ControlMapping.h` maps the controls to the engine's patch and controls for both the plug-in and the demo renderer. Program 0 is Init and programs 1–100 are the factory voices; a program change sets the 36 sound controls and leaves performance and output controls, including Pitch model, alone, and editing a sound control retimbres held voices, as the Rack does. Pitch bend scales by Pitch bend range, which starts at ±1 semitone as on the PSS-780 after ALL RESET, and Original receives the raw 14-bit wheel as the firmware does. Both front ends play through `Press78Instrument` (below), so the mod wheel, Double and Stage drive behave the same in each. A new instance starts with Pitch model and the Original release policy on, as the Rack Init does, and CC64 reaches the engine as its raw value because Original treats any nonzero value as down. The release policy and the two inert noise ids stay as parameters so saved sessions load, but like the Rack panel the editor omits them. The programs are Init and the 100 `PSS` voices; the 50 modern presets are Rack patches only for now. The editor is a working one-control-per-parameter layout; the designed Rack panel below is not yet ported to it.
+
+### Shared playing layer
+
+`Source/DSP/Press78Instrument.h` is what the plug-in, the demo renderer and the Rack adapter play. It runs the engine through the fixed 48 kHz output bus, so every host rate hears the 48 kHz character, and adds three performance features:
+
+- **Mod wheel.** The wheel's position times **Wheel to vibrato** adds vibrato. A voice without vibrato gets its Pitch depth scaled by the wheel; one with vibrato gets the wheel added to it. Either way the voice's PMS is at least 3 (12.5 cents per unit depth) while the wheel is up, so every voice responds to it.
+- **Double.** A second unit, a copy of the first that joins without replaying attacks, plays every note detuned by **Double detune** cents in total (half each way). Each unit folds to mono and **Double spread** places them from centre (0 %) to hard left and right (100 %). Switching it fades over 5 ms, and the second unit stops once it has faded out.
+- **Stage drive.** On **AUX** or **Phones**, up to 12 dB more level into the amplifier, taken off again after it: the battery or adaptor stage clips and sags harder at the same output level. **Preamp** has no amplifier and ignores it. The gain into the amplifier never exceeds the top of the volume slider.
+
+The plug-in's Double and Stage drive default to off and 0 dB, so its earlier sessions sound as they did; the Rack's factory patches store 12 dB.
 
 ### Panel design
 
@@ -148,8 +163,7 @@ The Rack panel and its interactive layout prototype belong to the Reason adapter
 | --- | --- |
 | `Source/DSP` | Fixed-storage polyphonic engine and generated circuit/preset tables (JUCE-free, C++17) |
 | `Source/Plugin*`, `Source/ControlMapping.h` | JUCE plug-in front end and its control mapping |
-| `Assets/controls.json` | Parameter contract shared with the Rack adapter: 64 controls, two inert legacy noise properties and the hidden release policy |
-| `Assets/rack-automation.json` | Frozen Reason automation IDs |
+| `Assets/controls.json` | Control contract shared with the Rack adapter: the plug-in parameter IDs are the Rack property names |
 | `Assets/FactoryBank` | 100 original `PSS` parameter patches, 50 modern Rack presets and provenance |
 | `Tools/reference` | Frozen research implementation used as the comparison oracle |
 | `Tools/prototypes` | Unadopted candidate patches and their checks, kept with their evidence |
@@ -203,13 +217,6 @@ python3 Tools/check_python_parity.py --help
 python3 Tools/check_analog_runtime.py --help
 python3 Tools/check_chorus_runtime.py --help
 python3 Tools/check_circuit_noise.py
-```
-
-To regenerate the Rack parameter declarations, mappings and 151 local development patches:
-
-```sh
-python3 Tools/generate_rack.py /path/to/SDK-worktree/Examples/Press78
-python3 Tools/check_rack_contract.py /path/to/SDK-worktree/Examples/Press78
 ```
 
 ## Licensing
