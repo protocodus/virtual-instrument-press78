@@ -6,10 +6,12 @@ rem/rate, rem a multiple of gcd(48000, rate): rate/gcd distinct phases
 (147 at 44.1 kHz). Each row here is OutputSRC::coefficient(relative - f)
 for relative = -half..half, evaluated with the same IEEE double operations
 in the same order, so a row read is bit for bit the coefficient computed
-in the loop. Press78.OutputBus checks the rows against coefficient()."""
+in the loop. Above 48 kHz the kernel is unscaled (ratio 1), so a table
+depends only on its phases: 88.2 kHz reads the 176.4 kHz rows and 96 kHz
+the 192 kHz rows. Press78.OutputBus checks the rows against coefficient()."""
 import argparse, hashlib, math, pathlib, re, struct
 P = pathlib.Path(__file__).resolve().parents[1] / "Source" / "DSP"
-RATES = (44100,)
+RATES = (44100, 176400, 192000)
 
 def kernel():
     text = (P / "OutputKernelTable.h").read_text()

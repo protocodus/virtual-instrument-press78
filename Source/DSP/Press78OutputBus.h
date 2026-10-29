@@ -63,7 +63,11 @@ public:
     void prepare(double fs) noexcept {
         rate_=validRate(fs); ratio_=std::min(1.,rate_/48000.);
         half_=static_cast<int>(std::ceil(96./ratio_));
-        phases_=rate_==kPhaseTable44100.rate?&kPhaseTable44100:nullptr;
+        // Above 48 kHz rows depend only on the phase: half the rate reads the
+        // same fractions at every other row.
+        phases_=rate_==44100.?&kPhaseTable44100
+            :rate_==88200.||rate_==176400.?&kPhaseTable176400
+            :rate_==96000.||rate_==192000.?&kPhaseTable192000:nullptr;
         reset();
     }
     void reset() noexcept { clearHistory(); next_=0; }
