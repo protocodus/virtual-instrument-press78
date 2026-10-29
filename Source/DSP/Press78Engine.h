@@ -240,7 +240,13 @@ private:
     std::array<Voice, kMaxVoices> voices_{};
     std::array<Tail, kMaxVoices> tails_{};
     std::array<double, kHistory> history_{};
-    std::array<std::array<double, kSincTaps>, kSincPhases + 1> sinc_{};
+    // Phase p's taps start at sinc_[1 + p * kSincTaps]. Phase kSincPhases is
+    // phase 0 one tap later, so it is the window starting at sinc_[0]: one
+    // leading value instead of a 65th row (sincRow()).
+    std::array<double, kSincPhases * kSincTaps + 1> sinc_{};
+    const double* sincRow(int phase) const noexcept {
+        return phase == kSincPhases ? sinc_.data() : sinc_.data() + 1 + phase * kSincTaps;
+    }
     std::array<double, kDelaySize> delay_{};
     Patch patch_{};
     Controls controls_{};

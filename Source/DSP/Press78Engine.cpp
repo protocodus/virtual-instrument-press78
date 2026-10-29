@@ -771,19 +771,25 @@ void Press78Engine::buildResampler() noexcept {
     const double cutoff = sampleRate_ >= chipRate_ ? 1.0 : sampleRate_ / chipRate_ * 0.94;
     if (cutoff == resamplerCutoff_) return;
     resamplerCutoff_ = cutoff;
+    // The last phase is the first one tap later (x = j - 32 either way, the
+    // same values summed in the same order around one windowed zero), so only
+    // its leading tap is stored; see sincRow().
+    std::array<double, kSincTaps> last{};
     for (int p = 0; p <= kSincPhases; ++p) {
         const double frac = static_cast<double>(p) / kSincPhases;
+        double* row = p == kSincPhases ? last.data() : sinc_.data() + 1 + p * kSincTaps;
         double sum = 0.0;
         for (int j = 0; j < kSincTaps; ++j) {
             const double x = (j - 31) - frac;
             const double z = pi * x * cutoff;
             const double s = std::abs(z) < 1e-12 ? 1.0 : std::sin(z) / z;
             const double window = std::abs(x) >= 32.0 ? 0.0 : 0.42 + 0.5 * std::cos(pi * x / 32.0) + 0.08 * std::cos(tau * x / 32.0);
-            sinc_[p][j] = cutoff * s * window;
-            sum += sinc_[p][j];
+            row[j] = cutoff * s * window;
+            sum += row[j];
         }
-        for (double& x : sinc_[p]) x /= sum;
+        for (int j = 0; j < kSincTaps; ++j) row[j] /= sum;
     }
+    sinc_[0] = last[0];
 }
 
 double Press78Engine::synthesizeTick() noexcept {
@@ -848,8 +854,8 @@ double Press78Engine::resampled(double position) const noexcept {
     const auto firstTick = base - 31;
     if (firstTick >= 0 && firstTick >= nextTick_ - static_cast<std::int64_t>(kHistory)
         && firstTick + kSincTaps <= nextTick_) {
-        const auto* s0 = sinc_[p].data();
-        const auto* s1 = sinc_[p + 1].data();
+        const auto* s0 = sincRow(p);
+        const auto* s1 = sincRow(p + 1);
         double value = 0.0;
 #if defined(__clang__)
 #pragma clang loop vectorize(disable) interleave(disable)
@@ -864,7 +870,7 @@ double Press78Engine::resampled(double position) const noexcept {
     }
     double value = 0.0;
     for (int j = 0; j < kSincTaps; ++j) {
-        const double coefficient = sinc_[p][j] + mix * (sinc_[p + 1][j] - sinc_[p][j]);
+        const double coefficient = sincRow(p)[j] + mix * (sincRow(p + 1)[j] - sincRow(p)[j]);
         value += historyAt(base + j - 31) * coefficient;
     }
     return value;
