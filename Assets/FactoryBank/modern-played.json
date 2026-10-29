@@ -93,7 +93,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -194,7 +198,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -295,7 +303,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -396,7 +408,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -497,7 +513,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -598,7 +618,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -699,7 +723,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -800,7 +828,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -901,7 +933,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -1002,7 +1038,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -1103,7 +1143,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -1204,7 +1248,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "pluck",
@@ -1305,7 +1353,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "lead",
@@ -1406,7 +1458,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "lead",
@@ -1507,7 +1563,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "lead",
@@ -1608,7 +1668,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "lead",
@@ -1709,7 +1773,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "lead",
@@ -1810,7 +1878,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "lead",
@@ -1911,7 +1983,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "lead",
@@ -2012,7 +2088,11 @@
         "outputJack": 1,
         "chipRate": 1,
         "powerSupply": 1,
-        "power": 100
+        "power": 100,
+        "doubleMode": 0,
+        "doubleSpread": 100,
+        "doubleDetune": 8,
+        "stageDriveDb": 12
       },
       "tags": [
         "lead",

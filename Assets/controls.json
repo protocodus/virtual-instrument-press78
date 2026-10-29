@@ -1,6 +1,5 @@
 {
   "product": "cz.protocodus.Press78",
-  "version": "0.1.13b1",
   "startup_profile": {
     "name": "Real",
     "values": {
@@ -31,11 +30,6 @@
       "chipRate": 1,
       "powerSupply": 1
     }
-  },
-  "rack_startup": {
-    "preset_id": "bass-04",
-    "name": "BASS - Vowel Engine",
-    "default_patch": "/Public/Modern/Bass/BASS - Vowel Engine.repatch"
   },
   "controls": [
     {
@@ -804,6 +798,42 @@
       "default": 100,
       "integer": true,
       "target": "controls"
+    },
+    {
+      "id": "doubleMode",
+      "label": "Double",
+      "min": 0,
+      "max": 1,
+      "default": 0,
+      "integer": true,
+      "target": "performance"
+    },
+    {
+      "id": "doubleSpread",
+      "label": "Double spread",
+      "min": 0,
+      "max": 100,
+      "default": 100,
+      "integer": false,
+      "target": "performance"
+    },
+    {
+      "id": "doubleDetune",
+      "label": "Double detune",
+      "min": 0,
+      "max": 30,
+      "default": 8,
+      "integer": false,
+      "target": "performance"
+    },
+    {
+      "id": "stageDriveDb",
+      "label": "Stage drive",
+      "min": 0,
+      "max": 12,
+      "default": 0,
+      "integer": false,
+      "target": "performance"
     }
   ]
 }

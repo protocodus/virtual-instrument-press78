@@ -2,15 +2,14 @@
 
 #include <JuceHeader.h>
 
-#include "DSP/Press78Engine.h"
 #include "ControlMapping.h"
 
 #include <array>
 #include <atomic>
 #include <memory>
 
-// JUCE front end over the canonical engine. It owns parameter mapping, MIDI,
-// programs, state and latency; synthesis stays in Source/DSP.
+// JUCE front end over the canonical instrument. It owns parameter mapping,
+// MIDI, programs, state and latency; synthesis stays in Source/DSP.
 class Press78AudioProcessor final : public juce::AudioProcessor
 {
 public:
@@ -23,7 +22,7 @@ public:
 
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override {}
-    void reset() override { engine->reset(); }
+    void reset() override { instrument->reset(); }
     bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
     void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
     using AudioProcessor::processBlock;
@@ -54,15 +53,16 @@ private:
     static juce::AudioProcessorValueTreeState::ParameterLayout createLayout();
     using Values = press78::ControlValues;
     Values readValues() const noexcept;
-    // True when the message changed bend or wheel, which feed the engine controls.
+    // True when the message changed bend, wheel or the CC65 switch, which feed the controls.
     bool handleMidi (const juce::MidiMessage&) noexcept;
     void applyValues (const Values&) noexcept;
 
     juce::AudioProcessorValueTreeState parameters;
     std::array<std::atomic<float>*, press78::kPluginControls.size()> raw {};
-    // About 150 kB of fixed tables and history: kept off the stack.
-    std::unique_ptr<press78::Press78Engine> engine;
+    // Two units of fixed tables and history, about 400 kB: kept off the stack.
+    std::unique_ptr<press78::Press78Instrument> instrument;
     Values applied {};
+    double appliedWheel = 0.0;
     bool appliedValid = false;
     int bend = press78::kBendCentre; // raw 14-bit wheel, from MIDI
     double wheel = 0.0;              // 0..1, from MIDI
