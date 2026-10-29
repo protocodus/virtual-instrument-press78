@@ -4,7 +4,7 @@
 // units) to and from the engine's Patch and Controls. JUCE-free, so the demo
 // renderer plays the factory voices exactly as the plug-in does.
 
-#include "DSP/Press78Engine.h"
+#include "DSP/Press78Instrument.h"
 #include "PluginControls.h"
 
 #include <algorithm>
@@ -80,10 +80,9 @@ inline void writePatchValues(const Patch& p, ControlValues& v) noexcept {
 
 inline constexpr int kBendCentre = 8192;
 
-// bend is the raw 14-bit pitch wheel (0..16383) and wheel the mod wheel (0..1).
-// portamentoSwitch is the last CC65 value, or -1 to follow the Portamento control.
-inline Controls controlsFromValues(const ControlValues& v, int bend, double wheel,
-                                   int portamentoSwitch = -1) noexcept {
+// bend is the raw 14-bit pitch wheel (0..16383). portamentoSwitch is the last
+// CC65 value, or -1 to follow the Portamento control.
+inline Controls controlsFromValues(const ControlValues& v, int bend, int portamentoSwitch = -1) noexcept {
     const auto value = [&v](std::string_view id) { return v[controlIndex(id)]; };
     const auto integer = [&value](std::string_view id) { return static_cast<int>(std::lround(value(id))); };
     Controls c;
@@ -106,8 +105,7 @@ inline Controls controlsFromValues(const ControlValues& v, int bend, double whee
     c.portamento = portamentoSwitch < 0 ? integer("portamento") != 0 : portamentoSwitch >= 64;
     c.portamentoSpeed = integer("portamentoSpeed");
     c.lfoRateHz = value("lfoRateHz");
-    // The mod wheel adds Wheel to vibrato times its position to Pitch depth.
-    c.vibratoDepth = std::min(4.0, value("vibratoDepth") + wheel * value("modWheelDepth"));
+    c.vibratoDepth = value("vibratoDepth");
     c.tremoloDepth = value("tremoloDepth");
     c.lfoDelayScale = value("lfoDelayScale");
     c.triangleLfo = integer("triangleLfo") != 0;
@@ -132,6 +130,19 @@ inline Controls controlsFromValues(const ControlValues& v, int bend, double whee
     c.midiPitchBend = bend;
     c.midiBendRange = integer("bendRange");
     return c;
+}
+
+// wheel is the mod wheel (0..1); Press78Instrument applies it to the patch.
+inline Performance performanceFromValues(const ControlValues& v, double wheel) noexcept {
+    const auto value = [&v](std::string_view id) { return v[controlIndex(id)]; };
+    Performance p;
+    p.modWheel = wheel;
+    p.modWheelDepth = value("modWheelDepth");
+    p.doubleMode = value("doubleMode") >= 0.5;
+    p.doubleSpread = value("doubleSpread") / 100.0;
+    p.doubleDetuneCents = value("doubleDetune");
+    p.stageDriveDb = value("stageDriveDb");
+    return p;
 }
 
 } // namespace press78

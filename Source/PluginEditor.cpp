@@ -20,8 +20,9 @@ const std::vector<std::pair<juce::String, juce::StringArray>>& layout()
         { "LFO and clock", { "lfoRateHz", "vibratoDepth", "tremoloDepth", "lfoDelayScale", "triangleLfo",
                              "globalLfo", "clockOffsetPpm", "clockDriftPpm", "clockDriftRateHz" } },
         { "Output", { "toneCutoffHz", "drive", "chorusMode", "chorusMix", "chorusRateHz", "chorusDepthMs",
-                      "stereoWidth", "outputCircuit", "outputJack", "power", "dcBlock", "outputLimit",
-                      "masterGain" } },
+                      "stereoWidth", "outputCircuit", "outputJack", "power", "stageDriveDb", "dcBlock",
+                      "outputLimit", "masterGain" } },
+        { "Double", { "doubleMode", "doubleSpread", "doubleDetune" } },
     };
     return sections;
 }

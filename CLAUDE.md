@@ -25,8 +25,11 @@ Protocodus portfolio standard kept in the project, not in this repository.
 - `Assets/controls.json` is the one control contract. Plug-in parameter IDs
   are its control ids, the Rack property names; `Source/PluginControls.h` is
   generated from it by `Tools/generate_plugin_controls.py` and checked by
-  `Press78.PluginControls`. Never rename or reuse an id, and never renumber
-  `Assets/rack-automation.json`.
+  `Press78.PluginControls`. Never rename or reuse an id. The Rack adapter
+  owns its Reason automation and Remote numbering.
+- `Source/DSP/Press78Instrument.h` is the playing layer both front ends use:
+  the fixed 48 kHz output bus, the mod wheel law, Double and Stage drive.
+  Performance behaviour belongs there, never in one front end.
 - `PLUGIN_MANUFACTURER_CODE Pr78` / `PLUGIN_CODE P781`, `BUNDLE_ID` and the
   CLAP id `cz.protocodus.press78` never change once a build reaches users:
   hosts recall sessions by them.

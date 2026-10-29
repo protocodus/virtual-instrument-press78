@@ -142,7 +142,8 @@ public:
             const auto pos=physicalPosition(frame_,rate_);
             while(src_.nextIndex()<=pos.floor)produce();
             const auto y=src_.read(pos);
-            if(left)left[i]=y[0];if(right)right[i]=y[1];
+            if(left)left[i]=y[0];
+            if(right)right[i]=y[1];
             ++frame_;
         }
     }
@@ -203,7 +204,8 @@ public:
         for(std::size_t i=0;i<frames;++i) {
             float l,r;output_bus_detail::FixedOutputBus::process(&l,&r,1);
             l=protect(l);r=protect(r);
-            if(left)left[i]=l;if(right)right[i]=r;
+            if(left)left[i]=l;
+            if(right)right[i]=r;
         }
     }
     std::uint64_t clippedChannels() const noexcept{return clipped_;}

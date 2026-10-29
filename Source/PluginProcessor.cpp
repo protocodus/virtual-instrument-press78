@@ -10,7 +10,8 @@ namespace
 {
 using press78::kPluginControls;
 
-constexpr int kStateVersion = 1;
+// 2 (1.0.0): Power circuit's Adaptor is kept as saved; 1 (0.1.x) migrates it.
+constexpr int kStateVersion = 2;
 
 press78::Patch programPatch (int program) noexcept
 {
@@ -21,7 +22,7 @@ press78::Patch programPatch (int program) noexcept
 Press78AudioProcessor::Press78AudioProcessor()
     : AudioProcessor (BusesProperties().withOutput ("Output", juce::AudioChannelSet::stereo(), true)),
       parameters (*this, nullptr, "Press78", createLayout()),
-      engine (std::make_unique<press78::Press78Engine>())
+      instrument (std::make_unique<press78::Press78Instrument>())
 {
     for (std::size_t i = 0; i < kPluginControls.size(); ++i)
         raw[i] = parameters.getRawParameterValue (juce::String (kPluginControls[i].id.data(),
@@ -72,10 +73,10 @@ bool Press78AudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
 
 void Press78AudioProcessor::prepareToPlay (double sampleRate, int)
 {
-    engine->prepare (sampleRate);
+    instrument->prepare (sampleRate);
     appliedValid = false;
     applyValues (readValues());
-    setLatencySamples (engine->latencySamples());
+    setLatencySamples (instrument->latencySamples());
 }
 
 Press78AudioProcessor::Values Press78AudioProcessor::readValues() const noexcept
@@ -88,28 +89,33 @@ Press78AudioProcessor::Values Press78AudioProcessor::readValues() const noexcept
 
 void Press78AudioProcessor::applyValues (const Values& v) noexcept
 {
-    if (! appliedValid || ! std::equal (v.begin(), v.begin() + press78::kFirstNonPatchControl, applied.begin()))
-        engine->setPatch (press78::patchFromValues (v), true); // retimbre held voices, as the Rack does
-    engine->setControls (press78::controlsFromValues (v, bend, wheel, portamentoSwitch));
+    // The wheel's vibrato is part of the patch the voices play, so moving it
+    // retimbres held voices like a patch edit, as the Rack does.
+    const double wheelDepth = wheel * v[press78::controlIndex ("modWheelDepth")];
+    const bool patchChanged = ! appliedValid || wheelDepth != appliedWheel
+                              || ! std::equal (v.begin(), v.begin() + press78::kFirstNonPatchControl, applied.begin());
+    instrument->apply (press78::patchFromValues (v), press78::controlsFromValues (v, bend, portamentoSwitch),
+                       press78::performanceFromValues (v, wheel), patchChanged);
     applied = v;
+    appliedWheel = wheelDepth;
     appliedValid = true;
 }
 
 bool Press78AudioProcessor::handleMidi (const juce::MidiMessage& m) noexcept
 {
     if (m.isNoteOn())
-        engine->noteOn (m.getNoteNumber(), m.getVelocity());
+        instrument->noteOn (m.getNoteNumber(), m.getVelocity());
     else if (m.isNoteOff())
-        engine->noteOff (m.getNoteNumber());
+        instrument->noteOff (m.getNoteNumber());
     else if (m.isSustainPedalOn() || m.isSustainPedalOff())
-        engine->sustainController (m.getControllerValue()); // Original reads any nonzero value
+        instrument->sustainController (m.getControllerValue()); // Original reads any nonzero value
     else if (m.isAllSoundOff())
-        engine->allSoundOff();
+        instrument->allSoundOff();
     else if (m.isAllNotesOff())
-        engine->allNotesOff();
+        instrument->allNotesOff();
     else if (m.isController() && m.getControllerNumber() == 121) // Reset All Controllers
     {
-        engine->sustainPedal (false);
+        instrument->sustainPedal (false);
         bend = press78::kBendCentre;
         wheel = 0.0;
         portamentoSwitch = -1;
@@ -150,13 +156,13 @@ void Press78AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce
     {
         const int at = std::clamp (metadata.samplePosition, position, frames);
         if (at > position)
-            engine->process (left + position, right + position, static_cast<std::size_t> (at - position));
+            instrument->process (left + position, right + position, static_cast<std::size_t> (at - position));
         position = at;
         if (handleMidi (metadata.getMessage()))
             applyValues (values);
     }
     if (frames > position)
-        engine->process (left + position, right + position, static_cast<std::size_t> (frames - position));
+        instrument->process (left + position, right + position, static_cast<std::size_t> (frames - position));
 }
 
 void Press78AudioProcessor::setCurrentProgram (int index)
@@ -200,7 +206,10 @@ void Press78AudioProcessor::setStateInformation (const void* data, int sizeInByt
     auto state = juce::ValueTree::fromXml (*xml);
     currentProgram = std::clamp (static_cast<int> (state.getProperty ("program", 0)), 0, kProgramCount - 1);
     // 0.1.12 chose the adaptor on the Power switch; it is now Power's AC step.
-    if (auto supply = state.getChildWithProperty ("id", "powerSupply"); static_cast<int> (supply.getProperty ("value", 0)) == 2)
+    // A current state keeps whatever it saved, so saving it again is identical.
+    const bool beforePowerSlider = static_cast<int> (state.getProperty ("stateVersion", 1)) < 2;
+    if (auto supply = state.getChildWithProperty ("id", "powerSupply");
+        beforePowerSlider && static_cast<int> (supply.getProperty ("value", 0)) == 2)
     {
         supply.setProperty ("value", 1, nullptr);
         auto power = state.getChildWithProperty ("id", "power");

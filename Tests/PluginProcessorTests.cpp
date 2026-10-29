@@ -184,10 +184,18 @@ void stateContract()
     auto xml = juce::AudioProcessor::getXmlFromBinary (adaptor.getData(), static_cast<int> (adaptor.getSize()));
     for (auto* child = xml->getFirstChildElement(); child != nullptr; child = child->getNextElement())
         if (child->getStringAttribute ("id") == "power") { xml->removeChildElement (child, true); break; }
+    xml->setAttribute ("stateVersion", 1);
     juce::AudioProcessor::copyXmlToBinary (*xml, adaptor);
     Press78AudioProcessor restored;
     restored.setStateInformation (adaptor.getData(), static_cast<int> (adaptor.getSize()));
     check (value (restored, "powerSupply") == 1.0f && value (restored, "power") == 101.0f, "a 0.1.12 adaptor session plays on AC");
+    // From 1.0.0 the Adaptor step is a saved choice and survives a restore.
+    setValue (old, "powerSupply", 2.0f);
+    juce::MemoryBlock current;
+    old.getStateInformation (current);
+    Press78AudioProcessor reloaded;
+    reloaded.setStateInformation (current.getData(), static_cast<int> (current.getSize()));
+    check (value (reloaded, "powerSupply") == 2.0f, "a 1.0.0 Adaptor session keeps its Adaptor");
     auto* power = restored.state().getParameter ("power");
     check (power->getText (power->convertTo0to1 (101.0f), 8) == "AC" && power->getText (power->convertTo0to1 (57.0f), 8) == "57 %",
            "Power reads as a battery percentage, then AC");
@@ -209,6 +217,43 @@ void renderContract()
     check (finite && peak > 1.0e-3f && peak <= 1.0f, "a factory voice plays finite, audible and protected");
     check (a == b, "512- and 64-frame blocks render identical samples");
     check (whole.getLatencySamples() >= 0, "latency is reported");
+}
+
+// A host reset between songs must not drop Double: after a block and a reset
+// the processor plays exactly as one that was just prepared.
+void resetContract()
+{
+    const auto play = [] (bool resetFirst)
+    {
+        Press78AudioProcessor p;
+        p.setCurrentProgram (1);
+        setValue (p, "doubleMode", 1.0f);
+        setValue (p, "doubleDetune", 20.0f);
+        p.setRateAndBufferSizeDetails (48000.0, 256);
+        p.prepareToPlay (48000.0, 256);
+        juce::AudioBuffer<float> buffer (2, 256);
+        juce::MidiBuffer none;
+        if (resetFirst)
+        {
+            p.processBlock (buffer, none);
+            p.reset();
+        }
+        std::vector<float> out;
+        for (int block = 0; block < 40; ++block)
+        {
+            buffer.clear();
+            juce::MidiBuffer midi;
+            if (block == 0)
+                midi.addEvent (juce::MidiMessage::noteOn (1, 60, (juce::uint8) 100), 0);
+            p.processBlock (buffer, midi);
+            for (int i = 0; i < buffer.getNumSamples(); ++i)
+                out.push_back (buffer.getSample (0, i) - buffer.getSample (1, i));
+        }
+        return out;
+    };
+    const auto kept = play (true), fresh = play (false);
+    check (kept == fresh && std::any_of (kept.begin(), kept.end(), [] (float x) { return std::abs (x) > 1.0e-4f; }),
+           "Double survives a host reset");
 }
 
 void editorContract()
@@ -274,6 +319,7 @@ int main()
     programContract();
     stateContract();
     renderContract();
+    resetContract();
     portamentoContract();
     editorContract();
     std::printf ("Press78 processor contracts: %d failure(s)\n", failures);
