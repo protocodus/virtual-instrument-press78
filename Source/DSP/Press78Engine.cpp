@@ -338,13 +338,13 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
         if (hasLfo) return lfoValue;
         if (c.globalLfo) {
             if (!ctx.hasShapedGlobalLfo) {
-                const double raw = ctx.lazyGlobalLfo ? std::sin(ctx.globalLfoPhase) : globalLfo;
+                const double raw = ctx.lazyGlobalLfo ? fast_math::sin(ctx.globalLfoPhase) : globalLfo;
                 ctx.shapedGlobalLfo = c.triangleLfo ? 2.0 / pi * std::asin(std::clamp(raw, -1.0, 1.0)) : raw;
                 ctx.hasShapedGlobalLfo = true;
             }
             lfoValue = ctx.shapedGlobalLfo;
         } else {
-            lfoValue = std::sin(lfoPhase);
+            lfoValue = fast_math::sin(lfoPhase);
             if (c.triangleLfo) lfoValue = 2.0 / pi * std::asin(std::clamp(lfoValue, -1.0, 1.0));
         }
         hasLfo = true;
@@ -964,13 +964,13 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
         filtered = chorusCircuit_.process(0.0, filteredRight);
     } else {
         silentDelay_ = mono == 0.0 ? static_cast<std::uint16_t>(silentDelay_ + 1) : 0;
-        const double sinPhase = std::sin(chorusPhase_);
-        const double cosPhase = std::cos(chorusPhase_);
+        const double sinPhase = fast_math::sin(chorusPhase_);
+        const double cosPhase = fast_math::cos(chorusPhase_);
         if (chorusMix_ != 0.0 && width_ != 0.0) {
             const double depth = chorusDepth_ * 0.001 * sampleRate_;
             const double base = 0.012 * sampleRate_;
             const double a = readDelay(base + depth * sinPhase);
-            const double b = readDelay(base + depth * std::sin(chorusPhase_ + pi * 0.5));
+            const double b = readDelay(base + depth * fast_math::sin(chorusPhase_ + pi * 0.5));
             side = 0.5 * (a - b) * chorusMix_ * width_;
             sideRight = side;
         }
@@ -1030,7 +1030,7 @@ void Press78Engine::process(float* left, float* right, std::size_t frames) noexc
         if (left) left[i] = static_cast<float>(l);
         if (right) right[i] = static_cast<float>(r);
         const double ppm = controls_.clockDriftPpm == 0.0 ? controls_.clockOffsetPpm
-            : controls_.clockOffsetPpm + controls_.clockDriftPpm * std::sin(tau * controls_.clockDriftRateHz * hostTime_);
+            : controls_.clockOffsetPpm + controls_.clockDriftPpm * fast_math::sin(tau * controls_.clockDriftRateHz * hostTime_);
         position_ += chipRate_ / sampleRate_ * (1.0 + ppm * 1e-6);
         hostTime_ += 1.0 / sampleRate_;
     }

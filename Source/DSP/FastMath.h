@@ -31,24 +31,26 @@ inline double cosKernel(double x) noexcept {
     return w + (((1.0 - w) - hz) + z * r);
 }
 
-// sin(x) for |x| < 2^19: x less its nearest multiple of pi/2, split so
-// n * pio2Hi is exact. Within 1.1e-16 of glibc on [-1000, 1000]; anything
-// larger or non-finite goes to std::sin.
-inline double sin(double x) noexcept {
+// sin(x + quarter * pi/2) for |x| < 2^19: x less its nearest multiple of
+// pi/2, split so n * pio2Hi is exact. Within 1.1e-16 (2 ulp) of glibc on
+// [-1000, 1000]; anything larger or non-finite goes to libm.
+inline double sinQuadrant(double x, int quarter) noexcept {
     constexpr double invPio2 = 6.36619772367581382433e-01;
     constexpr double pio2Hi = 1.57079632673412561417e+00, pio2Lo = 6.07710050650619224932e-11;
-    if (!(x > -524288.0 && x < 524288.0)) return std::sin(x);
+    if (!(x > -524288.0 && x < 524288.0)) return quarter == 0 ? std::sin(x) : std::cos(x);
     const double q = x * invPio2;
     const int n = static_cast<int>(q >= 0.0 ? q + 0.5 : q - 0.5);
     const double fn = static_cast<double>(n);
     const double r = (x - fn * pio2Hi) - fn * pio2Lo;
-    switch (n & 3) {
+    switch ((n + quarter) & 3) {
     case 0: return sinKernel(r);
     case 1: return cosKernel(r);
     case 2: return -sinKernel(r);
     default: return -cosKernel(r);
     }
 }
+inline double sin(double x) noexcept { return sinQuadrant(x, 0); }
+inline double cos(double x) noexcept { return sinQuadrant(x, 1); }
 
 // 10^(-db/20) for 0 <= db <= 96, the envelope's attenuation in decibels:
 // 2^(db * -log2(10)/20) as Cephes exp2 (a rational on [-1/2, 1/2]) times an
