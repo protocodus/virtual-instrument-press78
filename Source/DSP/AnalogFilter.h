@@ -2,6 +2,7 @@
 #include <array>
 #include <cmath>
 #include <cstddef>
+#include "FastMath.h"
 
 namespace press78 {
 // One small linear circuit stage, b(s)/a(s) with coefficients in ascending
@@ -33,8 +34,13 @@ public:
         reset();
     }
     void reset() noexcept { state_.fill(0.0); }
+    bool settled() const noexcept {
+        for (const double s : state_) if (!fast_math::settled(s)) return false;
+        return true;
+    }
     void copyStateFrom(const AnalogFilter& other) noexcept { state_ = other.state_; }
     double process(double x) noexcept {
+        if (x == 0.0 && settled()) state_.fill(0.0);
         const double y = b_[0] * x + state_[0];
         for (std::size_t m = 1; m < N; ++m) state_[m - 1] = b_[m] * x - a_[m - 1] * y + state_[m];
         state_[N - 1] = b_[N] * x - a_[N - 1] * y;

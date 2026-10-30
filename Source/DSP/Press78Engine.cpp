@@ -945,6 +945,9 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     chorusCircuitMix_ += (static_cast<double>(controls_.chorusCircuit) - chorusCircuitMix_) * gainSmoothing_;
     width_ += (controls_.stereoWidth - width_) * gainSmoothing_;
     if (controls_.toneCutoffHz != 0.0) {
+        // A settled tail clears, as the circuit stages do (FastMath.h).
+        if (mono == 0.0 && fast_math::settled(tone1_)) tone1_ = 0.0;
+        if (tone1_ == 0.0 && fast_math::settled(tone2_)) tone2_ = 0.0;
         tone1_ += currentToneCoefficient_ * (mono - tone1_);
         tone2_ += currentToneCoefficient_ * (tone1_ - tone2_);
         mono = tone2_;
@@ -995,6 +998,8 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     delayWrite_ = (delayWrite_ + 1) & (kDelaySize - 1);
     chorusPhase_ = wrapTau(chorusPhase_ + tau * chorusRate_ / sampleRate_);
     if (controls_.dcBlock) {
+        if (left == 0.0 && dcInputL_ == 0.0 && fast_math::settled(dcOutputL_)) dcOutputL_ = 0.0;
+        if (right == 0.0 && dcInputR_ == 0.0 && fast_math::settled(dcOutputR_)) dcOutputR_ = 0.0;
         const double l = left - dcInputL_ + dcCoefficient_ * dcOutputL_;
         const double r = (left == right && dcInputL_ == dcInputR_ && dcOutputL_ == dcOutputR_)
             ? l : right - dcInputR_ + dcCoefficient_ * dcOutputR_;

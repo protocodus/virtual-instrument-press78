@@ -60,6 +60,10 @@ public:
         if (silent_) {
             if (bbdOutput == 0.0) { antiPhase = 0.0; return 0.0; }
             silent_ = false;
+        } else if (bbdOutput == 0.0 && pre_.settled() && post_.settled() && inverter_.settled()) {
+            reset();
+            antiPhase = 0.0;
+            return 0.0;
         }
         const double wet = post_.process(pre_.process(bbdOutput));
         antiPhase = inverter_.process(wet);

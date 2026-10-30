@@ -184,11 +184,7 @@ public:
         reset();
     }
     void reset() noexcept {
-        for (auto& t : slider_) t.x1 = t.y1 = 0.0;
-        for (auto& t : treble_) t.x1 = t.y1 = 0.0;
-        for (auto& f : speaker_) f.reset();
-        phonesMid_.reset(); phonesSide_.reset();
-        silent_ = true; monoState_ = true;
+        clearFilters();
         snapSupply();
     }
     // 0 Ideal, 1 Batteries, 2 Adaptor; depletion runs the batteries from
@@ -221,10 +217,15 @@ public:
     // share of the pot-top voltage, 0 to 1.
     void process(double& left, double& right, double auxMix, double phonesMix, double wiper) noexcept {
         if (wiper != wiper_) loadSlider(wiper);
+        const bool atRest = left == 0.0 && right == 0.0 && clipMix_ == target_ && idle_ == idleTarget_ && rail_ == idleTarget_;
         if (silent_) {
-            if (left == 0.0 && right == 0.0 && clipMix_ == target_ && idle_ == idleTarget_ && rail_ == idleTarget_)
-                return;
+            if (atRest) return;
             silent_ = false;
+        } else if (atRest && filtersSettled()) {
+            // Both channels' states are cleared, so mono processing resumes
+            // exactly as from a reset.
+            clearFilters();
+            return;
         }
         if (monoState_ && left != right) monoState_ = false;
         const double l = treble_[0].process(slider_[0].process(left));
@@ -315,9 +316,22 @@ private:
         const double ratio = top / pot, k = twiceRate_ * top * coupling;
         for (auto& t : slider_) { t.b0 = (ratio + k) / (1.0 + k); t.b1 = (ratio - k) / (1.0 + k); t.a = (1.0 - k) / (1.0 + k); }
     }
+    void clearFilters() noexcept {
+        for (auto& t : slider_) t.x1 = t.y1 = 0.0;
+        for (auto& t : treble_) t.x1 = t.y1 = 0.0;
+        for (auto& f : speaker_) f.reset();
+        phonesMid_.reset(); phonesSide_.reset();
+        silent_ = true; monoState_ = true;
+    }
+    bool filtersSettled() const noexcept {
+        for (const auto& t : slider_) if (!fast_math::settled(t.x1) || !fast_math::settled(t.y1)) return false;
+        for (const auto& t : treble_) if (!fast_math::settled(t.x1) || !fast_math::settled(t.y1)) return false;
+        return speaker_[0].settled() && speaker_[1].settled() && phonesMid_.settled() && phonesSide_.settled();
+    }
     struct FirstOrder {
         double b0 = 1.0, b1 = 0.0, a = 0.0, x1 = 0.0, y1 = 0.0;
         double process(double x) noexcept {
+            if (x == 0.0 && x1 == 0.0 && fast_math::settled(y1)) y1 = 0.0;
             const double y = b0 * x + b1 * x1 - a * y1;
             x1 = x; y1 = y;
             return y;

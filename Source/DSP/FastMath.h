@@ -26,6 +26,21 @@ inline double floor(double x) noexcept { return std::floor(x); }
 inline double copysign(double x, double y) noexcept { return std::copysign(x, y); }
 #endif
 
+// A filter section whose input is exactly zero and whose states are all
+// below this has settled: its states are cleared together, so it outputs
+// exact zeros until its input returns, and a cascade settles section by
+// section into its silent path. Otherwise IIR tails decay forever into
+// denormals, which cost several times the arithmetic without flush-to-zero
+// and, by round-to-nearest, can stick there. (Clearing states one at a time
+// would not do: a resonant section amplifies each clearing into a floor
+// that never settles.) The clearing moves the double signal once, by under
+// 1e-60 times the gain from the section's state to the output (under 1e5
+// for the slowest poles here) and every later gain (under 600: Volume, the
+// amplifier, the Rack's +48 dB trim): far below the smallest float, so the
+// float output keeps its value, at most -0 becoming +0.
+inline constexpr double kSettledState = 1e-60;
+inline bool settled(double state) noexcept { return abs(state) < kSettledState; }
+
 // fdlibm's __kernel_sin and __kernel_cos on |x| <= pi/4, without the
 // reduction tail, which a 33+53-bit Cody-Waite reduction does not produce.
 inline double sinKernel(double x) noexcept {

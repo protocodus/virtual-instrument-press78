@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include <cmath>
+#include "FastMath.h"
 
 namespace press78 {
 // Generated from the frozen Python MNA: PSS480 buffer/preamp, volume-pot top.
@@ -33,13 +34,18 @@ public:
             if(input==0.0)return 0.0;
             silent_=false;
         }
+        // A section settles once its input is exactly zero (FastMath.h).
+        bool silent=input==0.0;
         for(unsigned n=0;n<6;++n) {
             const auto& s=sections_[n];auto& z=state_[n];
+            if(input==0.0&&fast_math::settled(z[0])&&fast_math::settled(z[1])) z={0.0,0.0};
+            silent=silent&&z[0]==0.0&&z[1]==0.0;
             const double output=s[0]*input+z[0];
             z[0]=s[1]*input-s[3]*output+z[1];
             z[1]=s[2]*input-s[4]*output;
             input=output;
         }
+        silent_=silent;
         return input;
     }
 private:
