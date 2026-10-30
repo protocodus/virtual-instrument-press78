@@ -330,30 +330,39 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
         active = false; return 0.0;
     }
     const double em = modEnvelope.next(released, knee, modGain != 0.0, ctx.modAtten, ctx.modGain);
-    double lfo = 0.0;
-    if (c.globalLfo) {
-        if (!ctx.hasShapedGlobalLfo) {
-            ctx.shapedGlobalLfo = c.triangleLfo ? 2.0 / pi * std::asin(std::clamp(globalLfo, -1.0, 1.0)) : globalLfo;
-            ctx.hasShapedGlobalLfo = true;
+    // The LFO's sin and asin are evaluated only when vibrato or AM reads
+    // them; most patches use neither unless the mod wheel is up.
+    double lfoValue = 0.0;
+    bool hasLfo = false;
+    const auto lfo = [&]() noexcept {
+        if (hasLfo) return lfoValue;
+        if (c.globalLfo) {
+            if (!ctx.hasShapedGlobalLfo) {
+                const double raw = ctx.lazyGlobalLfo ? std::sin(ctx.globalLfoPhase) : globalLfo;
+                ctx.shapedGlobalLfo = c.triangleLfo ? 2.0 / pi * std::asin(std::clamp(raw, -1.0, 1.0)) : raw;
+                ctx.hasShapedGlobalLfo = true;
+            }
+            lfoValue = ctx.shapedGlobalLfo;
+        } else {
+            lfoValue = std::sin(lfoPhase);
+            if (c.triangleLfo) lfoValue = 2.0 / pi * std::asin(std::clamp(lfoValue, -1.0, 1.0));
         }
-        lfo = ctx.shapedGlobalLfo;
-    } else {
-        lfo = std::sin(lfoPhase);
-        if (c.triangleLfo) lfo = 2.0 / pi * std::asin(std::clamp(lfo, -1.0, 1.0));
-    }
+        hasLfo = true;
+        return lfoValue;
+    };
     double vibratoPitch = 1.0;
     if (patch.vibrato && pmDepth[patch.pms] != 0.0 && c.vibratoDepth != 0.0) {
         if (patch.vibratoDelay == 0
             || static_cast<double>(ticks) >= std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate)) {
             if (c.globalLfo) {
                 if (ctx.cachedPms != patch.pms) {
-                    const double cents = pmDepth[patch.pms] * c.vibratoDepth * lfo;
+                    const double cents = pmDepth[patch.pms] * c.vibratoDepth * lfo();
                     ctx.cachedVibratoPitch = cents == 0.0 ? 1.0 : std::pow(2.0, cents / 1200.0);
                     ctx.cachedPms = patch.pms;
                 }
                 vibratoPitch = ctx.cachedVibratoPitch;
             } else {
-                const double cents = pmDepth[patch.pms] * c.vibratoDepth * lfo;
+                const double cents = pmDepth[patch.pms] * c.vibratoDepth * lfo();
                 if (cents != 0.0) vibratoPitch = std::pow(2.0, cents / 1200.0);
             }
         }
@@ -367,13 +376,13 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
         if (c.globalLfo) {
             if (ctx.cachedAms != patch.ams) {
                 const double am = amDepth[patch.ams] * c.tremoloDepth;
-                ctx.cachedAmGain = am == 0.0 ? 1.0 : std::pow(10.0, -am * (lfo + 1.0) / 40.0);
+                ctx.cachedAmGain = am == 0.0 ? 1.0 : std::pow(10.0, -am * (lfo() + 1.0) / 40.0);
                 ctx.cachedAms = patch.ams;
             }
             amGain = ctx.cachedAmGain;
         } else {
             const double am = amDepth[patch.ams] * c.tremoloDepth;
-            if (am != 0.0) amGain = std::pow(10.0, -am * (lfo + 1.0) / 40.0);
+            if (am != 0.0) amGain = std::pow(10.0, -am * (lfo() + 1.0) / 40.0);
         }
         if (patch.modulator.amEnable) amM = amGain;
         if (patch.carrier.amEnable) amC = amGain;
@@ -835,7 +844,6 @@ double Press78Engine::synthesizeTick() noexcept {
     }
     double sum = 0.0;
     if (!idle) {
-        const double global = voiceControls_.globalLfo ? std::sin(globalLfoPhase_) : 0.0;
         // While an exponent moves, every voice repowers once per tick, as
         // Voice::next used to; once it settles the cached powers are exact.
         if (voiceControls_.velocityToModulation != velModExponent_
@@ -846,11 +854,13 @@ double Press78Engine::synthesizeTick() noexcept {
             for (auto& tail : tails_) if (tail.remaining > 0) tail.voice.updateVelocityPowers(velModExponent_, velCarExponent_);
         }
         TickContext ctx{};
+        ctx.lazyGlobalLfo = true;
+        ctx.globalLfoPhase = globalLfoPhase_;
         ctx.velModExponent = velModExponent_;
         ctx.velCarExponent = velCarExponent_;
-        for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, global, ctx);
+        for (auto& voice : voices_) if (voice.active) sum += voice.next(voiceControls_, pitchMultiplier_, 0.0, ctx);
         for (auto& tail : tails_) if (tail.remaining > 0) {
-            sum += tail.voice.next(voiceControls_, pitchMultiplier_, global, ctx) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
+            sum += tail.voice.next(voiceControls_, pitchMultiplier_, 0.0, ctx) * (tail.remaining - 1) / (fadeTicks_ - 1.0);
             --tail.remaining;
         }
     }

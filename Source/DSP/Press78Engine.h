@@ -199,6 +199,10 @@ private:
     struct TickContext {
         double shapedGlobalLfo = 0.0;
         bool hasShapedGlobalLfo = false;
+        // The engine passes the global LFO's phase, not its sine, so the
+        // sine is taken only if a voice reads the LFO this tick.
+        bool lazyGlobalLfo = false;
+        double globalLfoPhase = 0.0;
         int cachedPms = -1;
         double cachedVibratoPitch = 1.0;
         int cachedAms = -1;
