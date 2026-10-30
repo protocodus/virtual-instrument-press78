@@ -25,6 +25,10 @@ Eight of the 100 factory voices, one from each of eight families, rendered by th
 
 ## Version history
 
+### 1.0.2 — 2026-10-30 — lighter on the CPU
+
+- Press78 takes less CPU in ordinary playing and sounds the same: on the factory bank, 2.4 % of real time per instance at 48 kHz instead of 3.2 %, 3.3 % instead of 8.5 % at 44.1 kHz and 4.4 % instead of 13.9 % at 96 kHz (development machine, not Reason). Every output sample is unchanged or within 178 dB of 1.0.1's. After the last note the output circuits now settle to silence, so an idle instance no longer climbs to about 20 % of a core 17 s later where the host does not flush denormals. Details in [cpu-2026-10-29](Docs/benchmarks/cpu-2026-10-29.md).
+
 ### 1.0.1 — 2026-10-29 — no release tail
 
 - Notes stop with their patch's own release again. 0.1.1's envelope-Reverb estimate held every release on at least a slow native rate once it had fallen 18 dB, which read as a reverb on every sound: Init's C3 took 0.94 s to fall 60 dB after key-up, and now takes 0.05 s. Patches with a slow release of their own keep it. The estimate is off in both front ends; the research `--real` profile still turns it on.
