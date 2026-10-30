@@ -85,7 +85,7 @@ double originalStep(const Operator& op, int note, int steps, double rate) noexce
 double wave(double phase, int shape) noexcept {
     const double s = fast_math::sin(phase);
     if (shape >= 2 && s < 0.0) return 0.0;
-    return shape == 1 || shape == 3 ? s * std::abs(s) : s;
+    return shape == 1 || shape == 3 ? s * fast_math::abs(s) : s;
 }
 Operator sanitize(Operator op) noexcept {
     op.mul = std::clamp(op.mul, 0, 15);
@@ -104,8 +104,8 @@ Operator sanitize(Operator op) noexcept {
     return op;
 }
 double softBound(double x) noexcept {
-    const double a = std::abs(x);
-    return a <= 0.9 ? x : std::copysign(0.9 + 0.1 * std::tanh((a - 0.9) / 0.1), x);
+    const double a = fast_math::abs(x);
+    return a <= 0.9 ? x : fast_math::copysign(0.9 + 0.1 * std::tanh((a - 0.9) / 0.1), x);
 }
 double wrapTau(double x) noexcept {
     if (x >= 0.0 && x < tau) return x;
@@ -322,7 +322,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     // snapshot gates both operators; TL, velocity and gain do not move the knee.
     // 18dB/RR4 are assumed choices, not an identified PSS-780 Reverb algorithm.
     const bool knee = c.envelopeReverb && (released || carrierEnvelope.stage == 3)
-        && std::isfinite(carrierEnvelope.attenuation)
+        && fast_math::isfinite(carrierEnvelope.attenuation)
         && carrierEnvelope.attenuation >= hardware_character::kReleaseKneeDb;
     const double ec = carrierEnvelope.next(released, knee, carrierGain != 0.0, ctx.carAtten, ctx.carGain);
     if (carrierEnvelope.finished || (carrierEnvelope.disabled && released)) {
@@ -876,8 +876,8 @@ double Press78Engine::historyAt(std::int64_t tick) const noexcept {
 double Press78Engine::resampled(double position) const noexcept {
     if (silentTicks_ >= kHistory) return 0.0;
     const double center = position - resamplerDelay_;
-    const auto base = static_cast<std::int64_t>(std::floor(center));
-    const double fraction = center - std::floor(center);
+    const auto base = static_cast<std::int64_t>(fast_math::floor(center));
+    const double fraction = center - fast_math::floor(center);
     if (sampleRate_ >= chipRate_ && fraction < 1e-12) return historyAt(base);
     const double phase = fraction * kSincPhases;
     const int p = std::min(kSincPhases - 1, static_cast<int>(phase));
@@ -1012,8 +1012,8 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
     }
     // Parameter clamps already bound the model. This last guard protects the
     // host if an unforeseen numerical fault occurs; it is not per-patch gain.
-    if (!std::isfinite(left)) left = 0.0;
-    if (!std::isfinite(right)) right = 0.0;
+    if (!fast_math::isfinite(left)) left = 0.0;
+    if (!fast_math::isfinite(right)) right = 0.0;
 }
 
 void Press78Engine::process(float* left, float* right, std::size_t frames) noexcept {

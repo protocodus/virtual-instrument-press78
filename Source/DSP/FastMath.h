@@ -12,6 +12,22 @@
 // Rack patch (Docs/benchmarks/cpu-2026-10-29.md).
 namespace press78::fast_math {
 
+// Exact: the same IEEE operation as std::, spelled as the compiler builtin.
+// Under the Rack's -fno-builtin the SDK's libc++ turns std::abs, isfinite,
+// floor and copysign into out-of-line library calls; on the per-sample path
+// that call is most of their cost. MSVC has no __builtin_ forms.
+#if defined(__GNUC__) || defined(__clang__)
+inline double abs(double x) noexcept { return __builtin_fabs(x); }
+inline bool isfinite(double x) noexcept { return __builtin_isfinite(x); }
+inline double floor(double x) noexcept { return __builtin_floor(x); }
+inline double copysign(double x, double y) noexcept { return __builtin_copysign(x, y); }
+#else
+inline double abs(double x) noexcept { return std::fabs(x); }
+inline bool isfinite(double x) noexcept { return std::isfinite(x); }
+inline double floor(double x) noexcept { return std::floor(x); }
+inline double copysign(double x, double y) noexcept { return std::copysign(x, y); }
+#endif
+
 // fdlibm's __kernel_sin and __kernel_cos on |x| <= pi/4, without the
 // reduction tail, which a 33+53-bit Cody-Waite reduction does not produce.
 inline double sinKernel(double x) noexcept {

@@ -4,6 +4,7 @@
 #include "Press78Engine.h"
 #include "OutputKernelTable.h"
 #include "OutputPhaseTable.h"
+#include "FastMath.h"
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -80,7 +81,7 @@ public:
     int halfDelay() const noexcept { return half_; }
     double ratio() const noexcept { return ratio_; }
     double coefficient(double distance) const noexcept {
-        const double u=std::abs(ratio_*distance)*1024.;
+        const double u=fast_math::abs(ratio_*distance)*1024.;
         if(u>98304.)return 0.;
         // 0<=u<=98304 fits int: x86 converts int in one instruction each way,
         // size_t in a branchy sequence (a third of this loop's cost).
@@ -209,7 +210,7 @@ public:
     void prepare(double rate) noexcept { output_bus_detail::FixedOutputBus::prepare(rate);clearCounts(); }
     void reset() noexcept { output_bus_detail::FixedOutputBus::reset();clearCounts(); }
     static float protectedSample(float value,bool enabled) noexcept {
-        if(!std::isfinite(value))return 0;
+        if(!fast_math::isfinite(value))return 0;
         return enabled?std::max(-1.f,std::min(1.f,value)):value;
     }
     void process(float* left,float* right,std::size_t frames) noexcept {
@@ -229,7 +230,7 @@ private:
     double delta_=0;
     void clearCounts() noexcept{clipped_=nonfinite_=0;delta_=0;}
     float protect(float value) noexcept {
-        if(!std::isfinite(value)){++nonfinite_;return 0;}
+        if(!fast_math::isfinite(value)){++nonfinite_;return 0;}
         const auto result=protectedSample(value,controls().outputLimit);
         if(result!=value){++clipped_;delta_=std::max(delta_,std::abs(static_cast<double>(value)-result));}
         return result;
