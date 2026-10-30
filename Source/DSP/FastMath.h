@@ -1,7 +1,5 @@
 #pragma once
 #include <cmath>
-#include <cstdint>
-#include <cstring>
 
 // Inline kernels for the engine's per-tick transcendentals. They replace a
 // libm call (out of line, and in the Rack's -fno-builtin build the SDK's own
@@ -81,11 +79,11 @@ inline double dbToGain(double db) noexcept {
     const double p = f * ((2.30933477057345225087e-2 * f2 + 2.02020656693165307700e1) * f2 + 1.51390680115615096133e3);
     const double q = (f2 + 2.33184211722314911771e2) * f2 + 4.36821166879210612817e3;
     const double r = 1.0 + 2.0 * (p / (q - p));
-    // 2^e, e in [-16, 0], built exactly from its exponent bits.
-    const auto bits = static_cast<std::uint64_t>(1023 + e) << 52;
-    double scale;
-    std::memcpy(&scale, &bits, sizeof scale);
-    return r * scale;
+    // 2^e, e in [-16, 0], exactly. A table, not memcpy of the exponent bits:
+    // under -fno-builtin memcpy is a library call.
+    constexpr double powers[17] = {1.0, 0x1p-1, 0x1p-2, 0x1p-3, 0x1p-4, 0x1p-5, 0x1p-6, 0x1p-7, 0x1p-8,
+                                   0x1p-9, 0x1p-10, 0x1p-11, 0x1p-12, 0x1p-13, 0x1p-14, 0x1p-15, 0x1p-16};
+    return r * powers[-e];
 }
 
 } // namespace press78::fast_math
