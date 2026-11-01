@@ -25,6 +25,10 @@ Eight of the 100 factory voices, one from each of eight families, rendered by th
 
 ## Version history
 
+### 1.0.3 — 2026-11-01 — release number for the 150-sound Rack bank
+
+- No DSP or behaviour change: the engine is 1.0.2's, sample for sample. The number moves so the Reason Rack Extension, whose 100 new patches in ten category folders ship as 1.0.3, keeps its version equal to the engine's.
+
 ### 1.0.2 — 2026-10-30 — lighter on the CPU
 
 - Press78 takes less CPU in ordinary playing and sounds the same: on the factory bank, 2.4 % of real time per instance at 48 kHz instead of 3.2 %, 3.3 % instead of 8.5 % at 44.1 kHz and 4.4 % instead of 13.9 % at 96 kHz (development machine, not Reason). Every output sample is unchanged or within 178 dB of 1.0.1's. After the last note the output circuits now settle to silence, so an idle instance no longer climbs to about 20 % of a core 17 s later where the host does not flush denormals. Details in [cpu-2026-10-29](Docs/benchmarks/cpu-2026-10-29.md).
