@@ -4,6 +4,11 @@
 #include <cmath>
 
 namespace press78 {
+namespace {
+double bounded(double x, double low, double high, double fallback) noexcept {
+    return std::isfinite(x) ? std::clamp(x, low, high) : fallback;
+}
+} // namespace
 
 void applyModWheel(double wheel, Patch& patch, Controls& controls) noexcept {
     if (!(wheel > 0.0)) return;
@@ -26,18 +31,25 @@ void Press78Instrument::reset() noexcept {
     primary_.reset();
     second_.reset();
     secondReady_ = false;
+    doubleTarget_ = false;
     doubleMix_ = 0.0;
+    spread_ = spreadTarget_ = 1.0;
+    compensation_ = compensationTarget_ = 1.0;
     soundStarted_ = false;
 }
 
 void Press78Instrument::apply(Patch patch, Controls controls, const Performance& performance,
                               bool patchChanged) noexcept {
-    applyModWheel(performance.modWheel * performance.modWheelDepth, patch, controls);
-    spreadTarget_ = performance.doubleSpread;
-    const double detune = performance.doubleMode ? performance.doubleDetuneCents * 0.5 : 0.0;
-    const double gain = controls.masterGain;
-    const double factor = controls.outputJack == 0 ? 1.0 :
-        std::min(std::pow(10.0, performance.stageDriveDb / 20.0), 2.0 / std::max(gain, 1.0e-12));
+    const double modWheel = bounded(performance.modWheel, 0.0, 1.0, 0.0);
+    const double modWheelDepth = bounded(performance.modWheelDepth, 0.0, 4.0, 1.0);
+    applyModWheel(modWheel * modWheelDepth, patch, controls);
+    spreadTarget_ = bounded(performance.doubleSpread, 0.0, 1.0, 1.0);
+    const double detune = performance.doubleMode ? bounded(performance.doubleDetuneCents, 0.0, 30.0, 0.0) * 0.5 : 0.0;
+    const double gain = bounded(controls.masterGain, 0.0, 2.0, 0.25);
+    const double stageDriveDb = bounded(performance.stageDriveDb, 0.0, 12.0, 0.0);
+    const int outputJack = std::clamp(controls.outputJack, 0, 2);
+    const double factor = outputJack == 0 ? 1.0 :
+        std::min(std::pow(10.0, stageDriveDb / 20.0), 2.0 / std::max(gain, 1.0e-12));
     controls.masterGain = gain * factor;
     compensationTarget_ = 1.0 / factor;
     if (!soundStarted_) {
@@ -102,8 +114,9 @@ void Press78Instrument::process(float* left, float* right, std::size_t frames) n
     float scratchLeft[kBlock], scratchRight[kBlock];
     for (std::size_t done = 0; done < frames;) {
         const auto count = std::min(kBlock, frames - done);
-        // The mix below needs both channels even when a caller passes null.
-        float* l = left ? left + done : scratchLeft;
+        // The mix below needs both channels even when a caller passes null
+        // or aliases left and right (where the right channel wins).
+        float* l = (left && left != right) ? left + done : scratchLeft;
         float* r = right ? right + done : scratchRight;
         render(l, r, count);
         done += count;
@@ -115,9 +128,13 @@ void Press78Instrument::render(float* left, float* right, std::size_t count) noe
     float secondLeft[kBlock]{}, secondRight[kBlock]{};
     if (secondReady_) second_.process(secondLeft, secondRight, count);
     for (std::size_t i = 0; i < count; ++i) {
-        compensation_ += (compensationTarget_ - compensation_) * smoothing_;
-        spread_ += (spreadTarget_ - spread_) * smoothing_;
-        doubleMix_ += ((doubleTarget_ ? 1.0 : 0.0) - doubleMix_) * smoothing_;
+        compensation_ = fast_math::abs(compensationTarget_ - compensation_) < 1e-12 ? compensationTarget_
+            : compensation_ + (compensationTarget_ - compensation_) * smoothing_;
+        spread_ = fast_math::abs(spreadTarget_ - spread_) < 1e-12 ? spreadTarget_
+            : spread_ + (spreadTarget_ - spread_) * smoothing_;
+        const double doubleTarget = doubleTarget_ ? 1.0 : 0.0;
+        doubleMix_ = fast_math::abs(doubleTarget - doubleMix_) < 1e-12 ? doubleTarget
+            : doubleMix_ + (doubleTarget - doubleMix_) * smoothing_;
         if (secondReady_) {
             // Each unit folds to mono; the pair is spread as mid and side.
             const double a = 0.5 * (left[i] + right[i]), b = 0.5 * (secondLeft[i] + secondRight[i]);

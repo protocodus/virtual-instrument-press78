@@ -116,21 +116,26 @@ public:
         biasDecay_ = std::exp(-1.0 / (sampleRate * 1.1e3 * 100e-6));
     }
     void settle(double rail) noexcept {
-        node_ = rail - kBaseDrop > kKnee ? 0.5 * (rail + kZener) : rail - kBaseDrop;
+        node_ = restNode(rail);
         drop_ = std::max(0.0, kKnee - node_);
         bias_ = 0.5 * drop_;
     }
     void process(double rail) noexcept {
         const bool held = node_ > kKnee;
         const double node = held ? 0.5 * (rail + kZener) : rail - kBaseDrop;
-        node_ = node + (node_ - node) * (held ? heldDecay_ : freeDecay_);
+        node_ = fast_math::abs(node_ - node) < 1e-12 ? node : node + (node_ - node) * (held ? heldDecay_ : freeDecay_);
         drop_ = std::max(0.0, kKnee - node_);
-        bias_ = 0.5 * drop_ + (bias_ - 0.5 * drop_) * biasDecay_;
+        const double targetBias = 0.5 * drop_;
+        bias_ = fast_math::abs(bias_ - targetBias) < 1e-12 ? targetBias : targetBias + (bias_ - targetBias) * biasDecay_;
     }
+    bool atRest(double rail) const noexcept { return node_ == restNode(rail) && bias_ == 0.5 * drop_; }
     double drop() const noexcept { return drop_; }
     double bias() const noexcept { return bias_; }
 
 private:
+    static constexpr double restNode(double rail) noexcept {
+        return rail - kBaseDrop > kKnee ? 0.5 * (rail + kZener) : rail - kBaseDrop;
+    }
     // The zener's knee, the base current's drop across 150 Ohm, and the
     // 100 uF node's voltage where the zener lets go.
     static constexpr double kZener = 5.8, kBaseDrop = 150.0 * 0.15 / 111.0, kKnee = kZener + kBaseDrop;
@@ -217,7 +222,8 @@ public:
     // share of the pot-top voltage, 0 to 1.
     void process(double& left, double& right, double auxMix, double phonesMix, double wiper) noexcept {
         if (wiper != wiper_) loadSlider(wiper);
-        const bool atRest = left == 0.0 && right == 0.0 && clipMix_ == target_ && idle_ == idleTarget_ && rail_ == idleTarget_;
+        const bool atRest = left == 0.0 && right == 0.0 && clipMix_ == target_
+            && idle_ == idleTarget_ && rail_ == idleTarget_ && fiveVolt_.atRest(idleTarget_);
         if (silent_) {
             if (atRest) return;
             silent_ = false;
@@ -239,7 +245,7 @@ public:
         double auxL = l, auxR = r, phonesL = l, phonesR = r;
         clipMix_ = target_ > clipMix_ ? std::min(target_, clipMix_ + fadeStep_) : std::max(target_, clipMix_ - fadeStep_);
         if (clipMix_ > 0.0) {
-            idle_ += (idleTarget_ - idle_) * idleSmoothing_;
+            idle_ = fast_math::abs(idleTarget_ - idle_) < 1e-12 ? idleTarget_ : idle_ + (idleTarget_ - idle_) * idleSmoothing_;
             const double volts = voltsPerUnit_ * wiper, dip = idle_ - rail_;
             const double auxBelow = 3.66 + 0.376 * (idle_ - 9.0), auxAbove = std::max(0.1, auxBelow - 0.752 * dip);
             const double phonesBelow = 0.5 * idle_ - 0.51, phonesAbove = std::max(0.1, phonesBelow - dip);
@@ -253,7 +259,8 @@ public:
             const double amps = kIdleAmps + volts * (auxMix * (std::max(auxL, 0.0) + std::max(auxR, 0.0)) / 4.0
                 + phonesMix * (std::max(phonesL, 0.0) + std::max(phonesR, 0.0)) / 132.0);
             const double settled = amps == kIdleAmps ? idleTarget_ : supplyVolts(amps);
-            rail_ = settled + (rail_ - settled) * (source_ == 2 ? adaptorDecay_ : batteryDecay_);
+            rail_ = fast_math::abs(rail_ - settled) < 1e-12 ? settled
+                : settled + (rail_ - settled) * (source_ == 2 ? adaptorDecay_ : batteryDecay_);
             fiveVolt_.process(rail_);
             if (clipMix_ < 1.0) {
                 auxL = l + clipMix_ * (auxL - l); auxR = r + clipMix_ * (auxR - r);

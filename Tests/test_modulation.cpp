@@ -186,6 +186,16 @@ int main() {
         while (first < x.size() && x[first] == y[first]) ++first;
         std::printf("MEASURE delay first_difference=%zu expected=%zu frames\n", first, expected);
         REQUIRE(first >= expected && first <= expected + 2);
+        // At the YM3420 rate, each VDT step is 768 OPU samples (~13.405 ms).
+        auto c = clearOutput(); c.chipRate = 1;
+        auto ymOn = engine(48000, p, c), ymOff = engine(48000, off, c);
+        ymOn->noteOn(69, 127); ymOff->noteOn(69, 127);
+        const auto yx = render(*ymOn, 19200), yy = render(*ymOff, 19200);
+        const double delaySec = 20.0 * 768.0 / press78::Press78Engine::kYm3420Rate;
+        const auto ymExpected = static_cast<std::size_t>(delaySec * 48000.0);
+        std::size_t ymFirst = 0;
+        while (ymFirst < yx.size() && yx[ymFirst] == yy[ymFirst]) ++ymFirst;
+        REQUIRE(ymFirst >= ymExpected && ymFirst <= ymExpected + 64);
     });
     test("modulated AM/PM rendering is block invariant and realtime paths do not allocate", [] {
         auto p = sine(6, 7); p.carrier.amEnable = true; p.ams = 2;

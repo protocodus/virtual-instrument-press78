@@ -81,6 +81,9 @@ public:
     int halfDelay() const noexcept { return half_; }
     double ratio() const noexcept { return ratio_; }
     double coefficient(double distance) const noexcept {
+#if defined(__clang__)
+#pragma clang fp contract(off)
+#endif
         const double u=fast_math::abs(ratio_*distance)*1024.;
         if(u>98304.)return 0.;
         // 0<=u<=98304 fits int: x86 converts int in one instruction each way,

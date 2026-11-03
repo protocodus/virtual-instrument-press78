@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <cstdio>
+#include <limits>
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -139,6 +140,30 @@ int main() {
         a->process(nullptr, nullptr, 256); a->process(l.data(), r.data(), 256);
         b->process(l2.data(), r2.data(), 256); b->process(l2.data(), r2.data(), 256);
         REQUIRE(l == l2 && r == r2);
+    });
+    test("aliased output buffers keep the right channel under Double and Stage drive", [&] {
+        Performance perf; perf.doubleMode = true; perf.doubleSpread = 1.0; perf.doubleDetuneCents = 15.0; perf.stageDriveDb = 9.0;
+        auto sep = std::make_unique<Press78Instrument>(), aliased = std::make_unique<Press78Instrument>();
+        for (auto* u : {sep.get(), aliased.get()}) {
+            u->prepare(48000.0);
+            u->apply(patch, realControls(), perf, true);
+            u->noteOn(60, 100);
+        }
+        std::vector<float> l(512), r(512), a(512);
+        sep->process(l.data(), r.data(), 512);
+        aliased->process(a.data(), a.data(), 512);
+        REQUIRE(a == r && l != r);
+    });
+    test("non-finite and out-of-range performance inputs are sanitized", [&] {
+        const double nan = std::numeric_limits<double>::quiet_NaN();
+        Performance perf{nan, -5.0, true, nan, 500.0, nan};
+        auto u = std::make_unique<Press78Instrument>();
+        u->prepare(48000.0);
+        u->apply(patch, realControls(), perf, true);
+        u->noteOn(60, 100);
+        std::vector<float> l(256), r(256);
+        u->process(l.data(), r.data(), 256);
+        for (std::size_t i = 0; i < 256; ++i) REQUIRE(std::isfinite(l[i]) && std::isfinite(r[i]));
     });
 
     std::printf("%d passed, %d failed\n", passed, failed);

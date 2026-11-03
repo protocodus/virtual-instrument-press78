@@ -307,8 +307,8 @@ private:
     void fadeVoice(Voice&) noexcept;
     void originalNoteOn(int note, int velocity, int source) noexcept;
     void originalNoteOff(int note, int source) noexcept;
-    // Last note-on per source (0 = none yet: the firmware does not glide then).
-    std::array<int, 2> lastNote_{};
+    // Last note-on per source (-1 = none yet: the firmware does not glide then).
+    std::array<int, 2> lastNote_{-1, -1};
     int portamentoCountdown_ = 0;
     void servicePortamento() noexcept;
     void applyGlide(Voice& voice) noexcept;

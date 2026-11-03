@@ -180,6 +180,12 @@ int main() {
             e->reset(); e->setPatch(p); e->noteOn(69, 127);
             CHECK(render(*e, reference.size()) == reference);
         }
+        // Fast D1R clamps exactly at D1L without overshooting the sustain plateau.
+        auto p = press78::initPatch();
+        p.carrier.d1l = 2; p.carrier.d1r = 63; p.carrier.d2r = 0;
+        e->reset(); e->setPatch(p); e->noteOn(69, 127);
+        const auto sustained = render(*e, reference.size());
+        CHECK(std::abs(rms(sustained, 512) / rms(reference, 512) - std::pow(10.0, -6.0 / 20.0)) < 1e-6);
     });
     test("release interrupts attack D1 and D2 after endpoint correction", [] {
         for (int stage = 0; stage < 3; ++stage) {
@@ -280,6 +286,14 @@ int main() {
         legacy->noteOn(60, 40); original->noteOn(60, 40);
         CHECK(render(*legacy, 4000) == render(*original, 4000));
         c.velocityCurve = 9; CHECK(press78::sanitizeControls(c).velocityCurve == 1);
+        // Mode 99 saturates carrier TL + velocity addend at 127 codes (-95.25 dB).
+        c = transparent(); c.velocityCurve = 1;
+        auto hi = engine(), sat = engine(); hi->setControls(c); sat->setControls(c);
+        auto p98 = press78::initPatch(); p98.carrier.tl = 98;
+        hi->setPatch(p98); sat->setPatch(p98);
+        hi->noteOn(60, 127); sat->noteOn(60, 1);
+        const double satDb = 20 * std::log10(rms(render(*sat, 8000), 1000) / rms(render(*hi, 8000), 1000));
+        CHECK(std::abs(satDb + 0.75 * (127 - 98)) < 1e-6);
     });
     test("ratio0 is half and coarse detune is600cents", [] {
         auto e = engine(); auto p = press78::initPatch(); p.carrier.mul = 0;

@@ -6,13 +6,14 @@
 #include <complex>
 
 namespace press78 {
-// The BBD chorus's analog wet path, borrowed from the Yamaha PSS-270
-// schematic (drawing KEC-11463, read 2026-10-20). The PSS-780 uses the same
-// MN3206/MN3102 pair, and its board carries the PSS-270's 390K/68P/2.7K clock
-// parts and the 47K/220P inverter parts, but its own filter values are not
-// documented. The recorded effective chorus keeps its delay law, LFO and
-// gains; this adds the wet signal's band limits and the right channel's
-// inverter pole on top of it.
+// The BBD chorus's analog wet path, from the Yamaha PSS-270 schematic
+// (drawing KEC-11463, read 2026-10-20) and verified against the PSS-780
+// XE422 AM board silkscreen (4558DV NJM4558 dual op-amp, MN3206 IC2 / MN3102
+// IC3 BBD pair, 390K/68P/2.7K clock parts, 22K Sallen-Key filter resistors,
+// and 47K/220P/1000P active mixer and right-channel inverter parts; see
+// Docs/research/target-am-board-2026-10-19.md). The recorded effective chorus
+// keeps its delay law, LFO and gains; this adds the wet signal's band limits
+// and the right channel's inverter pole on top of it.
 //
 // Pre-BBD: 0.1 uF series, 1.5 kOhm, then 33 nF to ground at the BBD input,
 // which is biased by 100k/100k from +5 V (50 kOhm to AC ground):

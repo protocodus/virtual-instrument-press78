@@ -54,6 +54,11 @@ int main() {
         auto e = engine(true, 3);
         e->noteOn(60, 100);
         REQUIRE(glideSteps(*e, 0) == 0 && A::voice(*e, 0).glideStep == 0);
+        auto zero = engine(true, 3);
+        zero->noteOn(0, 100);
+        REQUIRE(glideSteps(*zero, 0) == 0 && A::voice(*zero, 0).glideStep == 0);
+        zero->noteOn(12, 100);
+        REQUIRE(glideSteps(*zero, 1) == -12 * 32);
     });
     test("every speed takes 2^(8-speed) passes whatever the interval", [] {
         for (int speed = 1; speed <= 5; ++speed) for (int interval : {1, 7, -12, 24}) {
@@ -113,6 +118,15 @@ int main() {
         c.portamento = true; e->setControls(c);
         e->noteOn(55, 100);
         REQUIRE(glideSteps(*e, 1) == -5 * 32);
+        // At the YM3420 rate, one portamento service pass is 144 OPU ticks (12x12 TDM frame).
+        auto ym = std::make_unique<Press78Engine>();
+        ym->prepare(48000.0);
+        c.chipRate = 1; c.portamento = true; c.portamentoSpeed = 5; c.pitchModel = 1;
+        ym->setControls(c); ym->setPatch(press78::initPatch());
+        ym->noteOn(60, 100); ym->noteOn(72, 100);
+        REQUIRE(glideSteps(*ym, 1) == -12 * 32);
+        ym->process(nullptr, nullptr, 1200);
+        REQUIRE(glideSteps(*ym, 1) == 0);
     });
     std::printf("%d passed, %d failed\n", passed, failed);
     return failed ? 1 : 0;

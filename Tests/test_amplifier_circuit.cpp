@@ -392,6 +392,34 @@ int main() {
         c.power = 0; REQUIRE(press78::sanitizeControls(c).power == 1);
         c.power = 200; REQUIRE(press78::sanitizeControls(c).power == 101);
     });
+    test("the rail, +5 V and filter states return to rest after load on every supply", [] {
+        for (const auto& [supply, depletion] : std::vector<std::pair<int, double>>{{1, 0.0}, {1, 1.0}, {2, 0.0}}) {
+            press78::AmplifierCircuit loaded, fresh;
+            loaded.prepare(48000.0); fresh.prepare(48000.0);
+            loaded.setSupply(supply, depletion); loaded.snapSupply();
+            fresh.setSupply(supply, depletion); fresh.snapSupply();
+            const double idleRail = fresh.railVolts();
+            for (int i = 0; i < 4800; ++i) {
+                double l = 1.5 * std::sin(tau * 80.0 * i / 48000.0), r = -0.8 * l;
+                loaded.process(l, r, 1.0, 0.0, 1.0);
+            }
+            REQUIRE(loaded.railVolts() < idleRail);
+            if (depletion == 1.0) REQUIRE(loaded.mixerLossBelow() > 0.0);
+            for (int i = 0; i < 48000 * 4; ++i) {
+                double l = 0.0, r = 0.0;
+                loaded.process(l, r, 1.0, 0.0, 1.0);
+            }
+            REQUIRE(loaded.railVolts() == idleRail);
+            REQUIRE(loaded.mixerLossAbove() == 0.0 && loaded.mixerLossBelow() == 0.0);
+            for (int i = 0; i < 512; ++i) {
+                double l1 = 0.2 * std::sin(tau * 220.0 * i / 48000.0), r1 = l1;
+                double l2 = l1, r2 = r1;
+                loaded.process(l1, r1, 1.0, 0.0, 0.5);
+                fresh.process(l2, r2, 1.0, 0.0, 0.5);
+                REQUIRE(l1 == l2 && r1 == r2);
+            }
+        }
+    });
     std::printf("%d passed, %d failed\n", passed, failed);
     return failed ? 1 : 0;
 }

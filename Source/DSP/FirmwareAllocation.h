@@ -19,7 +19,6 @@ struct Mode00Allocator {
     std::array<std::uint8_t, 12> ranks{};
     std::array<int, 12> notes{}, sources{};
     std::array<bool, 12> valid{}, keyed{};
-    std::array<std::uint8_t, 12> pending{};
     std::array<std::bitset<128>, 2> held{};
     int pool = 12;
 
@@ -27,7 +26,7 @@ struct Mode00Allocator {
     static bool validSource(int source) noexcept { return source == 0 || source == 1; }
     void reset(int polyphony) noexcept {
         ranks.fill(0); notes.fill(0); sources.fill(0); valid.fill(true);
-        keyed.fill(false); pending.fill(0);
+        keyed.fill(false);
         for (auto& h : held) h.reset();
         pool = 12;
         setPolyphony(polyphony);
@@ -35,7 +34,7 @@ struct Mode00Allocator {
     void setPolyphony(int polyphony) noexcept {
         const int next = std::clamp(polyphony, 1, 12);
         if (next < pool) for (int i = next; i < 12; ++i) {
-            ranks[i] = 0; valid[i] = false; keyed[i] = false; pending[i] = 0;
+            ranks[i] = 0; valid[i] = false; keyed[i] = false;
         }
         pool = next;
     }
@@ -53,7 +52,7 @@ struct Mode00Allocator {
                                         | (keyed[2 * pair + 1] ? 96 : 0));
     }
     void releaseSlot(int slot, Decision& out) noexcept {
-        ranks[slot] = 127; age(); pending[slot] = 0; keyed[slot] = false;
+        ranks[slot] = 127; age(); keyed[slot] = false;
         out.keys[out.keyCount++] = keyCommand(slot);
     }
     Decision noteOn(int note, int source) noexcept {
@@ -70,7 +69,8 @@ struct Mode00Allocator {
         if (slot < 0) return out;
         releaseSlot(slot, out);
         notes[slot] = note; sources[slot] = source; valid[slot] = true;
-        pending[slot] = 1; ranks[slot] = 255; age(); out.slot = slot;
+        keyed[slot] = true; ranks[slot] = 255; age(); out.slot = slot;
+        out.keys[out.keyCount++] = keyCommand(slot);
         return out;
     }
     Decision noteOff(int note, int source) noexcept {
@@ -79,18 +79,6 @@ struct Mode00Allocator {
         held[source].reset(static_cast<std::size_t>(note)); out.edge = true;
         out.slot = find(note, source);
         if (out.slot >= 0) releaseSlot(out.slot, out);
-        return out;
-    }
-    // Explicit invocation counter for original command-fixture checks only.
-    // The engine invokes one immediately after its existing immediate noteOn;
-    // it does not invent or schedule a CPU service time in the audio process.
-    Decision service(int invocations) noexcept {
-        Decision out;
-        for (int n = 0; n < invocations; ++n) for (int i = 0; i < pool; ++i) {
-            if (pending[i] && --pending[i] == 0) {
-                keyed[i] = true; out.keys[out.keyCount++] = keyCommand(i);
-            }
-        }
         return out;
     }
     void allNotesOff() noexcept {

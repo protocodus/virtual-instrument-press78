@@ -71,6 +71,9 @@ public:
     int halfDelay() const noexcept { return half_; }
     double ratio() const noexcept { return ratio_; }
     double coefficient(double distance) const noexcept {
+#if defined(__clang__)
+#pragma clang fp contract(off)
+#endif
         const double u=std::abs(ratio_*distance)*1024.;
         if(u>98304.)return 0.;
         const auto i=static_cast<std::size_t>(u);

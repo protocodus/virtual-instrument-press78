@@ -25,6 +25,15 @@ Eight of the 100 factory voices, one from each of eight families, rendered by th
 
 ## Version history
 
+### 1.0.4 — 2026-11-03 — PSS-780 Mode 99 TL saturation, YM3420 VDT/portamento cadence, D1L clamping and circuit settling
+
+- In the **Original** velocity curve (Mode 99, `xg503b0-132` bank 2 `$7890` / `$CB7F`), carrier `TL + velocity_addend` now saturates at 127 codes (−95.25 dB below unity), including on live `TL` and key-scaling edits.
+- At the YM3420 sample rate (`57,291.67 Hz`), vibrato delay (`VDT`) advances by 768 OPU samples (`13.405 ms`) per raw step—matching the PSS-780 hardware recordings of `93 Human Voice 1` (`VDT 24` → `324 ms`) and `95 Whistle` (`VDT 31` → `416 ms`)—and portamento services pitch glides every 144 OPU samples (`12 × 12` TDM operator slots = `2.513 ms`); Legacy 48 kHz retains 10 ms/step and 120 ticks.
+- Envelope stage `D1` clamps cleanly at the `D1L` breakpoint (`target`) when entering `D2`, preventing fast `D1R` rates from overshooting the sustain plateau, and `Mode00Allocator` keys slots immediately on `noteOn` without a deferred `pending` / `service` pass.
+- After a note ends on **Batteries** or **AC**, the amplifier's 470 µF rail, +5 V follower and 110 ms mixer bias snap to their resting voltages once within 10⁻¹² V, and all one-pole control smoothers in `Press78Engine` and `Press78Instrument` snap within 10⁻¹² of their targets instead of stalling a few ULPs below 1 or decaying into subnormals toward 0.
+- Portamento glides from MIDI note 0 when note 0 was the previous note played; the first note after reset still does not glide.
+- `Press78Instrument` keeps the right channel intact when a host aliases the left and right output buffers under **Double** or **Stage drive**, sanitizes out-of-range or non-finite `Performance` inputs, and keeps `OutputSRC::coefficient()` bit-identical to the precomputed phase table on `arm64`.
+
 ### 1.0.3 — 2026-11-01 — release number for the 150-sound Rack bank
 
 - No DSP or behaviour change: the engine is 1.0.2's, sample for sample. The number moves so the Reason Rack Extension, whose 100 new patches in ten category folders ship as 1.0.3, keeps its version equal to the engine's.
@@ -121,7 +130,7 @@ The glide follows the PSS-780 program (`xg503b0-132`, read 2026-10-20; nothing f
 
 ### Velocity
 
-With the Original velocity curve, a note's carrier level follows the table the PSS-780 program (`xg503b0-132`, bank 2 `$7890`) applies in its MIDI sound-source mode (Mode 99): a carrier attenuation of 31 TL codes below velocity 3, falling by one code at each of velocities 3, 4, 5, 6, 7, 9, 10, 12, 13, 15, 17, 19, 22, 24, 27, 30, 34, 37, 41, 46, 51, 56, 62, 68, 74, 80, 87, 94, 102, 111 and 118, where it reaches zero. A TL code is taken as 0.75 dB, the engine's existing TL law. **Velocity to level** scales that attenuation in dB, so 1 is the hardware's curve and 0 is the keyboard mode (Mode 00), which ignores velocity. **Velocity to FM** is Press78's own and keeps its linear law. The firmware's saturation of TL plus addend at 127 is more than 95 dB down and is not modelled. The hidden **Original velocity curve** setting keeps the linear `(velocity/127)^sensitivity` law for older songs.
+With the Original velocity curve, a note's carrier level follows the table the PSS-780 program (`xg503b0-132`, bank 2 `$7890` and `$CB7F`) applies in its MIDI sound-source mode (Mode 99): a carrier attenuation of 31 TL codes below velocity 3, falling by one code at each of velocities 3, 4, 5, 6, 7, 9, 10, 12, 13, 15, 17, 19, 22, 24, 27, 30, 34, 37, 41, 46, 51, 56, 62, 68, 74, 80, 87, 94, 102, 111 and 118, where it reaches zero. A TL code is taken as 0.75 dB, the engine's existing TL law, and the sum of the carrier's scaled TL and velocity addend saturates at 127 codes (95.25 dB down). **Velocity to level** scales that attenuation in dB, so 1 is the hardware's curve and 0 is the keyboard mode (Mode 00), which ignores velocity. **Velocity to FM** is Press78's own and keeps its linear law. The hidden **Original velocity curve** setting keeps the linear `(velocity/127)^sensitivity` law for older songs.
 
 ### Key scaling
 

@@ -4,8 +4,9 @@
 #include "FastMath.h"
 
 namespace press78 {
-// Generated from the frozen Python MNA: PSS480 buffer/preamp, volume-pot top.
-// Related-hardware surrogate, not a recovered PSS780 analog board or DAC.
+// Generated from the frozen Python MNA: PSS480 buffer/preamp, volume-pot top,
+// with the 4558DV (NJM4558) 47k/220pF active mixer stage shared by the
+// PSS-780 XE422 AM board (Docs/research/target-am-board-2026-10-19.md).
 // Six stable SOS implement trapezoidal integration of the linear circuit.
 class AnalogOutput {
 public:

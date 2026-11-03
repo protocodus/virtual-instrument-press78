@@ -22,22 +22,39 @@ constexpr double rateScaling[4] = {0.0, 0.0625, 0.125, 0.25};
 // the previous note-on's pitch, offset (previous-new)*256 in 1/256 semitone,
 // and each main-loop pass adds (new-previous)<<speed until the offset crosses
 // zero. Every glide thus takes 2^(8-speed) passes whatever the interval:
-// 128, 64, 32, 16, 8 for speeds 1..5. The pass is not timer-paced and was not
-// measured; 2.5 ms (speed 3 = 80 ms) is an estimate, the one unrecovered value.
+// 128, 64, 32, 16, 8 for speeds 1..5. At the YM3420 rate (5.5 MHz / 96), one
+// 12-voice x 12-slot TDM cycle is 144 OPU ticks (13,824 clocks = 2.51345 ms);
+// Legacy 48 kHz keeps 120 ticks (2.5 ms).
 constexpr double kPortamentoServiceSeconds = 0.0025;
+constexpr int kYm3420PortamentoServiceTicks = 144;
 
-// PSS-780 program (xg503b0-132, bank2 $7890, read 2026-10-20): in Mode 99 a
-// note's carrier TL gains a velocity addend of 31 codes below velocity 3,
-// falling by one code at each of these velocities to 0 from 118. The
-// keyboard's own Mode 00 ignores velocity. A TL code is 0.75 dB, as level()
-// assumes. The firmware saturates TL+addend at 127, >95 dB down; not modeled.
+// Recording-calibrated YM3420 VDT step (Docs/research/lfo-pitch-audit-2026-10-18.md):
+// Human Voice 1 (VDT 24 -> 324.0 ms) and Whistle (VDT 31 -> 416.0 ms) advance
+// by 768 OPU samples (3 * 256 samples = 13.405 ms) per raw VDT code at
+// 57,291.67 Hz; Legacy 48 kHz keeps 10 ms (480 ticks) per step.
+constexpr double kYm3420VibratoDelayTicks = 768.0;
+constexpr double kLegacyVibratoDelaySeconds = 0.01;
+
+// PSS-780 program (xg503b0-132, bank2 $7890 & $CB7F, read 2026-10-20): in
+// Mode 99 a note's carrier TL gains a velocity addend of 31 codes below
+// velocity 3, falling by one code at each of these velocities to 0 from 118.
+// The keyboard's own Mode 00 ignores velocity. A TL code is 0.75 dB, as level()
+// assumes, and the firmware saturates carrier TL + addend at 127 (95.25 dB).
 constexpr int kMode99VelocitySteps[31] = {3, 4, 5, 6, 7, 9, 10, 12, 13, 15, 17, 19, 22, 24, 27, 30,
                                           34, 37, 41, 46, 51, 56, 62, 68, 74, 80, 87, 94, 102, 111, 118};
 
-double mode99VelocityLevel(int velocity) noexcept {
+double mode99VelocityLevel(int velocity, double carrierGain = 0.8) noexcept {
     int addend = 31;
     for (const int step : kMode99VelocitySteps) if (velocity >= step) --addend;
-    return std::pow(10.0, -addend * 0.75 / 20.0);
+    const double level = std::pow(10.0, -addend * 0.75 / 20.0);
+    if (carrierGain <= 0.0) return level;
+    const double minCarrierGain = 0.8 * std::pow(10.0, -127.0 * 0.75 / 20.0);
+    return std::min(1.0, std::max(level, minCarrierGain / carrierGain));
+}
+
+void smoothTo(double& value, double target, double coeff) noexcept {
+    value += (target - value) * coeff;
+    if (fast_math::abs(target - value) <= 1e-12) value = target;
 }
 
 // The firmware shifts the glide offset right three times into the
@@ -242,7 +259,7 @@ inline double Press78Engine::Envelope::next(bool released, bool reverbKnee, bool
         if (stage == 1 && attenuation >= target) stage = 2;
         if (stage == 1) {
             if (decay1 != 0.0) { attenuation += decay1; changed = true; }
-            if (attenuation >= target) stage = 2;
+            if (attenuation >= target) { attenuation = target; stage = 2; }
         } else if (stage == 2) {
             if (decay2 != 0.0) { attenuation += decay2; changed = true; }
         } else {
@@ -274,7 +291,7 @@ inline double Press78Engine::Envelope::next(bool released, bool reverbKnee, bool
 
 void Press78Engine::Voice::configure(const Patch& p, int midi, int vel, std::uint64_t serial, int keyLevelModel, double rate) noexcept {
     *this = Voice{};
-    note = midi; velocity = vel / 127.0; age = serial; tickRate = rate;
+    note = midi; velocity = vel / 127.0; velocityLevel = velocity; age = serial; tickRate = rate;
     active = true; held = true;
     updatePatch(p, keyLevelModel);
 }
@@ -352,8 +369,10 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     };
     double vibratoPitch = 1.0;
     if (patch.vibrato && pmDepth[patch.pms] != 0.0 && c.vibratoDepth != 0.0) {
-        if (patch.vibratoDelay == 0
-            || static_cast<double>(ticks) >= std::round(patch.vibratoDelay * 0.01 * c.lfoDelayScale * tickRate)) {
+        const double delayTicks = tickRate == kYm3420Rate
+            ? patch.vibratoDelay * kYm3420VibratoDelayTicks * c.lfoDelayScale
+            : patch.vibratoDelay * kLegacyVibratoDelaySeconds * c.lfoDelayScale * tickRate;
+        if (patch.vibratoDelay == 0 || static_cast<double>(ticks) >= std::round(delayTicks)) {
             if (c.globalLfo) {
                 if (ctx.cachedPms != patch.pms) {
                     const double cents = pmDepth[patch.pms] * c.vibratoDepth * lfo();
@@ -436,7 +455,7 @@ void Press78Engine::reset() noexcept {
     amplifier_.reset();
     position_ = 0.0; nextTick_ = 0; hostTime_ = 0.0;
     globalLfoPhase_ = 0.0; chorusPhase_ = 0.0;
-    lastNote_ = {}; portamentoCountdown_ = 0;
+    lastNote_ = {-1, -1}; portamentoCountdown_ = 0;
     effectivePitchModel_ = controls_.pitchModel;
     effectiveSustainMode_ = controls_.sustainMode;
     effectiveKeyLevelModel_ = controls_.keyLevelModel;
@@ -472,6 +491,10 @@ void Press78Engine::setPatch(const Patch& patch, bool updateActive) noexcept {
     if (!updateActive || flagChanged) originalSustain_ = patch_.sustain;
     if (updateActive) for (auto& voice : voices_) if (voice.active) {
         voice.updatePatch(patch_, effectiveKeyLevelModel_);
+        if (controls_.velocityCurve == 1) {
+            voice.velocityLevel = mode99VelocityLevel(static_cast<int>(std::lround(voice.velocity * 127.0)), voice.carrierGain);
+            voice.updateVelocityPowers(velModExponent_, velCarExponent_);
+        }
         if (effectivePitchModel_ == 1) voice.updateOriginalPitch(pitchSteps_);
         if (effectiveSustainMode_ == 1) voice.updateRelease(originalSustain_);
     }
@@ -563,16 +586,17 @@ void Press78Engine::startVoice(Voice& target, int note, int velocity, int source
     applyPendingPitchModel();
     applyPendingSustainMode();
     target.configure(patch_, note, velocity, ++serial_, effectiveKeyLevelModel_, chipRate_);
-    target.velocityLevel = controls_.velocityCurve == 1 ? mode99VelocityLevel(velocity) : target.velocity;
+    target.velocityLevel = controls_.velocityCurve == 1 ? mode99VelocityLevel(velocity, target.carrierGain) : target.velocity;
     target.updateVelocityPowers(velModExponent_, velCarExponent_);
     auto& previous = lastNote_[source == 1 ? 1 : 0];
-    if (controls_.portamento && previous != 0) {
+    if (controls_.portamento && previous >= 0) {
         target.glideOffset = (previous - note) * 256;
         target.glideStep = (note - previous) * (1 << controls_.portamentoSpeed);
         applyGlide(target);
+    } else if (effectivePitchModel_ == 1) {
+        target.updateOriginalPitch(pitchSteps_);
     }
     previous = note;
-    if (effectivePitchModel_ == 1) target.updateOriginalPitch(pitchSteps_);
     if (effectiveSustainMode_ == 1) target.updateRelease(originalSustain_);
     target.source = source;
 }
@@ -594,7 +618,6 @@ void Press78Engine::originalNoteOn(int note, int velocity, int source) noexcept 
     // A silent patch still owns its key, cache and rank. Do not start an
     // inaudible voice or mistake envelope retirement for a free input.
     if (!silent(note)) startVoice(target, note, velocity, source);
-    (void)allocator_.service(1); // Immediate delivery; no CPU timing is modelled.
 }
 
 void Press78Engine::originalNoteOff(int note, int source) noexcept {
@@ -736,7 +759,8 @@ void Press78Engine::setChipRate(int model) noexcept {
     resamplerDelay_ = kResamplerDelay * chipRate_ / kInternalRate;
     // 5 ms control smoothing; the legacy literal (5 ms to 1 ppm) stays bit for bit.
     tickSmoothing_ = model == 1 ? 1.0 - std::exp(-1.0 / (chipRate_ * 0.005)) : 0.00415800184511004;
-    portamentoServiceTicks_ = static_cast<int>(std::lround(kPortamentoServiceSeconds * chipRate_));
+    portamentoServiceTicks_ = model == 1 ? kYm3420PortamentoServiceTicks
+        : static_cast<int>(std::lround(kPortamentoServiceSeconds * chipRate_));
     fadeTicks_ = static_cast<int>(std::lround(0.001 * chipRate_)); // 1 ms steal fade.
     // A switch waits for silence, so the history the new table reads is
     // near zero and the delay's 6.2-tick jump cannot be heard.
@@ -827,17 +851,18 @@ double Press78Engine::synthesizeTick() noexcept {
     // Tune smoothing is clocked with the envelopes/operators. Clock offset
     // changes the arrival of these ticks, including feedback and the LFO.
     const double smooth = tickSmoothing_;
-    pitchMultiplier_ += (targetPitch_ - pitchMultiplier_) * smooth;
-    voiceControls_.modulationAmount += (controls_.modulationAmount - voiceControls_.modulationAmount) * smooth;
-    voiceControls_.velocitySensitivity += (controls_.velocitySensitivity - voiceControls_.velocitySensitivity) * smooth;
-    voiceControls_.velocityToModulation += (controls_.velocityToModulation - voiceControls_.velocityToModulation) * smooth;
-    voiceControls_.vibratoDepth += (controls_.vibratoDepth - voiceControls_.vibratoDepth) * smooth;
-    voiceControls_.tremoloDepth += (controls_.tremoloDepth - voiceControls_.tremoloDepth) * smooth;
-    voiceControls_.lfoRateHz += (controls_.lfoRateHz - voiceControls_.lfoRateHz) * smooth;
+    smoothTo(pitchMultiplier_, targetPitch_, smooth);
+    smoothTo(voiceControls_.modulationAmount, controls_.modulationAmount, smooth);
+    smoothTo(voiceControls_.velocitySensitivity, controls_.velocitySensitivity, smooth);
+    smoothTo(voiceControls_.velocityToModulation, controls_.velocityToModulation, smooth);
+    smoothTo(voiceControls_.vibratoDepth, controls_.vibratoDepth, smooth);
+    smoothTo(voiceControls_.tremoloDepth, controls_.tremoloDepth, smooth);
+    smoothTo(voiceControls_.lfoRateHz, controls_.lfoRateHz, smooth);
     voiceControls_.lfoDelayScale = controls_.lfoDelayScale;
     voiceControls_.triangleLfo = controls_.triangleLfo;
     voiceControls_.globalLfo = controls_.globalLfo;
     voiceControls_.envelopeReverb = controls_.envelopeReverb;
+    voiceControls_.velocityCurve = controls_.velocityCurve;
     if (--portamentoCountdown_ <= 0) {
         portamentoCountdown_ = portamentoServiceTicks_;
         if (!idle) servicePortamento();
@@ -919,8 +944,8 @@ double Press78Engine::readDelay(double samples) const noexcept {
 void Press78Engine::output(double mono, double& left, double& right) noexcept {
     // Always advance the selected headroom and related-hardware small-signal
     // circuit, including during bypass, to avoid stale filter memory.
-    circuitHeadroom_ += (controls_.circuitHeadroom - circuitHeadroom_) * gainSmoothing_;
-    circuitSaturationMix_ += ((controls_.circuitSaturation ? 1.0 : 0.0) - circuitSaturationMix_) * gainSmoothing_;
+    smoothTo(circuitHeadroom_, controls_.circuitHeadroom, gainSmoothing_);
+    smoothTo(circuitSaturationMix_, controls_.circuitSaturation ? 1.0 : 0.0, gainSmoothing_);
     double shaped = mono;
     if (circuitSaturationMix_ > 0.0 && mono != 0.0) {
         // Preserve the canonical depleted-rail mixer window inside the
@@ -934,16 +959,16 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
             : mono + circuitSaturationMix_ * (colored - mono);
     }
     const double circuit = analog_.process(shaped);
-    circuitMix_ += ((controls_.outputCircuit ? 1.0 : 0.0) - circuitMix_) * gainSmoothing_;
+    smoothTo(circuitMix_, controls_.outputCircuit ? 1.0 : 0.0, gainSmoothing_);
     mono += circuitMix_ * (circuit - mono);
-    currentToneCoefficient_ += (toneCoefficient_ - currentToneCoefficient_) * gainSmoothing_;
-    drive_ += (controls_.drive - drive_) * gainSmoothing_;
-    chorusMix_ += (controls_.chorusMix - chorusMix_) * gainSmoothing_;
-    chorusRate_ += (controls_.chorusRateHz - chorusRate_) * gainSmoothing_;
-    chorusDepth_ += (controls_.chorusDepthMs - chorusDepth_) * gainSmoothing_;
-    recordedChorusMix_ += (static_cast<double>(controls_.chorusMode) - recordedChorusMix_) * gainSmoothing_;
-    chorusCircuitMix_ += (static_cast<double>(controls_.chorusCircuit) - chorusCircuitMix_) * gainSmoothing_;
-    width_ += (controls_.stereoWidth - width_) * gainSmoothing_;
+    smoothTo(currentToneCoefficient_, toneCoefficient_, gainSmoothing_);
+    smoothTo(drive_, controls_.drive, gainSmoothing_);
+    smoothTo(chorusMix_, controls_.chorusMix, gainSmoothing_);
+    smoothTo(chorusRate_, controls_.chorusRateHz, gainSmoothing_);
+    smoothTo(chorusDepth_, controls_.chorusDepthMs, gainSmoothing_);
+    smoothTo(recordedChorusMix_, static_cast<double>(controls_.chorusMode), gainSmoothing_);
+    smoothTo(chorusCircuitMix_, static_cast<double>(controls_.chorusCircuit), gainSmoothing_);
+    smoothTo(width_, controls_.stereoWidth, gainSmoothing_);
     if (controls_.toneCutoffHz != 0.0) {
         // A settled tail clears, as the circuit stages do (FastMath.h).
         if (mono == 0.0 && fast_math::settled(tone1_)) tone1_ = 0.0;
@@ -1006,9 +1031,9 @@ void Press78Engine::output(double mono, double& left, double& right) noexcept {
         dcInputL_ = left; dcInputR_ = right; dcOutputL_ = l; dcOutputR_ = r;
         left = l; right = r;
     } else { dcInputL_ = left; dcInputR_ = right; dcOutputL_ = dcOutputR_ = 0.0; }
-    auxMix_ += ((controls_.outputJack == 1 ? 1.0 : 0.0) - auxMix_) * gainSmoothing_;
-    phonesMix_ += ((controls_.outputJack == 2 ? 1.0 : 0.0) - phonesMix_) * gainSmoothing_;
-    gain_ += (controls_.masterGain - gain_) * gainSmoothing_;
+    smoothTo(auxMix_, controls_.outputJack == 1 ? 1.0 : 0.0, gainSmoothing_);
+    smoothTo(phonesMix_, controls_.outputJack == 2 ? 1.0 : 0.0, gainSmoothing_);
+    smoothTo(gain_, controls_.masterGain, gainSmoothing_);
     amplifier_.process(left, right, auxMix_, phonesMix_, 0.5 * gain_);
     left *= gain_; right *= gain_;
     if (controls_.outputLimit) {
