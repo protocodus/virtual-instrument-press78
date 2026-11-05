@@ -214,7 +214,14 @@ public:
     static double swingShare(double v, double above, double below) noexcept {
         const double u = v / (v > 0.0 ? above : below), u2 = u * u, u4 = u2 * u2;
         const double s = 1.0 + u4 * u4 * u2;
-        return s == 1.0 ? 1.0 : std::pow(s, -0.1);
+        if (s == 1.0) return 1.0;
+        // Ordinary playing keeps t = s - 1 (exact) below 1e-5 on almost every
+        // sample, where the binomial series to t^3 is off by under 1e-21,
+        // far below half an ulp of the result, so it rounds as pow does
+        // without pow's library call.
+        const double t = s - 1.0;
+        if (t < 1e-5) return 1.0 + t * (-0.1 + t * (0.055 - 0.0385 * t));
+        return std::pow(s, -0.1);
     }
     // Moves left and right from the slider towards the AUX and headphone
     // outputs by their mix weights. Every path runs at all times, so a jack
