@@ -53,6 +53,10 @@ double mode99VelocityLevel(int velocity, double carrierGain = 0.8) noexcept {
 }
 
 void smoothTo(double& value, double target, double coeff) noexcept {
+    // Most smoothed controls sit at their target. Then the step below adds a
+    // zero and the snap assigns target (turning -0 into +0 or back exactly as
+    // the snap would), so assigning it at once is the same result.
+    if (value == target) { value = target; return; }
     value += (target - value) * coeff;
     if (fast_math::abs(target - value) <= 1e-12) value = target;
 }
