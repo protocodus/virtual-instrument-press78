@@ -25,6 +25,10 @@ Eight of the 100 factory voices, one from each of eight families, rendered by th
 
 ## Version history
 
+### 1.0.5 — 2026-11-05 — less CPU, the same sound
+
+- Press78 takes less CPU in ordinary playing: on the eight README demos, 1.57 % of real time per instance at 48 kHz instead of 1.85 %, 2.39 % instead of 2.58 % at 44.1 kHz and 3.23 % instead of 3.33 % at 96 kHz (development machine, not Reason). Output is bit-identical to 1.0.4's except where an LFO drives vibrato or tremolo, which moves single float roundings (at most −142 dB re peak). Details in [cpu-2026-11-05](Docs/benchmarks/cpu-2026-11-05.md).
+
 ### 1.0.4 — 2026-11-03 — PSS-780 Mode 99 TL saturation, YM3420 VDT/portamento cadence, D1L clamping and circuit settling
 
 - In the **Original** velocity curve (Mode 99, `xg503b0-132` bank 2 `$7890` / `$CB7F`), carrier `TL + velocity_addend` now saturates at 127 codes (−95.25 dB below unity), including on live `TL` and key-scaling edits.
