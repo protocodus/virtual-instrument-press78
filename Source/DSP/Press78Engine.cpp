@@ -376,13 +376,13 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
             if (c.globalLfo) {
                 if (ctx.cachedPms != patch.pms) {
                     const double cents = pmDepth[patch.pms] * c.vibratoDepth * lfo();
-                    ctx.cachedVibratoPitch = cents == 0.0 ? 1.0 : std::pow(2.0, cents / 1200.0);
+                    ctx.cachedVibratoPitch = cents == 0.0 ? 1.0 : fast_math::exp2(cents / 1200.0);
                     ctx.cachedPms = patch.pms;
                 }
                 vibratoPitch = ctx.cachedVibratoPitch;
             } else {
                 const double cents = pmDepth[patch.pms] * c.vibratoDepth * lfo();
-                if (cents != 0.0) vibratoPitch = std::pow(2.0, cents / 1200.0);
+                if (cents != 0.0) vibratoPitch = fast_math::exp2(cents / 1200.0);
             }
         }
     }
@@ -391,17 +391,18 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
     carrierPhase = wrapTau(carrierPhase + carrierStep * pitch);
     double amM = 1.0, amC = 1.0;
     if (patch.modulator.amEnable || patch.carrier.amEnable) {
+        // 10^(-am (lfo + 1) / 40): dbToGain's 0..96 dB covers am <= 47.2.
         double amGain = 1.0;
         if (c.globalLfo) {
             if (ctx.cachedAms != patch.ams) {
                 const double am = amDepth[patch.ams] * c.tremoloDepth;
-                ctx.cachedAmGain = am == 0.0 ? 1.0 : std::pow(10.0, -am * (lfo() + 1.0) / 40.0);
+                ctx.cachedAmGain = am == 0.0 ? 1.0 : fast_math::dbToGain(0.5 * am * (lfo() + 1.0));
                 ctx.cachedAms = patch.ams;
             }
             amGain = ctx.cachedAmGain;
         } else {
             const double am = amDepth[patch.ams] * c.tremoloDepth;
-            if (am != 0.0) amGain = std::pow(10.0, -am * (lfo() + 1.0) / 40.0);
+            if (am != 0.0) amGain = fast_math::dbToGain(0.5 * am * (lfo() + 1.0));
         }
         if (patch.modulator.amEnable) amM = amGain;
         if (patch.carrier.amEnable) amC = amGain;
