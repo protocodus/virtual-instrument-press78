@@ -372,7 +372,7 @@ double Press78Engine::Voice::next(const Controls& c, double pitchMultiplier, dou
         const double delayTicks = tickRate == kYm3420Rate
             ? patch.vibratoDelay * kYm3420VibratoDelayTicks * c.lfoDelayScale
             : patch.vibratoDelay * kLegacyVibratoDelaySeconds * c.lfoDelayScale * tickRate;
-        if (patch.vibratoDelay == 0 || static_cast<double>(ticks) >= std::round(delayTicks)) {
+        if (patch.vibratoDelay == 0 || static_cast<double>(ticks) >= fast_math::round(delayTicks)) {
             if (c.globalLfo) {
                 if (ctx.cachedPms != patch.pms) {
                     const double cents = pmDepth[patch.pms] * c.vibratoDepth * lfo();

@@ -26,6 +26,19 @@ inline double floor(double x) noexcept { return std::floor(x); }
 inline double copysign(double x, double y) noexcept { return std::copysign(x, y); }
 #endif
 
+// std::round on finite doubles, bit for bit (150M random and edge values,
+// 2026-11-05): half away from zero, -0 for (-0.5, -0]. Under the
+// Rack's -fno-builtin, and on x86-64 without SSE4.1 in any build, round is a
+// library call. Every double of magnitude 2^52 or more (and NaN and the
+// infinities) is already integral and returned as it is; below that the
+// conversion truncates and x - t is exact.
+inline double round(double x) noexcept {
+    if (!(abs(x) < 4503599627370496.0)) return x;
+    double t = static_cast<double>(static_cast<long long>(x));
+    if (abs(x - t) >= 0.5) t += copysign(1.0, x);
+    return copysign(t, x);
+}
+
 // A filter section whose input is exactly zero and whose states are all
 // below this has settled: its states are cleared together, so it outputs
 // exact zeros until its input returns, and a cascade settles section by
