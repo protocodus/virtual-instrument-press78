@@ -103,6 +103,31 @@ public:
         const auto span=static_cast<std::uint64_t>(2*half_);
         if(pos.floor>=span && pos.floor<next_ && next_-(pos.floor-span)<=kHistory) {
             const auto base=pos.floor-static_cast<std::uint64_t>(half_);
+            if(row) {
+                // The same sums in the same order over the ring's one or two
+                // contiguous runs, without a per-tap index mask or row test.
+                const auto start=static_cast<std::size_t>(base-static_cast<std::uint64_t>(half_))&(kHistory-1);
+                const auto taps=static_cast<std::size_t>(2*half_+1);
+                const auto first=std::min(taps,kHistory-start);
+                const double* c=row-half_;
+                const auto* value=history_.data()+start;
+#if defined(__clang__)
+#pragma clang loop vectorize(disable) interleave(disable)
+#endif
+                for(std::size_t k=0;k<first;++k) {
+                    total+=c[k];
+                    left+=c[k]*value[k][0];right+=c[k]*value[k][1];
+                }
+                c+=first; value=history_.data();
+#if defined(__clang__)
+#pragma clang loop vectorize(disable) interleave(disable)
+#endif
+                for(std::size_t k=0;k<taps-first;++k) {
+                    total+=c[k];
+                    left+=c[k]*value[k][0];right+=c[k]*value[k][1];
+                }
+                return {{static_cast<float>(left/total),static_cast<float>(right/total)}};
+            }
 #if defined(__clang__)
 #pragma clang loop vectorize(disable) interleave(disable)
 #endif
