@@ -4,6 +4,7 @@
 //
 //   Press78ParameterMatrixTests [--jobs N] [--rotation] [--shard K/N]
 //                               [--case LABEL] [--count] [--list]
+//   Press78ParameterMatrixTests --reach [--jobs N] [--case PARAMETER]
 //
 // The shared command line (U9): --rotation runs each case at one rate and
 // block size instead of all nine, --shard K/N runs the cases whose index
@@ -18,8 +19,10 @@
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
+#include <initializer_list>
 #include <map>
 #include <string>
+#include <vector>
 
 namespace
 {
@@ -74,6 +77,101 @@ public:
         constexpr double longTailSeconds = 6.0;
         limits.releaseSeconds = release <= longTailSeconds || louderRelease ? release : -1.0;
         return limits;
+    }
+
+    // U11. Parameters the default patch leaves silent (it plays the carrier
+    // alone) are tested on the first factory voice that uses them, or here
+    // with what makes them audible.
+    protocodus::matrix::ReachRule ReachFor (std::size_t index, float) const override
+    {
+        using protocodus::matrix::Reach;
+        std::vector<protocodus::matrix::Parameter> all = Parameters();
+        for (const auto& p : EditorOnlyParameters())
+            all.push_back (p);
+        const auto at = [&] (const char* name)
+        {
+            for (std::size_t i = 0; i < all.size(); ++i)
+                if (all[i].name == name)
+                    return i;
+            std::fprintf (stderr, "no parameter %s\n", name);
+            std::abort();
+        };
+        const std::string& name = all[index].name;
+        const auto is = [&] (std::initializer_list<const char*> names)
+        {
+            for (const char* n : names)
+                if (name == n)
+                    return true;
+            return false;
+        };
+        // Envelope::configure keeps the segment a sounding operator is in, and
+        // an operator whose decay 1 level is 0 starts in decay 2: the held
+        // chord never goes back to decay 1. One that has a decay 1 level sits
+        // in decay 1 while its rate is 0, so it follows a new rate. The
+        // modulator is silent until its attenuation comes down.
+        if (name == "Carrier Decay 1 level" || name == "Modulator Decay 1 level")
+            return { Reach::NewNotes, "a decay 1 the held chord has finished" };
+        if (name == "Carrier Decay 1 rate")
+            return { Reach::Held, "", { { at ("Carrier Decay 1 level"), 0.5f } } };
+        if (name == "Modulator Decay 1 rate")
+            return { Reach::Held, "", { { at ("Modulator Attenuation"), 0.25f }, { at ("Modulator Decay 1 level"), 0.5f } } };
+        // Key rate scaling speeds every segment, decay 2 included, so the held
+        // chord follows it once decay 2 moves (rate 12.6: 96 dB in 5.6 s).
+        if (name == "Modulator Key rate scaling")
+            return { Reach::Held, "", { { at ("Modulator Attenuation"), 0.25f }, { at ("Modulator Decay 2 rate"), 0.2f } } };
+        // Each waits for silence (Press78Engine::pitchIdle, allocationIdle).
+        if (is ({ "Pitch model", "Chip sample rate" }))
+            return { Reach::NewNotes, "applied once every note has ended" };
+        // The default patch has no key level scaling for either law to shape,
+        // and its quick release lets every note end before the probe. Most
+        // settings give the probe's keys the same levels under both laws
+        // (FirmwareLevel.h against level()); the steepest upper scaling and
+        // the first lower one are where they part, by 1.5 dB on C5 and 2.3 dB
+        // on G3.
+        if (name == "Original key scaling")
+            return { Reach::NewNotes, "applied once every note has ended",
+                     { { at ("Carrier Upper key level"), 1.0f }, { at ("Carrier Lower key level"), 1.0f / 15.0f } } };
+        // The voices sound alike, so a policy is heard only in which note it
+        // steals, and on two voices both steal the probe's alike.
+        if (name == "Original voice allocation")
+            return { Reach::Exempt, "which voice each note takes; the voices sound alike (test_allocation checks it)" };
+        // At velocities 80, 100 and 127 the original's steps sit within
+        // 0.4 dB of the legacy curve.
+        if (name == "Original velocity curve")
+            return { Reach::Exempt, "within 0.4 dB of the legacy curve at the probes' velocities (test_dsp compares them)" };
+        if (name == "Pitch bend range")
+            return { Reach::NewNotes, "the range of the next bend; the held chord is not bent" };
+        if (name == "Portamento")
+            return { Reach::NewNotes, "a glide into each new note" };
+        if (name == "Portamento speed")
+            return { Reach::NewNotes, "a glide into each new note", { { at ("Portamento"), 1.0f } },
+                     "each voice glides from wherever the glides before left it" };
+        // The modulator sustains at full level unless it is silenced.
+        if (name == "Feedback")
+            return { Reach::Held, "", { { at ("Modulator Attenuation"), 0.25f } } };
+        if (name == "Drift rate")
+            return { Reach::Held, "", { { at ("Clock drift"), 1.0f } },
+                     "the clock wanders in the phase its old rate left" };
+        if (name == "Double spread")
+            return { Reach::Held, "", { { at ("Double"), 1.0f } } };
+        if (name == "Double detune")
+            return { Reach::Held, "", { { at ("Double"), 1.0f } },
+                     "the two units beat in the phase their old detune left" };
+        if (name == "DC filter")
+            return { Reach::Exempt, "removes only DC and subsonic offset, which are not heard" };
+        if (name == "Output protection")
+            return { Reach::Exempt, "a limit at full scale the phrase does not reach" };
+        // The supply sags under a loud output.
+        if (name == "Power circuit")
+            return { Reach::Held, "", { { at ("Volume"), 1.0f } } };
+        if (name == "Original release policy")
+            return { Reach::Exempt, "what the sustain pedal does; the phrase does not press it" };
+        if (name == "Wheel to vibrato")
+            return { Reach::Exempt, "the mod wheel's vibrato depth; the phrase does not move the wheel" };
+        // Press78Engine::sanitizeControls zeroes both: no noise path exists.
+        if (name == "Noise level" || name == "Noise model")
+            return { Reach::Exempt, "kept for saved sessions; the engine has no noise path" };
+        return {};
     }
 
 private:

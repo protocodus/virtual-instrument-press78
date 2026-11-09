@@ -358,6 +358,10 @@ if(BUILD_TESTING)
                  COMMAND Press78ParameterMatrixTests --rotation --shard 0/50 --jobs 4)
         set_tests_properties(Press78.ParameterMatrix PROPERTIES TIMEOUT 1800 LABELS fuzz)
 
+        # U11: every parameter reaches held and new notes after long play.
+        add_test(NAME Press78.ParameterReach COMMAND Press78ParameterMatrixTests --reach --jobs 4)
+        set_tests_properties(Press78.ParameterReach PROPERTIES TIMEOUT 1800 LABELS unit)
+
         if(Python3_Interpreter_FOUND)
             add_test(NAME Press78.EditorRender
                      COMMAND "${Python3_EXECUTABLE}" -B
