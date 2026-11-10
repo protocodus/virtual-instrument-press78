@@ -13,13 +13,13 @@ Eight of the 100 factory voices, one from each of eight families, rendered by th
 | # | Preset | Demo | Length | Peak |
 | --- | --- | --- | --- | --- |
 | 3 | PSS 02 Electric Piano 1 | [003-pss-02-electric-piano-1.wav](Docs/audio/003-pss-02-electric-piano-1.wav) | 11.7 s | -12.1 dBFS |
-| 14 | PSS 13 Jazz Organ | [014-pss-13-jazz-organ.wav](Docs/audio/014-pss-13-jazz-organ.wav) | 11.1 s | -14.3 dBFS |
+| 14 | PSS 13 Jazz Organ | [014-pss-13-jazz-organ.wav](Docs/audio/014-pss-13-jazz-organ.wav) | 11.1 s | -14.2 dBFS |
 | 23 | PSS 22 Trumpet | [023-pss-22-trumpet.wav](Docs/audio/023-pss-22-trumpet.wav) | 11.8 s | -23.3 dBFS |
-| 33 | PSS 32 Alto Sax | [033-pss-32-alto-sax.wav](Docs/audio/033-pss-32-alto-sax.wav) | 11.9 s | -19.8 dBFS |
-| 54 | PSS 53 Rock Guitar 1 | [054-pss-53-rock-guitar-1.wav](Docs/audio/054-pss-53-rock-guitar-1.wav) | 11.8 s | -25.2 dBFS |
+| 33 | PSS 32 Alto Sax | [033-pss-32-alto-sax.wav](Docs/audio/033-pss-32-alto-sax.wav) | 11.9 s | -20.2 dBFS |
+| 54 | PSS 53 Rock Guitar 1 | [054-pss-53-rock-guitar-1.wav](Docs/audio/054-pss-53-rock-guitar-1.wav) | 11.8 s | -25.4 dBFS |
 | 63 | PSS 62 Slap Bass | [063-pss-62-slap-bass.wav](Docs/audio/063-pss-62-slap-bass.wav) | 11.9 s | -22.4 dBFS |
 | 85 | PSS 84 Tubular Bells | [085-pss-84-tubular-bells.wav](Docs/audio/085-pss-84-tubular-bells.wav) | 11.9 s | -25.1 dBFS |
-| 93 | PSS 92 Human Chorus | [093-pss-92-human-chorus.wav](Docs/audio/093-pss-92-human-chorus.wav) | 11.6 s | -15.7 dBFS |
+| 93 | PSS 92 Human Chorus | [093-pss-92-human-chorus.wav](Docs/audio/093-pss-92-human-chorus.wav) | 11.6 s | -17.2 dBFS |
 
 <!-- audio-demos-end -->
 
@@ -93,7 +93,7 @@ Eight of the 100 factory voices, one from each of eight families, rendered by th
 ## Downloads
 
 <!-- build-download-begin -->
-**[Download main build 33](https://github.com/protocodus/virtual-instrument-press78/actions/runs/40661256228/artifacts/12804533167)**, built from [`689a419971c4`](https://github.com/protocodus/virtual-instrument-press78/commit/689a419971c46cda13a9c211dd5356c912d9cc4b). It holds the macOS, Windows and Linux packages, `SHA256SUMS` and `BUILD.txt`.
+**[Download main build 67](https://github.com/protocodus/virtual-instrument-press78/actions/runs/42816260958/artifacts/13782889962)**, built from [`08a325e03785`](https://github.com/protocodus/virtual-instrument-press78/commit/08a325e037852e8a5135e06a751a26876ff406c1). It holds the macOS, Windows and Linux packages, `SHA256SUMS` and `BUILD.txt`.
 <!-- build-download-end -->
 
 ---
