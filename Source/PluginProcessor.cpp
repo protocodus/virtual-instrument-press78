@@ -39,7 +39,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout Press78AudioProcessor::creat
         if (! c.options.empty())
         {
             const auto names = juce::StringArray::fromTokens (juce::String (c.options.data(), c.options.size()), "|", {});
-            layout.add (std::make_unique<juce::AudioParameterChoice> (id, label, names, static_cast<int> (c.defaultValue)));
+            layout.add (std::make_unique<juce::AudioParameterChoice> (id, label, names, static_cast<int> (c.defaultValue),
+                                                                      juce::AudioParameterChoiceAttributes().withAutomatable (! c.setting)));
         }
         else if (c.integer && c.minimum == 0.0 && c.maximum == 1.0)
             layout.add (std::make_unique<juce::AudioParameterBool> (id, label, c.defaultValue >= 0.5));

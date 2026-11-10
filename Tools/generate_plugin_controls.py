@@ -41,6 +41,7 @@ def render() -> str:
         "    std::string_view id, label;",
         "    double minimum, maximum, defaultValue;",
         "    bool integer, patch, hidden; // hidden: not on the Rack panel, so not in the editor",
+        "    bool setting; // applies only once every voice has ended, so a host may not automate it",
         "    std::string_view options; // '|'-separated choice names, empty for numbers",
         "};",
         "",
@@ -51,7 +52,8 @@ def render() -> str:
         lines.append(
             f'    {{"{c["id"]}", "{c["label"]}", {number(c["min"])}, {number(c["max"])}, '
             f'{number(c.get("startup_default", c["default"]))}, {str(bool(c["integer"])).lower()}, '
-            f'{str(c["target"] == "patch").lower()}, {str(bool(c.get("hidden", False))).lower()}, "{options}"}},')
+            f'{str(c["target"] == "patch").lower()}, {str(bool(c.get("hidden", False))).lower()}, '
+            f'{str(bool(c.get("setting", False))).lower()}, "{options}"}},')
     lines += [
         "}};",
         "",

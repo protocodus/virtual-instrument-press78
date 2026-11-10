@@ -638,6 +638,7 @@
       "default": 0,
       "integer": true,
       "target": "controls",
+      "setting": true,
       "options": [
         "Equal",
         "Original"
@@ -652,6 +653,7 @@
       "default": 0,
       "integer": true,
       "target": "controls",
+      "setting": true,
       "options": [
         "Legacy",
         "Original"
@@ -702,6 +704,7 @@
       "default": 0,
       "integer": true,
       "target": "controls",
+      "setting": true,
       "options": [
         "Legacy",
         "Original"
@@ -718,6 +721,7 @@
       "default": 0,
       "integer": true,
       "target": "controls",
+      "setting": true,
       "options": [
         "Legacy",
         "Original"
@@ -765,6 +769,7 @@
       "default": 0,
       "integer": true,
       "target": "controls",
+      "setting": true,
       "options": [
         "Legacy",
         "YM3420"

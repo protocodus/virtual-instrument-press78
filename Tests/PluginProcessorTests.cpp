@@ -100,6 +100,8 @@ void parameterContract()
         check (matches (ranged->convertFrom0to1 (0.0f), control.minimum)
                    && matches (ranged->convertFrom0to1 (1.0f), control.maximum),
                id + " range matches Assets/controls.json");
+        check (parameters[i]->isAutomatable() == ! control.setting,
+               id + (control.setting ? " is a setting, off automation" : " is automatable"));
     }
 }
 
