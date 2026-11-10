@@ -28,6 +28,7 @@ Eight of the 100 factory voices, one from each of eight families, rendered by th
 ### Unreleased — 1.0.6 — the idle-waiting choices are settings
 
 - Pitch model, Original release policy, Original key scaling, Original voice allocation and Chip sample rate are no longer automatable in the plug-in. Each takes effect only once every voice and release tail has ended, so an automation lane could not act when it said; only a control that changes the sound at once may be automated. They stay parameters with the same ids: sessions, presets and the editor's Pitch model switch work as before; a host no longer offers them as automation targets. The sound is unchanged.
+- Saved rates and the tone filter no longer creep. The LFO, clock drift and chorus rates and the tone cutoff rose by a float step or two (under 1 ppm) each time a session was saved and reopened, and a value typed as text could read back as its neighbour, because the plug-in's travel-to-value conversion did not return its own values. It now does: a state saved, restored and saved again is identical. The change is far below hearing; it is what failed the full parameter matrix (Chorus rate at half travel) and the CLAP validator's text check.
 
 ### 1.0.5 — 2026-11-05 — less CPU, the same sound
 

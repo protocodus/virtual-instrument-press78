@@ -17,6 +17,26 @@ press78::Patch programPatch (int program) noexcept
 {
     return program <= 0 ? press78::initPatch() : press78::factoryPatch (static_cast<unsigned> (program - 1));
 }
+
+// A control's range, converted in double and rounded once. JUCE's own float
+// conversions do not return a value they produced where the range starts off
+// zero (the LFO, drift and chorus rates) or is skewed (the tone filter): each
+// save and restore moved such a value one ULP up, and a value's text read
+// back as another value. `skew` is juce::NormalisableRange's; 1 is linear.
+juce::NormalisableRange<float> controlRange (double minimum, double maximum, double skew = 1.0)
+{
+    return { static_cast<float> (minimum), static_cast<float> (maximum),
+             [skew] (float start, float end, float proportion)
+             {
+                 const double p = proportion > 0.0f ? std::pow (static_cast<double> (proportion), 1.0 / skew) : 0.0;
+                 return static_cast<float> (start + (static_cast<double> (end) - start) * p);
+             },
+             [skew] (float start, float end, float value)
+             {
+                 const double p = (static_cast<double> (value) - start) / (static_cast<double> (end) - start);
+                 return static_cast<float> (std::pow (std::clamp (p, 0.0, 1.0), skew));
+             } };
+}
 } // namespace
 
 Press78AudioProcessor::Press78AudioProcessor()
@@ -57,11 +77,13 @@ juce::AudioProcessorValueTreeState::ParameterLayout Press78AudioProcessor::creat
         }
         else
         {
-            juce::NormalisableRange<float> range (static_cast<float> (c.minimum), static_cast<float> (c.maximum));
-            // The tone filter spans 1-20 kHz; a linear knob would spend most of its travel above 10 kHz.
-            if (c.id == "toneCutoffHz")
-                range.setSkewForCentre (4000.0f);
-            layout.add (std::make_unique<juce::AudioParameterFloat> (id, label, range, static_cast<float> (c.defaultValue)));
+            // The tone filter spans 1-20 kHz; a linear knob would spend most of its travel
+            // above 10 kHz, so half travel is 4 kHz.
+            const double skew = c.id == "toneCutoffHz"
+                                    ? std::log (0.5) / std::log ((4000.0 - c.minimum) / (c.maximum - c.minimum))
+                                    : 1.0;
+            layout.add (std::make_unique<juce::AudioParameterFloat> (id, label, controlRange (c.minimum, c.maximum, skew),
+                                                                     static_cast<float> (c.defaultValue)));
         }
     }
     return layout;

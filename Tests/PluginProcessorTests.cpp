@@ -102,6 +102,15 @@ void parameterContract()
                id + " range matches Assets/controls.json");
         check (parameters[i]->isAutomatable() == ! control.setting,
                id + (control.setting ? " is a setting, off automation" : " is automatable"));
+        // A host reads a value back as travel and sets it again on every
+        // restore, so a value the range produced must map back to itself.
+        int moved = 0;
+        for (int step = 0; step <= 4096; ++step)
+        {
+            const float plain = ranged->convertFrom0to1 (static_cast<float> (step) / 4096.0f);
+            moved += ranged->convertFrom0to1 (ranged->convertTo0to1 (plain)) != plain;
+        }
+        check (moved == 0, id + " returns each value through travel and back (" + juce::String (moved) + " of 4097 moved)");
     }
 }
 
