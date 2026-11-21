@@ -93,7 +93,7 @@ Eight of the 100 factory voices, one from each of eight families, rendered by th
 ## Downloads
 
 <!-- build-download-begin -->
-**[Download main build 82](https://github.com/protocodus/virtual-instrument-press78/actions/runs/44720948783/artifacts/14626964181)**, built from [`48df6bfd4658`](https://github.com/protocodus/virtual-instrument-press78/commit/48df6bfd4658e9a1e40f03b8a1d162f83098780d). It holds the macOS, Windows and Linux packages, `SHA256SUMS` and `BUILD.txt`.
+**[Download main build 83](https://github.com/protocodus/virtual-instrument-press78/actions/runs/44893884530/artifacts/14703248727)**, built from [`755db1d4bad4`](https://github.com/protocodus/virtual-instrument-press78/commit/755db1d4bad4e8e6c895598e205c8b7b25c6fac4). It holds the macOS, Windows and Linux packages, `SHA256SUMS` and `BUILD.txt`.
 <!-- build-download-end -->
 
 ---
